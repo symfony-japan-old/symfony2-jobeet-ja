@@ -151,7 +151,6 @@ web/config.php
       exit('This script is only accessible from localhost.');
    }
    */
-
    // ...
 
 Do the same for web/app_dev.php:
