@@ -1,5 +1,6 @@
 Day 4: The Controller and the View
 ==================================
+
 This article is part of the original Jobeet Tutorial, created by Fabien Potencier, for Symfony 1.4.
 Today, we are going to customize the basic job controller we created yesterday. It already has most of the code we need for Jobeet:
 A page to list all jobs

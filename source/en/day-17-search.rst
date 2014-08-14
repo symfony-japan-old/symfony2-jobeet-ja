@@ -1,4 +1,6 @@
 Day 17: Search
+==============
+
 * This article is part of the original Jobeet Tutorial, created by Fabien Potencier, for Symfony 1.4.
 In day 14, we added some feeds to keep Jobeet users up-to-date with new job posts. Today will help you to improve the user experience by implementing the latest main feature of the Jobeet website: the search engine.
 The Technology

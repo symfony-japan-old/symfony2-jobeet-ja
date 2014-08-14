@@ -12,19 +12,18 @@ Setting up the working development environment
 First of all, you need to check that your computer has a friendly working environment for web development. We will use Ubuntu 12.04 LTS Server installed in a VMware Player virtual machine. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL) and PHP 5.3.3 or later.
 1. Install Apache, your web server:
 
-1
 sudo apt-get install apache2
+
 and enable Apache mod-rewrite:
 
-1
 sudo a2enmod rewrite
+
 2, Install the MySQL Server:
 
 1
 sudo apt-get install mysql-server mysql-client
 3. Install PHP, the server scripting language
 
-1
 sudo apt-get install php5 libapache2-mod-php5 php5-mysql
 4. Install Intl extension:
 
