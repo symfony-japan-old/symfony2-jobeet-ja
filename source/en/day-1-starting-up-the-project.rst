@@ -172,7 +172,9 @@ sudo apt-get install php-apc
 sudo service apache2 restart
 
 After restarting Apache, open a browser window and type in http://jobeet.local/app_dev.php. You should see the following page:
-Day 1 - SF_welcome
+
+.. image:: /images/Day-1-SF_welcome.jpg
+
 Symfony2 Console
 
 Symfony2 comes with the console component tool that you will use for different tasks. To see a list of things it can do for you type at the command prompt:

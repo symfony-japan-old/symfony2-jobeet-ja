@@ -12,7 +12,9 @@ Installing and Configuring the Zend Framework
 The Zend Lucene library is part of the Zend Framework. We will only install the Zend Framework into the vendor/ directory, alongside the symfony framework itself.
 First, download the Zend Framework and unzip the files so that you have a vendor/Zend/directory. Keep in mind that the 2.*  versions of Zend Framework do not have Lucene library integrated, so don’t download any of them for this tutorial.
 The following explanations have been tested with the 1.12.3 version of the Zend Framework.
-Day 17 - zend
+
+.. image:: /images/Day-17-zend.jpg
+
 You can clean up the directory by removing everything but the following files and directories:
 Exception.php
 Loader/

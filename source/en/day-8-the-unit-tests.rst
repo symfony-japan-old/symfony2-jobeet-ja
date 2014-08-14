@@ -9,16 +9,6 @@ Unit tests will be covered in this post, whereas the next post will be dedicated
 Symfony2 integrates with an independent library, the PHPUnit, to give you a rich testing framework. To run tests, you will have to install PHPUnit 3.5.11 or later.
 If you don’t have PHPUnit installed, use the following to get it:
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 sudo apt-get install phpunit
 sudo pear channel-discover pear.phpunit.de
 sudo pear channel-discover pear.symfony-project.com
@@ -38,22 +28,6 @@ A unit test is usually a test against a specific PHP class. Let’s start by wri
 Create a new file, JobeetTest.php, in the src/Ibw/JobeetBundle/Tests/Utils folder. By convention, the Tests/ subdirectory should replicate the directory of your bundle. So, when we are testing a class in our bundle’s Utils/ directory, we put the test in the Tests/Utils/ directory:
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
 namespace Ibw\JobeetBundle\Tests\Utils;
 
 use Ibw\JobeetBundle\Utils\Jobeet;
@@ -76,15 +50,6 @@ To run only this test, you can use the following command:
 phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
 As everything should work fine, you should get the following result:
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
 PHPUnit 3.7.22 by Sebastian Bergmann.
 
 Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -101,11 +66,6 @@ The slug for an empty string is an empty string. You can test it, it will work. 
 You can write the test first, then update the method, or the other way around. It is really a matter of taste, but writing the test first gives you the confidence that your code actually implements what you planned:
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.phpPHP
 
-1
-2
-3
-4
-5
 // ...
 
 $this->assertEquals('n-a', Jobeet::slugify(''));
@@ -113,28 +73,6 @@ $this->assertEquals('n-a', Jobeet::slugify(''));
 // ...
 Now, if we run the test again, we will have a failure:
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
 PHPUnit 3.7.22 by Sebastian Bergmann.
 
 Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -160,16 +98,6 @@ Tests: 1, Assertions: 5, Failures: 1.
 Now, edit the Jobeet::slugify method and add the following condition at the beginning:
 src/Ibw/JobeetBundle/Utils/Jobeet.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 // ...
 
     static public function slugify($text)
@@ -193,17 +121,6 @@ $this->assertEquals('n-a', Jobeet::slugify(' - '));
 After checking that the test does not pass, edit the Jobeet class and move the empty string check to the end of the method:
 src/Ibw/JobeetBundle/Utils/Jobeet.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 static public function slugify($text)
 {
     // ...
@@ -227,33 +144,6 @@ $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
 The test must fail. Instead of replacing é by e, the slugify() method has replaced it by a dash (-). That’s a tough problem, called transliteration. Hopefully, if you have iconv Library installed, it will do the job for us. Replace the code of the slugify method with the following:
 src/Ibw/JobeetBundle/Utils/Jobeet.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
 static public function slugify($text)
 {
     // replace non letter or digits by -
@@ -285,9 +175,6 @@ Remember to save all your PHP files with the UTF-8 encoding, as this is the defa
 Also change the test file to run the test only if iconv is available:
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.phpPHP
 
-1
-2
-3
 if (function_exists('iconv')) {
     $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
 }
@@ -303,7 +190,9 @@ The code coverage only works if you have XDebug enabled and all dependencies ins
 1
 sudo apt-get install php5-xdebug
  Your cov/index.html should look like this:
-day 8 - code coverage1
+
+.. image:: /images/day-8-code-coverage1.jpg
+
 Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 Doctrine Unit Tests
 
@@ -312,10 +201,6 @@ At the beginning of this tutorial, we introduced the environments as a way to va
 Go to your app/config directory and create a copy of parameters.yml file, called parameters_test.yml. Open parameters_test.yml and change the name of your database to jobeet_test. For this to be imported, we have to add it in the config_test.yml file :
 app/config/config_test.ymlYAML
 
-1
-2
-3
-4
 imports:
     - { resource: config_dev.yml }
     - { resource: parameters_test.yml }
@@ -326,115 +211,6 @@ First, we need to create the JobTest.php file in the Tests/Entity folder.
 The setUp function will manipulate your database each time you will run the test. At first, it will drop your current database, then it will re-create it and load data from fixtures in it. This will help you have the same initial data in the database you created for the test environment before running the tests.
 src/Ibw/JobeetBundle/Tests/Entity/JobTest.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
 namespace Ibw\JobeetBundle\Entity;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -549,135 +325,6 @@ Testing the Repository Classes
 Now, let’s write some tests for the JobRepository class, to see if the functions we created in the previous days are returning the right values:
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
 namespace Ibw\JobeetBundle\Tests\Repository;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -810,91 +457,6 @@ class JobRepositoryTest extends WebTestCase
 We will do the same thing for CategoryRepository class:
 src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
 namespace Ibw\JobeetBundle\Tests\Repository;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -985,28 +547,12 @@ After you finish writing the tests, run them with the following command, in orde
 1
 phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
 Now, if you go to http://jobeet.local/cov/Repository.html you will see that the code coverage for Repository Tests is not 100% complete.
-Day 8 - coverage not complete
+
+.. image:: /images/Day-8-coverage-not-complete.jpg
+
 Let’s add some tests for the JobRepository to achieve 100% code coverage. At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job. That why, when we will test the $max and $offset parameters, we will run the following tests just on the categories with at least 3 active jobs. In order to do that, add this inside your foreach statement, from your testGetActiveJobs() function:
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.phpPHP
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
 // ...
 foreach ($categories as $category) {
     // ...
@@ -1030,7 +576,9 @@ Run the code coverage command again :
 1
 phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
 This time, if you check your code coverage, you will see that it 100% complete.
-Day 8 - coverage complete
+
+.. image:: /images/Day-8-coverage-complete.jpg
+
 That’s all for today! See you tomorrow, when we will talk about functional tests.
 
 Creative Commons License

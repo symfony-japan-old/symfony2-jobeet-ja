@@ -970,8 +970,10 @@ src/Ibw/JobeetBundle/Entity/Job.phpPHP
 
     // ...
 The admin bar displays the different actions depending on the job status:
-Day 10 - admin bar
-Day 10 -admin badr 2
+
+.. image:: /images/Day-10-admin-bar.png
+.. image:: /images/Day-10-admin-badr-2.png
+
 We will now redirect the create and update actions of the JobController to the new preview page:
 src/Ibw/JobeetBundle/Controller/JobController.phpPHP
 

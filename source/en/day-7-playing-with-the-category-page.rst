@@ -115,7 +115,9 @@ public function countActiveJobs($category_id = null)
 
 // ...
 Now you should see the result in your browser:
-Day-7 - category link
+
+.. image:: /images/Day-7-category-link.png
+
 Category Controller Creation
 
 It’s now time to create the Category controller. Create a new CategoryController.php file in your Controller directory:
@@ -462,6 +464,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twigXHTML
 {% endblock %}
 The result:
 
-Day 7 - pagination
+.. image:: /images/Day-7-pagination.png
+
 Creative Commons License
 This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.

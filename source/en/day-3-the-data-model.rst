@@ -7,7 +7,8 @@ If you’re itching to open your text editor and lay down some PHP, you will be 
 The Relational Model
 
 The user stories from the previous day describe the main objects of our project: jobs, affiliates, and categories. Here is the corresponding entity relationship diagram:
-Day3 - entity_diagram
+
+.. image:: /images/Day3-entity_diagram.png
 
 In addition to the columns described in the stories, we have also added created_at and updated_at columns. We will configure Symfony to set their value automatically when an object is saved or updated.
 The Database
@@ -371,6 +372,9 @@ php app/console cache:clear --env=prod
 
 You can now test the job controller in a browser: http://jobeet.local/job/ or, in development environment, http://jobeet.local/app_dev.php/job/ .
 Day 3 - index_page
+
+.. image:: /images/Day-3-index_page.png
+
 You can now create and edit jobs. Try to leave a required field blank, or try to enter invalid data. That’s right, Symfony has created basic validation rules by introspecting the database schema.
 That’s all. Today, we have barely written PHP code but we have a working web module for the job model, ready to be tweaked and customized. Tomorrow, we will get familiar with the controller and the view. See you next time!
 Creative Commons License

@@ -166,7 +166,11 @@ services:
             - ~
             - Ibw\JobeetBundle\Entity\Job
             - 'IbwJobeetBundle:JobAdmin'
-At this point, we can see in the dashboard the Jobeet group and, inside it, the Job and Category modules, with their respective add and list links.Day 12 - sonata_interface
+At this point, we can see in the dashboard the Jobeet group and, inside it,
+the Job and Category modules, with their respective add and list links.
+
+.. image:: /images/Day-12-sonata_interface.jpg
+
 Configuration of Admin classes
 
 If you follow any link right now, nothing will happen. That’s because we haven’t configure the fields that belong to the list and the form. Let’s do a basic configuration, first for the categories:
