@@ -1,7 +1,7 @@
 Day 1: Starting up the Project
 ==============
 
-* This article is part of the original Jobeet Tutorial, created by Fabien Potencier, for Symfony 1.4.
+.. include:: common/original.rst.inc
 
 What is Jobeet?
 ---------------
@@ -154,7 +154,7 @@ web/config.php
    // ...
 
 Do the same for web/app_dev.php:
-web/app_dev.phpPHP
+web/app_dev.php
 
 .. code-block:: php
 
@@ -286,7 +286,9 @@ The new Jobeet bundle can be now found in the src directory of your project: src
 How to remove the AcmeDemoBundle
 ~~~~~~~~~~~~~~~~~~
 
-The Symfony 2.3.2 Standard Edition comes with a complete demo that lives inside a bundle called AcmeDemoBundle. It is a great boilerplate to refer to while starting a project, but you’ll probably want to eventually remove it.
+The Symfony 2.3.2 Standard Edition comes with a complete demo that lives inside a bundle called AcmeDemoBundle.
+It is a great boilerplate to refer to while starting a project, but you’ll probably want to eventually remove it.
+
 1. Type the command to delete Acme directory:
 
 .. code-block:: bash
@@ -322,5 +324,5 @@ The Environments
 
 Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php. These files are called front controllers; all requests to the application are made through them. The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment. The development environment will prove very handy because it will show you all the errors and warnings and the Web Debug Toolbar – the developer’s best friend.
 That’s all for today. See you on the next day of this tutorial, when we will talk about what exactly the Jobeet website will be about!
-Creative Commons License
-This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+.. include:: common/license.rst.inc
