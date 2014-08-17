@@ -26,7 +26,7 @@ Contents:
    day-18-ajax
    day-19-internationalization-and-localization
 
-   英語の元ねた
+
    en/day-1-starting-up-the-project
    en/day-2-the-project
    en/day-3-the-data-model

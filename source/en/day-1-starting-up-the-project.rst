@@ -15,6 +15,7 @@ Setting up the working development environment
 ---------------
 
 First of all, you need to check that your computer has a friendly working environment for web development. We will use Ubuntu 12.04 LTS Server installed in a VMware Player virtual machine. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL) and PHP 5.3.3 or later.
+
 1. Install Apache, your web server:
 
 .. code-block:: bash
@@ -27,7 +28,7 @@ and enable Apache mod-rewrite:
 
     $ sudo a2enmod rewrite
 
-2, Install the MySQL Server:
+2. Install the MySQL Server:
 
 .. code-block:: bash
 
