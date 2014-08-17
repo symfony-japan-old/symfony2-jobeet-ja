@@ -1,5 +1,5 @@
 Day 1: Starting up the Project
-==============
+=============================
 
 .. include:: common/original.rst.inc
 
