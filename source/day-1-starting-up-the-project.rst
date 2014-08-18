@@ -1,16 +1,28 @@
-1日目: プロジェクトの開始
-=========================
+1日目: プロジェクトを始める
+===========================
 
 .. include:: common/original.rst.inc
 
-What is Jobeet?
----------------
+Jobeet とは
+-----------
 
-Jobeet is an Open-Source job board software which provides you day-by-day tutorials, that will help you learn the latest Web Technolgy, Symfony 2.3.2 (for those who don’t know yet, Symfony is a framework for PHP).
+`Jobeet` はオープンソースのタスク管理のソフトウェアです。一日づつチュートリアルをこなし、最新の Web テクノロジーである Symfony 2.3.2 を学ぶことを手助けします。
+(まだ知らない人のために、SymfonyはPHPのためのフレームワークです。)
+Jobeet is an Open-Source job board software which provides you day-by-day tutorials, that will help you learn the latest Web Technolgy,
+ Symfony 2.3.2 (for those who don’t know yet, Symfony is a framework for PHP).
+
+それぞれのチャプター/日は、約一時間ででき、開始から終了まで、本物のウェブサイトをコーディングすることによって Symfony を学ぶことが出来ます。
 Each chapter/day is meant to last about one hour, and will be the occasion to learn Symfony by coding a real website, from start to finish.
-Every day, new features will be added to the application and we’ll take advantage of this development to introduce you to new Symfony functionalities, as well as good practices in Symfony web development.
+
+毎日、新しい機能がアプリケーションに追加され、新しい Symfony の機能性だけでなく、 Symfony の Web 開発におけるグッドプラクティスを紹介し、この開発の利点を学びます。
+Every day, new features will be added to the application and
+we’ll take advantage of this development to introduce you to new Symfony functionalities, as well as good practices in Symfony web development.
+
+本日は初日となり、コードは書きません。その代わり開発環境のセットアップを行います。
 Today, being your first day, you won’t be writing any code. Instead, you will setup a working development environment.
 
+開発環境のセットアップ
+----------------------
 Setting up the working development environment
 ---------------
 
@@ -52,6 +64,8 @@ and enable Apache mod-rewrite:
 
     $ sudo service apache2 restart
 
+Symfony 2.3.2 のダウンロードとインストール
+------------------------------------------
 Download and install Symfony 2.3.2
 ----------------------------------
 
@@ -63,6 +77,8 @@ The first thing to do is to prepare a directory on your web server where you wan
 
 We have a directory prepared, but what to put in it? Go to http://symfony.com/download, choose Symfony Standard 2.3.2 without vendors and download it. Now, unzip the files inside the Symfony directory to your prepared directory, jobeet.
 
+Vendors の更新
+~~~~~~~~~~~~~~
 Updating Vendors
 ~~~~~~~~~~~~~~~~~~
 
@@ -85,6 +101,8 @@ Next, type the following command to start downloading all the necessary vendor l
 
     $ php composer.phar install
 
+Web サーバーの設定
+------------------
 Web Server Configuration
 ----------------
 
@@ -231,6 +249,8 @@ After restarting Apache, open a browser window and type in http://jobeet.local/a
 
 .. image:: /images/Day-1-SF_welcome.jpg
 
+Symfony2 のコンソール
+---------------------
 Symfony2 Console
 ----------------
 
@@ -240,9 +260,13 @@ Symfony2 comes with the console component tool that you will use for different t
 
     $ php app/console list
 
+Application Bundle の作成
+-------------------------
 Creating the Application Bundle
 ----------------
 
+bundleとは何か
+~~~~~~~~~~~~~~~~~~
 What exactly is a bundle?
 ~~~~~~~~~~~~~~~~~~
 
@@ -254,6 +278,8 @@ Tips: A bundle can live anywhere as long as it can be autoloaded (app/autoload.p
 
    You can read more here: http://symfony.com/doc/current/book/page_creation.html#the-bundle-system – The Bundle System.
 
+基本 bundle スケルトンの作成
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Creating a basic bundle skeleton
 ~~~~~~~~~~~~~~~~~~
 
@@ -284,8 +310,10 @@ Clear the cache after generating the new bundle with:
 
 The new Jobeet bundle can be now found in the src directory of your project: src/Ibw/JobeetBundle. The bundle generator made a DefaultController with an index action. You can access this in your browser: http://jobeet.local/hello/jobeet or http://jobeet.local/app_dev.php/hello/jobeet.
 
+AcmeDemoBundle の削除の仕方
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 How to remove the AcmeDemoBundle
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Symfony 2.3.2 Standard Edition comes with a complete demo that lives inside a bundle called AcmeDemoBundle.
 It is a great boilerplate to refer to while starting a project, but you’ll probably want to eventually remove it.
@@ -320,6 +348,8 @@ app/config/routing_dev.yml
 
 3. Finally, clear the cache.
 
+環境
+----
 The Environments
 ----------------
 
