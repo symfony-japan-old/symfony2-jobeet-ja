@@ -409,7 +409,7 @@ app/config/routing_dev.yml
    _acme_demo:
        resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
-3最後に、キャッシュをクリアします。
+3. 最後に、キャッシュをクリアします。
 3. Finally, clear the cache.
 
 環境
@@ -417,9 +417,15 @@ app/config/routing_dev.yml
 The Environments
 ----------------
 
-symfonyの2.3.2は、さまざまな環境を持っている。あなたはプロジェクトのwebディレクトリを見ると、次の2つのPHPファイルが表示されます：app.phpとapp_dev.phpを。これらのファイルは、フロントコントローラと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。 app.phpファイルは実稼働環境用であり、彼らは、開発環境でアプリケーションで作業する際app_dev.phpは、ウェブ開発者によって使用されます。開発者の親友 - それはあなたのすべてのエラーと警告とWebデバッグツールバーが表示されますので、開発環境は、非常に便利証明する。
+Symfony 2.3.2 は、異なった環境を持っています。あなたはプロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つのPHPファイルが表示されます。
+これらのファイルは、フロントコントローラーと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。
+app.php ファイルは本番環境用であり、 app_dev.php は開発環境でアプリケーションで作業する場合にウェブ開発者によって使用されます。
+開発者の親友 - それはあなたのすべてのエラーと警告とWebデバッグツールバーが表示されますので、開発環境は、非常に便利証明する。
 それはすべて今日のためだ。私たちは正確にについてJobeetのWebサイトがどうなるかについてお話しますこのチュートリアルの次の日にお会いしましょう！
-Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php. These files are called front controllers; all requests to the application are made through them. The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment. The development environment will prove very handy because it will show you all the errors and warnings and the Web Debug Toolbar – the developer’s best friend.
+Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php.
+These files are called front controllers; all requests to the application are made through them.
+The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment.
+The development environment will prove very handy because it will show you all the errors and warnings and the Web Debug Toolbar – the developer’s best friend.
 That’s all for today. See you on the next day of this tutorial, when we will talk about what exactly the Jobeet website will be about!
 
 .. include:: common/license.rst.inc
