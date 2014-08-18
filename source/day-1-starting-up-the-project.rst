@@ -31,37 +31,42 @@ Setting up the working development environment
 First of all, you need to check that your computer has a friendly working environment for web development.
  We will use Ubuntu 12.04 LTS Server installed in a VMware Player virtual machine. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL) and PHP 5.3.3 or later.
 
-1のApacheは、Webサーバーをインストールします。
+1. Webサーバー Apache をインストールします。
 1. Install Apache, your web server:
 
 .. code-block:: bash
 
     $ sudo apt-get install apache2
 
+次に、 Apache mod-rewrite を有効にします。
 and enable Apache mod-rewrite:
 
 .. code-block:: bash
 
     $ sudo a2enmod rewrite
 
+2. MySQLサーバをインストールします。
 2. Install the MySQL Server:
 
 .. code-block:: bash
 
     $ sudo apt-get install mysql-server mysql-client
 
+3. サーバースクリプト言語、 PHP をインストールします。
 3. Install PHP, the server scripting language
 
 .. code-block:: bash
 
     $ sudo apt-get install php5 libapache2-mod-php5 php5-mysql
 
+4. 国際化拡張機能をインストールします。
 4. Install Intl extension:
 
 .. code-block:: bash
 
     $ sudo apt-get install php5-intl
 
+5. これで、Apache サービスを再起動する必要があります。
 5. Now, you need to restart Apache service:
 
 .. code-block:: bash
@@ -73,31 +78,38 @@ Symfony 2.3.2 のダウンロードとインストール
 Download and install Symfony 2.3.2
 ----------------------------------
 
-まず最初に、新しいプロジェクトをインストールする場所をWebサーバ上のディレクトリを準備することです。は/ var/ www /のJobeetの：それはJobeetの呼びましょう。
+まず最初にすることは、新しいプロジェクトをインストールする場所をWebサーバ上のディレクトリを準備することです。それを Jobeet(/var/www/jobeet ) と呼びましょう。
 The first thing to do is to prepare a directory on your web server where you want to install the new project. Let’s call it jobeet: /var/www/jobeet.
 
 .. code-block:: bash
 
     $ mkdir /var/www/jobeet
 
-私たちは、ディレクトリが用意しているが、それには何を入れて？ http://symfony.com/downloadに進み、ベンダーのないsymfonyの標準2.3.2を選択し、それをダウンロード。今、あなたの準備ディレクトリ、Jobeetのにsymfonyのディレクトリ内のファイルを解凍します。
-We have a directory prepared, but what to put in it? Go to http://symfony.com/download, choose Symfony Standard 2.3.2 without vendors and download it. Now, unzip the files inside the Symfony directory to your prepared directory, jobeet.
+ディレクトリを用意しましたが、それに何を入れましょう？
+http://symfony.com/download に進み、ベンダーのない Symfony Standard 2.3.2 を選択し、それをダウンロードします。
+今、あなたの準備ディレクトリ、Jobeetのにsymfonyのディレクトリ内のファイルを解凍します。
+We have a directory prepared, but what to put in it? Go to http://symfony.com/download, choose Symfony Standard 2.3.2 without vendors and download it.
+Now, unzip the files inside the Symfony directory to your prepared directory, jobeet.
 
 Vendors の更新
 ~~~~~~~~~~~~~~
 Updating Vendors
 ~~~~~~~~~~~~~~~~~~
 
-この時点では、独自のアプリケーションを開発することから始めましょうするフル機能のsymfonyのプロジェクトをダウンロードした。 symfonyのプロジェクトは、外部ライブラリの数によって異なります。これらは、作曲家と呼ばれるライブラリを経由して、プロジェクトのベンダー/ディレクトリにダウンロードされます。
-Composerは、symfonyの2.3.2スタンダード版をダウンロードするために使用することができ、PHPの依存管理ライブラリです。あなたのJobeetのディレクトリ上にComposerをダウンロードすることで起動します。
-At this point, you’ve downloaded a fully-functional Symfony project in which you’ll start to develop your own application. A Symfony project depends on a number of external libraries. These are downloaded into the vendor/ directory of your project via a library called Composer.
+この時点では、独自のアプリケーションを開発することから始めましょうするフル機能のsymfonyのプロジェクトをダウンロードした。
+Symfony のプロジェクトは、多くの外部ライブラリに依存します。
+これらは、 Composer と呼ばれるライブラリを経由して、プロジェクトの ``vendor/`` ディレクトリにダウンロードされます。
+Composer は PHP の依存管理ライブラリで、 Symfony 2.3.2 スタンダード版をダウンロードするために使用することができます。
+Jobeet のディレクトリ上に Composer をダウンロードすることで起動します。
+At this point, you’ve downloaded a fully-functional Symfony project in which you’ll start to develop your own application. A Symfony project depends on a number of external libraries.
+These are downloaded into the vendor/ directory of your project via a library called Composer.
 Composer is a dependency management library for PHP, which you can use to download the Symfony 2.3.2 Standard Edition. Start by downloading Composer onto your jobeet directory:
 
 .. code-block:: bash
 
     $ curl -s https://getcomposer.org/installer | php
 
-あなたはカール拡張機能をインストールしていない場合は、このコマンドを使用してインストールすることができます。
+curl 拡張をインストールしていない場合は、このコマンドを使用してインストールすることができます。
 If you don’t have curl extension installed, you can install it using this command:
 
 .. code-block:: bash
@@ -116,9 +128,11 @@ Web サーバーの設定
 Web Server Configuration
 ----------------
 
-良いのWebプラクティスは、Webルートディレクトリの下にスタイルシート、JavaScriptと画像のように、Webブラウザがアクセスする必要のあるファイルだけを置くことです。デフォルトでは、symfonyプロジェクトのウェブ/サブディレクトリの下にこれらのファイルを保存することをお勧めします。
-あなたの新しいプロジェクトのためにApacheを設定するには、仮想ホストを作成します。そのためには、次のコマンドで、使用している端末と型に移動します。
-A good web practice is to put under the web root directory only the files that need to be accessed by a web browser, like stylesheets, JavaScripts and images. By default, it’s recommended to store these files under the web/ sub-directory of a symfony project.
+良い Web の作法は、 Web ルートディレクトリの下にスタイルシート、 JavaScript と画像のように、 Web ブラウザがアクセスする必要のあるファイルだけを置くことです。
+デフォルトでは、 symfony プロジェクトの web/ サブディレクトリの下にこれらのファイルを保存することをお勧めします。
+あなたの新しいプロジェクトのために Apache を設定するには、バーチャルホストを作成します。そのためには、使用しているターミナルで次のコマンドをタイプします。
+A good web practice is to put under the web root directory only the files that need to be accessed by a web browser, like stylesheets, JavaScripts and images.
+By default, it’s recommended to store these files under the web/ sub-directory of a symfony project.
 To configure Apache for your new project, you will create a virtual host. In order to do that, go to your terminal and type in the next command :
 
 .. code-block:: bash
