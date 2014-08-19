@@ -313,28 +313,22 @@ Symfony のバンドルジェネレーターを開始するには、次のコマ
 
 現在、新しい Jobeet のバンドル は、あなたのプロジェクトとして src ディレクトリにあります（ ``src/Ibw/JobeetBundle`` ）。
 バンドルジェネレータは DefaultController を index アクションとあわせて作りました。
-あなたがお使いのブラウザでこれをアクセスすることができます。
+これにはお使いのブラウザで次のようにアクセスすることができます。
 http：//jobeet.local/hello/jobeet または http：//jobeet.local/app_dev.php/hello/jobeet
-The new Jobeet bundle can be now found in the src directory of your project: src/Ibw/JobeetBundle.
-The bundle generator made a DefaultController with an index action. You can access this in your browser: http://jobeet.local/hello/jobeet or http://jobeet.local/app_dev.php/hello/jobeet.
 
 AcmeDemoBundle の削除の仕方
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-symfonyの2.3.2 Standard EditionではAcmeDemoBundle呼ばバンドル内部に住んでいる完全なデモが付属しています。
-これは、プロジェクトを開始しながら、参照するための偉大な決まり文句ですが、あなたはおそらく、最終的にそれを削除したいと思う。
-The Symfony 2.3.2 Standard Edition comes with a complete demo that lives inside a bundle called AcmeDemoBundle.
-It is a great boilerplate to refer to while starting a project, but you’ll probably want to eventually remove it.
+Symfony 2.3.2 Standard Editionでは完全なデモが AcmeDemoBundle バンドルの中に付属しています。
+これは、プロジェクトの開始時に参照するためのすばらしい文例集ですが、おそらく、最終的にそれを削除したいと思うでしょう。
 
-1アクメディレクトリを削除するコマンドを入力します。
-1. Type the command to delete Acme directory:
+1. ``Acme`` ディレクトリを削除するコマンドを入力します。
 
 .. code-block:: bash
 
     $ rm -rf /var/www/jobeet/src/Acme
 
-2移動先：/var/www/jobeet/app/AppKernel.phpおよび削除：
-2. Go to: /var/www/jobeet/app/AppKernel.php  and delete:
+2. /var/www/jobeet/app/AppKernel.php を開いて行の削除をします。
 
 app/AppKernel.php
 
@@ -346,8 +340,7 @@ app/AppKernel.php
 
    // ...
 
-そして今、アプリ/ configに/ routing_dev.ymlから削除します。
-and now delete from app/config/routing_dev.yml:
+そして app/config/routing_dev.yml から削除します。
 
 app/config/routing_dev.yml
 
@@ -360,22 +353,15 @@ app/config/routing_dev.yml
        resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
 3. 最後に、キャッシュをクリアします。
-3. Finally, clear the cache.
+
 
 環境
 ----
-The Environments
-----------------
 
-Symfony 2.3.2 は、異なった環境を持っています。プロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つの PHP ファイルを見るでしょう。
+Symfony 2.3.2 は、いくつかの環境を持っています。プロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つの PHP ファイルを見るでしょう。
 これらのファイルは、フロントコントローラーと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。
 app.php ファイルは本番環境用であり、 app_dev.php はウェブ開発者によって使用される開発環境です。
 開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。
-これで今日はすべてです。明日は Jobeet の Web サイトがどうなるかについてお話します。このチュートリアルでお会いしましょう。！
-Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php.
-These files are called front controllers; all requests to the application are made through them.
-The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment.
-The development environment will prove very handy because it will show you all the errors and warnings and the Web Debug Toolbar – the developer’s best friend.
-That’s all for today. See you on the next day of this tutorial, when we will talk about what exactly the Jobeet website will be about!
+これで今日はすべてです。明日は Jobeet の Web サイトが正確にどんなものかお話します。このチュートリアルでお会いしましょう！
 
 .. include:: common/license.rst.inc
