@@ -417,11 +417,11 @@ app/config/routing_dev.yml
 The Environments
 ----------------
 
-Symfony 2.3.2 は、異なった環境を持っています。あなたはプロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つのPHPファイルが表示されます。
+Symfony 2.3.2 は、異なった環境を持っています。プロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つの PHP ファイルを見るでしょう。
 これらのファイルは、フロントコントローラーと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。
-app.php ファイルは本番環境用であり、 app_dev.php は開発環境でアプリケーションで作業する場合にウェブ開発者によって使用されます。
-開発者の親友 - それはあなたのすべてのエラーと警告とWebデバッグツールバーが表示されますので、開発環境は、非常に便利証明する。
-それはすべて今日のためだ。私たちは正確にについてJobeetのWebサイトがどうなるかについてお話しますこのチュートリアルの次の日にお会いしましょう！
+app.php ファイルは本番環境用であり、 app_dev.php はウェブ開発者によって使用される開発環境です。
+開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。
+これで今日はすべてです。明日このチュートリアルでお会いしましょう。正確に Jobeet の Web サイトがどうなるかについてお話します！
 Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php.
 These files are called front controllers; all requests to the application are made through them.
 The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment.
