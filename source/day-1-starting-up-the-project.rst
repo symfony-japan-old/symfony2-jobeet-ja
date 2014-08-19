@@ -9,7 +9,7 @@ Jobeet とは
 `Jobeet` はオープンソースの求人掲示板のソフトウェアです。一日づつチュートリアルをこなし、最新の Web テクノロジーである Symfony 2.3.2 を学ぶことを手助けします。
 (まだ知らない人のために、SymfonyはPHPのためのフレームワークです。)
 
-それぞれのチャプター/日は、約一時間ででき、開始から終了まで、本物のウェブサイトをコーディングすることによって Symfony を学ぶことが出来ます。
+それぞれのチャプター/日は、約 1 時間ででき、開始から終了まで、本物のウェブサイトをコーディングすることによって Symfony を学ぶことが出来ます。
 
 毎日、新しい機能がアプリケーションに追加され、新しい Symfony の機能性だけでなく、 Symfony の Web 開発におけるグッドプラクティスを紹介し、この開発の利点を学びます。
 
@@ -69,7 +69,7 @@ Symfony 2.3.2 のダウンロードとインストール
 
 ディレクトリを用意しましたが、それに何を入れましょう？
 http://symfony.com/download に進み、ベンダーのない Symfony Standard 2.3.2 を選択し、それをダウンロードします。
-今、あなたの準備ディレクトリ、 Jobeet に symfony のディレクトリ内のファイルを解凍します。
+準備ディレクトリ Jobeet に symfony のディレクトリ内のファイルを解凍します。
 
 Vendors の更新
 ~~~~~~~~~~~~~~
@@ -145,15 +145,14 @@ Windowsで実行している場合、このファイルは ``C:\Windows\System32
     $ sudo a2ensite jobeet.local
     $ sudo service apache2 restart
 
-Symfony を正常に使用できるように、 Web サーバーと PHP が設定されているかどうか、確認する視覚的なサーバー設定テスターが Symfony に付属しています。
-設定を確認するには、次のURLを使用します。
+Web サーバーと PHP が Symfony を使用できるよう正常に設定されているかどうか確認する視覚的なサーバー設定テスターが Symfony に付属しています。
+設定を確認するには、次のURLを使用します。::
 
-http://jobeet.local/config.php
+   http://jobeet.local/config.php
 
 .. image:: /images/sf2-config-1.png
 
-あなたがローカルホストからこれを実行しない場合は、検索しなければならないとオープンなWeb/ config.phpファイルとローカルホストの外部からのアクセスを制限する行をコメントにします。
-If you don’t run this from your localhost, you should locate and open web/config.php file and comment the lines that restrict the access outside localhost:
+あなたがローカルホストからこれを実行しない場合、web/config.php ファイルを開いてローカルホストの外部からのアクセスを制限する行をコメントにします。
 
 web/config.php
 
@@ -173,8 +172,7 @@ web/config.php
    */
    // ...
 
-ウェブ/ app_dev.phpに対しても同じことを行います。
-Do the same for web/app_dev.php:
+web/app_dev.php に対しても同じことを行います。
 
 web/app_dev.php
 
@@ -206,10 +204,9 @@ web/app_dev.php
 
    // ...
 
-あなたがconfig.phpにに行くときおそらく、あなたは必要条件のすべての種類を取得します。以下では、これらすべての「警告」を得ていないために観光名所のリストである。
-1アプリ/キャッシュと、アプリ/ログのパーミッションを変更します。
-Probably, you will get all kind of requirements when you go to config.php. Below, is a list of things to do for not getting all those “warnings”.
-1. Change the permissions of app/cache and app/logs:
+おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての``warnings`` が出ないようにする作業リストです。
+
+1. app/cache と、app/logs のパーミッションを変更します。
 
 .. code-block:: bash
 
@@ -217,17 +214,15 @@ Probably, you will get all kind of requirements when you go to config.php. Below
    sudo chmod -R 777 app/logs
    sudo setfacl -dR -m u::rwX app/cache app/logs
 
-あなたはまだそれを持っていない場合は、ACLをインストールします。
-Install ACL if you don’t have it yet:
+まだ ACL を持っていない場合はインストールします。
 
 .. code-block:: bash
 
    sudo apt-get install acl
 
-2。php.iniでdate.timezoneで設定を設定します
-2. Set the date.timezone setting in php.ini
+2. php.iniで date.timezone を設定します
 
-etc/php5/apache2/php.ini
+/etc/php5/apache2/php.ini
 
 .. code-block:: ini
 
@@ -237,39 +232,32 @@ etc/php5/apache2/php.ini
 
    sudo nano /etc/php5/apache2/php.ini
 
-[日付]セクションのdate.timezoneで設定を見つけて、あなたのタイムゾーンに設定します。その後、消去";"、行の先頭に配置。
-Find the date.timezone setting for [date] section and set it to your timezone. After that, erase “;”, placed at the beginning of the line.
+[date] セクションの date.timezone を見つけて、あなたのタイムゾーンを設定します。その後、";" を削除し、行の先頭に配置します。
 
-3。同じphp.iniファイルでオフにshort_open_tagを設定を設定します
-3. Set the short_open_tag setting to off in the same php.ini file
+3. 同じ php.ini ファイルで short_open_tag をオフに設定します。
 
-etc/php5/apache2/php.ini
+/etc/php5/apache2/php.ini
 
 .. code-block::
 
    short_open_tag
      Default Value: Off
 
-4。インストールし、PHPのアクセラレータを有効（APC推奨）
-4. Install and enable a PHP Accelerator (APC recommended)
+4. PHP アクセラレータ（APC推奨）をインストールし有効にします。
 
 .. code-block:: bash
 
    sudo apt-get install php-apc
    sudo service apache2 restart
 
-Apacheを再起動した後、HTTPでブラウザウィンドウと種類を開き//jobeet.local/app_dev.phpを。次のページが表示されます。
-After restarting Apache, open a browser window and type in http://jobeet.local/app_dev.php. You should see the following page:
+Apache を再起動した後、 ブラウザを開き http://jobeet.local/app_dev.php とタイプします。次のページが表示されます。
 
 .. image:: /images/Day-1-SF_welcome.jpg
 
 Symfony2 のコンソール
 ---------------------
-Symfony2 Console
-----------------
 
-Symfony2のあなたはさまざまなタスクに使用するコンソールコンポーネントのツールが付属しています。コマンドプロンプトで入力することができることのリストを表示するには：
-Symfony2 comes with the console component tool that you will use for different tasks. To see a list of things it can do for you type at the command prompt:
+Symfony2 には、さまざまなタスクに使用するコンソールコンポーネントのツールが付属しています。コマンドプロンプトで入力できることをリスト表示するには以下のように入力します。
 
 .. code-block:: bash
 
@@ -277,40 +265,34 @@ Symfony2 comes with the console component tool that you will use for different t
 
 Application Bundle の作成
 -------------------------
-Creating the Application Bundle
-----------------
 
-bundleとは何か
-~~~~~~~~~~~~~~~~~~
-What exactly is a bundle?
-~~~~~~~~~~~~~~~~~~
+bundleとは正確には何か
+~~~~~~~~~~~~~~~~~~~~~~
 
-他のソフトウェア内のプラグインが、それでも良いと似ています。主な違いは、すべてがコアフレームワークの機能とアプリケーションのために書かれたコードの両方を含む、symfonyの2.3.2バンドル、ということである。
-バンドルは、単一の機能を実装したディレクトリ内のファイルの構造化されたセットです。
-ヒント：バンドルがある限り、それが（アプリ/ autoload.php）をオートロードすることができるようにどこにでも住むことができる。
-Is similar to a plugin in other software, but even better. The key difference is that everything is a bundle in Symfony 2.3.2, including both core framework functionality and the code written for your application.
-A bundle is a structured set of files within a directory that implement a single feature.
-Tips: A bundle can live anywhere as long as it can be autoloaded (app/autoload.php).
+他のソフトウェアのプラグインと似ていますが、それよりも良いです。
+主な違いは、すべてが Symfony 2.3.2 のバンドルということです。コアフレームワークの機能とアプリケーションのために書かれたコードの両方を含みます。
+バンドルは、単一の機能を実装した構造化されたディレクトリ内のファイルのセットです。
 
 .. note::
 
-   ここに詳細を読むことができます：http://symfony.com/doc/current/book/page_creation.html#theバンドルシステム - バンドルシステム。
-   You can read more here: http://symfony.com/doc/current/book/page_creation.html#the-bundle-system – The Bundle System.
+   バンドルはオートロード（ app/autoload.php ）される限りどこにでも設置できます。
 
-基本 bundle スケルトンの作成
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Creating a basic bundle skeleton
-~~~~~~~~~~~~~~~~~~
+.. note::
 
-symfonyのバンドル発電機を起動するには、次のコマンドを実行します。
-Run the following command to start the Symfony’s bundle generator:
+   ここに詳細を読むことができます。
+   バンドルシステム http://symfony.com/doc/current/book/page_creation.html#the-bundle-system
+
+
+基本的 bundle スケルトンの作成
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Symfony のバンドルジェネレーターを開始するには、次のコマンドを実行します。
 
 .. code-block:: bash
 
     $ php app/console generate:bundle --namespace=Ibw/JobeetBundle
 
-発電機は、バンドルを生成する前にあなたにいくつか質問をします。ここで質問と回答（1を除くすべてが、デフォルトの答えが、）は次のとおりです。
-The generator will ask you some questions before generating the bundle. Here are the questions and answers (all, except one, are the default answers):
+ジェネレーターは、バンドルを生成する前にいくつか質問をします。ここでの質問と回答（ 1 つを除くすべてがデフォルトの答え）は次のとおりです。
 
 .. code-block:: bash
 
@@ -322,21 +304,22 @@ The generator will ask you some questions before generating the bundle. Here are
     Confirm automatic update of your Kernel [yes]? yes
     Confirm automatic update of the Routing [yes]? yes
 
-との新しいバンドルを生成した後にキャッシュをクリアします。
-Clear the cache after generating the new bundle with:
+新しいバンドルを生成した後にキャッシュをクリアします。
 
 .. code-block:: bash
 
     $ php app/console cache:clear --env=prod
     $ php app/console cache:clear --env=dev
 
-のsrc / IBW/ JobeetBundle：新しいJobeetのバンドルは現在、プロジェクトのsrcディレクトリにあります。バンドルジェネレータはindexアクションでDefaultControllerを作った。ます。http：//jobeet.local/hello/jobeetまたはhttp：//jobeet.local/app_dev.php/hello/jobeetあなたがお使いのブラウザでこれをアクセスすることができます。
-The new Jobeet bundle can be now found in the src directory of your project: src/Ibw/JobeetBundle. The bundle generator made a DefaultController with an index action. You can access this in your browser: http://jobeet.local/hello/jobeet or http://jobeet.local/app_dev.php/hello/jobeet.
+現在、新しい Jobeet のバンドル は、あなたのプロジェクトとして src ディレクトリにあります（ ``src/Ibw/JobeetBundle`` ）。
+バンドルジェネレータは DefaultController を index アクションとあわせて作りました。
+あなたがお使いのブラウザでこれをアクセスすることができます。
+http：//jobeet.local/hello/jobeet または http：//jobeet.local/app_dev.php/hello/jobeet
+The new Jobeet bundle can be now found in the src directory of your project: src/Ibw/JobeetBundle.
+The bundle generator made a DefaultController with an index action. You can access this in your browser: http://jobeet.local/hello/jobeet or http://jobeet.local/app_dev.php/hello/jobeet.
 
 AcmeDemoBundle の削除の仕方
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-How to remove the AcmeDemoBundle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 symfonyの2.3.2 Standard EditionではAcmeDemoBundle呼ばバンドル内部に住んでいる完全なデモが付属しています。
 これは、プロジェクトを開始しながら、参照するための偉大な決まり文句ですが、あなたはおそらく、最終的にそれを削除したいと思う。
