@@ -137,16 +137,16 @@ Windowsで実行している場合、このファイルは ``C:\Windows\System32
 
    リモート·サーバーで作業している場合には、127.0.0.1をWebサーバー·マシンのIPで置き換えてください。
 
-これが仕事をしたい場合は、新しく作成された仮想ホストを有効にしてApacheを再起動する必要があります。だからあなたの端末とタイプに移動します。
-If you want this to work, you need to enable the newly created virtual host and restart your Apache. So go to your terminal and type:
+この仮想ホストを動かしたい場合は、新しく作成された仮想ホストを有効にして Apache を再起動する必要があります。
+そのため、ターミナルに移って次のようにタイプします。
 
 .. code-block:: bash
 
     $ sudo a2ensite jobeet.local
     $ sudo service apache2 restart
 
-symfonyはWebサーバーとPHPが正常にsymfonyを使用するように設定されていることを確認し支援するための視覚サーバー構成テスターが付属しています。設定を確認するには、次のURLを使用します。
-Symfony comes with a visual server configuration tester to help make sure your Web server and PHP are correctly configured to use Symfony. Use the following URL to check your configuration:
+Symfony を正常に使用できるように、 Web サーバーと PHP が設定されているかどうか、確認する視覚的なサーバー設定テスターが Symfony に付属しています。
+設定を確認するには、次のURLを使用します。
 
 http://jobeet.local/config.php
 
