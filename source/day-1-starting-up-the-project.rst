@@ -6,68 +6,53 @@
 Jobeet とは
 -----------
 
-`Jobeet` はオープンソースのタスク管理のソフトウェアです。一日づつチュートリアルをこなし、最新の Web テクノロジーである Symfony 2.3.2 を学ぶことを手助けします。
+`Jobeet` はオープンソースの求人掲示板のソフトウェアです。一日づつチュートリアルをこなし、最新の Web テクノロジーである Symfony 2.3.2 を学ぶことを手助けします。
 (まだ知らない人のために、SymfonyはPHPのためのフレームワークです。)
-Jobeet is an Open-Source job board software which provides you day-by-day tutorials, that will help you learn the latest Web Technolgy,
- Symfony 2.3.2 (for those who don’t know yet, Symfony is a framework for PHP).
 
 それぞれのチャプター/日は、約一時間ででき、開始から終了まで、本物のウェブサイトをコーディングすることによって Symfony を学ぶことが出来ます。
-Each chapter/day is meant to last about one hour, and will be the occasion to learn Symfony by coding a real website, from start to finish.
 
 毎日、新しい機能がアプリケーションに追加され、新しい Symfony の機能性だけでなく、 Symfony の Web 開発におけるグッドプラクティスを紹介し、この開発の利点を学びます。
-Every day, new features will be added to the application and
-we’ll take advantage of this development to introduce you to new Symfony functionalities, as well as good practices in Symfony web development.
 
 本日は初日となり、コードは書きません。その代わり開発環境のセットアップを行います。
-Today, being your first day, you won’t be writing any code. Instead, you will setup a working development environment.
+
 
 開発環境のセットアップ
 ----------------------
-Setting up the working development environment
----------------
 
 初めに、コンピューターがweb開発環境として適しているか確認する必要があります。
-私たちは、VMware Playerの仮想マシンにインストールされているUbuntuの12.04 LTS Serverを使用します。最低でも、（例えばApacheの）Webサーバ、データベースエンジン（MySQLの）とPHP5.3.3以降が必要です。
-First of all, you need to check that your computer has a friendly working environment for web development.
- We will use Ubuntu 12.04 LTS Server installed in a VMware Player virtual machine. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL) and PHP 5.3.3 or later.
+私たちは、 VMware Player の仮想マシンにインストールされている Ubuntu 12.04 LTS Server を使用します。最低でも、 Web サーバ（例えば Apache ）、データベースエンジン（ MySQL ）と PHP 5.3.3 以降が必要です。
 
-1. Webサーバー Apache をインストールします。
-1. Install Apache, your web server:
+1. Webサーバー Apache をインストールします。:
 
 .. code-block:: bash
 
     $ sudo apt-get install apache2
 
 次に、 Apache mod-rewrite を有効にします。
-and enable Apache mod-rewrite:
 
 .. code-block:: bash
 
     $ sudo a2enmod rewrite
 
 2. MySQLサーバをインストールします。
-2. Install the MySQL Server:
 
 .. code-block:: bash
 
     $ sudo apt-get install mysql-server mysql-client
 
 3. サーバースクリプト言語、 PHP をインストールします。
-3. Install PHP, the server scripting language
 
 .. code-block:: bash
 
     $ sudo apt-get install php5 libapache2-mod-php5 php5-mysql
 
 4. 国際化拡張機能をインストールします。
-4. Install Intl extension:
 
 .. code-block:: bash
 
     $ sudo apt-get install php5-intl
 
-5. これで、Apache サービスを再起動する必要があります。
-5. Now, you need to restart Apache service:
+5. ここで、Apache サービスを再起動する必要があります。
 
 .. code-block:: bash
 
@@ -75,11 +60,8 @@ and enable Apache mod-rewrite:
 
 Symfony 2.3.2 のダウンロードとインストール
 ------------------------------------------
-Download and install Symfony 2.3.2
-----------------------------------
 
-まず最初にすることは、新しいプロジェクトをインストールする場所をWebサーバ上のディレクトリを準備することです。それを Jobeet(/var/www/jobeet ) と呼びましょう。
-The first thing to do is to prepare a directory on your web server where you want to install the new project. Let’s call it jobeet: /var/www/jobeet.
+まず最初にすることは、新しいプロジェクトをインストールする場所を Web サーバ上のディレクトリを準備することです。それを Jobeet ( /var/www/jobeet ) と呼びましょう。
 
 .. code-block:: bash
 
@@ -87,37 +69,28 @@ The first thing to do is to prepare a directory on your web server where you wan
 
 ディレクトリを用意しましたが、それに何を入れましょう？
 http://symfony.com/download に進み、ベンダーのない Symfony Standard 2.3.2 を選択し、それをダウンロードします。
-今、あなたの準備ディレクトリ、Jobeetのにsymfonyのディレクトリ内のファイルを解凍します。
-We have a directory prepared, but what to put in it? Go to http://symfony.com/download, choose Symfony Standard 2.3.2 without vendors and download it.
-Now, unzip the files inside the Symfony directory to your prepared directory, jobeet.
+今、あなたの準備ディレクトリ、 Jobeet に symfony のディレクトリ内のファイルを解凍します。
 
 Vendors の更新
 ~~~~~~~~~~~~~~
-Updating Vendors
-~~~~~~~~~~~~~~~~~~
 
-この時点では、独自のアプリケーションを開発することから始めましょうするフル機能のsymfonyのプロジェクトをダウンロードした。
+この時点では、あなたの独自アプリケーション開発をはじめる、フル機能の Symfony のプロジェクトをダウンロードしました。
 Symfony のプロジェクトは、多くの外部ライブラリに依存します。
-これらは、 Composer と呼ばれるライブラリを経由して、プロジェクトの ``vendor/`` ディレクトリにダウンロードされます。
+それらは、 Composer と呼ばれるライブラリを経由して、プロジェクトの ``vendor/`` ディレクトリにダウンロードされます。
 Composer は PHP の依存管理ライブラリで、 Symfony 2.3.2 スタンダード版をダウンロードするために使用することができます。
-Jobeet のディレクトリ上に Composer をダウンロードすることで起動します。
-At this point, you’ve downloaded a fully-functional Symfony project in which you’ll start to develop your own application. A Symfony project depends on a number of external libraries.
-These are downloaded into the vendor/ directory of your project via a library called Composer.
-Composer is a dependency management library for PHP, which you can use to download the Symfony 2.3.2 Standard Edition. Start by downloading Composer onto your jobeet directory:
+Jobeet のディレクトリ上に Composer をダウンロードすることではじめます。
 
 .. code-block:: bash
 
     $ curl -s https://getcomposer.org/installer | php
 
 curl 拡張をインストールしていない場合は、このコマンドを使用してインストールすることができます。
-If you don’t have curl extension installed, you can install it using this command:
 
 .. code-block:: bash
 
     $ sudo apt-get install curl
 
 次に、必要なすべてのベンダー·ライブラリのダウンロードを開始するには、次のコマンドを入力します。
-Next, type the following command to start downloading all the necessary vendor libraries:
 
 .. code-block:: bash
 
@@ -125,24 +98,18 @@ Next, type the following command to start downloading all the necessary vendor l
 
 Web サーバーの設定
 ------------------
-Web Server Configuration
-----------------
 
 良い Web の作法は、 Web ルートディレクトリの下にスタイルシート、 JavaScript と画像のように、 Web ブラウザがアクセスする必要のあるファイルだけを置くことです。
-デフォルトでは、 symfony プロジェクトの web/ サブディレクトリの下にこれらのファイルを保存することをお勧めします。
+デフォルトでは、 Symfony プロジェクトの web/ サブディレクトリの下にこれらのファイルを保存することをお勧めします。
 あなたの新しいプロジェクトのために Apache を設定するには、バーチャルホストを作成します。そのためには、使用しているターミナルで次のコマンドをタイプします。
-A good web practice is to put under the web root directory only the files that need to be accessed by a web browser, like stylesheets, JavaScripts and images.
-By default, it’s recommended to store these files under the web/ sub-directory of a symfony project.
-To configure Apache for your new project, you will create a virtual host. In order to do that, go to your terminal and type in the next command :
 
 .. code-block:: bash
 
     $ sudo nano /etc/apache2/sites-available/jobeet.local
 
-さて、という名前のファイルjobeet.localが作成されます。コントロールその後、Oをし、それを保存します - - そのファイルの中に次のことを入れて、[コントロールをヒットXは、エディタを終了します。
-jobeet.localは、/ etc / apache2の/サイト利用可能
-Now, a file named jobeet.local is created. Put the following inside that file, then hit Control – O and Enter to save it, then Control – X to exit the editor.
-etc/apache2/sites-available/jobeet.local
+これで、 jobeet.local という名前のファイルが作成されます。以下をそのファイルの中に追記し、`Control – O` を選択し、それを保存します。その後、 `Control – X` でエディタを終了します。
+
+/etc/apache2/sites-available/jobeet.local
 
 .. code-block:: apache
 
@@ -158,8 +125,9 @@ etc/apache2/sites-available/jobeet.local
          </Directory>
      </VirtualHost>
 
-Apacheの設定で使用されるドメイン名jobeet.localは、局所的に宣言する必要があります。あなたがLinuxシステムを実行すると、/ etc / hostsファイルで行う必要があります。 Windowsを実行すると、このファイルは、Cに位置しています：\ WINDOWS \ SYSTEM32 \ドライバ\ etc \ディレクトリにあります。次の行を追加します。
-The domain name jobeet.local used in the Apache configuration has to be declared locally. If you run a Linux system, it has to be done in the /etc/hosts file. If you run Windows, this file is located in the C:\Windows\System32\drivers\etc\ directory. Add the following line:
+Apache の設定で使用されるドメイン名 jobeet.local は、ローカルで宣言する必要があります。
+あなたが Linux システムで実行する場合、``/etc/hosts`` ファイルで行う必要があります。
+Windowsで実行している場合、このファイルは ``C:\Windows\System32\drivers\etc\`` ディレクトリにあります。次の行を追加します。
 
 .. code-block:: bash
 
@@ -167,8 +135,7 @@ The domain name jobeet.local used in the Apache configuration has to be declared
 
 .. tip::
 
-   リモート·サーバーで作業している場合には、Webサーバー·マシンのIPを127.0.0.1を交換してください。
-   Replace 127.0.0.1 with the ip of your web server machine in case you are working on a remote server.
+   リモート·サーバーで作業している場合には、127.0.0.1をWebサーバー·マシンのIPで置き換えてください。
 
 これが仕事をしたい場合は、新しく作成された仮想ホストを有効にしてApacheを再起動する必要があります。だからあなたの端末とタイプに移動します。
 If you want this to work, you need to enable the newly created virtual host and restart your Apache. So go to your terminal and type:
@@ -421,7 +388,7 @@ Symfony 2.3.2 は、異なった環境を持っています。プロジェクト
 これらのファイルは、フロントコントローラーと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。
 app.php ファイルは本番環境用であり、 app_dev.php はウェブ開発者によって使用される開発環境です。
 開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。
-これで今日はすべてです。明日このチュートリアルでお会いしましょう。正確に Jobeet の Web サイトがどうなるかについてお話します！
+これで今日はすべてです。明日は Jobeet の Web サイトがどうなるかについてお話します。このチュートリアルでお会いしましょう。！
 Symfony 2.3.2 has different environments. If you look in the project’s web directory, you will see two php files: app.php and app_dev.php.
 These files are called front controllers; all requests to the application are made through them.
 The app.php file is for production environment and app_dev.php is used by web developers when they work on the application in the development environment.
