@@ -133,7 +133,7 @@ An admin can edit the categories available on the website.
 Story B2: An admin manages the jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者は編集し、掲載したジョブを削除することができます。
+管理者は掲載したジョブを編集し、削除することができます。
 An admin can edit and remove any posted job.
 
 ストーリーB3：管理者は、関連会社を管理する
@@ -141,9 +141,13 @@ An admin can edit and remove any posted job.
 Story B3: An admin manages the affiliates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者は、作成または編集の関連会社ができる。彼は、アフィリエイトを活性化させるための責任があり、また、1を無効にすることができます。管理者は新しいアフィリエイトをアクティブにすると、システムは、アフィリエイトが使用する一意のトークンを作成します。
-開発者は、初日からコードを書き始めることはありません。まず、あなたは、あなたのプロジェクトの要件を収集する必要が、あなたのプロジェクトが動作するようになっているかを理解しています。それはあなたが今日やっていることだ。また明日！
-The admin can create or edit affiliates. He is responsible for activating an affiliate and can also disable one. When the admin activates a new affiliate, the system creates a unique token to be used by the affiliate.
-As a developer, you never start coding from the first day. Firstly, you need to gather the requirements of your project and understand how your project is supposed to work. That’s what you have done today. See you tomorrow!
+管理者は、アフィリエイトの作成または編集ができます。彼は、アフィリエイトを活性化させるための責任があり、また、それを無効にすることができます。
+管理者は新しいアフィリエイトをアクティブにすると、システムは、アフィリエイトが使用する一意のトークンを作成します。
+開発者は、初日からコードを書き始めることはありません。まず、あなたはプロジェクトの要件を収集する必要があり、プロジェクトがどのように動作するようになっているかを理解する必要があります。
+今日はここまでです。では、また明日！
+The admin can create or edit affiliates. He is responsible for activating an affiliate and can also disable one.
+When the admin activates a new affiliate, the system creates a unique token to be used by the affiliate.
+As a developer, you never start coding from the first day. Firstly, you need to gather the requirements of your project and understand how your project is supposed to work.
+That’s what you have done today. See you tomorrow!
 
 .. include:: common/license.rst.inc
