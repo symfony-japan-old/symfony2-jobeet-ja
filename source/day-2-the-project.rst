@@ -11,22 +11,23 @@ This day is about the project specifications. Before diving into the code head-f
 ユーザーストーリー
 ------------------
 
-Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（訪問仕事を探してウェブサイト）、ポスター（訪問ジョブを投稿するウェブサイト）、アフィリエイト（彼のウェブサイト上のジョブを再発行して）。
-元のチュートリアルでは、2つのアプリケーション管理者がウェブサイトを管理するユーザが Web サイトと対話するフロントエンド、バックエンドを作る必要がありました。 Symfony 2.3.2 を使用して、私たちはもはやこれをしないだろう。
+Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（訪問仕事を探してウェブサイト）、投稿者（訪問ジョブを投稿するウェブサイト）、アフィリエイト（彼のウェブサイト上のジョブを再発行して）。
+元のチュートリアルでは、2つのアプリケーション管理者がウェブサイトを管理するユーザが Web サイトと対話するフロントエンド、バックエンドを作る必要がありました。私たちはもはや Symfony 2.3.2 を使用してこれをしないでしょう。
 私たちは、その中に、管理者ごとに個別のセキュリティで保護されたセクションを一つだけのアプリケーションを持っているでしょう。
 The Jobeet website will have four type of users: admin (owns and manages the website), user (visits the website looking for a job), poster (visits the website to post jobs) and affiliate (re-publishes jobs on his website).
 In the original tutorial, we had to make two applications, the frontend, where the users interact with the website, and the backend, where admins manage the website. Using Symfony 2.3.2, we would not do this anymore. We will have only one application and, in it, a separate secured section for admins.
 
-ストーリー F1： ホームページでは、ユーザーは最新のアクティブなジョブを見ている
+ストーリー F1： ホームページでは、ユーザーは最新の有効な求人を見ている
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F1: On the homepage, the user sees the latest active jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザーが Jobeet の Web サイトに来るとき、彼はアクティブなジョブのリストを見ている。ジョブは、発行日までにカテゴリ別にしてからソートされている - 新しいジョブを最初に。
-各ジョブのために、唯一の場所、利用可能な位置および会社が表示されます。
-各カテゴリでは、リストは最初の10ジョブと指定されたカテゴリ（ストーリー F2 ）のためのすべてのジョブを一覧表示することができ、リンクが表示されます。
-ホームページでは、ユーザーは、ジョブリスト（ストーリーF3）を絞り込むか、新しいジョブ（ストーリー F5 ）を投稿することができます。
-When a user comes to Jobeet website, he sees a list of active jobs. The jobs are sorted by category and then by publication date – newer jobs first. For each job, only the location, the position available and the company are displayed.
+ユーザーが Jobeet の Web サイトに来るとき、彼はアクティブな求人のリストを見ています。求人は、カテゴリ別に並べられ、且つ、新しい求人を最初にして公開日順に並べられています。
+それぞれの求人は場所、可能な役職、および、会社名のみが表示されます。
+各カテゴリで、リストには最初の10個の求人と指定されたカテゴリ（ストーリー F2 ）のすべての求人を表示するリンクが表示されます。
+ホームページでは、ユーザーは、求人リスト（ストーリーF3）を絞り込むか、新しい求人（ストーリー F5 ）を投稿することができます。
+When a user comes to Jobeet website, he sees a list of active jobs. The jobs are sorted by category and then by publication date – newer jobs first.
+For each job, only the location, the position available and the company are displayed.
 For each category, the list shows the first 10 jobs and a link that allows to list all the jobs for a given category (Story F2).
 On the homepage, the user can refine the job list (Story F3) or post a new job (Story F5).
 
@@ -35,41 +36,41 @@ On the homepage, the user can refine the job list (Story F3) or post a new job (
 Story F2: A user can ask for all the jobs in a given category
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザーはカテゴリ名やホームページの「more jobs」リンクをクリックすると、彼は日付順にソートされたこのカテゴリのすべてのジョブを見ている。
-リストはページごとに20件の求人でページ分割されている。
+ユーザーはカテゴリ名やホームページの「more jobs」リンクをクリックすると、日付順に並べられたこのカテゴリのすべての求人を見ることが出来ます。
+リストはページごとに20件の求人でページ分割されています。
 When a user clicks on a category name or on a “more jobs” link on the homepage, he sees all the jobs for this category sorted by date.
 The list is paginated with 20 jobs per page.
 
-ストーリーF3：ユーザーは、いくつかのキーワードを含むリストを洗練
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーF3：ユーザーは複数のキーワードでリストを絞込み
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F3: A user refines the list with some keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザは、自分の検索にいくつかのキーワードを入力することができます。キーワードは、場所、位置、カテゴリまたは会社フィールドにある言葉であることができる。
+ユーザはいくつかのキーワードを検索に入力できます。キーワードは、場所、役職、カテゴリ、または、会社名フィールドにある言葉を入れることができます。
 The user can enter some keywords to refine his search. Keywords can be words found in the location, the position, the category or the company fields.
 
-ストーリーF4：ユーザーは、より詳細な情報を表示する為にジョブをクリックする
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーF4：ユーザーはより詳細な情報を表示する為、求人をクリック
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F4: A user clicks on a job to see more detailed information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザは、より詳細な情報を表示するには、リストからジョブを選択することができます。
+ユーザは、より詳細な情報を表示する為に、リストから求人を選択することができます。
 The user can select a job from a list to see more detailed information.
 
-ストーリーF5：ユーザーは、ジョブをポスト
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーF5：ユーザーは、求人を投稿
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F5: A user posts a job
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザーは、ジョブを投稿することができます。ジョブは、複数の情報から構成されます。
+ユーザーは、求人を投稿することができます。求人は、複数の情報から構成されます。
 A user can post a job. A job is made of several pieces of information:
 
 * 会社
 * タイプ（フルタイム、パートタイムもしくはフリーランス）
 * ロゴ（オプション）
 * URL（オプション）
-* ポジション
-* 位置
+* 役職
+* 場所
 * カテゴリ（ユーザーは、可能なカテゴリのリストで選択されます）
 * ジョブの説明（URLとメールが自動的にリンクされます）
 * 応募方法（URLとメールは自動的にリンクされます）
@@ -88,7 +89,7 @@ A user can post a job. A job is made of several pieces of information:
 *  Public (wether the job can also be published on affiliate websites)
 *  Email (email of poster)
 
-プロセスは、2つのステップがあります：まず、ユーザーは、仕事を記述するために、すべての必要な情報をフォームに入力した後、最終的な仕事のページをプレビューすることにより、情報を検証します。
+プロセスは、2つのステップがあります。まず、ユーザーは、仕事を記述するために、すべての必要な情報をフォームに入力した後、最終的な仕事のページをプレビューすることにより、情報を検証します。
 仕事を投稿するACOUNTを作成する必要はありません。ジョブ（ジョブが作成されたときにユーザに与えられたトークンによって保護された）特定のURLへのその後のおかげで変更することができる。
 各ジョブポストは30日（これは管理者によって設定される）のためのオンラインです。ユーザーが再度アクティブにするか、余分な30日間の仕事の有効性を拡張するために戻ってくることができますが、場合にのみジョブが5日未満で期限切れとなります。
 The process has only two steps: first, the user fills in the form with all the needed information to describe the job, then validates the information by previewing the final job page.
