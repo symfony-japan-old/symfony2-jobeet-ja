@@ -11,7 +11,7 @@ This day is about the project specifications. Before diving into the code head-f
 ユーザーストーリー
 ------------------
 
-Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（訪問仕事を探してウェブサイト）、投稿者（訪問ジョブを投稿するウェブサイト）、アフィリエイト（彼のウェブサイト上のジョブを再発行して）。
+Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（仕事を探してウェブサイトを訪問）、投稿者（求人を投稿する為にウェブサイトを訪問）、アフィリエイター（彼のウェブサイト上で求人を再発行）。
 元のチュートリアルでは、2つのアプリケーション管理者がウェブサイトを管理するユーザが Web サイトと対話するフロントエンド、バックエンドを作る必要がありました。私たちはもはや Symfony 2.3.2 を使用してこれをしないでしょう。
 私たちは、その中に、管理者ごとに個別のセキュリティで保護されたセクションを一つだけのアプリケーションを持っているでしょう。
 The Jobeet website will have four type of users: admin (owns and manages the website), user (visits the website looking for a job), poster (visits the website to post jobs) and affiliate (re-publishes jobs on his website).
@@ -96,21 +96,21 @@ The process has only two steps: first, the user fills in the form with all the n
 There is no need to create an acount to post a job. A job can be modified afterwards thanks to a specific URL (protected by a token given to the user when the job is created).
 Each job post is online for 30 days (this is configurable by admin). A user can come back to re-activate or extend the validity of the job for an extra 30 days, but only when the job expires in less than 5 days.
 
-ストーリーF6：ユーザーがアフィリエイトになるために適用されます
+ストーリーF6：ユーザーがアフィリエイターになるために適用されます
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F6: A user applies to become an affiliate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ユーザーがアフィリエイトになるためにとJobeetのAPIを使用する権限を適用する必要があります。適用するには、彼は次のような情報を提供する必要があります。
+ユーザーがアフィリエイトになるために Jobeet API を使用する権限を適用する必要があります。適用するには、彼は次のような情報を提供する必要があります。
 A user needs to apply to become an affiliate and be authorized to use Jobeet API. To apply, he must give the following information:
 
-*名前
-* Eメール
-*ウェブサイトのURL
+*  名前
+*  Eメール
+*  ウェブサイトのURL
 *  Name
 *  Email
 *  Website URL
 
-アフィリエイトのアカウントが管理者（ストーリーB3）によって活性化されなければならない。活性化した後は、関連会社が電子メールを介して、APIで使用するトークンを受け取ります。
+アフィリエイトのアカウントは管理者（ストーリーB3）によって有効化されなければならない。有効化した後は、そのアフィリエイターが電子メールを介して、APIで使用するトークンを受け取ります。
 The affiliate account must be activated by the admin (Story B3). Once activated, the affiliate receives a token to use with the API via email.
 
 ストーリーF7キー：アフィリエイトは現在アクティブなジョブリストを取得します
@@ -118,18 +118,19 @@ The affiliate account must be activated by the admin (Story B3). Once activated,
 Story F7: An affiliate retrieves the current active job list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-アフィリエイトは、彼のアフィリエイトトークンを使用してAPIを呼び出して、現在のジョブリストを取得できます。リストは、XML、JSONやYAML形式で返すことができます。アフィリエイトは、ジョブの数が返される制限し、また、カテゴリを指定することでクエリを絞り込むことができます。
+アフィリエイトは、彼のアフィリエイトトークンを使用してAPIを呼び出して、現在の求人リストを取得できます。リストは、XML、JSONやYAML形式で返すことができます。
+アフィリエイトは、ジョブの数が返される制限し、また、カテゴリを指定することでクエリを絞り込むことができます。
 An affiliate can retrieve the current job list by calling the API with his affiliate token. The list can be returned in the XML, JSON or YAML format. The affiliate can limit the number of jobs to be returned and, also, refine his query by specifying a category.
 
-ストーリーB1：管理者は、Webサイトを構成します
+ストーリーB1：管理者はWebサイトを構成します
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story B1: An admin configures the website
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者はウェブサイト上でカテゴリが利用可能に編集することができます。
+管理者はウェブサイト上でカテゴリが利用できるよう編集することができます。
 An admin can edit the categories available on the website.
 
-ストーリーB2：管理者は、ジョブを管理
+ストーリーB2：管理者はジョブを管理
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story B2: An admin manages the jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
