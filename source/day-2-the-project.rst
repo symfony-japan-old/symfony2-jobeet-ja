@@ -71,10 +71,10 @@ A user can post a job. A job is made of several pieces of information:
 * URL（オプション）
 * 役職
 * 場所
-* カテゴリ（ユーザーは、可能なカテゴリのリストで選択されます）
-* ジョブの説明（URLとメールが自動的にリンクされます）
+* カテゴリ（ユーザーは、選択可能なカテゴリのリストから選びます）
+* 仕事の説明（URLとメールが自動的にリンクされます）
 * 応募方法（URLとメールは自動的にリンクされます）
-* パブリック（ジョブもアフィリエイトのウェブサイト上で公開することができ乗り切る）
+* 公開（アフィリエイトのウェブサイト上でも求人を公開することができます）
 * Eメール（投稿者の電子メール）
 
 *  Company
@@ -89,11 +89,14 @@ A user can post a job. A job is made of several pieces of information:
 *  Public (wether the job can also be published on affiliate websites)
 *  Email (email of poster)
 
-プロセスは、2つのステップがあります。まず、ユーザーは、仕事を記述するために、すべての必要な情報をフォームに入力した後、最終的な仕事のページをプレビューすることにより、情報を検証します。
-仕事を投稿するACOUNTを作成する必要はありません。ジョブ（ジョブが作成されたときにユーザに与えられたトークンによって保護された）特定のURLへのその後のおかげで変更することができる。
-各ジョブポストは30日（これは管理者によって設定される）のためのオンラインです。ユーザーが再度アクティブにするか、余分な30日間の仕事の有効性を拡張するために戻ってくることができますが、場合にのみジョブが5日未満で期限切れとなります。
+手続きは2つのプロセスのみです。まず、ユーザーは、仕事を記述するために、すべての必要な情報をフォームに入力した後、最終的な仕事のページをプレビューすることにより、情報を検証します。
+仕事を投稿するアカウントを作成する必要はありません。
+ジョブ（ジョブが作成されたときにユーザに与えられたトークンによって保護された）特定のURLへのその後のおかげで変更することができる。
+各ジョブポストは30日（これは管理者によって設定される）のためのオンラインです。
+ユーザーが再度アクティブにするか、余分な30日間の仕事の有効性を拡張するために戻ってくることができますが、場合にのみジョブが5日未満で期限切れとなります。
 The process has only two steps: first, the user fills in the form with all the needed information to describe the job, then validates the information by previewing the final job page.
-There is no need to create an acount to post a job. A job can be modified afterwards thanks to a specific URL (protected by a token given to the user when the job is created).
+There is no need to create an acount to post a job.
+A job can be modified afterwards thanks to a specific URL (protected by a token given to the user when the job is created).
 Each job post is online for 30 days (this is configurable by admin). A user can come back to re-activate or extend the validity of the job for an extra 30 days, but only when the job expires in less than 5 days.
 
 ストーリーF6：ユーザーがアフィリエイターになるために適用されます
