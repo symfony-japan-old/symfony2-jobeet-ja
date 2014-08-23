@@ -11,7 +11,7 @@ This day is about the project specifications. Before diving into the code head-f
 ユーザーストーリー
 ------------------
 
-Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（仕事を探してウェブサイトを訪問）、投稿者（求人を投稿する為にウェブサイトを訪問）、アフィリエイター（彼のウェブサイト上で求人を再発行）。
+Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（仕事を探してウェブサイトを訪問）、投稿者（求人を投稿する為にウェブサイトを訪問）、アフィリエイト（彼のウェブサイト上で求人を再発行）。
 元のチュートリアルでは、2つのアプリケーション管理者がウェブサイトを管理するユーザが Web サイトと対話するフロントエンド、バックエンドを作る必要がありました。私たちはもはや Symfony 2.3.2 を使用してこれをしないでしょう。
 私たちは、その中に、管理者ごとに個別のセキュリティで保護されたセクションを一つだけのアプリケーションを持っているでしょう。
 The Jobeet website will have four type of users: admin (owns and manages the website), user (visits the website looking for a job), poster (visits the website to post jobs) and affiliate (re-publishes jobs on his website).
@@ -89,17 +89,19 @@ A user can post a job. A job is made of several pieces of information:
 *  Public (wether the job can also be published on affiliate websites)
 *  Email (email of poster)
 
-手続きは2つのプロセスのみです。まず、ユーザーは、仕事を記述するために、すべての必要な情報をフォームに入力した後、最終的な仕事のページをプレビューすることにより、情報を検証します。
+手続きは2つのプロセスのみです。まず、ユーザーは仕事を説明するために、必要なすべての情報をフォームに入力した後、最終的な求人ページをプレビューすることにより、情報を検証します。
 仕事を投稿するアカウントを作成する必要はありません。
-ジョブ（ジョブが作成されたときにユーザに与えられたトークンによって保護された）特定のURLへのその後のおかげで変更することができる。
-各ジョブポストは30日（これは管理者によって設定される）のためのオンラインです。
-ユーザーが再度アクティブにするか、余分な30日間の仕事の有効性を拡張するために戻ってくることができますが、場合にのみジョブが5日未満で期限切れとなります。
+求人は（作成されたときにユーザに与えられたトークンによって保護された）特定のURLのみで変更することが出来ます。
+各求人は30日間有効です（これは管理者によって設定されます）。
+ユーザーは戻ってきて再度アクティブにするか、5日未満で期限切れとなる場合のみ、求人の期間の検証を30日以上に広げることが出来ます。
+
 The process has only two steps: first, the user fills in the form with all the needed information to describe the job, then validates the information by previewing the final job page.
 There is no need to create an acount to post a job.
 A job can be modified afterwards thanks to a specific URL (protected by a token given to the user when the job is created).
-Each job post is online for 30 days (this is configurable by admin). A user can come back to re-activate or extend the validity of the job for an extra 30 days, but only when the job expires in less than 5 days.
+Each job post is online for 30 days (this is configurable by admin).
+A user can come back to re-activate or extend the validity of the job for an extra 30 days, but only when the job expires in less than 5 days.
 
-ストーリーF6：ユーザーがアフィリエイターになるために適用されます
+ストーリーF6：ユーザーがアフィリエイトになるために適用されます
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F6: A user applies to become an affiliate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
