@@ -5,28 +5,37 @@ Day 3: The Data Model
 
 .. include:: common/original.rst.inc
 
-あなたは、テキストエディタを開いて、いくつかのPHPを下に置くためにうずうずしている場合は、その今日はいくつかの開発に私たちを取得します知っているさせていただきます。私たちは、データベースと対話し、アプリケーションの最初のモジュールを構築するためにORMを使用し、Jobeetのデータモデルを定義します。 symfonyは私たちのために多くの仕事がそうであるようにしかし、私たちはあまりにも多くのPHPコードを記述することなく、完全に機能するWebモジュールを持つことになります。
-If you’re itching to open your text editor and lay down some PHP, you will be happy to know that today will get us into some development. We will define the Jobeet data model, use an ORM to interact with the database and build the first module of the application. But as Symfony does a lot of work for us, we will have a fully functional web module without writing too much PHP code.
+今日はいくつかの開発に入ります。テキストエディタを開いて、PHP ファイルを書きたくうずうずしている場合は、これを知ってうれしくなるでしょう。
+私たちは、 ORM を使用してデータベースと対話し、アプリケーションの最初のモジュールを構築するために、Jobeetのデータモデルを定義します。
+しかし、Symfony は、私たちの多くの仕事と同様、PHPコードをあまり書くことなく、完全に機能するWebモジュールを持つことになります。
+If you’re itching to open your text editor and lay down some PHP, you will be happy to know that today will get us into some development.
+We will define the Jobeet data model, use an ORM to interact with the database and build the first module of the application.
+But as Symfony does a lot of work for us, we will have a fully functional web module without writing too much PHP code.
 
 リレーションモデル
 ------------------
 The Relational Model
 ---------------
 
-ジョブ、関連会社、およびカテゴリ：前日からのユーザーストーリーは、メイン私たちのプロジェクトのオブジェクトについて説明します。ここでは、対応するエンティティ関係図は、次のとおりです。
-The user stories from the previous day describe the main objects of our project: jobs, affiliates, and categories. Here is the corresponding entity relationship diagram:
+前日からのユーザーストーリーは、私たちのプロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。
+ここで、対応する ER 図は次のとおりです。
+The user stories from the previous day describe the main objects of our project: jobs, affiliates, and categories.
+Here is the corresponding entity relationship diagram:
 
 .. image:: /images/Day3-entity_diagram.png
 
-ストーリーで説明したカラムに加え、当社はまた、created_atとupdated_atと列を追加した。私たちは、オブジェクトが保存または更新されたときに自動的に値を設定するためにsymfonyを設定します。
-In addition to the columns described in the stories, we have also added created_at and updated_at columns. We will configure Symfony to set their value automatically when an object is saved or updated.
+ストーリーで説明したカラムに加え、 created_at と updated_at のカラムを追加しました。
+私たちは、オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。
+In addition to the columns described in the stories, we have also added created_at and updated_at columns.
+We will configure Symfony to set their value automatically when an object is saved or updated.
 
 データベース
 ------------
 The Database
 ------------
 
-データベース内のジョブ、関連会社とカテゴリを格納するために、symfonyは2.3.2にDoctrine ORMを使用しています。データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します）のアプリ/ configに/ parameters.ymlファイルを編集する必要があります。
+データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 に Doctrine ORM を使用しています。
+データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します）の app/config/parameters.yml ファイルを編集する必要があります。
 To store the jobs, affiliates and categories in the database, Symfony 2.3.2 uses Doctrine ORM. To define the database connection parameters, you have to edit the app/config/parameters.yml file (for this tutorial we will use MySQL):
 
 app/config/parameters.yml
