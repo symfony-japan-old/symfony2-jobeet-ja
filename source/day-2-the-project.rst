@@ -21,8 +21,6 @@ In the original tutorial, we had to make two applications, the frontend, where t
 
 ストーリー F1： ホームページでは、ユーザーは最新の有効な求人を見ている
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F1: On the homepage, the user sees the latest active jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザーが Jobeet の Web サイトに来るとき、彼はアクティブな求人のリストを見ています。求人は、カテゴリ別に並べられ、且つ、新しい求人を最初にして公開日順に並べられています。
 それぞれの求人は場所、可能な役職、および、会社名のみが表示されます。
@@ -33,36 +31,28 @@ For each job, only the location, the position available and the company are disp
 For each category, the list shows the first 10 jobs and a link that allows to list all the jobs for a given category (Story F2).
 On the homepage, the user can refine the job list (Story F3) or post a new job (Story F5).
 
-ストーリーF2：ユーザーが特定のカテゴリ内のすべてのジョブを問い合わせることができます
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F2: A user can ask for all the jobs in a given category
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー F2：ユーザーが特定のカテゴリ内のすべてのジョブを問い合わせることができます
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザーはカテゴリ名やホームページの「more jobs」リンクをクリックすると、日付順に並べられたこのカテゴリのすべての求人を見ることが出来ます。
 リストはページごとに20件の求人でページ分割されています。
 When a user clicks on a category name or on a “more jobs” link on the homepage, he sees all the jobs for this category sorted by date.
 The list is paginated with 20 jobs per page.
 
-ストーリーF3：ユーザーは複数のキーワードでリストを絞込み
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F3: A user refines the list with some keywords
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー F3：ユーザーは複数のキーワードでリストを絞込み
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザはいくつかのキーワードで絞込み検索できます。場所、役職、カテゴリ、会社名欄にある単語をキーワードとすることが出来ます。
 The user can enter some keywords to refine his search. Keywords can be words found in the location, the position, the category or the company fields.
 
-ストーリーF4：ユーザーはより詳細な情報を表示する為、求人をクリックします
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F4: A user clicks on a job to see more detailed information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー F4：ユーザーはより詳細な情報を表示する為、求人をクリックします
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザは、より詳細な情報を表示する為に、リストから求人を選択することができます。
 The user can select a job from a list to see more detailed information.
 
-ストーリーF5：ユーザーは、求人を投稿
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F5: A user posts a job
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー F5：ユーザーは、求人を投稿します
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザーは、求人を投稿することができます。求人は、複数の情報から構成されます。
 A user can post a job. A job is made of several pieces of information:
@@ -105,8 +95,6 @@ A user can come back to re-activate or extend the validity of the job for an ext
 
 ストーリーF6：ユーザーがアフィリエイトになるために適用すること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F6: A user applies to become an affiliate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザーがアフィリエイトになり、且つ、 Jobeet API を使用することを承認されるために、次のような情報を提供する必要があります。
 A user needs to apply to become an affiliate and be authorized to use Jobeet API. To apply, he must give the following information:
@@ -118,42 +106,34 @@ A user needs to apply to become an affiliate and be authorized to use Jobeet API
 *  Email
 *  Website URL
 
-アフィリエイトのアカウントは管理者（ストーリー B3 ）によって有効化されなければならない。有効化した後は、そのアフィリエイトが電子メールで、 API で使用するトークンを受け取ります。
+アフィリエイトのアカウントは管理者（ストーリー B3 ）によって有効化されなければなりません。有効化した後は、アフィリエイトは API で使用するトークンを電子メールで受け取ります。
 The affiliate account must be activated by the admin (Story B3). Once activated, the affiliate receives a token to use with the API via email.
 
-ストーリーF7キー：アフィリエイトは現在有効な求人のリストを取得します
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story F7: An affiliate retrieves the current active job list
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー F7：アフィリエイトは現在有効な求人のリストを取得します
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 アフィリエイトは、彼のアフィリエイトトークンを使用してAPIを呼び出して、現在の求人リストを取得できます。リストは、 XML 、 JSON や YAML 形式で返すことができます。
 アフィリエイトは、返される求人数を制限することが出来、また、カテゴリを指定することでクエリを絞り込むことができます。
 An affiliate can retrieve the current job list by calling the API with his affiliate token. The list can be returned in the XML, JSON or YAML format.
 The affiliate can limit the number of jobs to be returned and, also, refine his query by specifying a category.
 
-ストーリーB1：管理者はウェブサイトを設定します
+ストーリー B1：管理者はウェブサイトを設定します
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story B1: An admin configures the website
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 管理者はカテゴリを編集し、ウェブサイト上で有効にできます。
 An admin can edit the categories available on the website.
 
-ストーリーB2：管理者はジョブを管理
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story B2: An admin manages the jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリー B2：管理者はジョブを管理
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 管理者は投稿された求人を編集、削除することができます。
 An admin can edit and remove any posted job.
 
-ストーリーB3：管理者は、関連会社を管理する
+ストーリー B3：管理者は、関連会社を管理する
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Story B3: An admin manages the affiliates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 管理者は、アフィリエイトの作成または編集ができます。彼は、アフィリエイトを有効化する責任があり、また、それを無効にすることができます。
-管理者は新しいアフィリエイトをアクティブにすると、システムは、アフィリエイトが使用する一意のトークンを作成します。
+管理者は新しいアフィリエイトを有効にすると、システムは、アフィリエイトが使用する一意のトークンを作成します。
 開発者は、初日からコードを書き始めることはありません。まず、あなたはプロジェクトの要件を収集する必要があり、プロジェクトがどのように動作するようになっているかを理解する必要があります。
 今日はここまでです。では、また明日！
 The admin can create or edit affiliates. He is responsible for activating an affiliate and can also disable one.
