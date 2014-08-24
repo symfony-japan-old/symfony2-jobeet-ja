@@ -4,27 +4,29 @@
 
 1日目は、まだコードを一行も書いていませんが、環境セットアップと、空の Symfony プロジェクトを作成しました。
 今日は、プロジェクトの仕様についてです。最初にコードに飛び込む前に、もう少しプロジェクトについて説明してみましょう。
-以下のセクションでは、私たちはいくつかの単純なストーリーでプロジェクトの最初のバージョン/イテレーションで実装する機能について説明します。
+以下のセクションでは、いくつかの単純なストーリーでプロジェクトの最初のバージョン/イテレーションで実装する機能について説明します。
 We have not written a single line of code yet, but, in Day 1, we setup the environment and created an empty Symfony project.
-This day is about the project specifications. Before diving into the code head-first, let’s describe the project a bit more. The following sections describe the features we want to implement in the first version/iteration of the project with some simple stories.
+This day is about the project specifications. Before diving into the code head-first, let’s describe the project a bit more.
+The following sections describe the features we want to implement in the first version/iteration of the project with some simple stories.
 
 ユーザーストーリー
 ------------------
 
 Jobeet の Web サイトは、4つのユーザータイプがあります：管理者（ウェブサイトを所有し、管理している）、ユーザー（仕事を探してウェブサイトを訪問）、投稿者（求人を投稿する為にウェブサイトを訪問）、アフィリエイト（彼のウェブサイト上で求人を再発行）。
-元のチュートリアルでは、2つのアプリケーション管理者がウェブサイトを管理するユーザが Web サイトと対話するフロントエンド、バックエンドを作る必要がありました。私たちはもはや Symfony 2.3.2 を使用してこれをしないでしょう。
-私たちは、その中に、管理者ごとに個別のセキュリティで保護されたセクションを一つだけのアプリケーションを持っているでしょう。
+元のチュートリアルでは、2つのアプリケーションを作る必要がありました。ユーザが Web サイトと対話するフロントエンドと管理者がウェブサイトを管理するバックエンドです。私たちはもはや Symfony 2.3.2 を使用してこれをしないでしょう。
+一つだけのアプリケーションを持ち、その中に管理者のために隔離されセキュリティで保護されたセクションを持つでしょう。
 The Jobeet website will have four type of users: admin (owns and manages the website), user (visits the website looking for a job), poster (visits the website to post jobs) and affiliate (re-publishes jobs on his website).
-In the original tutorial, we had to make two applications, the frontend, where the users interact with the website, and the backend, where admins manage the website. Using Symfony 2.3.2, we would not do this anymore. We will have only one application and, in it, a separate secured section for admins.
+In the original tutorial, we had to make two applications, the frontend, where the users interact with the website, and the backend, where admins manage the website.
+ Using Symfony 2.3.2, we would not do this anymore. We will have only one application and, in it, a separate secured section for admins.
 
 ストーリー F1： ホームページでは、ユーザーは最新の有効な求人を見ている
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F1: On the homepage, the user sees the latest active jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ユーザーが Jobeet の Web サイトに来るとき、彼はアクティブな求人のリストを見ています。求人は、カテゴリ別に並べられ、且つ、新しい求人を最初にして公開日順に並べられています。
 それぞれの求人は場所、可能な役職、および、会社名のみが表示されます。
-各カテゴリで、リストには最初の10個の求人と指定されたカテゴリ（ストーリー F2 ）のすべての求人を表示するリンクが表示されます。
+各カテゴリで、リストには最初の10個の求人が表示されます。そして、指定されたカテゴリ（ストーリー F2 ）のすべての求人を表示する一つのリンクを表示します。
 ホームページでは、ユーザーは、求人リスト（ストーリーF3）を絞り込むか、新しい求人（ストーリー F5 ）を投稿することができます。
 When a user comes to Jobeet website, he sees a list of active jobs. The jobs are sorted by category and then by publication date – newer jobs first.
 For each job, only the location, the position available and the company are displayed.
@@ -46,11 +48,11 @@ The list is paginated with 20 jobs per page.
 Story F3: A user refines the list with some keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ユーザはいくつかのキーワードを検索に入力できます。キーワードは、場所、役職、カテゴリ、または、会社名フィールドにある言葉を入れることができます。
+ユーザはいくつかのキーワードで絞込み検索できます。場所、役職、カテゴリ、会社名欄にある単語をキーワードとすることが出来ます。
 The user can enter some keywords to refine his search. Keywords can be words found in the location, the position, the category or the company fields.
 
-ストーリーF4：ユーザーはより詳細な情報を表示する為、求人をクリック
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーF4：ユーザーはより詳細な情報を表示する為、求人をクリックします
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F4: A user clicks on a job to see more detailed information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -101,11 +103,12 @@ A job can be modified afterwards thanks to a specific URL (protected by a token 
 Each job post is online for 30 days (this is configurable by admin).
 A user can come back to re-activate or extend the validity of the job for an extra 30 days, but only when the job expires in less than 5 days.
 
-ストーリーF6：ユーザーがアフィリエイトになるために適用されます
+ストーリーF6：ユーザーがアフィリエイトになるために適用すること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F6: A user applies to become an affiliate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ユーザーがアフィリエイトになるために Jobeet API を使用する権限を適用する必要があります。適用するには、彼は次のような情報を提供する必要があります。
+
+ユーザーがアフィリエイトになり、且つ、 Jobeet API を使用することを承認されるために、次のような情報を提供する必要があります。
 A user needs to apply to become an affiliate and be authorized to use Jobeet API. To apply, he must give the following information:
 
 *  名前
@@ -115,24 +118,25 @@ A user needs to apply to become an affiliate and be authorized to use Jobeet API
 *  Email
 *  Website URL
 
-アフィリエイトのアカウントは管理者（ストーリーB3）によって有効化されなければならない。有効化した後は、そのアフィリエイターが電子メールを介して、APIで使用するトークンを受け取ります。
+アフィリエイトのアカウントは管理者（ストーリー B3 ）によって有効化されなければならない。有効化した後は、そのアフィリエイトが電子メールで、 API で使用するトークンを受け取ります。
 The affiliate account must be activated by the admin (Story B3). Once activated, the affiliate receives a token to use with the API via email.
 
-ストーリーF7キー：アフィリエイトは現在アクティブなジョブリストを取得します
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーF7キー：アフィリエイトは現在有効な求人のリストを取得します
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story F7: An affiliate retrieves the current active job list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-アフィリエイトは、彼のアフィリエイトトークンを使用してAPIを呼び出して、現在の求人リストを取得できます。リストは、XML、JSONやYAML形式で返すことができます。
-アフィリエイトは、ジョブの数が返される制限し、また、カテゴリを指定することでクエリを絞り込むことができます。
-An affiliate can retrieve the current job list by calling the API with his affiliate token. The list can be returned in the XML, JSON or YAML format. The affiliate can limit the number of jobs to be returned and, also, refine his query by specifying a category.
+アフィリエイトは、彼のアフィリエイトトークンを使用してAPIを呼び出して、現在の求人リストを取得できます。リストは、 XML 、 JSON や YAML 形式で返すことができます。
+アフィリエイトは、返される求人数を制限することが出来、また、カテゴリを指定することでクエリを絞り込むことができます。
+An affiliate can retrieve the current job list by calling the API with his affiliate token. The list can be returned in the XML, JSON or YAML format.
+The affiliate can limit the number of jobs to be returned and, also, refine his query by specifying a category.
 
-ストーリーB1：管理者はWebサイトを構成します
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ストーリーB1：管理者はウェブサイトを設定します
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Story B1: An admin configures the website
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者はウェブサイト上でカテゴリが利用できるよう編集することができます。
+管理者はカテゴリを編集し、ウェブサイト上で有効にできます。
 An admin can edit the categories available on the website.
 
 ストーリーB2：管理者はジョブを管理
@@ -140,7 +144,7 @@ An admin can edit the categories available on the website.
 Story B2: An admin manages the jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者は掲載したジョブを編集し、削除することができます。
+管理者は投稿された求人を編集、削除することができます。
 An admin can edit and remove any posted job.
 
 ストーリーB3：管理者は、関連会社を管理する
@@ -148,7 +152,7 @@ An admin can edit and remove any posted job.
 Story B3: An admin manages the affiliates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-管理者は、アフィリエイトの作成または編集ができます。彼は、アフィリエイトを活性化させるための責任があり、また、それを無効にすることができます。
+管理者は、アフィリエイトの作成または編集ができます。彼は、アフィリエイトを有効化する責任があり、また、それを無効にすることができます。
 管理者は新しいアフィリエイトをアクティブにすると、システムは、アフィリエイトが使用する一意のトークンを作成します。
 開発者は、初日からコードを書き始めることはありません。まず、あなたはプロジェクトの要件を収集する必要があり、プロジェクトがどのように動作するようになっているかを理解する必要があります。
 今日はここまでです。では、また明日！
