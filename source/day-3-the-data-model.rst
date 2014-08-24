@@ -34,8 +34,8 @@ We will configure Symfony to set their value automatically when an object is sav
 The Database
 ------------
 
-データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 に Doctrine ORM を使用しています。
-データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します）の app/config/parameters.yml ファイルを編集する必要があります。
+データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
+データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。
 To store the jobs, affiliates and categories in the database, Symfony 2.3.2 uses Doctrine ORM. To define the database connection parameters, you have to edit the app/config/parameters.yml file (for this tutorial we will use MySQL):
 
 app/config/parameters.yml
@@ -51,7 +51,7 @@ app/config/parameters.yml
        database_password: password
        # ...
 
-これでDoctrineがデータベースについて知っていることを、あなたはそれがあなたのターミナルで次のコマンドを入力して、あなたのためのデータベースを作成することができます。
+これで Doctrine はあなたのデータベースについて知りました。次のコマンドをターミナルで入力して、データベースを作成することができます。
 Now that Doctrine knows about your database, you can have it create the database for you by typing the following command in your terminal:
 
 .. code-block:: bash
