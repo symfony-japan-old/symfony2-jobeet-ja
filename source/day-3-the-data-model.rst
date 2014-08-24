@@ -1,22 +1,32 @@
 3日目: データモデル
+===================
+Day 3: The Data Model
 =====================
 
 .. include:: common/original.rst.inc
 
+あなたは、テキストエディタを開いて、いくつかのPHPを下に置くためにうずうずしている場合は、その今日はいくつかの開発に私たちを取得します知っているさせていただきます。私たちは、データベースと対話し、アプリケーションの最初のモジュールを構築するためにORMを使用し、Jobeetのデータモデルを定義します。 symfonyは私たちのために多くの仕事がそうであるようにしかし、私たちはあまりにも多くのPHPコードを記述することなく、完全に機能するWebモジュールを持つことになります。
 If you’re itching to open your text editor and lay down some PHP, you will be happy to know that today will get us into some development. We will define the Jobeet data model, use an ORM to interact with the database and build the first module of the application. But as Symfony does a lot of work for us, we will have a fully functional web module without writing too much PHP code.
 
+リレーションモデル
+------------------
 The Relational Model
 ---------------
 
+ジョブ、関連会社、およびカテゴリ：前日からのユーザーストーリーは、メイン私たちのプロジェクトのオブジェクトについて説明します。ここでは、対応するエンティティ関係図は、次のとおりです。
 The user stories from the previous day describe the main objects of our project: jobs, affiliates, and categories. Here is the corresponding entity relationship diagram:
 
 .. image:: /images/Day3-entity_diagram.png
 
+ストーリーで説明したカラムに加え、当社はまた、created_atとupdated_atと列を追加した。私たちは、オブジェクトが保存または更新されたときに自動的に値を設定するためにsymfonyを設定します。
 In addition to the columns described in the stories, we have also added created_at and updated_at columns. We will configure Symfony to set their value automatically when an object is saved or updated.
 
+データベース
+------------
 The Database
 ------------
 
+データベース内のジョブ、関連会社とカテゴリを格納するために、symfonyは2.3.2にDoctrine ORMを使用しています。データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します）のアプリ/ configに/ parameters.ymlファイルを編集する必要があります。
 To store the jobs, affiliates and categories in the database, Symfony 2.3.2 uses Doctrine ORM. To define the database connection parameters, you have to edit the app/config/parameters.yml file (for this tutorial we will use MySQL):
 
 app/config/parameters.yml
@@ -32,15 +42,19 @@ app/config/parameters.yml
        database_password: password
        # ...
 
+これでDoctrineがデータベースについて知っていることを、あなたはそれがあなたのターミナルで次のコマンドを入力して、あなたのためのデータベースを作成することができます。
 Now that Doctrine knows about your database, you can have it create the database for you by typing the following command in your terminal:
 
 .. code-block:: bash
 
     $ php app/console doctrine:database:create
 
+スキーマ
+--------
 The Schema
 ----------
 
+私たちのオブジェクトに関する教義を言うと、私たちは、オブジェクトをデータベースに格納する方法を説明します「メタデータ」ファイルが作成されます。今すぐあなたのコードエディタに移動し、SRC/ IBW/ JobeetBundle/リソース/ configディレクトリ内のディレクトリという教義を、作成してください。 Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml：Doctrineは3つのファイルが含まれます。
 To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database. Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory. Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
@@ -180,12 +194,14 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 The ORM
 -------
 
+今、Doctrineはコマンドを使用して私たちのために私たちのオブジェクトを定義するクラスを生成できます。
 Now Doctrine can generate the classes that define our objects for us with the command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:entities IbwJobeetBundle
 
+Category.php、Job.phpとAffiliate.php：あなたはIbwJobeetBundleからエンティティディレクトリに見てみると、そこに新しく生成されたクラスがあります。オープンJob.phpとはcreated_atと以下のような値updated_atを設定します。
 If you take a look into Entity directory from IbwJobeetBundle, you will find the newly generated classes in there: Category.php, Job.php and Affiliate.php. Open Job.php and set the created_at and updated_at values as below:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -212,6 +228,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
            $this->updated_at = new \DateTime();
        }
 
+あなたはアフィリエイトクラスのはcreated_atの値のための同じをする。
 You will do the same for created_at value of the Affiliate class:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
@@ -230,6 +247,8 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
    // ...
 
+これは、省またはオブジェクトを更新するときにDoctrineはcreated_atとを設定し、値updated_atするようになります。この動作は、上記のAffiliate.orm.ymlとJob.orm.ymlファイルで定義されていた。
+また、以下のコマンドを使用して、私たちのデータベーステーブルを作成するためにDoctrineを聞いてきます。
 This will make Doctrine to set the created_at and updated_at values when saving or updating objects. This behaviour was defined in the Affiliate.orm.yml and Job.orm.yml files listed above.
 We will also ask Doctrine to create our database tables with the command below:
 
@@ -239,11 +258,15 @@ We will also ask Doctrine to create our database tables with the command below:
 
 .. note::
 
+   このタスクは、開発時に使用されるべきである。体系的に本番データベースを更新するより堅牢な方法については、Doctrineのマイグレーションについて読ん。
    This task should only be used during the development. For a more robust method of systematically updating your production database, read about Doctrine migrations.
 
+テーブルは、データベース内に作成されているが、データがそこにはありません。任意のWebアプリケーションでは、データの3つのタイプがあります。初期データ（これは仕事に適用するために必要とされ、私たちのケースでは私たちはいくつかの初期カテゴリと管理者ユーザを持つことになります）、テストデータ（アプリケーションをテストするために必要）と（アプリケーションの通常の寿命の間、ユーザーが作成した）ユーザーデータ。
+いくつかの初期データに基づいてデータベースを作成するためには、`DoctrineFixturesBundle`_を使用します。セットアップこのバンドルには、次の手順に従ってくださいする必要があります。
 The tables have been created in the database but there is no data in them. For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user), test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
 To populate the database with some initial data, we will use `DoctrineFixturesBundle`_. To setup this bundle, we have to follow the next steps:
 
+1が必要なセクションで、あなたのcomposer.jsonファイルに以下を追加します。
 1. Add the following to your composer.json file, in the require section:
 
 .. code-block:: json
@@ -257,12 +280,14 @@ To populate the database with some initial data, we will use `DoctrineFixturesBu
 
    // ...
 
+2ベンダライブラリを更新します。
 2. Update the vendor libraries:
 
 .. code-block:: bash
 
     $ php composer.phar update
 
+3アプリ/ AppKernel.phpにバンドルDoctrineFixturesBundleを登録します。
 3. Register the bundle DoctrineFixturesBundle in app/AppKernel.php:
 
 app/AppKernel.php
@@ -281,6 +306,7 @@ app/AppKernel.php
        // ...
    }
 
+今ではすべてがセットアップされ、私たちは新しいフォルダにデータをロードするためにいくつかの新しいクラスを作成しますが、名前のsrc / IBW/ JobeetBundle/ DataFixtures/ ORM、私たちのバンドル内：
 Now that everything is set up, we will create some new classes to load data in a new folder, named src/Ibw/JobeetBundle/DataFixtures/ORM, in our bundle:
 
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
@@ -386,23 +412,28 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
        }
    }
 
+備品：あなたの備品が書き込まれたら、thedoctrineを使用して、コマンドラインを介してそれらをロードすることができloadコマンドを：
 Once your fixtures have been written, you can load them via the command line by using thedoctrine:fixtures:load command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:fixtures:load
 
+使用しているデータベースをチェックすると今、あなたは、テーブルにロードされたデータが表示されるはずです。
 Now, if you check your database, you should see the data loaded into tables.
 
 See it in the browser
 ---------------------
 
+あなたは下のコマンドを実行すると、新しいコントローラのsrc / IBW/ JobeetBundle/コントローラを作成します/リストのアクションの作成、編集、および削除ジョブ（およびそれに対応するテンプレート、フォームとルート）とJobController.php：
 If you run the command below, it will create a new controller src/Ibw/JobeetBundle/Controllers/JobController.php with actions for listing, creating, editing and deleting jobs (and their corresponding templates, form and routes):
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:crud --entity=IbwJobeetBundle:Job --route-prefix=ibw_job --with-write --format=yml
 
+このコマンドを実行した後は、プロンプターをする必要があり、いくつかの設定を行う必要があります。だから彼らのために、デフォルトの答えを選択します。
+ブラウザでこれを表示するには、私たちは、バンドルメインルーティングファイルにSRC/ IBW/ JobeetBundle/リソース/設定/ルーティング/ job.ymlで作成された新しいルートをインポートする必要があります。
 After running this command, you will need to do some configurations the prompter requires you to. So just select the default answers for them.
 To view this in the browser, we must import the new routes that were created in src/Ibw/JobeetBundle/Resources/config/routing/job.yml into our bundle main routing file:
 
@@ -415,6 +446,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
            prefix:   /job
    # ...
 
+また、編集ジョブフォームからドロップダウンカテゴリ別に使用するために私達のカテゴリクラスに_toString（）メソッドを追加する必要があります。
 We will also need to add a _toString() method to our Category class to be used by the category drop down from the edit job form:
 
 src/Ibw/JobeetBundle/Entity/Category.php
@@ -430,6 +462,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
 
    // ...
 
+キャッシュをクリアします。
 Clear the cache:
 
 .. code-block:: bash
@@ -437,10 +470,13 @@ Clear the cache:
     $ php app/console cache:clear --env=dev
     $ php app/console cache:clear --env=prod
 
+//jobeet.local/app_dev.php/job/：開発環境、HTTPで、//jobeet.local/job/またはます。http：これで、ブラウザでジョブ·コントローラをテストすることができます。
 You can now test the job controller in a browser: http://jobeet.local/job/ or, in development environment, http://jobeet.local/app_dev.php/job/ .
 
 .. image:: /images/Day-3-index_page.png
 
+これで、作成および編集の仕事ができます。必須フィールドを空白のままにするか、無効なデータを入力しようとしてみてください。そう、symfonyはデータベーススキーマをイントロスペクトすることにより、基本的なバリデーションルールを作成しました。
+それだけだ。今日、私たちはかろうじてPHPコードを書かれているけど、微調整して、カスタマイズする準備ができて、仕事のモデルの作業Webモジュールを持っている。明日は、コントローラとビューに精通して取得します。次回お会いしましょう！
 You can now create and edit jobs. Try to leave a required field blank, or try to enter invalid data. That’s right, Symfony has created basic validation rules by introspecting the database schema.
 That’s all. Today, we have barely written PHP code but we have a working web module for the job model, ready to be tweaked and customized. Tomorrow, we will get familiar with the controller and the view. See you next time!
 
