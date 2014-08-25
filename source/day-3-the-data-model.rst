@@ -63,8 +63,12 @@ Now that Doctrine knows about your database, you can have it create the database
 The Schema
 ----------
 
-私たちのオブジェクトに関する教義を言うと、私たちは、オブジェクトをデータベースに格納する方法を説明します「メタデータ」ファイルが作成されます。今すぐあなたのコードエディタに移動し、SRC/ IBW/ JobeetBundle/リソース/ configディレクトリ内のディレクトリという教義を、作成してください。 Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml：Doctrineは3つのファイルが含まれます。
-To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database. Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory. Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
+Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
+今すぐエディタに移動し、 src/Ibw/JobeetBundle/Resources/config ディレクトリの内に ``doctrine`` という名前のディレクトリを作成してください。
+Doctrineフォルダに次の 3 つのファイルを作成します。。Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml。
+To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database.
+Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory.
+Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
@@ -203,15 +207,17 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 The ORM
 -------
 
-今、Doctrineはコマンドを使用して私たちのために私たちのオブジェクトを定義するクラスを生成できます。
+Doctrine は以下のコマンドを使用してオブジェクトを定義するクラスを生成できます。
 Now Doctrine can generate the classes that define our objects for us with the command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-Category.php、Job.phpとAffiliate.php：あなたはIbwJobeetBundleからエンティティディレクトリに見てみると、そこに新しく生成されたクラスがあります。オープンJob.phpとはcreated_atと以下のような値updated_atを設定します。
-If you take a look into Entity directory from IbwJobeetBundle, you will find the newly generated classes in there: Category.php, Job.php and Affiliate.php. Open Job.php and set the created_at and updated_at values as below:
+IbwJobeetBundleのEntityディレクトリを見ると、そこに新しく生成されたクラス（Category.php、Job.phpとAffiliate.php）があるでしょう。
+Job.php を開いて、created_at と updated_at に以下のような値を設定します。
+If you take a look into Entity directory from IbwJobeetBundle, you will find the newly generated classes in there: Category.php, Job.php and Affiliate.php.
+Open Job.php and set the created_at and updated_at values as below:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -237,7 +243,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
            $this->updated_at = new \DateTime();
        }
 
-あなたはアフィリエイトクラスのはcreated_atの値のための同じをする。
+Affiliate クラスの created_at の値でも同じようにします。
 You will do the same for created_at value of the Affiliate class:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
@@ -275,7 +281,7 @@ We will also ask Doctrine to create our database tables with the command below:
 The tables have been created in the database but there is no data in them. For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user), test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
 To populate the database with some initial data, we will use `DoctrineFixturesBundle`_. To setup this bundle, we have to follow the next steps:
 
-1が必要なセクションで、あなたのcomposer.jsonファイルに以下を追加します。
+1. composer.json ファイルの ``require`` セクションに以下を追加します。
 1. Add the following to your composer.json file, in the require section:
 
 .. code-block:: json
@@ -289,14 +295,14 @@ To populate the database with some initial data, we will use `DoctrineFixturesBu
 
    // ...
 
-2ベンダライブラリを更新します。
+2. ベンダライブラリを更新します。
 2. Update the vendor libraries:
 
 .. code-block:: bash
 
     $ php composer.phar update
 
-3アプリ/ AppKernel.phpにバンドルDoctrineFixturesBundleを登録します。
+3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
 3. Register the bundle DoctrineFixturesBundle in app/AppKernel.php:
 
 app/AppKernel.php
@@ -315,7 +321,7 @@ app/AppKernel.php
        // ...
    }
 
-今ではすべてがセットアップされ、私たちは新しいフォルダにデータをロードするためにいくつかの新しいクラスを作成しますが、名前のsrc / IBW/ JobeetBundle/ DataFixtures/ ORM、私たちのバンドル内：
+今ではすべてがセットアップされ、私たちはデータをロードするために、私たちのバンドル内の src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。
 Now that everything is set up, we will create some new classes to load data in a new folder, named src/Ibw/JobeetBundle/DataFixtures/ORM, in our bundle:
 
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
@@ -421,14 +427,14 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
        }
    }
 
-備品：あなたの備品が書き込まれたら、thedoctrineを使用して、コマンドラインを介してそれらをロードすることができloadコマンドを：
+``fixtures`` が一度書き込まれたら、コマンドラインの ``doctrine:fixtures:load`` コマンドを使用して、それらをロードすることができます。
 Once your fixtures have been written, you can load them via the command line by using thedoctrine:fixtures:load command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:fixtures:load
 
-使用しているデータベースをチェックすると今、あなたは、テーブルにロードされたデータが表示されるはずです。
+使用しているデータベースをチェックすると、テーブルにロードされたデータが表示されるはずです。
 Now, if you check your database, you should see the data loaded into tables.
 
 See it in the browser
