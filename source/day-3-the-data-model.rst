@@ -65,7 +65,7 @@ The Schema
 
 Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
 今すぐエディタに移動し、 src/Ibw/JobeetBundle/Resources/config ディレクトリの内に ``doctrine`` という名前のディレクトリを作成してください。
-Doctrineフォルダに次の 3 つのファイルを作成します。。Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml。
+Doctrineフォルダに 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）を作成します。
 To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database.
 Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory.
 Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
@@ -275,11 +275,15 @@ We will also ask Doctrine to create our database tables with the command below:
 
 .. note::
 
-   このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新するより堅牢な方法については、 Doctrine のマイグレーションについて読んでください。
+   このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新する、よりしっかりした方法については、 Doctrine のマイグレーションについて読んでください。
    This task should only be used during the development. For a more robust method of systematically updating your production database, read about Doctrine migrations.
 
-テーブルは、データベース内に作成されているが、データがそこにはありません。任意のWebアプリケーションでは、データの3つのタイプがあります。初期データ（これは仕事に適用するために必要とされ、私たちのケースでは私たちはいくつかの初期カテゴリと管理者ユーザを持つことになります）、テストデータ（アプリケーションをテストするために必要）と（アプリケーションの通常の寿命の間、ユーザーが作成した）ユーザーデータ。
-いくつかの初期データに基づいてデータベースを作成するためには、`DoctrineFixturesBundle`_を使用します。セットアップこのバンドルには、次の手順に従ってくださいする必要があります。
+データベース内にテーブルは作成されていますがデータはそこにありません。
+任意のWebアプリケーションでは、データの3つのタイプがあります。
+初期データ（これは仕事に適用するために必要とされ、私たちのケースでは私たちはいくつかの初期カテゴリと管理者ユーザを持つことになります）、
+テストデータ（アプリケーションをテストするために必要）と（アプリケーションの通常の寿命の間、ユーザーが作成した）ユーザーデータ。
+いくつかの初期データに基づいてデータベースを作成するためには、`DoctrineFixturesBundle`_を使用します。
+セットアップこのバンドルには、次の手順に従ってくださいする必要があります。
 The tables have been created in the database but there is no data in them. For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user), test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
 To populate the database with some initial data, we will use `DoctrineFixturesBundle`_. To setup this bundle, we have to follow the next steps:
 
@@ -439,6 +443,8 @@ Once your fixtures have been written, you can load them via the command line by 
 使用しているデータベースをチェックすると、テーブルにロードされたデータが表示されるはずです。
 Now, if you check your database, you should see the data loaded into tables.
 
+ブラウザーで見る
+----------------
 See it in the browser
 ---------------------
 
