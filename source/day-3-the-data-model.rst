@@ -262,9 +262,11 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
    // ...
 
-これは、省またはオブジェクトを更新するときにDoctrineはcreated_atとを設定し、値updated_atするようになります。この動作は、上記のAffiliate.orm.ymlとJob.orm.ymlファイルで定義されていた。
-また、以下のコマンドを使用して、私たちのデータベーステーブルを作成するためにDoctrineを聞いてきます。
-This will make Doctrine to set the created_at and updated_at values when saving or updating objects. This behaviour was defined in the Affiliate.orm.yml and Job.orm.yml files listed above.
+これによって、オブジェクトの保存または更新をするときに、 Doctrine が created_at を設定し updated_at を更新するようになります。
+この動作は、上記の Affiliate.orm.yml と Job.orm.yml ファイルで定義されていました。
+また、データベースのテーブルを作成するために以下のコマンドを使用して Doctrine に問い合わせます。
+This will make Doctrine to set the created_at and updated_at values when saving or updating objects.
+This behaviour was defined in the Affiliate.orm.yml and Job.orm.yml files listed above.
 We will also ask Doctrine to create our database tables with the command below:
 
 .. code-block:: bash
@@ -273,7 +275,7 @@ We will also ask Doctrine to create our database tables with the command below:
 
 .. note::
 
-   このタスクは、開発時に使用されるべきである。体系的に本番データベースを更新するより堅牢な方法については、Doctrineのマイグレーションについて読ん。
+   このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新するより堅牢な方法については、 Doctrine のマイグレーションについて読んでください。
    This task should only be used during the development. For a more robust method of systematically updating your production database, read about Doctrine migrations.
 
 テーブルは、データベース内に作成されているが、データがそこにはありません。任意のWebアプリケーションでは、データの3つのタイプがあります。初期データ（これは仕事に適用するために必要とされ、私たちのケースでは私たちはいくつかの初期カテゴリと管理者ユーザを持つことになります）、テストデータ（アプリケーションをテストするために必要）と（アプリケーションの通常の寿命の間、ユーザーが作成した）ユーザーデータ。
