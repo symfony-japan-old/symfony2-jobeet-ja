@@ -469,7 +469,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
            prefix:   /job
    # ...
 
-また、編集ジョブフォームからドロップダウンカテゴリ別に使用するために私達のカテゴリクラスに_toString（）メソッドを追加する必要があります。
+また、求人編集フォームからドロップダウンでカテゴリを編集するため、 ``Category`` クラスに ``_toString()`` メソッドを追加する必要があります。
 We will also need to add a _toString() method to our Category class to be used by the category drop down from the edit job form:
 
 src/Ibw/JobeetBundle/Entity/Category.php
@@ -493,7 +493,7 @@ Clear the cache:
     $ php app/console cache:clear --env=dev
     $ php app/console cache:clear --env=prod
 
-//jobeet.local/app_dev.php/job/：開発環境、HTTPで、//jobeet.local/job/またはます。http：これで、ブラウザでジョブ·コントローラをテストすることができます。
+これで、ブラウザでコントローラー ``job`` をブラウザでテストすることができます。``http://jobeet.local/job/`` 、または、開発環境では ``http://jobeet.local/app_dev.php/job/`` 。
 You can now test the job controller in a browser: http://jobeet.local/job/ or, in development environment, http://jobeet.local/app_dev.php/job/ .
 
 .. image:: /images/Day-3-index_page.png
