@@ -279,12 +279,14 @@ We will also ask Doctrine to create our database tables with the command below:
    This task should only be used during the development. For a more robust method of systematically updating your production database, read about Doctrine migrations.
 
 データベース内にテーブルは作成されていますがデータはそこにありません。
-任意のWebアプリケーションでは、データの3つのタイプがあります。
-初期データ（これは仕事に適用するために必要とされ、私たちのケースでは私たちはいくつかの初期カテゴリと管理者ユーザを持つことになります）、
-テストデータ（アプリケーションをテストするために必要）と（アプリケーションの通常の寿命の間、ユーザーが作成した）ユーザーデータ。
+おおくのWebアプリケーションでは、3つのデータタイプがあります。
+初期データ（これはアプリケーションが稼動するのに必要。私たちのケースではいくつかの初期カテゴリと管理者ユーザを持つことになります）、
+テストデータ（アプリケーションをテストするために必要）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
 いくつかの初期データに基づいてデータベースを作成するためには、`DoctrineFixturesBundle`_を使用します。
-セットアップこのバンドルには、次の手順に従ってくださいする必要があります。
-The tables have been created in the database but there is no data in them. For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user), test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
+このバンドルのセットアップは、次の手順に従っておこないます。
+The tables have been created in the database but there is no data in them.
+For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user),
+test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
 To populate the database with some initial data, we will use `DoctrineFixturesBundle`_. To setup this bundle, we have to follow the next steps:
 
 1. composer.json ファイルの ``require`` セクションに以下を追加します。
@@ -448,8 +450,10 @@ Now, if you check your database, you should see the data loaded into tables.
 See it in the browser
 ---------------------
 
-あなたは下のコマンドを実行すると、新しいコントローラのsrc / IBW/ JobeetBundle/コントローラを作成します/リストのアクションの作成、編集、および削除ジョブ（およびそれに対応するテンプレート、フォームとルート）とJobController.php：
-If you run the command below, it will create a new controller src/Ibw/JobeetBundle/Controllers/JobController.php with actions for listing, creating, editing and deleting jobs (and their corresponding templates, form and routes):
+あなたは以下のコマンドを実行すると、新しいコントローラ src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
+それは、求人のリスト表示、作成、編集、および削除（およびそれに対応するテンプレート、フォームとルート）のアクションを持ちます。
+If you run the command below, it will create a new controller src/Ibw/JobeetBundle/Controllers/JobController.php
+with actions for listing, creating, editing and deleting jobs (and their corresponding templates, form and routes):
 
 .. code-block:: bash
 
@@ -493,7 +497,8 @@ Clear the cache:
     $ php app/console cache:clear --env=dev
     $ php app/console cache:clear --env=prod
 
-これで、ブラウザでコントローラー ``job`` をブラウザでテストすることができます。``http://jobeet.local/job/`` 、または、開発環境では ``http://jobeet.local/app_dev.php/job/`` 。
+これで、ブラウザでコントローラー ``job`` を次のURLでブラウザでテストすることができます。
+``http://jobeet.local/job/`` 、または、開発環境では ``http://jobeet.local/app_dev.php/job/`` 。
 You can now test the job controller in a browser: http://jobeet.local/job/ or, in development environment, http://jobeet.local/app_dev.php/job/ .
 
 .. image:: /images/Day-3-index_page.png
