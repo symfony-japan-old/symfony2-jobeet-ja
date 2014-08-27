@@ -1,42 +1,28 @@
 3日目: データモデル
 ===================
-Day 3: The Data Model
-=====================
 
 .. include:: common/original.rst.inc
 
 今日はいくつかの開発に入ります。テキストエディタを開いて、PHP ファイルを書きたくうずうずしている場合は、これを知ってうれしくなるでしょう。
-私たちは、 ORM を使用してデータベースと対話し、アプリケーションの最初のモジュールを構築するために、Jobeetのデータモデルを定義します。
-しかし、Symfony は、私たちの多くの仕事と同様、PHPコードをあまり書くことなく、完全に機能するWebモジュールを持つことになります。
-If you’re itching to open your text editor and lay down some PHP, you will be happy to know that today will get us into some development.
-We will define the Jobeet data model, use an ORM to interact with the database and build the first module of the application.
-But as Symfony does a lot of work for us, we will have a fully functional web module without writing too much PHP code.
+私たちは、 ORM を使用してデータベースと対話し、アプリケーションの最初のモジュールを構築するために、 Jobeet のデータモデルを定義します。
+しかし、 Symfony は、私たちの多くの仕事と同様、 PHP コードをあまり書くことなく、完全に機能するウェブモジュールを持つことになります。
 
 リレーションモデル
 ------------------
-The Relational Model
----------------
 
-前日からのユーザーストーリーは、私たちのプロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。
+前日のユーザーストーリーでは、私たちのプロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。
 ここで、対応する ER 図は次のとおりです。
-The user stories from the previous day describe the main objects of our project: jobs, affiliates, and categories.
-Here is the corresponding entity relationship diagram:
 
 .. image:: /images/Day3-entity_diagram.png
 
 ストーリーで説明したカラムに加え、 created_at と updated_at のカラムを追加しました。
-私たちは、オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。
-In addition to the columns described in the stories, we have also added created_at and updated_at columns.
-We will configure Symfony to set their value automatically when an object is saved or updated.
+オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。
 
 データベース
 ------------
-The Database
-------------
 
-データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
+データベース内の求人、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
 データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。
-To store the jobs, affiliates and categories in the database, Symfony 2.3.2 uses Doctrine ORM. To define the database connection parameters, you have to edit the app/config/parameters.yml file (for this tutorial we will use MySQL):
 
 app/config/parameters.yml
 
@@ -52,7 +38,6 @@ app/config/parameters.yml
        # ...
 
 これで Doctrine はあなたのデータベースについて知りました。次のコマンドをターミナルで入力して、データベースを作成することができます。
-Now that Doctrine knows about your database, you can have it create the database for you by typing the following command in your terminal:
 
 .. code-block:: bash
 
@@ -60,12 +45,10 @@ Now that Doctrine knows about your database, you can have it create the database
 
 スキーマ
 --------
-The Schema
-----------
 
 Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
-今すぐエディタに移動し、 src/Ibw/JobeetBundle/Resources/config ディレクトリの内に ``doctrine`` という名前のディレクトリを作成してください。
-Doctrineフォルダに 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）を作成します。
+今すぐエディタに移動し、 ``src/Ibw/JobeetBundle/Resources/config`` ディレクトリの中に ``doctrine`` という名前のディレクトリを作成してください。
+Doctrine は 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）を取り込みます。
 To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database.
 Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory.
 Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
@@ -208,17 +191,14 @@ The ORM
 -------
 
 Doctrine は以下のコマンドを使用してオブジェクトを定義するクラスを生成できます。
-Now Doctrine can generate the classes that define our objects for us with the command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-IbwJobeetBundleのEntityディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
-Job.php を開いて、created_at と updated_at に以下のような値を設定します。
-If you take a look into Entity directory from IbwJobeetBundle, you will find the newly generated classes in there: Category.php, Job.php and Affiliate.php.
-Open Job.php and set the created_at and updated_at values as below:
-
+``IbwJobeetBundle`` の ``Entity`` ディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
+Job.php を開いて、``created_at`` と ``updated_at`` に以下のような値を設定します。
+I
 src/Ibw/JobeetBundle/Entity/Job.php
 
 .. code-block:: php
@@ -243,8 +223,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
            $this->updated_at = new \DateTime();
        }
 
-Affiliate クラスの created_at の値でも同じようにします。
-You will do the same for created_at value of the Affiliate class:
+Affiliate クラスの ``created_at`` の値でも同じようにします。
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
 
