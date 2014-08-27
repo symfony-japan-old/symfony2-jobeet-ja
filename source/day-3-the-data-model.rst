@@ -214,7 +214,7 @@ Now Doctrine can generate the classes that define our objects for us with the co
 
     $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-IbwJobeetBundleのEntityディレクトリを見ると、そこに新しく生成されたクラス（Category.php、Job.phpとAffiliate.php）があるでしょう。
+IbwJobeetBundleのEntityディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
 Job.php を開いて、created_at と updated_at に以下のような値を設定します。
 If you take a look into Entity directory from IbwJobeetBundle, you will find the newly generated classes in there: Category.php, Job.php and Affiliate.php.
 Open Job.php and set the created_at and updated_at values as below:
@@ -506,11 +506,12 @@ You can now test the job controller in a browser: http://jobeet.local/job/ or, i
 これで求人の作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
 そう、Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
 
-以上です。今日、私たちは少しのPHPコードの記述で、微調整して、カスタマイズする準備ができて、仕事のモデルの作業Webモジュールを持っている。
-明日は、コントローラとビューに精通して取得します。次回お会いしましょう！
+以上です。今日、私たちは少ししかPHPコードを書いていませんが、``job`` モデルの動作するWebモジュールを持ちました。それは微調整とカスタマイズの準備ができています。
+明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
 You can now create and edit jobs. Try to leave a required field blank, or try to enter invalid data.
 That’s right, Symfony has created basic validation rules by introspecting the database schema.
-That’s all. Today, we have barely written PHP code but we have a working web module for the job model, ready to be tweaked and customized. Tomorrow, we will get familiar with the controller and the view. See you next time!
+That’s all. Today, we have barely written PHP code but we have a working web module for the job model,ready to be tweaked and customized.
+Tomorrow, we will get familiar with the controller and the view. See you next time!
 
 .. include:: common/license.rst.inc
 
