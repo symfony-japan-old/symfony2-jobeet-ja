@@ -503,9 +503,11 @@ You can now test the job controller in a browser: http://jobeet.local/job/ or, i
 
 .. image:: /images/Day-3-index_page.png
 
-これで求人の作成、および、編集ができます。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
+これで求人の作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
 そう、Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
-以上です。今日、私たちはかろうじてPHPコードを書きましたが、微調整して、カスタマイズする準備ができて、仕事のモデルの作業Webモジュールを持っている。明日は、コントローラとビューに精通して取得します。次回お会いしましょう！
+
+以上です。今日、私たちは少しのPHPコードの記述で、微調整して、カスタマイズする準備ができて、仕事のモデルの作業Webモジュールを持っている。
+明日は、コントローラとビューに精通して取得します。次回お会いしましょう！
 You can now create and edit jobs. Try to leave a required field blank, or try to enter invalid data.
 That’s right, Symfony has created basic validation rules by introspecting the database schema.
 That’s all. Today, we have barely written PHP code but we have a working web module for the job model, ready to be tweaked and customized. Tomorrow, we will get familiar with the controller and the view. See you next time!
