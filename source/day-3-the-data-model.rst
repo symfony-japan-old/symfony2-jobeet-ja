@@ -244,9 +244,6 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 これによって、オブジェクトの保存または更新をするときに、 Doctrine が created_at を設定し updated_at を更新するようになります。
 この動作は、上記の Affiliate.orm.yml と Job.orm.yml ファイルで定義されていました。
 また、データベースのテーブルを作成するために以下のコマンドを使用して Doctrine に問い合わせます。
-This will make Doctrine to set the created_at and updated_at values when saving or updating objects.
-This behaviour was defined in the Affiliate.orm.yml and Job.orm.yml files listed above.
-We will also ask Doctrine to create our database tables with the command below:
 
 .. code-block:: bash
 
@@ -255,7 +252,6 @@ We will also ask Doctrine to create our database tables with the command below:
 .. note::
 
    このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新する、よりしっかりした方法については、 Doctrine のマイグレーションについて読んでください。
-   This task should only be used during the development. For a more robust method of systematically updating your production database, read about Doctrine migrations.
 
 データベース内にテーブルは作成されていますがデータはそこにありません。
 おおくのWebアプリケーションでは、3つのデータタイプがあります。
@@ -422,12 +418,9 @@ Once your fixtures have been written, you can load them via the command line by 
     $ php app/console doctrine:fixtures:load
 
 使用しているデータベースをチェックすると、テーブルにロードされたデータが表示されるはずです。
-Now, if you check your database, you should see the data loaded into tables.
 
 ブラウザーで見る
 ----------------
-See it in the browser
----------------------
 
 あなたは以下のコマンドを実行すると、新しいコントローラ src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
 それは、求人のリスト表示、作成、編集、および削除（およびそれに対応するテンプレート、フォームとルート）のアクションを持ちます。
@@ -469,7 +462,6 @@ src/Ibw/JobeetBundle/Entity/Category.php
    // ...
 
 キャッシュをクリアします。
-Clear the cache:
 
 .. code-block:: bash
 
