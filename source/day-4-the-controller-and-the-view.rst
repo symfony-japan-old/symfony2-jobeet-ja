@@ -3,7 +3,7 @@
 
 .. include:: common/original.rst.inc
 
-今日は、昨日作成した基本的な``ジョブcontroller``をカスタマイズしようとしている。それは、すでに私たちはJobeetのために必要なコードの大部分があります：
+今日は、昨日作成した基本的な``jobController``をカスタマイズしようとしています。そのための必要なコードの大部分はすでに私たちはJobeetにはあります：
 Today, we are going to customize the basic ``job controller`` we created yesterday. It already has most of the code we need for Jobeet:
 
 * list``すべてのジョブ`へページ
@@ -15,10 +15,9 @@ Today, we are going to customize the basic ``job controller`` we created yesterd
 * A page to ``update`` an existing job
 * A page to ``delete`` a job
 
-そのままのコードが使用できるようになりましたが、私たちは、 `Jobeetのmockups`_に近づくようにリファクタリングします。
+そのままのコードが使用できるようになりましたが、私たちは、 `Jobeet mockups`_ に近づくようにリファクタリングします。
 Although the code is ready to be used as is, we will refactor the templates to match closer to the `Jobeet mockups`_.
 
-MVC Arhitecture
 The MVC Arhitecture
 ---------------
 

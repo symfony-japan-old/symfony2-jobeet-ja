@@ -197,10 +197,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to and from database, and then the repository, that will create a query to retrieve all the jobs. It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).
+
 The Job Homepage Template
+-------------------------
 
 The index.html.twig template generates an HTML table for all the jobs. Here is the current template code:
-src/Ibw/JobeetBundle/Resources/views/Job/index.html.twigXHTML
+
+src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 .. code-block:: html+jinja
 
