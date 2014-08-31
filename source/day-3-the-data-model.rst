@@ -48,10 +48,7 @@ app/config/parameters.yml
 
 Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
 今すぐエディタに移動し、 ``src/Ibw/JobeetBundle/Resources/config`` ディレクトリの中に ``doctrine`` という名前のディレクトリを作成してください。
-Doctrine は 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）を取り込みます。
-To tell Doctrine about our objects, we will create “metadata” files that will describe how our objects will be stored in the database.
-Now go to your code editor and create a directory named doctrine, inside src/Ibw/JobeetBundle/Resources/config directory.
-Doctrine will contain three files: Category.orm.yml, Job.orm.yml and Affiliate.orm.yml.
+``doctrine`` には 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）が入っています。
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
@@ -257,15 +254,10 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 おおくのWebアプリケーションでは、3つのデータタイプがあります。
 初期データ（これはアプリケーションが稼動するのに必要。私たちのケースではいくつかの初期カテゴリと管理者ユーザを持つことになります）、
 テストデータ（アプリケーションをテストするために必要）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
-いくつかの初期データに基づいてデータベースを作成するためには、`DoctrineFixturesBundle`_を使用します。
+いくつかの初期データに基づいてデータベースを作成するためには、 ``DoctrineFixturesBundle``_ を使用します。
 このバンドルのセットアップは、次の手順に従っておこないます。
-The tables have been created in the database but there is no data in them.
-For any web application, there are three types of data: initial data (this is needed for the application to work, in our case we will have some initial categories and an admin user),
-test data (needed for the application to be tested) and user data (created by users during the normal life of the application).
-To populate the database with some initial data, we will use `DoctrineFixturesBundle`_. To setup this bundle, we have to follow the next steps:
 
 1. composer.json ファイルの ``require`` セクションに以下を追加します。
-1. Add the following to your composer.json file, in the require section:
 
 .. code-block:: json
 
@@ -279,14 +271,12 @@ To populate the database with some initial data, we will use `DoctrineFixturesBu
    // ...
 
 2. ベンダライブラリを更新します。
-2. Update the vendor libraries:
 
 .. code-block:: bash
 
     $ php composer.phar update
 
 3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
-3. Register the bundle DoctrineFixturesBundle in app/AppKernel.php:
 
 app/AppKernel.php
 
@@ -305,7 +295,6 @@ app/AppKernel.php
    }
 
 今ではすべてがセットアップされ、私たちはデータをロードするために、私たちのバンドル内の src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。
-Now that everything is set up, we will create some new classes to load data in a new folder, named src/Ibw/JobeetBundle/DataFixtures/ORM, in our bundle:
 
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
 
@@ -411,7 +400,6 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
    }
 
 ``fixtures`` が一度書き込まれたら、コマンドラインの ``doctrine:fixtures:load`` コマンドを使用して、それらをロードすることができます。
-Once your fixtures have been written, you can load them via the command line by using thedoctrine:fixtures:load command:
 
 .. code-block:: bash
 
@@ -423,18 +411,14 @@ Once your fixtures have been written, you can load them via the command line by 
 ----------------
 
 あなたは以下のコマンドを実行すると、新しいコントローラ src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
-それは、求人のリスト表示、作成、編集、および削除（およびそれに対応するテンプレート、フォームとルート）のアクションを持ちます。
-If you run the command below, it will create a new controller src/Ibw/JobeetBundle/Controllers/JobController.php
-with actions for listing, creating, editing and deleting jobs (and their corresponding templates, form and routes):
+それは、求人のリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:crud --entity=IbwJobeetBundle:Job --route-prefix=ibw_job --with-write --format=yml
 
-このコマンドを実行した後は、プロンプターをする必要があり、いくつかの設定を行う必要があります。だから彼らのために、デフォルトの答えを選択します。
-ブラウザでこれを表示するには、私たちは、バンドルメインルーティングファイルにSRC/ IBW/ JobeetBundle/リソース/設定/ルーティング/ job.ymlで作成された新しいルートをインポートする必要があります。
-After running this command, you will need to do some configurations the prompter requires you to. So just select the default answers for them.
-To view this in the browser, we must import the new routes that were created in src/Ibw/JobeetBundle/Resources/config/routing/job.yml into our bundle main routing file:
+このコマンドを実行した後は、いくつかの設定をプロンプトの要求に応じて行う必要があります。デフォルトの答えをただ選択します。
+ブラウザでこれを表示するには、作成した新しいルート src/Ibw/JobeetBundle/Resources/config/routing/job.yml をメインルーティングファイルにインポートする必要があります。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -446,7 +430,6 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
    # ...
 
 また、求人編集フォームからドロップダウンでカテゴリを編集するため、 ``Category`` クラスに ``_toString()`` メソッドを追加する必要があります。
-We will also need to add a _toString() method to our Category class to be used by the category drop down from the edit job form:
 
 src/Ibw/JobeetBundle/Entity/Category.php
 
@@ -468,21 +451,14 @@ src/Ibw/JobeetBundle/Entity/Category.php
     $ php app/console cache:clear --env=dev
     $ php app/console cache:clear --env=prod
 
-これで、ブラウザでコントローラー ``job`` を次のURLでブラウザでテストすることができます。
-``http://jobeet.local/job/`` 、または、開発環境では ``http://jobeet.local/app_dev.php/job/`` 。
-You can now test the job controller in a browser: http://jobeet.local/job/ or, in development environment, http://jobeet.local/app_dev.php/job/ .
+これで、``JobController`` をブラウザで``http://jobeet.local/job/`` （開発環境では ``http://jobeet.local/app_dev.php/job/`` ）にアクセスしてテストすることができます。
 
 .. image:: /images/Day-3-index_page.png
 
 これで求人の作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
 そう、Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
-
-以上です。今日、私たちは少ししかPHPコードを書いていませんが、``job`` モデルの動作するWebモジュールを持ちました。それは微調整とカスタマイズの準備ができています。
+以上です。今日、私たちは少ししかPHPコードを書いていませんが、微調整とカスタマイズの準備ができた、 ``job`` モデルのためのWebモジュールを持ちました。
 明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
-You can now create and edit jobs. Try to leave a required field blank, or try to enter invalid data.
-That’s right, Symfony has created basic validation rules by introspecting the database schema.
-That’s all. Today, we have barely written PHP code but we have a working web module for the job model,ready to be tweaked and customized.
-Tomorrow, we will get familiar with the controller and the view. See you next time!
 
 .. include:: common/license.rst.inc
 
