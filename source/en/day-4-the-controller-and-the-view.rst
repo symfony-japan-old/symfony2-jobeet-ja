@@ -159,7 +159,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
    <!-- rest of the code -->
 
-src/Ibw/JobeetBundle/Resources/views/Job/show.html.twigXHTML
+src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
 .. code-block:: jinja
 
