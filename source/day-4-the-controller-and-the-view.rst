@@ -143,10 +143,15 @@ Twig ブロック
 Twig Blocks
 -----------
 
-上で行ったように小枝に、デフォルトSymfonyのテンプレートエンジンは、あなたがブロックを定義することができます。小枝ブロックを交換したり、一瞬で見るように、子テンプレートで拡張することができ、デフォルトのコンテンツを（例えば、タイトルブロックを見て）を有することができる。
-今、私たちが作成したレイアウトを利用するために、私たちはすべてのジョブテンプレートを（インデックス、編集、新規およびSRCからのsrc/Ibw/JobeetBundle/Resources/views/Job/）親テンプレートを拡張する（レイアウト編集する必要があります）と私たちは、元のテンプレートからの本体ブロックの内容で定義されたコンテンツブロックを上書きする
-In Twig, the default Symfony template engine, you can define blocks as we did above. A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
-Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/) to extend the parent template (the layout) and to overwrite the content block we defined with the body block content from the original template
+Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
+``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
+それらは、子テンプレートで置換または拡張することができます。
+作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
+親テンプレート（ ``layout`` ）を拡張し、元のテンプレートの``body`` ブロックの内容で ``content`` ブロックを上書きします。
+In Twig, the default Symfony template engine, you can define blocks as we did above.
+A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
+Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/)
+to extend the parent template (the layout) and to overwrite the content block we defined with the body block content from the original template
 
 .. code-block:: jinja
 
@@ -161,16 +166,22 @@ Now, to make use of the layout we created, we will need to edit all the job temp
 The Stylesheets, Images and JavaScripts
 ---------------------------------------
 
-これはウェブデザインに関するものではないとして、私たちはすでに私たちはJobeetのに使用するすべての必要な資産を準備しました：ダウンロード： `の画像ファイルに</resources/jobeet-images.zip>`アーカイブをダウンロードし、SRC/ IBWに入れて/ JobeetBundle/リソース/公共/ images /ディレクトリ; ：ダウンロード： `スタイルシート</resources/jobeet-css.zip>をダウンロードし`ファイルはアーカイブのsrc / IBW/ JobeetBundle/リソース/公共/ CSS/ディレクトリに入れて。
-今すぐ実行する
-As this is not about web design, we have already prepared all the needed assets we will use for Jobeet: :download:`download the image files </resources/jobeet-images.zip>` archive and put them into the src/Ibw/JobeetBundle/Resources/public/images/ directory; :download:`download the stylesheet </resources/jobeet-css.zip>`  files archive and put them into the src/Ibw/JobeetBundle/Resources/public/css/ directory.
+これはウェブデザインに関するものではないので、すでに Jobeet に使用するすべての必要なアセットを準備しました。
+:download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロードし、src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
+:download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロードし、 src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
+そして、コマンドを実行します。
+As this is not about web design, we have already prepared all the needed assets we will use for Jobeet:
+:download:`download the image files </resources/jobeet-images.zip>` archive
+ and put them into the src/Ibw/JobeetBundle/Resources/public/images/ directory;
+:download:`download the stylesheet </resources/jobeet-css.zip>`  files archive
+ and put them into the src/Ibw/JobeetBundle/Resources/public/css/ directory.
 Now run
 
 .. code-block:: bash
 
     $ php app/console assets:install web --symlink
 
-公衆が利用できるようにするためにsymfonyを指示します。
+Symfonyにそれらを公開するよう指示します。
 admin.css、job.css、jobs.cssとのmain.css：あなたはCSSのフォルダ内を見ると、私たちは4 cssファイルを持っていることがわかります。のmain.cssは、すべてのJobeetのページで必要なので、スタイルシートの小枝ブロック内のレイアウトに含めている。残りはより多くのCSSファイルを特化して、私たちは、特定のページにそれらを必要としています。
 テンプレートに新しいcssファイルを追加するには、私たちはスタイルシートブロックを上書きしますが、新しいCSSファイルを追加する前に、親を呼び出します（私たちはあるmain.css、私たちが必要とする追加のcssファイルを持っているであろう）。
 to tell Symfony to make them available to the public.
