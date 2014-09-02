@@ -147,7 +147,7 @@ Symfony のデフォルトのテンプレートエンジンである ``Twig`` �
 ``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
 それらは、子テンプレートで置換または拡張することができます。
 作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
-親テンプレート（ ``layout`` ）を拡張し、元のテンプレートの``body`` ブロックの内容で ``content`` ブロックを上書きします。
+親テンプレート（ ``layout.html.twig`` ）を拡張し、元のテンプレートの``body`` ブロックの内容で ``content`` ブロックを上書きします。
 In Twig, the default Symfony template engine, you can define blocks as we did above.
 A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
 Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/)
@@ -181,11 +181,15 @@ Now run
 
     $ php app/console assets:install web --symlink
 
-Symfonyにそれらを公開するよう指示します。
-admin.css、job.css、jobs.cssとのmain.css：あなたはCSSのフォルダ内を見ると、私たちは4 cssファイルを持っていることがわかります。のmain.cssは、すべてのJobeetのページで必要なので、スタイルシートの小枝ブロック内のレイアウトに含めている。残りはより多くのCSSファイルを特化して、私たちは、特定のページにそれらを必要としています。
-テンプレートに新しいcssファイルを追加するには、私たちはスタイルシートブロックを上書きしますが、新しいCSSファイルを追加する前に、親を呼び出します（私たちはあるmain.css、私たちが必要とする追加のcssファイルを持っているであろう）。
+Symfonyにアセットを公開するよう指示します。
+CSSのフォルダ内を見ると、4つの cssファイル（admin.css、job.css、jobs.cssとのmain.css）を持っていることがわかります。
+main.cssは、すべてのJobeetのページで必要なので、 ``layout.html.twig`` の中の stylesheet ブロック内に含めています。
+残りはより特化した css ファイルで、特定のページのみそれらを必要としています。
+テンプレートに新しい css ファイルを追加するには、私たちは stylesheet ブロックを上書きしますが、
+新しい css ファイルを追加する前に、親を呼び出します（そのため、main.css と追加の css ファイルを持っているでしょう）。
 to tell Symfony to make them available to the public.
-If you look in the css folder, you will notice that we have four css files: admin.css, job.css,jobs.css and main.css. The main.css is needed in all Jobeet pages, so we included it in the layout in the stylesheet twig block. The rest are more specialized css files and we need them only in specific pages.
+If you look in the css folder, you will notice that we have four css files: admin.css, job.css,jobs.css and main.css.
+The main.css is needed in all Jobeet pages, so we included it in the layout in the stylesheet twig block. The rest are more specialized css files and we need them only in specific pages.
 To add a new css file in a template, we will overwrite the stylesheet block, but call the parent before adding the new css file (so we would have the main.css and the additional css files we need).
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
@@ -217,7 +221,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 The Job Homepage Action
 -----------------------
 
-各アクションはクラスのメソッドによって表される。仕事のホームページでは、クラスが ``JobController`` で、メソッドが ``indexAction()`` です。これは、データベースからすべてのジョブを取得します。
+各アクションはクラスのメソッドによって表されます。求人のホームでは、クラスが ``JobController`` で、メソッドが ``indexAction()`` です。以下では、データベースからすべてのジョブを取得しています。
 Each action is represented by a method of a class. For the job homepage, the class is JobController and the method is indexAction(). It retrieves all the jobs from the database.
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -239,9 +243,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーおよびデータベースからオブジェクトを永続化し、
-フェッチのプロセスを処理するための責任があるオブジェクト、およびクエリを作成するリポジトリを取得します。
-これは、テンプレート（ビュー）に渡されるJobオブジェクトのDoctrineのArrayCollectionを返す。
+コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得します。
+それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
+そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
+これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine の ``ArrayCollection`` を返すします。
 Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to
 and from database, and then the repository, that will create a query to retrieve all the jobs.
 It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).
@@ -249,7 +254,7 @@ It returns a Doctrine ArrayCollection of Job objects that are passed to the temp
 The Job Homepage Template
 -------------------------
 
-index.html.twig テンプレートは、すべてのジョブのHTMLテーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
+index.html.twig テンプレートは、すべての ``job`` のHTMLテーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
 The index.html.twig template generates an HTML table for all the jobs. Here is the current template code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
@@ -331,7 +336,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        </ul>
    {% endblock %}
 
-それではのみ利用可能な列のサブセットを表示するように整理してみましょう。以下の ``twig`` の ``block`` の内容を置き換えます：
+それでは利用可能なサブセットのカラムのみ表示するように整理してみましょう。以下の ``twig`` のブロックの内容を置き換えます。：
 Let’s clean this up a bit to only display a sub-set of the available columns. Replace the twig block content with the one below:
 
 .. code-block:: html+jinja
@@ -359,7 +364,7 @@ Let’s clean this up a bit to only display a sub-set of the available columns. 
 The Job Page Template
 ---------------------
 
-今度は、求人ページのテンプレートをカスタマイズしましょう​​。 show.html.twigファイルを開き、次のコードを使用して、その内容を置き換えます。
+今度は、求人ページのテンプレートをカスタマイズしましょう。show.html.twig ファイルを開き、次のコードを使用して、その内容を置き換えます。
 Now let’s customize the template of the job page. Open the show.html.twig file and replace its content with the following code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
@@ -420,7 +425,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 The Job Page Action
 -------------------
 
-求人ページは ``JobController`` の ``showAction()`` メソッドで定義され、showアクションによって生成されます。
+求人ページは show アクションによって生成されます。 ``JobController`` の ``showAction()`` メソッドで定義されます。
 The job page is generated by the show action, defined in the showAction() method of the JobController:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
