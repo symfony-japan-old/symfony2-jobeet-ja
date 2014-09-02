@@ -41,9 +41,9 @@ The Layout
 ----------
 
 あなたは`mockups`_を詳しく見て持っている場合は、各ページのほとんどが同じであることに気づくでしょう。あなたは既に私たちは、HTMLやPHPのコードについて話しているかどうかをそのコードの重複は悪いことです。だからコードが重複しているビュー要素を防止するための方法を見つける必要があります。
-この問題を解決する1つの方法は、ヘッダとフッタを定義し、それらを各テンプレートに含めることである。 `デコレータ設計pattern`_：より良い方法は、この問題を解決するための別の設計パターンを使用することである。デコレータデザインパターンは、周りの問題を別の方法で解決します。テンプレートは、コンテンツがグローバルテンプレートによってレンダリングされた後に、装飾されたレイアウトと呼ばれています。
+この問題を解決する1つの方法は、ヘッダとフッタを定義し、それらを各テンプレートに含めることである。 `decorator design pattern`_：より良い方法は、この問題を解決するための別の設計パターンを使用することである。デコレータデザインパターンは、周りの問題を別の方法で解決します。テンプレートは、コンテンツがグローバルテンプレートによってレンダリングされた後に、装飾されたレイアウトと呼ばれています。
 Symfony2のは、私たちは1を作成し、私たちのアプリケーションページを飾るためにそれを使用し、デフォルトのレイアウトに付属していません。
-のsrc / IBW/ JobeetBundle/リソース/ビュー/ディレクトリに新しいファイルlayout.html.twigを作成し、次のコードに入れ：
+の src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードに入れ：
 If you have a closer look at the `mockups`_, you will notice that much of each page looks the same. You already know that code duplication is bad, whether we are talking about HTML or PHP code, so we need to find a way to prevent these common view elements from resulting in code duplication.
 One way to solve the problem is to define a header and a footer and include them in each template. A better way is to use another design pattern to solve this problem: the `decorator design pattern`_. The decorator design pattern resolves the problem the other way around: the template is decorated after the content is rendered by a global template, called a layout.
 Symfony2 does not came with a default layout, so we will create one and use it to decorate our application pages.
@@ -143,8 +143,8 @@ Twig ブロック
 Twig Blocks
 -----------
 
-上で行ったように小枝に、デフォルトsymfonyのテンプレートエンジンは、あなたがブロックを定義することができます。小枝ブロックを交換したり、一瞬で見るように、子テンプレートで拡張することができ、デフォルトのコンテンツを（例えば、タイトルブロックを見て）を有することができる。
-今、私たちが作成したレイアウトを利用するために、私たちはすべてのジョブテンプレートを（インデックス、編集、新規およびSRCからのshow/ IBW/ JobeetBundle/リソース/ビュー/ジョブ/）親テンプレートを拡張する（レイアウト編集する必要があります）と私たちは、元のテンプレートからの本体ブロックの内容で定義されたコンテンツブロックを上書きする
+上で行ったように小枝に、デフォルトSymfonyのテンプレートエンジンは、あなたがブロックを定義することができます。小枝ブロックを交換したり、一瞬で見るように、子テンプレートで拡張することができ、デフォルトのコンテンツを（例えば、タイトルブロックを見て）を有することができる。
+今、私たちが作成したレイアウトを利用するために、私たちはすべてのジョブテンプレートを（インデックス、編集、新規およびSRCからのsrc/Ibw/JobeetBundle/Resources/views/Job/）親テンプレートを拡張する（レイアウト編集する必要があります）と私たちは、元のテンプレートからの本体ブロックの内容で定義されたコンテンツブロックを上書きする
 In Twig, the default Symfony template engine, you can define blocks as we did above. A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
 Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/) to extend the parent template (the layout) and to overwrite the content block we defined with the body block content from the original template
 
@@ -228,8 +228,12 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-取得するためにクエリを作成します ``indexAction()``メソッドは、次に教義エンティティマネージャおよびデータベースからオブジェクトを永続化し、フェッチのプロセスを処理するための責任があるオブジェクト、およびリポジトリを取得し、：のコードを詳しく見てみましょうすべてのジョブ。これは、テンプレート（ビュー）に渡されるJobオブジェクトの法理のArrayCollectionを返す。
-Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to and from database, and then the repository, that will create a query to retrieve all the jobs. It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).
+コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーおよびデータベースからオブジェクトを永続化し、
+フェッチのプロセスを処理するための責任があるオブジェクト、およびクエリを作成するリポジトリを取得します。
+これは、テンプレート（ビュー）に渡されるJobオブジェクトのDoctrineのArrayCollectionを返す。
+Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to
+and from database, and then the repository, that will create a query to retrieve all the jobs.
+It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).
 
 The Job Homepage Template
 -------------------------
@@ -316,7 +320,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        </ul>
    {% endblock %}
 
-それではのみ利用可能な列のサブセットを表示するように整理してみましょう。以下の一つと ``twig`` の ``block`` の内容を置き換えます：
+それではのみ利用可能な列のサブセットを表示するように整理してみましょう。以下の ``twig`` の ``block`` の内容を置き換えます：
 Let’s clean this up a bit to only display a sub-set of the available columns. Replace the twig block content with the one below:
 
 .. code-block:: html+jinja
