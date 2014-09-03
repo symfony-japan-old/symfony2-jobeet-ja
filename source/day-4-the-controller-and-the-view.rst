@@ -3,7 +3,7 @@
 
 .. include:: common/original.rst.inc
 
-今日は、昨日作成した基本的な``jobController``をカスタマイズいたします。そのための必要なコードの大部分はすでに私たちの Jobeet にはあります：
+今日は、昨日作成した基本的な``jobController`` をカスタマイズいたします。そのための必要なコードの大部分はすでに私たちの Jobeet にはあります：
 Today, we are going to customize the basic ``job controller`` we created yesterday. It already has most of the code we need for Jobeet:
 
 * すべての求人一覧(``list`` )ページ
@@ -15,7 +15,7 @@ Today, we are going to customize the basic ``job controller`` we created yesterd
 * A page to ``update`` an existing job
 * A page to ``delete`` a job
 
-そのままのコードが使用できるようになりましたが、 `Jobeet mockups`_ に近づくようにリファクタリングします。
+そのままのコードで使用はできますが、 `Jobeet mockups`_ に近づくようにリファクタリングします。
 Although the code is ready to be used as is, we will refactor the templates to match closer to the `Jobeet mockups`_.
 
 MVC アーキテクチャー
@@ -24,13 +24,17 @@ The MVC Arhitecture
 ---------------
 
 ウェブ開発のために、今日では、コードを整理するための最も一般的な解決策は、 `MVC design pattern`_ です。
-一言で言えば、MVCデザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
+一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
 For web development, the most common solution for organizing your code nowadays is the `MVC design pattern`_.
 In short, the MVC design pattern defines a way to organize your code according to its nature. This pattern separates the code into ``three layers``:
 
-* モデル層はビジネスロジックを（データベースはこのレイヤーに所属する）を定義します。すでに Symfony の店舗すべてのクラスとファイルがバンドルのエンティティ/ディレクトリ内のモデルに関連したことを知っています。
-* ビューは、ユーザーが（テンプレートエンジンはこのレイヤーの一部である）と相互作用するものです。 Symfony 2.3.2 では、Viewレイヤーは主に小枝テンプレートで構成されている。私たちはこれらの行の後半で見るように彼らは、さまざまなリソース/ビュー/ディレクトリに格納されています。
-* コントローラは、それがクライアントにレンダリングするためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。このチュートリアルの最初にsymfonyをインストールしたときに、私たちはすべての要求がフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見た。これらフロントコントローラはアクションに実際の作業を委任します。
+* モデル層はビジネスロジックを（データベースはこのレイヤーに所属します）を定義します。
+すでに Symfony の店舗すべてのクラスとファイルがバンドルの Entity/ ディレクトリ内のモデルに関連したことを知っています。
+* ビューは、ユーザーが（テンプレートエンジンはこのレイヤーの一部です）と相互作用するものです。
+Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されている。私たちはこれらの行の後半で見るように彼らは、さまざまな Resources/views/ ディレクトリに格納されています。
+* コントローラは、それがクライアントにレンダリングするためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。
+このチュートリアルの最初にsymfonyをインストールしたときに、私たちはすべての要求がフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見た。
+これらフロントコントローラはアクションに実際の作業を委任します。
 * The Model layer defines the business logic (the database belongs to this layer). You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.
 * The View is what the user interacts with (a template engine is part of this layer). In Symfony 2.3.2, the View layer is mainly made of Twig templates. They are stored in various Resources/views/ directories as we will see later in these lines.
 * The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client. When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php). These front controllers delegate the real work to actions.
@@ -450,10 +454,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。この場合は、``find()`` メソッドを使用して。
-このメソッドのパラメータは、ジョブの一意の識別子、その主キーです。 actionShow() 関数の ``$id`` パラメータは ``job`` の主キーが含まれている理由を次のセクションで説明します。
-ジョブがデータベースに存在しない場合は、404 ページにユーザーを転送したい。それは正確には、$this->createNotFoundException() の例外を投げることです。
-例外として、ユーザーに表示されるページはprod環境においてとのdev ennvironmentが異なっている。
+indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。この場合は、``find()`` メソッドを使用します。
+このメソッドのパラメータは、``job`` の一意の識別子である主キーです。
+``actionShow()``  関数の ``$id`` パラメータに ``job`` の主キーが含まれている理由を次のセクションで説明します。
+ジョブがデータベースに存在しない場合は、ユーザーを 404 ページに転送したいです。それはまさに、$this->createNotFoundException() の例外を投げることで行います。
+例外として、ユーザーに表示されるページはprod環境とdev環境で異なってきます。
 As in the index action, the IbwJobeetBundle repository class is used to retrieve a job, this time using the find() method.
 The parameter of this method is the unique identifier of a job, its primary key. The next section will explain why the $id parameter of the actionShow() function contains the job primary key.
 If the job does not exist in the database, we want to forward the user to a 404 page, which is exactly what the throw $this->createNotFoundException() does.
