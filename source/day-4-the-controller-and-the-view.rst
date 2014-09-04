@@ -3,37 +3,33 @@
 
 .. include:: common/original.rst.inc
 
-今日は、昨日作成した基本的な``jobController`` をカスタマイズいたします。そのための必要なコードの大部分はすでに私たちの Jobeet にはあります：
-Today, we are going to customize the basic ``job controller`` we created yesterday. It already has most of the code we need for Jobeet:
+今日は、昨日作成した基本的な``jobController`` をカスタマイズいたします。そのための必要なコードの大部分はすでに私たちの Jobeet にはあります。
 
 * すべての求人一覧(``list`` )ページ
 * 新しい求人作成( ``create`` )ページ
 * 既存の求人の更新( ``update`` )をするページ
 * 求人の削除( ``delete`` )ページ
-* A page to ``list`` all jobs
-* A page to ``create`` a new job
-* A page to ``update`` an existing job
-* A page to ``delete`` a job
 
 そのままのコードで使用はできますが、 `Jobeet mockups`_ に近づくようにリファクタリングします。
-Although the code is ready to be used as is, we will refactor the templates to match closer to the `Jobeet mockups`_.
 
 MVC アーキテクチャー
 --------------------
 
 ウェブ開発のために、今日では、コードを整理するための最も一般的な解決策は、 `MVC design pattern`_ です。
 一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
-For web development, the most common solution for organizing your code nowadays is the `MVC design pattern`_.
-In short, the MVC design pattern defines a way to organize your code according to its nature. This pattern separates the code into ``three layers``:
 
 * モデル層はビジネスロジックを（データベースはこのレイヤーに所属します）を定義します。
-すでに Symfony の店舗すべてのクラスとファイルがバンドルの Entity/ ディレクトリ内のモデルに関連したことを知っています。
+ すでに Symfony には、すべてのクラスとファイルがバンドルの Entity/ ディレクトリ内のモデルに保持しています。
+
 * ビューは、ユーザーが（テンプレートエンジンはこのレイヤーの一部です）と相互作用するものです。
-Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されている。私たちはこれらの行の後半で見るように彼らは、さまざまな Resources/views/ ディレクトリに格納されています。
+ Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されている。私たちはこれらの行の後半で見るように彼らは、さまざまな Resources/views/ ディレクトリに格納されています。
+
 * コントローラは、それがクライアントにレンダリングするためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。
-このチュートリアルの最初にsymfonyをインストールしたときに、私たちはすべての要求がフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見た。
-これらフロントコントローラはアクションに実際の作業を委任します。
-* The Model layer defines the business logic (the database belongs to this layer). You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.
+ このチュートリアルの最初にsymfonyをインストールしたときに、私たちはすべての要求がフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見た。
+ これらフロントコントローラはアクションに実際の作業を委任します。
+* The Model layer defines the business logic (the database belongs to this layer).
+You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.
+
 * The View is what the user interacts with (a template engine is part of this layer). In Symfony 2.3.2, the View layer is mainly made of Twig templates. They are stored in various Resources/views/ directories as we will see later in these lines.
 * The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client. When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php). These front controllers delegate the real work to actions.
 
