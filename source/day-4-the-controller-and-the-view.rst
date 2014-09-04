@@ -19,19 +19,26 @@ MVC アーキテクチャー
 一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
 
 * モデル層はビジネスロジックを（データベースはこのレイヤーに所属します）を定義します。
- すでに Symfony には、すべてのクラスとファイルがバンドルの Entity/ ディレクトリ内のモデルに保持しています。
+ すでに Symfony には、すべてのクラスとファイルをバンドルの Entity/ ディレクトリ内のモデルに保持しています。
 
-* ビューは、ユーザーが（テンプレートエンジンはこのレイヤーの一部です）と相互作用するものです。
- Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されている。私たちはこれらの行の後半で見るように彼らは、さまざまな Resources/views/ ディレクトリに格納されています。
+* ビューは、ユーザーと接する部分です。（テンプレートエンジンはこのレイヤーの一部です）
+ Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されています。
+ 次の文節に出てきまが、それらは、さまざまな Resources/views/ ディレクトリに格納されています。
 
-* コントローラは、それがクライアントにレンダリングするためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。
- このチュートリアルの最初にsymfonyをインストールしたときに、私たちはすべての要求がフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見た。
+* コントローラは、それがクライアントに表示するためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。
+ このチュートリアルの最初に Symfony をインストールしたときに、すべてのリクエストがフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見ました。
  これらフロントコントローラはアクションに実際の作業を委任します。
+
 * The Model layer defines the business logic (the database belongs to this layer).
 You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.
 
-* The View is what the user interacts with (a template engine is part of this layer). In Symfony 2.3.2, the View layer is mainly made of Twig templates. They are stored in various Resources/views/ directories as we will see later in these lines.
-* The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client. When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php). These front controllers delegate the real work to actions.
+* The View is what the user interacts with (a template engine is part of this layer).
+In Symfony 2.3.2, the View layer is mainly made of Twig templates.
+They are stored in various Resources/views/ directories as we will see later in these lines.
+
+* The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client.
+When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php).
+These front controllers delegate the real work to actions.
 
 レイアウト
 ----------
@@ -45,14 +52,6 @@ HTMLやPHPのコードが重複することはよくないことはご存知だ�
 テンプレートは、コンテンツがレイアウトと呼ばれる共通テンプレートによってレンダリングされた後に装飾されます。
 Symfony2 には、デフォルトのレイアウトが付随していないため、レイアウトを作成し、アプリケーションのページを修飾するために使用します。
 src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードを記入します。：
-
-If you have a closer look at the `mockups`_, you will notice that much of each page looks the same.
-You already know that code duplication is bad, whether we are talking about HTML or PHP code, so we need to find a way to prevent these common view elements from resulting in code duplication.
-One way to solve the problem is to define a header and a footer and include them in each template. A better way is to use another design pattern to solve this problem: the `decorator design pattern`_.
-The decorator design pattern resolves the problem the other way around:
-the template is decorated after the content is rendered (by a global template, called a layout).
-Symfony2 does not came with a default layout, so we will create one and use it to decorate our application pages.
-Create a new file layout.html.twig in the src/Ibw/JobeetBundle/Resources/views/ directory and put in the following code:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -148,13 +147,9 @@ Twig ブロック
 
 Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
 ``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
-それらは、子テンプレートで置換または拡張することができます。
+それらを子テンプレートで置換または拡張することができます。
 作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
 親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の``body`` ブロックの内容で ``content`` ブロックを上書きします。
-In Twig, the default Symfony template engine, you can define blocks as we did above.
-A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
-Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/)
-to extend the parent template (the layout) and to overwrite the content block we defined with the body block content from the original template
 
 .. code-block:: jinja
 
@@ -168,32 +163,22 @@ to extend the parent template (the layout) and to overwrite the content block we
 ------------------------------
 
 これはウェブデザインに関するものではないので、すでに Jobeet に使用するすべての必要なアセットを準備しました。
-:download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロードし、
+:download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロード、解凍し、
 src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
-:download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロードし、
+:download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロード、解凍し、
 src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
 そして、以下のコマンドを実行します。
-As this is not about web design, we have already prepared all the needed assets we will use for Jobeet:
-:download:`download the image files </resources/jobeet-images.zip>` archive
- and put them into the src/Ibw/JobeetBundle/Resources/public/images/ directory;
-:download:`download the stylesheet </resources/jobeet-css.zip>`  files archive
- and put them into the src/Ibw/JobeetBundle/Resources/public/css/ directory.
-Now run
 
 .. code-block:: bash
 
     $ php app/console assets:install web --symlink
 
 Symfonyにアセットを公開するよう指示します。
-CSSのフォルダ内を見ると、4つの cssファイル（admin.css、job.css、jobs.cssとのmain.css）を持っていることがわかります。
-main.cssは、すべてのJobeetのページで必要なので、 ``layout.html.twig`` の中の stylesheet ブロック内に含めています。
-残りはより特化した css ファイルで、特定のページのみそれらを必要としています。
-テンプレートに新しい css ファイルを追加するには、私たちは stylesheet ブロックを上書きしますが、
-新しい css ファイルを追加する前に、親を呼び出します（そのため、main.css と追加の css ファイルを持っているでしょう）。
-to tell Symfony to make them available to the public.
-If you look in the css folder, you will notice that we have four css files: admin.css, job.css,jobs.css and main.css.
-The main.css is needed in all Jobeet pages, so we included it in the layout in the stylesheet twig block. The rest are more specialized css files and we need them only in specific pages.
-To add a new css file in a template, we will overwrite the stylesheet block, but call the parent before adding the new css file (so we would have the main.css and the additional css files we need).
+css のフォルダ内を見ると、4つの cssファイル（admin.css、job.css、jobs.cssとのmain.css）を持っていることがわかります。
+main.cssは、すべてのJobeetのページで必要なため、 ``layout.html.twig`` の中の stylesheet ブロック内に含めています。
+残りは各ページごとに特化した css ファイルで、特定のページのみそれらを必要としています。
+テンプレートに新しい css ファイルを追加するには、 stylesheet ブロックを上書きします。
+ブロックの中で、新しい css ファイルを追加する前に、親を呼び出します（そのため、main.css と追加の css ファイルを持っているでしょう）。
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -221,11 +206,11 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    <!-- rest of the code -->
 
-求人ホームページのアクション
-----------------------------
+求人のトップページのアクション
+-------------------------------
 
-各アクションはクラスのメソッドによって表されます。求人のホームでは、クラスが ``JobController`` で、メソッドが ``indexAction()`` です。以下では、データベースからすべてのジョブを取得しています。
-Each action is represented by a method of a class. For the job homepage, the class is JobController and the method is indexAction(). It retrieves all the jobs from the database.
+各アクションはクラスのメソッドによって表されます。求人のトップページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
+以下では、データベースからすべてのジョブを取得しています。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -250,15 +235,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
 そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
 これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
-Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to
-and from database, and then the repository, that will create a query to retrieve all the jobs.
-It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).
 
-求人ホームページのテンプレート
-------------------------------
+求人のトップページのテンプレート
+--------------------------------
 
 index.html.twig テンプレートは、すべての求人の HTML テーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
-The index.html.twig template generates an HTML table for all the jobs. Here is the current template code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -341,7 +322,6 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 それでは利用可能なのカラムのセットのみを表示するように整理してみましょう。
 以下の ``twig`` のブロックの内容を置き換えます。：
-Let’s clean this up a bit to only display a sub-set of the available columns. Replace the twig block content with the one below:
 
 .. code-block:: html+jinja
 
@@ -365,11 +345,10 @@ Let’s clean this up a bit to only display a sub-set of the available columns. 
 
 .. image:: /images/Day-4-2-jobs.png
 
-The Job Page Template
----------------------
+求人ページテンプレート
+----------------------
 
 今度は、求人ページのテンプレートをカスタマイズしましょう。show.html.twig ファイルを開き、次のコードを使用して、その内容を置き換えます。
-Now let’s customize the template of the job page. Open the show.html.twig file and replace its content with the following code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
@@ -426,11 +405,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
 .. image:: /images/Day-4-individual-job.png
 
-The Job Page Action
--------------------
+求人詳細ページアクション
+------------------------
 
 求人ページは show アクションによって生成されます。 ``JobController`` の ``showAction()`` メソッドで定義されます。
-The job page is generated by the show action, defined in the showAction() method of the JobController:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -454,21 +432,16 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。この場合は、``find()`` メソッドを使用します。
+indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。ここでは、``find()`` メソッドを使用しています。
 このメソッドのパラメータは、``job`` の一意の識別子である主キーです。
 ``actionShow()``  関数の ``$id`` パラメータに ``job`` の主キーが含まれている理由を次のセクションで説明します。
-ジョブがデータベースに存在しない場合は、ユーザーを 404 ページに転送したいです。それはまさに、$this->createNotFoundException() の例外を投げることで行います。
-例外として、ユーザーに表示されるページはprod環境とdev環境で異なってきます。
-As in the index action, the IbwJobeetBundle repository class is used to retrieve a job, this time using the find() method.
-The parameter of this method is the unique identifier of a job, its primary key. The next section will explain why the $id parameter of the actionShow() function contains the job primary key.
-If the job does not exist in the database, we want to forward the user to a 404 page, which is exactly what the throw $this->createNotFoundException() does.
-As for exceptions, the page displayed to the user is different in the prod environment and in the dev ennvironment.
+データベースにジョブが存在しない場合、$this->createNotFoundException() の例外を投げることで、ユーザーを 404 ページに転送します。
+例外として、ユーザーに表示されるページは prod 環境と dev 環境で異なります。
 
 .. image:: /images/Day-4-error1.png
 .. image:: /images/Day-4-error2.png
 
 今日はこれですべてです！明日は、ルーティング機能に詳しくなりましょう。
-That’s all for today! Tomorrow we will get you familiar with the routing features.
 
 .. include:: common/license.rst.inc
 
