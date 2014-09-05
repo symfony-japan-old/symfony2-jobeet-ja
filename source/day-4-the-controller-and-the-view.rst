@@ -25,20 +25,10 @@ MVC アーキテクチャー
  Symfony 2.3.2 では、Viewレイヤーは主に ``Twig`` テンプレートで構成されています。
  次の文節に出てきまが、それらは、さまざまな Resources/views/ ディレクトリに格納されています。
 
-* コントローラは、それがクライアントに表示するためのビューに渡すいくつかのデータを取得するためにモデルを呼び出すコードの一部です。
+* コントローラは、クライアントに表示するためのビューに渡すデータを、モデルから取得するコードの一部です。
  このチュートリアルの最初に Symfony をインストールしたときに、すべてのリクエストがフロントコントローラ（app.phpとapp_dev.php）によって管理されていることを見ました。
  これらフロントコントローラはアクションに実際の作業を委任します。
 
-* The Model layer defines the business logic (the database belongs to this layer).
-You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.
-
-* The View is what the user interacts with (a template engine is part of this layer).
-In Symfony 2.3.2, the View layer is mainly made of Twig templates.
-They are stored in various Resources/views/ directories as we will see later in these lines.
-
-* The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client.
-When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php).
-These front controllers delegate the real work to actions.
 
 レイアウト
 ----------
