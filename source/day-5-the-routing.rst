@@ -6,23 +6,35 @@
 URLs
 ---------------
 
-/仕事/1/ショー：Jobeetホームページ上の求人情報をクリックすると、URLは次のようになります。すでにPHPでWebサイトを開発している場合は、おそらく/job.php?id=1のようなURLに慣れている。どのようにsymfonyはそれを動作させるのですか？どのようにsymfonyはこのURLを基本とするアクションを決定するのですか？なぜジョブのIDは、アクションの$ idパラメータを使用して取得された？ここでは、これらすべての質問にお答えします。
-あなたは既にのsrc / IBW/ JobeetBundle/リソース/ビュー/ジョブ/ index.html.twigテンプレートに次のコードを見てきました。
-If you click on a job on the Jobeet homepage, the URL looks like this: /job/1/show. If you have already developed PHP websites, you are probably more accustomed to URLs like /job.php?id=1. How does Symfony make it work? How does Symfony determine the action to call based on this URL? Why is the id of the job retrieved with the $id parameter in the action? Here, we will answer all these questions.
+Jobeetトップページの求人情報をクリックすると、URLは /job/1/show のようになります。
+すでにPHPでWebサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
+Symfony はどのようにそれを動作させるのでしょうか？ どのようにこのURLを基本とするアクションを決定するのでしょうか？
+なぜジョブの ID は、アクションの $id パラメータを使用して取得されたのでしょうか？ここでは、これらすべての質問にお答えします。
+あなたは既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
+If you click on a job on the Jobeet homepage, the URL looks like this: /job/1/show.
+If you have already developed PHP websites, you are probably more accustomed to URLs like /job.php?id=1.
+How does Symfony make it work? How does Symfony determine the action to call based on this URL?
+Why is the id of the job retrieved with the $id parameter in the action? Here, we will answer all these questions.
 You have already seen the following code in the src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig template:
 
 .. code-block:: html+jinja
 
    {{ path('ibw_job_show', { 'id': entity.id }) }}
 
-これはibw_job_showあなたは以下に見るような構成に定義されて使用されるルートの名前でID 1を持つジョブのURLを生成するために、パスのテンプレートヘルパー関数を使用しています。
+これはID 1を持つジョブのURLを生成するために、パステンプレートヘルパー関数を使用しています。 ibw_job_show は使用されるルートの名前です。以下で参照する設定で定義されています。
 This uses the path template helper function to generate the url for the job which has the id 1. The ibw_job_show is the name of the route used, defined in the configuration as you will see below.
 
+ルーティング設定
+----------------
 Routing Configuration
 ---------------------
 
-Symfony2のでは、ルーティング設定は、通常のアプリ/ configに/ routing.ymlファイルで行われます。これは、特定のバンドルルーティング設定をインポートします。この例では、SRC/ IBW/ JobeetBundle/リソース/設定/のrouting.ymlファイルがインポートされます：
-In Symfony2, routing configuration is usually done in the app/config/routing.yml. This imports specific bundle routing configuration. In our case, the src/Ibw/JobeetBundle/Resources/config/routing.yml file is imported:
+Symfony2 では、ルーティング設定は、通常の app/config/routing.yml ファイルで行われます。
+これは、特定のバンドルルーティング設定をインポートします。
+この例では、 src/Ibw/JobeetBundle/Resources/config/routing.yml ファイルがインポートされます：
+In Symfony2, routing configuration is usually done in the app/config/routing.yml.
+This imports specific bundle routing configuration.
+In our case, the src/Ibw/JobeetBundle/Resources/config/routing.yml file is imported:
 
 app/config/routing.yml
 
@@ -32,8 +44,11 @@ app/config/routing.yml
        resource: "@IbwJobeetBundle/Resources/config/routing.yml"
        prefix:   /
 
-さて、あなたはそれが別のルーティングファイル、ジョブ·コントローラのための1つをインポートし、ibw_jobeet_homepage/ハロー/{名前} URLパターンのためと呼ばれるルートを定義することをお分かりでしょうのrouting.yml JobeetBundleに見れば：
-Now, if you look in the JobeetBundle routing.yml you will see that it imports another routing file, the one for the Job controller and defines a route called ibw_jobeet_homepage for the /hello/{name} URL pattern:
+さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
+ジョブ·コントローラのための1つをインポートし、
+ibw_jobeet_homepage /hello/{name} URLパターンのためと呼ばれるルートを定義することをお分かりでしょうの：
+Now, if you look in the JobeetBundle routing.yml you will see that it imports another routing file,
+ the one for the Job controller and defines a route called ibw_jobeet_homepage for the /hello/{name} URL pattern:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -99,6 +114,8 @@ Routing Configuration in Dev Environment
 devの環境はWebデバッグツールバーで使用されるルートが含まれ、アプリ/ configに/ routing_dev.ymlファイルをロードします（すでに/app/config/routing_dev.phpからAcmeDemoBundleのルートに削除 - を参照して1日目を、どのように削除するにはAcmeDemoBundle）。このファイルをロードし、終了時には、メインのrouting.ymlの設定ファイル。
 The dev environment loads the app/config/routing_dev.yml file that contains the routes used by the Web Debug Toolbar (you already deleted the routes for the AcmeDemoBundle from /app/config/routing_dev.php – see Day 1, How to remove the AcmeDemoBundle). This file loads, at the end, the main routing.yml configuration file.
 
+ルートのカスタマイズ
+--------------------
 Route Customizations
 --------------------
 
@@ -238,10 +255,12 @@ src/Ibw/JobeetBundle/views/Job/index.html.twig
    </a>
    <!-- ... -->
 
+ルートの要件
+------------
 Route Requirements
 ------------------
 
-ルーティングシステムは組み込みの検証機能を持っています。各パターンの変数はルート定義の要件エントリを使用して定義された正規表現によって検証することができます。
+ルーティングシステムは組み込みの検証機能を持っています。ルート定義の ``requirements`` の項目で定義された正規表現によって``pattern`` の各変数を検証することができます。
 The routing system has a built-in validation feature. Each pattern variable can be validated by a regular expression defined using the requirements entry of a route definition:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
@@ -257,21 +276,29 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
    # ...
 
-上記の要件項目は、数値の値にIDを強制します。そうでない場合は、ルートが一致しません。
+上記の ``requirements`` の項目は、id の値に数値型を強制します。そうでない場合は、ルートが一致しません。
 The above requirements entry forces the id to be a numeric value. If not, the route won’t match.
 
+ルートのデバッグ
+----------------
 Route Debugging
 ---------------
 
-追加とルートをカスタマイズするが、それは視覚化し、あなたのルートに関する詳細な情報を取得できるようにすると便利です。デバッグコンソールコマンド：アプリケーション内のすべてのルート参照するのに最適な方法は、ルータを介して行われる。プロジェクトのルートから以下を実行して、コマンドを実行します。
-While adding and customizing routes, it’s helpful to be able to visualize and get detailed information about your routes. A great way to see every route in your application is via the router:debug console command. Execute the command by running the following from the root of your project:
+ルートの追加とカスタマイズをする時に、ルートを視覚化し、それに関する詳細な情報を取得できるようにすると便利です。
+アプリケーション内のすべてのルート参照するのに最適な方法は、 ``router:debug`` というコンソールコマンドです。
+プロジェクトのルートから以下のコマンドを実行します。
+While adding and customizing routes, it’s helpful to be able to visualize and get detailed information about your routes.
+A great way to see every route in your application is via the router:debug console command.
+Execute the command by running the following from the root of your project:
 
 .. code-block:: bash
 
    $ php app/console router:debug
 
-コマンドは、アプリケーション内のすべての設定されたルートの有用一覧を出力します。また、コマンドの後にルート名を含めることで、単一の経路上の非常に具体的な情報を得ることができます。
-The command will print a helpful list of all the configured routes in your application. You can also get very specific information on a single route by including the route name after the command:
+コマンドは、アプリケーション内のすべての設定されたルート一覧を出力します。
+また、コマンドの後にルート名を含めることで、単一ルートの非常に具体的な情報を得ることができます。
+The command will print a helpful list of all the configured routes in your application.
+You can also get very specific information on a single route by including the route name after the command:
 
 .. code-block:: bash
 
@@ -280,7 +307,7 @@ The command will print a helpful list of all the configured routes in your appli
 最終的な考え
 Final Thoughts
 
-つまり、今日のすべてです！ Symfony2のルーティングシステムの詳細については、ルーティング章では、本を読ん形成。
+これで今日のすべてです！ Symfony2のルーティングシステムの詳細については、``book`` のルーティング章を読んでください。
 That’s all for today! To learn more about the Symfony2 routing system read the Routing chapter form the book.
 
 .. include:: common/license.rst.inc
