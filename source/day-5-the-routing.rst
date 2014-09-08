@@ -12,11 +12,6 @@ Symfony はどのようにそれを動作させるのでしょうか？ このUR
 なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
 ここでは、これらすべての質問にお答えします。
 あなたは既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
-If you click on a job on the Jobeet homepage, the URL looks like this: /job/1/show.
-If you have already developed PHP websites, you are probably more accustomed to URLs like /job.php?id=1.
-How does Symfony make it work? How does Symfony determine the action to call based on this URL?
-Why is the id of the job retrieved with the $id parameter in the action? Here, we will answer all these questions.
-You have already seen the following code in the src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig template:
 
 .. code-block:: html+jinja
 
@@ -24,8 +19,6 @@ You have already seen the following code in the src/Ibw/JobeetBundle/Resources/v
 
 これはid 1を持つジョブのURLを生成するために、パステンプレートヘルパー関数を使用しています。
 ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
-This uses the path template helper function to generate the url for the job which has the id 1.
-The ibw_job_show is the name of the route used, defined in the configuration as you will see below.
 
 ルーティング設定
 ----------------
@@ -33,9 +26,6 @@ The ibw_job_show is the name of the route used, defined in the configuration as 
 Symfony2 では、ルーティング設定は、通常の app/config/routing.yml ファイルで行われます。
 これは、特定のバンドルのルーティング設定をインポートします。
 この例では、 src/Ibw/JobeetBundle/Resources/config/routing.yml ファイルがインポートされます。
-In Symfony2, routing configuration is usually done in the app/config/routing.yml.
-This imports specific bundle routing configuration.
-In our case, the src/Ibw/JobeetBundle/Resources/config/routing.yml file is imported:
 
 app/config/routing.yml
 
@@ -47,9 +37,6 @@ app/config/routing.yml
 
 さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
 そのファイルは、ジョブ·コントローラのためのものです。また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
-
-Now, if you look in the JobeetBundle routing.yml you will see that it imports another routing file,
- the one for the Job controller and defines a route called ibw_jobeet_homepage for the /hello/{name} URL pattern:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -100,17 +87,10 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
 それでは ibw_job_show ルートを詳しく見てみましょう。
 ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
-URL /1/show の場合、変数 id は 1という値を取得します。それはコントローラーで利用可能です。
+URL /1/show の場合は、コントローラーで利用可能なid の値は、 1 です。
 _controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
 私たちのケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
 各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
-
-Let’s have a closer look to the ibw_job_show route.
-The pattern defined by the ibw_job_show route acts like /*/show where the wildcard is given the name id.
-For the URL /1/show, the id variable gets a value of 1, which is available for you to use in your controller.
-The _controller parameter is a special key that tells Symfony which controller/action should be executed when a URL matches this route,
-in our case it should execute the showAction from the JobController in the IbwJobeetBundle.
-The route parameters (e.g. {id}) are especially important because each is made available as an argument to the controller method.
 
 Dev 環境のルーティング設定
 --------------------------
@@ -236,6 +216,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
    }
 
 また、ジョブ·クラス定義の前にuse文を追加する必要があります。
+
 その後、src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
 You must also add the use statement before the Job class definition.
 After that, create the src/Ibw/JobeetBundle/Utils/Jobeet.php file and add the slugify method in it:
