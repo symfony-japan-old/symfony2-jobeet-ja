@@ -98,9 +98,6 @@ Dev 環境のルーティング設定
 devの環境はWebデバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
 （すでに/app/config/routing_dev.php からAcmeDemoBundleのルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
 このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
-The dev environment loads the app/config/routing_dev.yml file that contains the routes used by the Web Debug Toolbar
- (you already deleted the routes for the AcmeDemoBundle from /app/config/routing_dev.php – see Day 1, How to remove the AcmeDemoBundle).
- This file loads, at the end, the main routing.yml configuration file.
 
 ルートのカスタマイズ
 --------------------
@@ -110,12 +107,6 @@ The dev environment loads the app/config/routing_dev.yml file that contains the 
 ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController 、 index アクションに送ります。
 これを URL / と一致するように変更して、 JobController の index アクションを呼び出すようにしてみましょう。
 変更を行うには、次のように行います。
-
-For now, when you request the / URL in a browser, you will get a 404 Not Found error.
-That’s because this URL does not match any routes defined.
-We have a  ibw_jobeet_homepage route that matches the /hello/jobeet URL and sends us to the DefaultController, index action.
-Let’s change it to match the / URL and to call the index action from the JobController.
- To make the change, modify it to the following:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -127,9 +118,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        defaults: { _controller: IbwJobeetBundle:Job:index }
 
 キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のトップページが表示されます。
-レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用するように変更することができます。
-Now, if you clear the cache and go to ``http://jobeet.local`` from your browser, you will see the Job homepage.
-We can now change the link of the Jobeet logo in the layout to use the ibw_jobeet_homepage route:
+これで、レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用したものに変更することができます。
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -141,20 +130,16 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </a></h1>
    <!-- ... -->
 
-もう少し複雑にするため、求人ページのURLをより意味のあるものに変更してみましょう。
-For something a bit more involved, let’s change the job page URL to something more meaningful::
+もう少し複雑にするため、求人ページのURLを以下のように、より意味のあるものに変更してみましょう。
 
     /job/sensio-labs/paris-france/1/web-developer
 
 Jobeetのことを何も知らなくても、ページを見なくても、Sensio LabsがWeb開発者をフランスのパリで探していることを、URLから理解することができます。
 以下のパターンは、上記のURLと一致します。
-Without knowing anything about Jobeet, and without looking at the page, you can understand from the URL that Sensio Labs is looking for a Web developer to work in Paris, France.
-The following pattern matches such a URL::
 
     /job/{company}/{location}/{id}/{position}
 
 job.yml ファイルの ibw_job_show ルートを編集します。
-Edit the ibw_job_show route from the job.yml file:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -167,7 +152,6 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        defaults: { _controller: "IbwJobeetBundle:Job:show" }
 
 変更されたルートを動かすためのすべてのパラメータを渡す必要があります。
-Now, we need to pass all the parameters for the changed route for it to work:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -180,13 +164,11 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
    <!-- ... -->
 
 生成されたURLを見てみると、それらをまだ使えるものではありません。
-If you have a look at generated URLs, they are not quite yet as we want them to be::
 
    http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
 
-私たちは、すべての非ASCII文字を "-" に置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
+私たちは、すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
 Job.phpファイルを開き、クラスに次のメソッドを追加します。
-We need to “slugify” the column values by replacing all non ASCII characters by a -. Open the Job.php file and add the following methods to the class:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -218,8 +200,6 @@ src/Ibw/JobeetBundle/Entity/Job.php
 また、ジョブ·クラス定義の前にuse文を追加する必要があります。
 
 その後、src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
-You must also add the use statement before the Job class definition.
-After that, create the src/Ibw/JobeetBundle/Utils/Jobeet.php file and add the slugify method in it:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -242,11 +222,8 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
    }
 
 私たちは3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
-彼らはそれに slugify() メソッドを適用した後で対応するカラムの値を返します。
+それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
 ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
-We have defined three new “virtual” accessors: getCompanySlug(), getPositionSlug(), and getLocationSlug().
-They return their corresponding column value after applying it the slugify() method.
-Now, you can replace the real column names by these virtual ones in the template:
 
 src/Ibw/JobeetBundle/views/Job/index.html.twig
 
@@ -262,7 +239,6 @@ src/Ibw/JobeetBundle/views/Job/index.html.twig
 ------------------------
 
 ルーティングシステムは組み込みの検証機能を持っています。ルート定義の ``requirements`` の項目で定義された正規表現によって``pattern`` の各変数を検証することができます。
-The routing system has a built-in validation feature. Each pattern variable can be validated by a regular expression defined using the requirements entry of a route definition:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -278,7 +254,6 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
    # ...
 
 上記の ``requirements`` の項目は、id の値に数値型を強制します。そうでない場合は、ルートが一致しません。
-The above requirements entry forces the id to be a numeric value. If not, the route won’t match.
 
 ルートのデバッグ
 ----------------
@@ -286,27 +261,19 @@ The above requirements entry forces the id to be a numeric value. If not, the ro
 ルートの追加とカスタマイズをする時に、ルートを視覚化し、それに関する詳細な情報を取得できるようにすると便利です。
 アプリケーション内のすべてのルート参照するのに最適な方法は、 ``router:debug`` というコンソールコマンドです。
 プロジェクトのルートから以下のコマンドを実行します。
-While adding and customizing routes, it’s helpful to be able to visualize and get detailed information about your routes.
-A great way to see every route in your application is via the router:debug console command.
-Execute the command by running the following from the root of your project:
 
 .. code-block:: bash
 
    $ php app/console router:debug
 
-コマンドは、アプリケーション内のすべての設定されたルート一覧を出力します。
+このコマンドは、アプリケーション内に設定されたすべてのルートを一覧で出力します。
 また、コマンドの後にルート名を含めることで、単一ルートの非常に具体的な情報を得ることができます。
-The command will print a helpful list of all the configured routes in your application.
-You can also get very specific information on a single route by including the route name after the command:
 
 .. code-block:: bash
 
    $ php app/console router:debug ibw_job_show
 
-最終的な考え
-Final Thoughts
 
 これで今日のすべてです！ Symfony2のルーティングシステムの詳細については、``book`` のルーティング章を読んでください。
-That’s all for today! To learn more about the Symfony2 routing system read the Routing chapter form the book.
 
 .. include:: common/license.rst.inc
