@@ -1,2 +1,720 @@
 8日目: ユニットテスト
 =====================
+Day 8: The Unit Tests
+=====================
+
+.. include:: common/original.rst.inc
+
+symfonyにおいてテスト
+Tests in Symfony
+----------------
+
+ユニットテストと機能テスト：自動化されたsymfonyにおいてのテストの2種類があります。単体テストは、各メソッドと機能が正常に動作していることを確認します。各テストは、他の人から、可能な限り独立していなければならない。一方で、機能テストはアプリケーションの結果は、全体として正しく動作することを確認します。 
+次の投稿はfuncionalテストに専念されるのに対し、ユニットテストは、この記事で説明します。 
+Symfony2のはあなたの豊富なテスト·フレームワークを提供する独立した図書館、PHPUnitは、と統合されています。テストを実行するには、PHPUnitを3.5.11以降をインストールする必要があります。
+There are two different kinds of automated tests in Symfony: unit tests and functional tests. Unit tests verify that each method and function is working properly. Each test must be as independent as possible from the others. On the other hand, functional tests verify that the resulting application behaves correctly as a whole.
+Unit tests will be covered in this post, whereas the next post will be dedicated to funcional tests.
+Symfony2 integrates with an independent library, the PHPUnit, to give you a rich testing framework. To run tests, you will have to install PHPUnit 3.5.11 or later.
+
+.. note::
+
+       あなたはPHPUnitはインストールされていない場合は、それを得るために、以下を使用します。
+   If you don’t have PHPUnit installed, use the following to get it:
+
+   .. code-block:: bash
+
+      $ sudo apt-get install phpunit
+      $ sudo pear channel-discover pear.phpunit.de
+      $ sudo pear channel-discover pear.symfony-project.com
+      $ sudo pear channel-discover components.ez.no
+      $ sudo pear channel-discover pear.symfony.com
+      $ sudo pear update-channels
+      $ sudo pear upgrade-all
+      $ sudo pear install pear.symfony.com/Yaml
+      $ sudo pear install --alldeps phpunit/PHPUnit
+      $ sudo pear install --force --alldeps phpunit/PHPUnit
+
+各テスト - それはユニットテストや機能テストがのかどうか - あなたのバンドルのテスト/サブディレクトリに生きるべきPHPのクラスです。このルールに従っている場合は、次のコマンドを使用して、アプリケーションのテストをすべて実行することができます。
+Each test – whether it’s a unit test or a functional test – is a PHP class that should live in the Tests/ subdirectory of your bundles. If you follow this rule, then you can run all of your application’s tests with the following command:
+
+.. code-block:: bash
+
+   $ phpunit -c app/
+
+-cオプションは、構成ファイルのためのアプリケーション/ディレクトリを探すようにPHPUnitのように指示します。あなたはPHPUnitのオプションについて興味があるなら、アプリ/ phpunit.xml.distファイルをチェックアウト。 
+ユニットテストは、通常、特定のPHPクラスに対するテストです。 slugify（）メソッドを使用しますのは、Jobeetのためのテストを書くことから始めましょう。 
+のsrc / IBW/ JobeetBundle/テスト/ Utilsのフォルダに新しいファイル、JobeetTest.phpを作成します。慣例により、テスト/サブディレクトリは、あなたのバンドルのディレクトリを複製する必要があります。私たちは、バンドルのUtilsの/ディレクトリ内のクラスをテストしているときに、私たちはテストの/のUtilsの/ディレクトリにテストを置く。
+The -c option tells PHPUnit to look in the app/ directory for a configuration file. If you’re curious about the PHPUnit options, check out the app/phpunit.xml.dist file.
+A unit test is usually a test against a specific PHP class. Let’s start by writing tests for the Jobeet:slugify() method.
+Create a new file, JobeetTest.php, in the src/Ibw/JobeetBundle/Tests/Utils folder. By convention, the Tests/ subdirectory should replicate the directory of your bundle. So, when we are testing a class in our bundle’s Utils/ directory, we put the test in the Tests/Utils/ directory:
+
+src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Tests\Utils;
+
+   use Ibw\JobeetBundle\Utils\Jobeet;
+
+   class JobeetTest extends \PHPUnit_Framework_TestCase
+   {
+       public function testSlugify()
+       {
+           $this->assertEquals('sensio', Jobeet::slugify('Sensio'));
+           $this->assertEquals('sensio-labs', Jobeet::slugify('sensio labs'));
+           $this->assertEquals('sensio-labs', Jobeet::slugify('sensio labs'));
+           $this->assertEquals('paris-france', Jobeet::slugify('paris,france'));
+           $this->assertEquals('sensio', Jobeet::slugify(' sensio'));
+           $this->assertEquals('sensio', Jobeet::slugify('sensio '));
+       }
+   }
+
+唯一このテストを実行するには、次のコマンドを使用できます。
+To run only this test, you can use the following command:
+
+.. code-block:: bash
+
+   $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
+
+すべてが正常に動作する必要があり、あなたは次のような結果を得る必要があります::
+As everything should work fine, you should get the following result::
+
+   PHPUnit 3.7.22 by Sebastian Bergmann.
+
+   Configuration read from /var/www/jobeet/app/phpunit.xml.dist
+
+   .
+   Time: 0 seconds, Memory: 8.00Mb
+
+   OK (1 test, 6 assertions)
+
+アサーションの完全なリストでは、PHPUnitのドキュメントを確認することができます。
+For a full list of assertions, you can check the PHPUnit documentation.
+
+新機能のテストを追加
+Adding Tests for new Features
+-----------------------------
+
+空の文字列のためのスラグは空の文字列です。あなたはそれをテストすることができ、それが動作します。しかし、URLに空の文字列は、その素晴らしいアイデアではありません。それは空の文字列の場合は「NA」の文字列を返すようにましょslugify（）メソッドを変更してみましょう。 
+その後、最初にテストを書く方法、または他の方法で回避を更新することができます。それは本当に好みの問題ですが、最初のテストを書くことは、あなたのコードは、実際にあなたが計画し何を実装することをあなたに自信を与える：
+The slug for an empty string is an empty string. You can test it, it will work. But an empty string in a URL is not that a great idea. Let’s change the slugify() method so that it returns the “n-a” string in case of an empty string.
+You can write the test first, then update the method, or the other way around. It is really a matter of taste, but writing the test first gives you the confidence that your code actually implements what you planned:
+
+src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
+
+.. code-block:: php
+
+   // ...
+
+   $this->assertEquals('n-a', Jobeet::slugify(''));
+
+   // ...
+
+私たちは、テストを再実行すると今、私たちは、障害を持つことになります::
+Now, if we run the test again, we will have a failure::
+
+   PHPUnit 3.7.22 by Sebastian Bergmann.
+
+   Configuration read from /var/www/jobeet/app/phpunit.xml.dist
+
+   F
+
+   Time: 0 seconds, Memory: 8.25Mb
+
+   There was 1 failure:
+
+   1) Ibw\JobeetBundle\Tests\Utils\JobeetTest::testSlugify
+   Failed asserting that two strings are equal.
+   --- Expected
+   +++ Actual
+   @@ @@
+   -'n-a'
+   +''
+
+   /var/www/jobeet/src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php:13
+
+   FAILURES!
+   Tests: 1, Assertions: 5, Failures: 1.
+
+
+さて、Jobeetの:: slugifyメソッドを編集し、先頭に次の条件を追加します。
+Now, edit the Jobeet::slugify method and add the following condition at the beginning:
+
+src/Ibw/JobeetBundle/Utils/Jobeet.php
+
+.. code-block:: php
+
+   // ...
+
+       static public function slugify($text)
+       {
+           if (empty($text)) {
+               return 'n-a';
+           }
+
+           // ...
+       }
+
+期待どおりのテストはパスしなければなりません、あなたは緑のバーを楽しむことができます。
+The test must now pass as expected, and you can enjoy the green bar.
+
+なぜならバグのテストを追加
+Adding Tests because of a Bug
+-----------------------------
+
+いくつかのジョブリンクが404エラーページを指す：それでは、その時間が経過し、ユーザーの1人が、奇妙なバグを報告するとしましょう​​。いくつかの調査の後、あなたはいくつかの理由で、これらのジョブが空の会社、職、所在地のスラッグを持っていることがわかります。 
+それはどのように可能ですか？ 
+あなたは、データベース内のレコードに目を通すと列は間違いなく空ではありません。あなたはしばらくの間それについて考え、ビンゴ、あなたは原因を見つける。文字列が唯一の非ASCII文字が含まれている場合、slugify（）メソッドは空の文字列に変換します。原因を発見したので、満足して、あなたがJobeetのクラスを開いて、すぐに問題を解決する。それは悪い考えです。最初に、テストを追加してみましょう：
+Let’s say that time has passed and one of your users reports a weird bug: some job links point to a 404 error page. After some investigation, you find that for some reason, these jobs have an empty company, position, or location slug.
+How is it possible?
+You look through the records in the database and the columns are definitely not empty. You think about it for a while, and bingo, you find the cause. When a string only contains non-ASCII characters, the slugify() method converts it to an empty string. So happy to have found the cause, you open the Jobeet class and fix the problem right away. That’s a bad idea. First, let’s add a test:
+
+src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
+
+.. code-block:: php
+
+   $this->assertEquals('n-a', Jobeet::slugify(' - '));
+
+テストに合格しないことを確認した後、Jobeetのクラスを編集して、メソッドの最後に空の文字列チェックを移動します。
+After checking that the test does not pass, edit the Jobeet class and move the empty string check to the end of the method:
+
+src/Ibw/JobeetBundle/Utils/Jobeet.php
+
+.. code-block:: php
+
+   static public function slugify($text)
+   {
+       // ...
+
+       if (empty($text))
+       {
+           return 'n-a';
+       }
+
+       return $text;
+   }
+
+他のすべてのものがそうであるように、新しいテストすることになりましたが、。 slugify（）は、当社の100％のカバレッジにもかかわらず、バグがありました。 
+テストを書くときには、すべてのエッジケースを考えることができない、それは大丈夫です。あなたが1つを発見したときにしかし、あなたはあなたのコードを修正する前にテストを書く必要があります。また、あなたのコードは常に良いことです時間かけて良くなることを意味します。
+The new test now passes, as do all the other ones. The slugify() had a bug despite our 100% coverage.
+You cannot think about all edge cases when writing tests, and that’s fine. But when you discover one, you need to write a test for it before fixing your code. It also means that your code will get better over time, which is always a good thing.
+
+よりよいslugifyメソッドに向けて
+Towards a better slugify Method
+-------------------------------
+
+おそらく、symfonyはフランス人によって作られていることを知って、それでは、「アクセント」が含まれているフランス語の単語でテストを追加してみましょう：
+You probably know that symfony has been created by French people, so let’s add a test with a French word that contains an “accent”:
+
+src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
+
+.. code-block:: php
+
+   $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
+
+テストが失敗しなければならない。その代わりに、電子（E）を置き換えるので、slugify（）メソッドは、ダッシュ、それに取って代わった（ - ）。つまり、厳しい問題と呼ばれる音訳です。あなたはライブラリがインストールされている場合は、iconvによるうまくいけば、それは私たちのために仕事を行います。以下でslugifyメソッドのコードを置き換えます。
+The test must fail. Instead of replacing é by e, the slugify() method has replaced it by a dash (-). That’s a tough problem, called transliteration. Hopefully, if you have iconv Library installed, it will do the job for us. Replace the code of the slugify method with the following:
+
+src/Ibw/JobeetBundle/Utils/Jobeet.php
+
+.. code-block:: php
+
+   static public function slugify($text)
+   {
+       // replace non letter or digits by -
+       $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+       // trim
+       $text = trim($text, '-');
+
+       // transliterate
+       if (function_exists('iconv'))
+       {
+           $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+       }
+
+       // lowercase
+       $text = strtolower($text);
+
+       // remove unwanted characters
+       $text = preg_replace('#[^-\w]+#', '', $text);
+
+       if (empty($text))
+       {
+           return 'n-a';
+       }
+
+       return $text;
+   }
+
+これはデフォルトのsymfonyのエンコーディング、翻字を行うためには、iconvによって使用される1であるので、UTF-8エンコーディングですべてのPHPファイルを保存することを忘れないでください。 
+また、iconvのが利用可能である場合にのみ、テストを実行するテストファイルを変更します。
+Remember to save all your PHP files with the UTF-8 encoding, as this is the default Symfony encoding, and the one used by iconv to do the transliteration.
+Also change the test file to run the test only if iconv is available:
+
+src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
+
+.. code-block:: php
+
+   if (function_exists('iconv')) {
+       $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
+   }
+
+コードカバレッジ
+Code Coverage
+-------------
+
+あなたがテストを書くときには、コードの一部を忘れがちです。新しい機能を追加したり、あなたは自分のコードカバレッジの統計を確認したい場合は、あなたがする必要があるのは--coverage-HTMLオプションを使用してコードカバレッジをチェックすることです。
+When you write tests, it is easy to forget a portion of the code. If you add a new feature or you just want to verify your code coverage statistics, all you need to do is to check the code coverage by using the --coverage-html option:
+
+.. code-block:: bash
+
+   $ phpunit --coverage-html=web/cov/ -c app/
+
+ブラウザで//jobeet.local/cov/index.htmlページ：生成されたHTTPを開くことによって、コードカバレッジを確認してください。
+Check the code coverage by opening the generated http://jobeet.local/cov/index.html page in a browser.
+
+.. note::
+
+   The code coverage only works if you have XDebug enabled and all dependencies installed.
+
+   .. code-block:: bash
+
+      $ sudo apt-get install php5-xdebug
+
+あなたのCOV/ index.htmlのは次のようになります。
+Your cov/index.html should look like this:
+
+.. image:: /images/day-8-code-coverage1.jpg
+
+これはあなたのコードをテストユニットが完全であることを示している場合、それだけで、各ラインは、すべてのエッジケースがテストされていないことを、実行されたことを意味することに注意してください。
+Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
+
+Doctrine Unit Tests
+-------------------
+
+それは、データベース接続を必要とするDoctrineモデルクラスをテストするユニットは、もう少し複雑です。あなたはすでに、あなたの開発のために使用するものを持っているが、それはテスト専用のデータベースを作成するには良い習慣です。 
+このチュートリアルの初めに、私たちはアプリケーションの設定を変更する方法として環境を導入しました。デフォルトでは、すべてのsymfonyのテストはテスト環境で実行されるので、テスト環境用に異なるデータベースを設定しましょう​​されています。 
+アプリ/ configディレクトリに移動し、parameters.ymlファイルのコピーと呼ばれるparameters_test.ymlを作成します。オープンparameters_test.ymlとはjobeet_testためにあなたのデータベースの名前を変更します。これはインポートするために、私たちはconfig_test.ymlファイルに追加する必要があります。
+Unit testing a Doctrine model class is a bit more complex as it requires a database connection. You already have the one you use for your development, but it is a good habit to create a dedicated database for tests.
+At the beginning of this tutorial, we introduced the environments as a way to vary an application’s settings. By default, all symfony tests are run in the test environment, so let’s configure a different database for the test environment:
+Go to your app/config directory and create a copy of parameters.yml file, called parameters_test.yml. Open parameters_test.yml and change the name of your database to jobeet_test. For this to be imported, we have to add it in the config_test.yml file :
+
+app/config/config_test.yml
+
+.. code-block:: yaml
+
+   imports:
+       - { resource: config_dev.yml }
+       - { resource: parameters_test.yml }
+   // ...
+
+Testing the Job Entity
+----------------------
+
+まず、テスト/エンティティフォルダ内JobTest.phpファイルを作成する必要があります。 
+セットアップ機能は、データベースは、テストを実行するたびに操作する。最初は、それは、現在のデータベースをドロップします、それはその中の備品からデータを再作成し、ロードされます。これはテストを実行する前に、あなたは、テスト環境用に作成したデータベース内の同じ初期データを持っているのに役立ちます。
+First, we need to create the JobTest.php file in the Tests/Entity folder.
+The setUp function will manipulate your database each time you will run the test. At first, it will drop your current database, then it will re-create it and load data from fixtures in it. This will help you have the same initial data in the database you created for the test environment before running the tests.
+
+src/Ibw/JobeetBundle/Tests/Entity/JobTest.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Entity;
+
+   use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+   use Ibw\JobeetBundle\Utils\Jobeet as Jobeet;
+   use Symfony\Bundle\FrameworkBundle\Console\Application;
+   use Symfony\Component\Console\Output\NullOutput;
+   use Symfony\Component\Console\Input\ArrayInput;
+   use Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
+
+   class JobTest extends WebTestCase
+   {
+       private $em;
+       private $application;
+
+       public function setUp()
+       {
+           static::$kernel = static::createKernel();
+           static::$kernel->boot();
+
+           $this->application = new Application(static::$kernel);
+
+           // drop the database
+           $command = new DropDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:drop',
+               '--force' => true
+           ));
+           $command->run($input, new NullOutput());
+
+           // we have to close the connection after dropping the database so we don't get "No database selected" error
+           $connection = $this->application->getKernel()->getContainer()->get('doctrine')->getConnection();
+           if ($connection->isConnected()) {
+               $connection->close();
+           }
+
+           // create the database
+           $command = new CreateDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // create schema
+           $command = new CreateSchemaDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:schema:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // get the Entity Manager
+           $this->em = static::$kernel->getContainer()
+               ->get('doctrine')
+               ->getManager();
+
+           // load fixtures
+           $client = static::createClient();
+           $loader = new \Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader($client->getContainer());
+           $loader->loadFromDirectory(static::$kernel->locateResource('@IbwJobeetBundle/DataFixtures/ORM'));
+           $purger = new \Doctrine\Common\DataFixtures\Purger\ORMPurger($this->em);
+           $executor = new \Doctrine\Common\DataFixtures\Executor\ORMExecutor($this->em, $purger);
+           $executor->execute($loader->getFixtures());
+       }
+
+       public function testGetCompanySlug()
+       {
+           $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
+               ->setMaxResults(1)
+               ->getSingleResult();
+
+           $this->assertEquals($job->getCompanySlug(), Jobeet::slugify($job->getCompany()));
+       }
+
+       public function testGetPositionSlug()
+       {
+           $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
+               ->setMaxResults(1)
+               ->getSingleResult();
+
+           $this->assertEquals($job->getPositionSlug(), Jobeet::slugify($job->getPosition()));
+       }
+
+       public function testGetLocationSlug()
+       {
+           $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
+               ->setMaxResults(1)
+               ->getSingleResult();
+
+           $this->assertEquals($job->getLocationSlug(), Jobeet::slugify($job->getLocation()));
+       }
+
+       public function testSetExpiresAtValue()
+       {
+           $job = new Job();
+           $job->setExpiresAtValue();
+
+           $this->assertEquals(time() + 86400 * 30, $job->getExpiresAt()->format('U'));
+       }
+
+       protected function tearDown()
+       {
+           parent::tearDown();
+           $this->em->close();
+       }
+   }
+
+Testing the Repository Classes
+------------------------------
+
+さて、私たちは前の日に作成した関数が正しい値を返すかどうかを確認するためにJobRepositoryクラスのいくつかのテストを、書いてみましょう：
+Now, let’s write some tests for the JobRepository class, to see if the functions we created in the previous days are returning the right values:
+
+src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Tests\Repository;
+
+   use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+   use Symfony\Bundle\FrameworkBundle\Console\Application;
+   use Symfony\Component\Console\Output\NullOutput;
+   use Symfony\Component\Console\Input\ArrayInput;
+   use Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
+
+   class JobRepositoryTest extends WebTestCase
+   {
+       private $em;
+       private $application;
+
+       public function setUp()
+       {
+           static::$kernel = static::createKernel();
+           static::$kernel->boot();
+
+           $this->application = new Application(static::$kernel);
+
+           // drop the database
+           $command = new DropDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:drop',
+               '--force' => true
+           ));
+           $command->run($input, new NullOutput());
+
+           // we have to close the connection after dropping the database so we don't get "No database selected" error
+           $connection = $this->application->getKernel()->getContainer()->get('doctrine')->getConnection();
+           if ($connection->isConnected()) {
+               $connection->close();
+           }
+
+           // create the database
+           $command = new CreateDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // create schema
+           $command = new CreateSchemaDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:schema:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // get the Entity Manager
+           $this->em = static::$kernel->getContainer()
+               ->get('doctrine')
+               ->getManager();
+
+           // load fixtures
+           $client = static::createClient();
+           $loader = new \Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader($client->getContainer());
+           $loader->loadFromDirectory(static::$kernel->locateResource('@IbwJobeetBundle/DataFixtures/ORM'));
+           $purger = new \Doctrine\Common\DataFixtures\Purger\ORMPurger($this->em);
+           $executor = new \Doctrine\Common\DataFixtures\Executor\ORMExecutor($this->em, $purger);
+           $executor->execute($loader->getFixtures());
+       }
+
+       public function testCountActiveJobs()
+       {
+           $query = $this->em->createQuery('SELECT c FROM IbwJobeetBundle:Category c');
+           $categories = $query->getResult();
+
+           foreach($categories as $category) {
+               $query = $this->em->createQuery('SELECT COUNT(j.id) FROM IbwJobeetBundle:Job j WHERE j.category = :category AND j.expires_at > :date');
+               $query->setParameter('category', $category->getId());
+               $query->setParameter('date', date('Y-m-d H:i:s', time()));
+               $jobs_db = $query->getSingleScalarResult();
+
+               $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->countActiveJobs($category->getId());
+               // This test will verify if the value returned by the countActiveJobs() function
+               // coincides with the number of active jobs for a given category from the database
+               $this->assertEquals($jobs_rep, $jobs_db);
+           }
+       }
+
+       public function testGetActiveJobs()
+       {
+           $query = $this->em->createQuery('SELECT c from IbwJobeetBundle:Category c');
+           $categories = $query->getResult();
+
+           foreach ($categories as $category) {
+               $query = $this->em->createQuery('SELECT COUNT(j.id) from IbwJobeetBundle:Job j WHERE j.expires_at > :date AND j.category = :category');
+               $query->setParameter('date', date('Y-m-d H:i:s', time()));
+               $query->setParameter('category', $category->getId());
+               $jobs_db = $query->getSingleScalarResult();
+
+               $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJobs($category->getId(), null, null);
+               // This test tells if the number of active jobs for a given category from
+               // the database is the same as the value returned by the function
+               $this->assertEquals($jobs_db, count($jobs_rep));
+           }
+       }
+
+       public function testGetActiveJob()
+       {
+           $query = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j WHERE j.expires_at > :date');
+           $query->setParameter('date', date('Y-m-d H:i:s', time()));
+           $query->setMaxResults(1);
+           $job_db = $query->getSingleResult();
+
+           $job_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJob($job_db->getId());
+           // If the job is active, the getActiveJob() method should return a non-null value
+           $this->assertNotNull($job_rep);
+
+           $query = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j WHERE j.expires_at < :date');         $query->setParameter('date', date('Y-m-d H:i:s', time()));
+           $query->setMaxResults(1);
+           $job_expired = $query->getSingleResult();
+
+           $job_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJob($job_expired->getId());
+           // If the job is expired, the getActiveJob() method should return a null value
+           $this->assertNull($job_rep);
+       }
+
+       protected function tearDown()
+       {
+           parent::tearDown();
+           $this->em->close();
+       }
+   }
+
+私たちは、CategoryRepositoryクラスの同じことを行います。
+We will do the same thing for CategoryRepository class:
+
+src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Tests\Repository;
+
+   use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+   use Symfony\Bundle\FrameworkBundle\Console\Application;
+   use Symfony\Component\Console\Output\NullOutput;
+   use Symfony\Component\Console\Input\ArrayInput;
+   use Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand;
+   use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
+
+   class CategoryRepositoryTest extends WebTestCase
+   {
+       private $em;
+       private $application;
+
+       public function setUp()
+       {
+           static::$kernel = static::createKernel();
+           static::$kernel->boot();
+
+           $this->application = new Application(static::$kernel);
+
+           // drop the database
+           $command = new DropDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:drop',
+               '--force' => true
+           ));
+           $command->run($input, new NullOutput());
+
+           // we have to close the connection after dropping the database so we don't get "No database selected" error
+           $connection = $this->application->getKernel()->getContainer()->get('doctrine')->getConnection();
+           if ($connection->isConnected()) {
+               $connection->close();
+           }
+
+           // create the database
+           $command = new CreateDatabaseDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:database:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // create schema
+           $command = new CreateSchemaDoctrineCommand();
+           $this->application->add($command);
+           $input = new ArrayInput(array(
+               'command' => 'doctrine:schema:create',
+           ));
+           $command->run($input, new NullOutput());
+
+           // get the Entity Manager
+           $this->em = static::$kernel->getContainer()
+               ->get('doctrine')
+               ->getManager();
+
+           // load fixtures
+           $client = static::createClient();
+           $loader = new \Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader($client->getContainer());
+           $loader->loadFromDirectory(static::$kernel->locateResource('@IbwJobeetBundle/DataFixtures/ORM'));
+           $purger = new \Doctrine\Common\DataFixtures\Purger\ORMPurger($this->em);
+           $executor = new \Doctrine\Common\DataFixtures\Executor\ORMExecutor($this->em, $purger);
+           $executor->execute($loader->getFixtures());
+       }
+
+       public function testGetWithJobs()
+       {
+           $query = $this->em->createQuery('SELECT c FROM IbwJobeetBundle:Category c LEFT JOIN c.jobs j WHERE j.expires_at > :date');
+           $query->setParameter('date', date('Y-m-d H:i:s', time()));
+           $categories_db = $query->getResult();
+
+           $categories_rep = $this->em->getRepository('IbwJobeetBundle:Category')->getWithJobs();
+           // This test verifies if the number of categories having active jobs, returned
+           // by the getWithJobs() function equals the number of categories having active jobs from database
+           $this->assertEquals(count($categories_rep), count($categories_db));
+       }
+
+       protected function tearDown()
+       {
+           parent::tearDown();
+           $this->em->close();
+       }
+   }
+
+あなたがテストを書き終えた後、次のコマンドでそれらを実行全体の機能のためのコードカバレッジパーセントを生成するために：
+After you finish writing the tests, run them with the following command, in order to generate the code coverage percent for the whole functions :
+
+.. code-block:: bash
+
+   $ phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
+
+あなたはHTTPに行けば今、：//jobeet.local/cov/Repository.htmlあなたがリポジトリをテストするためのコードカバレッジが100％完了していないことがわかります。
+Now, if you go to http://jobeet.local/cov/Repository.html you will see that the code coverage for Repository Tests is not 100% complete.
+
+.. image:: /images/Day-8-coverage-not-complete.jpg
+
+それでは、100％のコードカバレッジを達成するためにJobRepositoryためのいくつかのテストを追加してみましょう。現時点では、私達のデータベースでは、私たちは0アクティブなジョブだけつのアクティブな仕事を持つ1ジョブカテゴリを有する二つの職種があります。私たちは$ maxをテストすると$がパラメータをオフセットするとき、なぜ、それが、私たちは、少なくとも3アクティブなジョブを持つカテゴリに次のテストを実行します。そのためには、（）あなたのtestGetActiveJobsから、あなたのforeach文の内部で関数をこれを追加します。
+Let’s add some tests for the JobRepository to achieve 100% code coverage. At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job. That why, when we will test the $max and $offset parameters, we will run the following tests just on the categories with at least 3 active jobs. In order to do that, add this inside your foreach statement, from your testGetActiveJobs() function:
+
+src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
+
+.. code-block:: php
+
+   // ...
+   foreach ($categories as $category) {
+       // ...
+
+       // If there are at least 3 active jobs in the selected category, we will
+       // test the getActiveJobs() method using the limit and offset parameters too
+       // to get 100% code coverage
+       if($jobs_db > 2 ) {
+           $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJobs($category->getId(), 2);
+           // This test tells if the number of returned active jobs is the one $max parameter requires
+           $this->assertEquals(2, count($jobs_rep));
+
+           $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJobs($category->getId(), 2, 1);
+           // We set the limit to 2 results, starting from the second job and test if the result is as expected
+           $this->assertEquals(2, count($jobs_rep));
+       }
+   }
+   // ...
+
+再びコードカバレッジコマンドを実行します。
+Run the code coverage command again :
+
+.. code-block:: bash
+
+   $ phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
+
+あなたのコードカバレッジを確認する場合は、この時間は、あなたはそれそれ100％完全な表示されます。
+This time, if you check your code coverage, you will see that it 100% complete.
+
+.. image:: /images/Day-8-coverage-complete.jpg
+
+つまり、今日のすべてです！私たちは機能テストについてお話しますと、また明日。
+That’s all for today! See you tomorrow, when we will talk about functional tests.
+
+.. include:: common/license.rst.inc

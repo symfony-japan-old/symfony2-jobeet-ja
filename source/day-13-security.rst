@@ -1,2 +1,551 @@
 13日目: セキュリティ
 ================
+Day 13: Security
+================
+
+.. include:: common/original.rst.inc
+
+Securing the Application
+------------------------
+
+セキュリティは、その目標は、彼/彼女がアクセス権を持つべきではないリソースにアクセスするユーザを防止するためである二段階プロセスである。プロセスの最初のステップでは、認証は、セキュリティシステムは、ユーザが特定のいくつかの並べ替えを提出することをユーザーに要求することによって、誰であるかを識別する。システムはあなたが、次のステップが誰であるか知っていたら、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを与える必要がある場合、認可は、決定することであると呼ばれる。 
+セキュリティコンポーネントは、アプリ/ configフォルダからのsecurity.ymlファイルを使用してアプリケーションの設定を介して設定することができます。私たちのアプリケーションは、あなたののsecurity.ymlファイルを変更し固定するには：
+Security is a two-step process whose goal is to prevent a user from accessing a resource that he/she should not have access to. In the first step of the process, the authentication, the security system identifies who the user is by requiring the user to submit some sort of identification. Once the system knows who you are, the next step, called the authorization, is to determine if you should have access to a given resource (it checks to see if you have privileges to perform a certain action).
+The security component can be configured via your application configuration using the security.yml file from the app/config folder. To secure our application change  your security.yml file:
+
+app/config/security.yml
+
+.. code-block:: yaml
+
+   security:
+       role_hierarchy:
+           ROLE_ADMIN:       ROLE_USER
+           ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+       firewalls:
+           dev:
+               pattern:  ^/(_(profiler|wdt)|css|images|js)/
+               security: false
+
+           secured_area:
+               pattern:    ^/
+               anonymous: ~
+               form_login:
+                   login_path:  /login
+                   check_path:  /login_check
+                   default_target_path: ibw_jobeet_homepage
+
+       access_control:
+           - { path: ^/admin, roles: ROLE_ADMIN }
+
+       providers:
+           in_memory:
+               memory:
+                   users:
+                       admin: { password: adminpass, roles: 'ROLE_ADMIN' }
+
+       encoders:
+           Symfony\Component\Security\Core\User\User: plaintext
+
+この構成は、ウェブサイトの/ adminにセクションと、それが（ACCESS_CONTROLの項を参照）にアクセスするROLE_ADMINを持つユーザーのみを許可します（/管理で始まるすべてのURL）を確保します。この例では、管理者ユーザは、設定ファイルで（プロバイダ部）に定義され、パスワードが（エンコーダ）で符号化されていません。 
+ユーザーを認証するために、伝統的なログインフォームを使用しますが、私たちはそれを実装する必要があります。まず、二つの経路を作成します。ログインフォームの提出（すなわち/ login_check）を処理するログイン·フォーム（すなわち/ログイン）と1が表示されますものを。
+This configuration will secure the /admin section of the website (all urls that start with /admin) and will allow only users with ROLE_ADMIN to access it (see the access_control section). In this example the admin user is defined in the configuration file (the providers section) and the password is not encoded (encoders).
+For authenticating users, a traditional login form will be used, but we need to implement it. First, create two routes: one that will display the login form (i.e. /login) and one that will handle the login form submission (i.e. /login_check):
+
+src/Ibw/JobeetBundle/Resources/config/routing.yml
+
+.. code-block:: yaml
+
+   login:
+       pattern:   /login
+       defaults:  { _controller: IbwJobeetBundle:Default:login }
+   login_check:
+       pattern:   /login_check
+
+   # ...
+
+ファイアウォールが自動的にキャッチし、次のURLに提出されたフォームを処理するように私たちは/ login_check URLのコントローラを実装する必要はありません。しかし、それは以下のログイン·テンプレート内のフォーム送信URLを生成するために使用することができるようにルートを作成する必要がある。 
+次は、ログインフォームを表示するアクションを作成してみましょう：
+We will not need to implement a controller for the /login_check URL as the firewall will automatically catch and process any form submitted to this URL. But you need to create a route so that it can be used  to generate the form submission URL in the login template below.
+Next, let’s create the action that will display the login form:
+
+src/Ibw/JobeetBundle/Controller/DefaultController.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Controller;
+
+   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+   use Symfony\Component\Security\Core\SecurityContext;
+
+   class DefaultController extends Controller
+   {
+       // ...
+
+       public function loginAction()
+       {
+           $request = $this->getRequest();
+           $session = $request->getSession();
+
+           // get the login error if there is one
+           if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+               $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+           } else {
+               $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+               $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+           }
+
+           return $this->render('IbwJobeetBundle:Default:login.html.twig', array(
+               // last username entered by the user
+               'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+               'error'         => $error,
+           ));
+       }
+   }
+
+ユーザーがフォームを送信すると、セキュリティシステムは自動的にあなたのためのフォームの送信を処理します。ユーザが無効なユーザー名またはパスワードを提出していた場合、それが戻って、ユーザーに表示されるように、このアクションは、セキュリティシステムからのフォーム送信エラーを読み込みます。あなたの唯一の仕事は、ログインフォームと発生した可能性のある、ログインエラーを表示することであるが、セキュリティシステム自体が提出されたユーザー名とパスワードをチェックし、ユーザを認証するの面倒を見る。 
+最後に、のは、対応するテンプレートを作成してみましょう：
+When the user submits the form, the security system automatically handles the form submission for you. If the user had submitted an invalid username or password, this action reads the form submission error from the security system so that it can be displayed back to the user. Your only job is to display the login form and any login errors that may have occurred, but the security system itself takes care of checking the submitted username and password and authenticating the user.
+Finally, let’s create the corresponding template:
+
+src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
+
+.. code-block:: html+jinja
+
+   {% if error %}
+       <div>{{ error.message }}</div>
+   {% endif %}
+
+   <form action="{{ path('login_check') }}" method="post">
+       <label for="username">Username:</label>
+       <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+       <label for="password">Password:</label>
+       <input type="password" id="password" name="_password" />
+
+       <button type="submit">login</button>
+   </form>
+
+HTTPをアクセスしようとする今、：//jobeet.local/app_dev.php/admin/dashboard URLを、ログインフォームが表示され、次のことを行うのsecurity.yml（管理者/ adminPassは）で定義されたユーザ名とパスワードを入力する必要がありますJobeetの管理のセクションに行く。
+Now, if you try to access http://jobeet.local/app_dev.php/admin/dashboard url, the login form will show and you will have to enter the username and password defined in security.yml (admin/adminpass) to get to the admin section of Jobeet.
+
+User Providers
+--------------
+
+認証時に、ユーザーは一連の資格情報（通常はユーザ名とパスワード）を送信します。認証システムの仕事は、ユーザーの一部のプールに対してこれらの資格情報と一致することです。だからここでのユーザーのリストから来るのでしょうか？ 
+設定ファイル、データベーステーブル、Webサービス、またはあなたが夢を見ることができる何か他のもの -  Symfony2のでは、ユーザーはどこからでも来ることができる。認証システムに1つ以上のユーザーを提供するものは、「ユーザ·プロバイダ」として知られている。コンフィギュレーション·ファイルからユーザーをロードする一つのデータベーステーブルからユーザーをロードする1：Symfony2のは、2つの最も一般的なユーザーのプロバイダを標準装備しています。 
+設定ファイル内のユーザーを指定：上記の、私たちは最初のケースを使用していました。
+During authentication, the user submits a set of credentials (usually a username and password). The job of the authentication system is to match those credentials against some pool of users. So where does this list of users come from?
+In Symfony2, users can come from anywhere – a configuration file, a database table, a web service, or anything else you can dream up. Anything that provides one or more users to the authentication system is known as a “user provider”. Symfony2 comes standard with the two most common user providers: one that loads users from a configuration file and one that loads users from a database table.
+Above, we used the first case: specifying users in a configuration file.
+
+app/config/security.yml
+
+.. code-block:: yaml
+
+   # ...
+
+   providers:
+       in_memory:
+           memory:
+               users:
+                   admin: { password: adminpass, roles: 'ROLE_ADMIN' }
+
+   # ...
+
+しかし、あなたは通常、ユーザーがデータベーステーブルに格納されることになるでしょう。これを行うために私たちはJobeetのデータベースに新しいユーザ·テーブルを追加します。まずは、この新しいテーブルのORMを作成してみましょう：
+But you will usually want the users to be stored in a database table. To do this we will add a new user table to our jobeet database. First let’s create the orm for this new table:
+
+src/Ibw/JobeetBundle/Resources/config/doctrine/User.orm.yml
+
+.. code-block:: yaml
+
+   Ibw\JobeetBundle\Entity\User:
+       type: entity
+       table: user
+       id:
+           id:
+               type: integer
+               generator: { strategy: AUTO }
+       fields:
+           username:
+               type: string
+               length: 255
+           password:
+               type: string
+               length: 255
+
+今教義を実行します。生成します。エンティティは新しいUserエンティティクラスを作成するコマンド：
+Now run the doctrine:generate:entities command to create the new User entity class:
+
+.. code-block:: bash
+
+   $ php app/console doctrine:generate:entities IbwJobeetBundle
+
+そして、データベースを更新します。
+And update the database:
+
+.. code-block:: bash
+
+   $ php app/console doctrine:schema:update --force
+
+新しいユーザークラスの唯一の要件は、それがのUserInterfaceインターフェイスを実装していることである。これは、 "ユーザ"のあなたの概念がある限り、このインタフェースを実装するように、何も良いことを意味する。 User.phpファイルを開き、以下のように編集します。
+The only requirement for your new user class is that it implements the UserInterface interface. This means that your concept of a “user” can be anything, as long as it implements this interface. Open the User.php file and edit it as follows:
+
+src/Ibw/JobeetBundle/Entity/User.php
+
+.. code-block:: php
+
+   namespace Ibw\JobeetBundle\Entity;
+
+   use Symfony\Component\Security\Core\User\UserInterface;
+   use Doctrine\ORM\Mapping as ORM;
+
+   /**
+    * User
+    */
+   class User implements UserInterface
+   {
+       /**
+        * @var integer
+        */
+       private $id;
+
+       /**
+        * @var string
+        */
+       private $username;
+
+       /**
+        * @var string
+        */
+       private $password;
+
+       /**
+        * Get id
+        *
+        * @return integer
+        */
+       public function getId()
+       {
+           return $this->id;
+       }
+
+       /**
+        * Set username
+        *
+        * @param string $username
+        * @return User
+        */
+       public function setUsername($username)
+       {
+           $this->username = $username;
+
+       }
+
+       /**
+        * Get username
+        *
+        * @return string
+        */
+       public function getUsername()
+       {
+           return $this->username;
+       }
+
+       /**
+        * Set password
+        *
+        * @param string $password
+        * @return User
+        */
+       public function setPassword($password)
+       {
+           $this->password = $password;
+
+       }
+
+       /**
+        * Get password
+        *
+        * @return string
+        */
+       public function getPassword()
+       {
+           return $this->password;
+       }
+
+       public function getRoles()
+       {
+           return array('ROLE_ADMIN');
+       }
+
+       public function getSalt()
+       {
+           return null;
+       }
+
+       public function eraseCredentials()
+       {
+
+       }
+
+       public function equals(User $user)
+       {
+           return $user->getUsername() == $this->getUsername();
+       }
+   }
+
+生成されたエンティティへの私たちはのUserInterfaceクラスで必要なメソッドを追加しました：getRoles、getSalt、eraseCredentialsをと等しくなります。 
+次に、エンティティユーザプロバイダを設定し、あなたのUserクラスを指すように：
+To the generated entity we added the methods required by the UserInterface class: getRoles, getSalt, eraseCredentials and equals.
+Next, configure an entity user provider, and point it to your User class:
+
+app/config/security.yml
+
+.. code-block:: yaml
+
+   providers:
+     main:
+         entity: { class: Ibw\JobeetBundle\Entity\User, property: username }
+
+   encoders:
+     Ibw\JobeetBundle\Entity\User: sha512
+
+また、パスワードの暗号化にSHA512アルゴリズムを使用するように私たちの新しいUserクラス用のエンコーダを変更しました。 
+今ではすべてがセットアップさが、私たちは私たちの最初のユーザーを作成する必要がされている。これを行うためには、新しいsymfonyコマンドを作成します。
+We also changed the encoder for our new User class to use the sha512 algorithm to encrypt passwords.
+Now everything is set up but we need to create our first user. To do this we will create a new symfony command:
+
+.. code-block:: php
+
+   src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php
+
+   namespace Ibw\JobeetBundle\Command;
+
+   use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+   use Symfony\Component\Console\Input\InputArgument;
+   use Symfony\Component\Console\Input\InputInterface;
+   use Symfony\Component\Console\Input\InputOption;
+   use Symfony\Component\Console\Output\OutputInterface;
+   use Ibw\JobeetBundle\Entity\User;
+
+   class JobeetUsersCommand extends ContainerAwareCommand
+   {
+       protected function configure()
+       {
+           $this
+               ->setName('ibw:jobeet:users')
+               ->setDescription('Add Jobeet users')
+               ->addArgument('username', InputArgument::REQUIRED, 'The username')
+               ->addArgument('password', InputArgument::REQUIRED, 'The password')
+           ;
+       }
+
+       protected function execute(InputInterface $input, OutputInterface $output)
+       {
+           $username = $input->getArgument('username');
+           $password = $input->getArgument('password');
+
+           $em = $this->getContainer()->get('doctrine')->getManager();
+
+           $user = new User();
+           $user->setUsername($username);
+           // encode the password
+           $factory = $this->getContainer()->get('security.encoder_factory');
+           $encoder = $factory->getEncoder($user);
+           $encodedPassword = $encoder->encodePassword($password, $user->getSalt());
+           $user->setPassword($encodedPassword);
+           $em->persist($user);
+           $em->flush();
+
+           $output->writeln(sprintf('Added %s user with password %s', $username, $password));
+       }
+   }
+
+あなたの最初のユーザーの実行を追加するには：
+To add your first user run:
+
+.. code-block:: bash
+
+   $ php app/console ibw:jobeet:users admin admin
+
+これはパスワードadminを持つ管理ユーザーを作成します。あなたは、管理セクションへのログインに使用することができます。
+This will create the admin user with the password admin. You can use it to login to the admin section.
+
+Logout
+------
+
+ログアウトすると、ファイアウォールによって自動的に処理されます。あなたがしなければならないのは、ログアウトconfigパラメータを有効化することです：
+Logging out is handled automatically by the firewall. All you have to do is to activate the logout config parameter:
+
+app/config/security.yml
+
+.. code-block:: yaml
+
+   security:
+       firewalls:
+           # ...
+           secured_area:
+               # ...
+               logout:
+                   path:   /logout
+                   target: /
+       # ...
+
+ファイアウォールはすべての面倒を見るように/ログアウトURL用のコントローラを実装する必要はありません。 URLを生成するためにそれを使用できるように、のルートを作成してみましょう：
+You will not need to implement a controller for the /logout URL as the firewall takes care of everything. Let’s create a route so that you can use it to generate the URL:
+
+src/Ibw/JobeetBundle/Resources/config/routing.yml
+
+.. code-block:: yaml
+
+   # ...
+
+   logout:
+       pattern:   /logout
+
+   # ...
+
+これが設定されたら、/ログアウト（またはものは何でも、あなたがするパスを設定する）、にユーザーを送信することは、現在のユーザを解除認証します。次いで、ユーザは、ホームページ（targetパラメータによって定義された値）に送られる。 
+全ての観光左側は、当社の管理セクションにログアウトリンクを追加することです。これを行うために私たちはSonataAdminBundleからuser_block.html.twigをオーバーライドします。アプリ/リソース/ SonataAdminBundle/ビュー/コアフォルダにuser_block.html.twigファイルを作成します。
+Once this is configured, sending a user to /logout (or whatever you configure the path to be), will un-authenticate the current user. The user will then be sent to the homepage (the value defined by the target parameter).
+All left to do is to add the logout link to our admin section. To do this we will override the user_block.html.twig from SonataAdminBundle. Create the user_block.html.twig file in app/Resources/SonataAdminBundle/views/Core folder:
+
+app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
+
+.. code-block:: html+jinja
+
+   {% block user_block %}<a href="{{ path('logout') }}">Logout</a>{% endblock%}
+
+使用すると、管理セクション（最初のキャッシュをクリア）を入力しようとした場合さて、あなたは、ユーザー名とパスワードの入力を要求され、その後、ログアウトリンクは右上隅に表示されます。
+Now, if you try to enter the admin section (clear the cache first), you will be asked for an username and password and then, the logout link will be shown in the top-right corner.
+
+The User Session
+----------------
+
+Symfony2のはあなたがリクエスト間でユーザーに関する情報を保存するために使用できる素敵なセッションオブジェクトを提供します。デフォルトでは、Symfony2のは、ネイティブのPHPのセッションを使用することにより、クッキーの属性を格納します。 
+あなたが保存して、コントローラから簡単にセッションの情報を取得することができます。
+Symfony2 provides a nice session object that you can use to store information about the user between requests. By default, Symfony2 stores the attributes in a cookie by using the native PHP sessions.
+You can store and retrieve information from the session easily from the controller:
+
+.. code-block:: php
+
+   $session = $this->getRequest()->getSession();
+
+   // store an attribute for reuse during a later user request
+   $session->set('foo', 'bar');
+
+   // in another controller for another request
+   $foo = $session->get('foo');
+
+残念なことに、Jobeetユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。それでは、新しい要件を追加してみましょう：求人の閲覧を容易にするために、ユーザが視聴し、最後の3つのジョブは、後で求人ページに戻れるリンクがメニューに表示されるべきである。 
+ユーザーが求人ページにアクセスすると、表示されたジョブオブジェクトは、セッションでのユーザーの履歴に追加され、保存される必要があります：
+Unfortunately, the Jobeet user stories have no requirement that includes storing something in the user session. So let’s add a new requirement: to ease job browsing, the last three jobs viewed by the user should be displayed in the menu with links to come back to the job page later on.
+When a user access a job page, the displayed job object needs to be added in the user history and stored in the session:
+
+src/Ibw/JobeetBundle/Controller/JobController.php
+
+.. code-block:: php
+
+   // ...
+
+   public function showAction($id)
+   {
+       $em = $this->getDoctrine()->getManager();
+
+       $entity = $em->getRepository('IbwJobeetBundle:Job')->getActiveJob($id);
+
+       if (!$entity) {
+           throw $this->createNotFoundException('Unable to find Job entity.');
+       }
+
+       $session = $this->getRequest()->getSession();
+
+       // fetch jobs already stored in the job history
+       $jobs = $session->get('job_history', array());
+
+       // store the job as an array so we can put it in the session and avoid entity serialize errors
+       $job = array('id' => $entity->getId(), 'position' =>$entity->getPosition(), 'company' => $entity->getCompany(), 'companyslug' => $entity->getCompanySlug(), 'locationslug' => $entity->getLocationSlug(), 'positionslug' => $entity->getPositionSlug());
+
+       if (!in_array($job, $jobs)) {
+           // add the current job at the beginning of the array
+           array_unshift($jobs, $job);
+
+           // store the new job history back into the session
+           $session->set('job_history', array_slice($jobs, 0, 3));
+       }
+
+       $deleteForm = $this->createDeleteForm($id);
+
+       return $this->render('IbwJobeetBundle:Job:show.html.twig', array(
+           'entity'      => $entity,
+           'delete_form' => $deleteForm->createView(),
+       ));
+   }
+
+レイアウトでは、#content divの前に、次のコードを追加します。
+In the layout, add the following code before the #content div:
+
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
+
+.. code-block:: html+jinja
+
+   <!-- ... -->
+
+   <div id="job_history">
+       Recent viewed jobs:
+       <ul>
+           {% for job in app.session.get('job_history') %}
+               <li>
+                   <a href="{{ path('ibw_job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">{{ job.position }} - {{ job.company }}</a>
+               </li>
+           {% endfor %}
+       </ul>
+   </div>
+
+   <div id="content">
+
+   <!-- ... -->
+
+Flash Messages
+--------------
+
+フラッシュメッセージは正確に一つの追加的な要求のために、ユーザのセッションに保存することができ、小さなメッセージです。フォームを処理するときに便利です：あなたは次の要求で示さ特別なメッセージをリダイレクトし、持っていると思います。私たちは仕事を公開するときにはすでに私たちのプロジェクトにフラッシュメッセージを使用していた。
+Flash messages are small messages you can store on the user’s session for exactly one additional request. This is useful when processing a form: you want to redirect and have a special message shown on the next request. We already used flash messages in our project when we publish a job:
+
+src/Ibw/JobeetBundle/Controller/JobController.php
+
+.. code-block:: php
+
+   // ...
+
+   public function publishAction($token)
+   {
+       // ...
+
+       $this->get('session')->getFlashBag()->add('notice', 'Your job is now online for 30 days.');
+
+       // ...
+   }
+
+getFlashBag（）の最初の引数 - >を追加（）関数は、フラッシュ、2つ目の識別子で表示するためのメッセージである。あなたが好きな点滅定義できますが、通知とエラーが、より一般的なもののうちの2つである。 
+テンプレートでそれらを含める必要がユーザへのフラッシュ·メッセージを表示する。私たちはlayout.html.twigテンプレートでこれをしなかった。
+The first argument of the getFlashBag()->add() function is the identifier of the flash and the second one is the message to display. You can define whatever flashes you want, but notice and error are two of the more common ones.
+To show the flash messages to the user you have to include them in the template. We did this in the layout.html.twig template:
+
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
+
+.. code-block:: html+jinja
+
+   <!-- ... -->
+
+   {% for flashMessage in app.session.flashbag.get('notice') %}
+       <div>
+           {{ flassMessage }}
+       </div>
+   {% endfor %}
+
+   <!-- ... -->
+
+.. include:: common/license.rst.inc
