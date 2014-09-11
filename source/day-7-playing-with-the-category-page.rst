@@ -8,7 +8,7 @@ Day 7: Playing with the Category page
 今日は、二日目の要件に記載されているカテゴリページを作成します::
 Today we will make the Category page like it is described in the second day’s requirements::
 
-   「ユーザーは、ページごとに20件のジョブでページ分割され、カテゴリは日付でソートされたすべてのジョブのリストを見ている」
+   「ユーザーは、ページごとに20件のジョブで分割され、カテゴリは日付でソートされたすべてのジョブのリストを見ている」
    “The user sees a list of all the jobs from the category sorted by date and paginated with 20 jobs per page“
 
 カテゴリールート
@@ -28,7 +28,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern:  /category/{slug}
        defaults: { _controller: IbwJobeetBundle:Category:show }
 
-カテゴリのスラグを取得するには、カテゴリクラスに getSlug（） メソッドを追加する必要があります。
+カテゴリのスラグを取得するには、カテゴリクラスに getSlug() メソッドを追加する必要があります。
 To get the slug of a category we need to add the getSlug() method to our category class:
 
 src/Ibw/JobeetBundle/Entity/Category.php
@@ -78,7 +78,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        </div>
    {% endblock %}
 
-上記のテンプレートでは、カテゴリを使用していました。より多くのジョブが、それでは、それを定義してみましょう：
+上記のテンプレートでは、カテゴリを使用していました。 ``more jobs`` を定義してみましょう：
 In the template above we used category. more jobs, so let’s define it:
 
 src/Ibw/JobeetBunlde/Entity/Category.php
@@ -104,8 +104,10 @@ src/Ibw/JobeetBunlde/Entity/Category.php
        }
    }
 
-more_jobs プロパティは、カテゴリマイナスのホームページに記載されているジョブの数のアクティブなジョブの数を保持します。さて、JobControllerでは、各カテゴリのmore_jobs値を設定する必要があります。
-The more_jobs property will hold the number of active jobs for the category minus the number of jobs listed on the homepage. Now, in JobController, we need to set the more_jobs value for each category:
+more_jobs プロパティは、カテゴリのアクティブなジョブの数からホームページに記載されているジョブの数を引いたものを保持します。
+さて、 JobController では、各カテゴリの more_jobs の値を設定する必要があります。
+The more_jobs property will hold the number of active jobs for the category minus the number of jobs listed on the homepage. 
+Now, in JobController, we need to set the more_jobs value for each category:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -157,7 +159,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
    // ...
 
-今、あなたはあなたのブラウザに結果が表示されるはずです。
+これで、ブラウザに結果が表示されるはずです。
 Now you should see the result in your browser:
 
 .. image:: /images/Day-7-category-link.png
@@ -167,8 +169,10 @@ Now you should see the result in your browser:
 Category Controller Creation
 ----------------------------
 
-現在では、カテゴリコントローラを作成してみましょう。お使いのコントローラのディレクトリに新しい  CategoryController.php ファイルを作成します。
-It’s now time to create the Category controller. Create a new CategoryController.php file in your Controller directory:
+ここで、カテゴリコントローラを作成してみましょう。
+お使いのコントローラのディレクトリに新しい  CategoryController.php ファイルを作成します。
+It’s now time to create the Category controller. 
+Create a new CategoryController.php file in your Controller directory:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
 
@@ -188,7 +192,7 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
    }
 
-ジョブコントローラのためにしたのと同様に、``doctrine:generate:crud`` コマンドを使うことができます。しかし、生成されたコードの 90% を必要としないので、一から新しいコントローラを手で作成します。
+ジョブコントローラのためにしたのと同様に、``doctrine:generate:crud`` コマンドを使うことができます。しかし、生成されたコードの 90% は必要としないので、手で一から新しいコントローラを作成しました。
 We could use the doctrine:generate:crud command like we did for the job controller, but we won’t need 90% of the generated code, 
 so we can just create a new controller from scratch.
 
@@ -197,7 +201,7 @@ so we can just create a new controller from scratch.
 Update the Database
 -------------------
 
-私たちは、このカラムの値を設定するためのカテゴリテーブルおよびライフサイクルコールバックに slug カラムを追加する必要があります。
+カテゴリテーブルに slug カラムを追加する必要があります。そして、このカラムに値を設定するために、ライフサイクルコールバックを追加する必要があります。 
 We need to add a slug column for the category table and lifecycle callbacks for setting this column value:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
@@ -233,14 +237,15 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
            prePersist: [ setSlugValue ]
            preUpdate: [ setSlugValue ]
 
-カテゴリエンティティから削除（ src/Ibw/JobeetBundle/Entity/Category.php ） 先ほど作成し、カテゴリエンティティクラスを更新するために doctrine コマンドを実行 getSlug メソッド：
+先ほど作成した getSlug メソッドをカテゴリエンティティ（ src/Ibw/JobeetBundle/Entity/Category.php ）から削除し、
+カテゴリエンティティクラスを更新するために doctrine コマンドを実行します。
 Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the getSlug method we created earlier and run the doctrine command to update the Category entity class:
 
 .. code-block:: bash
 
    $ php app/console doctrine:generate:entities
 
-ここで Category.php に以下の追加をおこないます。
+これで Category.php に以下のコードが追加されているでしょう。
 Now you should have the following added to Category.php:
 
 src/Ibw/JobeetBundle/Entity/Category.php
@@ -295,7 +300,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
        }
    }
 
-今、私たちは、データベースを削除して、新しいカテゴリ]列で再度作成し、備品をロードする必要があります。
+ここで、私たちは、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、フィクスチャーをロードする必要があります。
 Now we have to drop the database and create it again with the new Category column and load the fixtures:
 
 .. code-block:: bash
@@ -310,8 +315,10 @@ Now we have to drop the database and create it again with the new Category colum
 Category Page
 -------------
 
-私たちは、showAction（）メソッドを作成するための場所で今ではすべてを持っている。 CategoryController.phpファイルに次のコードを追加します。
-We have now everything in place to create the showAction() method. Add the following code to the CategoryController.php file:
+showAction() メソッドを作成するための場所ですべてを持っています。 
+CategoryController.php ファイルに次のコードを追加します。
+We have now everything in place to create the showAction() method. 
+Add the following code to the CategoryController.php file:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
 
@@ -338,7 +345,8 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
    // ...
 
-最後のステップはshow.html.twigテンプレートを作成することです：
+
+最後のステップは show.html.twig テンプレートを作成することです。
 The last step is to create the show.html.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
@@ -384,8 +392,8 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 Including Other Twig Templates
 ------------------------------
 
-私たちがコピーされ、テンプレートindex.html.twigジョブからジョブのリストを作成してタグを貼り付けていることに注意してください。
-それは残念だ。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成する必要があり、必要な場所にあります。
+テンプレート index.html.twig からジョブのリストを作成するタグをコピーアンドペーストしていることに注意してください。
+それはよくない方法です。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成し、必要な場所に取り込むべきです。
 list.html.twig ファイルを作成します。
 Notice that we have copied and pasted the tag that create a list of jobs from the job index.html.twig template. 
 That’s bad. When you need to reuse some portion of a template, you need to create a new twig template with that code and include it where you need. 
@@ -409,7 +417,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
        {% endfor %}
    </table>
 
-あなたは、関数を含む使用してテンプレートを含めることができます。上記の機能を備えた両方のテンプレートからHTML<表>のコードを置き換えます。
+あなたは、``include`` 関数を使用してテンプレートを取り込むことができます。両方のテンプレートから ``include`` 関数をよびだして、　HTML <table> のコードを置き換えます。
 You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
 
 src/Ibw/JobeetBundle/Resources/view/Job/index.html.twig
@@ -424,13 +432,13 @@ src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
 
    {{ include ('IbwJobeetBundle:Job:list.html.twig', {'jobs': category.activejobs}) }}
 
-一覧ページネーション
+一覧のページング
 ---------------
 List Pagination
 ---------------
 
-これを書いている時点では、Symfony2のは、私たちは古い古典的な方法を使用します。この問題を解決するために箱から出して何か良いページネーション·ツールを提供していません。
-まずは、IbwJobeetBundle_categoryルートにページ·パラメータを追加してみましょう。ページ·パラメータは、デフォルト値の1になりますので、必要とされません。
+これを書いている時点では、 Symfony2 は、この問題を解決するための便利なページネーション·ツールを提供していない為、古典的な方法を使用します。
+まずは、 IbwJobeetBundle_category ルートに ``page`` パラメータを追加してみましょう。  ``page`` パラメータは、デフォルト値が1となり、必須ではありません。
 At the moment of writing this, Symfony2 doesn’t provide any good pagination tools out of the box so to solve this problem we will use the old classic method. 
 First, let’s add a page parameter to the IbwJobeetBundle_category route. The page parameter will have a default value of 1, so it will not be required:
 
@@ -465,7 +473,7 @@ app/config/config.yml
        max_jobs_on_homepage: 10
        max_jobs_on_category: 20
 
-doctrine がジョブを取得する際に $offset パラメータを含めるように JobRepository クラスの getActiveJobs メソッドを変更します。
+JobRepository クラスの getActiveJobs メソッドを変更し、doctrine がジョブを取得する際に $offset パラメータを含むようにします。
 Change the JobRepository getActiveJobs method to include an $offset parameter to be used by doctrine when retrieving jobs:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
