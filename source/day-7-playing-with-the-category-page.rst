@@ -12,11 +12,11 @@ Today we will make the Category page like it is described in the second day’s 
    “The user sees a list of all the jobs from the category sorted by date and paginated with 20 jobs per page“
 
 カテゴリールート
------------
+------------
 The Category Route
 ------------------
 
-最初に、カテゴリページのURLを定義するためにルートを追加する必要があります。ルーティング·ファイルの先頭にそれを追加します。
+最初に、カテゴリページの URL を定義するためにルートを追加する必要があります。ルーティング·ファイルの先頭にそれを追加します。
 First, we need to add a route to define a pretty URL for the category page. Add it at the beginning of the routing file:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -78,7 +78,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        </div>
    {% endblock %}
 
-上記のテンプレートでは、カテゴリを使用していました。 ``more jobs`` を定義してみましょう：
+上記のテンプレートでは、カテゴリを使用していました。
+ ``more jobs`` を定義してみましょう：
 In the template above we used category. more jobs, so let’s define it:
 
 src/Ibw/JobeetBunlde/Entity/Category.php
@@ -130,7 +131,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-countActiveJobs 関数は JobRepository に追加する必要があります。
+JobRepository に countActiveJobs 関数を追加する必要があります。
 The countActiveJobs function has to be added to the JobRepository:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -432,8 +433,8 @@ src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
 
    {{ include ('IbwJobeetBundle:Job:list.html.twig', {'jobs': category.activejobs}) }}
 
-一覧のページング
----------------
+一覧のページネーション
+-----------------
 List Pagination
 ---------------
 
