@@ -5,18 +5,31 @@ Day 9: The functional Tests
 
 .. include:: common/original.rst.inc
 
-機能テストは、端から端からアプリケーションをテストするための素晴らしいツールです。サーバーから送信された応答に、ブラウザからの要求から。ルーティング、モデル、アクションとテンプレート：彼らは、アプリケーションのすべての層をテストします。彼らはあなたがおそらく既に手動でやっていると非常に似ています：アクションを追加または変更するたびに、ブラウザに移動し、リンクをクリックしレンダリングされたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。言い換えると、実装したばかりのユースケースに対応するシナリオを実行します。 
-手作業なので、退屈で間違いをしやすいです。あなたのコードで何かを変更するたびに、あなたが何かを壊していないことを保証するため、すべてのシナリオを行わなければなりません。それは非常識だ。 symfonyでは機能テストはシナリオを簡単に書く方法を提供します。各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。ユニットテストのように、彼らはあなたに平和のコードに自信を与える。 
+機能テストは、端から端まで（ブラウザからのリクエストからサーバーからのレスポンスまで）アプリケーションをテストするための素晴らしいツールです。
+それらはアプリケーションのすべての層（ルーティング、モデル、アクションとテンプレート）をテストします。
+おそらく既に手動でやっていると非常に似ています。アクションを追加または変更するたびに、ブラウザに移動し、リンクをクリックしレンダリングされたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。
+言い換えると、実装したばかりのユースケースに対応するシナリオを実行します。 
+手作業なので、退屈で間違いをしやすいです。
+あなたのコードで何かを変更するたびに、あなたが何かを壊していないことを保証するため、すべてのシナリオを行わなければなりません。
+それは非常識です。 Symfonyでは機能テストはシナリオを簡単に書く方法を提供します。
+各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。
+ユニットテストのように、彼らはあなたに平和のコードに自信を与えます。 
 機能テストは、非常に特定のワークフローがあります。
-Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server. They test all the layers of an application: the routing, the model, the actions and the templates. They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page. In other words, you run a scenario corresponding to the use case you have just implemented.
-As the process is manual, it is tedious and error prone. Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something. That’s insane. Functional tests in symfony provide a way to easily describe scenarios. Each scenario can then be played automatically over and over again by simulating the experience a user has in a browser. Like unit tests, they give you the confidence to code in peace.
+Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server. 
+They test all the layers of an application: the routing, the model, the actions and the templates. 
+They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page. 
+In other words, you run a scenario corresponding to the use case you have just implemented.
+As the process is manual, it is tedious and error prone. Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something. 
+That’s insane. Functional tests in symfony provide a way to easily describe scenarios. 
+Each scenario can then be played automatically over and over again by simulating the experience a user has in a browser. 
+Like unit tests, they give you the confidence to code in peace.
 Functional tests have a very specific workflow:
 
-*要求を作成。 
-*応答をテストします。 
-*リンクをクリックするか、フォームを送信。 
-*応答をテストします。 
-*すすぎ、繰り返す。
+* 要求を作成。 
+* 応答をテストします。 
+* リンクをクリックするか、フォームを送信。 
+* 応答をテストします。 
+* すすぎ、繰り返す。
 * Make a request;
 * Test the response;
 * Click on a link or submit a form;
@@ -24,6 +37,7 @@ Functional tests have a very specific workflow:
 * Rinse and repeat;
 
 私たちの第一の機能テスト
+-------------------
 Our First Functional Test
 -------------------------
 
@@ -115,6 +129,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 To learn more about crawler, read the Symfony documentation here.
 
 機能テストの実行
+-------------
 Running Functional Tests
 ------------------------
 
@@ -382,11 +397,14 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    // ...
 
 お手本から学ぶ
+-----------
 LEARN BY THE EXAMPLE
 --------------------
 
-このセクションでは、仕事とカテゴリページをテストするために必要なすべてのコードがあります。あなたには、いくつかの新しいトリックをきちんと学ぶこととして、慎重にコードを読む：
-In this section, you have all the code needed to test the job and category pages. Read the code carefully as you may learn some new neat tricks:
+このセクションでは、仕事とカテゴリページをテストするために必要なすべてのコードがあります。
+いくつかの新しいトリックをきちんと学ぶこととして、慎重にコードを読む：
+In this section, you have all the code needed to test the job and category pages. 
+Read the code carefully as you may learn some new neat tricks:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -660,7 +678,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
        }
    }
 
-つまり、今日のすべてです！明日は、すべての形態について、知っておくべきことを学びます。
+これで、今日はすべてです！明日は、フォームについて、知っておくべきことを学びます。
 That’s all for today! Tomorrow, we will learn all there is to know about forms.
 
 .. include:: common/license.rst.inc
