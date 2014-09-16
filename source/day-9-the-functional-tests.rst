@@ -28,7 +28,7 @@ Functional tests have a very specific workflow:
 * 要求を作成。 
 * 応答をテストします。 
 * リンクをクリックするか、フォームを送信。 
-* 応答をテストします。 
+* レスポンスをテストします。 
 * すすぎ、繰り返す。
 * Make a request;
 * Test the response;
@@ -41,8 +41,10 @@ Functional tests have a very specific workflow:
 Our First Functional Test
 -------------------------
 
-機能テストは、一般的に、あなたのバンドルのテスト/コントローラのディレクトリに住んで単純なPHPファイルです。あなたのCategoryControllerクラスによって処理のページをテストする場合は、特別なWebTestCaseクラスを拡張する新しいCategoryControllerTestクラスを作成することで起動します。
-Functional tests are simple PHP files that typically live in the Tests/Controller directory of your bundle. If you want to test the pages handled by your CategoryController class, start by creating a new CategoryControllerTest class that extends a special WebTestCase class:
+一般的に機能テストはバンドルのディレクトリ Tests/Controller にあるシンプルな PHP ファイルです。
+CategoryController クラスによって処理するページをテストする場合は、特別な WebTestCase クラスを拡張して新しい CategoryControllerTest クラスを作成することで始めます。
+Functional tests are simple PHP files that typically live in the Tests/Controller directory of your bundle. 
+If you want to test the pages handled by your CategoryController class, start by creating a new CategoryControllerTest class that extends a special WebTestCase class:
 
 src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
@@ -125,7 +127,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
        }
    }
 
-クローラーの詳細については、こちらをsymfonyのドキュメントをお読みください。
+クローラーの詳細については、こちらを Symfony のドキュメントをお読みください。
 To learn more about crawler, read the Symfony documentation here.
 
 機能テストの実行
@@ -133,14 +135,14 @@ To learn more about crawler, read the Symfony documentation here.
 Running Functional Tests
 ------------------------
 
-ユニットテストに関して、機能テストを起動するPHPUnitのコマンドを実行することで行うことができます。
+ユニットテストに関して、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
 As for unit tests, launching functional tests can be done by executing the phpunit command:
 
 .. code-block:: bash
 
    phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
 
-このテストは、Jobeetの内の有効なURLではありませんテストされたURLのため、/カテゴリ/インデックスを失敗します::
+このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します::
 This test will fail because the tested url, /category/index, is not a valid url in Jobeet::
 
    PHPUnit 3.7.22 by Sebastian Bergmann.
@@ -156,15 +158,18 @@ This test will fail because the tested url, /category/index, is not a valid url 
    1) Ibw\JobeetBundle\Tests\Controller\CategoryControllerTest::testShow
    Failed asserting that false is true.
 
+機能テストを書く
+------------
 Writing Functional Tests
 ------------------------
 
-機能テストを書くことはブラウザでシナリオを演じることに似ています。私たちは、すでに私たちは2日目のストーリーの一部としてテストする必要のあるすべてのシナリオを書かれている。 
-まずは、JobControllerTestクラスを編集してJobeetのホームページをテストしてみましょう。 1の後でコードを置き換えます。
+機能テストを書くことはブラウザでシナリオを演じることに似ています。すでに2日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。 
+まずは、 JobControllerTest クラスを編集して Jobeet のトップページをテストしてみましょう。 次のコードで置き換えます。
 Writing functional tests is like playing a scenario in a browser. We already have written all the scenarios we need to test as part of the day 2 stories.
 First, let’s test the Jobeet homepage by editing the JobControllerTest class. Replace the code with the following one:
 
-EXPIREDのジョブが一覧表示されません
+期限切れのジョブが一覧表示されません
+-----------------------------
 EXPIRED JOBS ARE NOT LISTED
 ---------------------------
 
@@ -249,15 +254,21 @@ EXPIRED JOBS ARE NOT LISTED
        }
    }
 
-ホームページから期限切れのジョブの除外を検証するために、私たちはCSSセレクタ.JOBS td.positionがあることを確認してください。どこでもレスポンスのHTMLコンテンツ内の一致していない（「期限切れ」）（覚えているが含まれていること備品には、唯一の有効期限が切れた仕事たち）の位置に「期限切れ」が含まれています。
-To verify the exclusion of expired jobs from the homepage, we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content (remember that in the fixtures, the only expired job we have contains “Expired” in the position).
+トップページから期限切れのジョブの除外を検証するために、CSSセレクタ ``.jobs td.position:contains("Expired")`` が、レスポンスの中のHTMLコンテンツ内のどれとも一致しないことを確認します。
+（フィクスチャーの中で唯一、有効期限が切れた仕事は、役職に「Expired」が含まれていたことを思い出してください）。
+To verify the exclusion of expired jobs from the homepage, 
+we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content 
+(remember that in the fixtures, the only expired job we have contains “Expired” in the position).
 
-ONLY N個のジョブは、カテゴリの一覧表示されます
+N個のジョブだけが、カテゴリの一覧表示されます
+-----------------------------------
 ONLY N JOBS ARE LISTED FOR A CATEGORY
 -------------------------------------
 
-あなたのTestIndex（）関数の最後に次のコードを追加します。私達の機能テストでのアプリ/ configに/ config.ymlで定義されたカスタムパラメータを取得するには、私たちはカーネルを使用します。
-Add the following code at the end of  your testIndex() function. To get the custom parameter defined in app/config/config.yml in our functional test, we will use the kernel:
+TestIndex（） 関数の最後に次のコードを追加します。
+機能テストで app/config/config.yml で定義されたカスタムパラメータを取得するには、カーネルを使用します。
+Add the following code at the end of  your testIndex() function.
+To get the custom parameter defined in app/config/config.yml in our functional test, we will use the kernel:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 

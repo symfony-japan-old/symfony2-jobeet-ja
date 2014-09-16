@@ -739,7 +739,7 @@ Now, if you go to http://jobeet.local/cov/Repository.html you will see that the 
 それでは、100% のコード網羅率を達成するために JobRepository ためのいくつかのテストを追加してみましょう。
 今のところ、データベースにはアクティブなジョブを持たない二つのカテゴリと、一つだけアクティブなジョブを持つ一つのカテゴリを持ちます。
 $max と $offset パラメーターをテストする際に、以下のテストでカテゴリに少なくとも3つのアクティブなジョブをテストするのはそのためです。
-そのためには、 testGetActiveJobs() にて、 foreach 文の内部にこれを追加します。
+そのために、 testGetActiveJobs() にて、 foreach 文の内部にこれを追加します。
 Let’s add some tests for the JobRepository to achieve 100% code coverage. 
 At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job. 
 That why, when we will test the $max and $offset parameters, we will run the following tests just on the categories with at least 3 active jobs. 
@@ -756,18 +756,15 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
        // 少なくとも3つのアクティブなジョブが選択したカテゴリにはあり、
        // getActiveJobs() メソッドを limit と offset パラメーターを利用してテストし、
        // 100% のコード網羅率にします。
-
        // If there are at least 3 active jobs in the selected category, we will
        // test the getActiveJobs() method using the limit and offset parameters too
        // to get 100% code coverage
        if($jobs_db > 2 ) {
            $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJobs($category->getId(), 2);
-           // このテストは戻り値としてアクティブなジョブの数
            // This test tells if the number of returned active jobs is the one $max parameter requires
            $this->assertEquals(2, count($jobs_rep));
 
            $jobs_rep = $this->em->getRepository('IbwJobeetBundle:Job')->getActiveJobs($category->getId(), 2, 1);
-           // リミットとして2を設定し、2つ目のジョブから始まり、
            // We set the limit to 2 results, starting from the second job and test if the result is as expected
            $this->assertEquals(2, count($jobs_rep));
        }
