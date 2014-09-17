@@ -365,7 +365,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
    // ...
 
-これで、1に従うことによって、前のテストコードを置き換えることができます。
+前のテストコードを次のもので置き換えることができます。
 You can now replace the previous test code by the following one:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -379,12 +379,15 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    //...
 
 ホームページの各ジョブはクリックできる
+----------------------------
 EACH JOB ON THE HOMEPAGE IS CLICKABLE
 -------------------------------------
 
-ホームページの求人リンクをテストするには、「Web開発」テキストをクリックをシミュレートします。それらの多くがページに存在するので、私たちは最初のものをクリックし、ブラウザを依頼する、明示的に持っている。 
-各リクエストパラメータは、ルーティングが正しくその仕事をしていることを確認するためにテストされています。
-To test the job link on the homepage, we simulate a click on the “Web Developer” text. As there are many of them on the page, we have explicitly to ask the browser to click on the first one.
+トップページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
+それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。 
+各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。
+To test the job link on the homepage, we simulate a click on the “Web Developer” text. 
+As there are many of them on the page, we have explicitly to ask the browser to click on the first one.
 Each request parameter is then tested to ensure that the routing has done its job correctly.
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -412,8 +415,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 LEARN BY THE EXAMPLE
 --------------------
 
-このセクションでは、仕事とカテゴリページをテストするために必要なすべてのコードがあります。
-いくつかの新しいトリックをきちんと学ぶこととして、慎重にコードを読む：
+このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
+いくつかの新しいトリックをきちんと学ぶこととして、慎重にコードを読んでください。：
 In this section, you have all the code needed to test the job and category pages. 
 Read the code carefully as you may learn some new neat tricks:
 
