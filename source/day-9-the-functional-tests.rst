@@ -340,8 +340,12 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
    }
 
-テストはこの瞬間で動作したとしても、私たちは、プログラミングカテゴリの最初の仕事はテストの任意の場所で再利用することが可能になったように、コードを少しリファクタリングする必要があります。コードはテスト固有のものですように私たちは、モデル·レイヤーにコードを移動しません。代わりに、私たちは私たちのテストクラス内getMostRecentProgrammingJob関数にコードを移動します。
-Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests. We won’t move the code to the Model layer as the code is test specific. Instead, we will move the code to the getMostRecentProgrammingJob function in our test class:
+テストはこの瞬間で動作したとしても、コードを少しリファクタリングする必要があります。最初のジョブのプログラムが任意のテストの場所で再利用することが可能になったように。
+コードはテスト固有のものですので、モデル·レイヤーにコードを移動しません。
+代わりに、テストクラス内の getMostRecentProgrammingJob 関数にコードを移動します。
+Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests. 
+We won’t move the code to the Model layer as the code is test specific. 
+Instead, we will move the code to the getMostRecentProgrammingJob function in our test class:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
