@@ -283,8 +283,9 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->count() <= $max_jobs_on_homepage );
    }
 
-このテストは私達がフェラ/ index.html.twigファイルの各カテゴリに対応するCSSクラスを追加する必要があります動作させるために（私たちは、各カテゴリを選択して、ジョブがリストされているをカウントすることができます）
-For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file (so we can select each category and count the jobs listed) :
+このテストを動作させるために Job/index.html.twig のカテゴリ毎に、それに対応するCSSクラスを追加する必要があります。（そによって、各カテゴリを選択して、ジョブがリストされているをカウントすることができます）。
+For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file
+ (so we can select each category and count the jobs listed) :
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -297,7 +298,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
               <div class="category">
    <!-- ... -->
 
-カテゴリはカテゴリページへのリンクがあり求人が多すぎる場合のみ
+カテゴリはジョブが多すぎる場合カテゴリページへのリンクのみを持つ
+------------------------------------------------
 A CATEGORY HAS A LINK TO THE CATEGORY PAGE ONLY IF TOO MANY JOBS
 ----------------------------------------------------------------
 
@@ -315,7 +317,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 これらのテストでは、デザイン部門には「雇用」リンク（.category_design.more_jobsが存在しない）がないことを確認し、（.more_jobsを.category_programmingが存在するプログラミングカテゴリの「雇用」へのリンクがあることを）。
 In these tests, we check that there is no “more jobs” link for the design category (.category_design .more_jobs does not exist), and that there is a “more jobs” link for the programming category (.category_programming .more_jobs does exist).
 
-ジョブは、日付でソートされ
+日付でソートされたジョブ
+------------------
 JOBS ARE SORTED BY DATE
 -----------------------
 
