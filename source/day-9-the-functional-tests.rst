@@ -7,27 +7,27 @@ Day 9: The functional Tests
 
 機能テストは、端から端まで（ブラウザからのリクエストからサーバーからのレスポンスまで）アプリケーションをテストするための素晴らしいツールです。
 それらはアプリケーションのすべての層（ルーティング、モデル、アクションとテンプレート）をテストします。
-おそらく既に手動でやっていると非常に似ています。アクションを追加または変更するたびに、ブラウザに移動し、リンクをクリックしレンダリングされたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。
+おそらく既に手動でやっていることと非常に似ています。アクションを追加または変更するたびに、ブラウザでページを開き、リンクをクリックし表示されたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。
 言い換えると、実装したばかりのユースケースに対応するシナリオを実行します。 
-手作業なので、退屈で間違いをしやすいです。
+これは手作業なので、退屈で間違いをしやすいです。
 あなたのコードで何かを変更するたびに、あなたが何かを壊していないことを保証するため、すべてのシナリオを行わなければなりません。
 それは非常識です。 Symfonyでは機能テストはシナリオを簡単に書く方法を提供します。
 各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。
-ユニットテストのように、彼らはあなたに平和のコードに自信を与えます。 
+ユニットテストのように、あなたにコードに自信を与えてくれます。 
 機能テストは、非常に特定のワークフローがあります。
 Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server. 
 They test all the layers of an application: the routing, the model, the actions and the templates. 
 They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page. 
 In other words, you run a scenario corresponding to the use case you have just implemented.
-As the process is manual, it is tedious and error prone. Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something. 
+As the process is manual, it is tedious and error prone. 
+Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something. 
 That’s insane. Functional tests in symfony provide a way to easily describe scenarios. 
 Each scenario can then be played automatically over and over again by simulating the experience a user has in a browser. 
 Like unit tests, they give you the confidence to code in peace.
 Functional tests have a very specific workflow:
 
-* 要求を作成。 
-* 応答をテストします。 
-* リンクをクリックするか、フォームを送信。 
+* リクエストを作成します。
+* リンクをクリックするか、フォームを送信します。 
 * レスポンスをテストします。 
 * すすぎ、繰り返す。
 * Make a request;
@@ -283,7 +283,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->count() <= $max_jobs_on_homepage );
    }
 
-このテストを動作させるために Job/index.html.twig のカテゴリ毎に、それに対応するCSSクラスを追加する必要があります。（そによって、各カテゴリを選択して、ジョブがリストされているをカウントすることができます）。
+このテストを動作させるために Job/index.html.twig の中で、カテゴリ毎に対応するCSSクラスを追加する必要があります。（それによって、各カテゴリを選択し、リストされたジョブを数えることができます）。
 For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file
  (so we can select each category and count the jobs listed) :
 
@@ -298,7 +298,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
               <div class="category">
    <!-- ... -->
 
-カテゴリはジョブが多すぎる場合カテゴリページへのリンクのみを持つ
+カテゴリにジョブが多すぎる場合カテゴリページへのリンクのみを持つ
 ------------------------------------------------
 A CATEGORY HAS A LINK TO THE CATEGORY PAGE ONLY IF TOO MANY JOBS
 ----------------------------------------------------------------
@@ -314,16 +314,22 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming .more_jobs')->count() == 1);
    }
 
-これらのテストでは、デザイン部門には「雇用」リンク（.category_design.more_jobsが存在しない）がないことを確認し、（.more_jobsを.category_programmingが存在するプログラミングカテゴリの「雇用」へのリンクがあることを）。
-In these tests, we check that there is no “more jobs” link for the design category (.category_design .more_jobs does not exist), and that there is a “more jobs” link for the programming category (.category_programming .more_jobs does exist).
+これらのテストでは、デザインカテゴリに「 more jobs 」リンクがないこと(``.category_design .more_jobs`` がないこと)を確認し、
+プログラミングカテゴリには「 more jobs 」リンクがあること(``.category_programming .more_jobs`` があること)をチェックします。
+In these tests, we check that there is no “more jobs” link for the design category (.category_design .more_jobs does not exist),
+ and that there is a “more jobs” link for the programming category (.category_programming .more_jobs does exist).
 
 日付でソートされたジョブ
 ------------------
 JOBS ARE SORTED BY DATE
 -----------------------
 
-ジョブが実際に日付でソートされているかどうかをテストするためには、ホームページに記載されて最初の仕事は、私たちが期待するものであることを確認する必要があります。これは、URLが予想される主キーが含まれていることを確認することで行うことができます。主キーは実行の間に変わる可能性が、私たちは、最初にデータベースからDoctrineのオブジェクトを取得する必要があります。
-To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect. This can be done by checking that the URL contains the expected primary key. As the primary key can change between runs, we need to get the Doctrine object from the database first.
+ジョブが実際に日付でソートされているかどうかをテストするために、ホームページに記載された最初の仕事が、期待したものであることを確認する必要があります。
+URL に期待する主キーが含まれていることを確認することで行います。
+主キーは実行の間に変わる可能性があるため、最初にデータベースからDoctrineのオブジェクトを取得する必要があります。
+To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect. 
+This can be done by checking that the URL contains the expected primary key. 
+As the primary key can change between runs, we need to get the Doctrine object from the database first.
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -343,8 +349,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
    }
 
-テストはこの瞬間で動作したとしても、コードを少しリファクタリングする必要があります。最初のジョブのプログラムが任意のテストの場所で再利用することが可能になったように。
-コードはテスト固有のものですので、モデル·レイヤーにコードを移動しません。
+テストがこの瞬間には動作したとしても、最初のプログラミングカテゴリのジョブを取得する処理がどのテストでも再利用可能になったように、コードを少しでもリファクタリングする必要があります。
+コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。
 代わりに、テストクラス内の getMostRecentProgrammingJob 関数にコードを移動します。
 Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests. 
 We won’t move the code to the Model layer as the code is test specific. 
@@ -423,7 +429,7 @@ LEARN BY THE EXAMPLE
 --------------------
 
 このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
-いくつかの新しいトリックをきちんと学ぶこととして、慎重にコードを読んでください。：
+いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。：
 In this section, you have all the code needed to test the job and category pages. 
 Read the code carefully as you may learn some new neat tricks:
 
