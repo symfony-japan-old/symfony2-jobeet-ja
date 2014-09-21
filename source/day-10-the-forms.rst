@@ -349,8 +349,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-あなたは、ロゴディレクトリ（web/uploads/jobs/）を作成し、それをWebサーバから書き込み可能であることを確認する必要があります。 
-この実装は機能していても、良い方法はDoctrineのジョブエンティティを使用してファイルのアップロードを処理することです。 
+ロゴディレクトリ（ web/uploads/jobs/ ）を作成し、それを Webサーバーから書き込み可能であることを確認する必要があります。 
+この実装は機能していますが、より良い方法は Doctrine のジョブエンティティを使用してファイルのアップロードを処理することです。 
 まず、ジョブエンティティに次の行を追加します。
 You need to create the logo directory (web/uploads/jobs/) and check that it is writable by the web server.
 Even if this implementation works, a better way is to handle the file upload using the Doctrine Job entity.
@@ -384,15 +384,17 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-ロゴプロパティは、ファイルへの相対パスを格納し、データベースに永続化されている。 
-getAbsolutePath（））がgetWebPath（しばらくファイルへの絶対パスを返しアップロードされたファイルにリンクするテンプレートで使用可能なWebパスを返す便利なメソッドです便利なメソッドです。 
-エンティティまたはファイルが保存できない場合は、何も起こりませんが持続問題がある場合：データベース操作とファイルの移動がアトミックになるように、私たちは、実装を行います。
+ロゴプロパティは、ファイルへの相対パスを格納し、データベースに永続化されます。 
+getAbsolutePath() はファイルの絶対パスを返す便利なメソッドです。一方、getWebPath() はテンプレートで使用可能なアップロードされたファイルにリンクするWebパスを返す便利なメソッドです。 
+データベース操作とファイルの移動が不可分になるように、実装を行います。エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
 これを行うには、Doctrineがデータベースへのエンティティを解決しないように、ファイルを右に移動する必要があります。
-これは、ジョブ·エンティティのライフサイクルコールバックにフックすることによって達成することができる。
-私たちはJobeetのチュートリアルの3日目でやったように、私たちはJob.orm.ymlファイルを編集し、その中にpreUpload、アップロードとremoveUploadコールバックが追加されます。
+これは、ジョブ·エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
+私たちはJobeetのチュートリアルの3日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックが追加されます。
 The logo property stores the relative path to the file and is persisted to the database. 
-The getAbsolutePath() is a convenience method that returns the absolute path to the file while the getWebPath() is a convenience method that returns the web path, which can be used in a template to link to the uploaded file.
-We will make the implementation so that the database operation and the moving of the file are atomic: if there is a problem persisting the entity or if the file cannot be saved, then nothing will happen. 
+The getAbsolutePath() is a convenience method that returns the absolute path to the file
+ while the getWebPath() is a convenience method that returns the web path, which can be used in a template to link to the uploaded file.
+We will make the implementation so that the database operation and the moving of the file are atomic: 
+if there is a problem persisting the entity or if the file cannot be saved, then nothing will happen. 
 To do this, we need to move the file right as Doctrine persists the entity to the database. 
 This can be accomplished by hooking into the Job entity lifecycle callback. 
 Like we did in day 3 of the Jobeet tutorial, we will edit the Job.orm.yml file and add the preUpload, upload and removeUpload callbacks in it:
