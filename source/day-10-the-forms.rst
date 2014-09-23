@@ -1157,7 +1157,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
    # ...
 
-プレビュー動作（ここではshowアクションとの違いは、ジョブが使用してデータベースから取得されるということであるIdのトークンの代わりに提供される）：
+プレビューアクション（ここでの show アクションとの違いは、ジョブをidの代わりにトークンを使用してデータベースから取得されるということです。）：
 The preview action (here the difference from the show action is that the job is retrieved from the database using the provided token instead of the id):
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1187,7 +1187,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 ユーザーがトークン化されたURLでアクセスした場合は、上部の管理バーを追加します。 
-show.html.twig テンプレートの開始時に、管理バーをホストし、下部にある編集リンクを削除するためのテンプレートが含まれています。
+show.html.twig テンプレートの上部に、管理バーをもち、下部にある編集リンクを削除します。
 If the user comes in with the tokenized URL, we will add an admin bar at the top. 
 At the beginning of the show.html.twig template, include a template to host the admin bar and remove the edit link at the bottom:
 
@@ -1206,7 +1206,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    {% endblock %}
 
-その後、admin.html.twigテンプレートを作成します。
+その後、 admin.html.twig テンプレートを作成します。
 Then, create the admin.html.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
@@ -1246,8 +1246,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
        </ul>
    </div>
 
-あり多くのコードですが、ほとんどのコードを理解するのは簡単です。 
-より読みやすいテンプレートを作成するために、ジョブ·エンティティ·クラス内のショートカットメソッドの束を追加しました：
+多くのコードがありますが、ほとんどのコードを理解するのは簡単です。 
+より読みやすいテンプレートを作成するために、ジョブエンティティクラス内のショートカットメソッドをまとめて追加しました：
 There is a lot of code, but most of the code is simple to understand.
 To make the template more readable, we have added a bunch of shortcut methods in the Job entity class:
 
@@ -1280,7 +1280,7 @@ The admin bar displays the different actions depending on the job status:
 .. image:: /images/Day-10-admin-bar.png
 .. image:: /images/Day-10-admin-badr-2.png
 
-私たちは今、新しいプレビューページへJobControllerの作成および更新の操作をリダイレクトします。
+ここで、新しいプレビューページへのリダイレクト処理をJobControllerの create および update アクションに設定します。
 We will now redirect the create and update actions of the JobController to the new preview page:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1318,10 +1318,12 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        // ...
    }
 
-私たちは前にも言ったように、あなたが仕事のトークンを知っていて、サイトの管理者だ場合にのみ、ジョブを編集することができます。
-あなたが仕事のページにアクセスすると現時点では、[編集]リンクが表示され、それが悪いのです。それではshow.html.twigファイルから削除してみましょう：
+以前にも述べたように、ジョブのトークンを知っている場合、その一つのジョブのみ編集ができ、サイトの管理者とされます。
+この時点でジョブページにアクセスすると、[編集]リンクが表示されてしまいます。
+それでは show.html.twig ファイルから以下の記載を削除してみましょう：
 As we said before, you can edit a job only if you know the job token and you’re the admin of the site. 
-At the moment, when you access a job page, you will see the Edit link and that’s bad. Let’s remove it from the show.html.twig file:
+At the moment, when you access a job page, you will see the Edit link and that’s bad. 
+Let’s remove it from the show.html.twig file:
 
 .. code-block:: html+jinja
 
@@ -1331,7 +1333,7 @@ At the moment, when you access a job page, you will see the Edit link and that�
        </a>
    </div>
 
-ジョブの活性化と公開
+ジョブのアクティブ化と公開
 ------------------
 Job Activation and Publication
 ------------------------------
@@ -1436,7 +1438,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-publishAction（） メソッドで、次のように定義された新しい publish() メソッドを使用しています。
+publishAction() メソッドで、次のように定義された新しい publish() メソッドを使用しています。
 The publishAction() method uses a new publish() method that can be defined as follows:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -1454,7 +1456,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
 これで、お使いのブラウザで新しいパブリッシュ機能をテストすることができます。 
 しかし、まだ修正箇所があります。
-活性化されていないジョブは、アクセス可能ではいけません。それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。
+アクティブ化されていないジョブは、アクセス可能ではいけません。それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。
 この要件を追加するために JobRepository クラスのメソッドを編集する必要があります。
 You can now test the new publish feature in your browser.
 But we still have something to fix. 
@@ -1562,10 +1564,11 @@ src/Ibw/JobeetBundle/Repository/CategoryRepository.php
    }
 
 以上になります。お使いのブラウザで今それをテストすることができます。
-すべての非アクティブ化ジョブはホームページから消えてしまった。あなたはそれらのURLを知っていても、彼らはもはやアクセスできません。
-1ジョブのトークンURLを知っていれば彼らは、しかし、アクセス可能である。この場合、求人のプレビューは管理バーに表示されます。
+すべての非アクティブ化ジョブはホームページから消えてしまいました。それらのURLを知っていても、もはやアクセスできません。
+しかし、ジョブのトークン付き URL を知っていればアクセス可能です。この場合、求人のプレビューは管理バーと一緒に表示されます。
 That’s all. You can test it now in your browser. 
 All non-activated jobs have disappeared from the homepage; even if you know their URLs, they are not accessible anymore. 
-They are, however, accessible if one knows the job’s token URL. In that case, the job preview will show up with the admin bar.
+They are, however, accessible if one knows the job’s token URL. 
+In that case, the job preview will show up with the admin bar.
 
 .. include:: common/license.rst.inc
