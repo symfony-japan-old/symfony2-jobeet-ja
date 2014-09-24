@@ -5,14 +5,22 @@ Day 11: Testing your Forms
 
 .. include:: common/original.rst.inc
 
-10日目では、symfonyは2.3と私たちの最初のフォームを作成しました。人々は現在、Jobeetの上に新しい仕事を投稿することができますが、私たちはいくつかのテストを追加する前に時間切れになりました。つまり、私たちはこれらの線に沿って行うことです。
-In day 10, we created our first form with Symfony 2.3. People are now able to post a new job on Jobeet but we ran out of time before we could add some tests. That’s what we will do along these lines.
+10 日目では、 Symfony 2.3 での最初のフォームを作成しました。
+現在、ユーザーが Jobeet に新しいジョブを投稿することができますが、いくつかのテストを追加する前に時間切れになってしまいました。
+つまり、これらの線に沿って行っていきます。
+In day 10, we created our first form with Symfony 2.3. 
+People are now able to post a new job on Jobeet but we ran out of time before we could add some tests. 
+That’s what we will do along these lines.
 
+フォームの送信
+-----------
 Submitting a Form
 -----------------
 
-それでは雇用創出と検証プロセスのための機能テストを追加するためにJobControllerTestファイルを開いてみましょう。ファイルの終わりに、求人作成ページを取得するには、次のコードを追加します。
-Let’s open the JobControllerTest file to add functional tests for the job creation and validation process. At the end of the file, add the following code to get the job creation page:
+それではジョブの作成と検証プロセスのための機能テストを追加するために、 JobControllerTest ファイルを開いてみましょう。
+求人作成ページを取得するために、ファイルの終わりに次のコードを追加します。
+Let’s open the JobControllerTest file to add functional tests for the job creation and validation process. 
+At the end of the file, add the following code to get the job creation page:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -28,8 +36,10 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertEquals('Ibw\JobeetBundle\Controller\JobController::newAction', $client->getRequest()->attributes->get('_controller'));
    }
 
-私たちはselectButton（）メソッドを使用しますフォームを選択します。このメソッドは、ボタンのタグを選択し、入力タグを提出することができます。ボタンを表すクローラを入手したら、ボタンノードを包むフォームのフォームのインスタンスを取得するために、フォーム（）メソッドを呼び出します。
-To select forms we will use the selectButton() method. This method can select button tags and submit input tags. Once you have a Crawler representing a button, call the form() method to get a Form instance for the form wrapping the button node:
+フォームを選択するために selectButton() メソッドを使用します。このメソッドは、``button`` タグを選択し、 ``input`` タグを送信することができます。
+ボタンを表すクローラを入手したら、ボタンノードを包むフォームのインスタンスを取得するために、 ``form()`` メソッドを呼び出します。
+To select forms we will use the selectButton() method. This method can select button tags and submit input tags. 
+Once you have a Crawler representing a button, call the form() method to get a Form instance for the form wrapping the button node:
 
 .. code-block:: php
 
@@ -39,7 +49,7 @@ To select forms we will use the selectButton() method. This method can select bu
 
    The above example selects an input of type submit using its value attribute “Submit Form".
 
-フォーム（）メソッドを呼び出すときに、あなたはまた、デフォルトのものをオーバーライドしますフィールド値の配列を渡すことができます：
+そしてまた、 form() メソッドを呼び出すときに、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます：
 When calling the form() method, you can also pass an array of field values that overrides the default ones:
 
 .. code-block:: php
@@ -49,7 +59,7 @@ When calling the form() method, you can also pass an array of field values that 
        'my_form[subject]' => 'Symfony Rocks!'
    ));
 
-今では、実際に選択し、フォームに有効な値を渡すための時間です。
+では、実際に選択し、フォームに有効な値を渡すたしてみましょう。
 It is now time to actually select and pass valid values to the form:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -81,11 +91,13 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertEquals('Ibw\JobeetBundle\Controller\JobController::createAction', $client->getRequest()->attributes->get('_controller'));
    }
 
-あなたがアップロードするファイルへの絶対パスを渡すと、ブラウザはファイルのアップロードもシミュレートします。 
-フォームを送信した後、私たちは実行されたアクションの作成であることを確認しました。
+ブラウザはファイルのアップロードもシミュレートします。アップロードするファイルへの絶対パスを渡すことでおこないます。
+フォームを送信した後、実行されたアクションが ``create`` であることを確認しました。
 The browser also simulates file uploads if you pass the absolute path to the file to upload.
 After submitting the form, we checked that the executed action is create.
 
+フォームのテスト
+-----------
 Testing the Form
 ----------------
 
@@ -104,10 +116,11 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 データベースレコードのテスト
+--------------------
 Testing the Database Record
 ---------------------------
 
-最終的に、私たちは仕事がデータベースに作成されていることをテストし、ユーザーがそれをまだ公表していませんようにis_activated列がfalseに設定されていることを確認したい。
+最終的に、ジョブがデータベースに作成された上、ユーザーがそれをまだ公表しないように is_activated カラムが false に設定されていることを確認したいと思います。
 Eventually, we want to test that the job has been created in the database and check that the is_activated column is set to false as the user has not published it yet.
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -126,10 +139,12 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue(0 < $query->getSingleScalarResult());
    }
 
+エラーのテスト
+----------
 Testing for Errors
 ------------------
 
-求人フォーム作成は私達が有効な値を投稿するときに期待どおりに動作します。それでは私たちは、非有効なデータを送信する際の動作を確認するためにテストを追加してみましょう：
+ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。それでは、有効ではないデータを送信した場合の動作を、確認するためのテストを追加してみましょう。：
 The job form creation works as expected when we submit valid values. Let’s add a test to check the behavior when we submit non-valid data:
 
 .. code-block:: php
