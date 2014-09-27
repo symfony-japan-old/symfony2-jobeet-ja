@@ -6,7 +6,7 @@ Day 11: Testing your Forms
 .. include:: common/original.rst.inc
 
 10 日目では、 Symfony 2.3 での最初のフォームを作成しました。
-現在、ユーザーが Jobeet に新しいジョブを投稿することができますが、いくつかのテストを追加する前に時間切れになってしまいました。
+現在、ユーザーが Jobeet に新しいジョブを投稿することができますが、それに対してテストを追加する前に時間切れになってしまいました。
 つまり、これらの線に沿って行っていきます。
 In day 10, we created our first form with Symfony 2.3. 
 People are now able to post a new job on Jobeet but we ran out of time before we could add some tests. 
@@ -17,8 +17,8 @@ That’s what we will do along these lines.
 Submitting a Form
 -----------------
 
-それではジョブの作成と検証プロセスのための機能テストを追加するために、 JobControllerTest ファイルを開いてみましょう。
-求人作成ページを取得するために、ファイルの終わりに次のコードを追加します。
+それではジョブの作成と検証プロセスのための機能テストを追加するため、 JobControllerTest ファイルを開いてみましょう。
+ジョブ 作成ページを取得するために、ファイルの終わりに次のコードを追加します。
 Let’s open the JobControllerTest file to add functional tests for the job creation and validation process. 
 At the end of the file, add the following code to get the job creation page:
 
@@ -49,7 +49,7 @@ Once you have a Crawler representing a button, call the form() method to get a F
 
    The above example selects an input of type submit using its value attribute “Submit Form".
 
-そしてまた、 form() メソッドを呼び出すときに、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます：
+そしてまた、 form() メソッドを呼び出す際、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます。：
 When calling the form() method, you can also pass an array of field values that overrides the default ones:
 
 .. code-block:: php
@@ -59,7 +59,7 @@ When calling the form() method, you can also pass an array of field values that 
        'my_form[subject]' => 'Symfony Rocks!'
    ));
 
-では、実際に選択し、フォームに有効な値を渡すたしてみましょう。
+では、実際に選択し、フォームに有効な値を渡してみましょう。
 It is now time to actually select and pass valid values to the form:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -91,7 +91,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertEquals('Ibw\JobeetBundle\Controller\JobController::createAction', $client->getRequest()->attributes->get('_controller'));
    }
 
-ブラウザはファイルのアップロードもシミュレートします。アップロードするファイルへの絶対パスを渡すことでおこないます。
+ブラウザはアップロードするファイルの絶対パスを渡すことでファイルのアップロードもシミュレートします。
 フォームを送信した後、実行されたアクションが ``create`` であることを確認しました。
 The browser also simulates file uploads if you pass the absolute path to the file to upload.
 After submitting the form, we checked that the executed action is create.
@@ -144,8 +144,10 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 Testing for Errors
 ------------------
 
-ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。それでは、有効ではないデータを送信した場合の動作を、確認するためのテストを追加してみましょう。：
-The job form creation works as expected when we submit valid values. Let’s add a test to check the behavior when we submit non-valid data:
+ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。
+それでは、有効ではないデータを送信した場合のテストを追加してみましょう。：
+The job form creation works as expected when we submit valid values. 
+Let’s add a test to check the behavior when we submit non-valid data:
 
 .. code-block:: php
 
@@ -174,8 +176,14 @@ The job form creation works as expected when we submit valid values. Let’s add
        $this->assertTrue($crawler->filter('#job_email')->siblings()->first()->filter('.error_list')->count() == 1);
    }
 
-今、私たちは、ジョブのプレビューページで見つかるadminバーをテストする必要があります。ジョブがまだアクティブ化されていないときは、編集、削除、またはジョブを公開することができます。これらの3つのアクションをテストするには、最初のジョブを作成する必要があります。しかし、それはコピー＆ペーストがたくさんなので、それではJobControllerTestクラスでジョブ作成メソッドを追加してみましょう：
-Now, we need to test the admin bar found on the job preview page. When a job has not been activated yet, you can edit, delete, or publish the job. To test those three actions, we will need to first create a job. But that’s a lot of copy and paste, so let’s add a job creator method in the JobControllerTest class:
+今、私たちは、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
+ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
+これらの3つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
+しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。：
+Now, we need to test the admin bar found on the job preview page. 
+When a job has not been activated yet, you can edit, delete, or publish the job. 
+To test those three actions, we will need to first create a job. 
+But that’s a lot of copy and paste, so let’s add a job creator method in the JobControllerTest class:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -204,9 +212,11 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        return $client;
    }
 
-createJob（）メソッドは、ジョブを作成し、リダイレクトをたどり、ブラウザを返します。また、いくつかのデフォルト値を使用してマージされる値の配列を渡すことができます。 
+createJob() メソッドは、ジョブを作成し、リダイレクトをたどり、ブラウザを返します。
+createJob() メソッドの引数に渡す配列は、デフォルト値にマージされ ``form`` メソッドの引数となります。
 パブリッシュアクションのテストは今より簡単です。
-The createJob() method creates a job, follows the redirect and returns the browser. You can also pass an array of values that will be merged with some default values.
+The createJob() method creates a job, follows the redirect and returns the browser. 
+You can also pass an array of values that will be merged with some default values.
 Testing the Publish action is now more simple:
 
 src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -254,13 +264,18 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue(0 == $query->getSingleScalarResult());
    }
 
+SafeGuard のテスト
+---------------
 Tests as a SafeGuard
 --------------------
 
-求人が公開されている場合、あなたはもうそれを編集することはできません。 「編集」リンクがプレビューページにはもはや表示されていない場合であっても、のは、この要件のためにいくつかのテストを追加しましょう​​。 
-まず、ジョブの自動発行を可能にするためにcreateJob（）メソッドに別の引数を追加し、ジョブがその位置の値を与え返すgetJobByPosition（）メソッドを作成します。
-When a job is published, you cannot edit it anymore. Even if the “Edit” link is not displayed anymore on the preview page, let’s add some tests for this requirement.
-First, add another argument to the createJob() method to allow automatic publication of the job, and create  a getJobByPosition() method that returns a job given its position value:
+求人が公開されている場合、もう編集することはできません。 
+「編集」リンクがプレビューページに表示されていない場合であっても、この要件のためにいくつかのテストを追加しましょう​​。 
+まず、ジョブの自動発行を可能にするために createJob() メソッドに別の引数を追加し、役職の値で選択して一つのジョブを返す getJobByPosition() メソッドを作成します。
+When a job is published, you cannot edit it anymore. 
+Even if the “Edit” link is not displayed anymore on the preview page, let’s add some tests for this requirement.
+First, add another argument to the createJob() method to allow automatic publication of the job, 
+and create  a getJobByPosition() method that returns a job given its position value:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -308,7 +323,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        return $query->getSingleResult();
    }
 
-求人が公開されている場合は、編集ページは404ステータスコードを返す必要があります。
+求人が公開されている場合は、編集ページは 404 ステータスコードを返す必要があります。
 If a job is published, the edit page must return a 404 status code:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
