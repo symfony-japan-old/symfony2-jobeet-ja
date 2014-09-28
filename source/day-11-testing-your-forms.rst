@@ -270,8 +270,8 @@ Tests as a SafeGuard
 --------------------
 
 求人が公開されている場合、もう編集することはできません。 
-「編集」リンクがプレビューページに表示されていない場合であっても、この要件のためにいくつかのテストを追加しましょう​​。 
-まず、ジョブの自動発行を可能にするために createJob() メソッドに別の引数を追加し、役職の値で選択して一つのジョブを返す getJobByPosition() メソッドを作成します。
+この要件のために、「編集」リンクがプレビューページに表示されていない場合でも、いくつかのテストを追加しましょう​​。 
+まず、ジョブの自動発行を可能にするため、 createJob() メソッドに別の引数を追加し、役職の値で選択して一つのジョブを返す getJobByPosition() メソッドを作成します。
 When a job is published, you cannot edit it anymore. 
 Even if the “Edit” link is not displayed anymore on the preview page, let’s add some tests for this requirement.
 First, add another argument to the createJob() method to allow automatic publication of the job, 
@@ -340,9 +340,11 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue(404 === $client->getResponse()->getStatusCode());
    }
 
-あなたがテストを実行すると、私たちは昨日、このセキュリティ対策を実装するのを忘れたとしてではなく、あなたが期待される結果がありません。あなたはすべてのエッジケースを考える必要があるので、テストを書くことは、また、バグを発見するための素晴らしい方法です。 
-私たちはただの仕事が活性化されれば404ページに転送するために必要に応じ、バグの修正はとてもシンプルです：
-But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday. Writing tests is also a great way to discover bugs, as you need to think about all edge cases.
+テストを実行すると、期待される結果を取得できないでしょう。私たちが昨日、このセキュリティ対策を実装するのを忘れたためです。
+テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。 
+バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。：
+But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday. 
+Writing tests is also a great way to discover bugs, as you need to think about all edge cases.
 Fixing the bug is quite simple as we just need to forward to a 404 page if the job is activated:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -368,14 +370,22 @@ src/Ibw/JobeetBundle/Controller/JobController.php
      // ...
    }
 
+テストの中で未来に戻る
+------------------
 Back to the Future in a Test
 ----------------------------
 
-ときにジョブが5日以内に期限が切れる、またはそれがすでに期限切れした場合、ユーザーは現在の日付から別の30日間、仕事の検証を拡張することができます。 
-ブラウザでこの要件をテストするジョブが、将来的に30日に作成されたときに有効期限が自動的に設定されるように簡単ではありません。求人ページを取得するときに、ジョブを拡張するためのリンクが存在しません。確かに、あなたは、データベース内の有効期限をハックするか、常にリンクを表示するテンプレートを微調整するが、その退屈で間違いをしやすいですができます。すでに推測してきたように、いくつかのテストを書くことは、私たちで時間の節約になります。 
-いつものように、私たちは最初の拡張メソッドに新しいルートを追加する必要があります。
+ジョブが 5 日以内に期限が切れる、または、すでに期限切れした場合、ユーザーは現在から 30 日間、ジョブの検証を延長することができます。
+ブラウザでこの要件をテストすることは簡単ではありません。有効期限がジョブ作成の 30 日後に自動的に設定されてしまうためです。
+また、求人ページを取得するときに、ジョブを延長するためのリンクが存在しません。
+確かに、あなたは、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することでできます。しかし、それは退屈で間違いやすいです。
+すでに推測してきたように、いくつかのテストを書くことは、時間の節約になります。 
+はじめに、いつものように ``extend`` メソッドに新しいルートを追加する必要があります。
 When a job is expiring in less than five days, or if it is already expired, the user can extend the job validation for another 30 days from the current date.
-Testing this requirement in a browser is not easy as the expiration date is automatically set when the job is created to 30 days in the future. So, when getting the job page, the link to extend the job is not present. Sure, you can hack the expiration date in the database, or tweak the template to always display the link, but that’s tedious and error prone. As you have already guessed, writing some tests will help us one more time.
+Testing this requirement in a browser is not easy as the expiration date is automatically set when the job is created to 30 days in the future. 
+So, when getting the job page, the link to extend the job is not present. 
+Sure, you can hack the expiration date in the database, or tweak the template to always display the link, but that’s tedious and error prone. 
+As you have already guessed, writing some tests will help us one more time.
 As always, we need to add a new route for the extend method first:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
@@ -389,7 +399,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        defaults: { _controller: "IbwJobeetBundle:Job:extend" }
        requirements: { _method: post }
 
-その後、拡張フォームでadmin.html.twig部分​​にリンクコードを拡張置き換えます。
+その後、 admin.html.twig の一部、 ``Extend`` リンクのコードを ``extend_form`` で置き換えます。
 Then, replace the Extend link code in the admin.html.twig partial with the extend form:
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
@@ -407,7 +417,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
 
    <!-- ... -->
 
-その後、拡張アクションを作成し、フォームを拡張します。
+その後、``extend`` アクションと ``extend`` フォームを作成します。
 Then, create the extend action and the extend form:
 
 src.Ibw/JobeetBundle/Controller/JobController.php
@@ -456,7 +466,7 @@ src.Ibw/JobeetBundle/Controller/JobController.php
            ->getForm();
    }
 
-また、プレビューアクションにフォームを拡張する追加します。
+また、``preview`` アクションに ``extend`` フォームを追加します。
 Also, add the extend form to the preview action:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -487,7 +497,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-作用によって予想されるように、ジョブがそれ以外の場合は延長またはfalseをされている場合は、ジョブのメソッドがtrueを返す（）拡張：
+アクションによって期待されるように、ジョブの extend() メソッドはジョブが延長されているときは true を返し、そうでない場合は false を返します。
 As expected by the action, the extend() method of Job returns true if the job has been extended or false otherwise:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -508,7 +518,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
        return true;
    }
 
-最終的には、テストシナリオを追加します。
+最終的に、テストシナリオを追加します。
 Eventually, add a test scenario:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -550,13 +560,25 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($job->getExpiresAt()->format('y/m/d') == date('y/m/d', time() + 86400 * 30));
    }
 
+メンテナンスタスク
+-------------
 Maintenance Tasks
 -----------------
 
-symfonyはWebフレームワークであっても、それは、コマンドラインツールが付属しています。すでにアプリケーションバンドルのデフォルトのディレクトリ構造を作成し、モデルのさまざまなファイルを生成するためにそれを使用している。新しいコマンドを追加するのはとても簡単です。 
-ユーザーがジョブを作成するときに、彼はそれをオンラインで置くためにそれをアクティブにする必要があります。されていない場合でも、データベースは古い求人で成長します。のデータベースから古い求人を削除するコマンドを作成してみましょう。このコマンドは、cronジョブで定期的に実行する必要があります。
-Even if symfony is a web framework, it comes with a command line tool. You have already used it to create the default directory structure of the application bundle and to generate various files for the model. Adding a new command is quite easy.
-When a user creates a job, he must activate it to put it online. But if not, the database will grow with stale jobs. Let’s create a command that remove stale jobs from the database. This command will have to be run regularly in a cron job.
+Symfony は Web フレームワークであっても、コマンドラインツールが付属しています。
+アプリケーションバンドルのデフォルトのディレクトリ構造を作成し、モデルのさまざまなファイルを生成するために使用しています。
+新しいコマンドを追加するのはとても簡単です。 
+ユーザーがジョブを作成した際、管理者はジョブをオンラインに置くためにアクティブ化する必要があります。
+アクティブ化されない場合、データベースは古いジョブがたまってしまいます。
+データベースから古いジョブを削除するコマンドを作成してみましょう。
+このコマンドは、 cron で定期的に実行する必要があります。
+Even if symfony is a web framework, it comes with a command line tool. 
+You have already used it to create the default directory structure of the application bundle and to generate various files for the model. 
+Adding a new command is quite easy.
+When a user creates a job, he must activate it to put it online. 
+But if not, the database will grow with stale jobs. 
+Let’s create a command that remove stale jobs from the database. 
+This command will have to be run regularly in a cron job.
 
 src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
 
@@ -593,7 +615,7 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
      }
    }
 
-あなたはJobRepositoryクラスにクリーンアップメソッドを追加する必要があります。
+JobRepository クラスにクリーンアップメソッドを追加する必要があります。
 You will have to add the cleanup method to the JobRepository class:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -614,7 +636,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        return $query->execute();
    }
 
-コマンドは、プロジェクトフォルダから次のコマンドを実行し実行します。
+コマンドは、プロジェクトフォルダから次のコマンドを実行します。
 To run the command execute the following from the project folder:
 
 .. code-block:: bash
@@ -627,7 +649,7 @@ or:
 
    $ php app/console ibw:jobeet:cleanup 10
 
-10日以上経過した古い求人を削除します。
+10 日以上経過した古いジョブを削除します。
 to delete stale jobs older than 10 days.
 
 
