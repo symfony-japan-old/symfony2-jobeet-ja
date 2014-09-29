@@ -39,7 +39,7 @@ We will also need to install the SonataDoctrineORMADminBundle:
 
    $ php composer.phar require sonata-project/doctrine-orm-admin-bundle
 
-今、私たちは、これらの新しいバンドルと依存関係を宣言ので、あなたのAppKernel.phpファイルに移動し、次のコードを追加する必要があります。
+ここで、新しいバンドルとその依存関係を宣言する必要があるため、、AppKernel.phpファイルに移動し、次のコードを追加します。
 Now, we need to declare these new bundles and dependencies, so go to your AppKernel.php file and add the following code:
 
 app/AppKernel.php
@@ -61,7 +61,7 @@ app/AppKernel.php
 
    // ...
 
-あなたにも、あなたの設定ファイルを変更する必要があります。最後に以下を追加します。
+設定ファイルを変更する必要があります。最後に以下を追加します。
 You will need to alter your config file as well. Add the following at the end:
 
 app/config/config.yml
@@ -82,7 +82,7 @@ app/config/config.yml
            sonata.block.service.action:
            sonata.block.service.rss:
 
-それがコメント化されている場合にも、翻訳者鍵とコメント解除を探します。
+また、``translator`` キーを探して、コメント化されてる場合はコメント解除します。
 Also, look for the translator key and uncomment if it is commented:
 
 app/config/config.yml
@@ -96,7 +96,7 @@ app/config/config.yml
        # ...
    #...
 
-アプリケーションが動作するためには、アプリケーションのルーティング·ファイルに管理ルートをインポートする必要があります。
+アプリケーションを動作させるためには、アプリケーションのルーティング·ファイルに ``admin`` ルートをインポートする必要があります。
 For your application to work, you need to import the admin routes into the application’s routing file:
 
 app/config/routing.yml
@@ -121,7 +121,7 @@ Now, install the assets from the bundles:
 
    $ php app/console assets:install web --symlink
 
-あなたのキャッシュを削除することを忘れないでください。
+キャッシュを削除することを忘れないでください。
 Do not forget to delete your cache:
 
 .. code-block:: bash
