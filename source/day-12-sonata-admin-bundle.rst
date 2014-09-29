@@ -39,7 +39,7 @@ We will also need to install the SonataDoctrineORMADminBundle:
 
    $ php composer.phar require sonata-project/doctrine-orm-admin-bundle
 
-ここで、新しいバンドルとその依存関係を宣言する必要があるため、、AppKernel.phpファイルに移動し、次のコードを追加します。
+ここで、新しいバンドルとその依存関係を宣言するため、 AppKernel.php ファイルを開いて、次のコードを追加します。
 Now, we need to declare these new bundles and dependencies, so go to your AppKernel.php file and add the following code:
 
 app/AppKernel.php
@@ -61,7 +61,7 @@ app/AppKernel.php
 
    // ...
 
-設定ファイルを変更する必要があります。最後に以下を追加します。
+設定ファイルを変更します。最後に以下を追加します。
 You will need to alter your config file as well. Add the following at the end:
 
 app/config/config.yml
@@ -96,7 +96,7 @@ app/config/config.yml
        # ...
    #...
 
-アプリケーションを動作させるためには、アプリケーションのルーティング·ファイルに ``admin`` ルートをインポートする必要があります。
+アプリケーションを動作させるためには、アプリケーションのルーティング·ファイルに ``admin`` ルートをインポートします。
 For your application to work, you need to import the admin routes into the application’s routing file:
 
 app/config/routing.yml
@@ -129,7 +129,9 @@ Do not forget to delete your cache:
    $ php app/console cache:clear --env=dev
    $ php app/console cache:clear --env=prod
 
-これで、次のURLを使用してadminのダッシュボードにアクセスできるはずですします。http：//jobeet.local/app_dev.php/admin/dashboard
+これで、次のURLを使用して admin のダッシュボードにアクセスできるはずです。 
+http：//jobeet.local/app_dev.php/admin/dashboard
+
 You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
 
 CRUD コントローラー
@@ -137,9 +139,17 @@ CRUD コントローラー
 The CRUD Controller
 -------------------
 
-CRUDコントローラは、基本的なCRUDアクションが含まれています。それは、正しい管理インスタンスにコントローラ名をマッピングすることによって、1管理クラスに関連しています。一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。コントローラは、さまざまなアクションを構築するために、管理クラスを使用します。コントローラの内部では、管理オブジェクトは、構成プロパティを介してアクセスできます。 
-それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティ：
-The CRUD controller contains the basic CRUD actions. It is related to one Admin class by mapping the controller name to the correct Admin instance. Any or all actions can be overwritten to suit the project’s requirements. The controller uses the Admin class to construct the different actions. Inside the controller, the Admin object is accessible through the configuration property.
+CRUD コントローラは、基本的な CRUD アクションが含まれています。
+コントローラー名を正しい Admin インスタンスにマッピングすることで、 Admin クラスに関連付けます。
+一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
+コントローラは、さまざまなアクションを構築するために、管理クラスを使用します。
+コントローラの内部では、管理オブジェクトは、構成プロパティを介してアクセスできます。 
+それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
+The CRUD controller contains the basic CRUD actions. 
+It is related to one Admin class by mapping the controller name to the correct Admin instance. 
+Any or all actions can be overwritten to suit the project’s requirements. 
+The controller uses the Admin class to construct the different actions. 
+Inside the controller, the Admin object is accessible through the configuration property.
 Now let’s create a controller for each entity. First, for the Category entity:
 
 src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
@@ -155,7 +165,7 @@ src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
        // Your code will be here
    }
 
-そして今、ジョブの：
+そして、次にジョブ。：
 And now for the Job:
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
@@ -172,11 +182,17 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
    }
 
 管理クラスの作成
+-------------
 Creating the Admin class
 ------------------------
 
-管理クラスは、モデルと管理セクション（フォーム、リスト、ショー）のマッピングを表す。お使いのモデルのための管理クラスを作成する最も簡単な方法は、ソナタ\ AdminBundle\管理\管理クラスを拡張することです。私たちは、バンドルの管理フォルダに管理クラスを作成します。 adminディレクトリを作成することで、起動して、カテゴリの管理クラス：
-The Admin class represents the mapping of your model and administration sections (forms, list, show). The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class. We will create the Admin classes in the Admin folder of our bundle. Start by creating the Admin directory and then, the Admin class for categories:
+管理クラスは、モデルと管理セクション（forms, list, show）のマッピングを表します。
+お使いのモデルのための管理クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
+バンドルの管理フォルダに ``Admin`` クラスを作成します。 Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
+The Admin class represents the mapping of your model and administration sections (forms, list, show). 
+The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class. 
+We will create the Admin classes in the Admin folder of our bundle. 
+Start by creating the Admin directory and then, the Admin class for categories:
 
 src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
@@ -195,12 +211,12 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
        // Your code will be here
    }
 
-そして、ジョブのために：
+そして、ジョブのために同様に作成します。：
 And for jobs:
 
-.. code-block:: php
+src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
-   src/Ibw/JobeetBundle/Admin/JobAdmin.phpPHP
+.. code-block:: php
 
    namespace Ibw\JobeetBundle\Admin;
 
@@ -217,7 +233,7 @@ And for jobs:
        // Your code will be here
    }
 
-今、私たちはservices.yml·コンフィギュレーション·ファイル内の各管理クラスを追加する必要があります。
+各 admin クラスを設定ファイルである services.yml·に追加する必要があります。
 Now we need to add each admin class in the services.yml configuration file:
 
 src/Ibw/JobeetBundle/Resources/config/services.yml
@@ -243,19 +259,22 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
                - Ibw\JobeetBundle\Entity\Job
                - 'IbwJobeetBundle:JobAdmin'
 
-この時点で、私たちはダッシュボードにJobeetのグループを見ることができ、その中に、 
-求人とカテゴリモジュール、それぞれのアドオンやリストのリンクを持つ。
+この時点で、私たちはダッシュボードに Jobeet のグループを見ることができ、その中に、 
+ジョブとカテゴリモジュール、それぞれの``add`` と ``list`` のリンクをもちます。
 At this point, we can see in the dashboard the Jobeet group and, inside it,
 the Job and Category modules, with their respective add and list links.
 
 .. image:: /images/Day-12-sonata_interface.jpg
 
-管理クラスの構成
+Admin クラスの構成
+---------------
 Configuration of Admin classes
 ------------------------------
 
-あなたが今どんなリンクをたどった場合、何も起こりません。私たちは、リストやフォームに属しているフィールドを設定していないからだ。まずはカテゴリに対して、基本的な設定をやってみましょう：
-If you follow any link right now, nothing will happen. That’s because we haven’t configure the fields that belong to the list and the form. Let’s do a basic configuration, first for the categories:
+あなたが今どんなリンクをたどった場合、何も起こりません。
+私たちは、リストやフォームに属しているフィールドを設定していないからだ。まずはカテゴリに対して、基本的な設定をやってみましょう：
+If you follow any link right now, nothing will happen. 
+That’s because we haven’t configure the fields that belong to the list and the form. Let’s do a basic configuration, first for the categories:
 
 src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
