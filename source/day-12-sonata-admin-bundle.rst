@@ -5,22 +5,26 @@ Day 12: Sonata Admin Bundle
 
 .. include:: common/original.rst.inc
 
-私たちはJobeetの上で11日目に行わ追加により、アプリケーションは求職者と仕事のポスター完全に使用可能である。それは私たちのアプリケーションの管理セクションについて少し話をする時間です。今日では、ソナタ管理バンドルのおかげで、私たちは時間未満でJobeetのための完全な管理インターフェイスを開発します。
-With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters. It’s time to talk a bit about the admin section of our application. Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
+Jobeetの上で 11 日目に行わ追加により、アプリケーションは求職者と仕事の投稿者ともに使用可能になります。
+それでは、アプリケーションの管理セクションについて少し話をする時間です。
+今日では、``SonataAdminBundle`` のおかげで、1 時間未満でJobeetのための完全な管理インターフェイスを開発します。
+With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters. 
+It’s time to talk a bit about the admin section of our application. 
+Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
 
 ソナタ管理バンドルのインストール
 -------------------------
 Installation of the Sonata Admin Bundle
 ---------------------------------------
 
-ベンダーのディレクトリにSonataAdminBundleとその依存関係をダウンロードして起動します。
+``vendor`` のディレクトリに ``SonataAdminBundle`` とその依存するものをダウンロードを開始します。
 Start by downloading SonataAdminBundle and its dependencies to the vendor directory:
 
 .. code-block:: bash
 
    $ php composer.phar require sonata-project/admin-bundle
 
-SonataAdminBundleとその依存関係の最新バージョンをインストールするには、入力として*与える。
+ ``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、入力として*与える。
 To install the latest version of the SonataAdminBundle and its dependencies, give * as input.
 
 .. code-block:: bash
@@ -28,7 +32,7 @@ To install the latest version of the SonataAdminBundle and its dependencies, giv
    ibw@ubuntu:/var/www/jobeet$ php composer.phar require sonata-project/admin-bundle
    Please provide a version constraint for the sonata-project/admin-bundle requirement: *
 
-またSonataDoctrineORMADminBundleをインストールする必要があります：
+また SonataDoctrineORMADminBundle をインストールする必要があります：
 We will also need to install the SonataDoctrineORMADminBundle:
 
 .. code-block:: bash
@@ -128,6 +132,8 @@ Do not forget to delete your cache:
 これで、次のURLを使用してadminのダッシュボードにアクセスできるはずですします。http：//jobeet.local/app_dev.php/admin/dashboard
 You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
 
+CRUD コントローラー
+---------------
 The CRUD Controller
 -------------------
 
