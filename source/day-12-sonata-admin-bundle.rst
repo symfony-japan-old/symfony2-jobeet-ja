@@ -260,7 +260,7 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
                - 'IbwJobeetBundle:JobAdmin'
 
 この時点で、私たちはダッシュボードに Jobeet のグループを見ることができ、その中に、 
-ジョブとカテゴリモジュール、それぞれの``add`` と ``list`` のリンクをもちます。
+ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
 At this point, we can see in the dashboard the Jobeet group and, inside it,
 the Job and Category modules, with their respective add and list links.
 
@@ -271,10 +271,12 @@ Admin クラスの構成
 Configuration of Admin classes
 ------------------------------
 
-あなたが今どんなリンクをたどった場合、何も起こりません。
-私たちは、リストやフォームに属しているフィールドを設定していないからだ。まずはカテゴリに対して、基本的な設定をやってみましょう：
+現在どのリンクをたどっても、何も起こりません。
+リストやフォームに属しているフィールドを設定していない為です。
+まずはカテゴリに対して、基本的な設定を行いましょう。：
 If you follow any link right now, nothing will happen. 
-That’s because we haven’t configure the fields that belong to the list and the form. Let’s do a basic configuration, first for the categories:
+That’s because we haven’t configure the fields that belong to the list and the form. 
+Let’s do a basic configuration, first for the categories:
 
 src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
@@ -320,7 +322,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
        }
    }
 
-そして今の仕事のために：
+そしてジョブの設定をします。：
 And now for jobs:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
@@ -419,7 +421,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        }
    }
 
-showアクションのために、私たちは、会社のロゴを表示するようにカスタムテンプレートを使用しました。
+show アクションのために、私たちは、会社のロゴを表示するようにカスタムテンプレートを使用しました。
 For the show action we used a custom template to show the logo of the company:
 
 src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
@@ -431,16 +433,18 @@ src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
        <td><img src="{{ asset(object.webPath) }}" /></td>
    </tr>
 
-これにより、私たちは私たちの仕事とカテゴリの操作で基本的な管理モジュールを作成しました。それを使用しているときに見つける機能のいくつかは、次のとおりです。
-With this, we created a basic administration module with operations for our jobs and categories. Some of the features you will find when using it are:
+これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。
+これを使用して見つける機能は、次のとおりです。
+With this, we created a basic administration module with operations for our jobs and categories. 
+Some of the features you will find when using it are:
 
-*オブジェクトのリストはページ分割されている 
-*リストはソート可能です 
-*リストは、フィルタリングすることができます 
-*オブジェクトは、作成、編集、および削除することができます 
-*選択されたオブジェクトは、バッチで削除することができます 
-*フォームの検証が有効になっている 
-*フラッシュ·メッセージは、ユーザーへの即時フィードバックを与える
+* オブジェクトのリストはページ分割されています。
+* リストはソート可能です。 
+* リストは、フィルタリングすることができます。 
+* オブジェクトは、作成、編集、および削除することができます。 
+* 選択されたオブジェクトは、バッチで削除することができます。
+* フォームの検証が有効になっています。
+* フラッシュ·メッセージは、ユーザーへ即時にフィードバックを与えます。
 * The list of objects is paginated
 * The list is sortable
 * The list can be filtered
@@ -452,9 +456,11 @@ With this, we created a basic administration module with operations for our jobs
 Batch Actions
 -------------
 
-バッチアクションは選択したモデル（それらのすべてまたは唯一の特定のサブセット）のセットでトリガアクションです。あなたは簡単にリストビューでいくつかのカスタムバッチアクションを追加することができます。デフォルトでは、削除アクションを使用すると、一度に複数のエントリを削除することができます。 
+バッチアクションは選択したモデル（それらのすべてまたは唯一の特定のサブセット）のセットでトリガアクションです。あなたは簡単にリストビューでいくつかのカスタムバッチアクションを追加することができます。
+デフォルトでは、削除アクションを使用すると、一度に複数のエントリを削除することができます。 
 新しいバッチアクションを追加するには、私たちは、管理クラスからgetBatchActionsをオーバーライドする必要があります。私たちはここに新しい拡張アクションを定義します。
-Batch actions are actions triggered on a set of selected models (all of them or only a specific subset). You can easily add some custom batch action in the list view. By default, the delete action allows you to remove several entries at once.
+Batch actions are actions triggered on a set of selected models (all of them or only a specific subset). 
+You can easily add some custom batch action in the list view. By default, the delete action allows you to remove several entries at once.
 To add a new batch action we have to override the getBatchActions from the Admin class. We will define here a new extend action:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
@@ -480,8 +486,12 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-JobAdminControllerを形成batchActionExtend方法は、コアロジックを実現するために実行される。選択したモデルは、それらを取得するクエリの引数を通してメソッドに渡されます。何らかの理由でそれが（より低い粒度でモデルを選択し、テンプレートレベルで、あなたは別の方法を定義したなど）、デフォルトの選択方法なしにあなたのバッチアクションを実行することは理にかなっていた場合は、渡されたクエリはnullになります。
-The method batchActionExtend form the JobAdminController will be executed to achieve the core logic. The selected models are passed to the method through a query argument retrieving them. If for some reason it makes sense to perform your batch action without the default selection method (for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
+JobAdminControllerを形成batchActionExtend方法は、コアロジックを実現するために実行される。
+選択したモデルは、それらを取得するクエリの引数を通してメソッドに渡されます。
+何らかの理由でそれが（より低い粒度でモデルを選択し、テンプレートレベルで、あなたは別の方法を定義したなど）、デフォルトの選択方法なしにあなたのバッチアクションを実行することは理にかなっていた場合は、渡されたクエリはnullになります。
+The method batchActionExtend form the JobAdminController will be executed to achieve the core logic. 
+The selected models are passed to the method through a query argument retrieving them. 
+If for some reason it makes sense to perform your batch action without the default selection method (for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -522,8 +532,10 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        }
    }
 
-それでは60日以上のポスターによって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
-Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days. For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
+それでは60日以上のポスターによって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
+アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
+Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days. 
+For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
@@ -552,8 +564,11 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-batchActionDeleteNeverActivatedアクションを作成するために加えて、私たちはあらゆる確認する前に実行されます私たちのJobAdminController、batchActionDeleteNeverActivatedIsRelevant、新しいメソッドを作成しますが、確認のために何かが実際に存在することを確認する（このケースでは、常にtrueを返しますので、の選択ジョブはJobRepositoryで見つかったロジック::クリーンアップ（）メソッドによって処理され削除されます。
-In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController, batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation, to make sure there is actually something to confirm (in our case it will always return true because the selection of the jobs to be deleted is handled by the logic found in the JobRepository::cleanup() method.
+batchActionDeleteNeverActivated アクションを作成するために加えて、私たちはあらゆる確認する前に実行されます私たちの JobAdminController、batchActionDeleteNeverActivatedIsRelevant 、新しいメソッドを作成しますが、確認のために何かが実際に存在することを確認する（このケースでは、常にtrueを返しますので、の選択ジョブはJobRepositoryで見つかったロジック::クリーンアップ（）メソッドによって処理され削除されます。
+In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController, 
+batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation, 
+to make sure there is actually something to confirm (in our case it will always return true 
+because the selection of the jobs to be deleted is handled by the logic found in the JobRepository::cleanup() method.
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -584,7 +599,9 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
    }
 
-つまり、今日のすべてです！明日は、ユーザー名とパスワードで管理セクションを保護する方法が表示されます。これはSymfony2のセキュリティについて話をする機会があります。
-That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password. This will be the occasion to talk about the symfony2 security.
+つまり、今日のすべてです！明日は、ユーザー名とパスワードで管理セクションを保護する方法が表示されます。
+これはSymfony2のセキュリティについて話をする機会があります。
+That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password. 
+This will be the occasion to talk about the symfony2 security.
 
 .. include:: common/license.rst.inc
