@@ -453,6 +453,8 @@ Some of the features you will find when using it are:
 * The form validation is enabled
 * Flash messages give immediate feedback to the user
 
+バッチアクション
+-----------
 Batch Actions
 -------------
 
@@ -564,7 +566,10 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-batchActionDeleteNeverActivated アクションを作成するために加えて、私たちはあらゆる確認する前に実行されます私たちの JobAdminController、batchActionDeleteNeverActivatedIsRelevant 、新しいメソッドを作成しますが、確認のために何かが実際に存在することを確認する（このケースでは、常にtrueを返しますので、の選択ジョブはJobRepositoryで見つかったロジック::クリーンアップ（）メソッドによって処理され削除されます。
+batchActionDeleteNeverActivated アクションを作成するのに加えて、
+JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
+ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。
+（このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)
 In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController, 
 batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation, 
 to make sure there is actually something to confirm (in our case it will always return true 
@@ -599,8 +604,8 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
    }
 
-つまり、今日のすべてです！明日は、ユーザー名とパスワードで管理セクションを保護する方法が表示されます。
-これはSymfony2のセキュリティについて話をする機会があります。
+今日はここまでです。明日は、ユーザー名とパスワードで管理セクションを保護する方法を説明します。
+これは Symfony2 のセキュリティについて話をする機会になります。
 That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password. 
 This will be the occasion to talk about the symfony2 security.
 
