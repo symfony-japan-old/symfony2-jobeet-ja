@@ -458,11 +458,11 @@ Some of the features you will find when using it are:
 Batch Actions
 -------------
 
-バッチアクションは選択した（すべて、または、特定のサブセットの）モデルのトリガアクションです。
+バッチアクションは（すべての、または、特定のサブセットの）選択したモデルに対して実行されるアクションです。
 リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。
-デフォルトでは、削除アクションを使用すると、一度に複数のエントリを削除することができます。 
+デフォルトでは、``delete`` アクションを使用すると、一度に複数のエントリを削除することができます。 
 新しいバッチアクションを追加するには、管理クラスから getBatchActions をオーバーライドする必要があります。
-ここに新しい拡張アクションを定義します。
+では、ここで新しい ``extend`` アクションを定義しましょう。
 Batch actions are actions triggered on a set of selected models (all of them or only a specific subset). 
 You can easily add some custom batch action in the list view. 
 By default, the delete action allows you to remove several entries at once.
@@ -492,12 +492,15 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-JobAdminControllerを形成batchActionExtend方法は、コアロジックを実現するために実行される。
-選択したモデルは、それらを取得するクエリの引数を通してメソッドに渡されます。
-何らかの理由でそれが（より低い粒度でモデルを選択し、テンプレートレベルで、あなたは別の方法を定義したなど）、デフォルトの選択方法なしにあなたのバッチアクションを実行することは理にかなっていた場合は、渡されたクエリはnullになります。
+JobAdminController の batchActionExtend メソッドは、コアロジックを実現するために実行されます。
+クエリーの引数から、選択したモデルを取得します。
+選択したモデルは、引数に渡されたクエリーから取得します。
+（より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、
+渡されるクエリは null になります。
 The method batchActionExtend form the JobAdminController will be executed to achieve the core logic. 
 The selected models are passed to the method through a query argument retrieving them. 
-If for some reason it makes sense to perform your batch action without the default selection method (for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
+If for some reason it makes sense to perform your batch action without the default selection method 
+(for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -538,7 +541,7 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        }
    }
 
-それでは60日以上のポスターによって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
+それでは 60 日以上投稿者によって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
 アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
 Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days. 
 For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
@@ -560,7 +563,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
                'label'            => 'Extend',
                'ask_confirmation' => true // If true, a confirmation will be asked before performing the action
            );
-
+   
            $actions['deleteNeverActivated'] = array(
                'label'            => 'Delete never activated jobs',
                'ask_confirmation' => true // If true, a confirmation will be asked before performing the action
@@ -608,7 +611,7 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
    }
 
-今日はここまでです。明日は、ユーザー名とパスワードで管理セクションを保護する方法を説明します。
+今日はここまでです。明日は、ユーザー名とパスワードで管理領域を保護する方法を説明します。
 これは Symfony2 のセキュリティについて話をする機会になります。
 That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password. 
 This will be the occasion to talk about the symfony2 security.
