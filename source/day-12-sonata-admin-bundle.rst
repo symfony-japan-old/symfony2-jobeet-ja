@@ -458,12 +458,16 @@ Some of the features you will find when using it are:
 Batch Actions
 -------------
 
-バッチアクションは選択したモデル（それらのすべてまたは唯一の特定のサブセット）のセットでトリガアクションです。あなたは簡単にリストビューでいくつかのカスタムバッチアクションを追加することができます。
+バッチアクションは選択した（すべて、または、特定のサブセットの）モデルのトリガアクションです。
+リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。
 デフォルトでは、削除アクションを使用すると、一度に複数のエントリを削除することができます。 
-新しいバッチアクションを追加するには、私たちは、管理クラスからgetBatchActionsをオーバーライドする必要があります。私たちはここに新しい拡張アクションを定義します。
+新しいバッチアクションを追加するには、管理クラスから getBatchActions をオーバーライドする必要があります。
+ここに新しい拡張アクションを定義します。
 Batch actions are actions triggered on a set of selected models (all of them or only a specific subset). 
-You can easily add some custom batch action in the list view. By default, the delete action allows you to remove several entries at once.
-To add a new batch action we have to override the getBatchActions from the Admin class. We will define here a new extend action:
+You can easily add some custom batch action in the list view. 
+By default, the delete action allows you to remove several entries at once.
+To add a new batch action we have to override the getBatchActions from the Admin class. 
+We will define here a new extend action:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
