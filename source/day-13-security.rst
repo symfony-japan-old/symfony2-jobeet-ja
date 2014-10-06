@@ -10,13 +10,17 @@ Day 13: Security
 Securing the Application
 ------------------------
 
-セキュリティは、その目標は、彼/彼女がアクセス権を持つべきではないリソースにアクセスするユーザを防止するためである二段階プロセスである。
-プロセスの最初のステップでは、認証は、セキュリティシステムは、ユーザが特定のいくつかの並べ替えを提出することをユーザーに要求することによって、誰であるかを識別する。
-システムはあなたが、次のステップが誰であるか知っていたら、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを与える必要がある場合、認可は、決定することであると呼ばれる。 
-セキュリティコンポーネントは、アプリ/ configフォルダからのsecurity.ymlファイルを使用してアプリケーションの設定を介して設定することができます。私たちのアプリケーションは、あなたののsecurity.ymlファイルを変更し固定するには：
+セキュリティは、ユーザーがアクセス権を持たないリソースにアクセスすることを防止することを目標とした二段階のプロセスです。
+プロセスの最初のステップである認証は、ユーザにいくつかのIDを送信することを要求することによって、誰であるかを識別します。
+システムが一度あなたが誰であるか知ったら、次の認可とよばれるステップは、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定することです。 
+セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
+アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。：
 Security is a two-step process whose goal is to prevent a user from accessing a resource that he/she should not have access to. 
-In the first step of the process, the authentication, the security system identifies who the user is by requiring the user to submit some sort of identification. Once the system knows who you are, the next step, called the authorization, is to determine if you should have access to a given resource (it checks to see if you have privileges to perform a certain action).
-The security component can be configured via your application configuration using the security.yml file from the app/config folder. To secure our application change  your security.yml file:
+In the first step of the process, the authentication, the security system identifies who the user is by requiring the user to submit some sort of identification. 
+Once the system knows who you are, the next step, called the authorization, is to determine if you should have access to a given resource
+ (it checks to see if you have privileges to perform a certain action).
+The security component can be configured via your application configuration using the security.yml file from the app/config folder. 
+To secure our application change  your security.yml file:
 
 app/config/security.yml
 
