@@ -10,8 +10,8 @@ Day 13: Security
 Securing the Application
 ------------------------
 
-セキュリティは、ユーザーがアクセス権を持たないリソースにアクセスすることを防止することを目標とした二段階のプロセスです。
-プロセスの最初のステップである認証は、ユーザにいくつかのIDを送信することを要求することによって、誰であるかを識別します。
+セキュリティは、二段階のプロセスでユーザーがアクセス権を持たないリソースにアクセスすることを防止します。
+プロセスの最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。
 システムが一度あなたが誰であるか知ったら、次の認可とよばれるステップは、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定することです。 
 セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
 アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。：
@@ -56,11 +56,12 @@ app/config/security.yml
        encoders:
            Symfony\Component\Security\Core\User\User: plaintext
 
-この構成は、ウェブサイトの/ adminにセクションと、それが（ACCESS_CONTROLの項を参照）にアクセスするROLE_ADMINを持つユーザーのみを許可します（/管理で始まるすべてのURL）を確保します。
-この例では、管理者ユーザは、設定ファイルで（プロバイダ部）に定義され、パスワードが（エンコーダ）で符号化されていません。 
-ユーザーを認証するために、伝統的なログインフォームを使用しますが、私たちはそれを実装する必要があります。まず、二つの経路を作成します。
-ログインフォームの提出（すなわち/ login_check）を処理するログイン·フォーム（すなわち/ログイン）と1が表示されますものを。
-This configuration will secure the /admin section of the website (all urls that start with /admin) and will allow only users with ROLE_ADMIN to access it (see the access_control section). 
+この設定は、 /admin セクション(/admin で始まるすべてのURL)を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( ``access_control`` の項目を参照ください）。
+この例では、``admin`` ユーザが設定ファイルで（ ``providers`` の箇所）に定義されていますが、パスワードがエンコーダで符号化されていません。 
+ユーザーを認証するためには伝統的にログインフォームを使用しますが、私たちはそれを実装する必要があります。
+まず、ログインフォームの表示(すなわち /login)とログインフォームの送信の処理(すなわち /login_check)の二つのルートを作成します。
+This configuration will secure the /admin section of the website (all urls that start with /admin) 
+and will allow only users with ROLE_ADMIN to access it (see the access_control section). 
 In this example the admin user is defined in the configuration file (the providers section) and the password is not encoded (encoders).
 For authenticating users, a traditional login form will be used, but we need to implement it. 
 First, create two routes: one that will display the login form (i.e. /login) and one that will handle the login form submission (i.e. /login_check):
@@ -77,9 +78,9 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
    # ...
 
-ファイアウォールが自動的にキャッチし、次のURLに提出されたフォームを処理するように私たちは /login_check URLのコントローラを実装する必要はありません。
-しかし、それは以下のログイン·テンプレート内のフォーム送信URLを生成するために使用することができるようにルートを作成する必要がある。 
-次は、ログインフォームを表示するアクションを作成してみましょう：
+/login_check のコントローラーを実装する必要はなく、ファイアーウォールが自動的にこの URL に送信するフォームをキャッチし、処理します。
+しかし、後述の login テンプレートの中のフォーム送信 URL を生成することができるように、ルートを作成する必要があります。
+次に、ログインフォームを表示するアクションを作成してみましょう。：
 We will not need to implement a controller for the /login_check URL as the firewall will automatically catch and process any form submitted to this URL. 
 But you need to create a route so that it can be used  to generate the form submission URL in the login template below.
 Next, let’s create the action that will display the login form:
@@ -587,10 +588,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        // ...
    }
 
-getFlashBag（）の最初の引数 - >を追加（）関数は、フラッシュ、2つ目の識別子で表示するためのメッセージである。
-あなたが好きな点滅定義できますが、通知とエラーが、より一般的なもののうちの2つである。 
-テンプレートでそれらを含める必要がユーザへのフラッシュ·メッセージを表示する。
-私たちはlayout.html.twigテンプレートでこれをしなかった。
+getFlashBag()->add() 関数の最初の引数は、フラッシュの識別子で、、2つ目は表示するためのメッセージです。
+あなたが好きなフラッシュの名前を定義できますが、notice と error の2つは、より一般的です。 
+フラッシュ·メッセージを表示するためそれらをテンプレートに含める必要があります。
+layout.html.twig テンプレートで行いました。
 The first argument of the getFlashBag()->add() function is the identifier of the flash and the second one is the message to display. 
 You can define whatever flashes you want, but notice and error are two of the more common ones.
 To show the flash messages to the user you have to include them in the template. 
