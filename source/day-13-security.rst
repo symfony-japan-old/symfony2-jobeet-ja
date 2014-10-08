@@ -11,8 +11,8 @@ Securing the Application
 ------------------------
 
 セキュリティは、二段階のプロセスでユーザーがアクセス権を持たないリソースにアクセスすることを防止します。
-プロセスの最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。
-システムが一度あなたが誰であるか知ったら、次の認可とよばれるステップは、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定することです。 
+最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。
+システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定することです。 
 セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
 アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。：
 Security is a two-step process whose goal is to prevent a user from accessing a resource that he/she should not have access to. 
@@ -59,7 +59,7 @@ app/config/security.yml
 この設定は、 /admin セクション(/admin で始まるすべてのURL)を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( ``access_control`` の項目を参照ください）。
 この例では、``admin`` ユーザが設定ファイルで（ ``providers`` の箇所）に定義されていますが、パスワードがエンコーダで符号化されていません。 
 ユーザーを認証するためには伝統的にログインフォームを使用しますが、私たちはそれを実装する必要があります。
-まず、ログインフォームの表示(すなわち /login)とログインフォームの送信の処理(すなわち /login_check)の二つのルートを作成します。
+まず、ログインフォームの表示(すなわち /login )とログインフォームの送信の処理(すなわち /login_check )の二つのルートを作成します。
 This configuration will secure the /admin section of the website (all urls that start with /admin) 
 and will allow only users with ROLE_ADMIN to access it (see the access_control section). 
 In this example the admin user is defined in the configuration file (the providers section) and the password is not encoded (encoders).
@@ -78,7 +78,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
    # ...
 
-/login_check のコントローラーを実装する必要はなく、ファイアーウォールが自動的にこの URL に送信するフォームをキャッチし、処理します。
+/login_check のコントローラーを実装する必要はなく、ファイアーウォールが自動的にフォームのこの URL への送信をキャッチし、処理します。
 しかし、後述の login テンプレートの中のフォーム送信 URL を生成することができるように、ルートを作成する必要があります。
 次に、ログインフォームを表示するアクションを作成してみましょう。：
 We will not need to implement a controller for the /login_check URL as the firewall will automatically catch and process any form submitted to this URL. 
@@ -119,13 +119,14 @@ src/Ibw/JobeetBundle/Controller/DefaultController.php
        }
    }
 
-ユーザーがフォームを送信すると、セキュリティシステムは自動的にあなたのためのフォームの送信を処理します。
-ユーザが無効なユーザー名またはパスワードを提出していた場合、それが戻って、ユーザーに表示されるように、このアクションは、セキュリティシステムからのフォーム送信エラーを読み込みます。
-あなたの唯一の仕事は、ログインフォームと発生した可能性のある、ログインエラーを表示することであるが、セキュリティシステム自体が提出されたユーザー名とパスワードをチェックし、ユーザを認証するの面倒を見る。 
-最後に、のは、対応するテンプレートを作成してみましょう：
+ユーザーがフォームを送信すると、セキュリティシステムは自動的にフォームの送信を処理します。
+無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。
+セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証するため、あなたの唯一の仕事は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。 
+最後に、対応するテンプレートを作成してみましょう：
 When the user submits the form, the security system automatically handles the form submission for you. 
 If the user had submitted an invalid username or password, this action reads the form submission error from the security system so that it can be displayed back to the user. 
-Your only job is to display the login form and any login errors that may have occurred, but the security system itself takes care of checking the submitted username and password and authenticating the user.
+Your only job is to display the login form and any login errors that may have occurred, 
+but the security system itself takes care of checking the submitted username and password and authenticating the user.
 Finally, let’s create the corresponding template:
 
 src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
@@ -146,8 +147,8 @@ src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
        <button type="submit">login</button>
    </form>
 
-HTTPをアクセスしようとする今、：//jobeet.local/app_dev.php/admin/dashboard URLを、ログインフォームが表示され、
-次のことを行うのsecurity.yml（管理者/ adminPassは）で定義されたユーザ名とパスワードを入力する必要がありますJobeetの管理のセクションに行く。
+ここで、 URL http：//jobeet.local/app_dev.php/admin/dashboard にアクセスするとログインフォームが表示されます。
+Jobeetの管理領域に行くには security.yml （admin/adminpass） で定義されたユーザ名とパスワードを入力する必要があります。
 Now, if you try to access http://jobeet.local/app_dev.php/admin/dashboard url, the login form will show and 
 you will have to enter the username and password defined in security.yml (admin/adminpass) to get to the admin section of Jobeet.
 
@@ -589,7 +590,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 getFlashBag()->add() 関数の最初の引数は、フラッシュの識別子で、、2つ目は表示するためのメッセージです。
-あなたが好きなフラッシュの名前を定義できますが、notice と error の2つは、より一般的です。 
+自由にフラッシュの名前を定義できますが、notice と error の2つは、より一般的です。 
 フラッシュ·メッセージを表示するためそれらをテンプレートに含める必要があります。
 layout.html.twig テンプレートで行いました。
 The first argument of the getFlashBag()->add() function is the identifier of the flash and the second one is the message to display. 
