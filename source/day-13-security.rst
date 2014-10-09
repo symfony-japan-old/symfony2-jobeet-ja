@@ -148,19 +148,21 @@ src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
    </form>
 
 ここで、 URL http：//jobeet.local/app_dev.php/admin/dashboard にアクセスするとログインフォームが表示されます。
-Jobeetの管理領域に行くには security.yml （admin/adminpass） で定義されたユーザ名とパスワードを入力する必要があります。
+Jobeetの管理領域に行くには security.yml で定義されたユーザ名とパスワード（admin/adminpass）を入力する必要があります。
 Now, if you try to access http://jobeet.local/app_dev.php/admin/dashboard url, the login form will show and 
 you will have to enter the username and password defined in security.yml (admin/adminpass) to get to the admin section of Jobeet.
 
+ユーザープロバイダー
+---------------
 User Providers
 --------------
 
-認証時に、ユーザーは一連の資格情報（通常はユーザ名とパスワード）を送信します。
-認証システムの仕事は、ユーザーの一部のプールに対してこれらの資格情報と一致することです。だからここでのユーザーのリストから来るのでしょうか？ 
-設定ファイル、データベーステーブル、Webサービス、またはあなたが夢を見ることができる何か他のもの -  Symfony2のでは、ユーザーはどこからでも来ることができる。
-認証システムに1つ以上のユーザーを提供するものは、「ユーザ·プロバイダ」として知られている。
-コンフィギュレーション·ファイルからユーザーをロードする一つのデータベーステーブルからユーザーをロードする1：Symfony2のは、2つの最も一般的なユーザーのプロバイダを標準装備しています。 
-設定ファイル内のユーザーを指定：上記の、私たちは最初のケースを使用していました。
+認証時に、ユーザーは資格情報のセット（通常はユーザ名とパスワード）を送信します。
+認証システムの仕事は、資格情報をユーザーリストに対して照らし合わせることです。では、ここでのユーザーリストはどこから来るのでしょうか？ 
+Symfony2 では、ユーザーをどこからでも取得することができます。設定ファイル、データベーステーブル、Webサービス、または、考えうるなんでも。 
+認証システムに1つ以上のユーザーを提供するものは、「ユーザープロバイダー」として知られています。
+Symfony2 は最も一般的なユーザープロバイダーとして、設定ファイル、および、データベースのテーブルからのユーザーの読み込みを標準装備しています。
+上記では、設定ファイル内のユーザーを指定する、最初のケースを使用していました。
 During authentication, the user submits a set of credentials (usually a username and password). 
 The job of the authentication system is to match those credentials against some pool of users. 
 So where does this list of users come from?
@@ -183,9 +185,9 @@ app/config/security.yml
 
    # ...
 
-しかし、あなたは通常、ユーザーがデータベーステーブルに格納されることになるでしょう。
-これを行うために私たちはJobeetのデータベースに新しいユーザ·テーブルを追加します。
-まずは、この新しいテーブルのORMを作成してみましょう：
+しかし、一般的にはユーザーはデータベーステーブルに格納されることになるでしょう。
+これを行うためには Jobeet のデータベースに新しい ``user`` テーブルを追加します。
+まずは、この新しいテーブルの ORM を作成してみましょう：
 But you will usually want the users to be stored in a database table. 
 To do this we will add a new user table to our jobeet database. 
 First let’s create the orm for this new table:
@@ -209,7 +211,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/User.orm.yml
                type: string
                length: 255
 
-``doctrine:generate:entities`` コマンドを実行します。生成します。エンティティは新しいUserエンティティクラスを作成するコマンド：
+``doctrine:generate:entities`` コマンドを実行し、新しい User エンティティクラスを生成します。：
 Now run the doctrine:generate:entities command to create the new User entity class:
 
 .. code-block:: bash
@@ -223,7 +225,7 @@ And update the database:
 
    $ php app/console doctrine:schema:update --force
 
-新しいユーザークラスの唯一の要件は、それがのUserInterfaceインターフェイスを実装していることである。
+新しいユーザークラスの唯一の要件は、それがのUserInterfaceインターフェイスを実装していることです。
 これは、 "ユーザ"のあなたの概念がある限り、このインタフェースを実装するように、何も良いことを意味する。 
 User.phpファイルを開き、以下のように編集します。
 The only requirement for your new user class is that it implements the UserInterface interface. 
