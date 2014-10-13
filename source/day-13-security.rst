@@ -225,9 +225,9 @@ And update the database:
 
    $ php app/console doctrine:schema:update --force
 
-新しいユーザークラスの唯一の要件は、それがのUserInterfaceインターフェイスを実装していることです。
-これは、 "ユーザ"のあなたの概念がある限り、このインタフェースを実装するように、何も良いことを意味する。 
-User.phpファイルを開き、以下のように編集します。
+新しい ``user`` クラスの唯一の要件は、 UserInterface インターフェイスを実装していることです。
+これは、このインタフェースを実装する限り ``user`` はどのようなものでも良いことを意味します。 
+User.php ファイルを開き、以下のように編集します。
 The only requirement for your new user class is that it implements the UserInterface interface. 
 This means that your concept of a “user” can be anything, as long as it implements this interface. 
 Open the User.php file and edit it as follows:
@@ -336,8 +336,8 @@ src/Ibw/JobeetBundle/Entity/User.php
        }
    }
 
-生成されたエンティティへの私たちはのUserInterfaceクラスで必要なメソッドを追加しました：getRoles、getSalt、eraseCredentialsをと等しくなります。 
-次に、エンティティユーザプロバイダを設定し、あなたのUserクラスを指すように：
+生成されたエンティティに UserInterface クラスで要求されたメソッド（getRoles、getSalt、eraseCredentials と equals）を追加しました。 
+次に、エンティティユーザプロバイダを設定し、 ``User`` クラスを指すようにます。：
 To the generated entity we added the methods required by the UserInterface class: getRoles, getSalt, eraseCredentials and equals.
 Next, configure an entity user provider, and point it to your User class:
 
@@ -352,9 +352,9 @@ app/config/security.yml
    encoders:
      Ibw\JobeetBundle\Entity\User: sha512
 
-また、パスワードの暗号化にSHA512アルゴリズムを使用するように私たちの新しいUserクラス用のエンコーダを変更しました。 
-今ではすべてがセットアップさが、私たちは私たちの最初のユーザーを作成する必要がされている。
-これを行うためには、新しいsymfonyコマンドを作成します。
+また、新しいUserクラス用のエンコーダをパスワードの暗号化のため SHA512 アルゴリズムを使用するように変更しました。 
+これですべてセットアップされましたので、最初のユーザーを作成する必要があります。
+これを行うためには、新しい symfony コマンドを作成します。
 We also changed the encoder for our new User class to use the sha512 algorithm to encrypt passwords.
 Now everything is set up but we need to create our first user. 
 To do this we will create a new symfony command:
@@ -405,23 +405,25 @@ To do this we will create a new symfony command:
        }
    }
 
-あなたの最初のユーザーの実行を追加するには：
+最初のユーザーの追加を実行します。：
 To add your first user run:
 
 .. code-block:: bash
 
    $ php app/console ibw:jobeet:users admin admin
 
-これはパスワードadminを持つ管理ユーザーを作成します。
-あなたは、管理セクションへのログインに使用することができます。
+これはパスワード ``admin`` を持つ ``admin`` ユーザーを作成します。
+これを管理セクションへのログインに使用することができます。
 This will create the admin user with the password admin. 
 You can use it to login to the admin section.
 
+ログアウト
+-------
 Logout
 ------
 
-ログアウトすると、ファイアウォールによって自動的に処理されます。
-あなたがしなければならないのは、ログアウトconfigパラメータを有効化することです：
+ログアウトはファイアウォールによって自動的に処理されます。
+あなたがしなければならないのは、ログアウトの config パラメータを有効化することです。：
 Logging out is handled automatically by the firewall. 
 All you have to do is to activate the logout config parameter:
 
@@ -439,8 +441,8 @@ app/config/security.yml
                    target: /
        # ...
 
-ファイアウォールはすべての面倒を見るように/ログアウトURL用のコントローラを実装する必要はありません。 
-URLを生成するためにそれを使用できるように、のルートを作成してみましょう：
+ファイアウォールがすべての面倒を見るため、  URL (/logout)用のコントローラを実装する必要はありません。 
+URL 生成に使用できるよう、ルートを作成してみましょう：
 You will not need to implement a controller for the /logout URL as the firewall takes care of everything. 
 Let’s create a route so that you can use it to generate the URL:
 
@@ -455,11 +457,11 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
    # ...
 
-これが設定されたら、/ログアウト（またはものは何でも、あなたがするパスを設定する）、にユーザーを送信することは、現在のユーザを解除認証します。
-次いで、ユーザは、ホームページ（targetパラメータによって定義された値）に送られる。 
-全ての観光左側は、当社の管理セクションにログアウトリンクを追加することです。
-これを行うために私たちはSonataAdminBundleからuser_block.html.twigをオーバーライドします。
-アプリ/リソース/ SonataAdminBundle/ビュー/コアフォルダにuser_block.html.twigファイルを作成します。
+これが設定されたら、/logout （または、あなたが設定するパスは何でも）にユーザーを送信することで、現在のユーザの認証の解除をします。
+次いで、ユーザは、トップページ（target パラメータによって定義された値）に送られます。 
+あと残った作業は、ログアウトのリンクを管理セクションに追加することです。
+これを行うために SonataAdminBundle の user_block.html.twig をオーバーライドします。
+app/Resources/SonataAdminBundle/views/Core フォルダに user_block.html.twig ファイルを作成します。
 Once this is configured, sending a user to /logout (or whatever you configure the path to be), will un-authenticate the current user. 
 The user will then be sent to the homepage (the value defined by the target parameter).
 All left to do is to add the logout link to our admin section. 
@@ -475,12 +477,14 @@ app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
 使用すると、管理セクション（最初のキャッシュをクリア）を入力しようとした場合さて、あなたは、ユーザー名とパスワードの入力を要求され、その後、ログアウトリンクは右上隅に表示されます。
 Now, if you try to enter the admin section (clear the cache first), you will be asked for an username and password and then, the logout link will be shown in the top-right corner.
 
+ユーザーセッション
+-------------
 The User Session
 ----------------
 
-Symfony2のはあなたがリクエスト間でユーザーに関する情報を保存するために使用できる素敵なセッションオブジェクトを提供します。
-デフォルトでは、Symfony2のは、ネイティブのPHPのセッションを使用することにより、クッキーの属性を格納します。 
-あなたが保存して、コントローラから簡単にセッションの情報を取得することができます。
+Symfony2 はリクエストの間、ユーザー情報を保存する素敵なセッションオブジェクトを提供します。
+デフォルトでは、 Symfony2 のは、ネイティブの PHP のセッションを使用することにより、クッキーの属性を格納します。 
+コントローラから簡単にセッションの情報を保存・取得することができます。
 Symfony2 provides a nice session object that you can use to store information about the user between requests. 
 By default, Symfony2 stores the attributes in a cookie by using the native PHP sessions.
 You can store and retrieve information from the session easily from the controller:
@@ -496,10 +500,11 @@ You can store and retrieve information from the session easily from the controll
    $foo = $session->get('foo');
 
 残念なことに、Jobeetユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。
-それでは、新しい要件を追加してみましょう：求人の閲覧を容易にするために、ユーザが視聴し、最後の3つのジョブは、後で求人ページに戻れるリンクがメニューに表示されるべきである。 
-ユーザーが求人ページにアクセスすると、表示されたジョブオブジェクトは、セッションでのユーザーの履歴に追加され、保存される必要があります：
+そこで、新しい要件を追加してみましょう：求人の閲覧を容易にするため、ユーザが閲覧した最後の3つのジョブは、後で求人ページに戻れるリンクがメニューに表示されるべきです。 
+ユーザーが求人ページにアクセスすると、表示された ``Job`` オブジェクトは、セッションでのユーザーの履歴に追加・保存される必要があります。：
 Unfortunately, the Jobeet user stories have no requirement that includes storing something in the user session. 
-So let’s add a new requirement: to ease job browsing, the last three jobs viewed by the user should be displayed in the menu with links to come back to the job page later on.
+So let’s add a new requirement: 
+to ease job browsing, the last three jobs viewed by the user should be displayed in the menu with links to come back to the job page later on.
 When a user access a job page, the displayed job object needs to be added in the user history and stored in the session:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -542,7 +547,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-レイアウトでは、#content divの前に、次のコードを追加します。
+``layout.html.twig`` では、 ``#content div`` の前に、次のコードを追加します。
 In the layout, add the following code before the #content div:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -566,12 +571,14 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
+フラッシュメッセージ
+--------------
 Flash Messages
 --------------
 
-フラッシュメッセージは正確に一つの追加的な要求のために、ユーザのセッションに保存することができ、小さなメッセージです。
-フォームを処理するときに便利です：あなたは次の要求で示さ特別なメッセージをリダイレクトし、持っていると思います。
-私たちは仕事を公開するときにはすでに私たちのプロジェクトにフラッシュメッセージを使用していた。
+フラッシュメッセージはユーザのセッションに保存することがでる小さなメッセージで、正確に一回のリクエストのためのものです。
+リダイレクトして、次のリクエストで特別なメッセージを表示する、などのフォームの処理をするのに便利です。
+私たちはジョブを公開するときにすでに私たちのプロジェクトでフラッシュメッセージを使用していました。
 Flash messages are small messages you can store on the user’s session for exactly one additional request. 
 This is useful when processing a form: you want to redirect and have a special message shown on the next request. 
 We already used flash messages in our project when we publish a job:
@@ -592,7 +599,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 getFlashBag()->add() 関数の最初の引数は、フラッシュの識別子で、、2つ目は表示するためのメッセージです。
-自由にフラッシュの名前を定義できますが、notice と error の2つは、より一般的です。 
+自由にフラッシュの名前を定義できますが、notice と error の2つがより一般的です。 
 フラッシュ·メッセージを表示するためそれらをテンプレートに含める必要があります。
 layout.html.twig テンプレートで行いました。
 The first argument of the getFlashBag()->add() function is the identifier of the flash and the second one is the message to display. 

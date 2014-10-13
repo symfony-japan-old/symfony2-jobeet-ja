@@ -5,24 +5,32 @@ Day 14: Feeds
 
 .. include:: common/original.rst.inc
 
-あなたが仕事を探している場合は、おそらくすぐに新しいジョブが投稿されるように通知されることになるでしょう。それがウェブサイトの他のすべての時間をチェックすることは非常に便利ではないので、私たちはいくつかのジョブが最新の私たちのJobeetのユーザーを維持するためにここにフィードを追加します。
-If you are looking for a job, you will probably want to be informed as soon as a new job is posted. Because it is not very convenient to check the website every other hour, we will add several job feeds here to keep our Jobeet users up-to-date.
+あなたが仕事を探している場合は、おそらくすぐに新しいジョブが投稿されるように通知されることになるでしょう。
+それがウェブサイトの他のすべての時間をチェックすることは非常に便利ではないので、私たちはいくつかのジョブが最新の私たちのJobeetのユーザーを維持するためにここにフィードを追加します。
+If you are looking for a job, you will probably want to be informed as soon as a new job is posted. 
+Because it is not very convenient to check the website every other hour, we will add several job feeds here to keep our Jobeet users up-to-date.
 
 Template Formats
 ----------------
 
-テンプレートは、任意の形式でコンテンツをレンダリングする一般的な方法です。ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしながら、テンプレートには、同じように簡単にはJavaScript、CSS、XMLや他のフォーマットを生成することができます。 
-例えば、同じ「リソース」は、しばしばいくつかの異なる形式で表示されます。 XMLでの記事のインデックスページをレンダリングするには、テンプレート名でのフォーマットが含まれています。
-Templates are a generic way to render content in any format. And while in most cases you’ll use templates to render HTML content, a template can just as easily generate JavaScript, CSS, XML or any other format.
-For example, the same “resource” is often rendered in several different formats. To render an article index page in XML, simply include the format in the template name:
+テンプレートは、任意の形式でコンテンツをレンダリングする一般的な方法です。
+ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしながら、テンプレートには、同じように簡単にはJavaScript、CSS、XMLや他のフォーマットを生成することができます。 
+例えば、同じ「リソース」は、しばしばいくつかの異なる形式で表示されます。
+ XMLでの記事のインデックスページをレンダリングするには、テンプレート名でのフォーマットが含まれています。
+Templates are a generic way to render content in any format. 
+And while in most cases you’ll use templates to render HTML content, a template can just as easily generate JavaScript, CSS, XML or any other format.
+For example, the same “resource” is often rendered in several different formats. 
+To render an article index page in XML, simply include the format in the template name:
 
 * XML template name: AcmeArticleBundle:Article:index.xml.twig
 * XML template filename: index.xml.twig
 
 現実には、これは命名規則以外の何ものでもありませんし、テンプレートは実際には異なって、そのフォーマットに基づいて描画されない。 
-多くのケースでは、単一のコントローラが「要求フォーマット」に基づいて複数の異なるフォーマットをレンダリングすることを可能にすることをお勧めします。そのため、一般的なパターンは、次の操作を実行することです：
+多くのケースでは、単一のコントローラが「要求フォーマット」に基づいて複数の異なるフォーマットをレンダリングすることを可能にすることをお勧めします。
+そのため、一般的なパターンは、次の操作を実行することです：
 In reality, this is nothing more than a naming convention and the template isn’t actually rendered differently based on its format.
-In many cases, you may want to allow a single controller to render multiple different formats based on the “request format”. For that reason, a common pattern is to do the following:
+In many cases, you may want to allow a single controller to render multiple different formats based on the “request format”. 
+For that reason, a common pattern is to do the following:
 
 .. code-block:: php
 
@@ -33,9 +41,11 @@ In many cases, you may want to allow a single controller to render multiple diff
        return $this->render('AcmeBlogBundle:Blog:index.'.$format.'.twig');
    }
 
-RequestオブジェクトはデフォルトでオンgetRequestFormatはHTMLに、ユーザーから要求されたフォーマットに基づいて他の形式を返すことができます。リクエストフォーマットは、ほとんどの場合、ルートはように/接触が/contact.xml XMLに書式を設定しますながらhtmlに要求フォーマットを設定するように構成することができ、ルーティングによって管理されます。 
+RequestオブジェクトはデフォルトでオンgetRequestFormatはHTMLに、ユーザーから要求されたフォーマットに基づいて他の形式を返すことができます。
+リクエストフォーマットは、ほとんどの場合、ルートはように/接触が/contact.xml XMLに書式を設定しますながらhtmlに要求フォーマットを設定するように構成することができ、ルーティングによって管理されます。 
 、formatパラメータを含むパラメータハッシュ内_formatキーを含むリンクを作成するには：
-The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user. The request format is most often managed by the routing, where a route can be configured so that /contact sets the request format to html while /contact.xml sets the format to xml.
+The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user. 
+The request format is most often managed by the routing, where a route can be configured so that /contact sets the request format to html while /contact.xml sets the format to xml.
 To create links that include the format parameter, include a _format key in the parameter hash:
 
 .. code-block:: html+jinja
@@ -50,8 +60,10 @@ Feeds
 LATEST JOBS FEED
 ~~~~~~~~~~~~~~~~
 
-異なるフォーマットをサポートすることは別のテンプレートを作成するのと同じくらい簡単です。最新のジョブのAtomフィードを作成するには、index.atom.twigテンプレートを作成します。
-Supporting different formats is as easy as creating different templates. To create an Atom feed for the latest jobs, create an index.atom.twig template:
+異なるフォーマットをサポートすることは別のテンプレートを作成するのと同じくらい簡単です。
+最新のジョブのAtomフィードを作成するには、index.atom.twigテンプレートを作成します。
+Supporting different formats is as easy as creating different templates. 
+To create an Atom feed for the latest jobs, create an index.atom.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
 
@@ -90,7 +102,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
-フィードを自動的にブラウザが発見できるように、レイアウトのheadセクションに、<リンク>タグを追加します。
+フィードを自動的にブラウザが発見できるように、レイアウトの head セクションに、<リンク>タグを追加します。
 Add a <link> tag in the head section of the layout to allow automatic discover by the browser of our feed:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -103,7 +115,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
-JobControllerで_formatに従ってテンプレートをレンダリングするindexActionを変更します。
+JobController で _format に従ってテンプレートをレンダリングする indexAction を変更します。
 In the JobController change the indexAction to render the template according to the _format:
 
 .. code-block:: php
@@ -120,7 +132,7 @@ In the JobController change the indexAction to render the template according to 
 
    // ...
 
-次のコードでAtomのテンプレートヘッダを置き換えます。
+次のコードで Atom のテンプレートヘッダを置き換えます。
 Replace the Atom template header with the following code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
@@ -139,7 +151,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
 
    <!-- ... -->
 
-JobController（indexアクション）から私たちは、テンプレートにLASTUPDATEDとfeedIdを送信する必要があります。
+JobController （ index アクション）から、テンプレートに lastUpdated と feedId を送る必要があります。
 From the JobController (index action) we have to send the lastUpdated and feedId to the template:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -165,7 +177,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    ));
    // ...
 
-最新投稿の日付を取得するには、私たちはJobRepository中getLatestPost（）メソッドを作成する必要があります。
+最新投稿の日付を取得するには、 JobRepository クラスの中に getLatestPost() メソッドを作成する必要があります。
 To get the date of the latest post, we have to create the getLatestPost() method in the JobRepository:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -199,7 +211,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
    }
    // ...
 
-フィードエントリは、次のコードを生成することができる。
+フィードエントリーは、次のコードで生成されます。
 The feed entries can be generated with the following code:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
@@ -235,12 +247,15 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
    {% endfor %}
 
 カテゴリのフィードの最新の求人情報
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 LATEST JOBS IN A CATEGORY FEED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Jobeetのの目標の1つは、人々がより多くのターゲットに仕事を見つける手助けをすることです。そこで、各カテゴリのフィードを提供する必要があります。 
-まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう：
-One of the goals of Jobeet is to help people find more targeted jobs. So, we need to provide a feed for each category.
+Jobeetの目標の1つは、人々が目的の仕事をより多く見つけることを手助けをすることです。
+そこで、各カテゴリのフィードを提供する必要があります。 
+まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう。：
+One of the goals of Jobeet is to help people find more targeted jobs. 
+So, we need to provide a feed for each category.
 First, let’s update the links to category feeds in the templates:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
@@ -259,7 +274,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
        <a href="{{ path('IbwJobeetBundle_category', { 'slug': category.slug, '_format': 'atom' }) }}">Feed</a>
    </div>
 
-対応するテンプレートをレンダリングするCategoryController showActionを更新します。
+レンダリングするテンプレートに対応した CategoryController showAction を更新します。
 Update the CategoryController showAction to render the corresponding template:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
@@ -307,7 +322,7 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
      ));
    }
 
-最終的には、show.atom.twigテンプレートを作成します。
+最終的には、 show.atom.twig テンプレートを作成します。
 Eventually, create the show.atom.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Category/show.atom.twig
