@@ -5,18 +5,20 @@ Day 14: Feeds
 
 .. include:: common/original.rst.inc
 
-あなたが仕事を探している場合は、おそらくすぐに新しいジョブが投稿されるように通知されることになるでしょう。
-それがウェブサイトの他のすべての時間をチェックすることは非常に便利ではないので、私たちはいくつかのジョブが最新の私たちのJobeetのユーザーを維持するためにここにフィードを追加します。
+あなたが仕事を探している場合は、おそらく新しいジョブが投稿されたらすぐに通知されることを望むでしょう。
+常にウェブサイトをチェックすることは非常に不便なので、 Jobeet ユーザーの更新を維持するためにいくつかのジョブのフィードを追加します。
 If you are looking for a job, you will probably want to be informed as soon as a new job is posted. 
 Because it is not very convenient to check the website every other hour, we will add several job feeds here to keep our Jobeet users up-to-date.
 
+テンプレートのフォーマット
+------------------
 Template Formats
 ----------------
 
 テンプレートは、任意の形式でコンテンツをレンダリングする一般的な方法です。
-ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしながら、テンプレートには、同じように簡単にはJavaScript、CSS、XMLや他のフォーマットを生成することができます。 
+ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしが、テンプレートには、同じように簡単に　JavaScript、CSS、XML や他のフォーマットを生成することができます。 
 例えば、同じ「リソース」は、しばしばいくつかの異なる形式で表示されます。
- XMLでの記事のインデックスページをレンダリングするには、テンプレート名でのフォーマットが含まれています。
+XMLでの記事のインデックスページをレンダリングするには、単純に、テンプレート名にフォーマットを含めるだけです。
 Templates are a generic way to render content in any format. 
 And while in most cases you’ll use templates to render HTML content, a template can just as easily generate JavaScript, CSS, XML or any other format.
 For example, the same “resource” is often rendered in several different formats. 
@@ -25,9 +27,9 @@ To render an article index page in XML, simply include the format in the templat
 * XML template name: AcmeArticleBundle:Article:index.xml.twig
 * XML template filename: index.xml.twig
 
-現実には、これは命名規則以外の何ものでもありませんし、テンプレートは実際には異なって、そのフォーマットに基づいて描画されない。 
-多くのケースでは、単一のコントローラが「要求フォーマット」に基づいて複数の異なるフォーマットをレンダリングすることを可能にすることをお勧めします。
-そのため、一般的なパターンは、次の操作を実行することです：
+現実には、これは命名規則以外の何ものでもありませんし、テンプレートは実際には異なって、そのフォーマットに基づいて描画されません。 
+多くのケースでは、単一のコントローラが ``request format`` に基づいて複数の異なるフォーマットをレンダリング可能にすることをお勧めします。
+そのため、一般的なパターンは、次のように行います。：
 In reality, this is nothing more than a naming convention and the template isn’t actually rendered differently based on its format.
 In many cases, you may want to allow a single controller to render multiple different formats based on the “request format”. 
 For that reason, a common pattern is to do the following:
@@ -42,7 +44,7 @@ For that reason, a common pattern is to do the following:
    }
 
 RequestオブジェクトはデフォルトでオンgetRequestFormatはHTMLに、ユーザーから要求されたフォーマットに基づいて他の形式を返すことができます。
-リクエストフォーマットは、ほとんどの場合、ルートはように/接触が/contact.xml XMLに書式を設定しますながらhtmlに要求フォーマットを設定するように構成することができ、ルーティングによって管理されます。 
+リクエストフォーマットは、ほとんどの場合、ルートはように /contact が /contact.xml XMLに書式を設定しますながら html に要求フォーマットを設定するように構成することができ、ルーティングによって管理されます。 
 、formatパラメータを含むパラメータハッシュ内_formatキーを含むリンクを作成するには：
 The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user. 
 The request format is most often managed by the routing, where a route can be configured so that /contact sets the request format to html while /contact.xml sets the format to xml.
@@ -54,9 +56,13 @@ To create links that include the format parameter, include a _format key in the 
        PDF Version
    </a>
 
+フィード
+-----
 Feeds
 -----
 
+最新のジョブフィード
+~~~~~~~~~~~~~~~
 LATEST JOBS FEED
 ~~~~~~~~~~~~~~~~
 
