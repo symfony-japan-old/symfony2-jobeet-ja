@@ -5,27 +5,31 @@ Day 15: Web Services
 
 .. include:: common/original.rst.inc
 
-Jobeet の上のフィードを追加することで、求職者はリアルタイムで新しい求人を知ることができる。 
-あなたが仕事を投稿するときフェンスの向こう側では、あなたは、可能なエクスポージャーを持つことになるでしょう。
-あなたの仕事は、小さな多くのウェブサイトにシンジケートされている場合は、右の人を見つける機会が増えます。
+Jobeet の上のフィードを追加することで、求職者はリアルタイムで新しい求人を知ることができます。 
+反対に、ジョブを投稿するときは、最大限可能な限り露出したいと思うでしょう。
+もし小さな多くのウェブサイトが連合した場合、よりよい人を見つける機会が増えるでしょう。
 つまり、ロングテールの力です。
-アフィリエイトは、私たちが今日開発するWebサービスに自分のウェブサイト上のおかげで投稿された最新の求人情報を公開することができるようになります。
+今日開発する Web サービスによって、アフィリエイトは自分のサイトに最新の投稿された求人を公開することができるようになります。
 With the addition of feeds on Jobeet, job seekers can now be informed of new jobs in real-time.
 On the other side of the fence, when you post a job, you will want to have the greatest exposure possible. 
 If your job is syndicated on a lot of small websites, you will have a better chance to find the right person. 
 That’s the power of the long tail. 
 Affiliates will be able to publish the latest posted jobs on their websites thanks to the web services we will develop today.
 
+アフィリエイト
+---------
 Affiliates
 ----------
 
-私たちはすでにこのチュートリアルの2日目で言ったように、アフィリエイトは、現在アクティブなジョブリストを取得します。
+私たちはすでにこのチュートリアルの 2 日目で述べたように、アフィリエイトは、現在のアクティブなジョブのリストを取得します。
 As we already said in day 2 of this tutorial, an affiliate retrieves the current active job list.
 
+フィクスチャー
+---------
 The fixtures
 ------------
 
-それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう：
+それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう。：
 Let’s create a new fixture file for the affiliates:
 
 .. code-block:: php
@@ -73,16 +77,18 @@ Let’s create a new fixture file for the affiliates:
        }
    }
 
-今、ちょうど次のコマンドを実行し、あなたのフィクスチャファイルで定義されたデータを永続化するために：
+ここで、フィクスチャーファイルで定義されたデータを永続化するために、次のコマンドを実行します。：
 Now, to persist the data defined in your fixture file, just run the following command:
 
 .. code-block:: bash
 
    $ php app/console doctrine:fixtures:load
 
-フィクスチャファイルでは、トークンは、テストを簡略化するためにハードコードされていますが、実際のユーザーがアカウントに適用されたときに、トークンは、私たちのアフィリエイトクラスでそれをする関数を作成してみましょう、生成する必要があります。
-お使いのORMファイル内、lifecycleCallbacksセクションにsetTokenValueメソッドを追加することで起動します。
-In the fixture file, the tokens are hardcoded to simplify the testing, but when an actual user applies for an account, the token will need to be generated Let’s create a function to do that in our Affiliate class. 
+フィクスチャーファイルでは、トークンは、テストを簡略化するためにハードコードされていますが、実際のユーザーがアカウントに適用されたときには、トークンを生成する必要があります
+アフィリエイトクラスでトークンを生成する関数を作成してみましょう、。
+お使いの ORM ファイル内、 lifecycleCallbacks セクションに setTokenValue メソッドを追加することで始めます。
+In the fixture file, the tokens are hardcoded to simplify the testing, but when an actual user applies for an account, 
+the token will need to be generated Let’s create a function to do that in our Affiliate class. 
 Start by adding the setTokenValue method to lifecycleCallbacks section, inside your ORM file:
 
 src//Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
@@ -93,14 +99,14 @@ src//Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
        lifecycleCallbacks:
            prePersist: [ setCreatedAtValue, setTokenValue ]
 
-次のコマンドを実行する時期を今、setTokenValue法は実体ファイルの内部で生成されます。
+ここで、次のコマンドを実行することで、 setTokenValue メソッドはエンティティファイルの中に生成されます。
 Now, the setTokenValue method will be generated inside the entity file when you will run the following command:
 
 .. code-block:: bash
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-それでは、メソッドを変更してみましょう：
+それでは、メソッドを変更してみましょう。：
 Let’s modify the method now:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
@@ -124,10 +130,12 @@ Reload the data:
 
    $ php app/console doctrine:fixtures:load
 
+ジョブウェブサービス
+--------------
 The Job Web Service
 -------------------
 
-新しいリソースを作成するときにいつものように、それは最初にルートを定義するのは良いhabbitです：
+いつものように新しいリソースを作成するときに、最初にルートを定義するのは良い習慣です。：
 As always, when you create a new resource, it’s a good habbit to define the route first:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -140,7 +148,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        requirements:
            _format: xml|json|yaml
 
-あなたは、ルーティングファイルを変更した後、通常のように、あなたはキャッシュをクリアする必要があります。
+いつものように、ルーティングファイルを変更した後はキャッシュをクリアする必要があります。
 As usually, after you modify a routing file, you need to clear the cache:
 
 .. code-block:: bash
@@ -148,8 +156,8 @@ As usually, after you modify a routing file, you need to clear the cache:
    $ php app/console cache:clear --env=dev
    $ php app/console cache:clear --env=prod
 
-次のステップは、同じアクションを共有するAPIの動作とテンプレートを作成することです。
-私たちは今ApiControllerという新しいコントローラファイルを作成してみましょう：
+次のステップは、同じ動作を共有する API のアクションとテンプレートを作成することです。
+ここで ApiController という新しいコントローラファイルを作成してみましょう。：
 The next step is to create the api action and the templates, that will share the same action. 
 Let us now create a new controller file, called ApiController:
 
