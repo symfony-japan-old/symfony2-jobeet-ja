@@ -43,11 +43,12 @@ For that reason, a common pattern is to do the following:
        return $this->render('AcmeBlogBundle:Blog:index.'.$format.'.twig');
    }
 
-RequestオブジェクトはデフォルトでオンgetRequestFormatはHTMLに、ユーザーから要求されたフォーマットに基づいて他の形式を返すことができます。
-リクエストフォーマットは、ほとんどの場合、ルートはように /contact が /contact.xml XMLに書式を設定しますながら html に要求フォーマットを設定するように構成することができ、ルーティングによって管理されます。 
-、formatパラメータを含むパラメータハッシュ内_formatキーを含むリンクを作成するには：
+Request オブジェクトの getRequestFormat メソッドはデフォルトでは html を返しますが、ユーザーから要求されたフォーマットに基づいて他の形式を返すこともできます。
+リクエストフォーマットはほとんどの場合、ルーティングによって管理されます。 /contact はリクエストフォーマットに html にセットし、一方、 /contact.xml はフォーマットに xml を設定します。
+format パラメータを含むリンクを作成するには、パラメータハッシュ内の _format キーを含みます。：
 The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user. 
-The request format is most often managed by the routing, where a route can be configured so that /contact sets the request format to html while /contact.xml sets the format to xml.
+The request format is most often managed by the routing, where a route can be configured 
+so that /contact sets the request format to html while /contact.xml sets the format to xml.
 To create links that include the format parameter, include a _format key in the parameter hash:
 
 .. code-block:: html+jinja
@@ -67,7 +68,7 @@ LATEST JOBS FEED
 ~~~~~~~~~~~~~~~~
 
 異なるフォーマットをサポートすることは別のテンプレートを作成するのと同じくらい簡単です。
-最新のジョブのAtomフィードを作成するには、index.atom.twigテンプレートを作成します。
+最新のジョブの Atom フィードを作成するには、 index.atom.twig テンプレートを作成します。
 Supporting different formats is as easy as creating different templates. 
 To create an Atom feed for the latest jobs, create an index.atom.twig template:
 
@@ -95,7 +96,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
        </entry>
    </feed>
 
-Jobeetのフッターには、フィードへのリンクを更新します。
+Jobeet のフッターで、フィードへのリンクを更新します。
 In the Jobeet footer, update the link to the feed:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -108,7 +109,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
-フィードを自動的にブラウザが発見できるように、レイアウトの head セクションに、<リンク>タグを追加します。
+フィードをブラウザが自動的に発見できるように、レイアウトの head セクションに、 <link> タグを追加します。
 Add a <link> tag in the head section of the layout to allow automatic discover by the browser of our feed:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -257,7 +258,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
 LATEST JOBS IN A CATEGORY FEED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Jobeetの目標の1つは、人々が目的の仕事をより多く見つけることを手助けをすることです。
+Jobeet の目標の 1 つは、人々が目的の仕事をより多く見つけることを手助けをすることです。
 そこで、各カテゴリのフィードを提供する必要があります。 
 まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう。：
 One of the goals of Jobeet is to help people find more targeted jobs. 
@@ -280,7 +281,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
        <a href="{{ path('IbwJobeetBundle_category', { 'slug': category.slug, '_format': 'atom' }) }}">Feed</a>
    </div>
 
-レンダリングするテンプレートに対応した CategoryController showAction を更新します。
+対応するテンプレートを表示する、 CategoryController showAction を更新します。
 Update the CategoryController showAction to render the corresponding template:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
