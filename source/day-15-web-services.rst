@@ -130,8 +130,8 @@ Reload the data:
 
    $ php app/console doctrine:fixtures:load
 
-ジョブウェブサービス
---------------
+ジョブのウェブサービス
+----------------
 The Job Web Service
 -------------------
 
@@ -210,8 +210,10 @@ src/Ibw/JobeetBundle/Controller/ApiController.php
        }
    }
 
-彼のトークンを使用してアフィリエイトを取得するには、私たちは getForToken() メソッドを作成します。アフィリエイトアカウントが起動された場合、この方法はまた、検証ので、これをもう一度チェックする私達の必要はない。
-今まで、私たちはまだAffiliateRepositoryを使用していないので、それは存在しません。それを作成するには、その後、次のようなORMファイルを変更するには、エンティティを生成する前に、使用されたコマンドを実行します。
+トークンを使用してアフィリエイトユーザーを取得するには、 getForToken() メソッドを作成します。
+このメソッドはまたアフィリエイトアカウントが有効化されているかを検証しますので、再度チェックする必要はありません。
+今までまだ AffiliateRepository を使用していないので存在していません。
+それを作成するには、次のように ORM ファイルを変更し、エンティティを生成する際に使用したコマンドを実行します。
 To retrieve the affiliate using his token, we will create the getForToken() method. 
 This method also verifies if the affiliate account is activated, so there is no need for us to check this one more time. 
 Until now, we haven’t used the AffiliateRepository yet, so it doesn’t exist. 
@@ -226,7 +228,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
        repositoryClass: Ibw\JobeetBundle\Repository\AffiliateRepository
        # ...
 
-作成した後は、使用する準備ができている。
+一度作成されたら、使用する準備はできています。
 Once created, it is ready to be used:
 
 src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
@@ -265,9 +267,9 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
        }
    }
 
-彼のトークンによってアフィリエイトを識別した後、私たちは選択したカテゴリに属する、アフィリエイトに彼が必要な仕事を与えるために getActiveJobs() メソッドを使用します。
-あなたが今、あなたのJobRepositoryファイルを開くと、getActiveJobs() メソッドは、関連会社との任意の接続を共有していないことがわかります。
-私たちは、そのメソッドを再利用したいので、私たちはその中のいくつかの変更を行う必要があります。
+トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属する仕事を与えるため、 getActiveJobs() メソッドを使用します。
+現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。
+私たちは、そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
 After identifying the affiliate by his token, we will use the getActiveJobs() method to give the affiliate the jobs he required, belonging to the selected categories. 
 If you open your JobRepository file now, you will see that the getActiveJobs() method doesn’t share any connection with the affiliates. 
 Because we want to reuse that method, we need to make some modifications inside of it:
@@ -315,7 +317,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
    // ...
 
-ご覧のように、私たちはasArrayという関数を（）を使用して、ジョブ配列を移入します。のは、それを定義してみましょう：
+ご覧のように、asArray() という関数を使用して、ジョブを配列に移植します。それを定義してみましょう。：
 As you can see, we populate the jobs array using a function called asArray(). Let’s define it:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -338,10 +340,12 @@ src/Ibw/JobeetBundle/Entity/Job.php
        );
    }
 
+XML フォーマット
+------------
 The xml Format
 ---------------
 
-xml形式をサポートするテンプレートを作成するのと同じくらい簡単です。
+xml形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。
 Supporting the xml format is as simple as creating a template:
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig
@@ -359,10 +363,12 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig
    {% endfor %}
    </jobs>
 
+json フォーマット
+-------------
 The json Format
 ---------------
 
-JSON形式が似てサポートします。
+JSON フォーマットをサポートすることも同様です。
 Support the JSON format is similar:
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.json.twig
@@ -379,6 +385,8 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.json.twig
    {% endfor %}]
    {% endfor %}
 
+yaml フォーマット
+-------------
 The yaml Format
 ---------------
 
@@ -393,11 +401,15 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig
    {% endfor %}
    {% endfor %}
 
-あなたは、非有効なトークンを使用してWebサービスを呼び出そうとした場合は、すべての形式の応答として404ページを受け取ります。
-ます。http：//jobeet.local/app_dev.php/api/sensio-labs/jobs.xml または http：//jobeet.local/app_dev.php/api/symfony 今まであなた熟達は、以下のリンクにアクセスするかを確認するために、 /jobs.xml。
-お好みの形式に応じて、URLに拡張子を変更します。
+非有効なトークンを使用して Web サービスを呼び出そうとした場合は、すべての形式の応答として 404 ページを受け取ります。
+今までの達成したものを見るため、以下のリンクを参照ください。
+http：//jobeet.local/app_dev.php/api/sensio-labs/jobs.xml 
+または 
+http：//jobeet.local/app_dev.php/api/symfony/jobs.xml
+お好みの形式に応じて、URLに拡張子を変更してください。
 If you try to call the web service with a non-valid token, you will receive a 404 page as a response, for all the formats. 
-To see what you accomplished until now, access the following links: http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml or http://jobeet.local/app_dev.php/api/symfony/jobs.xml. 
+To see what you accomplished until now, access the following links: 
+http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml or http://jobeet.local/app_dev.php/api/symfony/jobs.xml. 
 Change the extension in the URL, depending on which format you prefer.
 
 Web Service Tests
