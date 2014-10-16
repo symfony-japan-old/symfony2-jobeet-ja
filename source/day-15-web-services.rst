@@ -345,7 +345,7 @@ XML フォーマット
 The xml Format
 ---------------
 
-xml形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。
+xml 形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。
 Supporting the xml format is as simple as creating a template:
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig
@@ -401,17 +401,19 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig
    {% endfor %}
    {% endfor %}
 
-非有効なトークンを使用して Web サービスを呼び出そうとした場合は、すべての形式の応答として 404 ページを受け取ります。
+有効でないトークンを使用して Web サービスを呼び出そうとした場合は、すべての形式の応答として 404 ページを受け取ります。
 今までの達成したものを見るため、以下のリンクを参照ください。
 http：//jobeet.local/app_dev.php/api/sensio-labs/jobs.xml 
 または 
 http：//jobeet.local/app_dev.php/api/symfony/jobs.xml
-お好みの形式に応じて、URLに拡張子を変更してください。
+お好みの形式に応じて、URLの拡張子を変更してください。
 If you try to call the web service with a non-valid token, you will receive a 404 page as a response, for all the formats. 
 To see what you accomplished until now, access the following links: 
 http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml or http://jobeet.local/app_dev.php/api/symfony/jobs.xml. 
 Change the extension in the URL, depending on which format you prefer.
 
+Web サービスのテスト
+---------------
 Web Service Tests
 -----------------
 
@@ -525,9 +527,11 @@ src/Ibw/JobeetBundle/Tests/Controller/ApiControllerTest.php
        }
    }
 
-ApiControllerTestファイル内では、要求の形式が正しく受信され、要求されたページが正しく返されることをテストします。
+ApiControllerTest ファイル内では、リクエストフォーマットが正しく受信され、要求されたページが正しく返されることをテストします。
 Inside the ApiControllerTest file, we test that the request formats are correctly received and the pages requested are correctly returned.
 
+アフィリエイト申込フォーム
+-------------------
 The Affiliate Application Form
 ------------------------------
 
