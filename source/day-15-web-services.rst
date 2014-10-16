@@ -535,11 +535,12 @@ Inside the ApiControllerTest file, we test that the request formats are correctl
 The Affiliate Application Form
 ------------------------------
 
-今、Webサービスが使用できる状態であること、のアフィリエイト用のアカウント作成フォームを作成してみましょう。
-そのためには、各フィールドの検証ルールを、HTMLフォームを書き実装する必要があるデータベース、表示エラー·メッセージに格納し、エラーの場合はフィールドを再設定するための値を処理します。 
-まず、AffiliateControllerという名前の新しいコントローラファイルを、作成します。
+ここで、 Web サービスが使用できる状態になりましたので、アフィリエイト用のアカウント作成フォームを作成してみましょう。
+そのためには、HTMLフォームを書き、各フィールドの検証ルールを実装し、データベースに値を保存する処理をし、エラー·メッセージを表示し、エラーの場合はフィールドを再設定します。 
+まず、 AffiliateController という名前の新しいコントローラのファイルを作成します。
 Now that the web service is ready to be used, let’s create the account creation form for affiliates. 
-For that, you need to write the HTML form, implement validation rules for each field, process the values to store them in a database, display error messages and repopulate fields in case of errors.
+For that, you need to write the HTML form, implement validation rules for each field, 
+process the values to store them in a database, display error messages and repopulate fields in case of errors.
 First, create a new controller file, named AffiliateController:
 
 src/Ibw/JobeetBundle/Controller/AffiliateController.php
@@ -570,7 +571,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        <li class="last"><a href="{{ path('ibw_affiliate_new') }}">Become an affiliate</a></li>
    <!-- ... -->
 
-今、私たちはあなただけ先にそれを修正されたリンクからのルートに合わせてアクションを作成する必要があります。
+ここで、上記で修正したリンクのルートと一致するアクションを作成する必要があります。
 Now, we need to create an action to match the route from the link you just modified it earlier:
 
 src/Ibw/JobeetBundle/Controller/AffiliateController.php
@@ -599,7 +600,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
        }
    }
 
-私たちは、ルートの名前を持って、私たちは行動を持っていますが、私たちはルートを持っていません。それでは、それを作成してみましょう：
+ルートの名前とアクションを持っていますが、まだルートを持っていません。では、作成してみましょう：
 We have the name of the route, we have the action, but we do not have the route. so let’s create it:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
@@ -610,7 +611,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        pattern:  /new
        defaults: { _controller: "IbwJobeetBundle:Affiliate:new" }
 
-また、ルーティングファイルにこれを追加します。
+さらに、ルーティングファイルにこれを追加します。
 Also, add this to your routing file:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -623,8 +624,10 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        resource: "@IbwJobeetBundle/Resources/config/routing/affiliate.yml"
        prefix:   /affiliate
 
-フォームファイルも作成する必要がある。そのうちのいくつかは、エンドユーザーが編集であってはなりませんので、しかし、アフィリエイトは複数のフィールドがあっても、私たちは、それらをすべて表示しません。あなたのアフィリエイトのフォームを作成します。
-The form file also needs to be created. But, even if the Affiliate has more fields, we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
+フォームファイルも作成する必要がある。そのうちのいくつかは、エンドユーザーが編集であってはなりませんので、
+しかし、アフィリエイトは複数のフィールドがあっても、私たちは、それらをすべて表示しません。あなたのアフィリエイトのフォームを作成します。
+The form file also needs to be created. But, even if the Affiliate has more fields, 
+we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
 
 src/Ibw/JobeetBundle/Form/AffiliateType.php
 
