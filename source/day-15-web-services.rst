@@ -624,10 +624,10 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        resource: "@IbwJobeetBundle/Resources/config/routing/affiliate.yml"
        prefix:   /affiliate
 
-フォームファイルも作成する必要がある。そのうちのいくつかは、エンドユーザーが編集であってはなりませんので、
-しかし、アフィリエイトは複数のフィールドがあっても、私たちは、それらをすべて表示しません。あなたのアフィリエイトのフォームを作成します。
-The form file also needs to be created. But, even if the Affiliate has more fields, 
-we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
+フォームファイルも作成する必要があります。
+しかし、たとえアフィリエイトが多くのフィールドを持っていても、そのうちのいくつかはエンドユーザーが編集であってはなりませんので、すべて表示はしません。
+The form file also needs to be created. 
+But, even if the Affiliate has more fields, we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
 
 src/Ibw/JobeetBundle/Form/AffiliateType.php
 
@@ -665,7 +665,7 @@ src/Ibw/JobeetBundle/Form/AffiliateType.php
        }
    }
 
-今、私たちは、フォームがそれに提出されたデータを適用した後にアフィリエイトオブジェクトが有効であるかどうかを決定する必要があります。
+今、私たちは、フォームがそれに送信されたデータを適用した後に、アフィリエイトオブジェクトが有効であるかどうかを判断する必要があります。
 これを行うには、バリデーションファイルに次のコードを追加します。
 Now, we need to decide whether or not the Affiliate object is valid after the form has applied the submitted data to it. 
 To do this, add the following code to your validation file:
