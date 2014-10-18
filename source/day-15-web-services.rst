@@ -1014,10 +1014,10 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 The Affiliate Backend
 ---------------------
 
-管理画面を、 SonataAdminBundle で動かします。
-以前にも言ったように、アフィリエイトの登録の後、自分のアカウントをアクティブにするために管理者を待つ必要があります。
-だから、管理者は関連会社のページにアクセスしますと、彼は彼の生産性を助けるために、唯一の不活性化されたアカウントが表示されます。 
-まず第一に、あなたは、あなたのservices.ymlファイル内の新しいアフィリエイトサービスを宣言する必要があります。
+管理画面を、 SonataAdminBundle を使用して動作させます。
+以前にも言ったように、アフィリエイトの登録の後、管理者がアカウントをアクティブにするのを待つ必要があります。
+だから、管理者がアフィリエイトのページにアクセスしますと、作業の補助のため、未アクティブなアカウントを表示します。 
+まず第一に、 新しいアフィリエイトサービスを services.yml ファイル内に宣言する必要があります。
 For the backend, we will work with SonataAdminBundle. 
 As we said before, after an affiliate registers, he needs to wait for the admin to activate his account. 
 So, when the admin will access the affiliates page, he will see only the inactivated accounts, to help him be more productive.
@@ -1037,7 +1037,7 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
          - Ibw\JobeetBundle\Entity\Affiliate
          - 'IbwJobeetBundle:AffiliateAdmin'
 
-その後、管理ファイルを作成します。
+その後、 Admin ファイルを作成します。
 After that, create the Admin file:
 
 .. code-block:: php
@@ -1088,9 +1088,10 @@ After that, create the Admin file:
        }
    }
 
-管理者を助けるために、私たちは、不活性化されたアカウントを表示したい。
-これを false に 'is_active' フィルタを設定することで行うことができます。
-To help the administrator, we want to display only the inactivated accounts. This can be made by setting the ‘is_active’ filter to false:
+管理者を助けるために、未アクティブなアカウントのみ表示したいです。
+これは ``is_active`` フィルタを false に 設定することで行うことができます。
+To help the administrator, we want to display only the inactivated accounts. 
+This can be made by setting the ‘is_active’ filter to false:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
@@ -1105,7 +1106,7 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
    // ...
 
-さて、AffiliateAdminコントローラファイルを作成します。
+ここで、 AffiliateAdmin コントローラファイルを作成します。
 Now, create the AffiliateAdmin controller file:
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
@@ -1123,7 +1124,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
        // Your code goes here
    }
 
-それではアクティベートを作成して、バッチアクションを非アクティブにしてみましょう：
+それでは ``activate`` と ``deactivate`` のバッチアクションを作成しましょう。：
 Let’s create the activate and deactivate batch actions:
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
@@ -1193,7 +1194,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
        }
    }
 
-新しいバッチアクションを機能させるには、私たちは、管理クラスから getBatchActions でそれらを追加する必要があります。
+新しいバッチアクションを機能させるには、 Admin クラスの getBatchActions にそれらを追加する必要があります。
 For the new batch actions to be functional, we have to add them in the getBatchActions from the Admin class:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
@@ -1224,7 +1225,7 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
        }
    }
 
-これが機能するためには、実体ファイルには、2つのメソッドを追加アクティブまたは非アクティブにする必要があります。
+これが機能するために、エンティティファイルに ``activate`` と ``deactivate`` の 2 つのメソッドを追加する必要があります。
 For this to work, you need to add the two methods, activate and deactivate, in the entity file:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
@@ -1251,9 +1252,9 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
      return $this->is_active;
    }
 
-それでは、二つの個別のアクションを作成し、各項目ごとに、アクティブまたは非アクティブにしてみましょう。
-第一に、私たちは彼らのためにルートを作成します。
-それは、あなたの管理クラスで、あなたがconfigureRoutes機能を拡張します理由です。
+それでは、``activate`` と ``deactivate`` の項目ごと二つの個別のアクションを作成してみましょう。
+第一に、ルートを作成します。
+これが、Admin クラスで、 configureRoutes メソッドを継承した理由です。
 Let’s now create two individual actions, activate and deactivate, for each item. 
 Firstly, we will create routes for them. 
 That’s why, in your Admin class, you will extend the configureRoutes function:
@@ -1281,7 +1282,7 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
        }
    }
 
-それはAdminControllerでアクションを実装してみましょう：
+それでは AdminController でアクションを実装してみましょう：
 It’s time to implement the actions in the AdminController:
 
 src/Ibbw/JobeetBundle/Controller/AffiliateAdminController.php
@@ -1336,7 +1337,7 @@ src/Ibbw/JobeetBundle/Controller/AffiliateAdminController.php
        }
    }
 
-今、新たな付加アクションボタン用のテンプレートを作成します。
+ここで、新たにアクションボタンを追加するためのテンプレートを作成します。
 Now, create the templates for the new added action buttons:
 
 src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_activate.html.twig
