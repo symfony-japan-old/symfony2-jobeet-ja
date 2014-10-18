@@ -600,7 +600,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
        }
    }
 
-ルートの名前とアクションを持っていますが、まだルートを持っていません。では、作成してみましょう：
+ルートの名前とアクションを持ちましたが、まだルートを持っていません。では、作成してみましょう：
 We have the name of the route, we have the action, but we do not have the route. so let’s create it:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
@@ -625,7 +625,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        prefix:   /affiliate
 
 フォームファイルも作成する必要があります。
-しかし、たとえアフィリエイトが多くのフィールドを持っていても、そのうちのいくつかはエンドユーザーが編集であってはなりませんので、すべて表示はしません。
+しかし、たとえアフィリエイトが多くのフィールドを持っていても、エンドユーザーが編集可能ではならないものもあるため、すべては表示はしません。
 The form file also needs to be created. 
 But, even if the Affiliate has more fields, we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
 
@@ -665,7 +665,7 @@ src/Ibw/JobeetBundle/Form/AffiliateType.php
        }
    }
 
-今、私たちは、フォームがそれに送信されたデータを適用した後に、アフィリエイトオブジェクトが有効であるかどうかを判断する必要があります。
+ここで、フォームに送信されたデータが設定された後、アフィリエイトオブジェクトが有効であるかどうかを判断する必要があります。
 これを行うには、バリデーションファイルに次のコードを追加します。
 Now, we need to decide whether or not the Affiliate object is valid after the form has applied the submitted data to it. 
 To do this, add the following code to your validation file:
@@ -686,11 +686,13 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
                - NotBlank: ~
                - Email: ~
 
-検証スキーマでは、UniqueEntityという新しいバリデータを使用しました。これはDoctrineのエンティティ内の特定のフィールド（またはフィールド）がユニークな（ある）であることを検証します。
-これは、一般的にシステムに既に存在する電子メールアドレスを使用して登録する新しいユーザーを防止するために、例えば、使用される。 
+バリデーション設定では、UniqueEntity という新しいバリデータを使用しました。
+これは Doctrine のエンティティ内の特定のフィールド(または複数のフィールド)がユニークであることを検証します。
+これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。 
 検証制約を適用した後にキャッシュをクリアすることを忘れないでください！ 
-最後に、フォームのビューをあまりにも作成してみましょう：
-In the validation schema, we used a new validator, called UniqueEntity.  It validates that a particular field (or fields) in a Doctrine entity is (are) unique. 
+最後に、フォームのビューも作成してみましょう：
+In the validation schema, we used a new validator, called UniqueEntity.  
+It validates that a particular field (or fields) in a Doctrine entity is (are) unique. 
 This is commonly used, for example, to prevent a new user to register using an email address that already exists in the system.
 Don’t forget to clear your cache after applying the validation constraints!
 Finally, let’s create the view for the form too:
@@ -758,8 +760,8 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
            {{ form_end(form) }}
    {% endblock %}
 
-ユーザーがフォームを送信すると、有効な場合は、フォームデータは、データベースに永続化されなければならない。
-あなたのアフィリエイトコントローラに新しいcreateアクションを追加します。
+ユーザーがフォームを送信した際に、有効な場合は、フォームデータをデータベースに永続化しなくてはなりません。
+``AffiliateController`` に新しい ``create`` アクションを追加します。
 When the user submits a form, the form data must be persisted into database, if valid. 
 Add the new create action to your Affiliate controller:
 
@@ -798,7 +800,7 @@ Add the new create action to your Affiliate controller:
        }
    }
 
-提出される場合は、createアクションが実行ので、ルートを定義する必要がありますされています。
+createアクションを先に作ったので、次にルートを定義します。
 When submitting, the create action is performed, so we need to define the route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
@@ -812,9 +814,10 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        defaults: { _controller: "IbwJobeetBundle:Affiliate:create" }
        requirements: { _method: post }
 
-アフィリエイト登録された、彼は待ちページにリダイレクトされます。
-それでは、そのアクションを定義し、あまりにもビューを作成してみましょう：
-After the affiliate registers, he is redirected to a waiting page. Let’s define that action and create the view too:
+アフィリエイト登録された後、待ちページにリダイレクトされます。
+それでは、そのアクションを定義し、ビューも作成してみましょう。：
+After the affiliate registers, he is redirected to a waiting page. 
+Let’s define that action and create the view too:
 
    src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
@@ -847,7 +850,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/wait.html.twig
        </div>
    {% endblock %}
 
-さて、ルート：
+ここで、ルートを追加します。：
 Now, the route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
@@ -860,15 +863,17 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        pattern: /wait
        defaults: { _controller: "IbwJobeetBundle:Affiliate:wait" }
 
-動作するために、ルートに定義したら、キャッシュをクリアする必要があります。 
-あなたがホームページでアフィリエイトリンクをクリックした場合さて、あなたはアフィリエイトのフォームページに転送されます。
+ルートを定義したら、キャッシュをクリアする必要があります。 
+これで、トップページでアフィリエイトリンクをクリックした場合、アフィリエイトフォームのページに転送されます。
 After defining to routes, in order to work, you need to clear the cache.
 Now, if you click on the Affiliates link on the homepage, you will be directed to the affiliate form page.
 
+テスト
+----
 Tests
 -----
 
-最後のステップは新しい機能のためのいくつかの機能テストを書くことです。
+最後のステップは新しい機能のために、いくつかの機能テストを書くことです。
 The last step is to write some functional tests for the new feature.
 
 src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
@@ -1004,11 +1009,13 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
        }
    }
 
+アフィリエイト管理画面
+-----------------
 The Affiliate Backend
 ---------------------
 
-バックエンドのために、私たちは SonataAdminBundle で動作します。
-私たちは前にも言ったように、アフィリエイトのレジスタの後、彼は自分のアカウントをアクティブにするために管理者を待つ必要がある。
+管理画面を、 SonataAdminBundle で動かします。
+以前にも言ったように、アフィリエイトの登録の後、自分のアカウントをアクティブにするために管理者を待つ必要があります。
 だから、管理者は関連会社のページにアクセスしますと、彼は彼の生産性を助けるために、唯一の不活性化されたアカウントが表示されます。 
 まず第一に、あなたは、あなたのservices.ymlファイル内の新しいアフィリエイトサービスを宣言する必要があります。
 For the backend, we will work with SonataAdminBundle. 
