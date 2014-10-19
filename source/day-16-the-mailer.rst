@@ -5,10 +5,21 @@ Day 16: The Mailer
 
 .. include:: common/original.rst.inc
 
-昨日は、Jobeetに読み取り専用のWebサービスを追加しました。アフィリエイトは、現在アカウントを作成することができるが、それは使用する前に管理者によって活性化される必要がある。アフィリエイトは、そのトークンを取得するためには、私達はまだ電子メール通知を実装する必要があります。つまり、私たちが来るのラインでやって起動しますものです。 
-Swift Mailerの：symfonyフレームワークは最高のPHPのメール送信ソリューションの一つにバンドルされています。いくつかのクールな機能は、そのデフォルトの機能の上に追加してもちろん、ライブラリは完全に、symfonyに統合されています。それでは自分のアカウントがアクティブ化された際にアフィリエイトに通知するために、彼にアフィリエイトトークンを与えるために、単純な電子メールを送ることから始めましょう。しかし、最初に、ご使用の環境を構成する必要があります。
-Yesterday, we added a read-only web service to Jobeet. Affiliates can now create an account but it needs to be activated by the administrator before it can be used. In order for the affiliate to get its token, we still need to implement the email notification. That’s what we will start doing in the coming lines.
-The symfony framework comes bundled with one of the best PHP emailing solution: Swift Mailer. Of course, the library is fully integrated with symfony, with some cool features added on top of its default features. Let’s start by sending a simple email to notify the affiliate when his account has been activated and to give him the affiliate token. But first, you need to configure your environment:
+昨日は、 Jobeet に読み取り専用の Web サービスを追加しました。
+アフィリエイトは、現在アカウントを作成することができるが、それは使用する前に管理者によってアクティベイトされる必要があります。
+アフィリエイトがトークンを受け取るためには、メール通知を実装する必要があります。本日の行う作業はそれになります。
+Symfony フレームワークは最高の PHP のメール送信ソリューションの一つ、 Swift Mailer がバンドルされています。
+もちろん、ライブラリは完全に、 Symfony と統合されており、素晴らしいいくつかの機能がデフォルトの機能の上に追加されています。
+では、アカウントがアクティブ化された際アフィリエイトにトークンを通知するため、単純な電子メールを送ることから始めましょう。
+しかし、最初に、ご使用の環境を構成する必要があります。
+Yesterday, we added a read-only web service to Jobeet. 
+Affiliates can now create an account but it needs to be activated by the administrator before it can be used. 
+In order for the affiliate to get its token, we still need to implement the email notification. 
+That’s what we will start doing in the coming lines.
+The symfony framework comes bundled with one of the best PHP emailing solution: Swift Mailer. 
+Of course, the library is fully integrated with symfony, with some cool features added on top of its default features. 
+Let’s start by sending a simple email to notify the affiliate when his account has been activated and to give him the affiliate token. 
+But first, you need to configure your environment:
 
 .. code-block:: yaml
 
@@ -150,13 +161,17 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
    // ...
 
+テスト
+----
 The Tests
 ---------
 
 今、私たちはsymfonyのメーラーでメールを送信する方法を見てきましたので、次に私たちは正しいことをしたことを確認するためにいくつかの機能テストを書いてみましょう。 
-この新しい機能をテストするには、ログインしてする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。私たちはユーザーadminを追加する新しいフィクスチャファイルを作成することから始めます理由です：
+この新しい機能をテストするには、ログインしてする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。
+私たちはユーザーadminを追加する新しいフィクスチャファイルを作成することから始めます理由です：
 Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
-To test this new functionality, we need to be logged in. To log in, we will need an username and a password. That’s why we will start by creating a new fixture file, where we add the user admin:
+To test this new functionality, we need to be logged in. To log in, we will need an username and a password. 
+That’s why we will start by creating a new fixture file, where we add the user admin:
 
 .. code-block:: php
 
@@ -212,8 +227,10 @@ To test this new functionality, we need to be logged in. To log in, we will need
        }
    }
 
-テストでは、メッセージは以前のリクエストで送信に関する情報を取得するために、プロファイラにではSwiftMailerコレクタを使用します。さて、電子メールが正しく送信された場合の、チェックするいくつかのテストを追加してみましょう。
-In the tests, we will use the swiftmailer collector on the profiler to get information about the messages send on the previous requests. Now, let’s add some tests to check if the email is sent properly:
+テストでは、メッセージは以前のリクエストで送信に関する情報を取得するために、プロファイラにではSwiftMailerコレクタを使用します。
+さて、電子メールが正しく送信された場合の、チェックするいくつかのテストを追加してみましょう。
+In the tests, we will use the swiftmailer collector on the profiler to get information about the messages send on the previous requests. 
+Now, let’s add some tests to check if the email is sent properly:
 
 src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php
 

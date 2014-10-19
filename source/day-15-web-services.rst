@@ -1362,7 +1362,7 @@ src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_deactivate.html
        </a>
    {% endif %}
 
-彼らがページに表示されるように、それぞれが個別にアカウントに管理ファイルの内部では、、、configureListFields関数に新しいアクションとボタンを追加します。
+各アカウントが個別にページに表示されるように、Admin ファイルの中で、configureListFields メソッドに新しいアクションとボタンを追加します。
 Inside your Admin file, add the new actions and buttons to the configureListFields function, so that they would appear on the page, to each account individually:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
@@ -1388,8 +1388,8 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
        /// ...
    }
 
-今、あなたのキャッシュをクリアし、それを試してみてください！ 
-つまり、今日のすべてです！明日は、自分のアカウントがアクティブになったときに会社が受け取る電子メールの世話をします。
+ここで、キャッシュをクリアし、試してみてください！ 
+今日はこれですべてです！明日は、アカウントがアクティブになったときにアフィリエイトが受け取る電子メールの設定をします。
 Now, clear your cache and try it on!
 That’s all for today! Tomorrow, we will take care of the emails the affiliates will receive when their accounts have been activated.
 
