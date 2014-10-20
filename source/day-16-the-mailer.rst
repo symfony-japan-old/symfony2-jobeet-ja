@@ -6,10 +6,10 @@ Day 16: The Mailer
 .. include:: common/original.rst.inc
 
 昨日は、 Jobeet に読み取り専用の Web サービスを追加しました。
-アフィリエイトは、現在アカウントを作成することができるが、それは使用する前に管理者によってアクティベイトされる必要があります。
+アフィリエイトは、現在アカウントを作成できますが、使用する前に管理者によってアクティブ化される必要があります。
 アフィリエイトがトークンを受け取るためには、メール通知を実装する必要があります。本日の行う作業はそれになります。
 Symfony フレームワークは最高の PHP のメール送信ソリューションの一つ、 Swift Mailer がバンドルされています。
-もちろん、ライブラリは完全に、 Symfony と統合されており、素晴らしいいくつかの機能がデフォルトの機能の上に追加されています。
+もちろん、ライブラリは完全に、 Symfony と統合されており、いくつかの素晴らしい機能がデフォルトの機能の上に追加されています。
 では、アカウントがアクティブ化された際アフィリエイトにトークンを通知するため、単純な電子メールを送ることから始めましょう。
 しかし、最初に、ご使用の環境を構成する必要があります。
 Yesterday, we added a read-only web service to Jobeet. 
@@ -35,11 +35,11 @@ But first, you need to configure your environment:
 
 .. note::
 
-   コードが正しく動作するために、あなたの本当のパスワードとともに、現実のものにaddress@example.comのメールアドレスを変更する必要があります。
+   コードが正しく動作するためには、 address@example.com を現実のメールアドレスに変更し、本当のパスワードを設定する必要があります。
    For the code to work properly, you should change the address@example.com email address to a real one, along with your real password.
 
-あなたのアプリケーション/設定/ parameters_test.ymlファイルに同じことを行います。 
-二つのファイルを変更した後、両方のテストおよび開発環境用のキャッシュをクリアする：
+app/config/parameters_test.yml ファイルに同じことを行います。 
+二つのファイルを変更した後、両方のテストおよび開発環境用のキャッシュをクリアします。：
 Do the same thing in your app/config/parameters_test.yml file.
 After modifying the two files, clear the cache for both test and development environment:
 
@@ -48,7 +48,7 @@ After modifying the two files, clear the cache for both test and development env
    $ php app/console cache:clear --env=dev
    $ php app/console cache:clear --env=prod
 
-私たちはあなたが "mailer_user」からの電子メールアドレスに置き換えられますGmailの、とメーラー輸送を設定するため、Googleの電子メールアドレスを配置します。 
+私たちはあなたが 「mailer_user」からの電子メールアドレスに置き換えられますGmailの、とメール転送を設定するため、Googleの電子メールアドレスを配置します。 
 あなたは、あなたのメールクライアントでメール作成]ボタンをクリックしたときに実行する手順と類似しているとのメッセージを作成すると考えることができます。あなたは、それを主題を与えるいくつかの受信者を指定し、メッセージを書く。
 Because we set the mailer transport to gmail, when you will replace the email address from “mailer_user”, you will put a google email address.
 You can think of creating a Message as being similar to the steps you perform when you click the compose button in your mail client. You give it a subject, specify some recipients and write your message.
