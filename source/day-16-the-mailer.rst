@@ -48,17 +48,19 @@ After modifying the two files, clear the cache for both test and development env
    $ php app/console cache:clear --env=dev
    $ php app/console cache:clear --env=prod
 
-私たちはあなたが 「mailer_user」からの電子メールアドレスに置き換えられますGmailの、とメール転送を設定するため、Googleの電子メールアドレスを配置します。 
-あなたは、あなたのメールクライアントでメール作成]ボタンをクリックしたときに実行する手順と類似しているとのメッセージを作成すると考えることができます。あなたは、それを主題を与えるいくつかの受信者を指定し、メッセージを書く。
+メール転送を ``gmail`` に設定したため、 ``mailer_user`` のメールアドレスを置き換える際に、  Google のメールアドレスをで置き換えます。 
+メッセージの作成は、メールクライアントでメール作成ボタンをクリックしたときの実行手順と類似していると考えることができます。
+タイトルを設定し、いくつかの受信者を指定し、メッセージを書きます。
 Because we set the mailer transport to gmail, when you will replace the email address from “mailer_user”, you will put a google email address.
-You can think of creating a Message as being similar to the steps you perform when you click the compose button in your mail client. You give it a subject, specify some recipients and write your message.
+You can think of creating a Message as being similar to the steps you perform when you click the compose button in your mail client. 
+You give it a subject, specify some recipients and write your message.
 
 メッセージを作成するには、以下となります。 
-* Swift_messageのnewInstanceメソッド（）methondを（このオブジェクトの詳細を学ぶためにSwift Mailerの公式ドキュメントを参照してください）を呼び出します。 
-*そして本文（）メソッドを使用して:)から（お使いの送信者アドレスを設定します。 
-* setSubject（）メソッドを使用して件名を設定します。 
-*次のいずれかの方法で、設定された受信者：setTo（）場合SetCC（）またはsetBcc（）。 
-* setBodyで体を設定します（）。
+* Swift_messageのnewInstance() メソッドをコールします。（このオブジェクトの詳細を学ぶためには Swift Mailer の公式ドキュメントを参照してください） 
+* setForm() メソッドで送信アドレス( From: )を設定します。 
+* setSubject() メソッドでタイトルを設定します。 
+* 次のいずれかの方法で、受信者を設定します。setTo(), SetCC(), setBcc()。 
+* setBodyで本文を設定します。
 To create the message, you will:
 * call the newInstance() methond of Swift_message (refer to the Swift Mailer official documentation to learn more about this object).
 * set your sender address (From:) with setFrom() method.
@@ -66,7 +68,7 @@ To create the message, you will:
 * set recipients with one of these methods: setTo(), setCc() or setBcc().
 * set a body with setBody().
 
-次のコードでアクティブ化アクションを置き換えます。
+次のコードで ``activateAction`` を置き換えます。
 Replace the activate action with the following code:
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
