@@ -108,10 +108,11 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
    // ...
 
-メッセージを送信すると、その後、メーラーインスタンスでsend（）メソッドを呼び出し、引数としてメッセージを渡すのと同じくらい簡単です。 
-メッセージ本文には、私たちは約アフィリエイトに知らせたいかを正確に含まれ、email.txt.twigという新しいファイルを作成しました。
+メッセージを送信することは簡単です。メーラーインスタンスで send() メソッドを呼び出し、引数としてメッセージを渡すだけです。 
+メッセージ本文のため、 email.txt.twig という新しいファイルを作成し、アフィリエイトの正確な情報を記入します。
 Sending the message is then as simple as calling the send() method on the mailer instance and passing the message as an argument.
-For the message body, we created a new file, called email.txt.twig, that contains exactly what we want to inform the affiliate about.
+For the message body, we created a new file, called email.txt.twig, 
+that contains exactly what we want to inform the affiliate about.
 
 src/Ibw/JobeetBundle/Resources/views/Affiliate/email.txt.twig
 
@@ -124,8 +125,10 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/email.txt.twig
    or http://jobeet.local/app_dev.php/api/{{affiliate}}/jobs.json
    or http://jobeet.local/app_dev.php/api/{{affiliate}}/jobs.yaml
 
-今、私たちが活性化するために、複数のアフィリエイトアカウントを選択した場合でも、彼らは自分のアカウントのアクティベーションメールが届きますように、それでは、あまりにbatchActionActivateに郵送機能を追加してみましょう：
-Now, let’s add the mailing functionality to the batchActionActivate too, so that even if we select multiple affiliate accounts to activate, they will receive their account activation email :
+ここで、複数のアフィリエイトアカウントを選択しアクティブ化した場合でも、アクティベーションメールが届くように、
+batchActionActivate にメール機能を追加してみましょう：
+Now, let’s add the mailing functionality to the batchActionActivate too, 
+so that even if we select multiple affiliate accounts to activate, they will receive their account activation email :
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
@@ -168,10 +171,11 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 The Tests
 ---------
 
-今、私たちはsymfonyのメーラーでメールを送信する方法を見てきましたので、次に私たちは正しいことをしたことを確認するためにいくつかの機能テストを書いてみましょう。 
+Symfony のメーラーでメール送信する機能を作成しましたので、次にいくつかの機能テストを書いて正しく動くことを確認しましょう。 
 この新しい機能をテストするには、ログインしてする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。
-私たちはユーザーadminを追加する新しいフィクスチャファイルを作成することから始めます理由です：
-Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
+私たちはユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。：
+Now that we have seen how to send an email with the symfony mailer, 
+let’s write some functional tests to ensure we did the right thing.
 To test this new functionality, we need to be logged in. To log in, we will need an username and a password. 
 That’s why we will start by creating a new fixture file, where we add the user admin:
 
@@ -229,7 +233,7 @@ That’s why we will start by creating a new fixture file, where we add the user
        }
    }
 
-テストでは、メッセージは以前のリクエストで送信に関する情報を取得するために、プロファイラにではSwiftMailerコレクタを使用します。
+テストでは、メッセージは以前のリクエストで送信に関する情報を取得するために、プロファイラにでは SwiftMailer コレクタを使用します。
 さて、電子メールが正しく送信された場合の、チェックするいくつかのテストを追加してみましょう。
 In the tests, we will use the swiftmailer collector on the profiler to get information about the messages send on the previous requests. 
 Now, let’s add some tests to check if the email is sent properly:
@@ -346,8 +350,12 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php
        }
    }
 
-あなたが今、テストを実行する場合、取得し、エラーでしょう。起こってこれを防ぐには、あなたのconfig_test.ymlファイルに移動し、プロファイラは、テスト環境で有効になっていることを確認。それがfalseに設定すると、これをtrueに変更します。
-If you run the test now, you’ll get and error. To prevent this for happening, go to your config_test.yml file and make sure that the profiler is enabled in the test environment. If it’s set to false, change it to true:
+ここでテストを実行する場合、エラーを取得するでしょう。
+起こってこれを防ぐには、あなたのconfig_test.ymlファイルに移動し、プロファイラは、テスト環境で有効になっていることを確認。
+それがfalseに設定すると、これをtrueに変更します。
+If you run the test now, you’ll get and error. 
+To prevent this for happening, go to your config_test.yml file and make sure that the profiler is enabled in the test environment. 
+If it’s set to false, change it to true:
 
 app/config/config_test.yml
 
