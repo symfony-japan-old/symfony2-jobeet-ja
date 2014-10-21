@@ -171,11 +171,10 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 The Tests
 ---------
 
-Symfony のメーラーでメール送信する機能を作成しましたので、次にいくつかの機能テストを書いて正しく動くことを確認しましょう。 
-この新しい機能をテストするには、ログインしてする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。
-私たちはユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。：
-Now that we have seen how to send an email with the symfony mailer, 
-let’s write some functional tests to ensure we did the right thing.
+Symfony のメーラーでメール送信する機能を作成しました。次は、作成したものが正しく動くか機能テストを書いて確認しましょう。 
+この新しい機能をテストするには、ログインする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。
+ユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。：
+Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
 To test this new functionality, we need to be logged in. To log in, we will need an username and a password. 
 That’s why we will start by creating a new fixture file, where we add the user admin:
 
@@ -233,8 +232,8 @@ That’s why we will start by creating a new fixture file, where we add the user
        }
    }
 
-テストでは、メッセージは以前のリクエストで送信に関する情報を取得するために、プロファイラにでは SwiftMailer コレクタを使用します。
-さて、電子メールが正しく送信された場合の、チェックするいくつかのテストを追加してみましょう。
+テストにおいて、以前のリクエストで送信したメッセージに関する情報を取得するため、プロファイラ上の SwiftMailer コレクタを使用します。
+では、メールが正しく送信された場合の、いくつかのテストを追加してみましょう。
 In the tests, we will use the swiftmailer collector on the profiler to get information about the messages send on the previous requests. 
 Now, let’s add some tests to check if the email is sent properly:
 
@@ -351,8 +350,8 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php
    }
 
 ここでテストを実行する場合、エラーを取得するでしょう。
-起こってこれを防ぐには、あなたのconfig_test.ymlファイルに移動し、プロファイラは、テスト環境で有効になっていることを確認。
-それがfalseに設定すると、これをtrueに変更します。
+問題を防ぐには、 config_test.yml ファイルに移動し、プロファイラがテスト環境で有効になっていることを確認してください。
+false になっている場合は、 true に変更します。
 If you run the test now, you’ll get and error. 
 To prevent this for happening, go to your config_test.yml file and make sure that the profiler is enabled in the test environment. 
 If it’s set to false, change it to true:
@@ -372,7 +371,7 @@ app/config/config_test.yml
 
    # ...
 
-さて、キャッシュをクリアし、コンソールにテストコマンドを実行し、緑色のバーをお楽しみいただけます：
+さて、キャッシュをクリアし、コンソールでテストコマンドを実行し、緑色のバーをお楽しみください。：
 Now, clear the cache, run the test command in your console and enjoy the green bar :
 
 .. code-block:: bash
