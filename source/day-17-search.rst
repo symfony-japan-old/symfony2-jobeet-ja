@@ -178,11 +178,11 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-Zend Lucene は既存のエントリを更新することができないので、ジョブがすでにインデックス内に存在する場合は、最初に削除されます。 
-ジョブ自体のインデックス作成は簡単です。主キーは検索するときに将来の参照用に保存されます。表示する際に本物のオブジェクトを使うので、ジョブとメインカラム（位置、会社、場所、および説明）はインデックス化されますが、インデックスに格納はされません。 
-また、インデックスから削除されたジョブエントリを削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。
-更新のために行ったように削除のために行います。
-ORM ファイルのの postremove セクションに deleteLuceneIndex() メソッドを追加します。
+Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合ははじめに削除します。 
+ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに格納はされません。 
+また、削除されたジョブエントリをインデックスから削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。
+更新と同様の処理を削除でも行います。
+ORM ファイルの postremove セクションに deleteLuceneIndex() メソッドを追加します。
 As Zend Lucene is not able to update an existing entry, it is removed first if the job already exists in the index.
 Indexing the job itself is simple: the primary key is stored for future reference when searching jobs 
 and the main columns (position, company, location, and description) are indexed but not stored in the index as we will use the real objects to display the results.
@@ -200,7 +200,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            # ...
            postRemove: [ removeUpload, deleteLuceneIndex ]
 
-再度、実体を生成するためのコマンドを実行します。 
+再度、実体を生成するコマンドを実行します。
 ここで、エンティティファイルに移動し、 deleteLuceneIndex() メソッドを実装します。
 Again, run the command for generating entities.
 Now, go to entity file and implement the deleteLuceneIndex() method:
@@ -223,7 +223,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-インデックスはコマンドラインからもWebから変更されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。
+インデックスはコマンドラインからもWebからも更新されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。
 As the index is modified from the command line and also from the web, you must change the index directory permissions accordingly depending on your configuration:
 
 .. code-block:: bash
@@ -288,9 +288,9 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        }
    }
 
-クエリ要求が存在しないか、空の場合は searcAction() の内部では、ユーザーは JobController の index アクションに転送されます。 
+searchAction() の内部では、ユーザーは、クエリリクエストが存在しないか空の場合は、 JobController の index アクションに転送されます。 
 テンプレートには、非常に簡単です。
-Inside the searcAction(), the user is forwarded to the index action of the JobController if the query request does not exist or is empty.
+Inside the searchAction(), the user is forwarded to the index action of the JobController if the query request does not exist or is empty.
 The template is also quite straightforward:
 
 src/Ibw/JobeetBundle/Resources/views/Job/search.html.twig
@@ -353,8 +353,8 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        }
    }
 
-私たちは Lucene インデックスからすべての結果を取得した後、私たちは非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。 
-動かすためにレイアウトを更新します。：
+Lucene インデックスからすべての結果を取得した後、非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。 
+動作させるためにレイアウトを更新します。：
 After we get all results from the Lucene index, we filter out the inactive jobs, and limit the number of results to 20.
 To make it work, update the layout:
 
@@ -375,11 +375,13 @@ To make it work, update the layout:
        <!-- ... -->
    <!-- ... -->
 
+結合テスト
+--------
 Unit Tests
 ----------
 
-単位はどのようなテストでは、私たちが検索エンジンをテストするために作成する必要がありますか？
-私たちは、明らかにはZend Luceneライブラリそのものではなく、ジョブ·クラスとの統合をテストすることはありません。 
+検索エンジンをテストするためにどのような結合テストを作成すべきでしょうか？
+明らかに Zend Lucene ライブラリそのもののテストではなく、ジョブ·クラスとの統合をテストすることです。 
 JobRepositoryTest.php ファイルの最後に次のテストを追加します。
 What kind of unit tests do we need to create to test the search engine? 
 We obviously won’t test the Zend Lucene library itself, but its integration with the Job class.
@@ -448,15 +450,17 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
        }
    }
 
-私たちは、非アクティブに仕事、または削除された一つは、検索結果に表示されないことをテストする。
-私たちは、与えられた条件に一致するジョブが結果に表示さないことを確認してください。
+非アクティブなジョブ、または、削除されたジョブは、検索結果に表示されないことをテストします。
+与えられた条件に一致するジョブが結果に表示されることも確認してください。
 We test that a non activated job, or a deleted one does not show up in the search results; 
 we also check that jobs matching the given criteria do show up in the results.
 
+タスク
+----
 Tasks
 -----
 
-最終的に、私たちは（ジョブたとえば期限切れになったときに）クリーンアップにJobeetCleanupタスクの古いエントリからインデックスを更新し、随時索引を最適化する必要があります。
+最終的には、 JobeetCleanup タスクを更新して、古いエントリ（たとえばジョブが期限切れになったときに）のインデックスをクリーンアップし、随時索引を最適化する必要があります。
 Eventually, we need to update the JobeetCleanup task to cleanup the index from stale entries (when a job expires for example) and optimize the index from time to time:
 
 src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
@@ -504,11 +508,11 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
        }
    }
 
-タスクはインデックスからすべての期限切れのジョブを削除し、ZendのLuceneの組み込みの最適化（）メソッドにそれを感謝を最適化します。 
-この日に沿って、私たちは時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
-あなたは、あなたのプロジェクトに新しい機能を追加するたびに、それは、まだどこかに解決されていないことを確認してください。 
-明日は、私たちは、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましくJavaScriptを使います。
-もちろん、これはsymfonyでAJAXを使用する方法について話をする機会があります。
+このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Luceneの組み込みのoptimize() メソッドによって最適化します。 
+本日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
+プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。 
+明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましくJavaScriptを使います。
+もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。
 The task removes all expired jobs from the index and then optimizes it thanks to the Zend Lucene built-in optimize() method.
 Along this day, we implemented a full search engine with many features in less than an hour. 
 Every time you want to add a new feature to your projects, check that it has not yet been solved somewhere else.

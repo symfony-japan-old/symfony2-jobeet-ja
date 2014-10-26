@@ -5,16 +5,21 @@ Day 18: AJAX
 
 .. include:: common/original.rst.inc
 
-昨日は、Jobeetのは、Zend Luceneライブラリのおかげで、非常に強力な検索エンジンを実装しました。次の行では、検索エンジンの応答性を向上させるために、私たちは、ライブ一つに検索エンジンを変換するAJAXを利用します。 
-フォームを有効にしてやJavaScriptなしで動作するはずのように、ライブ検索機能は控えめなJavaScriptを使用して実装されます。使用して控えめなJavaScriptは、HTML、CSS、およびJavaScriptの行動との間にクライアントコードでの関心事の良好な分離が可能になります。
-Yesterday, we implemented a very powerful search engine for Jobeet, thanks to the Zend Lucene library. In the following lines, to enhance the responsiveness of the search engine, we will take advantage of AJAX to convert the search engine to a live one.
-As the form should work with and without JavaScript enabled, the live search feature will be implemented using unobtrusive JavaScript. Using unobtrusive JavaScript also allows for a better separation of concerns in the client code between HTML, CSS, and the JavaScript behaviors.
+昨日は、Jobeetのは、Zend Luceneライブラリのおかげで、非常に強力な検索エンジンを実装しました。
+次の行では、検索エンジンの応答性を向上させるために、私たちは、ライブ一つに検索エンジンを変換するAJAXを利用します。 
+フォームを有効にしてやJavaScriptなしで動作するはずのように、ライブ検索機能は控えめなJavaScriptを使用して実装されます。
+使用して控えめなJavaScriptは、HTML、CSS、およびJavaScriptの行動との間にクライアントコードでの関心事の良好な分離が可能になります。
+Yesterday, we implemented a very powerful search engine for Jobeet, thanks to the Zend Lucene library. 
+In the following lines, to enhance the responsiveness of the search engine, we will take advantage of AJAX to convert the search engine to a live one.
+As the form should work with and without JavaScript enabled, the live search feature will be implemented using unobtrusive JavaScript. 
+Using unobtrusive JavaScript also allows for a better separation of concerns in the client code between HTML, CSS, and the JavaScript behaviors.
 
-jQueryをインストールする
+jQueryのインストール
+----------------
 Installing jQuery
 -----------------
 
-、jQueryのWebサイトにアクセスし、最新バージョンをダウンロードして、のsrc / IBW/ JobeetBundle/リソース/公共/のJS/以下.jsファイルを置く。 
+jQuery の Web サイトにアクセスし、最新バージョンをダウンロードして、の src/Ibw/JobeetBundle/Resources/public/js/ 以下 .js ファイルを置く。 
 jsのディレクトリに.jsファイルを入れた後に、公衆にそれを利用できるようにsymfonyを伝えるために、次のコマンドを実行します。
 Go to the jQuery website, download the latest version, and put the .js file under src/Ibw/JobeetBundle/Resources/public/js/.
 After putting the .js file in the js directory, run the following command to tell Symfony to make it available to the public:
@@ -24,6 +29,7 @@ After putting the .js file in the js directory, run the following command to tel
    $ php app/console assets:install web --symlink
 
 jQueryを含める
+------------
 Including jQuery
 ----------------
 
@@ -40,12 +46,15 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        {% endblock %}
    <!-- ... -->
 
-挙動を追加する
+振舞いの追加
+-----------
 Adding Behaviours
 -----------------
 
-ライブ検索を実装すると、検索ボックスに文字が、サーバーへのコールが必要とするユーザーの種類がトリガされるたびにことを意味します。サーバは、ページ全体を更新せずに、ページの一部の領域を更新するために必要な情報を返します。 
-ページが完全にロードされた後の代わりに*上（）HTML属性と振る舞いを追加するのでは、jQueryの背景にある主要な原則は、DOMにビヘイビアを追加することです。お使いのブラウザでJavaScriptのサポートを無効にする場合は、この方法では、、全く動作が登録されていない、フォームは以前と同じように動作します。 
+ライブ検索を実装すると、検索ボックスに文字が、サーバーへのコールが必要とするユーザーの種類がトリガされるたびにことを意味します。
+サーバは、ページ全体を更新せずに、ページの一部の領域を更新するために必要な情報を返します。 
+ページが完全にロードされた後の代わりに*上（）HTML属性と振る舞いを追加するのでは、jQueryの背景にある主要な原則は、DOMにビヘイビアを追加することです。
+お使いのブラウザでJavaScriptのサポートを無効にする場合は、この方法では、、全く動作が登録されていない、フォームは以前と同じように動作します。 
 最初のステップは、いつでも、ユーザは種類の検索ボックスにキーを傍受することです：
 Implementing a live search means that each time the user types a letter in the search box, a call to the server needs to be triggered; the server will then return the needed information to update some regions of the page without refreshing the whole page.
 Instead of adding the behavior with an on*() HTML attributes, the main principle behind jQuery is to add behaviors to the DOM after the page is fully loaded. This way, if you disable JavaScript support in your browser, no behavior is registered, and the form still works as before.
@@ -102,13 +111,20 @@ Explaining code before implementing
    $('.search input[type="submit"]').hide();
 
 ユーザーのフィードバック
+-----------------
 User Feedback
 -------------
 
-あなたは、AJAX呼び出しを行うたびに、ページがすぐに更新されません。ブラウザがページを更新する前に戻ってくるために、サーバーの応答を待つ。それまでの間、あなたは何かが起こっていることを彼に知らせるために、ユーザに視覚的なフィードバックを提供する必要があります。 
-規則では、AJAX呼び出しの間にローダーのアイコンを表示することです。デフォルトでは、それをtheloaderイメージを追加し、非表示にレイアウトを更新します。
-Whenever you make an AJAX call, the page won’t be updated right away. The browser will wait for the server response to come back before updating the page. In the meantime, you need to provide visual feedback to the user to inform him that something is going on.
-A convention is to display a loader icon during the AJAX call. Update the layout to add theloader image and hide it by default:
+あなたは、AJAX呼び出しを行うたびに、ページがすぐに更新されません。
+ブラウザがページを更新する前に戻ってくるために、サーバーの応答を待つ。
+それまでの間、あなたは何かが起こっていることを彼に知らせるために、ユーザに視覚的なフィードバックを提供する必要があります。 
+規則では、AJAX呼び出しの間にローダーのアイコンを表示することです。
+デフォルトでは、それをtheloaderイメージを追加し、非表示にレイアウトを更新します。
+Whenever you make an AJAX call, the page won’t be updated right away. 
+The browser will wait for the server response to come back before updating the page. 
+In the meantime, you need to provide visual feedback to the user to inform him that something is going on.
+A convention is to display a loader icon during the AJAX call. 
+Update the layout to add theloader image and hide it by default:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -176,13 +192,18 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
    <!-- ... -->
 
 アクションにおけるAJAX
+-----------------
 AJAX in an Action
 -----------------
 
-JavaScriptは有効になっている場合、jQueryは検索ボックスに入力したすべてのキーを傍受し、searchアクションを呼び出します。ユーザーが入力したキーを押してフォームを送信したときにされていない場合、同じsearchアクションも呼び出されます。 
-だから、検索アクションは現在、コールがAJAX経由かが判断されるかどうかを判断する必要があります。要求がAJAX呼び出しで作られるときはいつでも、リクエストオブジェクトのisXmlHttpRequest（）メソッドはtrueを返します。
-If JavaScript is enabled, jQuery will intercept all keys typed in the search box, and will call the search action. If not, the same search action is also called when the user submits the form by pressing the enter key.
-So, the search action now needs to determine if the call is made via AJAX or not. Whenever a request is made with an AJAX call, the isXmlHttpRequest() method of the request object returns true.
+JavaScriptは有効になっている場合、jQueryは検索ボックスに入力したすべてのキーを傍受し、searchアクションを呼び出します。
+ユーザーが入力したキーを押してフォームを送信したときにされていない場合、同じsearchアクションも呼び出されます。 
+だから、検索アクションは現在、コールがAJAX経由かが判断されるかどうかを判断する必要があります。
+要求がAJAX呼び出しで作られるときはいつでも、リクエストオブジェクトのisXmlHttpRequest（）メソッドはtrueを返します。
+If JavaScript is enabled, jQuery will intercept all keys typed in the search box, and will call the search action. 
+If not, the same search action is also called when the user submits the form by pressing the enter key.
+So, the search action now needs to determine if the call is made via AJAX or not. 
+Whenever a request is made with an AJAX call, the isXmlHttpRequest() method of the request object returns true.
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -218,8 +239,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        }
    }
 
-検索が結果を返さない場合は、空白のページの代わりにメッセージを表示する必要があります。私たちは、単純な文字列を返します。
-If the search returns no result, we need to display a message instead of a blank page. We will return just a simple string:
+検索が結果を返さない場合は、空白のページの代わりにメッセージを表示する必要があります。
+私たちは、単純な文字列を返します。
+If the search returns no result, we need to display a message instead of a blank page. 
+We will return just a simple string:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -252,11 +275,14 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 テストAJAX
+--------
 Testing AJAX
 ------------
 
-symfonyのブラウザはJavaScriptをシミュレートすることができないとして、あなたは、AJAX呼び出しをテストするときに、それを助けてあげる必要があります。これは主に手動でjQueryと他のすべての主要なJavaScriptライブラリはリクエストで送信するヘッダを追加する必要があることを意味します。
-As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls. It mainly means that you need to manually add the header that jQuery and all other major JavaScript libraries send with the request:
+symfonyのブラウザはJavaScriptをシミュレートすることができないとして、あなたは、AJAX呼び出しをテストするときに、それを助けてあげる必要があります。
+これは主に手動でjQueryと他のすべての主要なJavaScriptライブラリはリクエストで送信するヘッダを追加する必要があることを意味します。
+As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls. 
+It mainly means that you need to manually add the header that jQuery and all other major JavaScript libraries send with the request:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
 
@@ -280,9 +306,13 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
        }
    }
 
-17日目では、検索エンジンを実装するためにZend Luceneライブラリを使用した。今日、私たちはそれがより敏感にするためにjQueryを使用。 symfonyフレームワークは、簡単にMVCアプリケーションを構築するためにすべての基本的なツールを提供し、また他の構成要素とうまく再生されます。いつものように、仕事のために最適なツールを使用するようにしてください。 
+17日目では、検索エンジンを実装するためにZend Luceneライブラリを使用した。
+今日、私たちはそれがより敏感にするためにjQueryを使用。 symfonyフレームワークは、簡単にMVCアプリケーションを構築するためにすべての基本的なツールを提供し、また他の構成要素とうまく再生されます。
+いつものように、仕事のために最適なツールを使用するようにしてください。 
 明日は、JobeetのWebサイトを国際化する方法を説明します。
-In day 17, we used the Zend Lucene library to implement the search engine. Today, we used jQuery to make it more responsive. The symfony framework provides all the fundamental tools to build MVC applications with ease, and also plays well with other components. As always, try to use the best tool for the job.
+In day 17, we used the Zend Lucene library to implement the search engine. Today, we used jQuery to make it more responsive. 
+The symfony framework provides all the fundamental tools to build MVC applications with ease, and also plays well with other components. 
+As always, try to use the best tool for the job.
 Tomorrow, we will explain how to internationalize the Jobeet website.
 
 .. include:: common/license.rst.inc
