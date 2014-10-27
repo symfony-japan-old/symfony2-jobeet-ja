@@ -51,11 +51,11 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 Adding Behaviours
 -----------------
 
-ライブ検索を実装すると、検索ボックスにユーザーがタイプするたびに、サーバーへのコールが行われます。
-サーバは、ページ全体を更新せずに、ページの一部の領域を更新するために必要な情報を返します。 
-jQueryの背景にある主要な原則は、 HTML 属性に on*() というビヘイビアを追加するのではなく、 ページが完全にロードされた後に DOM にビヘイビアを追加することです。
-この方法では、お使いのブラウザが JavaScript のサポートを無効にした場合、ビヘイビアが全く登録されなくともフォームは以前と同じように動作します。 
-最初のステップは、ユーザが検索ボックスにキーをタイプすることを常時傍受することです：
+ライブ検索を実装すると、検索ボックスにユーザーが文字を入力するたびに、サーバーへのコールが行われます。
+サーバは、ページ全体を更新せずに、ページの一部の領域を更新するための必要な情報を返します。 
+jQuery の背景にある主要な原則は、 HTML 属性に on*() というビヘイビアを追加するのではなく、 ページが完全にロードされた後に DOM にビヘイビアを追加することです。
+この方法では、お使いのブラウザが JavaScript のサポートを無効にした場合は、ビヘイビアが全く登録されず、しかし、フォームは以前と同じように動作します。 
+最初のステップは、ユーザが検索ボックスにキーを入力することを常時傍受することです。：
 Implementing a live search means that each time the user types a letter in the search box, a call to the server needs to be triggered; 
 the server will then return the needed information to update some regions of the page without refreshing the whole page.
 Instead of adding the behavior with an on*() HTML attributes, the main principle behind jQuery is to add behaviors to the DOM after the page is fully loaded. 
@@ -63,6 +63,7 @@ This way, if you disable JavaScript support in your browser, no behavior is regi
 The first step is to intercept whenever a user types a key in the search box:
 
 実装前のコードの説明
+~~~~~~~~~~~~~~~~~
 Explaining code before implementing
 
 .. code-block:: javascript
@@ -82,13 +83,16 @@ Explaining code before implementing
    Don’t add the code for now, as we will modify it heavily. 
    The final JavaScript code will be added to the layout in the next section.
 
-ユーザーはキーたびに、jQueryは上記のコードで定義された無名関数を実行しますが、場合にのみ、彼はinputタグからすべてを削除した場合、ユーザーは3つ以上の文字を入力したか、しています。 
-サーバへのAJAX呼び出しを作ることはDOM要素上のload（）メソッドを使用するのと同じくらい簡単です。
-Every time the user types a key, jQuery executes the anonymous function defined in the above code, but only if the user has typed more than 3 characters or if he removed everything from the input tag.
+ユーザーはキー入力のたびに、jQueryは上記のコードで定義された無名関数を実行します。
+ただし、ユーザーが3文字以上入力した場合、または、inputタグからすべてを削除した場合に限ります。 
+サーバへの AJAX 呼び出しを作ることは DOM 要素上の load() メソッドを使用するのと同じくらい簡単です。
+Every time the user types a key, jQuery executes the anonymous function defined in the above code, 
+but only if the user has typed more than 3 characters or if he removed everything from the input tag.
 Making an AJAX call to the server is as simple as using the load() method on the DOM element:
 
-implementingJavaScript前にコードを説明する
-Explaining code before implementingJavaScript
+実装前のコードの説明
+~~~~~~~~~~~~~~~~~
+Explaining code before implementing
 
 .. code-block:: javascript
 
@@ -102,12 +106,15 @@ Explaining code before implementingJavaScript
        }
    });
 
-AJAXコール、と呼ばれている"通常の"1と同様の作用を管理する。アクションで必要な変更は次のセクションで行われます。 
-JavaScriptが有効になっている場合、少なくとも最後になりましたが、私たちは検索ボタンを削除したいと思うでしょう。
-To manage the AJAX Call, the same action as the “normal” one is called. The needed changes in the action will be done in the next section.
+AJAX の呼び出しは、通常と同じ呼び出しで行います。
+アクションへの必要な変更は、次のセクションで行います。 
+JavaScript が有効になっている場合、少なくとも最後には、検索ボタンを削除したいと思うでしょう。
+To manage the AJAX Call, the same action as the “normal” one is called. 
+The needed changes in the action will be done in the next section.
 Last but not least, if JavaScript is enabled, we will want to remove the search button:
 
-implementingJavaScript前にコードを説明する
+実装前のコードの説明
+~~~~~~~~~~~~~~~~~
 Explaining code before implementing
 
 .. code-block:: javascript
@@ -119,16 +126,16 @@ Explaining code before implementing
 User Feedback
 -------------
 
-あなたは、AJAX呼び出しを行うたびに、ページがすぐに更新されません。
-ブラウザがページを更新する前に戻ってくるために、サーバーの応答を待つ。
-それまでの間、あなたは何かが起こっていることを彼に知らせるために、ユーザに視覚的なフィードバックを提供する必要があります。 
-規則では、AJAX呼び出しの間にローダーのアイコンを表示することです。
-デフォルトでは、それをtheloaderイメージを追加し、非表示にレイアウトを更新します。
+AJAX 呼び出しを行う際、ページはすぐには更新されません。
+ブラウザがページを更新する前に、サーバーの応答を待ちます。
+それまでの間、ユーザーに何かが起こっていることを知らせるために、視覚的なフィードバックを提供する必要があります。 
+慣例では、 AJAX 呼び出しの間に読み込みのアイコンを表示します。
+レイアウトを更新し、読み込みイメージを追加し、デフォルトで非表示にします。
 Whenever you make an AJAX call, the page won’t be updated right away. 
 The browser will wait for the server response to come back before updating the page. 
 In the meantime, you need to provide visual feedback to the user to inform him that something is going on.
 A convention is to display a loader icon during the AJAX call. 
-Update the layout to add theloader image and hide it by default:
+Update the layout to add the loader image and hide it by default:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -148,7 +155,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </div>
    <!-- ... -->
 
-これでHTMLを動作させるために必要なすべての部分を持っていることを、私たちはこれまでに説明したJavaScriptを使用していsearch.jsファイルを作成します。
+これで HTML を動作させるために必要なすべての部分を持っていることを、これまでに説明した JavaScript を使用した、 search.js ファイルを作成します。
 Now that you have all the pieces needed to make the HTML work, create a search.js file that contains the JavaScript we have explained so far:
 
 src/Ibw/JobeetBundle/Resources/public/js/search.js
@@ -174,7 +181,7 @@ src/Ibw/JobeetBundle/Resources/public/js/search.js
        });
    });
 
-公衆にそれを利用できるようにsymfonyを伝えるためのコマンドを実行します。
+Symfony に公開状態にするよう指示するコマンドを実行します。
 Run the command for telling Symfony to make it available to the public:
 
 .. code-block:: bash
@@ -195,12 +202,12 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        {% endblock %}
    <!-- ... -->
 
-アクションにおけるAJAX
------------------
+アクションにおける AJAX
+------------------
 AJAX in an Action
 -----------------
 
-JavaScriptは有効になっている場合、jQueryは検索ボックスに入力したすべてのキーを傍受し、searchアクションを呼び出します。
+JavaScript は有効になっている場合、 jQuery は検索ボックスに入力したすべてのキーを傍受し、 search アクションを呼び出します。
 ユーザーが入力したキーを押してフォームを送信したときにされていない場合、同じsearchアクションも呼び出されます。 
 だから、検索アクションは現在、コールがAJAX経由かが判断されるかどうかを判断する必要があります。
 要求がAJAX呼び出しで作られるときはいつでも、リクエストオブジェクトのisXmlHttpRequest（）メソッドはtrueを返します。
