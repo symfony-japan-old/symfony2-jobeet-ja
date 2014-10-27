@@ -5,10 +5,10 @@ Day 18: AJAX
 
 .. include:: common/original.rst.inc
 
-昨日は、Jobeetのは、Zend Luceneライブラリのおかげで、非常に強力な検索エンジンを実装しました。
-次の行では、検索エンジンの応答性を向上させるために、私たちは、ライブ一つに検索エンジンを変換するAJAXを利用します。 
-フォームを有効にしてやJavaScriptなしで動作するはずのように、ライブ検索機能は控えめなJavaScriptを使用して実装されます。
-使用して控えめなJavaScriptは、HTML、CSS、およびJavaScriptの行動との間にクライアントコードでの関心事の良好な分離が可能になります。
+昨日は、 Zend Lucene ライブラリのおかげで、Jobeetに非常に強力な検索エンジンを実装しました。
+本日は、検索エンジンの応答性を向上させるために、AJAX を利用して検索エンジンを動的なものに変換し ます。 
+フォームを JavaScript が有効または無効でも動作するはずのように、ライブ検索機能は控えめな( unobtrusive ) JavaScript を使用して実装されます。
+控えめな( unobtrusive )JavaScript を使うことは、HTML、CSS、および JavaScript の振舞いとの間にクライアントコードでの関心事の良好な分離が可能になります。
 Yesterday, we implemented a very powerful search engine for Jobeet, thanks to the Zend Lucene library. 
 In the following lines, to enhance the responsiveness of the search engine, we will take advantage of AJAX to convert the search engine to a live one.
 As the form should work with and without JavaScript enabled, the live search feature will be implemented using unobtrusive JavaScript. 
