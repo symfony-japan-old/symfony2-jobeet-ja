@@ -5,10 +5,10 @@ Day 18: AJAX
 
 .. include:: common/original.rst.inc
 
-昨日は、 Zend Lucene ライブラリのおかげで、Jobeetに非常に強力な検索エンジンを実装しました。
-本日は、検索エンジンの応答性を向上させるために、AJAX を利用して検索エンジンを動的なものに変換し ます。 
-フォームを JavaScript が有効または無効でも動作するはずのように、ライブ検索機能は控えめな( unobtrusive ) JavaScript を使用して実装されます。
-控えめな( unobtrusive )JavaScript を使うことは、HTML、CSS、および JavaScript の振舞いとの間にクライアントコードでの関心事の良好な分離が可能になります。
+昨日は、 Zend Lucene ライブラリのおかげで、 Jobeet に非常に強力な検索エンジンを実装しました。
+本日は、検索エンジンの応答性を向上させるために、 AJAX を利用して検索エンジンを動的なものに変換し ます。 
+JavaScript が有効でも無効でもフォームが動作するように、ライブ検索機能は控えめな( unobtrusive ) JavaScript を使用して実装されます。
+控えめな( unobtrusive )JavaScript を使うことは、クライアントコードの HTML、CSS と JavaScript の振舞いの良好な分離が可能になります。
 Yesterday, we implemented a very powerful search engine for Jobeet, thanks to the Zend Lucene library. 
 In the following lines, to enhance the responsiveness of the search engine, we will take advantage of AJAX to convert the search engine to a live one.
 As the form should work with and without JavaScript enabled, the live search feature will be implemented using unobtrusive JavaScript. 
@@ -19,8 +19,8 @@ jQueryのインストール
 Installing jQuery
 -----------------
 
-jQuery の Web サイトにアクセスし、最新バージョンをダウンロードして、の src/Ibw/JobeetBundle/Resources/public/js/ 以下 .js ファイルを置く。 
-jsのディレクトリに.jsファイルを入れた後に、公衆にそれを利用できるようにsymfonyを伝えるために、次のコマンドを実行します。
+jQuery の Web サイトにアクセスし、最新バージョンをダウンロードして、 src/Ibw/JobeetBundle/Resources/public/js/ 以下に .js ファイルを置きます。 
+js ディレクトリに .js ファイルを入れた後に、次のコマンドを実行して Symfony に公開状態にするよう指示します。
 Go to the jQuery website, download the latest version, and put the .js file under src/Ibw/JobeetBundle/Resources/public/js/.
 After putting the .js file in the js directory, run the following command to tell Symfony to make it available to the public:
 
@@ -33,7 +33,7 @@ jQueryを含める
 Including jQuery
 ----------------
 
-私たちはすべてのページでjQueryを必要とするように、それが含まれるように、レイアウトを更新します。
+すべてのページで jQuery を必要とするため、それが含まれるようにレイアウトを更新します。
 As we will need jQuery on all pages, update the layout to include it:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -46,22 +46,24 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        {% endblock %}
    <!-- ... -->
 
-振舞いの追加
+ビヘイビアの追加
 -----------
 Adding Behaviours
 -----------------
 
-ライブ検索を実装すると、検索ボックスに文字が、サーバーへのコールが必要とするユーザーの種類がトリガされるたびにことを意味します。
+ライブ検索を実装すると、検索ボックスにユーザーがタイプするたびに、サーバーへのコールが行われます。
 サーバは、ページ全体を更新せずに、ページの一部の領域を更新するために必要な情報を返します。 
-ページが完全にロードされた後の代わりに*上（）HTML属性と振る舞いを追加するのでは、jQueryの背景にある主要な原則は、DOMにビヘイビアを追加することです。
-お使いのブラウザでJavaScriptのサポートを無効にする場合は、この方法では、、全く動作が登録されていない、フォームは以前と同じように動作します。 
-最初のステップは、いつでも、ユーザは種類の検索ボックスにキーを傍受することです：
-Implementing a live search means that each time the user types a letter in the search box, a call to the server needs to be triggered; the server will then return the needed information to update some regions of the page without refreshing the whole page.
-Instead of adding the behavior with an on*() HTML attributes, the main principle behind jQuery is to add behaviors to the DOM after the page is fully loaded. This way, if you disable JavaScript support in your browser, no behavior is registered, and the form still works as before.
+jQueryの背景にある主要な原則は、 HTML 属性に on*() というビヘイビアを追加するのではなく、 ページが完全にロードされた後に DOM にビヘイビアを追加することです。
+この方法では、お使いのブラウザが JavaScript のサポートを無効にした場合、ビヘイビアが全く登録されなくともフォームは以前と同じように動作します。 
+最初のステップは、ユーザが検索ボックスにキーをタイプすることを常時傍受することです：
+Implementing a live search means that each time the user types a letter in the search box, a call to the server needs to be triggered; 
+the server will then return the needed information to update some regions of the page without refreshing the whole page.
+Instead of adding the behavior with an on*() HTML attributes, the main principle behind jQuery is to add behaviors to the DOM after the page is fully loaded. 
+This way, if you disable JavaScript support in your browser, no behavior is registered, and the form still works as before.
 The first step is to intercept whenever a user types a key in the search box:
 
-implementingJavaScript前にコードを説明する
-Explaining code before implementingJavaScript
+実装前のコードの説明
+Explaining code before implementing
 
 .. code-block:: javascript
 
@@ -75,8 +77,10 @@ Explaining code before implementingJavaScript
 
 .. note::
 
-      後で大きく修正するので、今のコードを追加しないでください。最終的なJavaScriptコードは、次のセクションでレイアウトに追加されます。
-   Don’t add the code for now, as we will modify it heavily. The final JavaScript code will be added to the layout in the next section.
+      後で大きく修正するので、今はコードを追加しないでください。
+      最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
+   Don’t add the code for now, as we will modify it heavily. 
+   The final JavaScript code will be added to the layout in the next section.
 
 ユーザーはキーたびに、jQueryは上記のコードで定義された無名関数を実行しますが、場合にのみ、彼はinputタグからすべてを削除した場合、ユーザーは3つ以上の文字を入力したか、しています。 
 サーバへのAJAX呼び出しを作ることはDOM要素上のload（）メソッドを使用するのと同じくらい簡単です。
