@@ -128,9 +128,9 @@ User Feedback
 
 AJAX 呼び出しを行う際、ページはすぐには更新されません。
 ブラウザがページを更新する前に、サーバーの応答を待ちます。
-それまでの間、ユーザーに何かが起こっていることを知らせるために、視覚的なフィードバックを提供する必要があります。 
-慣例では、 AJAX 呼び出しの間に読み込みのアイコンを表示します。
-レイアウトを更新し、読み込みイメージを追加し、デフォルトで非表示にします。
+それまでの間、視覚的なフィードバックを提供し、ユーザーに何かが起きていることを知らせます。 
+慣例では、 AJAX 呼び出しの間に読み込みアイコンを表示します。
+レイアウトに読み込みイメージを追加し、デフォルトではそれを非表示にします。
 Whenever you make an AJAX call, the page won’t be updated right away. 
 The browser will wait for the server response to come back before updating the page. 
 In the meantime, you need to provide visual feedback to the user to inform him that something is going on.
@@ -155,7 +155,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </div>
    <!-- ... -->
 
-これで HTML を動作させるために必要なすべての部分を持っていることを、これまでに説明した JavaScript を使用した、 search.js ファイルを作成します。
+これで HTML を動作させるために必要なすべての部分を持ちましたので、 search.js ファイルを作成し、これまでに説明した JavaScript を含めます。
 Now that you have all the pieces needed to make the HTML work, create a search.js file that contains the JavaScript we have explained so far:
 
 src/Ibw/JobeetBundle/Resources/public/js/search.js
@@ -202,15 +202,15 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        {% endblock %}
    <!-- ... -->
 
-アクションにおける AJAX
+アクションの中での AJAX
 ------------------
 AJAX in an Action
 -----------------
 
-JavaScript は有効になっている場合、 jQuery は検索ボックスに入力したすべてのキーを傍受し、 search アクションを呼び出します。
-ユーザーが入力したキーを押してフォームを送信したときにされていない場合、同じsearchアクションも呼び出されます。 
-だから、検索アクションは現在、コールがAJAX経由かが判断されるかどうかを判断する必要があります。
-要求がAJAX呼び出しで作られるときはいつでも、リクエストオブジェクトのisXmlHttpRequest（）メソッドはtrueを返します。
+JavaScript が有効になっている場合、 jQuery は検索ボックスでのすべてのキー入力を傍受し、 search アクションを呼び出します。
+有効になっていない場合も、ユーザーがキーを押してフォーム送信し、同じ search アクションを呼び出します。 
+そのため、 search アクションが、AJAX 経由での呼び出しか、そうでないかを判断する必要があります。
+リクエストが AJAX でコールされているときは常に、リクエストオブジェクトの isXmlHttpRequest() メソッドが true を返します。
 If JavaScript is enabled, jQuery will intercept all keys typed in the search box, and will call the search action. 
 If not, the same search action is also called when the user submits the form by pressing the enter key.
 So, the search action now needs to determine if the call is made via AJAX or not. 
@@ -251,7 +251,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 検索が結果を返さない場合は、空白のページの代わりにメッセージを表示する必要があります。
-私たちは、単純な文字列を返します。
+ここでは、単純な文字列を返します。
 If the search returns no result, we need to display a message instead of a blank page. 
 We will return just a simple string:
 
@@ -285,13 +285,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
      return $this->render('IbwJobeetBundle:Job:search.html.twig', array('jobs' => $jobs));
    }
 
-テストAJAX
---------
+AJAX のテスト
+----------
 Testing AJAX
 ------------
 
-symfonyのブラウザはJavaScriptをシミュレートすることができないとして、あなたは、AJAX呼び出しをテストするときに、それを助けてあげる必要があります。
-これは主に手動でjQueryと他のすべての主要なJavaScriptライブラリはリクエストで送信するヘッダを追加する必要があることを意味します。
+Symfony のブラウザは JavaScript をシミュレートすることができなため、 AJAX の呼び出しをテストする際に、手助けしてあげる必要があります。
+これは主に、 jQuery と他のすべての主要な JavaScript ライブラリが送信するリクエストに手動でヘッダを追加する必要があることを意味します。
 As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls. 
 It mainly means that you need to manually add the header that jQuery and all other major JavaScript libraries send with the request:
 
@@ -317,11 +317,13 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
        }
    }
 
-17日目では、検索エンジンを実装するためにZend Luceneライブラリを使用した。
-今日、私たちはそれがより敏感にするためにjQueryを使用。 symfonyフレームワークは、簡単にMVCアプリケーションを構築するためにすべての基本的なツールを提供し、また他の構成要素とうまく再生されます。
-いつものように、仕事のために最適なツールを使用するようにしてください。 
-明日は、JobeetのWebサイトを国際化する方法を説明します。
-In day 17, we used the Zend Lucene library to implement the search engine. Today, we used jQuery to make it more responsive. 
+17 日目では、検索エンジンを実装するためにZend Luceneライブラリを使用しました。
+本日、それがより敏感にするためにjQueryを使用しました。
+Symfony フレームワークは、簡単に MVC アプリケーションを構築するためにすべての基本的なツールを提供し、また他のコンポーネントと上手に共存します。
+いつものように、作業のためには最適なツールを使用するようにしてください。 
+明日は、 Jobeet の Web サイトを国際化する方法を説明します。
+In day 17, we used the Zend Lucene library to implement the search engine. 
+Today, we used jQuery to make it more responsive. 
 The symfony framework provides all the fundamental tools to build MVC applications with ease, and also plays well with other components. 
 As always, try to use the best tool for the job.
 Tomorrow, we will explain how to internationalize the Jobeet website.
