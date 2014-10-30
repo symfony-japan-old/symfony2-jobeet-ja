@@ -26,9 +26,9 @@ User
 ユーザー無しには国際化は不可能です。
 あなたのウェブサイトが複数の言語で、または、世界のさまざまな地域のために使用可能になると、ユーザーは最高の彼に適したものを選択する責任があります。 
 Symfony の国際化とローカライゼーションの機能はユーザーの culture に基づいています。 culture はユーザーの言語と国の組み合わせです。
-たとえば、フランス語を話すユーザー文化は FR で、フランスからのユーザーのための文化はは fr_FR です。 
-翻訳は、ルックアップし翻訳されたメッセージを返すために、ユーザーのロケールを使用 Translator サービスによって処理されます。
-それを使用する前に、構成内の翻訳を有効にします。
+たとえば、フランス語を話すユーザーカルチャーは FR で、フランスからのユーザーのためのカルチャーはは fr_FR です。 
+翻訳は、Translator サービスによって処理され、ユーザーのロケールを使用して検索し、翻訳されたメッセージを返し ます。
+それを使用する前に、構成内の ``Translator`` を有効にします。
 No internationalization is possible without a user. 
 When your website is available in several languages or for different regions of the world, the user is responsible for choosing the one that fits him best.
 The i18n and l10n features of symfony are based on the user culture. 
@@ -108,7 +108,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
            _locale: en|fr
 
 私たちは言語だけ多くのホームページをサポートする必要があるので（/en/, /fr/, …）、デフォルトのホームページ（ / ）は、ユーザーの culture に従って、適切なローカライズされたものにリダイレクトする必要があります。
-彼は初めて訪問するようになるので、ユーザーは、まだ文化を持っていない場合でも、優先文化は（私たちは、以前にそれを宣言したように、それはENになります）彼のために選択されます。
+彼は初めて訪問するようになるので、ユーザーは、まだカルチャーを持っていない場合でも、優先カルチャーは（私たちは、以前にそれを宣言したように、それはENになります）彼のために選択されます。
 だから先に行くと、あなたのためにそれを行うとともに、自分のホームページにルートを変更するために新しいルートを追加します。
 As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. 
 But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). 
@@ -154,12 +154,12 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-ユーザが自分いただけば文化を指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
-彼は彼のためにデフォルトで選択文化を持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
+ユーザが自分いただけばカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
+彼は彼のためにデフォルトで選択カルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
 If the user will access the Jobeet platform without specifying his preffered culture (http://jobeet.local/app_dev.php), 
 he will be redirected to the homepage having the culture selected by default for him (http://jobeet.local/app_dev.php/en/).
 
-文化のテスト
+カルチャーのテスト
 ---------
 Culture Testing
 ---------------
@@ -512,8 +512,8 @@ src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
 Language Switching
 ------------------
 
-ユーザーは文化を変えるためには、言語形式は、レイアウトに追加する必要があります。
-のは、それを作成してみましょう：
+ユーザーはカルチャーを変えるためには、言語形式は、レイアウトに追加する必要があります。
+それを作成してみましょう：
 For the user to change the culture, a language form must be added in the layout. 
 Let’s create it:
 
@@ -537,7 +537,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
    </div>
    <!-- ... -->
 
-私たちは、言語が変更されるアクションと一致するように新しいルートを追加します。
+言語が変更されるアクションと一致する新しいルートを追加します。
 Add a new route to match the action in which we will change the language:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -550,7 +550,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern: /change_language
        defaults: { _controller: "IbwJobeetBundle:Default:changeLanguage" }
 
-さて、アクション：
+ここで、アクションを変更します。：
 Now, the action:
 
 src/Ibw/JobetBundle/Controller/DefaultController.php
