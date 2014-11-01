@@ -5,7 +5,7 @@ Day 19: Internationalization and Localization
 
 .. include:: common/original.rst.inc
 
-昨日は、検索エンジンの機能に、 AJAX の良さを加えて、より楽しくしました。
+昨日は、検索エンジンの機能に、 AJAX の便利さを追加して、より楽しくしました。
 今日は、 Jobeet の国際化（または i18n ）とローカライゼーション（または l10n ）についてお話します。
 Yesterday, we finished the search engine feature by making it more fun with the addition of some AJAX goodness. 
 Now, we will talk about Jobeet internationalization (or i18n) and localization (or l10n).
@@ -57,9 +57,9 @@ Culture in the URL
 ------------------
 
 Jobeet の Web サイトは英語とフランス語の両方で利用できます。
-URL は単独のリソースのみを表すので、培養は、URLに埋め込まれている必要があります。
-そのためには、の routing.yml ファイルを開き、すべてのルートが、APIのための特別なロケール変数を追加します。
-シンプルなルートでは、URLの先頭に /{_locale} ロケールを追加します。
+URL は単独のリソースのみを表しますので、カルチャーは URL に埋め込まれている必要があります。
+そのためには、 routing.yml ファイルを開き、API以外のすべてのルートに特別なロケール変数を追加します。
+シンプルなルートでは、URLの先頭に /{_locale} を追加します。
 The Jobeet website will be available in English and French. 
 As an URL can only represent a single resource, the culture must be embedded in the URL. 
 In order to do that, open the routing.yml file, and add the special locale variable for all routes but the api. 
