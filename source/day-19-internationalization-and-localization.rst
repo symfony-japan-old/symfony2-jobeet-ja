@@ -107,9 +107,9 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        requirements:
            _locale: en|fr
 
-私たちは言語だけ多くのホームページをサポートする必要があるので（/en/, /fr/, …）、デフォルトのホームページ（ / ）は、ユーザーの culture に従って、適切なローカライズされたものにリダイレクトする必要があります。
-彼は初めて訪問するようになるので、ユーザーは、まだカルチャーを持っていない場合でも、優先カルチャーは（私たちは、以前にそれを宣言したように、それはENになります）彼のために選択されます。
-だから先に行くと、あなたのためにそれを行うとともに、自分のホームページにルートを変更するために新しいルートを追加します。
+言語の数だけホームページでサポートする必要があるので（/en/, /fr/, …）、デフォルトのホームページ（ / ）は、ユーザーの culture に従って、適切なローカライズされたものにリダイレクトする必要があります。
+初めての訪問で、まだユーザーがカルチャーを持っていない場合、優先カルチャーが選択されます。（以前にそれを宣言したように、en になります）。
+では、実際に新しいルートを追加し、ホームページのルートは変更します。
 As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. 
 But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). 
 So go ahead and add a new route to do that for you and modify your homepage route also :
@@ -154,8 +154,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-ユーザが自分いただけばカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
-彼は彼のためにデフォルトで選択カルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
+ユーザがカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
+デフォルトのカルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
 If the user will access the Jobeet platform without specifying his preffered culture (http://jobeet.local/app_dev.php), 
 he will be redirected to the homepage having the culture selected by default for him (http://jobeet.local/app_dev.php/en/).
 
@@ -164,10 +164,12 @@ he will be redirected to the homepage having the culture selected by default for
 Culture Testing
 ---------------
 
-それは私たちの実装をテストする時間です。
-しかし、より多くのテストを追加する前に、私たちは、既存のものを修正する必要があります。すべてのURLが変更されているように、すべての機能テストのファイルを編集して、すべてのURLの前にEN /追加します。
+実装のテストをする時間です。
+しかし、多くのテストを追加する前に、既存のものを修正する必要があります。
+すべての URL が変更されているように、すべての機能テストのファイルを編集して、 URL の前に /en 追加します。
 It is time to test our implementation. 
-But before adding more tests, we need to fix the existing ones. As all URLs have changed, edit all functional test files and add /en in front of all URLs.
+But before adding more tests, we need to fix the existing ones. 
+As all URLs have changed, edit all functional test files and add /en in front of all URLs.
 
 src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -512,7 +514,7 @@ src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
 Language Switching
 ------------------
 
-ユーザーはカルチャーを変えるためには、言語形式は、レイアウトに追加する必要があります。
+ユーザーのカルチャーを変えるために、言語形式がレイアウトに追加される必要があります。
 それを作成してみましょう：
 For the user to change the culture, a language form must be added in the layout. 
 Let’s create it:
@@ -584,11 +586,11 @@ Templates
 国際化されたウェブサイトは、ユーザーインターフェイスが複数の言語に翻訳されることを意味します。
 それは、私たちにとっては、デフォルトでは英語とフランス語になります。
 テンプレートを翻訳するためには、Twig タグ ``{% trans %}`` を使用します。 
-symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、 symfony は現在のユーザーの culture 用の翻訳を探します。
-翻訳が見つかった場合はそれが使用され、見つからなかった場合は、フォールバックの値として返され翻訳されるはずの文字列を使用している。 
-すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されている。
-このために、私たちは標準で最も柔軟なものである XLIFF 形式を使用します。 
-のテンプレートの内側 ``{% trans %}`` タグを追加することによって、翻訳を開始してみましょう：
+Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、 Symfony は現在のユーザーの culture 用の翻訳を探します。
+翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用しています。 
+すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。
+このために、標準で最も柔軟なものである XLIFF 形式を使用します。 
+では、テンプレートに ``{% trans %}`` タグを追加することによって、翻訳を開始してみましょう：
 An internationalized website means that the user interface is translated into several language. 
 For us, it will be english, by default, and french. 
 In order to translate the templates, we will use the Twig tag {% trans %}. 
@@ -929,7 +931,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
        <h1>{% trans %}Become an affiliate{% endtrans %}</h1>
    <!-- ... -->
 
-各翻訳は、一意のid属性を持つトランスユニットタグによって管理されます。
+各翻訳は、一意の id 属性を持つ ``trans-unit`` タグによって管理されます。
 これで、このファイルを編集してフランス語の翻訳を追加できます。
 Each translation is managed by a trans-unit tag which has a unique id attribute. 
 You can now edit this file and add translations for the French language:
