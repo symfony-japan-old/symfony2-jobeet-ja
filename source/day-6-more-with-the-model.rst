@@ -6,9 +6,8 @@
 Doctrine クエリーオブジェクト
 -----------------------------
 
-2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
-しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
-From the second day’s requirements: “On the homepage, the user sees the latest active jobs”. But as of now, all jobs are displayed, whether they are active or not:
+|2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
+|しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
 
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -603,10 +602,8 @@ You can now reload the fixtures with the doctrine:fixtures:load task and see if 
 
 .. image:: /images/Day-6-limited-no-of-jobs.png
 
-求人ページを固定します
-------------------
-Secure the Job Page
--------------------
+求人ページを安全にする
+----------------------
 
 ジョブが終了したときは、URLを知っていても、もうそれにアクセスすることはできません。
 期限切れのジョブ用のURLを、 ``SELECT id, token FROM job WHERE expires_at < NOW()`` で調べて、
