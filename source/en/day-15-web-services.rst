@@ -108,7 +108,7 @@ Reload the data:
 The Job Web Service
 -------------------
 
-As always, when you create a new resource, it’s a good habbit to define the route first:
+As always, when you create a new resource, it’s a good habit to define the route first:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 

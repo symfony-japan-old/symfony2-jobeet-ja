@@ -5,26 +5,43 @@ Day 17: Search
 
 .. include:: common/original.rst.inc
 
-14日目では、最新の新しいジョブポストにJobeetのユーザーを維持するために、いくつかのフィードを追加しました。検索エンジン：今日はあなたがJobeetのWebサイトの最新の主な機能を実装することで、ユーザーエクスペリエンスを向上させるのに役立ちます。
-In day 14, we added some feeds to keep Jobeet users up-to-date with new job posts. Today will help you to improve the user experience by implementing the latest main feature of the Jobeet website: the search engine.
+14 日目では、いくつかのフィードを追加し、ユーザーに最新の新しいジョブのを更新するようにいたしました。
+本日は最新の機能を実装してユーザーエクスペリエンスを向上させます。
+検索エンジン：今日はあなたがJobeetのWebサイトの最新の主な機能を実装することで、ユーザーエクスペリエンスを向上させるのに役立ちます。
+In day 14, we added some feeds to keep Jobeet users up-to-date with new job posts. 
+Today will help you to improve the user experience by implementing the latest main feature of the Jobeet website: the search engine.
 
 テクノロジー
+---------
 The Technology
 --------------
 
-今日は、Jobeetに検索エンジンを追加したい、とZend Frameworkは有名なJava Luceneプロジェクトの移植ですZendのLuceneと呼ばれるすばらしいライブラリを提供します。代わりに、非常に複雑なタスクである、Jobeetのためのさらにもう1つの検索エンジンを、作成するのでは、私たちは、Zend Luceneのを使用します。 
-今日は、Zend Luceneライブラリが、どのようにJobeetのWebサイトにそれを統合する方法についてのチュートリアルではありません。より一般的に、どのようにsymfonyプロジェクトにサードパーティ製のライブラリを統合する。あなたは、この技術についての詳細情報が必要な場合は、ZendのLuceneのドキュメントを参照してください。
-Today, we want to add a search engine to Jobeet, and the Zend Framework provides a great library, called Zend Lucene, which is a port of the well-know Java Lucene project. Instead of creating yet another search engine for Jobeet, which is quite a complex task, we will use Zend Lucene.
-Today is not a tutorial about the Zend Lucene library, but how to integrate it into the Jobeet website; or more generally, how to integrate third-party libraries into a symfony project. If you want more information about this technology, please refer to the Zend Lucene documentation.
+今日は、 Jobeet に検索エンジンを追加いたします。有名な Java Lucene プロジェクトから移植された、 Zend Framework 提供の Zend Lucene と呼ばれるすばらしいライブラリを使用します。
+Jobeet のためのさらにもう1つの検索エンジンを作成するのは非常に複雑なタスクなため、代わりに、 Zend Lucene を使用します。 
+今日は、 Zend Lucene ライブラリのチュートリアルではなく、 それを Jobeet の Web サイトに統合する方法のチュートリアルです。
+より一般的には、サードパーティ製のライブラリをどのように symfony プロジェクトに統合するかのチュートリアルです。
+この技術についての詳細情報が必要な場合は、Zend Lucene のドキュメントを参照してください。
+Today, we want to add a search engine to Jobeet, and the Zend Framework provides a great library, 
+called Zend Lucene, which is a port of the well-know Java Lucene project. 
+Instead of creating yet another search engine for Jobeet, which is quite a complex task, we will use Zend Lucene.
+Today is not a tutorial about the Zend Lucene library, but how to integrate it into the Jobeet website; 
+or more generally, how to integrate third-party libraries into a symfony project. 
+If you want more information about this technology, please refer to the Zend Lucene documentation.
 
-インストールとZend Frameworkを設定する
+インストールと Zend Framework の設定
+-------------------------------
 Installing and Configuring the Zend Framework
 ---------------------------------------------
 
-ZendのLuceneライブラリは、Zend Frameworkの一部である。私たちはsymfonyフレームワーク自身と一緒に、ベンダー/ディレクトリには、Zend Frameworkがインストールされます。 
-まず、Zend Frameworkにをダウンロードし、あなたがベンダー/ Zendのは/ディレクトリを持つように、ファイルを解凍します。 Zend Frameworkの2。*バージョンはLuceneライブラリが統合されていないため、このチュートリアルでは、それらのいずれかをダウンロードしないことに注意してください。
-The Zend Lucene library is part of the Zend Framework. We will only install the Zend Framework into the vendor/ directory, alongside the symfony framework itself.
-First, download the Zend Framework and unzip the files so that you have a vendor/Zend/directory. Keep in mind that the 2.*  versions of Zend Framework do not have Lucene library integrated, so don’t download any of them for this tutorial.
+Zend Lucene ライブラリは、 Zend Framework の一部です。
+vendor/ ディレクトリに、 Symfony フレームワーク自身と一緒に、 Zend Framework をインストールするだけです。
+まず、Zend Framework をダウンロードし、 vendor/Zend/ ディレクトリを持つように、ファイルを解凍します。 
+Zend Framework　2.* バージョンは Lucene ライブラリが統合されていないため、このチュートリアルでは、それらのいずれかもダウンロードしないことに注意してください。
+The Zend Lucene library is part of the Zend Framework. 
+We will only install the Zend Framework into the vendor/ directory, alongside the symfony framework itself.
+First, download the Zend Framework and unzip the files so that you have a vendor/Zend/directory. 
+Keep in mind that the 2.*  versions of Zend Framework do not have Lucene library integrated, 
+so don’t download any of them for this tutorial.
 
 .. note::
 
@@ -33,7 +50,7 @@ First, download the Zend Framework and unzip the files so that you have a vendor
 
 .. image:: /images/Day-17-zend.jpg
 
-あなたは、次のファイルとディレクトリ以外のすべてを削除することで、ディレクトリをクリーンアップすることができます。
+次のファイルとディレクトリ以外のすべてを削除することで、ディレクトリをクリーンアップすることができます。
 You can clean up the directory by removing everything but the following files and directories:
 
 * Exception.php
@@ -41,7 +58,7 @@ You can clean up the directory by removing everything but the following files an
 * Loader.php
 * Search/
 
-その後、Zendのオートローダを登録するための簡単な方法を提供するために、autoload.phpファイルに次のコードを追加します。
+その後、簡単に Zend autoloader を登録するため autoload.php ファイルに次のコードを追加します。
 Then, add the following code to the autoload.php file to provide a simple way to register the Zend autoloader.
 
 app/autoload.php
@@ -59,10 +76,14 @@ app/autoload.php
 Indexing
 --------
 
-Jobeetの検索エンジンは、ユーザーが入力したキーワードにマッチするすべての求人情報を返すことができるはずです。何でも検索できるようになる前に、インデックスは、ジョブのために構築されなければならない。 Jobeetのために、それはあなたが、/ウェブ/データ/を作成し、新しいディレクトリに保存されます。 
-ZendのLuceneはインデックスが1がすでに存在するかどうかに応じて取得するために2つのメソッドを提供します。のは、既存のインデックスを返すもしくは新しいものを作成するジョブの実体クラスのヘルパーメソッドを作成してみましょう：
-The Jobeet search engine should be able to return all jobs matching keywords entered by the user. Before being able to search anything, an index has to be built for the jobs; for Jobeet, it will be stored in a new directory you will create, /web/data/ .
-Zend Lucene provides two methods to retrieve an index depending whether one already exists or not. Let’s create helper methods in the Job entity class that returns an existing index or creates a new one for us:
+Jobeet の検索エンジンは、ユーザーが入力したキーワードにマッチするすべての求人情報を返すことができるべきです。
+何でも検索できるようになるには、ジョブに対して、Jobeet に対してインデックスが構築される必要があり、作成する新しいディレクトリ (/web/data/ )に保存されます。 
+Zend Lucene はインデックスがすでに存在するかどうかに応じて取得するために2つのメソッドを提供します。
+既存のインデックスを返すか、もしくは、新しいインデックスを作成する、ジョブエンティティクラスのヘルパーメソッドを作成してみましょう。：
+The Jobeet search engine should be able to return all jobs matching keywords entered by the user. 
+Before being able to search anything, an index has to be built for the jobs; for Jobeet, it will be stored in a new directory you will create, /web/data/ .
+Zend Lucene provides two methods to retrieve an index depending whether one already exists or not. 
+Let’s create helper methods in the Job entity class that returns an existing index or creates a new one for us:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -89,8 +110,10 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-ジョブが作成または更新されるたびに、インデックスを更新する必要があります。ジョブがデータベースにシリアライズされるたびにインデックスを更新するためにORMファイルを編集します。
-Each time a job is created or updated, the index must be updated. Edit the ORM file to update the index whenever a job is serialized to the database:
+ジョブが作成または更新されるたびに、インデックスを更新する必要があります。
+ジョブがデータベースにシリアライズされるたびにインデックスを更新するためにORMファイルを編集します。
+Each time a job is created or updated, the index must be updated. 
+Edit the ORM file to update the index whenever a job is serialized to the database:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
@@ -104,14 +127,14 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            postUpdate: [ upload, updateLuceneIndex ]
            # ...
 
-updateLuceneIndex（）メソッドは、ジョブ·クラスの内部ではDoctrineによって生成されるように、エンティティコマンド：今、生成を実行します。
+ここで、 ``generate:entities`` コマンド実行し、 Doctrineによって updateLuceneIndex() メソッドがジョブ·クラスの内部に生成されるようにします。
 Now, run the generate:entities command, so that the updateLuceneIndex() method to be generated by Doctrine inside the Job class:
 
 .. code-block:: bash
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-次に、実際の作業を行うupdateLuceneIndex（）メソッドを編集します。
+次に、実際の作業を行うよう updateLuceneIndex() メソッドを編集します。
 Then, edit the updateLuceneIndex() method that does the actual work:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -155,12 +178,17 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-ZendのLuceneの既存のエントリを更新することができないのでジョブがすでにインデックス内に存在する場合は、最初に削除されます。 
-ジョブ自体のインデックス作成は簡単です。主キーは、ジョブとメインカラム（位置、会社、場所、および説明）を検索するときにインデックス化され、将来の参照用に保存されますが、私たちを表示する本物のオブジェクトを使うので、インデックスに格納されていません結果。 
-また、インデックスから削除されたジョブのエントリを削除するためのdeleteLuceneIndex（）メソッドを作成する必要があります。私たちは、更新のために行ったように、私たちは、削除のために行います。 ORMファイルののpostremoveセクションにdeleteLuceneIndex（）メソッドを追加して起動します。
+Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合ははじめに削除します。 
+ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに格納はされません。 
+また、削除されたジョブエントリをインデックスから削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。
+更新と同様の処理を削除でも行います。
+ORM ファイルの postremove セクションに deleteLuceneIndex() メソッドを追加します。
 As Zend Lucene is not able to update an existing entry, it is removed first if the job already exists in the index.
-Indexing the job itself is simple: the primary key is stored for future reference when searching jobs and the main columns (position, company, location, and description) are indexed but not stored in the index as we will use the real objects to display the results.
-We also need create a deleteLuceneIndex() method to remove the entry of the deleted job from the index. As we did for the update, we will do for delete. Start by adding the deleteLuceneIndex() method to postRemove section of the ORM file:
+Indexing the job itself is simple: the primary key is stored for future reference when searching jobs 
+and the main columns (position, company, location, and description) are indexed but not stored in the index as we will use the real objects to display the results.
+We also need create a deleteLuceneIndex() method to remove the entry of the deleted job from the index. 
+As we did for the update, we will do for delete. 
+Start by adding the deleteLuceneIndex() method to postRemove section of the ORM file:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
@@ -172,8 +200,8 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            # ...
            postRemove: [ removeUpload, deleteLuceneIndex ]
 
-繰り返しますが、実体を生成するためのコマンドを実行します。 
-さて、実体ファイルに移動し、deleteLuceneIndex（）メソッドを実装します。
+再度、実体を生成するコマンドを実行します。
+ここで、エンティティファイルに移動し、 deleteLuceneIndex() メソッドを実装します。
 Again, run the command for generating entities.
 Now, go to entity file and implement the deleteLuceneIndex() method:
 
@@ -195,24 +223,26 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-インデックスはコマンドラインからもWebから変更されたとして、あなたはあなたの構成に応じてそれに応じてインデックスパーミッションを変更する必要があります。
+インデックスはコマンドラインからもWebからも更新されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。
 As the index is modified from the command line and also from the web, you must change the index directory permissions accordingly depending on your configuration:
 
 .. code-block:: bash
 
    $ chmod -R 777 web/data
 
-今、私たちは場所にすべてを持っていることを、あなたは、インデックス、それらにフィクスチャデータをリロードすることができます。
+これで、すべてそろいましたので、インデックス対象のフィクスチャーデータをリロードします。
 Now that we have everything in place, you can reload the fixture data to index them:
 
 .. code-block:: bash
 
    $ php app/console doctrine:fixtures:load
 
+検索
+----
 The Search
 ----------
 
-検索を実装すると、ケーキの一部です。まず、ルートを作成します。
+検索を実装することは、とても簡単です。まず、ルートを作成します。
 Implementing the search is a piece of cake. First, create a route:
 
 wrc/Ibw/JobeetBundle/Resources/config/routing/job.yml
@@ -258,9 +288,9 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        }
    }
 
-クエリ要求が存在しないか、空でない場合にはsearcAction（）の内部では、ユーザーはJobControllerのindexアクションに転送されます。 
+searchAction() の内部では、ユーザーは、クエリリクエストが存在しないか空の場合は、 JobController の index アクションに転送されます。 
 テンプレートには、非常に簡単です。
-Inside the searcAction(), the user is forwarded to the index action of the JobController if the query request does not exist or is empty.
+Inside the searchAction(), the user is forwarded to the index action of the JobController if the query request does not exist or is empty.
 The template is also quite straightforward:
 
 src/Ibw/JobeetBundle/Resources/views/Job/search.html.twig
@@ -280,7 +310,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/search.html.twig
        </div>
    {% endblock %}
 
-検索自体はgetForLuceneQuery（）メソッドに委譲されています。
+検索自体は getForLuceneQuery() メソッドに委譲されています。
 The search itself is delegated to the getForLuceneQuery() method:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -323,8 +353,8 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        }
    }
 
-私たちはLuceneインデックスからすべての結果を取得した後、私たちは非アクティブなジョブをフィルタリングし、20に結果の数を制限します。 
-それは、仕事のレイアウトを更新するには：
+Lucene インデックスからすべての結果を取得した後、非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。 
+動作させるためにレイアウトを更新します。：
 After we get all results from the Lucene index, we filter out the inactive jobs, and limit the number of results to 20.
 To make it work, update the layout:
 
@@ -345,12 +375,16 @@ To make it work, update the layout:
        <!-- ... -->
    <!-- ... -->
 
+結合テスト
+--------
 Unit Tests
 ----------
 
-単位はどのようなテストでは、私たちが検索エンジンをテストするために作成する必要がありますか？私たちは、明らかにはZend Luceneライブラリそのものではなく、ジョブ·クラスとの統合をテストすることはありません。 
-JobRepositoryTest.phpファイルの最後に次のテストを追加します。
-What kind of unit tests do we need to create to test the search engine? We obviously won’t test the Zend Lucene library itself, but its integration with the Job class.
+検索エンジンをテストするためにどのような結合テストを作成すべきでしょうか？
+明らかに Zend Lucene ライブラリそのもののテストではなく、ジョブ·クラスとの統合をテストすることです。 
+JobRepositoryTest.php ファイルの最後に次のテストを追加します。
+What kind of unit tests do we need to create to test the search engine? 
+We obviously won’t test the Zend Lucene library itself, but its integration with the Job class.
 Add the following test at the end of the JobRepositoryTest.php file:
 
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
@@ -416,13 +450,17 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
        }
    }
 
-私たちは、非アクティブに仕事、または削除された一つは、検索結果に表示されないことをテストする。私たちは、与えられた条件に一致するジョブが結果に表示さないことを確認してください。
-We test that a non activated job, or a deleted one does not show up in the search results; we also check that jobs matching the given criteria do show up in the results.
+非アクティブなジョブ、または、削除されたジョブは、検索結果に表示されないことをテストします。
+与えられた条件に一致するジョブが結果に表示されることも確認してください。
+We test that a non activated job, or a deleted one does not show up in the search results; 
+we also check that jobs matching the given criteria do show up in the results.
 
+タスク
+----
 Tasks
 -----
 
-最終的に、私たちは（ジョブたとえば期限切れになったときに）クリーンアップにJobeetCleanupタスクの古いエントリからインデックスを更新し、随時索引を最適化する必要があります。
+最終的には、 JobeetCleanup タスクを更新して、古いエントリ（たとえばジョブが期限切れになったときに）のインデックスをクリーンアップし、随時索引を最適化する必要があります。
 Eventually, we need to update the JobeetCleanup task to cleanup the index from stale entries (when a job expires for example) and optimize the index from time to time:
 
 src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
@@ -470,11 +508,15 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
        }
    }
 
-タスクはインデックスからすべての期限切れのジョブを削除し、ZendのLuceneの組み込みの最適化（）メソッドにそれを感謝を最適化します。 
-この日に沿って、私たちは時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。あなたは、あなたのプロジェクトに新しい機能を追加するたびに、それは、まだどこかに解決されていないことを確認してください。 
-明日は、私たちは、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましくJavaScriptを使います。もちろん、これはsymfonyでAJAXを使用する方法について話をする機会があります。
+このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Luceneの組み込みのoptimize() メソッドによって最適化します。 
+本日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
+プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。 
+明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましくJavaScriptを使います。
+もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。
 The task removes all expired jobs from the index and then optimizes it thanks to the Zend Lucene built-in optimize() method.
-Along this day, we implemented a full search engine with many features in less than an hour. Every time you want to add a new feature to your projects, check that it has not yet been solved somewhere else.
-Tomorrow we will use some unobtrusive JavaScripts to enhance the responsiveness of the search engine by updating the results in real-time as the user types in the search box. Of course, this will be the occasion to talk about how to use AJAX with symfony.
+Along this day, we implemented a full search engine with many features in less than an hour. 
+Every time you want to add a new feature to your projects, check that it has not yet been solved somewhere else.
+Tomorrow we will use some unobtrusive JavaScripts to enhance the responsiveness of the search engine by updating the results in real-time as the user types in the search box. 
+Of course, this will be the occasion to talk about how to use AJAX with symfony.
 
 .. include:: common/license.rst.inc

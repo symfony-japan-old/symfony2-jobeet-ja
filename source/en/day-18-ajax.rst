@@ -37,7 +37,8 @@ Adding Behaviours
 Implementing a live search means that each time the user types a letter in the search box, a call to the server needs to be triggered; the server will then return the needed information to update some regions of the page without refreshing the whole page.
 Instead of adding the behavior with an on*() HTML attributes, the main principle behind jQuery is to add behaviors to the DOM after the page is fully loaded. This way, if you disable JavaScript support in your browser, no behavior is registered, and the form still works as before.
 The first step is to intercept whenever a user types a key in the search box:
-Explaining code before implementingJavaScript
+Explaining code before implementing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: javascript
 
@@ -56,7 +57,8 @@ Explaining code before implementingJavaScript
 Every time the user types a key, jQuery executes the anonymous function defined in the above code, but only if the user has typed more than 3 characters or if he removed everything from the input tag.
 Making an AJAX call to the server is as simple as using the load() method on the DOM element:
 
-Explaining code before implementingJavaScript
+Explaining code before implementing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: javascript
 
@@ -74,6 +76,7 @@ To manage the AJAX Call, the same action as the “normal” one is called. The 
 Last but not least, if JavaScript is enabled, we will want to remove the search button:
 
 Explaining code before implementing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: javascript
 
@@ -83,7 +86,7 @@ User Feedback
 -------------
 
 Whenever you make an AJAX call, the page won’t be updated right away. The browser will wait for the server response to come back before updating the page. In the meantime, you need to provide visual feedback to the user to inform him that something is going on.
-A convention is to display a loader icon during the AJAX call. Update the layout to add theloader image and hide it by default:
+A convention is to display a loader icon during the AJAX call. Update the layout to add the loader image and hide it by default:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 

@@ -36,8 +36,8 @@ Functional tests have a very specific workflow:
 * Test the response;
 * Rinse and repeat;
 
-私たちの第一の機能テスト
--------------------
+最初の機能テスト
+-------------
 Our First Functional Test
 -------------------------
 
