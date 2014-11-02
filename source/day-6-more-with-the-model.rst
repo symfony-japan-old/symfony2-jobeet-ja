@@ -10,7 +10,7 @@ Doctrine クエリーオブジェクト
 The Doctrine Query Object
 -------------------------
 
-2日目の要件として、「トップページでは、ユーザーは最新の有効な求人を閲覧します」としました。
+2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
 しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
 From the second day’s requirements: “On the homepage, the user sees the latest active jobs”. But as of now, all jobs are displayed, whether they are active or not:
 
@@ -163,7 +163,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 More with Fixtures
 ------------------
 
-データベース内のジョブが数日前に投稿されたばかりのため、ブラウザで Jobeet のトップページをリフレッシュしても何も変わりません。
+データベース内のジョブが数日前に投稿されたばかりのため、ブラウザで Jobeet のホームページをリフレッシュしても何も変わりません。
 それではすでに期限切れしたジョブ情報を追加するためにフィクスチャーを変更しましょう。
 Refreshing the Jobeet homepage in your browser won’t change anything, as the jobs in the database have been posted just a few days ago. 
 Let’s change the fixtures to add a job that is already expired:
@@ -315,13 +315,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 * The getActiveJobs() method is re-usable (for instance in another action)
 * The model code is now unit testable
 
-トップページのカテゴリー
+ホームページのカテゴリー
 -----------------
 Categories on the Homepage
 --------------------------
 
 二日目の要件によると、私たちは、カテゴリでソートされたジョブを持っていなくてはいけません。
-今まで、ジョブのカテゴリーを考慮していませんでした。要件からはトップページでカテゴリに基づいて表示しなければなりません。
+今まで、ジョブのカテゴリーを考慮していませんでした。要件からはホームページでカテゴリに基づいて表示しなければなりません。
 まず、少なくとも1つの有効なジョブからすべてのカテゴリを取得する必要があります。
 私たちがジョブクラスに行ったように、カテゴリエンティティのリポジトリクラスを作成します。
 According to the second day’s requirements we need to have jobs sorted by categories. 
@@ -467,7 +467,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 Limit the results
 -----------------
 
-トップページジョブリストのために実装する1つの要件がまだあります。
+ホームページジョブリストのために実装する1つの要件がまだあります。
 私たちはジョブリストの数を10個に制限する必要があります。
 JobRepository:: getActiveJobs（） メソッドに $max のパラメータを追加するだけで十分です。
 There is still one requirement to implement for the homepage job list: we have to limit the job list to 10 items. 
@@ -618,7 +618,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
    // ...
 
-``doctrine:fixtures:load`` タスクでフィクスチャーを再読み込みできます。トップページのプログラミングカテゴリに 10 個のジョブだけが表示されています。
+``doctrine:fixtures:load`` タスクでフィクスチャーを再読み込みできます。ホームページのプログラミングカテゴリに 10 個のジョブだけが表示されています。
 You can now reload the fixtures with the doctrine:fixtures:load task and see if only 10 jobs are displayed on the homepage for the Programming category:
 
 .. image:: /images/Day-6-limited-no-of-jobs.png

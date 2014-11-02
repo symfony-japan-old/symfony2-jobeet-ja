@@ -164,7 +164,7 @@ Writing Functional Tests
 ------------------------
 
 機能テストを書くことはブラウザでシナリオを演じることに似ています。すでに2日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。 
-まずは、 JobControllerTest クラスを編集して Jobeet のトップページをテストしてみましょう。 次のコードで置き換えます。
+まずは、 JobControllerTest クラスを編集して Jobeet のホームページをテストしてみましょう。 次のコードで置き換えます。
 Writing functional tests is like playing a scenario in a browser. We already have written all the scenarios we need to test as part of the day 2 stories.
 First, let’s test the Jobeet homepage by editing the JobControllerTest class. Replace the code with the following one:
 
@@ -254,7 +254,7 @@ EXPIRED JOBS ARE NOT LISTED
        }
    }
 
-トップページから期限切れのジョブの除外を検証するために、CSSセレクタ ``.jobs td.position:contains("Expired")`` が、レスポンスの中のHTMLコンテンツ内のどれとも一致しないことを確認します。
+ホームページから期限切れのジョブの除外を検証するために、CSSセレクタ ``.jobs td.position:contains("Expired")`` が、レスポンスの中のHTMLコンテンツ内のどれとも一致しないことを確認します。
 （フィクスチャーの中で唯一、有効期限が切れた仕事は、役職に「Expired」が含まれていたことを思い出してください）。
 To verify the exclusion of expired jobs from the homepage, 
 we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content 
@@ -396,7 +396,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 EACH JOB ON THE HOMEPAGE IS CLICKABLE
 -------------------------------------
 
-トップページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
+ホームページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
 それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。 
 各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。
 To test the job link on the homepage, we simulate a click on the “Web Developer” text. 

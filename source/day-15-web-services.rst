@@ -864,7 +864,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        defaults: { _controller: "IbwJobeetBundle:Affiliate:wait" }
 
 ルートを定義したら、キャッシュをクリアする必要があります。 
-これで、トップページでアフィリエイトリンクをクリックした場合、アフィリエイトフォームのページに転送されます。
+これで、ホームページでアフィリエイトリンクをクリックした場合、アフィリエイトフォームのページに転送されます。
 After defining to routes, in order to work, you need to clear the cache.
 Now, if you click on the Affiliates link on the homepage, you will be directed to the affiliate form page.
 

@@ -458,7 +458,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
    # ...
 
 これが設定されたら、/logout （または、あなたが設定するパスは何でも）にユーザーを送信することで、現在のユーザの認証の解除をします。
-次いで、ユーザは、トップページ（target パラメータによって定義された値）に送られます。 
+次いで、ユーザは、ホームページ（target パラメータによって定義された値）に送られます。 
 あと残った作業は、ログアウトのリンクを管理セクションに追加することです。
 これを行うために SonataAdminBundle の user_block.html.twig をオーバーライドします。
 app/Resources/SonataAdminBundle/views/Core フォルダに user_block.html.twig ファイルを作成します。

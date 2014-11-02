@@ -6,7 +6,7 @@
 URL
 ---
 
-Jobeetトップページの求人情報をクリックすると、URLは /job/1/show のようになります。
+Jobeetホームページの求人情報をクリックすると、URLは /job/1/show のようになります。
 すでに PHP で Webサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
 Symfony はどのようにそれを動作させるのでしょうか？ このURLに基づいてどのようにアクションを決定するのでしょうか？
 なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
@@ -117,7 +117,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern:  /
        defaults: { _controller: IbwJobeetBundle:Job:index }
 
-キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のトップページが表示されます。
+キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のホームページが表示されます。
 これで、レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用したものに変更することができます。
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig

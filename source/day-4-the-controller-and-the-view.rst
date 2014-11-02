@@ -196,10 +196,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    <!-- rest of the code -->
 
-求人のトップページのアクション
+求人のホームページのアクション
 -------------------------------
 
-各アクションはクラスのメソッドによって表されます。求人のトップページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
+各アクションはクラスのメソッドによって表されます。求人のホームページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
 以下では、データベースからすべてのジョブを取得しています。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -226,7 +226,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
 これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
 
-求人のトップページのテンプレート
+求人のホームページのテンプレート
 --------------------------------
 
 index.html.twig テンプレートは、すべての求人の HTML テーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
