@@ -1,12 +1,12 @@
-8日目: ユニットテスト
-=====================
+8日目: 単体テスト(ユニットテスト)
+=================================
 
 .. include:: common/original.rst.inc
 
 Symfony のテスト
 ----------------
 
-| Symfony においての自動化されたテストにはユニットテストと機能テストの2種類があります。
+| Symfony においての自動化されたテストには単体テスト(ユニットテスト)と機能テスト( ``functional test`` )の2種類があります。
 | 単体テストは、各メソッドと機能が正常に動作していることを確認します。各テストは、他のものから、可能な限り独立していなければなりません。
 | 一方で、機能テストはアプリケーションの結果が、全体として正しく動作することを確認します。
 | 明日は機能テストに専念し、本日はユニットテストを説明します。
@@ -37,7 +37,7 @@ To run tests, you will have to install PHPUnit 3.5.11 or later.
       $ sudo pear install --alldeps phpunit/PHPUnit
       $ sudo pear install --force --alldeps phpunit/PHPUnit
 
-| 各テスト（ユニットテストおよび機能テスト） はバンドルのサブディレクトリ Tests/ におかれる PHP のクラスです。
+| 各テスト（単体テストおよび機能テスト） はバンドルのサブディレクトリ Tests/ におかれる PHP のクラスです。
 | この設置場所のルールに沿っている場合は、次のコマンドを使用して、すべてのアプリケーションのテストを実行することができます。
 Each test – whether it’s a unit test or a functional test – is a PHP class that should live in the Tests/ subdirectory of your bundles.
 If you follow this rule, then you can run all of your application’s tests with the following command:
@@ -292,7 +292,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    }
 
 コード網羅率
------------
+------------
 
 | テストを書くときに、コードの一部を忘れがちです。
 | 新しい機能を追加したり、コード網羅率の統計を確認したい場合に必要があるのは --coverage-HTML オプションを使用してコード網羅率をチェックすることです。
@@ -323,8 +323,8 @@ Your cov/index.html should look like this:
 インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
 Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 
-Doctrine のユニットテスト
--------------------------
+Doctrine の単体テスト
+---------------------
 
 | データベース接続を必要とする Doctrine モデルクラスのユニットテストは、もう少し複雑です。
 | あなたはすでに、あなたの開発のために使用するものを持っているが、それはテスト専用のデータベースを作成するには良い習慣です。
