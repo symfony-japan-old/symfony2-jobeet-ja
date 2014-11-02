@@ -1,14 +1,10 @@
 6日目: モデルの続き
 ================
-Day 6: More with the Model
-==========================
 
 .. include:: common/original.rst.inc
 
 Doctrine クエリーオブジェクト
--------------------
-The Doctrine Query Object
--------------------------
+-----------------------------
 
 2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
 しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
@@ -36,7 +32,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
     // ...
    }
 
-アクティブなジョブは30日前以内に投稿されたものです。 
+アクティブなジョブは30日前以内に投稿されたものです。
 ``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、データベースへのリクエストを行います。
 私たちはどんな条件も指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。
 では、アクティブなジョブのみを選択するよう変更してみましょう：
@@ -61,9 +57,7 @@ Let’s change it to only select active jobs:
    }
 
 Doctrine が生成した SQL のデバッグ
------------------------------
-Debugging Doctrine generated SQL
---------------------------------
+----------------------------------
 
 デバッグツールバーは、例えば、期待通りに動作しないクエリをデバッグするときに、  Doctrine によって生成されたSQLを参照する大きな助けとなります。
 dev 環境では、Symfony は Web デバッグツールバーのおかげで、必要なすべての情報がブラウザ上で快適に利用できます（ http：//jobeet.local/app_dev.php ）。
@@ -73,9 +67,7 @@ In the dev environment, thanks to the Symfony Web Debug Toolbar, all the informa
 .. image:: /images/Day-6-web-debug-toolbar.png
 
 オブジェクトのシリアライズ
-------------------
-Object Serialization
---------------------
+--------------------------
 
 上記のコードは動作していても、2日目の「ユーザーは戻ってきて再度アクティブにするか、求人の期間の検証を30日以上に広げることが出来、、、」という要件から考慮すると、
 完璧にはほど遠いです。
@@ -85,13 +77,13 @@ Object Serialization
 しかし、ジョブが作成されるときに、自動的に現在の日付から30日後に設定することができます。
 Doctrine のオブジェクトがデータベースにシリアライズされる前に自動的に何かをする必要があるときは、先ほど created_at カラムで行ったように、
 オブジェクトをデータベースにマッピングするファイルに、ライフサイクルコールバックの新しいアクションを追加することでできます。
-Even if the code above works, it is far from perfect as it does not take into account some requirements from Day 2: 
+Even if the code above works, it is far from perfect as it does not take into account some requirements from Day 2:
 “A user can come back to re-activate or extend the validity of the job for an extra 30 days..”.
 But as the above code only relies on the created_at value, and because this column stores the creation date, we cannot satisfy the above requirement.
-If you remember the database schema we have described during Day 3, we also have defined an expires_at column. 
-Currently, if this value is not set in fixture file, it remains always empty. 
+If you remember the database schema we have described during Day 3, we also have defined an expires_at column.
+Currently, if this value is not set in fixture file, it remains always empty.
 But when a job is created, it can be automatically set to 30 days after the current date.
-When you need to do something automatically before a Doctrine object is serialized to the database, 
+When you need to do something automatically before a Doctrine object is serialized to the database,
 you can add a new action to the lifecycle callbacks in the file that maps objects to the database, like we did earlier for the created_at column:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orml.yml
@@ -159,13 +151,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 フィクスチャーに追加
----------------
-More with Fixtures
-------------------
+--------------------
 
 データベース内のジョブが数日前に投稿されたばかりのため、ブラウザで Jobeet のホームページをリフレッシュしても何も変わりません。
-それではすでに期限切れしたジョブ情報を追加するためにフィクスチャーを変更しましょう。
-Refreshing the Jobeet homepage in your browser won’t change anything, as the jobs in the database have been posted just a few days ago. 
+それでは,期限切れのジョブ情報をフィクスチャーに追加しましょう。
+Refreshing the Jobeet homepage in your browser won’t change anything, as the jobs in the database have been posted just a few days ago.
 Let’s change the fixtures to add a job that is already expired:
 
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
@@ -208,9 +198,7 @@ Reload the fixtures and refresh your browser to ensure that the old job does not
    $ php app/console doctrine:fixtures:load
 
 リファクタリング
-----------
-Refactoring
------------
+----------------
 
 書いたコードは動作しますが、まだ正しくありません。あなたが問題を発見することはできますか？
 Doctrine のクエリコードはアクション（コントローラ層）に属さず、 Model レイヤーに所属します。
@@ -219,9 +207,9 @@ MVC モデルでは、モデルはすべてのビジネスロジックを定義�
  そのためには、ジョブのエンティティのカスタムリポジトリクラスを作成し、そのクラスにクエリを追加する必要があります。
 /src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml を開いて、そこに次の行を追加します。
 Although the code we have written works fine, it’s not quite right yet. Can you spot the problem?
-The Doctrine query code does not belong to the action (the Controller layer), it belongs to the Model layer. 
-In the MVC model, the Model defines all the business logic, and the Controller only calls the Model to retrieve data from it. 
-As the code returns a collection of jobs, let’s move the code to the model. 
+The Doctrine query code does not belong to the action (the Controller layer), it belongs to the Model layer.
+In the MVC model, the Model defines all the business logic, and the Controller only calls the Model to retrieve data from it.
+As the code returns a collection of jobs, let’s move the code to the model.
 For that we will need to create a custom repository class for Job entity and to add the query to that class.
 Open /src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml and add the following to it:
 
@@ -241,9 +229,9 @@ Doctrine can generate the repository class for you by running the generate:entit
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-次に、新規に生成されたリポジトリクラスに新しいメソッド - getActiveJobs（） - を追加します。 
+次に、新規に生成されたリポジトリクラスに新しいメソッド - getActiveJobs（） - を追加します。
 このメソッドは、 expires_at のカラムでソートし、（ $category_id パラメータを受信した場合、カテゴリによってフィルタリングされた）有効なすべてのジョブのエンティティを 照会します。
-Next, add a new method – getActiveJobs() – to the newly generated repository class. 
+Next, add a new method – getActiveJobs() – to the newly generated repository class.
 This method will query for all of the active Job entities sorted by the expires_at column (and filtered by category, if it receives the $category_id parameter).
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -316,16 +304,14 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 * The model code is now unit testable
 
 ホームページのカテゴリー
------------------
-Categories on the Homepage
---------------------------
+------------------------
 
 二日目の要件によると、私たちは、カテゴリでソートされたジョブを持っていなくてはいけません。
 今まで、ジョブのカテゴリーを考慮していませんでした。要件からはホームページでカテゴリに基づいて表示しなければなりません。
 まず、少なくとも1つの有効なジョブからすべてのカテゴリを取得する必要があります。
 私たちがジョブクラスに行ったように、カテゴリエンティティのリポジトリクラスを作成します。
-According to the second day’s requirements we need to have jobs sorted by categories. 
-Until now, we have not taken the job category into account. From the requirements, the homepage must display jobs by category. 
+According to the second day’s requirements we need to have jobs sorted by categories.
+Until now, we have not taken the job category into account. From the requirements, the homepage must display jobs by category.
 First, we need to get all categories with at least one active job.
 Create a repository class for the Category entity like we did for Job:
 
@@ -463,14 +449,12 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
    {% endblock %}
 
 結果を制限
----------
-Limit the results
------------------
+----------
 
 ホームページジョブリストのために実装する1つの要件がまだあります。
 私たちはジョブリストの数を10個に制限する必要があります。
 JobRepository:: getActiveJobs（） メソッドに $max のパラメータを追加するだけで十分です。
-There is still one requirement to implement for the homepage job list: we have to limit the job list to 10 items. 
+There is still one requirement to implement for the homepage job list: we have to limit the job list to 10 items.
 That’s simple enough to add the $max parameter to the JobRepository::getActiveJobs() method:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -526,15 +510,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 カスタム設定
----------
-Custom Configuration
---------------------
+------------
 
 JobController の indexAction メソッドでは、カテゴリごとの最大ジョブ数は、ハードコーディングされていました。
-その10個の制限は、設定可能にする方がよいです。 
+その10個の制限は、設定可能にする方がよいです。
 Symfony の  app/config/config.yml ファイルの``parameters`` キーの下に（``parameters``が存在しない場合は作成して）アプリケーション用のカスタムパラメータを定義できます。
-In the JobController, indexAction method, we have hardcoded the number of max jobs returned for a category. 
-It would have been better to make the 10 limit configurable. 
+In the JobController, indexAction method, we have hardcoded the number of max jobs returned for a category.
+It would have been better to make the 10 limit configurable.
 In Symfony, you can define custom parameters for your application in the app/config/config.yml file, under the parameters key (if the parameters key doesn’t exist, create it):
 
 app/config/config.yml
@@ -573,9 +555,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 動的なフィクスチャー
----------------
-Dinamic Fixtures
-----------------
+--------------------
 
 まだ、データベースにあるジョブが非常に少ないため、何の違いも表示されません。
 私たちは、フィクスチャーにジョブの束を追加する必要があります。
@@ -629,17 +609,16 @@ Secure the Job Page
 -------------------
 
 ジョブが終了したときは、URLを知っていても、もうそれにアクセスすることはできません。
-（SELECT id, token FROM job WHERE expires_at < NOW() で調べて、データベース内の実際のidでURLのIDを置き換えて）期限切れのジョブ用のURLを試してみてください。
-
+期限切れのジョブ用のURLを、 ``SELECT id, token FROM job WHERE expires_at < NOW()`` で調べて、
+データベース内の実際の id で URL の ID を置き換えて試してみてください。
 /app_dev.php/job/sensio-labs/paris-france/ID/web-developer-expired
+ジョブを表示する代わりに、404ページにユーザーを転送する必要があります。
+このために JobRepository に新しい関数を作成します。
 
-仕事を表示する代わりに、私たちは404ページにユーザーを転送する必要があります。
-このために私たちはJobRepositoryで新しい関数を作成します。
-
-When a job expires, even if you know the URL, it must not be possible to access it anymore. 
+When a job expires, even if you know the URL, it must not be possible to access it anymore.
 Try the URL for the expired job (replace the id with the actual id in your database – SELECT id, token FROM job WHERE expires_at < NOW()):
 /app_dev.php/job/sensio-labs/paris-france/ID/web-developer-expired
-Instead of displaying the job, we need to forward the user to a 404 page. 
+Instead of displaying the job, we need to forward the user to a 404 page.
 For this we will create a new function in the JobRepository:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -667,12 +646,12 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
            return $job;
        }
 
-getSingleResult（） メソッドは、結果が返されない場合には Doctrine\ORM\NoResultException 例外がスローされます。
-また、複数の結果が返された場合は、 Doctrine\ORM\NonUniqueResultException 例外がスローされます。
+getSingleResult() メソッドは、結果が返されない場合には ``Doctrine\ORM\NoResultException`` 例外がスローされます。
+また、複数の結果が返された場合は、 ``Doctrine\ORM\NonUniqueResultException`` 例外がスローされます。
 この方法を使用する場合は、try-catch ブロックで囲んで、結果がひとつだけ返されることを保証する必要があるかもしれません。
-今すぐ新しいリポジトリメソッドを使用するように JobController の showAction（） を変更します。
-The getSingleResult() method throws a Doctrine\ORM\NoResultException exception if no results are returned and 
-a Doctrine\ORM\NonUniqueResultException if more than one result is returned. 
+今すぐ新しいリポジトリメソッドを使用するように JobController の showAction() を変更します。
+The getSingleResult() method throws a Doctrine\ORM\NoResultException exception if no results are returned and
+a Doctrine\ORM\NonUniqueResultException if more than one result is returned.
 If you use this method, you may need to wrap it in a try-catch block and ensure that only one result is returned.
 Now change the showAction() from the JobController to use the new repository method:
 
