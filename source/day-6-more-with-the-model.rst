@@ -6,8 +6,8 @@
 Doctrine クエリーオブジェクト
 -----------------------------
 
-|2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
-|しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
+| 2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
+| しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
 
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -31,13 +31,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
     // ...
    }
 
-アクティブなジョブは30日前以内に投稿されたものです。
-``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、データベースへのリクエストを行います。
-私たちはどんな条件も指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。
-では、アクティブなジョブのみを選択するよう変更してみましょう：
-An active job is one that was posted less than 30 days ago. The $entities = $em->getRepository('IbwJobeetBundle')->findAll() method will make a request to the database to get all the jobs.
- We are not specifying any condition, which means that all the records are retrieved from the database.
-Let’s change it to only select active jobs:
+| アクティブなジョブとは、30日前以内に投稿されたものです。
+| ``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、データベースへのリクエストを行います。
+| 現在は条件をなにも指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。
+| では、アクティブなジョブのみを選択するよう変更してみましょう：
+
 
 .. code-block:: php
 
