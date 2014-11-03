@@ -9,7 +9,7 @@ Symfony のテスト
 | Symfony においての自動化されたテストには単体テスト(ユニットテスト)と機能テスト( ``functional test`` )の2種類があります。
 | 単体テストは、各メソッドと機能が正常に動作していることを確認します。各テストは、他のものから、可能な限り独立していなければなりません。
 | 一方で、機能テストはアプリケーションの結果が、全体として正しく動作することを確認します。
-| 明日は機能テストに専念し、今日はユニットテストを説明します。
+| 明日は機能テストに専念し、今日は単体テストを説明します。
 | Symfony2 は独立したライブラリであり、豊富なテスト·フレームワークを提供する PHPUnit と統合されています。
 | テストを実行するには、 PHPUnit の 3.5.11 以降をインストールする必要があります。
 There are two different kinds of automated tests in Symfony: unit tests and functional tests.
@@ -48,7 +48,7 @@ If you follow this rule, then you can run all of your application’s tests with
 
 | -c オプションは、設定ファイルのためのディレクトリ app/ を参照するように PHPUnit に指示します。
 | PHPUnit のオプションについて興味があるなら、 app/phpunit.xml.dist ファイルを確認してください。
-| ユニットテストは、通常、特定のPHPクラスに対するテストです。 ``Jobeet::slugify()`` メソッドのためのテストを書くことから始めましょう。
+| 単体テスト（ユニットテスト）は、通常、特定のPHPクラスに対するテストです。 ``Jobeet::slugify()`` メソッドのためのテストを書くことから始めましょう。
 | src/Ibw/JobeetBundle/Tests/Utils フォルダに新しいファイル、 JobeetTest.php を作成します。
 | 慣例により、 Tests/ のサブディレクトリは、バンドルのディレクトリ構成を複製する必要があります。
 | バンドルのディレクトリ Utils/ のクラスをテストするときは、ディレクトリ Tests/Utils/ にテストを置おきます。

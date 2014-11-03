@@ -285,7 +285,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 * 有効なジョブを取得するためのロジックは、モデルに属します。
 * コントローラーのコードは、より薄く、より読みやすくします。
 * getActiveJobs() メソッドは、再利用可能なされている（たとえば別のアクションで）。
-* 現在、モデルコードはユニットテストが可能です。
+* 現在、モデルコードは単体テスト（ユニットテスト）が可能です。
 
 * This refactoring has several benefits over the previous code:
 * The logic to get the active jobs is now in the Model, where it belongs

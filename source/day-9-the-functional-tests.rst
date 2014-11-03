@@ -129,7 +129,7 @@ To learn more about crawler, read the Symfony documentation here.
 機能テストの実行
 ----------------
 
-ユニットテストに関して、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
+単体テスト（ユニットテスト）に関して、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
 As for unit tests, launching functional tests can be done by executing the phpunit command:
 
 .. code-block:: bash
