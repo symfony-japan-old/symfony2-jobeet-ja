@@ -3,9 +3,9 @@
 
 .. include:: common/original.rst.inc
 
-Jobeetの上で 11 日目に行わ追加により、アプリケーションは求職者と仕事の投稿者ともに使用可能になります。
-それでは、アプリケーションの管理セクションについて少し話をする時間です。
-今日では、``SonataAdminBundle`` のおかげで、1 時間未満でJobeetのための完全な管理インターフェイスを開発します。
+| Jobeetの上で 11 日目に行った追加により、アプリケーションは求職者と仕事の投稿者ともに使用可能になります。
+| それでは、アプリケーションの管理セクションについて少し話をする時間です。
+| 今日では、``SonataAdminBundle`` のおかげで、1 時間未満でJobeetのための完全な管理インターフェイスを開発します。
 With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters.
 It’s time to talk a bit about the admin section of our application.
 Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
@@ -133,12 +133,12 @@ You should now be able to access the admin dashboard using the following url: ht
 CRUD コントローラー
 -------------------
 
-CRUD コントローラは、基本的な CRUD アクションが含まれています。
-コントローラー名を正しい Admin インスタンスにマッピングすることで、 Admin クラスに関連付けます。
-一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
-コントローラは、さまざまなアクションを構築するために、管理クラスを使用します。
-コントローラの内部では、管理オブジェクトは、構成プロパティを介してアクセスできます。
-それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
+| CRUD コントローラは、基本的な CRUD アクションが含まれています。
+| コントローラー名を正しい Admin インスタンスにマッピングすることで、 Admin クラスに関連付けます。
+| 一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
+| コントローラは、さまざまなアクションを構築するために、管理クラスを使用します。
+| コントローラの内部では、管理オブジェクトは、構成プロパティを介してアクセスできます。
+| それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
 The CRUD controller contains the basic CRUD actions.
 It is related to one Admin class by mapping the controller name to the correct Admin instance.
 Any or all actions can be overwritten to suit the project’s requirements.
@@ -178,9 +178,9 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 Admin クラスの作成
 ------------------
 
-管理クラスは、モデルと管理セクション（forms, list, show）のマッピングを表します。
-お使いのモデルのための管理クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
-バンドルの管理フォルダに ``Admin`` クラスを作成します。 Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
+| 管理クラスは、モデルと管理セクション（forms, list, show）のマッピングを表します。
+| お使いのモデルのための管理クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
+| バンドルの管理フォルダに ``Admin`` クラスを作成します。 Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
 The Admin class represents the mapping of your model and administration sections (forms, list, show).
 The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class.
 We will create the Admin classes in the Admin folder of our bundle.
@@ -251,8 +251,8 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
                - Ibw\JobeetBundle\Entity\Job
                - 'IbwJobeetBundle:JobAdmin'
 
-この時点で、私たちはダッシュボードに Jobeet のグループを見ることができ、その中に、
-ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
+| この時点で、私たちはダッシュボードに Jobeet のグループを見ることができ、その中に、
+| ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
 At this point, we can see in the dashboard the Jobeet group and, inside it,
 the Job and Category modules, with their respective add and list links.
 
@@ -261,9 +261,9 @@ the Job and Category modules, with their respective add and list links.
 Admin クラスの構成
 ------------------
 
-現在どのリンクをたどっても、何も起こりません。
-リストやフォームに属しているフィールドを設定していない為です。
-まずはカテゴリに対して、基本的な設定を行いましょう。：
+| 現在どのリンクをたどっても、何も起こりません。
+| リストやフォームに属しているフィールドを設定していない為です。
+| まずはカテゴリに対して、基本的な設定を行いましょう。：
 If you follow any link right now, nothing will happen.
 That’s because we haven’t configure the fields that belong to the list and the form.
 Let’s do a basic configuration, first for the categories:
@@ -423,8 +423,8 @@ src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
        <td><img src="{{ asset(object.webPath) }}" /></td>
    </tr>
 
-これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。
-これを使用して見つける機能は、次のとおりです。
+| これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。
+| これを使用して見つける機能は、次のとおりです。
 With this, we created a basic administration module with operations for our jobs and categories.
 Some of the features you will find when using it are:
 
@@ -446,11 +446,11 @@ Some of the features you will find when using it are:
 バッチアクション
 ----------------
 
-バッチアクションは（すべての、または、特定のサブセットの）選択したモデルに対して実行されるアクションです。
-リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。
-デフォルトでは、``delete`` アクションを使用すると、一度に複数のエントリを削除することができます。
-新しいバッチアクションを追加するには、管理クラスから getBatchActions をオーバーライドする必要があります。
-では、ここで新しい ``extend`` アクションを定義しましょう。
+| バッチアクションは（すべての、または、特定のサブセットの）選択したモデルに対して実行されるアクションです。
+| リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。
+| デフォルトでは、``delete`` アクションを使用すると、一度に複数のエントリを削除することができます。
+| 新しいバッチアクションを追加するには、管理クラスから getBatchActions をオーバーライドする必要があります。
+| では、ここで新しい ``extend`` アクションを定義しましょう。
 Batch actions are actions triggered on a set of selected models (all of them or only a specific subset).
 You can easily add some custom batch action in the list view.
 By default, the delete action allows you to remove several entries at once.
@@ -480,11 +480,11 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-JobAdminController の batchActionExtend メソッドは、コアロジックを実現するために実行されます。
-クエリーの引数から、選択したモデルを取得します。
-選択したモデルは、引数に渡されたクエリーから取得します。
-（より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、
-渡されるクエリは null になります。
+| JobAdminController の batchActionExtend メソッドは、コアロジックを実現するために実行されます。
+| クエリーの引数から、選択したモデルを取得します。
+| 選択したモデルは、引数に渡されたクエリーから取得します。
+| （より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、
+| 渡されるクエリは null になります。
 The method batchActionExtend form the JobAdminController will be executed to achieve the core logic.
 The selected models are passed to the method through a query argument retrieving them.
 If for some reason it makes sense to perform your batch action without the default selection method
@@ -529,8 +529,8 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        }
    }
 
-それでは 60 日以上投稿者によって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
-アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
+| それでは 60 日以上投稿者によって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
+| アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
 Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days.
 For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
 
@@ -561,10 +561,10 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-batchActionDeleteNeverActivated アクションを作成するのに加えて、
-JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
-ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。
-（このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)
+| batchActionDeleteNeverActivated アクションを作成するのに加えて、
+| JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
+| ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。
+| （このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)
 In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController,
 batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation,
 to make sure there is actually something to confirm (in our case it will always return true
@@ -599,8 +599,8 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
    }
 
-今日はここまでです。明日は、ユーザー名とパスワードで管理領域を保護する方法を説明します。
-これは Symfony2 のセキュリティについて話をする機会になります。
+| 今日はここまでです。明日は、ユーザー名とパスワードで管理領域を保護する方法を説明します。
+| これは Symfony2 のセキュリティについて話をする機会になります。
 That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password.
 This will be the occasion to talk about the symfony2 security.
 

@@ -6,26 +6,26 @@
 URL
 ---
 
-Jobeetホームページの求人情報をクリックすると、URLは /job/1/show のようになります。
-すでに PHP で Webサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
-Symfony はどのようにそれを動作させるのでしょうか？ このURLに基づいてどのようにアクションを決定するのでしょうか？
-なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
-ここでは、これらすべての質問にお答えします。
-あなたは既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
+| Jobeetホームページの求人情報をクリックすると、URLは /job/1/show のようになります。
+| すでに PHP で Webサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
+| Symfony はどのようにそれを動作させるのでしょうか？ このURLに基づいてどのようにアクションを決定するのでしょうか？
+| なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
+| ここでは、これらすべての質問にお答えします。
+| 既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
 
 .. code-block:: html+jinja
 
    {{ path('ibw_job_show', { 'id': entity.id }) }}
 
-これはid 1を持つジョブのURLを生成するために、パステンプレートヘルパー関数を使用しています。
-ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
+| これはid 1を持つジョブのURLを生成するために、パステンプレートヘルパー関数を使用しています。
+| ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
 
 ルーティング設定
 ----------------
 
-Symfony2 では、ルーティング設定は、通常の app/config/routing.yml ファイルで行われます。
-これは、特定のバンドルのルーティング設定をインポートします。
-この例では、 src/Ibw/JobeetBundle/Resources/config/routing.yml ファイルがインポートされます。
+| Symfony2 では、ルーティング設定は、通常の app/config/routing.yml ファイルで行われます。
+| これは、特定のバンドルのルーティング設定をインポートします。
+| この例では、 src/Ibw/JobeetBundle/Resources/config/routing.yml ファイルがインポートされます。
 
 app/config/routing.yml
 
@@ -35,8 +35,8 @@ app/config/routing.yml
        resource: "@IbwJobeetBundle/Resources/config/routing.yml"
        prefix:   /
 
-さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
-そのファイルは、ジョブ·コントローラのためのものです。また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
+| さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
+| そのファイルは、ジョブ·コントローラのためのものです。また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -85,28 +85,28 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        defaults: { _controller: "IbwJobeetBundle:Job:delete" }
        requirements: { _method: post|delete }
 
-それでは ibw_job_show ルートを詳しく見てみましょう。
-ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
-URL /1/show の場合は、コントローラーで利用可能なid の値は、 1 です。
-_controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
-私たちのケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
-各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
+| それでは ibw_job_show ルートを詳しく見てみましょう。
+| ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
+| URL /1/show の場合は、コントローラーで利用可能なid の値は、 1 です。
+| _controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
+| 私たちのケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
+| 各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
 
 Dev 環境のルーティング設定
 --------------------------
 
-devの環境はWebデバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
-（すでに/app/config/routing_dev.php からAcmeDemoBundleのルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
-このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
+| devの環境はWebデバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
+| （すでに/app/config/routing_dev.php からAcmeDemoBundleのルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
+| このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
 
 ルートのカスタマイズ
 --------------------
 
-ブラウザで URL / のリクエストを投げたときに、今は、404 Not Foundエラーが表示されます。
-このURLが、定義されたどのルートとも一致しないためです。
-ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController 、 index アクションに送ります。
-これを URL / と一致するように変更して、 JobController の index アクションを呼び出すようにしてみましょう。
-変更を行うには、次のように行います。
+| ブラウザで URL / のリクエストを投げたときに、今は、404 Not Foundエラーが表示されます。
+| このURLが、定義されたどのルートとも一致しないためです。
+| ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController 、 index アクションに送ります。
+| これを URL / と一致するように変更して、 JobController の index アクションを呼び出すようにしてみましょう。
+| 変更を行うには、次のように行います。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -117,8 +117,8 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern:  /
        defaults: { _controller: IbwJobeetBundle:Job:index }
 
-キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のホームページが表示されます。
-これで、レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用したものに変更することができます。
+| キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のホームページが表示されます。
+| これで、レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用したものに変更することができます。
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -134,8 +134,8 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
     /job/sensio-labs/paris-france/1/web-developer
 
-Jobeetのことを何も知らなくても、ページを見なくても、Sensio LabsがWeb開発者をフランスのパリで探していることを、URLから理解することができます。
-以下のパターンは、上記のURLと一致します。
+| Jobeetのことを何も知らなくても、ページを見なくても、Sensio LabsがWeb開発者をフランスのパリで探していることを、URLから理解することができます。
+| 以下のパターンは、上記のURLと一致します。
 
     /job/{company}/{location}/{id}/{position}
 
@@ -167,8 +167,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
    http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
 
-私たちは、すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
-Job.phpファイルを開き、クラスに次のメソッドを追加します。
+| 私たちは、すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
+| Job.phpファイルを開き、クラスに次のメソッドを追加します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -197,9 +197,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-また、ジョブ·クラス定義の前にuse文を追加する必要があります。
-
-その後、src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
+| また、ジョブ·クラス定義の前にuse文を追加する必要があります。
+| その後、src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -221,9 +220,9 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        }
    }
 
-私たちは3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
-それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
-ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
+| 私たちは3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
+| それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
+| ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
 
 src/Ibw/JobeetBundle/views/Job/index.html.twig
 
@@ -258,16 +257,16 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 ルートのデバッグ
 ----------------
 
-ルートの追加とカスタマイズをする時に、ルートを視覚化し、それに関する詳細な情報を取得できるようにすると便利です。
-アプリケーション内のすべてのルート参照するのに最適な方法は、 ``router:debug`` というコンソールコマンドです。
-プロジェクトのルートから以下のコマンドを実行します。
+| ルートの追加とカスタマイズをする時に、ルートを視覚化し、それに関する詳細な情報を取得できるようにすると便利です。
+| アプリケーション内のすべてのルート参照するのに最適な方法は、 ``router:debug`` というコンソールコマンドです。
+| プロジェクトのルートから以下のコマンドを実行します。
 
 .. code-block:: bash
 
    $ php app/console router:debug
 
-このコマンドは、アプリケーション内に設定されたすべてのルートを一覧で出力します。
-また、コマンドの後にルート名を含めることで、単一ルートの非常に具体的な情報を得ることができます。
+| このコマンドは、アプリケーション内に設定されたすべてのルートを一覧で出力します。
+| また、コマンドの後にルート名を含めることで、単一ルートの非常に具体的な情報を得ることができます。
 
 .. code-block:: bash
 

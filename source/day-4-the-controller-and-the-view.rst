@@ -3,8 +3,8 @@
 
 .. include:: common/original.rst.inc
 
-今日は、昨日作成した基本的な ``jobController`` をカスタマイズいたします。
-そのための必要なコードの大部分はすでに私たちの Jobeet にはあります。
+| 今日は、昨日作成した基本的な ``jobController`` をカスタマイズいたします。
+| そのための必要なコードの大部分はすでに私たちの Jobeet にはあります。
 
 * すべての求人一覧(``list`` )ページ
 * 新しい求人作成( ``create`` )ページ
@@ -16,8 +16,8 @@
 MVC アーキテクチャー
 --------------------
 
-ウェブ開発のために、今日では、コードを整理するための最も一般的な解決策は、 `MVC design pattern`_ です。
-一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
+| ウェブ開発のために、今日では、コードを整理するための最も一般的な解決策は、 `MVC design pattern`_ です。
+| 一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
 
 * モデル層はビジネスロジックを（データベースはこのレイヤーに所属します）を定義します。
  すでに Symfony には、すべてのクラスとファイルをバンドルの Entity/ ディレクトリ内のモデルに保持しています。
@@ -34,15 +34,15 @@ MVC アーキテクチャー
 レイアウト
 ----------
 
-`mockups`_ を詳しく見てみると、各ページのほとんどが同じであることに気づくでしょう。
-HTMLやPHPのコードが重複することはよくないことはご存知だと思います。
-そのため、共通の表示要素の重複を避けるような方法を見つける必要があります。
-この問題を解決する1つの方法は、ヘッダとフッタを定義し、それらを各テンプレートから取り込むことです。
-この問題を解決するためのより良い方法は、別の設計パターンである `decorator design pattern`_ を使用することです。
-デコレータデザインパターンは、問題を別の方法で、順番を逆にして解決します。
-テンプレートは、コンテンツがレイアウトと呼ばれる共通テンプレートによってレンダリングされた後に装飾されます。
-Symfony2 には、デフォルトのレイアウトが付随していないため、レイアウトを作成し、アプリケーションのページを修飾するために使用します。
-src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードを記入します。：
+| `mockups`_ を詳しく見てみると、各ページのほとんどが同じであることに気づくでしょう。
+| HTMLやPHPのコードが重複することはよくないことはご存知だと思います。
+| そのため、共通の表示要素の重複を避けるような方法を見つける必要があります。
+| この問題を解決する1つの方法は、ヘッダとフッタを定義し、それらを各テンプレートから取り込むことです。
+| この問題を解決するためのより良い方法は、別の設計パターンである `decorator design pattern`_ を使用することです。
+| デコレータデザインパターンは、問題を別の方法で、順番を逆にして解決します。
+| テンプレートは、コンテンツがレイアウトと呼ばれる共通テンプレートによってレンダリングされた後に装飾されます。
+| Symfony2 には、デフォルトのレイアウトが付随していないため、レイアウトを作成し、アプリケーションのページを修飾するために使用します。
+| src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードを記入します。：
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -136,11 +136,11 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 Twig ブロック
 -------------
 
-Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
-``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
-それらを子テンプレートで置換または拡張することができます。
-作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
-親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の``body`` ブロックの内容で ``content`` ブロックを上書きします。
+| Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
+| ``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
+| それらを子テンプレートで置換または拡張することができます。
+| 作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
+| 親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の``body`` ブロックの内容で ``content`` ブロックを上書きします。
 
 .. code-block:: jinja
 
@@ -153,23 +153,23 @@ Symfony のデフォルトのテンプレートエンジンである ``Twig`` �
 スタイルシート,画像,JavaScript
 ------------------------------
 
-これはウェブデザインに関するものではないので、すでに Jobeet に使用するすべての必要なアセットを準備しました。
-:download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロード、解凍し、
-src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
-:download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロード、解凍し、
-src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
-そして、以下のコマンドを実行します。
+| これはウェブデザインに関するものではないので、すでに Jobeet に使用するすべての必要なアセットを準備しました。
+| :download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロード、解凍し、
+| src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
+| :download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロード、解凍し、
+| src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
+| そして、以下のコマンドを実行します。
 
 .. code-block:: bash
 
     $ php app/console assets:install web --symlink
 
-Symfonyにアセットを公開するよう指示します。
-css のフォルダ内を見ると、4つの cssファイル（admin.css、job.css、jobs.cssとのmain.css）を持っていることがわかります。
-main.cssは、すべてのJobeetのページで必要なため、 ``layout.html.twig`` の中の stylesheet ブロック内に含めています。
-残りは各ページごとに特化した css ファイルで、特定のページのみそれらを必要としています。
-テンプレートに新しい css ファイルを追加するには、 stylesheet ブロックを上書きします。
-ブロックの中で、新しい css ファイルを追加する前に、親を呼び出します（そのため、main.css と追加の css ファイルを持っているでしょう）。
+| Symfonyにアセットを公開するよう指示します。
+| css のフォルダ内を見ると、4つの cssファイル（admin.css、job.css、jobs.cssとのmain.css）を持っていることがわかります。
+| main.cssは、すべてのJobeetのページで必要なため、 ``layout.html.twig`` の中の stylesheet ブロック内に含めています。
+| 残りは各ページごとに特化した css ファイルで、特定のページのみそれらを必要としています。
+| テンプレートに新しい css ファイルを追加するには、 stylesheet ブロックを上書きします。
+| ブロックの中で、新しい css ファイルを追加する前に、親を呼び出します（そのため、main.css と追加の css ファイルを持っているでしょう）。
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -200,8 +200,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 求人のホームページのアクション
 -------------------------------
 
-各アクションはクラスのメソッドによって表されます。求人のホームページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
-以下では、データベースからすべてのジョブを取得しています。
+| 各アクションはクラスのメソッドによって表されます。求人のホームページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
+| 以下では、データベースからすべてのジョブを取得しています。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -222,10 +222,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得します。
-それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
-そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
-これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
+| コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得します。
+| それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
+| そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
+| これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
 
 求人のホームページのテンプレート
 --------------------------------
@@ -423,11 +423,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。ここでは、``find()`` メソッドを使用しています。
-このメソッドのパラメータは、``job`` の一意の識別子である主キーです。
-``actionShow()``  関数の ``$id`` パラメータに ``job`` の主キーが含まれている理由を次のセクションで説明します。
-データベースにジョブが存在しない場合、$this->createNotFoundException() の例外を投げることで、ユーザーを 404 ページに転送します。
-例外として、ユーザーに表示されるページは prod 環境と dev 環境で異なります。
+| indexアクションと同様に、``IbwJobeetBundle`` のリポジトリクラスは、``job`` を取得するために使用されます。ここでは、``find()`` メソッドを使用しています。
+| このメソッドのパラメータは、``job`` の一意の識別子である主キーです。
+| ``actionShow()``  関数の ``$id`` パラメータに ``job`` の主キーが含まれている理由を次のセクションで説明します。
+| データベースにジョブが存在しない場合、$this->createNotFoundException() の例外を投げることで、ユーザーを 404 ページに転送します。
+| 例外として、ユーザーに表示されるページは prod 環境と dev 環境で異なります。
 
 .. image:: /images/Day-4-error1.png
 .. image:: /images/Day-4-error2.png

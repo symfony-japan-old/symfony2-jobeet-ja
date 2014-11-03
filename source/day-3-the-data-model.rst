@@ -3,26 +3,26 @@
 
 .. include:: common/original.rst.inc
 
-今日はいくつかの開発に入ります。テキストエディタを開いて、PHP ファイルを書きたくうずうずしている場合は、これを知ってうれしくなるでしょう。
-私たちは、 ORM を使用してデータベースと対話し、アプリケーションの最初のモジュールを構築するために、 Jobeet のデータモデルを定義します。
-しかし、 Symfony は、私たちの多くの仕事と同様、 PHP コードをあまり書くことなく、完全に機能するウェブモジュールを持つことになります。
+| 今日はいくつかの開発に入ります。テキストエディタを開いて、PHP ファイルを書きたくうずうずしている場合は、これを知ってうれしくなるでしょう。
+| 私たちは、 ORM を使用してデータベースと対話し、アプリケーションの最初のモジュールを構築するために、 Jobeet のデータモデルを定義します。
+| しかし、 Symfony は、私たちの多くの仕事と同様、 PHP コードをあまり書くことなく、完全に機能するウェブモジュールを持つことになります。
 
 リレーションモデル
 ------------------
 
-前日のユーザーストーリーでは、私たちのプロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。
-ここで、対応する ER 図は次のとおりです。
+| 前日のユーザーストーリーでは、私たちのプロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。
+| ここで、対応する ER 図は次のとおりです。
 
 .. image:: /images/Day3-entity_diagram.png
 
-ストーリーで説明したカラムに加え、 created_at と updated_at のカラムを追加しました。
-オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。
+| ストーリーで説明したカラムに加え、 created_at と updated_at のカラムを追加しました。
+| オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。
 
 データベース
 ------------
 
-データベース内の求人、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
-データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。
+| データベース内の求人、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
+| データベース接続パラメータを定義するには、（このチュートリアルでは、私たちは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。
 
 app/config/parameters.yml
 
@@ -46,9 +46,9 @@ app/config/parameters.yml
 スキーマ
 --------
 
-Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
-今すぐエディタに移動し、 ``src/Ibw/JobeetBundle/Resources/config`` ディレクトリの中に ``doctrine`` という名前のディレクトリを作成してください。
-``doctrine`` には 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）が入っています。
+| Doctrine に私たちのオブジェクトを教えるために、「メタデータ」ファイルを作成します。それはオブジェクトをデータベースに格納する方法を説明します。
+| 今すぐエディタに移動し、 ``src/Ibw/JobeetBundle/Resources/config`` ディレクトリの中に ``doctrine`` という名前のディレクトリを作成してください。
+| ``doctrine`` には 3 つのファイル（Category.orm.yml、Job.orm.ymlとAffiliate.orm.yml）が入っています。
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
@@ -193,8 +193,8 @@ Doctrine は以下のコマンドを使用してオブジェクトを定義す�
 
     $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-``IbwJobeetBundle`` の ``Entity`` ディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
-Job.php を開いて、``created_at`` と ``updated_at`` に以下のような値を設定します。
+| ``IbwJobeetBundle`` の ``Entity`` ディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
+| Job.php を開いて、``created_at`` と ``updated_at`` に以下のような値を設定します。
 I
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -238,9 +238,9 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
    // ...
 
-これによって、オブジェクトの保存または更新をするときに、 Doctrine が created_at を設定し updated_at を更新するようになります。
-この動作は、上記の Affiliate.orm.yml と Job.orm.yml ファイルで定義されていました。
-また、データベースのテーブルを作成するために以下のコマンドを使用して Doctrine に問い合わせます。
+| これによって、オブジェクトの保存または更新をするときに、 Doctrine が created_at を設定し updated_at を更新するようになります。
+| この動作は、上記の Affiliate.orm.yml と Job.orm.yml ファイルで定義されていました。
+| また、データベースのテーブルを作成するために以下のコマンドを使用して Doctrine に問い合わせます。
 
 .. code-block:: bash
 
@@ -250,12 +250,12 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
    このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新する、よりしっかりした方法については、 Doctrine のマイグレーションについて読んでください。
 
-データベース内にテーブルは作成されていますがデータはそこにありません。
-おおくのWebアプリケーションでは、3つのデータタイプがあります。
-初期データ（これはアプリケーションが稼動するのに必要。私たちのケースではいくつかの初期カテゴリと管理者ユーザを持つことになります）、
-テストデータ（アプリケーションをテストするために必要）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
-いくつかの初期データに基づいてデータベースを作成するためには、 ``DoctrineFixturesBundle``_ を使用します。
-このバンドルのセットアップは、次の手順に従っておこないます。
+| データベース内にテーブルは作成されていますがデータはそこにありません。
+| おおくのWebアプリケーションでは、3つのデータタイプがあります。
+| 初期データ（これはアプリケーションが稼動するのに必要。私たちのケースではいくつかの初期カテゴリと管理者ユーザを持つことになります）、
+| テストデータ（アプリケーションをテストするために必要）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
+| いくつかの初期データに基づいてデータベースを作成するためには、 ``DoctrineFixturesBundle``_ を使用します。
+| このバンドルのセットアップは、次の手順に従っておこないます。
 
 1. composer.json ファイルの ``require`` セクションに以下を追加します。
 
@@ -410,15 +410,15 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 ブラウザーで見る
 ----------------
 
-あなたは以下のコマンドを実行すると、新しいコントローラ src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
-それは、求人のリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。
+| 以下のコマンドを実行し、新しいコントローラー、 src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
+| それは、求人のリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。
 
 .. code-block:: bash
 
     $ php app/console doctrine:generate:crud --entity=IbwJobeetBundle:Job --route-prefix=ibw_job --with-write --format=yml
 
-このコマンドを実行した後は、いくつかの設定をプロンプトの要求に応じて行う必要があります。デフォルトの答えをただ選択します。
-ブラウザでこれを表示するには、作成した新しいルート src/Ibw/JobeetBundle/Resources/config/routing/job.yml をメインルーティングファイルにインポートする必要があります。
+| このコマンドを実行した後は、いくつかの設定をプロンプトの要求に応じて行う必要があります。デフォルトの答えをただ選択します。
+| ブラウザでこれを表示するには、作成した新しいルート src/Ibw/JobeetBundle/Resources/config/routing/job.yml をメインルーティングファイルにインポートする必要があります。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -455,10 +455,10 @@ src/Ibw/JobeetBundle/Entity/Category.php
 
 .. image:: /images/Day-3-index_page.png
 
-これで求人の作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
-そう、Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
-以上です。今日、私たちは少ししかPHPコードを書いていませんが、微調整とカスタマイズの準備ができた、 ``job`` モデルのためのWebモジュールを持ちました。
-明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
+| これで求人の作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
+| そう、Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
+| 以上です。今日、私たちは少ししかPHPコードを書いていませんが、微調整とカスタマイズの準備ができた、 ``job`` モデルのためのWebモジュールを持ちました。
+| 明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
 
 .. include:: common/license.rst.inc
 
