@@ -1,25 +1,21 @@
 11日目: フォームのテスト
-==========================
-Day 11: Testing your Forms
-==========================
+========================
 
 .. include:: common/original.rst.inc
 
 10 日目では、 Symfony 2.3 での最初のフォームを作成しました。
 現在、ユーザーが Jobeet に新しいジョブを投稿することができますが、それに対してテストを追加する前に時間切れになってしまいました。
 つまり、これらの線に沿って行っていきます。
-In day 10, we created our first form with Symfony 2.3. 
-People are now able to post a new job on Jobeet but we ran out of time before we could add some tests. 
+In day 10, we created our first form with Symfony 2.3.
+People are now able to post a new job on Jobeet but we ran out of time before we could add some tests.
 That’s what we will do along these lines.
 
 フォームの送信
------------
-Submitting a Form
------------------
+--------------
 
 それではジョブの作成と検証プロセスのための機能テストを追加するため、 JobControllerTest ファイルを開いてみましょう。
 ジョブ 作成ページを取得するために、ファイルの終わりに次のコードを追加します。
-Let’s open the JobControllerTest file to add functional tests for the job creation and validation process. 
+Let’s open the JobControllerTest file to add functional tests for the job creation and validation process.
 At the end of the file, add the following code to get the job creation page:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -38,7 +34,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 フォームを選択するために selectButton() メソッドを使用します。このメソッドは、``button`` タグを選択し、 ``input`` タグを送信することができます。
 ボタンを表すクローラを入手したら、ボタンノードを包むフォームのインスタンスを取得するために、 ``form()`` メソッドを呼び出します。
-To select forms we will use the selectButton() method. This method can select button tags and submit input tags. 
+To select forms we will use the selectButton() method. This method can select button tags and submit input tags.
 Once you have a Crawler representing a button, call the form() method to get a Form instance for the form wrapping the button node:
 
 .. code-block:: php
@@ -97,8 +93,6 @@ The browser also simulates file uploads if you pass the absolute path to the fil
 After submitting the form, we checked that the executed action is create.
 
 フォームのテスト
------------
-Testing the Form
 ----------------
 
 フォームが有効な場合、ジョブが作成され、ユーザーがプレビューページにリダイレクトされている必要があります。
@@ -116,9 +110,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 データベースレコードのテスト
---------------------
-Testing the Database Record
----------------------------
+----------------------------
 
 最終的に、ジョブがデータベースに作成された上、ユーザーがそれをまだ公表しないように is_activated カラムが false に設定されていることを確認したいと思います。
 Eventually, we want to test that the job has been created in the database and check that the is_activated column is set to false as the user has not published it yet.
@@ -140,13 +132,11 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 エラーのテスト
-----------
-Testing for Errors
-------------------
+--------------
 
 ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。
 それでは、有効ではないデータを送信した場合のテストを追加してみましょう。：
-The job form creation works as expected when we submit valid values. 
+The job form creation works as expected when we submit valid values.
 Let’s add a test to check the behavior when we submit non-valid data:
 
 .. code-block:: php
@@ -180,9 +170,9 @@ Let’s add a test to check the behavior when we submit non-valid data:
 ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
 これらの3つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
 しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。：
-Now, we need to test the admin bar found on the job preview page. 
-When a job has not been activated yet, you can edit, delete, or publish the job. 
-To test those three actions, we will need to first create a job. 
+Now, we need to test the admin bar found on the job preview page.
+When a job has not been activated yet, you can edit, delete, or publish the job.
+To test those three actions, we will need to first create a job.
 But that’s a lot of copy and paste, so let’s add a job creator method in the JobControllerTest class:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -215,7 +205,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 createJob() メソッドは、ジョブを作成し、リダイレクトをたどり、ブラウザを返します。
 createJob() メソッドの引数に渡す配列は、デフォルト値にマージされ ``form`` メソッドの引数となります。
 パブリッシュアクションのテストは今より簡単です。
-The createJob() method creates a job, follows the redirect and returns the browser. 
+The createJob() method creates a job, follows the redirect and returns the browser.
 You can also pass an array of values that will be merged with some default values.
 Testing the Publish action is now more simple:
 
@@ -265,16 +255,14 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 SafeGuard のテスト
----------------
-Tests as a SafeGuard
---------------------
+------------------
 
-求人が公開されている場合、もう編集することはできません。 
-この要件のために、「編集」リンクがプレビューページに表示されていない場合でも、いくつかのテストを追加しましょう​​。 
+求人が公開されている場合、もう編集することはできません。
+この要件のために、「編集」リンクがプレビューページに表示されていない場合でも、いくつかのテストを追加しましょう​​。
 まず、ジョブの自動発行を可能にするため、 createJob() メソッドに別の引数を追加し、役職の値で選択して一つのジョブを返す getJobByPosition() メソッドを作成します。
-When a job is published, you cannot edit it anymore. 
+When a job is published, you cannot edit it anymore.
 Even if the “Edit” link is not displayed anymore on the preview page, let’s add some tests for this requirement.
-First, add another argument to the createJob() method to allow automatic publication of the job, 
+First, add another argument to the createJob() method to allow automatic publication of the job,
 and create  a getJobByPosition() method that returns a job given its position value:
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -341,9 +329,9 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 テストを実行すると、期待される結果を取得できないでしょう。私たちが昨日、このセキュリティ対策を実装するのを忘れたためです。
-テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。 
+テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。
 バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。：
-But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday. 
+But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday.
 Writing tests is also a great way to discover bugs, as you need to think about all edge cases.
 Fixing the bug is quite simple as we just need to forward to a 404 page if the job is activated:
 
@@ -370,21 +358,19 @@ src/Ibw/JobeetBundle/Controller/JobController.php
      // ...
    }
 
-テストの中で未来に戻る
-------------------
-Back to the Future in a Test
-----------------------------
+未来に戻ってのテスト
+--------------------
 
 ジョブが 5 日以内に期限が切れる、または、すでに期限切れした場合、ユーザーは現在から 30 日間、ジョブの検証を延長することができます。
 ブラウザでこの要件をテストすることは簡単ではありません。有効期限がジョブ作成の 30 日後に自動的に設定されてしまうためです。
 また、求人ページを取得するときに、ジョブを延長するためのリンクが存在しません。
 確かに、あなたは、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することでできます。しかし、それは退屈で間違いやすいです。
-すでに推測してきたように、いくつかのテストを書くことは、時間の節約になります。 
+すでに推測してきたように、いくつかのテストを書くことは、時間の節約になります。
 はじめに、いつものように ``extend`` メソッドに新しいルートを追加する必要があります。
 When a job is expiring in less than five days, or if it is already expired, the user can extend the job validation for another 30 days from the current date.
-Testing this requirement in a browser is not easy as the expiration date is automatically set when the job is created to 30 days in the future. 
-So, when getting the job page, the link to extend the job is not present. 
-Sure, you can hack the expiration date in the database, or tweak the template to always display the link, but that’s tedious and error prone. 
+Testing this requirement in a browser is not easy as the expiration date is automatically set when the job is created to 30 days in the future.
+So, when getting the job page, the link to extend the job is not present.
+Sure, you can hack the expiration date in the database, or tweak the template to always display the link, but that’s tedious and error prone.
 As you have already guessed, writing some tests will help us one more time.
 As always, we need to add a new route for the extend method first:
 
@@ -561,23 +547,21 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 メンテナンスタスク
--------------
-Maintenance Tasks
------------------
+------------------
 
 Symfony は Web フレームワークであっても、コマンドラインツールが付属しています。
 アプリケーションバンドルのデフォルトのディレクトリ構造を作成し、モデルのさまざまなファイルを生成するために使用しています。
-新しいコマンドを追加するのはとても簡単です。 
+新しいコマンドを追加するのはとても簡単です。
 ユーザーがジョブを作成した際、管理者はジョブをオンラインに置くためにアクティブ化する必要があります。
 アクティブ化されない場合、データベースは古いジョブがたまってしまいます。
 データベースから古いジョブを削除するコマンドを作成してみましょう。
 このコマンドは、 cron で定期的に実行する必要があります。
-Even if symfony is a web framework, it comes with a command line tool. 
-You have already used it to create the default directory structure of the application bundle and to generate various files for the model. 
+Even if symfony is a web framework, it comes with a command line tool.
+You have already used it to create the default directory structure of the application bundle and to generate various files for the model.
 Adding a new command is quite easy.
-When a user creates a job, he must activate it to put it online. 
-But if not, the database will grow with stale jobs. 
-Let’s create a command that remove stale jobs from the database. 
+When a user creates a job, he must activate it to put it online.
+But if not, the database will grow with stale jobs.
+Let’s create a command that remove stale jobs from the database.
 This command will have to be run regularly in a cron job.
 
 src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
