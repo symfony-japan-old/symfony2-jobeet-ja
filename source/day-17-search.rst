@@ -367,10 +367,10 @@ To make it work, update the layout:
        <!-- ... -->
    <!-- ... -->
 
-結合テスト
+単体テスト
 ----------
 
-| 検索エンジンをテストするためにどのような結合テストを作成すべきでしょうか？
+| 検索エンジンをテストするためにどのような単体テストを作成すべきでしょうか？
 | 明らかに Zend Lucene ライブラリそのもののテストではなく、ジョブ·クラスとの統合をテストすることです。
 | JobRepositoryTest.php ファイルの最後に次のテストを追加します。
 What kind of unit tests do we need to create to test the search engine?
@@ -496,10 +496,11 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
        }
    }
 
-| このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Luceneの組み込みのoptimize() メソッドによって最適化します。
+| このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Lucene の組み込みの optimize() メソッドによって最適化します。
 | 本日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
 | プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。
-| 明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましくJavaScriptを使います。
+| 明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、
+| 検索エンジンのレスポンスを強化するために慎ましく JavaScript を使います。
 | もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。
 The task removes all expired jobs from the index and then optimizes it thanks to the Zend Lucene built-in optimize() method.
 Along this day, we implemented a full search engine with many features in less than an hour.
