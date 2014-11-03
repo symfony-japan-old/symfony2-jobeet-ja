@@ -257,42 +257,42 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 | いくつかの初期データに基づいてデータベースを作成するためには、 ``DoctrineFixturesBundle``_ を使用します。
 | このバンドルのセットアップは、次の手順に従っておこないます。
 
-1. composer.json ファイルの ``require`` セクションに以下を追加します。
+   1. composer.json ファイルの ``require`` セクションに以下を追加します。
 
-.. code-block:: json
+   .. code-block:: json
 
-   // ...
-       "require": {
-           // ...
-           "doctrine/doctrine-fixtures-bundle": "dev-master",
-           "doctrine/data-fixtures": "dev-master"
-       },
+      // ...
+          "require": {
+              // ...
+              "doctrine/doctrine-fixtures-bundle": "dev-master",
+              "doctrine/data-fixtures": "dev-master"
+          },
 
-   // ...
+      // ...
 
-2. ベンダライブラリを更新します。
+   2. ベンダライブラリを更新します。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ php composer.phar update
+       $ php composer.phar update
 
-3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
+   3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
 
-app/AppKernel.php
+      app/AppKernel.php
 
-.. code-block:: php
+   .. code-block:: php
 
-   // ...
+      // ...
 
-   public function registerBundles()
-   {
-       $bundles = array(
-           // ...
-           new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
-       );
+      public function registerBundles()
+      {
+          $bundles = array(
+              // ...
+              new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
+          );
 
-       // ...
-   }
+          // ...
+      }
 
 今ではすべてがセットアップされ、私たちはデータをロードするために、私たちのバンドル内の src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。
 
