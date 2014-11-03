@@ -1,5 +1,5 @@
-15日目: Web Services
-====================
+15日目: ウェブサービス
+======================
 
 .. include:: common/original.rst.inc
 

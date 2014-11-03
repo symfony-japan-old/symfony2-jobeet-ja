@@ -1,5 +1,5 @@
-14日目: Feeds
-=============
+14日目: フィード
+================
 
 .. include:: common/original.rst.inc
 
