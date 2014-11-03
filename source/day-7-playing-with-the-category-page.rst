@@ -3,18 +3,18 @@
 
 .. include:: common/original.rst.inc
 
-今日は、二日目の要件に記載されているカテゴリページを作成します::
+今日は、二日目の要件に記載されているカテゴリページを作成します
 Today we will make the Category page like it is described in the second day’s requirements::
 
 .. note::
-
    ジョブはページごとに20件で分割され、カテゴリは日付でソートされています。。
    “The user sees a list of all the jobs from the category sorted by date and paginated with 20 jobs per page“
 
 カテゴリールート
 ----------------
 
-最初に、カテゴリページの URL を定義するためにルートを追加する必要があります。ルーティング·ファイルの先頭にそれを追加します。
+| 最初に、カテゴリページの URL を定義するためにルートを追加する必要があります。
+| ルーティング·ファイルの先頭にそれを追加します。
 First, we need to add a route to define a pretty URL for the category page. Add it at the beginning of the routing file:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -295,7 +295,8 @@ src/Ibw/JobeetBundle/Entity/Category.php
        }
    }
 
-ここで、私たちは、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、フィクスチャーをロードする必要があります。
+| ここで、私たちは、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、
+| フィクスチャーをロードする必要があります。
 Now we have to drop the database and create it again with the new Category column and load the fixtures:
 
 .. code-block:: bash
@@ -429,7 +430,8 @@ src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
 ----------------------
 
 | これを書いている時点では、 Symfony2 は、この問題を解決するための便利なページネーション·ツールを提供していない為、古典的な方法を使用します。
-| まずは、 IbwJobeetBundle_category ルートに ``page`` パラメータを追加してみましょう。  ``page`` パラメータは、デフォルト値が1となり、必須ではありません。
+| まずは、 IbwJobeetBundle_category ルートに ``page`` パラメータを追加してみましょう。
+| ``page`` パラメータは、デフォルト値が1となり、必須ではありません。
 At the moment of writing this, Symfony2 doesn’t provide any good pagination tools out of the box so to solve this problem we will use the old classic method.
 First, let’s add a page parameter to the IbwJobeetBundle_category route. The page parameter will have a default value of 1, so it will not be required:
 
