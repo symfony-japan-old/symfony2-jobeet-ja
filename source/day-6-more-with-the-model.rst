@@ -6,7 +6,7 @@
 Doctrine クエリーオブジェクト
 -----------------------------
 
-| 2日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
+| 2 日目の要件として、「ホームページでは、ユーザーは最新の有効な求人を閲覧します」としました。
 | しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。
 
 
@@ -31,7 +31,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
     // ...
    }
 
-| アクティブなジョブとは、30日前以内に投稿されたものです。
+| アクティブなジョブとは、 30 日前以内に投稿されたものです。
 | ``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、
 | データベースへのリクエストを行います。
 | 現在は条件をなにも指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。
@@ -71,12 +71,12 @@ In the dev environment, thanks to the Symfony Web Debug Toolbar, all the informa
 
 | 上記のコードは動作していても、 2 日目の「ユーザーは戻ってきて再度アクティブにするか、
 | 求人の期間の検証を 30 日以上に広げることが出来、、、」という要件から考慮すると、完璧にはほど遠いです。
-| しかし、上記のコードは created_at の値にのみ依存しており、このカラムは作成日を格納しているため、要件を満しません。
-| あなたは私たちが3日目に説明したデータベーススキーマを覚えていれば、 expires_at カラムも定義しましたことを覚えているでしょう。
+| 上記のコードは created_at の値にのみ依存しており、このカラムは作成日を格納しているため、要件を満しません。
+| あなたは私たちが 3 日目に説明したデータベーススキーマを覚えていれば、 expires_at カラムも定義したことを覚えているでしょう。
 | この値は、フィクスチャーファイルに設定されていない場合、空のままです。
-| しかし、ジョブが作成されるときに、自動的に現在の日付から30日後に設定することができます。
+| しかし、ジョブが作成されるときに、自動的に現在の日付から 30 日後に設定することができます。
 | Doctrine のオブジェクトがデータベースにシリアライズされる前に自動的に何かをする必要があるときは、先ほど created_at カラムで行ったように、
-| オブジェクトをデータベースにマッピングするファイルに、ライフサイクルコールバックの新しいアクションを追加することでできます。
+| オブジェクトをデータベースにマッピングするファイルに、ライフサイクルコールバックの新しいアクションを追加することで可能です。
 Even if the code above works, it is far from perfect as it does not take into account some requirements from Day 2:
 “A user can come back to re-activate or extend the validity of the job for an extra 30 days..”.
 But as the above code only relies on the created_at value, and because this column stores the creation date, we cannot satisfy the above requirement.

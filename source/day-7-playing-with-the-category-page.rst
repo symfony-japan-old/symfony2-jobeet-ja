@@ -1,21 +1,18 @@
 7日目: カテゴリーページ
-=====================================
+=======================
 
 .. include:: common/original.rst.inc
 
-今日は、二日目の要件に記載されているカテゴリページを作成します
-Today we will make the Category page like it is described in the second day’s requirements
+今日は、 2 日目の要件に記載されているカテゴリページを作成します
 
 .. note::
-   ジョブはページごとに20件で分割され、カテゴリは日付でソートされています。。
-   “The user sees a list of all the jobs from the category sorted by date and paginated with 20 jobs per page“
+   日付順に並べられたカテゴリのすべてのジョブを見ることが出来き、ページごとに20件のジョブでページ分割されています。
 
 カテゴリールート
 ----------------
 
 | 最初に、カテゴリページの URL を定義するためにルートを追加する必要があります。
 | ルーティング·ファイルの先頭にそれを追加します。
-First, we need to add a route to define a pretty URL for the category page. Add it at the beginning of the routing file:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -26,8 +23,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern:  /category/{slug}
        defaults: { _controller: IbwJobeetBundle:Category:show }
 
-カテゴリのスラグを取得するには、カテゴリクラスに getSlug() メソッドを追加する必要があります。
-To get the slug of a category we need to add the getSlug() method to our category class:
+カテゴリのスラグを取得するには、``Category`` クラスに getSlug() メソッドを追加する必要があります。
 
 src/Ibw/JobeetBundle/Entity/Category.php
 
