@@ -257,7 +257,7 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 | いくつかの初期データに基づいてデータベースを作成するためには、 ``DoctrineFixturesBundle``_ を使用します。
 | このバンドルのセットアップは、次の手順に従っておこないます。
 
-   1. composer.json ファイルの ``require`` セクションに以下を追加します。
+1. composer.json ファイルの ``require`` セクションに以下を追加します。
 
    .. code-block:: json
 
@@ -270,13 +270,13 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
       // ...
 
-   2. ベンダライブラリを更新します。
+2. ベンダライブラリを更新します。
 
    .. code-block:: bash
 
        $ php composer.phar update
 
-   3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
+3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
 
       app/AppKernel.php
 

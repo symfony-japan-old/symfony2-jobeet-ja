@@ -21,39 +21,39 @@ Jobeet とは
 
 1. Webサーバー Apache をインストールします。:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo apt-get install apache2
+       $ sudo apt-get install apache2
 
-次に、 Apache mod-rewrite を有効にします。
+   次に、 Apache mod-rewrite を有効にします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo a2enmod rewrite
+       $ sudo a2enmod rewrite
 
 2. MySQLサーバをインストールします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo apt-get install mysql-server mysql-client
+       $ sudo apt-get install mysql-server mysql-client
 
 3. サーバースクリプト言語、 PHP をインストールします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo apt-get install php5 libapache2-mod-php5 php5-mysql
+       $ sudo apt-get install php5 libapache2-mod-php5 php5-mysql
 
 4. 国際化拡張機能をインストールします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo apt-get install php5-intl
+       $ sudo apt-get install php5-intl
 
 5. ここで、Apache サービスを再起動する必要があります。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ sudo service apache2 restart
+       $ sudo service apache2 restart
 
 Symfony 2.3.2 のダウンロードとインストール
 ------------------------------------------
@@ -206,51 +206,51 @@ web/app_dev.php
 
 1. app/cache と、app/logs のパーミッションを変更します。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   sudo chmod -R 777 app/cache
-   sudo chmod -R 777 app/logs
-   sudo setfacl -dR -m u::rwX app/cache app/logs
+      sudo chmod -R 777 app/cache
+      sudo chmod -R 777 app/logs
+      sudo setfacl -dR -m u::rwX app/cache app/logs
 
-まだ ACL を持っていない場合はインストールします。
+   まだ ACL を持っていない場合はインストールします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   sudo apt-get install acl
+      sudo apt-get install acl
 
 2. php.iniで date.timezone を設定します
 
-/etc/php5/apache2/php.ini
+   /etc/php5/apache2/php.ini
 
-.. code-block:: ini
+   .. code-block:: ini
 
-   date.timezone = Europe/Bucharest
+      date.timezone = Europe/Bucharest
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   sudo nano /etc/php5/apache2/php.ini
+      sudo nano /etc/php5/apache2/php.ini
 
-[date] セクションの date.timezone を見つけて、あなたのタイムゾーンを設定します。その後、";" を削除し、行の先頭に配置します。
+   [date] セクションの date.timezone を見つけて、あなたのタイムゾーンを設定します。その後、";" を削除し、行の先頭に配置します。
 
 3. 同じ php.ini ファイルで short_open_tag をオフに設定します。
 
-/etc/php5/apache2/php.ini
+   /etc/php5/apache2/php.ini
 
-.. code-block::
+   .. code-block::
 
-   short_open_tag
-     Default Value: Off
+      short_open_tag
+        Default Value: Off
 
 4. PHP アクセラレータ（APC推奨）をインストールし有効にします。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   sudo apt-get install php-apc
-   sudo service apache2 restart
+      sudo apt-get install php-apc
+      sudo service apache2 restart
 
-Apache を再起動した後、 ブラウザを開き http://jobeet.local/app_dev.php とタイプします。次のページが表示されます。
+   Apache を再起動した後、 ブラウザを開き http://jobeet.local/app_dev.php とタイプします。次のページが表示されます。
 
-.. image:: /images/Day-1-SF_welcome.jpg
+   .. image:: /images/Day-1-SF_welcome.jpg
 
 Symfony2 のコンソール
 ---------------------
@@ -323,33 +323,33 @@ AcmeDemoBundle の削除の仕方
 
 1. ``Acme`` ディレクトリを削除するコマンドを入力します。
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    $ rm -rf /var/www/jobeet/src/Acme
+       $ rm -rf /var/www/jobeet/src/Acme
 
 2. /var/www/jobeet/app/AppKernel.php を開いて行の削除をします。
 
-app/AppKernel.php
+   app/AppKernel.php
 
-.. code-block:: php
+   .. code-block:: php
 
-   // ...
+      // ...
 
-   $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+      $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
 
-   // ...
+      // ...
 
-そして app/config/routing_dev.yml から削除します。
+   そして app/config/routing_dev.yml から削除します。
 
-app/config/routing_dev.yml
+   app/config/routing_dev.yml
 
-.. code-block:: yaml
+   .. code-block:: yaml
 
-   # ...
+      # ...
 
-   # AcmeDemoBundle routes (to be removed)
-   _acme_demo:
-       resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+      # AcmeDemoBundle routes (to be removed)
+      _acme_demo:
+          resource: "@AcmeDemoBundle/Resources/config/routing.yml"
 
 3. 最後に、キャッシュをクリアします。
 

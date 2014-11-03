@@ -448,9 +448,9 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 結果を制限
 ----------
 
-ホームページジョブリストのために実装する1つの要件がまだあります。
-私たちはジョブリストの数を10個に制限する必要があります。
-JobRepository:: getActiveJobs（） メソッドに $max のパラメータを追加するだけで十分です。
+| ホームページジョブリストのために実装する1つの要件がまだあります。
+| 私たちはジョブリストの数を10個に制限する必要があります。
+| JobRepository:: getActiveJobs（） メソッドに $max のパラメータを追加するだけで十分です。
 There is still one requirement to implement for the homepage job list: we have to limit the job list to 10 items.
 That’s simple enough to add the $max parameter to the JobRepository::getActiveJobs() method:
 
@@ -479,7 +479,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
         return $query->getResult();
     }
 
-パラメータに $max が含まれるように  getActiveJobs（） の呼び出しを変更します。
+パラメータに $max が含まれるように  getActiveJobs() の呼び出しを変更します。
 Change the call to getActiveJobs() to include the $max parameter:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -511,7 +511,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | JobController の indexAction メソッドでは、カテゴリごとの最大ジョブ数は、ハードコーディングされていました。
 | その10個の制限は、設定可能にする方がよいです。
-| Symfony の  app/config/config.yml ファイルの``parameters`` キーの下に（``parameters``が存在しない場合は作成して）アプリケーション用のカスタムパラメータを定義できます。
+| Symfony の  app/config/config.yml ファイルの ``parameters`` キーの下に（ ``parameters``が存在しない場合は作成して）
+| アプリケーション用のカスタムパラメータを定義できます。
 In the JobController, indexAction method, we have hardcoded the number of max jobs returned for a category.
 It would have been better to make the 10 limit configurable.
 In Symfony, you can define custom parameters for your application in the app/config/config.yml file, under the parameters key (if the parameters key doesn’t exist, create it):
@@ -595,7 +596,8 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
    // ...
 
-``doctrine:fixtures:load`` タスクでフィクスチャーを再読み込みできます。ホームページのプログラミングカテゴリに 10 個のジョブだけが表示されています。
+| ``doctrine:fixtures:load`` タスクでフィクスチャーを再読み込みできます。
+| ホームページのプログラミングカテゴリに 10 個のジョブだけが表示されています。
 You can now reload the fixtures with the doctrine:fixtures:load task and see if only 10 jobs are displayed on the homepage for the Programming category:
 
 .. image:: /images/Day-6-limited-no-of-jobs.png
