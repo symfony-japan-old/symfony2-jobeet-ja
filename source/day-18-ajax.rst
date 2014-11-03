@@ -54,26 +54,28 @@ Instead of adding the behavior with an on*() HTML attributes, the main principle
 This way, if you disable JavaScript support in your browser, no behavior is registered, and the form still works as before.
 The first step is to intercept whenever a user types a key in the search box:
 
-実装前のコードの説明
-~~~~~~~~~~~~~~~~~~~~
-Explaining code before implementing
-
-.. code-block:: javascript
-
-   $('#search_keywords').keyup(function(key)
-   {
-       if (this.value.length >= 3 || this.value == '')
-       {
-           // do something
-       }
-   });
-
 .. note::
 
-      後で大きく修正するので、今はコードを追加しないでください。
-      最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
-   Don’t add the code for now, as we will modify it heavily.
-   The final JavaScript code will be added to the layout in the next section.
+   実装前のコードの説明
+
+   Explaining code before implementing
+
+   .. code-block:: javascript
+
+      $('#search_keywords').keyup(function(key)
+      {
+          if (this.value.length >= 3 || this.value == '')
+          {
+              // do something
+          }
+      });
+
+   .. note::
+
+         後で大きく修正するので、今はコードを追加しないでください。
+         最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
+      Don’t add the code for now, as we will modify it heavily.
+      The final JavaScript code will be added to the layout in the next section.
 
 ユーザーはキー入力のたびに、jQueryは上記のコードで定義された無名関数を実行します。
 ただし、ユーザーが3文字以上入力した場合、または、inputタグからすべてを削除した場合に限ります。
@@ -82,21 +84,23 @@ Every time the user types a key, jQuery executes the anonymous function defined 
 but only if the user has typed more than 3 characters or if he removed everything from the input tag.
 Making an AJAX call to the server is as simple as using the load() method on the DOM element:
 
-実装前のコードの説明
-~~~~~~~~~~~~~~~~~~~~
-Explaining code before implementing
+.. note::
 
-.. code-block:: javascript
+   実装前のコードの説明
 
-   $('#search_keywords').keyup(function(key)
-   {
-       if (this.value.length >= 3 || this.value == '')
-       {
-           $('#jobs').load(
-               $(this).parents('form').attr('action'), { query: this.value + '*' }
-           );
-       }
-   });
+   Explaining code before implementing
+
+   .. code-block:: javascript
+
+      $('#search_keywords').keyup(function(key)
+      {
+          if (this.value.length >= 3 || this.value == '')
+          {
+              $('#jobs').load(
+                  $(this).parents('form').attr('action'), { query: this.value + '*' }
+              );
+          }
+      });
 
 AJAX の呼び出しは、通常と同じ呼び出しで行います。
 アクションへの必要な変更は、次のセクションで行います。
