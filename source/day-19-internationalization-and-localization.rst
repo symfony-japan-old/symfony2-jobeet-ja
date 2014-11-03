@@ -24,7 +24,7 @@ Now, we will talk about Jobeet internationalization (or i18n) and localization (
 | Symfony の国際化とローカライゼーションの機能はユーザーの culture に基づいています。 culture はユーザーの言語と国の組み合わせです。
 | たとえば、フランス語を話すユーザーカルチャーは FR で、フランスからのユーザーのためのカルチャーはは fr_FR です。
 | 翻訳は、Translator サービスによって処理され、ユーザーのロケールを使用して検索し、翻訳されたメッセージを返し ます。
-| それを使用する前に、構成内の ``Translator`` を有効にします。
+| それを使用する前に、設定ファイルの ``translator`` を有効にします。
 No internationalization is possible without a user.
 When your website is available in several languages or for different regions of the world, the user is responsible for choosing the one that fits him best.
 The i18n and l10n features of symfony are based on the user culture.
@@ -53,7 +53,7 @@ URL内のカルチャー
 | Jobeet の Web サイトは英語とフランス語の両方で利用できます。
 | URL は単独のリソースのみを表しますので、カルチャーは URL に埋め込まれている必要があります。
 | そのためには、 routing.yml ファイルを開き、API以外のすべてのルートに特別なロケール変数を追加します。
-| シンプルなルートでは、URLの先頭に /{_locale} を追加します。
+| シンプルなルートにするため、URLの先頭に /{_locale} を追加します。
 The Jobeet website will be available in English and French.
 As an URL can only represent a single resource, the culture must be embedded in the URL.
 In order to do that, open the routing.yml file, and add the special locale variable for all routes but the api.
@@ -574,11 +574,11 @@ Don’ forget to clear the cache!
 | 国際化されたウェブサイトは、ユーザーインターフェイスが複数の言語に翻訳されることを意味します。
 | それは、ここでは、デフォルトでは英語とフランス語になります。
 | テンプレートを翻訳するためには、Twig タグ ``{% trans %}`` を使用します。
-| Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、 Symfony は現在のユーザーの culture 用の翻訳を探します。
-| 翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用しています。
+| Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、現在のユーザーの culture 用の翻訳を探します。
+| 翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用します。
 | すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。
 | このために、標準で最も柔軟なものである XLIFF 形式を使用します。
-| では、テンプレートに ``{% trans %}`` タグを追加することによって、翻訳を開始してみましょう：
+| では、テンプレートに ``{% trans %}`` タグを追加することから翻訳をはじめましょう。
 An internationalized website means that the user interface is translated into several language.
 For us, it will be english, by default, and french.
 In order to translate the templates, we will use the Twig tag {% trans %}.

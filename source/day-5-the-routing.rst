@@ -17,7 +17,7 @@ URL
 
    {{ path('ibw_job_show', { 'id': entity.id }) }}
 
-| これはid 1を持つジョブのURLを生成するために、パステンプレートヘルパー関数を使用しています。
+| これはid 1を持つジョブのURLを生成するために、 ``path`` テンプレートヘルパー関数を使用しています。
 | ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
 
 ルーティング設定
@@ -36,7 +36,8 @@ app/config/routing.yml
        prefix:   /
 
 | さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
-| そのファイルは、ジョブ·コントローラのためのものです。また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
+| そのファイルは、ジョブ·コントローラのためのものです。
+| また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
