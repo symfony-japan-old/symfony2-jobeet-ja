@@ -3,12 +3,13 @@
 
 .. include:: common/original.rst.inc
 
-| 任意のウェブサイトは、簡単な連絡先フォームのフィールドの多くが付いている複雑なものに形を持っています。
+| ウェブサイトのもつフォームには、簡単な連絡先フォームから、多くのフィールドが付いている複雑なもまであります。
 | フォームを書くことは、 Web 開発者にとって最も複雑で退屈な作業の一つです。
 | HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、
 | エラー·メッセージを表示し、エラー時にフィールドに再投入しと...
-| このチュートリアルの3日目で Doctrine の``doctrine:generate:crud`` コマンドでジョブエンティティのための単純な CRUD コントローラを生成しました。
-| これはまた、 /src/Ibw/JobeetBundle/Form/JobType.php ファイルで見つけることができるジョブのフォームを生成しました。
+| このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドで
+| ジョブエンティティのための単純な CRUD コントローラを生成しました。
+| また、ジョブフォームを /src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
 Any website has forms, from the simple contact form to the complex ones with lots of fields.
 Writing forms is also one of the most complex and tedious task for a web developer:
 you need to write the HTML form, implement validation rules for each field, process the values to store them in a database,
@@ -32,7 +33,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <a href="{{ path('ibw_job_new') }}">Post a Job</a>
 
-| そこで、JobController の createAction で、 ibw_job_show ルートのパラメータを、
+| そこで、JobController クラスの createAction メソッドの中で、 ibw_job_show ルートのパラメータを、
 | チュートリアルの5日目で作成した新しいルートと一致させるように変更します。
 Then, change the ibw_job_show route parameters in createAction of the JobController to match the new route we created in day 5 of this tutorial:
 
@@ -295,7 +296,7 @@ src/Ibw/JobeetBundle/Form/JobType.php
        }
    // ...
 
-アップロードされたファイルが有効な画像であることを確認するために、検証制約の``Image`` を使用します。
+アップロードされたファイルが有効な画像であることを確認するために、検証制約の ``Image`` を使用します。
 To make sure the uploaded file is a valid image, we will use the Image validation constraint:
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
@@ -384,7 +385,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | ロゴプロパティは、ファイルへの相対パスを格納し、データベースに永続化されます。
 | getAbsolutePath() はファイルの絶対パスを返す便利なメソッドです。
 | 一方、getWebPath() はアップロードされたファイルにリンクするWebパスを返す、テンプレートにて使用可能な便利なメソッドです。
-| データベース操作とファイルの移動が不可分になるように、実装を行います。エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
+| データベース操作とファイルの移動が不可分になるように、実装を行います。
+| エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
 | これを行うには、Doctrineがデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
 | これは、ジョブ·エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
 | Jobeet のチュートリアルの 3 日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックを追加します。
@@ -469,8 +471,11 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-| エンティティクラスは今必要なすべてを行います。クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、エンティティが削除された場合にファイルを削除します。
-| ファイルの移動は、エンティティによって一体として処理されるようになりましたので、以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
+| エンティティクラスは今必要なすべてを行います。
+| クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、
+| エンティティが削除された場合にファイルを削除します。
+| ファイルの移動は、エンティティによって一体として処理されるようになりましたので、
+| 以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
 The class now does everything we need:
 it generates a unique filename before persisting, moves the file after persisting, and removes the file if the entity is ever deleted.
 Now that the moving of the file is handled atomically by the entity, we should remove the code we added earlier in the controller to handle the upload:
@@ -970,8 +975,10 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
        token:
            - NotBlank: ~
 
-| 2 日目のユーザーストーリーを覚えていますか。「ユーザーが関連トークンを知っている場合にのみ、ジョブは編集することができる」というものです。
-| 今のところ、URLを推測して、編集したり、任意のジョブを削除することはとても簡単です。編集 URL が /job/ID/edit のようなもので、ID はジョブの主キーだからです。
+| 2 日目のユーザーストーリーを覚えていますか。
+| 「ユーザーが関連トークンを知っている場合にのみ、ジョブは編集することができる」というものです。
+| 今のところ、URLを推測して、編集したり、任意のジョブを削除することはとても簡単です。
+| 編集 URL が /job/ID/edit のようなもので、ID はジョブの主キーだからです。
 | シークレットトークンでのみジョブの編集と削除ができるようにルートを変更してみましょう。
 If you remember the user stories from day 2, a job can be edited only if the user knows the associated token.
 Right now, it is pretty easy to edit or delete any job, just by guessing the URL.
@@ -1237,8 +1244,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
        </ul>
    </div>
 
-| 多くのコードがありますが、ほとんどのコードを理解するのは簡単です。
-| より読みやすいテンプレートを作成するために、ジョブエンティティクラス内のショートカットメソッドをまとめて追加しました：
+| 多くのコードがありますが、ほとんどのコードは理解するのは簡単です。
+| より読みやすいテンプレートを作成するために、ジョブエンティティクラス内のショートカットメソッドをまとめて追加しました。
 There is a lot of code, but most of the code is simple to understand.
 To make the template more readable, we have added a bunch of shortcut methods in the Job entity class:
 
@@ -1445,7 +1452,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
 | これで、お使いのブラウザで新しいパブリッシュ機能をテストすることができます。
 | しかし、まだ修正箇所があります。
-| アクティブ化されていないジョブは、アクセス可能ではいけません。それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。
+| アクティブ化されていないジョブは、アクセス可能ではいけません。
+| それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。
 | この要件を追加するために JobRepository クラスのメソッドを編集する必要があります。
 You can now test the new publish feature in your browser.
 But we still have something to fix.
