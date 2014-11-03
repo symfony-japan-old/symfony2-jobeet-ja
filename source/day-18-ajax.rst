@@ -109,13 +109,15 @@ To manage the AJAX Call, the same action as the “normal” one is called.
 The needed changes in the action will be done in the next section.
 Last but not least, if JavaScript is enabled, we will want to remove the search button:
 
-実装前のコードの説明
-~~~~~~~~~~~~~~~~~~~~
-Explaining code before implementing
+.. note::
 
-.. code-block:: javascript
+   実装前のコードの説明
 
-   $('.search input[type="submit"]').hide();
+   Explaining code before implementing
+
+   .. code-block:: javascript
+
+      $('.search input[type="submit"]').hide();
 
 ユーザーのフィードバック
 ------------------------
