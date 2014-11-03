@@ -84,7 +84,7 @@ To run only this test, you can use the following command:
 
    $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
 
-すべてが正常に動作する必要があり、あなたは次のような結果を得るでしょう::
+すべてが正常に動作する必要があり、次のような結果を得るでしょう::
 As everything should work fine, you should get the following result::
 
    PHPUnit 3.7.22 by Sebastian Bergmann.
@@ -175,10 +175,10 @@ The test must now pass as expected, and you can enjoy the green bar.
 --------------------
 
 | その後、時間が経過し、ユーザーの1人から、「いくつかのジョブのリンク先が404エラーページになる」という奇妙なバグの報告を受けるとしましょう。​​
-| いくつかの調査の後、あなたはいくつかの理由で、これらのジョブが空の会社名、役職、住所 のスラグを持っていることがわかります。
+| いくつかの調査の後、いくつかの理由で、これらのジョブが空の会社名、役職、住所 のスラグを持っていることがわかります。
 | それはどのような場合に起こりますでしょうか？
-| あなたは、データベース内のレコードに目を通すと、カラムは間違いなく空ではありません。
-| あなたはしばらくの間それについて考え、ビンゴ、原因を見つけます。
+| データベース内のレコードに目を通すと、カラムは間違いなく空ではありません。
+| しばらくの間、それについて考え、ビンゴ、原因を見つけます。
 | 文字列が非ASCII文字のみで構成されている場合、slugify() メソッドは空の文字列に変換します。
 | 原因を発見したのに満足して、Jobeetのクラスを編集してすぐに問題を解決しようとするのは、よい考えではありません。
 | 最初に、テストを追加してみましょう：
@@ -218,8 +218,8 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 
 | 他のテスト同様に、新しいテストも通りました。 slugify() は、100％ のコード網羅率にもかかわらず、バグがありました。
 | テストを書くときには、すべてのエッジケースを考えることはできません。それは大丈夫です。
-| しかし、あなたが1つを発見したときに、コードを修正する前にテストを書く必要があります。
-| また、あなたのコードは時間かけて良くなることを意味します。それは常に良いことです。
+| しかし、 1 つを発見したときに、コードを修正する前にテストを書く必要があります。
+| また、コードは時間をかけて良くなることを意味します。それは常に良いことです。
 The new test now passes, as do all the other ones. The slugify() had a bug despite our 100% coverage.
 You cannot think about all edge cases when writing tests, and that’s fine.
 But when you discover one, you need to write a test for it before fixing your code.
@@ -228,7 +228,7 @@ It also means that your code will get better over time, which is always a good t
 よりよい slugify メソッドに向けて
 ---------------------------------
 
-| おそらく、あなたは Symfony がフランス人によって作られていることを知っているでしょう。
+| おそらく、 Symfony がフランス人によって作られていることを知っているでしょう。
 | そこで、「アクセント」が含まれているフランス語の単語でテストを追加してみましょう：
 You probably know that symfony has been created by French people,
 so let’s add a test with a French word that contains an “accent”:
@@ -239,7 +239,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
    $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
 
-| テストは失敗しなければいけません。é を e で置き換える代わりに、slugify（） メソッドは、ダッシュ（ - ） で置き換えました。
+| テストは失敗しなければいけません。é を e で置き換える代わりに、slugify() メソッドは、ダッシュ（ - ） で置き換えました。
 | 音訳と呼ばれる厳しい問題です。
 | iconv ライブラリがインストールされている場合は、うまくいけば動くでしょう。
 | 以下で slugify メソッドのコードを置き換えます。
@@ -328,9 +328,9 @@ Keep in mind that when this indicates that your code is fully unit tested, it ju
 Doctrine の単体テスト
 ---------------------
 
-| データベース接続を必要とする Doctrine モデルクラスのユニットテストは、もう少し複雑です。
-| あなたはすでに、あなたの開発のために使用するものを持っているが、それはテスト専用のデータベースを作成するには良い習慣です。
-| このチュートリアルの初めに、私たちはアプリケーションの設定を変更する方法として環境を導入しました。
+| データベース接続を必要とする Doctrine モデルクラスの単体テストは、もう少し複雑です。
+| すでに開発に使用するデータベースは持っていますが、テスト専用のデータベースを作成することは良い習慣です。
+| このチュートリアルの初めに、アプリケーションの設定を変更する方法として環境を導入しました。
 | デフォルトでは、すべての Symfony のテストは test 環境で実行されるので、 test 環境用に異なるデータベースを設定しましょう。
 | app/config ディレクトリに移動し、 parameters.yml ファイルをコピーして parameters_test.yml を作成します。
 | parameters_test.yml を編集し、 jobeet_test ためにデータベースの名前を変更します。

@@ -4,12 +4,12 @@
 .. include:: common/original.rst.inc
 
 | 今日は、昨日作成した基本的な ``jobController`` をカスタマイズいたします。
-| そのための必要なコードの大部分はすでに私たちの Jobeet にはあります。
+| そのための必要なコードの大部分はすでに Jobeet にはあります。
 
-* すべての求人一覧(``list`` )ページ
-* 新しい求人作成( ``create`` )ページ
-* 既存の求人の更新( ``update`` )をするページ
-* 求人の削除( ``delete`` )ページ
+* すべてのジョブ一覧(``list`` )ページ
+* 新しいジョブ作成( ``create`` )ページ
+* 既存のジョブの更新( ``update`` )をするページ
+* ジョブの削除( ``delete`` )ページ
 
 そのままのコードで使用はできますが、 `Jobeet mockups`_ に近づくようにリファクタリングします。
 
@@ -17,7 +17,8 @@ MVC アーキテクチャー
 --------------------
 
 | ウェブ開発のために、今日では、コードを整理するための最も一般的な解決策は、 `MVC design pattern`_ です。
-| 一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。このパターンは、 3 階層にコードを分離します。
+| 一言で言えば、 MVC デザインパターンは、その性質に応じてコードを整理する方法を定義します。
+| このパターンは、 3 階層にコードを分離します。
 
 * モデル層はビジネスロジックを（データベースはこのレイヤーに所属します）を定義します。
  すでに Symfony には、すべてのクラスとファイルをバンドルの Entity/ ディレクトリ内のモデルに保持しています。
@@ -139,7 +140,7 @@ Twig ブロック
 | Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
 | ``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
 | それらを子テンプレートで置換または拡張することができます。
-| 作成したレイアウトを利用するために、すべての求人のテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
+| 作成したレイアウトを利用するために、すべてのジョブのテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
 | 親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の``body`` ブロックの内容で ``content`` ブロックを上書きします。
 
 .. code-block:: jinja
@@ -197,10 +198,11 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    <!-- rest of the code -->
 
-求人のホームページのアクション
+ジョブのホームページのアクション
 -------------------------------
 
-| 各アクションはクラスのメソッドによって表されます。求人のホームページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
+| 各アクションはクラスのメソッドによって表されます。
+| ジョブのホームページは、クラスが ``JobController`` で、メソッドが ``indexAction()`` となります。
 | 以下では、データベースからすべてのジョブを取得しています。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -222,15 +224,16 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-| コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得します。
+| コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、
+| Doctrine のエンティティマネージャーを取得します。
 | それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
 | そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
 | これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
 
-求人のホームページのテンプレート
+ジョブのホームページのテンプレート
 --------------------------------
 
-index.html.twig テンプレートは、すべての求人の HTML テーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
+index.html.twig テンプレートは、すべてのジョブの HTML テーブルを生成します。ここでは現在のテンプレートのコードは次のとおりです。
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -336,10 +339,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 .. image:: /images/Day-4-2-jobs.png
 
-求人ページテンプレート
+ジョブページテンプレート
 ----------------------
 
-今度は、求人ページのテンプレートをカスタマイズしましょう。show.html.twig ファイルを開き、次のコードを使用して、その内容を置き換えます。
+今度は、ジョブページのテンプレートをカスタマイズしましょう。show.html.twig ファイルを開き、次のコードを使用して、その内容を置き換えます。
 
 src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
@@ -396,10 +399,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
 .. image:: /images/Day-4-individual-job.png
 
-求人詳細ページアクション
+ジョブ詳細ページアクション
 ------------------------
 
-求人ページは show アクションによって生成されます。 ``JobController`` の ``showAction()`` メソッドで定義されます。
+ジョブページは show アクションによって生成されます。 ``JobController`` の ``showAction()`` メソッドで定義されます。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 

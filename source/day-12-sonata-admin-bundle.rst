@@ -20,7 +20,7 @@ Start by downloading SonataAdminBundle and its dependencies to the vendor direct
 
    $ php composer.phar require sonata-project/admin-bundle
 
- ``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、入力として*与える。
+``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、入力として * を与えます。
 To install the latest version of the SonataAdminBundle and its dependencies, give * as input.
 
 .. code-block:: bash
@@ -251,7 +251,7 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
                - Ibw\JobeetBundle\Entity\Job
                - 'IbwJobeetBundle:JobAdmin'
 
-| この時点で、私たちはダッシュボードに Jobeet のグループを見ることができ、その中に、
+| この時点で、ダッシュボードに Jobeet のグループを見ることができ、その中に、
 | ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
 At this point, we can see in the dashboard the Jobeet group and, inside it,
 the Job and Category modules, with their respective add and list links.
@@ -411,7 +411,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        }
    }
 
-show アクションのために、私たちは、会社のロゴを表示するようにカスタムテンプレートを使用しました。
+show アクションのために、会社のロゴを表示するようにカスタムテンプレートを使用しました。
 For the show action we used a custom template to show the logo of the company:
 
 src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
@@ -529,8 +529,8 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        }
    }
 
-| それでは 60 日以上投稿者によって活性化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
-| アクションの論理が一致するレコードを検索して削除されますので、このアクションのために、私たちは、リストから任意のジョブを選択する必要はありません。
+| それでは 60 日以上投稿者によって有効化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
+| 条件が一致するレコードを検索して削除しますので、このアクションのために、リストから任意のジョブを選択する必要はありません。
 Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days.
 For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
 

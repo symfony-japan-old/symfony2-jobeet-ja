@@ -6,7 +6,7 @@
 URL
 ---
 
-| Jobeetホームページの求人情報をクリックすると、URLは /job/1/show のようになります。
+| Jobeetホームページのジョブ情報をクリックすると、URLは /job/1/show のようになります。
 | すでに PHP で Webサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
 | Symfony はどのようにそれを動作させるのでしょうか？ このURLに基づいてどのようにアクションを決定するのでしょうか？
 | なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
@@ -89,7 +89,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 | ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
 | URL /1/show の場合は、コントローラーで利用可能なid の値は、 1 です。
 | _controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
-| 私たちのケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
+| このケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
 | 各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
 
 Dev 環境のルーティング設定
@@ -117,7 +117,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern:  /
        defaults: { _controller: IbwJobeetBundle:Job:index }
 
-| キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。求人のホームページが表示されます。
+| キャッシュをクリアし、ブラウザから ``http://jobeet.local`` にアクセスしてください。ジョブのホームページが表示されます。
 | これで、レイアウト内の Jobeet のロゴのリンクを、 ibw_jobeet_homepage ルートを使用したものに変更することができます。
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -130,7 +130,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </a></h1>
    <!-- ... -->
 
-もう少し複雑にするため、求人ページのURLを以下のように、より意味のあるものに変更してみましょう。
+もう少し複雑にするため、ジョブページのURLを以下のように、より意味のあるものに変更してみましょう。
 
     /job/sensio-labs/paris-france/1/web-developer
 
@@ -167,7 +167,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
    http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
 
-| 私たちは、すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
+| すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
 | Job.phpファイルを開き、クラスに次のメソッドを追加します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -220,7 +220,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        }
    }
 
-| 私たちは3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
+| 3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
 | それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
 | ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
 
@@ -237,7 +237,8 @@ src/Ibw/JobeetBundle/views/Job/index.html.twig
 ルートの ``requirements``
 ------------------------
 
-ルーティングシステムは組み込みの検証機能を持っています。ルート定義の ``requirements`` の項目で定義された正規表現によって``pattern`` の各変数を検証することができます。
+| ルーティングシステムは組み込みの検証機能を持っています。
+| ルート定義の ``requirements`` の項目で定義された正規表現によって``pattern`` の各変数を検証することができます。
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 

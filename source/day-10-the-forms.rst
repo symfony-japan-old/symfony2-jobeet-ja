@@ -263,7 +263,7 @@ Symfony2 の中でファイルアップロードの処理
 -----------------------------------------
 
 | フォームで実際のファイルをアップロードするため、仮想の ``file`` フィールドを使用します。
-| このために、私たちはジョブエンティティに新しいファイルプロパティを追加します。
+| このために、ジョブエンティティに新しいファイルプロパティを追加します。
 To handle the actual file upload in the form, we will use a virtual file field.
 For this, we will add a new file property to the Job entity:
 
@@ -644,7 +644,7 @@ src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
        {{ form_end(form) }}
    {% endblock %}
 
-| 次のコードを使用してフォーム全体を表示することもできますが、私たちはより多くのカスタマイズを必要とするため、
+| 次のコードを使用してフォーム全体を表示することもできますが、より多くのカスタマイズを必要とするため、
 | 手で各フォームフィールドをレンダリングすることをにします。
 We could render the form by just using the following line of code, but as we need more customization, we choose to render each form field by hand.
 

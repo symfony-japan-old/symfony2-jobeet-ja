@@ -17,7 +17,7 @@ Affiliates will be able to publish the latest posted jobs on their websites than
 アフィリエイト
 --------------
 
-私たちはすでにこのチュートリアルの 2 日目で述べたように、アフィリエイトは、現在のアクティブなジョブのリストを取得します。
+すでにこのチュートリアルの 2 日目で述べたように、アフィリエイトは、現在のアクティブなジョブのリストを取得します。
 As we already said in day 2 of this tutorial, an affiliate retrieves the current active job list.
 
 フィクスチャー
@@ -261,7 +261,7 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
 
 | トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属する仕事を与えるため、 getActiveJobs() メソッドを使用します。
 | 現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。
-| 私たちは、そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
+| そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
 After identifying the affiliate by his token, we will use the getActiveJobs() method to give the affiliate the jobs he required, belonging to the selected categories.
 If you open your JobRepository file now, you will see that the getActiveJobs() method doesn’t share any connection with the affiliates.
 Because we want to reuse that method, we need to make some modifications inside of it:

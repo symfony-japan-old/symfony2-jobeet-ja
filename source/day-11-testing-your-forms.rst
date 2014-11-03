@@ -166,7 +166,7 @@ Let’s add a test to check the behavior when we submit non-valid data:
        $this->assertTrue($crawler->filter('#job_email')->siblings()->first()->filter('.error_list')->count() == 1);
    }
 
-| 今、私たちは、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
+| 今、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
 | ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
 | これらの3つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
 | しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。：
@@ -328,7 +328,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue(404 === $client->getResponse()->getStatusCode());
    }
 
-| テストを実行すると、期待される結果を取得できないでしょう。私たちが昨日、このセキュリティ対策を実装するのを忘れたためです。
+| テストを実行すると、期待される結果を取得できないでしょう。昨日、このセキュリティ対策を実装するのを忘れたためです。
 | テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。
 | バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。：
 But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday.
@@ -364,7 +364,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | ジョブが 5 日以内に期限が切れる、または、すでに期限切れした場合、ユーザーは現在から 30 日間、ジョブの検証を延長することができます。
 | ブラウザでこの要件をテストすることは簡単ではありません。有効期限がジョブ作成の 30 日後に自動的に設定されてしまうためです。
 | また、求人ページを取得するときに、ジョブを延長するためのリンクが存在しません。
-| 確かに、あなたは、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することでできます。しかし、それは退屈で間違いやすいです。
+| 確かに、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することでできます。しかし、それは退屈で間違いやすいです。
 | すでに推測してきたように、いくつかのテストを書くことは、時間の節約になります。
 | はじめに、いつものように ``extend`` メソッドに新しいルートを追加する必要があります。
 When a job is expiring in less than five days, or if it is already expired, the user can extend the job validation for another 30 days from the current date.

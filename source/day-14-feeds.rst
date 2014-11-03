@@ -3,7 +3,7 @@
 
 .. include:: common/original.rst.inc
 
-| あなたが仕事を探している場合は、おそらく新しいジョブが投稿されたらすぐに通知されることを望むでしょう。
+| ユーザーが仕事を探している場合は、おそらく新しいジョブが投稿されたらすぐに通知されることを望むでしょう。
 | 常にウェブサイトをチェックすることは非常に不便なので、 Jobeet ユーザーの更新を維持するためにいくつかのジョブのフィードを追加します。
 If you are looking for a job, you will probably want to be informed as soon as a new job is posted.
 Because it is not very convenient to check the website every other hour, we will add several job feeds here to keep our Jobeet users up-to-date.

@@ -168,7 +168,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 ------
 
 | Symfony のメーラーでメール送信する機能を作成しました。次は、作成したものが正しく動くか機能テストを書いて確認しましょう。
-| この新しい機能をテストするには、ログインする必要があります。ログインするには、私たちは、ユーザー名とパスワードが必要になります。
+| この新しい機能をテストするには、ログインする必要があります。ログインするには、ユーザー名とパスワードが必要になります。
 | ユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。：
 Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
 To test this new functionality, we need to be logged in. To log in, we will need an username and a password.

@@ -291,7 +291,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
        }
    }
 
-| ここで、私たちは、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、
+| ここで、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、
 | フィクスチャーをロードする必要があります。
 Now we have to drop the database and create it again with the new Category column and load the fixtures:
 
@@ -406,8 +406,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
        {% endfor %}
    </table>
 
-| あなたは、``include`` 関数を使用してテンプレートを取り込むことができます。
-| 両方のテンプレートから ``include`` 関数をよびだして、　HTML <table> のコードを置き換えます。
+| ``include`` 関数を使用してテンプレートを取り込むことができます。
+| 両方のテンプレートから ``include`` 関数をよびだして、 HTML <table> のコードを置き換えます。
 You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
 
 src/Ibw/JobeetBundle/Resources/view/Job/index.html.twig

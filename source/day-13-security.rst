@@ -8,7 +8,8 @@
 
 | セキュリティは、二段階のプロセスでユーザーがアクセス権を持たないリソースにアクセスすることを防止します。
 | 最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。
-| システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース（それはあなたが特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定することです。
+| システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース
+| （それは特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定します。
 | セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
 | アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。：
 Security is a two-step process whose goal is to prevent a user from accessing a resource that he/she should not have access to.
@@ -54,7 +55,7 @@ app/config/security.yml
 
 | この設定は、 /admin セクション(/admin で始まるすべてのURL)を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( ``access_control`` の項目を参照ください）。
 | この例では、``admin`` ユーザが設定ファイルで（ ``providers`` の箇所）に定義されていますが、パスワードがエンコーダで符号化されていません。
-| ユーザーを認証するためには伝統的にログインフォームを使用しますが、私たちはそれを実装する必要があります。
+| ユーザーを認証するためには伝統的にログインフォームを使用しますが、それを有効にする必要があります。
 | まず、ログインフォームの表示(すなわち /login )とログインフォームの送信の処理(すなわち /login_check )の二つのルートを作成します。
 This configuration will secure the /admin section of the website (all urls that start with /admin)
 and will allow only users with ROLE_ADMIN to access it (see the access_control section).
@@ -117,7 +118,8 @@ src/Ibw/JobeetBundle/Controller/DefaultController.php
 
 | ユーザーがフォームを送信すると、セキュリティシステムは自動的にフォームの送信を処理します。
 | 無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。
-| セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証するため、あなたの唯一の仕事は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
+| セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証します。
+| そのため、唯一の仕事は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
 | 最後に、対応するテンプレートを作成してみましょう：
 When the user submits the form, the security system automatically handles the form submission for you.
 If the user had submitted an invalid username or password, this action reads the form submission error from the security system so that it can be displayed back to the user.
@@ -415,7 +417,7 @@ You can use it to login to the admin section.
 ----------
 
 | ログアウトはファイアウォールによって自動的に処理されます。
-| あなたがしなければならないのは、ログアウトの config パラメータを有効化することです。：
+| 唯一の作業は、ログアウトの config パラメータを有効化することです。：
 Logging out is handled automatically by the firewall.
 All you have to do is to activate the logout config parameter:
 
@@ -449,7 +451,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
    # ...
 
-| これが設定されたら、/logout （または、あなたが設定するパスは何でも）にユーザーを送信することで、現在のユーザの認証の解除をします。
+| これが設定されたら、/logout （または、設定するパスは何でも）にユーザーを送信することで、現在のユーザの認証の解除をします。
 | 次いで、ユーザは、ホームページ（target パラメータによって定義された値）に送られます。
 | あと残った作業は、ログアウトのリンクを管理セクションに追加することです。
 | これを行うために SonataAdminBundle の user_block.html.twig をオーバーライドします。
@@ -466,7 +468,8 @@ app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
 
    {% block user_block %}<a href="{{ path('logout') }}">Logout</a>{% endblock%}
 
-使用すると、管理セクション（最初のキャッシュをクリア）を入力しようとした場合さて、あなたは、ユーザー名とパスワードの入力を要求され、その後、ログアウトリンクは右上隅に表示されます。
+| (初めにキャッシュをクリアしてから)管理セクションに入ろうとした場合、ユーザー名とパスワードの入力を要求され、
+| その後、ログアウトリンクが右上隅に表示されます。
 Now, if you try to enter the admin section (clear the cache first), you will be asked for an username and password and then, the logout link will be shown in the top-right corner.
 
 ユーザーセッション
@@ -566,7 +569,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 | フラッシュメッセージはユーザのセッションに保存することがでる小さなメッセージで、正確に一回のリクエストのためのものです。
 | リダイレクトして、次のリクエストで特別なメッセージを表示する、などのフォームの処理をするのに便利です。
-| 私たちはジョブを公開するときにすでに私たちのプロジェクトでフラッシュメッセージを使用していました。
+| ジョブを公開するときにすでにプロジェクトでフラッシュメッセージを使用していました。
 Flash messages are small messages you can store on the user’s session for exactly one additional request.
 This is useful when processing a form: you want to redirect and have a special message shown on the next request.
 We already used flash messages in our project when we publish a job:
