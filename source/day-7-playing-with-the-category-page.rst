@@ -4,7 +4,7 @@
 .. include:: common/original.rst.inc
 
 今日は、二日目の要件に記載されているカテゴリページを作成します
-Today we will make the Category page like it is described in the second day’s requirements::
+Today we will make the Category page like it is described in the second day’s requirements
 
 .. note::
    ジョブはページごとに20件で分割され、カテゴリは日付でソートされています。。

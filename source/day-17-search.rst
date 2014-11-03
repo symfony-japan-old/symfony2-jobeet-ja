@@ -237,7 +237,7 @@ Now that we have everything in place, you can reload the fixture data to index t
 検索を実装することは、とても簡単です。まず、ルートを作成します。
 Implementing the search is a piece of cake. First, create a route:
 
-wrc/Ibw/JobeetBundle/Resources/config/routing/job.yml
+src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
 .. code-block:: yaml
 
