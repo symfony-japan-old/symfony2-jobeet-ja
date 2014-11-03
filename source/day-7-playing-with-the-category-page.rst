@@ -272,7 +272,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
            return $this->slug;
        }
 
-setSlugValue（）関数を変更します。
+setSlugValue() 関数を変更します。
 Change the setSlugValue() function:
 
 src/Ibw/JobeetBundle/Entity/Category.php

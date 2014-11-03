@@ -221,7 +221,7 @@ Doctrine は、以前に使用した ``generate:entities`` コマンドを​実
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-| 次に、新規に生成されたリポジトリクラスに新しいメソッド - getActiveJobs（） - を追加します。
+| 次に、新規に生成されたリポジトリクラスに新しいメソッド - getActiveJobs() - を追加します。
 | このメソッドは、 expires_at のカラムでソートし、有効なすべてのジョブのエンティティを照会します。
 | さらに、$category_id パラメータを受信した場合、カテゴリでフィルタリングしたエンティティを照会します。
 
@@ -284,7 +284,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 * このリファクタリングは、前のコードに比べていくつかの利点があります。
 * 有効なジョブを取得するためのロジックは、モデルに属します。
 * コントローラーのコードは、より薄く、より読みやすくします。
-* getActiveJobs（）メソッドは、再利用可能なされている（たとえば別のアクションで）。
+* getActiveJobs() メソッドは、再利用可能なされている（たとえば別のアクションで）。
 * 現在、モデルコードはユニットテストが可能です。
 
 * This refactoring has several benefits over the previous code:

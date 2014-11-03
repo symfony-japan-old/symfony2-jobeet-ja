@@ -4,7 +4,7 @@
 .. include:: common/original.rst.inc
 
 | 昨日は、 Zend Lucene ライブラリのおかげで、 Jobeet に非常に強力な検索エンジンを実装しました。
-| 本日は、検索エンジンの応答性を向上させるために、 AJAX を利用して検索エンジンを動的なものに変換し ます。
+| 今日は、検索エンジンの応答性を向上させるために、 AJAX を利用して検索エンジンを動的なものに変換し ます。
 | JavaScript が有効でも無効でもフォームが動作するように、ライブ検索機能は控えめな( unobtrusive ) JavaScript を使用して実装されます。
 | 控えめな( unobtrusive )JavaScript を使うことは、クライアントコードの HTML、CSS と JavaScript の振舞いの良好な分離が可能になります。
 Yesterday, we implemented a very powerful search engine for Jobeet, thanks to the Zend Lucene library.
@@ -310,7 +310,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
    }
 
 | 17 日目では、検索エンジンを実装するためにZend Luceneライブラリを使用しました。
-| 本日、それがより敏感にするためにjQueryを使用しました。
+| 今日、それがより敏感にするためにjQueryを使用しました。
 | Symfony フレームワークは、簡単に MVC アプリケーションを構築するためにすべての基本的なツールを提供し、また他のコンポーネントと上手に共存します。
 | いつものように、作業のためには最適なツールを使用するようにしてください。
 | 明日は、 Jobeet の Web サイトを国際化する方法を説明します。

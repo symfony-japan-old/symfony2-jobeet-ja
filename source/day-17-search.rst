@@ -4,7 +4,7 @@
 .. include:: common/original.rst.inc
 
 | 14 日目では、いくつかのフィードを追加し、ユーザーに最新の新しいジョブのを更新するようにいたしました。
-| 本日は検索エンジンという最新の機能を実装してユーザーエクスペリエンスを向上させます。
+| 今日は検索エンジンという最新の機能を実装してユーザーエクスペリエンスを向上させます。
 In day 14, we added some feeds to keep Jobeet users up-to-date with new job posts.
 Today will help you to improve the user experience by implementing the latest main feature of the Jobeet website: the search engine.
 
@@ -496,7 +496,7 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
    }
 
 | このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Lucene の組み込みの optimize() メソッドによって最適化します。
-| 本日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
+| 今日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
 | プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。
 | 明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、
 | 検索エンジンのレスポンスを強化するために慎ましく JavaScript を使います。
