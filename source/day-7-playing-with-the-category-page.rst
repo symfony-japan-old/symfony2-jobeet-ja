@@ -6,7 +6,9 @@
 今日は、二日目の要件に記載されているカテゴリページを作成します::
 Today we will make the Category page like it is described in the second day’s requirements::
 
-   「ユーザーは、ページごとに20件のジョブで分割され、カテゴリは日付でソートされたすべてのジョブのリストを見ている」
+.. note::
+
+   ジョブはページごとに20件で分割され、カテゴリは日付でソートされています。。
    “The user sees a list of all the jobs from the category sorted by date and paginated with 20 jobs per page“
 
 カテゴリールート
@@ -72,8 +74,8 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        </div>
    {% endblock %}
 
-上記のテンプレートでは、カテゴリを使用していました。
- ``more jobs`` を定義してみましょう：
+| 上記のテンプレートでは、カテゴリを使用していました。
+| ``more jobs`` を定義してみましょう：
 In the template above we used category. more jobs, so let’s define it:
 
 src/Ibw/JobeetBunlde/Entity/Category.php
