@@ -1,13 +1,11 @@
 19日目: 国際化とローカライゼーション
-=============================
-Day 19: Internationalization and Localization
-=============================================
+====================================
 
 .. include:: common/original.rst.inc
 
 昨日は、検索エンジンの機能に、 AJAX の便利さを追加して、より楽しくしました。
 今日は、 Jobeet の国際化（または i18n ）とローカライゼーション（または l10n ）についてお話します。
-Yesterday, we finished the search engine feature by making it more fun with the addition of some AJAX goodness. 
+Yesterday, we finished the search engine feature by making it more fun with the addition of some AJAX goodness.
 Now, we will talk about Jobeet internationalization (or i18n) and localization (or l10n).
 
 .. note::
@@ -19,22 +17,20 @@ Now, we will talk about Jobeet internationalization (or i18n) and localization (
       * Localization is the process of adapting software for a specific region or language by adding locale-specific components and translating text.
 
 ユーザー
-------
-User
-----
+--------
 
 ユーザー無しには国際化は不可能です。
-あなたのウェブサイトが複数の言語で、または、世界のさまざまな地域のために使用可能になると、ユーザーは最高の彼に適したものを選択する責任があります。 
+あなたのウェブサイトが複数の言語で、または、世界のさまざまな地域のために使用可能になると、ユーザーは最高の彼に適したものを選択する責任があります。
 Symfony の国際化とローカライゼーションの機能はユーザーの culture に基づいています。 culture はユーザーの言語と国の組み合わせです。
-たとえば、フランス語を話すユーザーカルチャーは FR で、フランスからのユーザーのためのカルチャーはは fr_FR です。 
+たとえば、フランス語を話すユーザーカルチャーは FR で、フランスからのユーザーのためのカルチャーはは fr_FR です。
 翻訳は、Translator サービスによって処理され、ユーザーのロケールを使用して検索し、翻訳されたメッセージを返し ます。
 それを使用する前に、構成内の ``Translator`` を有効にします。
-No internationalization is possible without a user. 
+No internationalization is possible without a user.
 When your website is available in several languages or for different regions of the world, the user is responsible for choosing the one that fits him best.
-The i18n and l10n features of symfony are based on the user culture. 
-The culture is the combination of the language and the country of the user. 
+The i18n and l10n features of symfony are based on the user culture.
+The culture is the combination of the language and the country of the user.
 For instance, the culture for a user that speaks French is fr and the culture for a user from France is fr_FR.
-Translations are handled by a Translator service that uses the user’s locale to lookup and return translated messages. 
+Translations are handled by a Translator service that uses the user’s locale to lookup and return translated messages.
 Before using it, enable the Translator in your configuration:
 
 app/config/config.yml
@@ -52,17 +48,15 @@ app/config/config.yml
    # ...
 
 URL内のカルチャー
--------------
-Culture in the URL
-------------------
+-----------------
 
 Jobeet の Web サイトは英語とフランス語の両方で利用できます。
 URL は単独のリソースのみを表しますので、カルチャーは URL に埋め込まれている必要があります。
 そのためには、 routing.yml ファイルを開き、API以外のすべてのルートに特別なロケール変数を追加します。
 シンプルなルートでは、URLの先頭に /{_locale} を追加します。
-The Jobeet website will be available in English and French. 
-As an URL can only represent a single resource, the culture must be embedded in the URL. 
-In order to do that, open the routing.yml file, and add the special locale variable for all routes but the api. 
+The Jobeet website will be available in English and French.
+As an URL can only represent a single resource, the culture must be embedded in the URL.
+In order to do that, open the routing.yml file, and add the special locale variable for all routes but the api.
 For simple routes, add /{_locale} to the front of the url:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -110,8 +104,8 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 言語の数だけホームページでサポートする必要があるので（/en/, /fr/, …）、デフォルトのホームページ（ / ）は、ユーザーの culture に従って、適切なローカライズされたものにリダイレクトする必要があります。
 初めての訪問で、まだユーザーがカルチャーを持っていない場合、優先カルチャーが選択されます。（以前にそれを宣言したように、en になります）。
 では、実際に新しいルートを追加し、ホームページのルートは変更します。
-As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. 
-But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). 
+As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture.
+But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en).
 So go ahead and add a new route to do that for you and modify your homepage route also :
 
 src/Ibw/Resources/config/routing.yml
@@ -156,19 +150,17 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 ユーザがカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
 デフォルトのカルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
-If the user will access the Jobeet platform without specifying his preffered culture (http://jobeet.local/app_dev.php), 
+If the user will access the Jobeet platform without specifying his preffered culture (http://jobeet.local/app_dev.php),
 he will be redirected to the homepage having the culture selected by default for him (http://jobeet.local/app_dev.php/en/).
 
 カルチャーのテスト
----------
-Culture Testing
----------------
+------------------
 
 実装のテストをする時間です。
 しかし、多くのテストを追加する前に、既存のものを修正する必要があります。
 すべての URL が変更されているように、すべての機能テストのファイルを編集して、 URL の前に /en 追加します。
-It is time to test our implementation. 
-But before adding more tests, we need to fix the existing ones. 
+It is time to test our implementation.
+But before adding more tests, we need to fix the existing ones.
 As all URLs have changed, edit all functional test files and add /en in front of all URLs.
 
 src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -510,13 +502,11 @@ src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
        // ...
 
 言語の切り替え
-------------
-Language Switching
-------------------
+--------------
 
 ユーザーのカルチャーを変えるために、言語形式がレイアウトに追加される必要があります。
 それを作成してみましょう：
-For the user to change the culture, a language form must be added in the layout. 
+For the user to change the culture, a language form must be added in the layout.
 Let’s create it:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
@@ -579,24 +569,22 @@ src/Ibw/JobetBundle/Controller/DefaultController.php
 Don’ forget to clear the cache!
 
 テンプレート
----------
-Templates
----------
+------------
 
 国際化されたウェブサイトは、ユーザーインターフェイスが複数の言語に翻訳されることを意味します。
 それは、私たちにとっては、デフォルトでは英語とフランス語になります。
-テンプレートを翻訳するためには、Twig タグ ``{% trans %}`` を使用します。 
+テンプレートを翻訳するためには、Twig タグ ``{% trans %}`` を使用します。
 Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、 Symfony は現在のユーザーの culture 用の翻訳を探します。
-翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用しています。 
+翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用しています。
 すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。
-このために、標準で最も柔軟なものである XLIFF 形式を使用します。 
+このために、標準で最も柔軟なものである XLIFF 形式を使用します。
 では、テンプレートに ``{% trans %}`` タグを追加することによって、翻訳を開始してみましょう：
-An internationalized website means that the user interface is translated into several language. 
-For us, it will be english, by default, and french. 
-In order to translate the templates, we will use the Twig tag {% trans %}. 
-When symfony renders a template, each time the {% trans %} tag is found, symfony looks for a translation for the current user’s culture. 
+An internationalized website means that the user interface is translated into several language.
+For us, it will be english, by default, and french.
+In order to translate the templates, we will use the Twig tag {% trans %}.
+When symfony renders a template, each time the {% trans %} tag is found, symfony looks for a translation for the current user’s culture.
 If the translation is found, it is used, if not, the string supposed to be translated is returned as a fallback value.
-All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory. 
+All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory.
 For this, we will use the XLIFF format, which is a standard and the most flexible one.
 Let’s start translating by adding the {% trans %} tag inside the templates:
 
@@ -933,7 +921,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
 各翻訳は、一意の id 属性を持つ ``trans-unit`` タグによって管理されます。
 これで、このファイルを編集してフランス語の翻訳を追加できます。
-Each translation is managed by a trans-unit tag which has a unique id attribute. 
+Each translation is managed by a trans-unit tag which has a unique id attribute.
 You can now edit this file and add translations for the French language:
 
 src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf

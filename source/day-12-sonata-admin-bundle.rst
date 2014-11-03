@@ -175,10 +175,8 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        // Your code will be here
    }
 
-管理クラスの作成
-----------------
-Creating the Admin class
-------------------------
+Admin クラスの作成
+------------------
 
 管理クラスは、モデルと管理セクション（forms, list, show）のマッピングを表します。
 お使いのモデルのための管理クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
