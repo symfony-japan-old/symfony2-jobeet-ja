@@ -84,7 +84,7 @@ To run only this test, you can use the following command:
 
    $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
 
-すべてが正常に動作する必要があり、次のような結果を得るでしょう::
+すべてが正常に動作するとき、次のような結果を得るでしょう::
 As everything should work fine, you should get the following result::
 
    PHPUnit 3.7.22 by Sebastian Bergmann.
@@ -102,10 +102,10 @@ For a full list of assertions, you can check the PHPUnit documentation.
 新機能のテストを追加
 ----------------
 
-| 空の文字列のためのスラグは空の文字列です。それをテストすることはできますし、動作もしまが、
+| 空の文字列のためのスラグは空の文字列です。それをテストすることはできますし、動作もしますが、
 | URL に空の文字列をいれることは、よい考えではありません。
 | 空の文字列の場合は「n-a」の文字列を返すように slugify() メソッドを変更してみましょう。
-| 先にテストを書いてからメソッドの更新、または、その他の修正することができます。
+| 先にテストを書いてからメソッドを更新することができ、順番を逆にしてもできます。
 | それは本当に好みの問題ですが、先にテストを書くことは、コードが計画したものを実際に実装しているという自信を与えてくれます。
 The slug for an empty string is an empty string. You can test it, it will work.
 But an empty string in a URL is not that a great idea.
@@ -168,19 +168,19 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
            // ...
        }
 
-このテストは期待どおり通過しなくてはいけません。緑のバーを楽しめるでしょう。
+このテストは期待どおり通過し、緑のバーを得るでしょう。
 The test must now pass as expected, and you can enjoy the green bar.
 
 バグによるテスト追加
 --------------------
 
-| その後、時間が経過し、ユーザーの1人から、「いくつかのジョブのリンク先が404エラーページになる」という奇妙なバグの報告を受けるとしましょう。​​
-| いくつかの調査の後、いくつかの理由で、これらのジョブが空の会社名、役職、住所 のスラグを持っていることがわかります。
+| その後、時間が経過し、ユーザーの1人から、「いくつかのジョブのリンク先が404エラーページになる」という奇妙なバグの報告を受けるとしましょう。
+| いくらかの調査の後、何かの理由で、これらのジョブが空の会社名、役職、住所 のスラグを持つことを見つけます。​
 | それはどのような場合に起こりますでしょうか？
 | データベース内のレコードに目を通すと、カラムは間違いなく空ではありません。
 | しばらくの間、それについて考え、ビンゴ、原因を見つけます。
-| 文字列が非ASCII文字のみで構成されている場合、slugify() メソッドは空の文字列に変換します。
-| 原因を発見したのに満足して、Jobeetのクラスを編集してすぐに問題を解決しようとするのは、よい考えではありません。
+| 文字列が非 ASCII 文字のみで構成されている場合、slugify() メソッドは空の文字列に変換します。
+| 原因を発見したのに満足して、 Jobeet のクラスを編集してすぐに問題を解決しようとするのは、よい考えではありません。
 | 最初に、テストを追加してみましょう：
 Let’s say that time has passed and one of your users reports a weird bug: some job links point to a 404 error page.
 After some investigation, you find that for some reason, these jobs have an empty company, position, or location slug.
@@ -216,10 +216,10 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        return $text;
    }
 
-| 他のテスト同様に、新しいテストも通りました。 slugify() は、100％ のコード網羅率にもかかわらず、バグがありました。
+| 他のテスト同様に、新しいテストも通りました。 slugify() は、100% のコード網羅率にもかかわらず、バグがありました。
 | テストを書くときには、すべてのエッジケースを考えることはできません。それは大丈夫です。
 | しかし、 1 つを発見したときに、コードを修正する前にテストを書く必要があります。
-| また、コードは時間をかけて良くなることを意味します。それは常に良いことです。
+| それはコードが時間をかけて良くなることも意味します。それは常に良いことです。
 The new test now passes, as do all the other ones. The slugify() had a bug despite our 100% coverage.
 You cannot think about all edge cases when writing tests, and that’s fine.
 But when you discover one, you need to write a test for it before fixing your code.
@@ -280,7 +280,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
    }
 
 Symfony のデフォルトのエンコーディングである UTF-8 エンコーディングですべての PHP ファイルを保存することを忘れないでください。
-また、 UTF-8 は iconv によって翻訳に使用されるます。
+また、 UTF-8 は iconv によって翻訳に使用されます。
 また、 iconv が利用可能である場合にのみ、テストファイルを変更します。
 Remember to save all your PHP files with the UTF-8 encoding, as this is the default Symfony encoding, and the one used by iconv to do the transliteration.
 Also change the test file to run the test only if iconv is available:
@@ -333,7 +333,7 @@ Doctrine の単体テスト
 | このチュートリアルの初めに、アプリケーションの設定を変更する方法として環境を導入しました。
 | デフォルトでは、すべての Symfony のテストは test 環境で実行されるので、 test 環境用に異なるデータベースを設定しましょう。
 | app/config ディレクトリに移動し、 parameters.yml ファイルをコピーして parameters_test.yml を作成します。
-| parameters_test.yml を編集し、 jobeet_test ためにデータベースの名前を変更します。
+| parameters_test.yml を編集し、 jobeet_test にデータベースの名前を変更します。
 | これをインポートするために、 config_test.yml ファイルに追加する必要があります。
 Unit testing a Doctrine model class is a bit more complex as it requires a database connection.
 You already have the one you use for your development, but it is a good habit to create a dedicated database for tests.
@@ -357,7 +357,7 @@ Job エンティティのテスト
 | まず、 Tests/Entity 内に JobTest.php ファイルを作成する必要があります。
 | ``setUp`` 関数は、テストを実行するたびにデータベースを操作します。
 | 最初に、現在のデータベースをドロップし、再作成し、フィクスチャーからデータをロードします。
-| test 環境用に作成したデータベースに、テストを実行する際に、同じ初期データを持っていることは役に立つでしょう。
+| これは、テストを実行する前に、テスト環境用に作成したデータベースに同じ初期データを持つようにするのに役に立つでしょう。
 First, we need to create the JobTest.php file in the Tests/Entity folder.
 The setUp function will manipulate your database each time you will run the test.
 At first, it will drop your current database,
@@ -725,7 +725,7 @@ Now, if you go to http://jobeet.local/cov/Repository.html you will see that the 
 
 | それでは、100% のコード網羅率を達成するために JobRepository ためのいくつかのテストを追加してみましょう。
 | 今のところ、データベースにはアクティブなジョブを持たない二つのカテゴリと、一つだけアクティブなジョブを持つ一つのカテゴリを持ちます。
-| $max と $offset パラメーターをテストする際に、以下のテストでカテゴリに少なくとも3つのアクティブなジョブをテストするのはそのためです。
+| それは、 $max と $offset パラメータをテストする際に、最低でも 3 つのアクティブなジョブを持つカテゴリにおいて、下記のテストを実行するためです。
 | そのために、 testGetActiveJobs() にて、 foreach 文の内部にこれを追加します。
 Let’s add some tests for the JobRepository to achieve 100% code coverage.
 At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job.
