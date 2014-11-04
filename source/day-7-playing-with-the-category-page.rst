@@ -121,7 +121,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-JobRepository クラスに countActiveJobs 関数を追加する必要があります。
+JobRepository クラスに countActiveJobs() メソッドを追加する必要があります。
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -376,7 +376,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 | テンプレート index.html.twig からジョブのリストを作成するタグをコピーアンドペーストしていることに注意してください。
 | それはよくない方法です。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成し、
 | 必要な場所に取り込むべきです。
-list.html.twig ファイルを作成します。
+| list.html.twig ファイルを作成します。
 Notice that we have copied and pasted the tag that create a list of jobs from the job index.html.twig template.
 That’s bad. When you need to reuse some portion of a template, you need to create a new twig template with that code and include it where you need.
 Create the list.html.twig file:
@@ -420,7 +420,7 @@ src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
 
 | これを書いている時点では、 Symfony2 は、この問題を解決するための便利なページネーション·ツールを提供していない為、古典的な方法を使用します。
 | まずは、 IbwJobeetBundle_category ルートに ``page`` パラメータを追加してみましょう。
-| ``page`` パラメータは、デフォルト値が1となり、必須ではありません。
+| ``page`` パラメータは、デフォルト値が 1 となり、必須ではありません。
 At the moment of writing this, Symfony2 doesn’t provide any good pagination tools out of the box so to solve this problem we will use the old classic method.
 First, let’s add a page parameter to the IbwJobeetBundle_category route. The page parameter will have a default value of 1, so it will not be required:
 
@@ -435,7 +435,6 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
    # ...
 
 ルーティング·ファイルを変更した後にキャッシュをクリアします。
-Clear the cache after modifying the routing file:
 
 .. code-block:: bash
 
@@ -443,7 +442,6 @@ Clear the cache after modifying the routing file:
    $ php app/console cache:clear --env=prod
 
 各ページのジョブの数は、 app/config/config.yml ファイルにカスタムパラメータとして定義されます。
-The number of jobs on each page will be defined as a custom parameter in the app/config/config.yml file:
 
 app/config/config.yml
 
@@ -455,8 +453,7 @@ app/config/config.yml
        max_jobs_on_homepage: 10
        max_jobs_on_category: 20
 
-JobRepository クラスの getActiveJobs メソッドを変更し、doctrine がジョブを取得する際に $offset パラメータを含むようにします。
-Change the JobRepository getActiveJobs method to include an $offset parameter to be used by doctrine when retrieving jobs:
+JobRepository クラスの getActiveJobs() メソッドを変更し、 doctrine がジョブを取得する際に $offset パラメータを含むようにします。
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -494,8 +491,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
    //
 
-CategoryController の showAction を以下のように変更します。
-Change the CategoryController showAction to the following:
+CategoryController クラスの showAction() メソッドを以下のように変更します。
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
 
@@ -529,7 +525,6 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
    }
 
 最後に、テンプレートを更新しましょう。
-Finally, let’s update the template
 
 src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 
@@ -594,7 +589,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
        </div>
    {% endblock %}
 
-結果：
+結果です。：
 The result:
 
 .. image:: /images/Day-7-pagination.png

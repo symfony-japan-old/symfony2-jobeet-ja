@@ -317,12 +317,13 @@ Check the code coverage by opening the generated http://jobeet.local/cov/index.h
 
       $ sudo apt-get install php5-xdebug
 
-cov/index.html のは次のようになります。
+cov/index.html は次のようになります。
 Your cov/index.html should look like this:
 
 .. image:: /images/day-8-code-coverage1.jpg
 
-インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
+| インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、
+| それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
 Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 
 Doctrine の単体テスト
@@ -619,7 +620,6 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
    }
 
 CategoryRepository クラスに同じことを行います。
-We will do the same thing for CategoryRepository class:
 
 src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.php
 
@@ -711,8 +711,7 @@ src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.php
        }
    }
 
-テストを書き終えた後、全体の関数のコード網羅率を生成するため、次のコマンドを実行します。
-After you finish writing the tests, run them with the following command, in order to generate the code coverage percent for the whole functions :
+テストを書き終えた後、全体の機能のコード網羅率を生成するため、次のコマンドを実行します。
 
 .. code-block:: bash
 
@@ -759,18 +758,15 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
    // ...
 
 再びコードカバレッジコマンドを実行します。
-Run the code coverage command again :
 
 .. code-block:: bash
 
    $ phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
 
 ここで、コード網羅率を確認するすると、 100% が表示されます。
-This time, if you check your code coverage, you will see that it 100% complete.
 
 .. image:: /images/Day-8-coverage-complete.jpg
 
 これで今日はすべてです！明日は、機能テストについてお話します。
-That’s all for today! See you tomorrow, when we will talk about functional tests.
 
 .. include:: common/license.rst.inc

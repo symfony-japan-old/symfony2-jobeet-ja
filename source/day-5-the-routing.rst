@@ -105,8 +105,8 @@ Dev 環境のルーティング設定
 
 | ブラウザで URL / のリクエストを投げたときに、今は、404 Not Foundエラーが表示されます。
 | このURLが、定義されたどのルートとも一致しないためです。
-| ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController 、 index アクションに送ります。
-| これを URL / と一致するように変更して、 JobController の index アクションを呼び出すようにしてみましょう。
+| ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController クラスの indexAction() メソッドに送ります。
+| これを URL / と一致するように変更して、 JobController クラスの indexAction() メソッドを呼び出すようにしてみましょう。
 | 変更を行うには、次のように行います。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -131,12 +131,12 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </a></h1>
    <!-- ... -->
 
-もう少し複雑にするため、ジョブページのURLを以下のように、より意味のあるものに変更してみましょう。
+もう少し複雑にするため、ジョブページの URL を以下のように、より意味のあるものに変更してみましょう。
 
     /job/sensio-labs/paris-france/1/web-developer
 
-| Jobeetのことを何も知らなくても、ページを見なくても、Sensio LabsがWeb開発者をフランスのパリで探していることを、URLから理解することができます。
-| 以下のパターンは、上記のURLと一致します。
+| Jobeet のことを何も知らなくても、ページを見なくても、 Sensio Labs が Web 開発者をフランスのパリで探していることを、 URL から理解することができます。
+| 以下のパターンは、上記の URL と一致します。
 
     /job/{company}/{location}/{id}/{position}
 
@@ -164,12 +164,12 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
    </a>
    <!-- ... -->
 
-生成されたURLを見てみると、それらをまだ使えるものではありません。
+生成された URL を見てみると、それらをまだ使えるものではありません。
 
    http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
 
-| すべての非ASCII文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のあるURLに変換) する必要があります。
-| Job.phpファイルを開き、クラスに次のメソッドを追加します。
+| すべての非 ASCII 文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のある URL に変換) する必要があります。
+| Job.php ファイルを開き、クラスに次のメソッドを追加します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -198,8 +198,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-| また、ジョブ·クラス定義の前にuse文を追加する必要があります。
-| その後、src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
+| また、ジョブ·クラス定義の前に use 文を追加する必要があります。
+| その後、 src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -221,7 +221,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        }
    }
 
-| 3つの新しい「仮想」アクセサを定義しています：getCompanySlug()、getPositionSlug()、および getLocationSlug() です。
+| 3つの新しい「仮想」アクセサを定義しています： getCompanySlug() 、 getPositionSlug() 、および getLocationSlug() です。
 | それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
 | ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
 
@@ -275,6 +275,6 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
    $ php app/console router:debug ibw_job_show
 
 
-これで今日のすべてです！ Symfony2のルーティングシステムの詳細については、``book`` のルーティング章を読んでください。
+これで今日のすべてです！ Symfony2 のルーティングシステムの詳細については、``book`` のルーティング章を読んでください。
 
 .. include:: common/license.rst.inc

@@ -168,7 +168,7 @@ Let’s add a test to check the behavior when we submit non-valid data:
 
 | 今、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
 | ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
-| これらの3つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
+| これらの 3 つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
 | しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。：
 Now, we need to test the admin bar found on the job preview page.
 When a job has not been activated yet, you can edit, delete, or publish the job.
@@ -600,7 +600,6 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
    }
 
 JobRepository クラスにクリーンアップメソッドを追加する必要があります。
-You will have to add the cleanup method to the JobRepository class:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -620,21 +619,19 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        return $query->execute();
    }
 
-コマンドは、プロジェクトフォルダから次のコマンドを実行します。
-To run the command execute the following from the project folder:
+プロジェクトフォルダから次のコマンドを実行します。
 
 .. code-block:: bash
 
    $ php app/console ibw:jobeet:cleanup
 
-or:
+または、
 
 .. code-block:: bash
 
    $ php app/console ibw:jobeet:cleanup 10
 
 10 日以上経過した古いジョブを削除します。
-to delete stale jobs older than 10 days.
 
 
 .. include:: common/license.rst.inc

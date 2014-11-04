@@ -320,7 +320,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-CategoryRepository クラスを開き、メソッド  getWithJobs() を追加します。
+CategoryRepository クラスを開き、 getWithJobs() メソッドを追加します。
 
 src/Ibw/JobeetBundle/Repository/CategoryRepository.php
 
@@ -437,7 +437,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 ----------
 
 | ホームページのジョブリストのために実装すべき要件がまだ1つあります。
-| それは、ジョブリストの数を10個に制限することです。
+| それは、ジョブリストの数を 10 個に制限することです。
 | JobRepository:: getActiveJobs() メソッドに $max のパラメータを追加するだけで十分です。
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
@@ -541,7 +541,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | まだ、データベースにあるジョブが非常に少ないため、何の違いも表示されません。
 | フィクスチャーにまとまったジョブを追加する必要があります。
-| そのために手動で既存のジョブの10または20倍をコピーアンドペーストする...というよりももっと良い方法があります。
+| そのために手動で既存のジョブの 10 または 20 倍をコピーアンドペーストする...というよりももっと良い方法があります。
 | フィクスチャーファイルにおいても重複することは悪いことです。
 For now, you won’t see any difference because we have a very small amount of jobs in our database. We need to add a bunch of jobs to the fixture.
 So, you can copy and paste an existing job ten or twenty times by hand… but there’s a better way. Duplication is bad, even in fixture files:
@@ -593,7 +593,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 | データベース内の実際の id で URL の ID を置き換えて試してみてください。
 | /app_dev.php/job/sensio-labs/paris-france/ID/web-developer-expired
 | ジョブを表示する代わりに、404ページにユーザーを転送する必要があります。
-| このために JobRepository に新しい関数を作成します。
+| このために JobRepository クラスに新しい関数を作成します。
 
 When a job expires, even if you know the URL, it must not be possible to access it anymore.
 Try the URL for the expired job (replace the id with the actual id in your database – SELECT id, token FROM job WHERE expires_at < NOW()):
@@ -629,7 +629,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 | getSingleResult() メソッドは、結果が返されない場合には ``Doctrine\ORM\NoResultException`` 例外がスローされます。
 | また、複数の結果が返された場合は、 ``Doctrine\ORM\NonUniqueResultException`` 例外がスローされます。
 | この方法を使用する場合は、try-catch ブロックで囲んで、結果がひとつだけ返されることを保証する必要があるかもしれません。
-| 今すぐ新しいリポジトリメソッドを使用するように JobController の showAction() を変更します。
+| 今すぐ新しいリポジトリメソッドを使用するように JobController クラスの showAction() メソッドを変更します。
 The getSingleResult() method throws a Doctrine\ORM\NoResultException exception if no results are returned and
 a Doctrine\ORM\NonUniqueResultException if more than one result is returned.
 If you use this method, you may need to wrap it in a try-catch block and ensure that only one result is returned.
@@ -650,6 +650,5 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 .. image:: /images/Day-6-no-job-found.png
 
 これで今日のすべてです！明日またお会いしましょう。カテゴリページを作っていきます。
-That’s all for today! We will see you again tomorrow, when we’ll be playing with the category page.
 
 .. include:: common/license.rst.inc

@@ -5,14 +5,15 @@
 
 | 機能テスト(ファンクショナルテスト)は、端から端まで（ブラウザからのリクエストからサーバーからのレスポンスまで）アプリケーションをテストするための素晴らしいツールです。
 | それらはアプリケーションのすべての層（ルーティング、モデル、アクションとテンプレート）をテストします。
-| おそらく既に手動でやっていることと非常に似ています。アクションを追加または変更するたびに、ブラウザでページを開き、リンクをクリックし表示されたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。
+| おそらく既に手動でやっていることと非常に似ています。
+| アクションを追加または変更するたびに、ブラウザでページを開き、リンクをクリックし表示されたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。
 | 言い換えると、実装したばかりのユースケースに対応するシナリオを実行します。
 | これは手作業なので、退屈で間違いをしやすいです。
 | コードのどこかを変更するたびに、何かを壊していないことを保証するため、すべてのシナリオを行わなければなりません。
 | それは非常識です。 Symfonyでは機能テストはシナリオを簡単に書く方法を提供します。
 | 各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。
 | 単体テストのように、コードに自信を与えてくれます。
-| 機能テストは、非常に特定のワークフローがあります。
+| 機能テストは、非常に特殊なワークフローがあります。
 Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server.
 They test all the layers of an application: the routing, the model, the actions and the templates.
 They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page.
@@ -123,7 +124,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
        }
    }
 
-クローラーの詳細については、こちらを Symfony のドキュメントをお読みください。
+クローラーの詳細については、 Symfony ドキュメントをお読みください。
 To learn more about crawler, read the Symfony documentation here.
 
 機能テストの実行
@@ -155,7 +156,8 @@ This test will fail because the tested url, /category/index, is not a valid url 
 機能テストを書く
 ----------------
 
-| 機能テストを書くことはブラウザでシナリオを演じることに似ています。すでに2日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。
+| 機能テストを書くことはブラウザでシナリオを演じることに似ています。
+| すでに 2 日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。
 | まずは、 JobControllerTest クラスを編集して Jobeet のホームページをテストしてみましょう。 次のコードで置き換えます。
 Writing functional tests is like playing a scenario in a browser. We already have written all the scenarios we need to test as part of the day 2 stories.
 First, let’s test the Jobeet homepage by editing the JobControllerTest class. Replace the code with the following one:
@@ -244,8 +246,9 @@ First, let’s test the Jobeet homepage by editing the JobControllerTest class. 
        }
    }
 
-| ホームページから期限切れのジョブの除外を検証するために、CSSセレクタ ``.jobs td.position:contains("Expired")`` が、レスポンスの中のHTMLコンテンツ内のどれとも一致しないことを確認します。
-| （フィクスチャーの中で唯一、有効期限が切れた仕事は、役職に「Expired」が含まれていたことを思い出してください）。
+| ホームページから期限切れのジョブの除外を検証するために、 CSS セレクタ ``.jobs td.position:contains("Expired")`` が、
+| レスポンスの中の HTML コンテンツ内のどれとも一致しないことを確認します。
+| （フィクスチャーの中で唯一、有効期限が切れた仕事は、役職に「 Expired 」が含まれていたことを思い出してください）。
 To verify the exclusion of expired jobs from the homepage,
 we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content
 (remember that in the fixtures, the only expired job we have contains “Expired” in the position).
@@ -253,7 +256,7 @@ we check that the CSS selector .jobs td.position:contains("Expired") does not ma
 N個のジョブだけが、カテゴリの一覧表示されること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| TestIndex（） 関数の最後に次のコードを追加します。
+| testIndex() 関数の最後に次のコードを追加します。
 | 機能テストで app/config/config.yml で定義されたカスタムパラメータを取得するには、カーネルを使用します。
 Add the following code at the end of  your testIndex() function.
 To get the custom parameter defined in app/config/config.yml in our functional test, we will use the kernel:
@@ -271,7 +274,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->count() <= $max_jobs_on_homepage );
    }
 
-このテストを動作させるために Job/index.html.twig の中で、カテゴリ毎に対応するCSSクラスを追加する必要があります。（それによって、各カテゴリを選択し、リストされたジョブを数えることができます）。
+| このテストを動作させるために Job/index.html.twig の中で、カテゴリ毎に対応する CSS クラスを追加する必要があります。
+| （それによって、各カテゴリを選択し、リストされたジョブを数えることができます）。
 For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file
  (so we can select each category and count the jobs listed) :
 
@@ -308,9 +312,9 @@ In these tests, we check that there is no “more jobs” link for the design ca
 ジョブが日付でソートされること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ジョブが実際に日付でソートされているかどうかをテストするために、ホームページに記載された最初の仕事が、期待したものであることを確認する必要があります。
-URL に期待する主キーが含まれていることを確認することで行います。
-主キーは実行の間に変わる可能性があるため、最初にデータベースからDoctrineのオブジェクトを取得する必要があります。
+| ジョブが実際に日付でソートされているかどうかをテストするために、ホームページに記載された最初の仕事が、期待したものであることを確認する必要があります。
+| URL に期待する主キーが含まれていることを確認することで行います。
+| 主キーは実行の間に変わる可能性があるため、最初にデータベースから Doctrine のオブジェクトを取得する必要があります。
 To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect.
 This can be done by checking that the URL contains the expected primary key.
 As the primary key can change between runs, we need to get the Doctrine object from the database first.
@@ -333,9 +337,10 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
    }
 
-テストがこの瞬間には動作したとしても、最初のプログラミングカテゴリのジョブを取得する処理がどのテストでも再利用可能になったように、コードを少しでもリファクタリングする必要があります。
-コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。
-代わりに、テストクラス内の getMostRecentProgrammingJob 関数にコードを移動します。
+| テストがこの瞬間には動作したとしても、コードを少しでもリファクタリングする必要があります。
+| 最初のプログラミングカテゴリのジョブを取得する処理がどのテストでも再利用可能になったように。
+| コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。
+| 代わりに、テストクラス内の getMostRecentProgrammingJob() メソッドにコードを移動します。
 Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests.
 We won’t move the code to the Model layer as the code is test specific.
 Instead, we will move the code to the getMostRecentProgrammingJob function in our test class:
@@ -378,9 +383,9 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 ホームページの各ジョブはクリックできること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ホームページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
-それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。
-各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。
+| ホームページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
+| それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。
+| 各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。
 To test the job link on the homepage, we simulate a click on the “Web Developer” text.
 As there are many of them on the page, we have explicitly to ask the browser to click on the first one.
 Each request parameter is then tested to ensure that the routing has done its job correctly.
@@ -408,8 +413,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 お手本から学ぶ
 ~~~~~~~~~~~~~~
 
-このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
-いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。：
+| このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
+| いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。：
 In this section, you have all the code needed to test the job and category pages.
 Read the code carefully as you may learn some new neat tricks:
 

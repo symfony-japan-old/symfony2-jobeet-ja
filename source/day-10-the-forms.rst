@@ -204,7 +204,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
                - Email: ~
 
 | 各フィールドに対して、Symfony は自動的にラベル（表示されるタグで使用されます）を生成します。
-| これはlabelオプションで変更できます。
+| これは label オプションで変更できます。
 For each field, symfony automatically generates a label (which will be used in the rendered tag). This can be changed with the label option:
 
 src/Ibw/JobeetBundle/Form/JobType.php
@@ -255,7 +255,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
            url:
                - Url: ~
 
-| URL フィールドに適用される制約はURL形式(http：//www.sitename.domain または https：//www.sitename.domain のような)を適用します。
+| URL フィールドに適用される制約は URL 形式( http：//www.sitename.domain または https：//www.sitename.domain のような)を適用します。
 | validation.yml を変更したら、キャッシュをクリアする必要があります。
 The constraint applied to url field enforces the URL format to be like this: http://www.sitename.domain or https://www.sitename.domain.
 After modifying validation.yml, you need to clear the cache.
@@ -387,7 +387,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | 一方、getWebPath() はアップロードされたファイルにリンクするWebパスを返す、テンプレートにて使用可能な便利なメソッドです。
 | データベース操作とファイルの移動が不可分になるように、実装を行います。
 | エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
-| これを行うには、Doctrineがデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
+| これを行うには、 Doctrine がデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
 | これは、ジョブ·エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
 | Jobeet のチュートリアルの 3 日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックを追加します。
 The logo property stores the relative path to the file and is persisted to the database.
@@ -802,7 +802,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
 | 現在フォームクラスと、それをレンダリングするテンプレートを持っています。
 | さて、それでは実際にいくつかのアクションを動作させましょう。
-| 求人フォームは JobController の4つの方法で管理されています。
+| 求人フォームは JobController の 4 つの方法で管理されています。
 We now have a form class and a template that renders it.
 Now, it’s time to actually make it work with some actions.
 The job form is managed by four methods in the JobController:
@@ -880,7 +880,6 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
         # ...
 
 この変更を適用するために doctrine エンティティを再生成します。
-Regenerate the doctrine entities to apply this modification:
 
 .. code-block:: bash
 
@@ -905,7 +904,6 @@ src/Ibw/JobeetBundle/Entity/Job.php
    // ...
 
 これでフォームから token フィールドを取り除くことができます。
-You can now remove the token field from the form:
 
 src/Ibw/JobeetBundle/Form/JobType.php
 
@@ -933,7 +931,6 @@ src/Ibw/JobeetBundle/Form/JobType.php
    // ...
 
 また new.html.twig と edit.html.twig テンプレートからもそれを削除します。
-Remove it from the new.html.twig and edit.html.twig templates also:
 
 src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig
 
@@ -964,7 +961,6 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
    <!-- ... -->
 
 そして validation.yml ファイルを編集します。：
-And from the validation.yml file:
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -1155,7 +1151,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
    # ...
 
-プレビューアクション（ここでの show アクションとの違いは、ジョブをidの代わりにトークンを使用してデータベースから取得されるということです。）：
+プレビューアクション（ここでの show アクションとの違いは、ジョブを id の代わりにトークンを使用してデータベースから取得されるということです。）：
 The preview action (here the difference from the show action is that the job is retrieved from the database using the provided token instead of the id):
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1184,7 +1180,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-| ユーザーがトークン化されたURLでアクセスした場合は、上部の管理バーを追加します。
+| ユーザーがトークン化された URL でアクセスした場合は、上部の管理バーを追加します。
 | show.html.twig テンプレートの上部に、管理バーをもち、下部にある編集リンクを削除します。
 If the user comes in with the tokenized URL, we will add an admin bar at the top.
 At the beginning of the show.html.twig template, include a template to host the admin bar and remove the edit link at the bottom:
@@ -1278,7 +1274,7 @@ The admin bar displays the different actions depending on the job status:
 .. image:: /images/Day-10-admin-bar.png
 .. image:: /images/Day-10-admin-badr-2.png
 
-ここで、新しいプレビューページへのリダイレクト処理をJobControllerの create および update アクションに設定します。
+ここで、新しいプレビューページへのリダイレクト処理を JobController の createAction および updateAction に設定します。
 We will now redirect the create and update actions of the JobController to the new preview page:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1537,7 +1533,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        }
    }
 
-CategoryRepositoryのgetWithJobs() メソッドも同様にします。：
+CategoryRepository の getWithJobs() メソッドも同様にします。：
 The same for CategoryRepository getWithJobs() method:
 
 src/Ibw/JobeetBundle/Repository/CategoryRepository.php
