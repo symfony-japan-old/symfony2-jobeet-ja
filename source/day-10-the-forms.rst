@@ -885,7 +885,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-ジョブエンティティの setTokenValue() メソッドを編集し、新しいジョブが保存される前にトークンを生成するロジックを追加します。
+新しくジョブが保存される前にトークンを生成するロジックを、ジョブエンティティの setTokenValue() メソッドに追加します。
 Edit the setTokenValue() method of the Job entity to add the logic that generates the token before a new job is saved:
 
 src/Ibw/JobeetBundle/Entity/Job.php
@@ -1002,7 +1002,6 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        requirements: { _method: post|delete }
 
 ここで、 id の代わりにトークンを使用するよう JobController を編集します。
-Now edit the JobController to use the token instead of the id:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -1201,7 +1200,6 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
    {% endblock %}
 
 その後、 admin.html.twig テンプレートを作成します。
-Then, create the admin.html.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
 
@@ -1274,7 +1272,7 @@ The admin bar displays the different actions depending on the job status:
 .. image:: /images/Day-10-admin-bar.png
 .. image:: /images/Day-10-admin-badr-2.png
 
-ここで、新しいプレビューページへのリダイレクト処理を JobController の createAction および updateAction に設定します。
+ここで、 JobController クラスの createAction() および updateAction() メソッドから新しいプレビューページへリダイレクトする処理を設定します。
 We will now redirect the create and update actions of the JobController to the new preview page:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1348,7 +1346,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        defaults: { _controller: "IbwJobeetBundle:Job:publish" }
        requirements: { _method: post }
 
-現在、公開リンクのリンクを変更することができます（フォームを使用しますので、ジョブを削除するときのように、POSTリクエストになります）：
+現在、公開リンクのリンクを変更することができます（ジョブを削除するときのようにフォームを使用しますので、POSTリクエストになります）。
 We can now change the link of the Publish link (we will use a form here, like when deleting a job, so we will have a POST request):
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
@@ -1369,7 +1367,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
 
    <!-- ... -->
 
-最後のステップは、``publish`` アクションと ``publish`` フォームを作成し、プレビューアクションを編集しテンプレートにフォームを送ることです：
+最後のステップは、``publishAction`` と ``publish`` フォームを作成し、``previewAction`` を編集しテンプレートにフォームを送ることです。
 The last step is to create the publish action, the publish form and to edit the preview action to send the publish form to the template:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
@@ -1431,7 +1429,6 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 publishAction() メソッドで、次のように定義された新しい publish() メソッドを使用しています。
-The publishAction() method uses a new publish() method that can be defined as follows:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -1533,8 +1530,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
        }
    }
 
-CategoryRepository の getWithJobs() メソッドも同様にします。：
-The same for CategoryRepository getWithJobs() method:
+CategoryRepository の getWithJobs() メソッドも同様にします。
 
 src/Ibw/JobeetBundle/Repository/CategoryRepository.php
 
