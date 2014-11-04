@@ -399,7 +399,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
 .. image:: /images/Day-4-individual-job.png
 
-ジョブ詳細ページアクション
+ジョブページアクション
 ------------------------
 
 ジョブページは show アクションによって生成されます。 ``JobController`` の ``showAction()`` メソッドで定義されます。

@@ -45,7 +45,6 @@ src/Ibw/JobeetBundle/Entity/Category.php
 ----------------
 
 ここで、カテゴリページへのリンクを追加するために、ジョブコントローラの index.html.twig テンプレートを編集します。
-Now, edit the index.html.twig template of the job controller to add the link to the category page:
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -72,7 +71,6 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 | 上記のテンプレートでは、カテゴリを使用していました。
 | ``more jobs`` を定義してみましょう：
-In the template above we used category. more jobs, so let’s define it:
 
 src/Ibw/JobeetBunlde/Entity/Category.php
 
@@ -123,8 +121,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        ));
    }
 
-JobRepository に countActiveJobs 関数を追加する必要があります。
-The countActiveJobs function has to be added to the JobRepository:
+JobRepository クラスに countActiveJobs 関数を追加する必要があります。
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -153,7 +150,6 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
    // ...
 
 これで、ブラウザに結果が表示されるはずです。
-Now you should see the result in your browser:
 
 .. image:: /images/Day-7-category-link.png
 
@@ -237,7 +233,6 @@ Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the g
    $ php app/console doctrine:generate:entities
 
 これで Category.php に以下のコードが追加されているでしょう。
-Now you should have the following added to Category.php:
 
 src/Ibw/JobeetBundle/Entity/Category.php
 
@@ -273,7 +268,6 @@ src/Ibw/JobeetBundle/Entity/Category.php
        }
 
 setSlugValue() 関数を変更します。
-Change the setSlugValue() function:
 
 src/Ibw/JobeetBundle/Entity/Category.php
 
@@ -337,7 +331,6 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
 
 最後のステップは show.html.twig テンプレートを作成することです。
-The last step is to create the show.html.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 
