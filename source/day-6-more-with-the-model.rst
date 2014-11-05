@@ -298,7 +298,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | 二日目の要件によると、カテゴリでソートされたジョブを持っていなくてはいけません。
 | 今まで、ジョブのカテゴリーを考慮していませんでした。要件からはホームページでカテゴリに基づいて表示しなければなりません。
-| まず、少なくとも1つの有効なジョブからすべてのカテゴリを取得する必要があります。
+| まず、少なくとも 1 つの有効なジョブからすべてのカテゴリを取得する必要があります。
 | ジョブクラスに行ったように、カテゴリエンティティのリポジトリクラスを作成します。
 According to the second day’s requirements we need to have jobs sorted by categories.
 Until now, we have not taken the job category into account. From the requirements, the homepage must display jobs by category.

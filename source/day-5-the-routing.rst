@@ -6,9 +6,9 @@
 URL
 ---
 
-| Jobeetホームページのジョブ情報をクリックすると、URLは /job/1/show のようになります。
-| すでに PHP で Webサイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
-| Symfony はどのようにそれを動作させるのでしょうか？ このURLに基づいてどのようにアクションを決定するのでしょうか？
+| Jobeet ホームページのジョブ情報をクリックすると、 URL は /job/1/show のようになります。
+| すでに PHP で Web サイトを開発している場合は、おそらく /job.php?id=1 のような URL に慣れているでしょう。
+| Symfony はどのようにそれを動作させるのでしょうか？ この URL に基づいてどのようにアクションを決定するのでしょうか？
 | なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
 | ここでは、これらすべての質問にお答えします。
 | 既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
@@ -17,7 +17,7 @@ URL
 
    {{ path('ibw_job_show', { 'id': entity.id }) }}
 
-| これはid 1を持つジョブのURLを生成するために、 ``path`` テンプレートヘルパー関数を使用しています。
+| これはid 1を持つジョブの URL を生成するために、 ``path`` テンプレートヘルパー関数を使用しています。
 | ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
 
 ルーティング設定
@@ -35,9 +35,9 @@ app/config/routing.yml
        resource: "@IbwJobeetBundle/Resources/config/routing.yml"
        prefix:   /
 
-| さて、JobeetBundleのrouting.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
+| さて、 JobeetBundle の routing.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
 | そのファイルは、ジョブ·コントローラのためのものです。
-| また、URLパターン (/hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
+| また、URLパターン ( /hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -88,23 +88,23 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
 | それでは ibw_job_show ルートを詳しく見てみましょう。
 | ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
-| URL /1/show の場合は、コントローラーで利用可能なid の値は、 1 です。
+| URL /1/show の場合は、コントローラーで利用可能な id の値は、 1 です。
 | _controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
-| このケースでは、IbwJobeetBundle の JobController の showAction を実行する必要があります。
+| このケースでは、 IbwJobeetBundle の JobController の showAction を実行する必要があります。
 | 各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
 
 Dev 環境のルーティング設定
 --------------------------
 
-| devの環境はWebデバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
-| （すでに/app/config/routing_dev.php からAcmeDemoBundleのルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
+| dev の環境は Web デバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
+| （すでに /app/config/routing_dev.php から AcmeDemoBundle のルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
 | このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
 
 ルートのカスタマイズ
 --------------------
 
 | ブラウザで URL / のリクエストを投げたときに、今は、404 Not Foundエラーが表示されます。
-| このURLが、定義されたどのルートとも一致しないためです。
+| この URL が、定義されたどのルートとも一致しないためです。
 | ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController クラスの indexAction() メソッドに送ります。
 | これを URL / と一致するように変更して、 JobController クラスの indexAction() メソッドを呼び出すようにしてみましょう。
 | 変更を行うには、次のように行います。
@@ -199,7 +199,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
    }
 
 | また、ジョブ·クラス定義の前に use 文を追加する必要があります。
-| その後、 src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify メソッドを追加します。
+| その後、 src/Ibw/JobeetBundle/Utils/Jobeet.php ファイルを作成し、その中に slugify() メソッドを追加します。
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -254,7 +254,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
    # ...
 
-上記の ``requirements`` の項目は、id の値に数値型を強制します。そうでない場合は、ルートが一致しません。
+上記の ``requirements`` の項目は、 id の値に数値型を強制します。そうでない場合は、ルートが一致しません。
 
 ルートのデバッグ
 ----------------
