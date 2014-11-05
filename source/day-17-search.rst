@@ -3,7 +3,7 @@
 
 .. include:: common/original.rst.inc
 
-| 14 日目では、いくつかのフィードを追加し、ユーザーに最新の新しいジョブのを更新するようにいたしました。
+| 14 日目では、最新の投稿で Jobeet ユーザーのジョブの更新を維持するため、いくつかのフィードを追加しました。
 | 今日は検索エンジンという最新の機能を実装してユーザーエクスペリエンスを向上させます。
 In day 14, we added some feeds to keep Jobeet users up-to-date with new job posts.
 Today will help you to improve the user experience by implementing the latest main feature of the Jobeet website: the search engine.
