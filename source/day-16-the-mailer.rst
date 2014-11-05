@@ -4,12 +4,12 @@
 .. include:: common/original.rst.inc
 
 | 昨日は、 Jobeet に読み取り専用の Web サービスを追加しました。
-| アフィリエイトは、現在アカウントを作成できますが、使用する前に管理者によってアクティブ化される必要があります。
+| 現在、アフィリエイトはアカウントの作成はできますが、使用する前に管理者によってアクティブ化される必要があります。
 | アフィリエイトがトークンを受け取るためには、メール通知を実装する必要があります。今日の行う作業はそれになります。
 | Symfony フレームワークは最高の PHP のメール送信ソリューションの一つ、 Swift Mailer がバンドルされています。
 | もちろん、ライブラリは完全に、 Symfony と統合されており、いくつかの素晴らしい機能がデフォルトの機能の上に追加されています。
 | では、アカウントがアクティブ化された際アフィリエイトにトークンを通知するため、単純な電子メールを送ることから始めましょう。
-| しかし、最初に、ご使用の環境を構成する必要があります。
+| しかし、最初に、ご使用の環境を設定する必要があります。
 Yesterday, we added a read-only web service to Jobeet.
 Affiliates can now create an account but it needs to be activated by the administrator before it can be used.
 In order for the affiliate to get its token, we still need to implement the email notification.
@@ -37,7 +37,7 @@ But first, you need to configure your environment:
    For the code to work properly, you should change the address@example.com email address to a real one, along with your real password.
 
 | app/config/parameters_test.yml ファイルに同じことを行います。
-| 二つのファイルを変更した後、両方のテストおよび開発環境用のキャッシュをクリアします。：
+| 二つのファイルを変更した後、両方のテストおよび開発環境用のキャッシュをクリアします。
 Do the same thing in your app/config/parameters_test.yml file.
 After modifying the two files, clear the cache for both test and development environment:
 
@@ -54,17 +54,20 @@ You can think of creating a Message as being similar to the steps you perform wh
 You give it a subject, specify some recipients and write your message.
 
 メッセージを作成するには、以下となります。
-* Swift_messageのnewInstance() メソッドをコールします。（このオブジェクトの詳細を学ぶためには Swift Mailer の公式ドキュメントを参照してください）
-* setForm() メソッドで送信アドレス( From: )を設定します。
-* setSubject() メソッドでタイトルを設定します。
-* 次のいずれかの方法で、受信者を設定します。setTo(), SetCC(), setBcc()。
-* setBodyで本文を設定します。
+
+*  Swift_messageのnewInstance() メソッドをコールします。（このオブジェクトの詳細を学ぶためには Swift Mailer の公式ドキュメントを参照してください）
+*  setForm() メソッドで送信アドレス( From: )を設定します。
+*  setSubject() メソッドでタイトルを設定します。
+*  次のいずれかの方法で、受信者を設定します。setTo(), SetCC(), setBcc()。
+*  setBodyで本文を設定します。
+
 To create the message, you will:
-* call the newInstance() methond of Swift_message (refer to the Swift Mailer official documentation to learn more about this object).
-* set your sender address (From:) with setFrom() method.
-* set a subject line with setSubject() method.
-* set recipients with one of these methods: setTo(), setCc() or setBcc().
-* set a body with setBody().
+
+*  call the newInstance() methond of Swift_message (refer to the Swift Mailer official documentation to learn more about this object).
+*  set your sender address (From:) with setFrom() method.
+*  set a subject line with setSubject() method.
+*  set recipients with one of these methods: setTo(), setCc() or setBcc().
+*  set a body with setBody().
 
 次のコードで ``activateAction`` を置き換えます。
 Replace the activate action with the following code:
@@ -124,7 +127,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/email.txt.twig
    or http://jobeet.local/app_dev.php/api/{{affiliate}}/jobs.yaml
 
 | ここで、複数のアフィリエイトアカウントを選択しアクティブ化した場合でも、アクティベーションメールが届くように、
-| batchActionActivate にメール機能を追加してみましょう：
+| batchActionActivate にメール機能を追加してみましょう。
 Now, let’s add the mailing functionality to the batchActionActivate too,
 so that even if we select multiple affiliate accounts to activate, they will receive their account activation email :
 
@@ -169,7 +172,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
 | Symfony のメーラーでメール送信する機能を作成しました。次は、作成したものが正しく動くか機能テストを書いて確認しましょう。
 | この新しい機能をテストするには、ログインする必要があります。ログインするには、ユーザー名とパスワードが必要になります。
-| ユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。：
+| ユーザー ``admin`` を追加する新しいフィクスチャファイルを作成することから始めます。
 Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
 To test this new functionality, we need to be logged in. To log in, we will need an username and a password.
 That’s why we will start by creating a new fixture file, where we add the user admin:
