@@ -74,13 +74,13 @@ The first step is to intercept whenever a user types a key in the search box:
 
    .. note::
 
-         後で大きく修正するので、今はコードを追加しないでください。
-         最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
+      後で大きく修正するので、今はコードを追加しないでください。
+      最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
       Don’t add the code for now, as we will modify it heavily.
       The final JavaScript code will be added to the layout in the next section.
 
-| jQueryはユーザーのキー入力のたびに、上記のコードで定義された無名関数を実行します。
-| ただし、ユーザーが3文字以上入力した場合、または、inputタグからすべてを削除した場合に限ります。
+| jQuery はユーザーのキー入力のたびに、上記のコードで定義された無名関数を実行します。
+| ただし、ユーザーが 3 文字以上入力した場合、または、 input タグからすべてを削除した場合に限ります。
 | サーバへの AJAX のコールを作ることは DOM 要素上の load() メソッドを使用するのと同じくらい簡単です。
 Every time the user types a key, jQuery executes the anonymous function defined in the above code,
 but only if the user has typed more than 3 characters or if he removed everything from the input tag.
@@ -314,8 +314,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
        }
    }
 
-| 17 日目では、検索エンジンを実装するためにZend Luceneライブラリを使用しました。
-| 今日、それがより敏感にするためにjQueryを使用しました。
+| 17 日目では、検索エンジンを実装するために Zend Luceneライブラリを使用しました。
+| 今日、それがより敏感にするために jQuery を使用しました。
 | Symfony フレームワークは、簡単に MVC アプリケーションを構築するためにすべての基本的なツールを提供し、
 | また他のコンポーネントと上手に共存します。
 | いつものように、作業のためには最適なツールを使用するようにしてください。

@@ -53,7 +53,7 @@ app/config/security.yml
        encoders:
            Symfony\Component\Security\Core\User\User: plaintext
 
-| この設定は、 /admin セクション(/admin で始まるすべてのURL)を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( ``access_control`` の項目を参照ください）。
+| この設定は、 /admin セクション( /admin で始まるすべての URL )を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( ``access_control`` の項目を参照ください）。
 | この例では、``admin`` ユーザが設定ファイルで（ ``providers`` の箇所）に定義されていますが、パスワードがエンコーダで符号化されていません。
 | ユーザーを認証するためには伝統的にログインフォームを使用しますが、それを有効にする必要があります。
 | まず、ログインフォームの表示(すなわち /login )とログインフォームの送信の処理(すなわち /login_check )の二つのルートを作成します。
@@ -146,7 +146,7 @@ src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
    </form>
 
 | ここで、 URL http：//jobeet.local/app_dev.php/admin/dashboard にアクセスするとログインフォームが表示されます。
-| Jobeetの管理領域に行くには security.yml で定義されたユーザ名とパスワード（admin/adminpass）を入力する必要があります。
+| Jobeetの管理領域に行くには security.yml で定義されたユーザ名とパスワード（ admin/adminpass ）を入力する必要があります。
 Now, if you try to access http://jobeet.local/app_dev.php/admin/dashboard url, the login form will show and
 you will have to enter the username and password defined in security.yml (admin/adminpass) to get to the admin section of Jobeet.
 
@@ -155,8 +155,8 @@ you will have to enter the username and password defined in security.yml (admin/
 
 | 認証時に、ユーザーは資格情報のセット（通常はユーザ名とパスワード）を送信します。
 | 認証システムの仕事は、資格情報をユーザーリストに対して照らし合わせることです。では、ここでのユーザーリストはどこから来るのでしょうか？
-| Symfony2 では、ユーザーをどこからでも取得することができます。設定ファイル、データベーステーブル、Webサービス、または、考えうるなんでも。
-| 認証システムに1つ以上のユーザーを提供するものは、「ユーザープロバイダー」として知られています。
+| Symfony2 では、ユーザーをどこからでも取得することができます。設定ファイル、データベーステーブル、 Web サービス、または、考えうるなんでも。
+| 認証システムに 1 つ以上のユーザーを提供するものは、「ユーザープロバイダー」として知られています。
 | Symfony2 は最も一般的なユーザープロバイダーとして、設定ファイル、および、データベースのテーブルからのユーザーの読み込みを標準装備しています。
 | 上記では、設定ファイル内のユーザーを指定する、最初のケースを使用していました。
 During authentication, the user submits a set of credentials (usually a username and password).
@@ -348,7 +348,7 @@ app/config/security.yml
    encoders:
      Ibw\JobeetBundle\Entity\User: sha512
 
-| また、新しいUserクラス用のエンコーダをパスワードの暗号化のため SHA512 アルゴリズムを使用するように変更しました。
+| また、新しい User クラス用のエンコーダをパスワードの暗号化のため SHA512 アルゴリズムを使用するように変更しました。
 | これですべてセットアップされましたので、最初のユーザーを作成する必要があります。
 | これを行うためには、新しい symfony コマンドを作成します。
 We also changed the encoder for our new User class to use the sha512 algorithm to encrypt passwords.
@@ -435,7 +435,7 @@ app/config/security.yml
                    target: /
        # ...
 
-| ファイアウォールがすべての面倒を見るため、  URL (/logout)用のコントローラを実装する必要はありません。
+| ファイアウォールがすべての面倒を見るため、  URL ( /logout )用のコントローラを実装する必要はありません。
 | URL 生成に使用できるよう、ルートを作成してみましょう：
 You will not need to implement a controller for the /logout URL as the firewall takes care of everything.
 Let’s create a route so that you can use it to generate the URL:
@@ -492,7 +492,7 @@ You can store and retrieve information from the session easily from the controll
    // in another controller for another request
    $foo = $session->get('foo');
 
-| 残念なことに、Jobeetユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。
+| 残念なことに、 Jobeet ユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。
 | そこで、新しい要件を追加してみましょう：求人の閲覧を容易にするため、ユーザが閲覧した最後の3つのジョブは、後で求人ページに戻れるリンクがメニューに表示されるべきです。
 | ユーザーが求人ページにアクセスすると、表示された ``Job`` オブジェクトは、セッションでのユーザーの履歴に追加・保存される必要があります。：
 Unfortunately, the Jobeet user stories have no requirement that includes storing something in the user session.
@@ -589,8 +589,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        // ...
    }
 
-| getFlashBag()->add() 関数の最初の引数は、フラッシュの識別子で、、2つ目は表示するためのメッセージです。
-| 自由にフラッシュの名前を定義できますが、notice と error の2つがより一般的です。
+| getFlashBag()->add() 関数の最初の引数は、フラッシュの識別子で、 2 つ目は表示するためのメッセージです。
+| 自由にフラッシュの名前を定義できますが、 notice と error の 2 つがより一般的です。
 | フラッシュ·メッセージを表示するためそれらをテンプレートに含める必要があります。
 | layout.html.twig テンプレートで行いました。
 The first argument of the getFlashBag()->add() function is the identifier of the flash and the second one is the message to display.

@@ -516,11 +516,9 @@ Inside the ApiControllerTest file, we test that the request formats are correctl
 
 アフィリエイト申込フォーム
 --------------------------
-The Affiliate Application Form
-------------------------------
 
 | ここで、 Web サービスが使用できる状態になりましたので、アフィリエイト用のアカウント作成フォームを作成してみましょう。
-| そのためには、HTMLフォームを書き、各フィールドの検証ルールを実装し、データベースに値を保存する処理をし、エラー·メッセージを表示し、エラーの場合はフィールドを再設定します。
+| そのためには、 HTML フォームを書き、各フィールドの検証ルールを実装し、データベースに値を保存する処理をし、エラー·メッセージを表示し、エラーの場合はフィールドを再設定します。
 | まず、 AffiliateController という名前の新しいコントローラのファイルを作成します。
 Now that the web service is ready to be used, let’s create the account creation form for affiliates.
 For that, you need to write the HTML form, implement validation rules for each field,
@@ -670,7 +668,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
                - NotBlank: ~
                - Email: ~
 
-| バリデーション設定では、UniqueEntity という新しいバリデータを使用しました。
+| バリデーション設定では、 UniqueEntity という新しいバリデータを使用しました。
 | これは Doctrine のエンティティ内の特定のフィールド(または複数のフィールド)がユニークであることを検証します。
 | これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。
 | 検証制約を適用した後にキャッシュをクリアすることを忘れないでください！
@@ -784,7 +782,7 @@ Add the new create action to your Affiliate controller:
        }
    }
 
-createアクションを先に作ったので、次にルートを定義します。
+create アクションを先に作ったので、次にルートを定義します。
 When submitting, the create action is performed, so we need to define the route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
@@ -1342,7 +1340,7 @@ src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_deactivate.html
        </a>
    {% endif %}
 
-各アカウントが個別にページに表示されるように、Admin ファイルの中で、configureListFields メソッドに新しいアクションとボタンを追加します。
+各アカウントが個別にページに表示されるように、 Admin ファイルの中で、 configureListFields メソッドに新しいアクションとボタンを追加します。
 Inside your Admin file, add the new actions and buttons to the configureListFields function, so that they would appear on the page, to each account individually:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
