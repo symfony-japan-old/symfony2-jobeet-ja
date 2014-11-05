@@ -33,9 +33,8 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <a href="{{ path('ibw_job_new') }}">Post a Job</a>
 
-| そこで、JobController クラスの createAction メソッドの中で、 ibw_job_show ルートのパラメータを、
-| チュートリアルの5日目で作成した新しいルートと一致させるように変更します。
-Then, change the ibw_job_show route parameters in createAction of the JobController to match the new route we created in day 5 of this tutorial:
+| そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、
+| チュートリアルの5日目で作成した新しいルートを、一致させるように変更します。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -72,8 +71,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 | デフォルトでは、Doctrine が生成したフォームは、すべてのテーブルのカラムのフィールドを表示します。
-| しかし、求人フォームはエンドユーザーが編集可能であってはなりません。
-| 以下を参照として求人フォームを編集してください。
+| しかし、求人フォームはエンドユーザーが編集可能ではいけません。
+| 以下のように求人フォームを編集してください。
 By default, the Doctrine generated form displays fields for all the table columns.
 But for the Job form, some of them must not be editable by the end user.
 Edit the Job form as you see below:
@@ -121,9 +120,9 @@ src/Ibw/JobeetBundle/Form/JobType.php
        }
    }
 
-| フォームの設定は、データベーススキーマから自動生成することができるものよりもより正確でなければなりません。
+| フォームの設定は、データベーススキーマから自動生成することができるものよりも、より正確でなければなりません。
 | たとえば、``email`` のカラムは、スキーマ内の varchar 型ですが、電子メールとして検証される必要があります。
-| Symfony2のでは、バリデーション(検証)は、基礎となるオブジェクト（例えば Job）に適用されます。
+| Symfony2 では、バリデーション(検証)は、基礎となるオブジェクト（例えば Job ）に適用されます。
 | つまり、問題は、フォームが有効かではなく、送信されたデータをフォームに適用した後にジョブオブジェクトが有効であるかどうかです。
 | これを行うには、バンドルの Resources/config ディレクトリに新しい validation.yml ファイルを作成します。
 The form configuration must sometimes be more precise than what can be introspected from the database schema.
@@ -166,7 +165,6 @@ src/Ibw/JobeetBundle/Form/JobType.php
    }
 
 これを動かすために、ジョブのエンティティ内に以下のメソッドを追加します。
-For this to work, add the following methods in the Job entity:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -223,8 +221,7 @@ src/Ibw/JobeetBundle/Form/JobType.php
             // ...
     }
 
-また、残りのフィールドの検証制約を追加する必要があります。
-You should also add validation constraints for the rest of the fields:
+また、残りのフィールドに検証制約を追加する必要があります。
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -384,7 +381,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
 | ロゴプロパティは、ファイルへの相対パスを格納し、データベースに永続化されます。
 | getAbsolutePath() はファイルの絶対パスを返す便利なメソッドです。
-| 一方、getWebPath() はアップロードされたファイルにリンクするWebパスを返す、テンプレートにて使用可能な便利なメソッドです。
+| 一方、 getWebPath() はアップロードされたファイルにリンクする Web パスを返す、テンプレートにて使用可能な便利なメソッドです。
 | データベース操作とファイルの移動が不可分になるように、実装を行います。
 | エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
 | これを行うには、 Doctrine がデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
@@ -413,15 +410,13 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            postUpdate: [ upload ]
            postRemove: [ removeUpload ]
 
-ここで Doctrine のコマンド ``generate:entities`` を実行し、ジョブエンティティへこれらの新しいメソッドを追加します。
-Now run the generate:entities doctrine command to add these new methods to the Job entity:
+ここで、ジョブエンティティへこれらの新しいメソッドを追加するため、 Doctrine のコマンド ``generate:entities`` を実行します。
 
 .. code-block:: bash
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-次のように追加されたメソッドをジョブの実体を編集し、変更します。
-Edit the Job entity and change the added methods to the following:
+ジョブエンティティに追加されたメソッドを次のように変更します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -802,7 +797,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
 | 現在フォームクラスと、それをレンダリングするテンプレートを持っています。
 | さて、それでは実際にいくつかのアクションを動作させましょう。
-| 求人フォームは JobController の 4 つの方法で管理されています。
+| 求人フォームは JobController クラスの 4 つのメソッドで管理されています。
 We now have a form class and a template that renders it.
 Now, it’s time to actually make it work with some actions.
 The job form is managed by four methods in the JobController:
@@ -1346,7 +1341,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        defaults: { _controller: "IbwJobeetBundle:Job:publish" }
        requirements: { _method: post }
 
-現在、公開リンクのリンクを変更することができます（ジョブを削除するときのようにフォームを使用しますので、POSTリクエストになります）。
+現在、公開リンクのリンクを変更することができます（ジョブを削除するとき同様フォームを使用しますので、POSTリクエストになります）。
 We can now change the link of the Publish link (we will use a form here, like when deleting a job, so we will have a POST request):
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig

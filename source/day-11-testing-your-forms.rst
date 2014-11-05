@@ -311,8 +311,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        return $query->getSingleResult();
    }
 
-求人が公開されている場合は、編集ページは 404 ステータスコードを返す必要があります。
-If a job is published, the edit page must return a 404 status code:
+ジョブが公開されている場合は、編集ページは 404 ステータスコードを返す必要があります。
 
 src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
