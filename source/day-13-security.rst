@@ -119,7 +119,7 @@ src/Ibw/JobeetBundle/Controller/DefaultController.php
 | ユーザーがフォームを送信すると、セキュリティシステムは自動的にフォームの送信を処理します。
 | 無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。
 | セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証します。
-| そのため、唯一の仕事は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
+| そのため、唯一の作業は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
 | 最後に、対応するテンプレートを作成してみましょう：
 When the user submits the form, the security system automatically handles the form submission for you.
 If the user had submitted an invalid username or password, this action reads the form submission error from the security system so that it can be displayed back to the user.
@@ -417,7 +417,7 @@ You can use it to login to the admin section.
 ----------
 
 | ログアウトはファイアウォールによって自動的に処理されます。
-| 唯一の作業は、ログアウトの config パラメータを有効化することです。：
+| 唯一の作業は、ログアウトの config パラメータをアクティブ化することです。：
 Logging out is handled automatically by the firewall.
 All you have to do is to activate the logout config parameter:
 

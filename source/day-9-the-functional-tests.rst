@@ -13,7 +13,7 @@
 | それは非常識です。 Symfonyでは機能テストはシナリオを簡単に書く方法を提供します。
 | 各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。
 | 単体テストのように、コードに自信を与えてくれます。
-| 機能テストは、非常に特殊なワークフローがあります。
+| 機能テストは、非常に明確なワークフローがあります。
 Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server.
 They test all the layers of an application: the routing, the model, the actions and the templates.
 They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page.
@@ -130,7 +130,7 @@ To learn more about crawler, read the Symfony documentation here.
 機能テストの実行
 ----------------
 
-単体テスト（ユニットテスト）に関して、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
+単体テスト（ユニットテスト）と同様に、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
 As for unit tests, launching functional tests can be done by executing the phpunit command:
 
 .. code-block:: bash
@@ -248,7 +248,7 @@ First, let’s test the Jobeet homepage by editing the JobControllerTest class. 
 
 | ホームページから期限切れのジョブの除外を検証するために、 CSS セレクタ ``.jobs td.position:contains("Expired")`` が、
 | レスポンスの中の HTML コンテンツ内のどれとも一致しないことを確認します。
-| （フィクスチャーの中で唯一、有効期限が切れた仕事は、役職に「 Expired 」が含まれていたことを思い出してください）。
+| （フィクスチャーの中で唯一、有効期限が切れたジョブは、役職に「 Expired 」が含まれていたことを思い出してください）。
 To verify the exclusion of expired jobs from the homepage,
 we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content
 (remember that in the fixtures, the only expired job we have contains “Expired” in the position).
@@ -312,7 +312,8 @@ In these tests, we check that there is no “more jobs” link for the design ca
 ジョブが日付でソートされること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| ジョブが実際に日付でソートされているかどうかをテストするために、ホームページに記載された最初の仕事が、期待したものであることを確認する必要があります。
+| ジョブが実際に日付でソートされているかどうかをテストするために、
+| ホームページに記載された最初のジョブが、期待したものであることを確認する必要があります。
 | URL に期待する主キーが含まれていることを確認することで行います。
 | 主キーは実行の間に変わる可能性があるため、最初にデータベースから Doctrine のオブジェクトを取得する必要があります。
 To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect.
@@ -337,8 +338,8 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
    }
 
-| テストがこの瞬間には動作したとしても、コードを少しでもリファクタリングする必要があります。
-| 最初のプログラミングカテゴリのジョブを取得する処理がどのテストでも再利用可能になったように。
+| テストがこの瞬間には動作したとしても、最初のプログラミングカテゴリのジョブを取得する処理をどのテストでも再利用できるよう、
+| コードを少しリファクタリングする必要があります。
 | コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。
 | 代わりに、テストクラス内の getMostRecentProgrammingJob() メソッドにコードを移動します。
 Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests.

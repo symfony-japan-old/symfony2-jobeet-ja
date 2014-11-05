@@ -239,7 +239,7 @@ src/Ibw/JobeetBundle/views/Job/index.html.twig
 ------------------------
 
 | ルーティングシステムは組み込みの検証機能を持っています。
-| ルート定義の ``requirements`` の項目で定義された正規表現によって``pattern`` の各変数を検証することができます。
+| ルート定義の ``requirements`` の項目で定義された正規表現によって ``pattern`` の各変数を検証することができます。
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 

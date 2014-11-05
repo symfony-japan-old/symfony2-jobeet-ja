@@ -203,7 +203,7 @@ src/Ibw/JobeetBundle/Controller/ApiController.php
    }
 
 | トークンを使用してアフィリエイトユーザーを取得するには、 getForToken() メソッドを作成します。
-| このメソッドはまたアフィリエイトアカウントが有効化されているかを検証しますので、再度チェックする必要はありません。
+| このメソッドはまたアフィリエイトアカウントがアクティブ化されているかを検証しますので、再度チェックする必要はありません。
 | 今までまだ AffiliateRepository を使用していないので存在していません。
 | それを作成するには、次のように ORM ファイルを変更し、エンティティを生成する際に使用したコマンドを実行します。
 To retrieve the affiliate using his token, we will create the getForToken() method.
@@ -259,7 +259,7 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
        }
    }
 
-| トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属する仕事を与えるため、 getActiveJobs() メソッドを使用します。
+| トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属するジョブを与えるため、 getActiveJobs() メソッドを使用します。
 | 現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。
 | そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
 After identifying the affiliate by his token, we will use the getActiveJobs() method to give the affiliate the jobs he required, belonging to the selected categories.

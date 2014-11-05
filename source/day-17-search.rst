@@ -38,7 +38,7 @@ so don’t download any of them for this tutorial.
 
 .. note::
 
-       以下の説明は、Zend Frameworkを1.12.3バージョンでテストされています。
+   以下の説明は、Zend Framework を1.12.3バージョンでテストされています。
    The following explanations have been tested with the 1.12.3 version of the Zend Framework.
 
 .. image:: /images/Day-17-zend.jpg
@@ -70,8 +70,8 @@ app/autoload.php
 --------------
 
 | Jobeet の検索エンジンは、ユーザーが入力したキーワードにマッチするすべての求人情報を返すことができるべきです。
-| 何でも検索できるようになるには、ジョブに対して、Jobeet に対してインデックスが構築される必要があり、作成する新しいディレクトリ (/web/data/ )に保存されます。
-| Zend Lucene はインデックスがすでに存在するかどうかに応じて取得するために2つのメソッドを提供します。
+| 何でも検索できるようになるには、ジョブに対して、Jobeet に対してインデックスが構築される必要があり、作成する新しいディレクトリ ( /web/data/ )に保存されます。
+| Zend Lucene はインデックスがすでに存在するかどうかに応じて取得するために 2 つのメソッドを提供します。
 | 既存のインデックスを返すか、もしくは、新しいインデックスを作成する、ジョブエンティティクラスのヘルパーメソッドを作成してみましょう。：
 The Jobeet search engine should be able to return all jobs matching keywords entered by the user.
 Before being able to search anything, an index has to be built for the jobs; for Jobeet, it will be stored in a new directory you will create, /web/data/ .
@@ -104,7 +104,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
    }
 
 | ジョブが作成または更新されるたびに、インデックスを更新する必要があります。
-| ジョブがデータベースにシリアライズされるたびにインデックスを更新するためにORMファイルを編集します。
+| ジョブがデータベースにシリアライズされるたびにインデックスを更新するように ORM ファイルを編集します。
 Each time a job is created or updated, the index must be updated.
 Edit the ORM file to update the index whenever a job is serialized to the database:
 
@@ -127,8 +127,7 @@ Now, run the generate:entities command, so that the updateLuceneIndex() method t
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-次に、実際の作業を行うよう updateLuceneIndex() メソッドを編集します。
-Then, edit the updateLuceneIndex() method that does the actual work:
+次に、実際の作業を行う updateLuceneIndex() メソッドを編集します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -171,8 +170,9 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-| Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合ははじめに削除します。
-| ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに格納はされません。
+| Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合は、はじめに削除します。
+| ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。
+| メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに格納はされません。
 | また、削除されたジョブエントリをインデックスから削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。
 | 更新と同様の処理を削除でも行います。
 | ORM ファイルの postremove セクションに deleteLuceneIndex() メソッドを追加します。
@@ -193,7 +193,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            # ...
            postRemove: [ removeUpload, deleteLuceneIndex ]
 
-| 再度、実体を生成するコマンドを実行します。
+| 再度、エンティティを生成するコマンドを実行します。
 | ここで、エンティティファイルに移動し、 deleteLuceneIndex() メソッドを実装します。
 Again, run the command for generating entities.
 Now, go to entity file and implement the deleteLuceneIndex() method:
@@ -234,7 +234,6 @@ Now that we have everything in place, you can reload the fixture data to index t
 ----
 
 検索を実装することは、とても簡単です。まず、ルートを作成します。
-Implementing the search is a piece of cake. First, create a route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -246,8 +245,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        pattern: /search
        defaults: { _controller: "IbwJobeetBundle:Job:search" }
 
-そして、対応するアクション：
-And the corresponding action:
+そして、対応するアクション。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -447,7 +445,7 @@ we also check that jobs matching the given criteria do show up in the results.
 タスク
 ------
 
-最終的には、 JobeetCleanup タスクを更新して、古いエントリ（たとえばジョブが期限切れになったときに）のインデックスをクリーンアップし、随時索引を最適化する必要があります。
+最終的には、 JobeetCleanup タスクを更新して、古いエントリ（たとえばジョブが期限切れになったときに）のインデックスをクリーンアップし、随時インデックスを最適化する必要があります。
 Eventually, we need to update the JobeetCleanup task to cleanup the index from stale entries (when a job expires for example) and optimize the index from time to time:
 
 src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php

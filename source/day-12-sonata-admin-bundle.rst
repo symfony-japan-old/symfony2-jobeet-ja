@@ -3,9 +3,9 @@
 
 .. include:: common/original.rst.inc
 
-| Jobeetの上で 11 日目に行った追加により、アプリケーションは求職者と仕事の投稿者ともに使用可能になります。
-| それでは、アプリケーションの管理セクションについて少し話をする時間です。
-| 今日では、``SonataAdminBundle`` のおかげで、1 時間未満でJobeetのための完全な管理インターフェイスを開発します。
+| Jobeetの上で 11 日目に行った追加により、アプリケーションは求職者とジョブの投稿者の両方とも使用可能になります。
+| それでは、アプリケーションの管理領域について少し話をする時間です。
+| 今日では、``SonataAdminBundle`` のおかげで、1 時間未満で Jobeet のための完全な管理画面を開発します。
 With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters.
 It’s time to talk a bit about the admin section of our application.
 Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
@@ -136,8 +136,8 @@ CRUD コントローラー
 | CRUD コントローラは、基本的な CRUD アクションが含まれています。
 | コントローラー名を正しい Admin インスタンスにマッピングすることで、 Admin クラスに関連付けます。
 | 一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
-| コントローラは、さまざまなアクションを構築するために、管理クラスを使用します。
-| コントローラの内部では、管理オブジェクトは、構成プロパティを介してアクセスできます。
+| コントローラは、さまざまなアクションを構築するために、 Admin クラスを使用します。
+| コントローラの内部では、 Admin オブジェクトは、構成プロパティを介してアクセスできます。
 | それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
 The CRUD controller contains the basic CRUD actions.
 It is related to one Admin class by mapping the controller name to the correct Admin instance.
@@ -178,9 +178,10 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 Admin クラスの作成
 ------------------
 
-| 管理クラスは、モデルと管理セクション（forms, list, show）のマッピングを表します。
-| お使いのモデルのための管理クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
-| バンドルの管理フォルダに ``Admin`` クラスを作成します。 Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
+| Admin クラスは、モデルと管理領域（forms, list, show）のマッピングを表します。
+| お使いのモデルのための Admin クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
+| バンドルの Admin フォルダに ``Admin`` クラスを作成します。
+| Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
 The Admin class represents the mapping of your model and administration sections (forms, list, show).
 The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class.
 We will create the Admin classes in the Admin folder of our bundle.
@@ -449,7 +450,7 @@ Some of the features you will find when using it are:
 | バッチアクションは（すべての、または、特定のサブセットの）選択したモデルに対して実行されるアクションです。
 | リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。
 | デフォルトでは、``delete`` アクションを使用すると、一度に複数のエントリを削除することができます。
-| 新しいバッチアクションを追加するには、管理クラスから getBatchActions をオーバーライドする必要があります。
+| 新しいバッチアクションを追加するには、 Admin クラスから getBatchActions をオーバーライドする必要があります。
 | では、ここで新しい ``extend`` アクションを定義しましょう。
 Batch actions are actions triggered on a set of selected models (all of them or only a specific subset).
 You can easily add some custom batch action in the list view.
@@ -529,7 +530,7 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
        }
    }
 
-| それでは 60 日以上投稿者によって有効化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
+| それでは 60 日以上投稿者によってアクティブ化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
 | 条件が一致するレコードを検索して削除しますので、このアクションのために、リストから任意のジョブを選択する必要はありません。
 Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days.
 For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
