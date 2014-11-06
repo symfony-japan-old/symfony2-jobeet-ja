@@ -14,9 +14,11 @@
 
    From Wikipedia:
       * 国際化( Internationalization )とは、ソフトウェアアプリケーションの設計プロセスで、技術的な変更をせずにさまざまな言語および地域に適合させることができるようにすることです。
-      * Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes.
       * ローカライゼーション( Localization )とは、ソフトウェアをロケール固有のコンポーネントと翻訳テキストを追加することで特定の地域や言語に適応させるプロセスです。
-      * Localization is the process of adapting software for a specific region or language by adding locale-specific components and translating text.
+
+      ..
+         * Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes.
+         * Localization is the process of adapting software for a specific region or language by adding locale-specific components and translating text.
 
 ユーザー
 --------

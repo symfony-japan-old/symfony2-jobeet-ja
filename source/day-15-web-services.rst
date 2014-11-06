@@ -101,7 +101,8 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
            prePersist: [ setCreatedAtValue, setTokenValue ]
 
 ここで、次のコマンドを実行することで、 setTokenValue メソッドはエンティティファイルの中に生成されます。
-Now, the setTokenValue method will be generated inside the entity file when you will run the following command:
+
+.. Now, the setTokenValue method will be generated inside the entity file when you will run the following command:
 
 .. code-block:: bash
 
@@ -327,7 +328,7 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
    // ...
 
-ご覧のように、asArray() という関数を使用して、ジョブを配列に移植します。それを定義してみましょう。：
+ご覧のように、asArray() という関数を使用して、ジョブを配列に移植します。それを定義してみましょう。
 
 .. As you can see, we populate the jobs array using a function called asArray(). Let’s define it:
 

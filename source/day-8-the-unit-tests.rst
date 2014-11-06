@@ -24,7 +24,8 @@ Symfony のテスト
 .. note::
 
    PHPUnit がインストールされていない場合は、以下を使用します。
-   If you don’t have PHPUnit installed, use the following to get it:
+
+   .. If you don’t have PHPUnit installed, use the following to get it:
 
    .. code-block:: bash
 
@@ -92,7 +93,6 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
 
 すべてが正常に動作するとき、次のような結果を得るでしょう::
-As everything should work fine, you should get the following result::
 
    PHPUnit 3.7.22 by Sebastian Bergmann.
 

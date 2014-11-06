@@ -67,7 +67,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    実装前のコードの説明
 
-   Explaining code before implementing
+   .. Explaining code before implementing
 
    .. code-block:: javascript
 
@@ -83,8 +83,10 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
       後で大きく修正するので、今はコードを追加しないでください。
       最終的な JavaScript コードは、次のセクションでレイアウトに追加されます。
-      Don’t add the code for now, as we will modify it heavily.
-      The final JavaScript code will be added to the layout in the next section.
+
+      ..
+         Don’t add the code for now, as we will modify it heavily.
+         The final JavaScript code will be added to the layout in the next section.
 
 | jQuery はユーザーのキー入力のたびに、上記のコードで定義された無名関数を実行します。
 | ただし、ユーザーが 3 文字以上入力した場合、または、 input タグからすべてを削除した場合に限ります。
@@ -99,7 +101,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    実装前のコードの説明
 
-   Explaining code before implementing
+   .. Explaining code before implementing
 
    .. code-block:: javascript
 
@@ -126,7 +128,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    実装前のコードの説明
 
-   Explaining code before implementing
+   .. Explaining code before implementing
 
    .. code-block:: javascript
 

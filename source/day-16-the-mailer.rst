@@ -36,7 +36,8 @@
 .. note::
 
    コードが正しく動作するためには、 address@example.com を現実のメールアドレスに変更し、本当のパスワードを設定する必要があります。
-   For the code to work properly, you should change the address@example.com email address to a real one, along with your real password.
+
+   .. For the code to work properly, you should change the address@example.com email address to a real one, along with your real password.
 
 | app/config/parameters_test.yml ファイルに同じことを行います。
 | 二つのファイルを変更した後、両方のテストおよび開発環境用のキャッシュをクリアします。

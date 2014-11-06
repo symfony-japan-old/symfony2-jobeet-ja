@@ -45,7 +45,8 @@
 .. note::
 
    以下の説明は、Zend Framework を1.12.3バージョンでテストされています。
-   The following explanations have been tested with the 1.12.3 version of the Zend Framework.
+
+   .. The following explanations have been tested with the 1.12.3 version of the Zend Framework.
 
 .. image:: /images/Day-17-zend.jpg
 
