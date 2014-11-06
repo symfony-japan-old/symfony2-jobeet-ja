@@ -110,8 +110,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 新機能のテストを追加
 ----------------
 
-| 空の文字列のためのスラグは空の文字列です。それをテストすることはできますし、動作もしますが、
-| URL に空の文字列をいれることは、よい考えではありません。
+| 空の文字列のためのスラグは空の文字列です。それをテストすることはできますし、動作もしますが、URL に空の文字列をいれることは、よい考えではありません。
 | 空の文字列の場合は「n-a」の文字列を返すように slugify() メソッドを変更してみましょう。
 | 先にテストを書いてからメソッドを更新することができ、順番を逆にしてもできます。
 | それは本当に好みの問題ですが、先にテストを書くことは、コードが計画したものを実際に実装しているという自信を与えてくれます。
@@ -195,7 +194,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 | しばらくの間、それについて考え、ビンゴ、原因を見つけます。
 | 文字列が非 ASCII 文字のみで構成されている場合、slugify() メソッドは空の文字列に変換します。
 | 原因を発見したのに満足して、 Jobeet のクラスを編集してすぐに問題を解決しようとするのは、よい考えではありません。
-| 最初に、テストを追加してみましょう：
+| 最初に、テストを追加してみましょう。
 
 ..
    Let’s say that time has passed and one of your users reports a weird bug: some job links point to a 404 error page.
@@ -248,7 +247,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 ---------------------------------
 
 | おそらく、 Symfony がフランス人によって作られていることを知っているでしょう。
-| そこで、「アクセント」が含まれているフランス語の単語でテストを追加してみましょう：
+| そこで、「アクセント」が含まれているフランス語の単語でテストを追加してみましょう。
 
 ..
    You probably know that symfony has been created by French people,
@@ -351,8 +350,7 @@ cov/index.html は次のようになります。
 
 .. image:: /images/day-8-code-coverage1.jpg
 
-| インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、
-| それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
+インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
 
 .. Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 

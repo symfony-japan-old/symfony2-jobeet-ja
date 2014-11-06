@@ -22,7 +22,7 @@
    Let’s open the JobControllerTest file to add functional tests for the job creation and validation process.
    At the end of the file, add the following code to get the job creation page:
 
-src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
@@ -51,7 +51,7 @@ src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
    The above example selects an input of type submit using its value attribute “Submit Form".
 
-そしてまた、 form() メソッドを呼び出す際、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます。：
+そしてまた、 form() メソッドを呼び出す際、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます。
 
 .. When calling the form() method, you can also pass an array of field values that overrides the default ones:
 
@@ -147,7 +147,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 --------------
 
 | ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。
-| それでは、有効ではないデータを送信した場合のテストを追加してみましょう。：
+| それでは、有効ではないデータを送信した場合のテストを追加してみましょう。
 
 ..
    The job form creation works as expected when we submit valid values.
@@ -183,7 +183,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 | 今、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
 | ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
 | これらの 3 つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
-| しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。：
+| しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。
 
 ..
    Now, we need to test the admin bar found on the job preview page.
@@ -227,7 +227,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    You can also pass an array of values that will be merged with some default values.
    Testing the Publish action is now more simple:
 
-src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
@@ -251,7 +251,7 @@ src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. Testing the Delete action is quite similar:
 
-src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
@@ -350,7 +350,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 | テストを実行すると、期待される結果を取得できないでしょう。昨日、このセキュリティ対策を実装するのを忘れたためです。
 | テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。
-| バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。：
+| バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。
 
 ..
    But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday.

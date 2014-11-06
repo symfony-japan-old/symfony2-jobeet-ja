@@ -32,7 +32,7 @@ Sonata Admin バンドルのインストール
    ibw@ubuntu:/var/www/jobeet$ php composer.phar require sonata-project/admin-bundle
    Please provide a version constraint for the sonata-project/admin-bundle requirement: *
 
-また SonataDoctrineORMADminBundle をインストールする必要があります：
+また SonataDoctrineORMADminBundle をインストールする必要があります。
 
 .. We will also need to install the SonataDoctrineORMADminBundle:
 
@@ -149,7 +149,7 @@ CRUD コントローラー
 | 一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
 | コントローラは、さまざまなアクションを構築するために、 Admin クラスを使用します。
 | コントローラの内部では、 Admin オブジェクトは、構成プロパティを介してアクセスできます。
-| それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
+| それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。
 
 ..
    The CRUD controller contains the basic CRUD actions.
@@ -172,7 +172,7 @@ src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
        // Your code will be here
    }
 
-そして、次にジョブ。：
+そして、次にジョブ。
 
 .. And now for the Job:
 
@@ -195,7 +195,7 @@ Admin クラスの作成
 | Admin クラスは、モデルと管理領域（forms, list, show）のマッピングを表します。
 | お使いのモデルのための Admin クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
 | バンドルの Admin フォルダに ``Admin`` クラスを作成します。
-| Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
+| Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。
 
 ..
    The Admin class represents the mapping of your model and administration sections (forms, list, show).
@@ -220,7 +220,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
        // Your code will be here
    }
 
-そして、ジョブのために同様に作成します。：
+そして、ジョブのために同様に作成します。
 
 .. And for jobs:
 
@@ -284,7 +284,7 @@ Admin クラスの構成
 
 | 現在どのリンクをたどっても、何も起こりません。
 | リストやフォームに属しているフィールドを設定していない為です。
-| まずはカテゴリに対して、基本的な設定を行いましょう。：
+| まずはカテゴリに対して、基本的な設定を行いましょう。
 
 ..
    If you follow any link right now, nothing will happen.
@@ -335,7 +335,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
        }
    }
 
-そしてジョブの設定をします。：
+そしてジョブの設定をします。
 
 .. And now for jobs:
 

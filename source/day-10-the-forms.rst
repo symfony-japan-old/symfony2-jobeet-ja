@@ -5,10 +5,8 @@
 
 | ウェブサイトのフォームには、簡単な連絡先フォームから、多くのフィールドが付いている複雑なもまであります。
 | フォームを書くことは、 Web 開発者にとって最も複雑で退屈な作業の一つです。
-| HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、
-| エラー·メッセージを表示し、エラー時にフィールドに再投入しと...
-| このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドで
-| ジョブエンティティのための単純な CRUD コントローラを生成しました。
+| HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、エラー·メッセージを表示し、エラー時にフィールドに再投入しと...
+| このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドでジョブエンティティのための単純な CRUD コントローラを生成しました。
 | また、ジョブフォームを /src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
 
 ..
@@ -37,8 +35,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <a href="{{ path('ibw_job_new') }}">Post a Job</a>
 
-| そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、
-| チュートリアルの5日目で作成した新しいルートを、一致させるように変更します。
+そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、チュートリアルの5日目で作成した新しいルートを、一致させるように変更します。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -193,8 +190,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
    // ...
 
-| getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、
-| getTypeValues()​ メソッドはバリデーション(検証)の中でタイプフィールドの有効な値を取得するために使用されます。
+getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、getTypeValues()​ メソッドはバリデーション(検証)の中でタイプフィールドの有効な値を取得するために使用されます。
 
 .. The getTypes() method is used in the form to get the possible types for a Job and getTypeValues() will be used in the validation to get the valid values for the type field.
 
@@ -490,10 +486,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
    }
 
 | エンティティクラスは今必要なすべてを行います。
-| クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、
-| エンティティが削除された場合にファイルを削除します。
-| ファイルの移動は、エンティティによって一体として処理されるようになりましたので、
-| 以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
+| クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、エンティティが削除された場合にファイルを削除します。
+| ファイルの移動は、エンティティによって一体として処理されるようになりましたので、以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
 
 ..
    The class now does everything we need:
@@ -671,8 +665,7 @@ src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
        {{ form_end(form) }}
    {% endblock %}
 
-| 次のコードを使用してフォーム全体を表示することもできますが、より多くのカスタマイズを必要とするため、
-| 手で各フォームフィールドをレンダリングすることをにします。
+| 次のコードを使用してフォーム全体を表示することもできますが、より多くのカスタマイズを必要とするため、手で各フォームフィールドをレンダリングすることをにします。
 
 .. We could render the form by just using the following line of code, but as we need more customization, we choose to render each form field by hand.
 
@@ -993,7 +986,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
    </tr>
    <!-- ... -->
 
-そして validation.yml ファイルを編集します。：
+そして validation.yml ファイルを編集します。
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -1142,7 +1135,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    <a href="{{ path('ibw_job_edit', {'token': entity.token}) }}">
 
-edit.html.twig 求人テンプレート内の ibw_job_update ルートに対しても同じ操作を行います：
+edit.html.twig 求人テンプレート内の ibw_job_update ルートに対しても同じ操作を行います。
 
 .. Do the same for ibw_job_update route in edit.html.twig job template:
 
@@ -1191,7 +1184,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
    # ...
 
-プレビューアクション（ここでの show アクションとの違いは、ジョブを id の代わりにトークンを使用してデータベースから取得されるということです。）：
+プレビューアクション（ここでの show アクションとの違いは、ジョブを id の代わりにトークンを使用してデータベースから取得されるということです）。
 
 .. The preview action (here the difference from the show action is that the job is retrieved from the database using the provided token instead of the id):
 
@@ -1360,7 +1353,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | 以前にも述べたように、ジョブのトークンを知っている場合、その一つのジョブのみ編集ができ、サイトの管理者とされます。
 | この時点でジョブページにアクセスすると、[編集]リンクが表示されてしまいます。
-| それでは show.html.twig ファイルから以下の記載を削除してみましょう：
+| それでは show.html.twig ファイルから以下の記載を削除してみましょう。
 
 ..
    As we said before, you can edit a job only if you know the job token and you’re the admin of the site.

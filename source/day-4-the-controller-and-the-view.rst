@@ -43,7 +43,7 @@ MVC アーキテクチャー
 | デコレータデザインパターンは、問題を別の方法で、順番を逆にして解決します。
 | テンプレートは、コンテンツがレイアウトと呼ばれる共通テンプレートによってレンダリングされた後に装飾されます。
 | Symfony2 には、デフォルトのレイアウトが付随していないため、レイアウトを作成し、アプリケーションのページを修飾するために使用します。
-| src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードを記入します。：
+| src/Ibw/JobeetBundle/Resources/views/ ディレクトリに新しいファイル layout.html.twig を作成し、次のコードを記入します。
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -140,8 +140,7 @@ Twig ブロック
 | Symfony のデフォルトのテンプレートエンジンである ``Twig`` では、ブロックを上記のように定義することができます。
 | ``Twig`` ブロックはデフォルトのコンテンツを持つことが出来ます（例えば、 ``title`` ブロックを見てください）。
 | それらを子テンプレートで置換または拡張することができます。
-| 作成したレイアウトを利用するために、すべてのジョブのテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の
-| 親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の ``body`` ブロックの内容で ``content`` ブロックを上書きします。
+| 作成したレイアウトを利用するために、すべてのジョブのテンプレート（ src/Ibw/JobeetBundle/Resources/views/Job/ の ``index``, ``edit``, ``new``, ``show``）の親テンプレート（ ``layout.html.twig`` ）の設定を拡張し、且つ、元の ``body`` ブロックの内容で ``content`` ブロックを上書きします。
 
 .. code-block:: jinja
 
@@ -151,14 +150,12 @@ Twig ブロック
        <!-- original body block code goes here -->
    {% endblock %}
 
-スタイルシート,画像,JavaScript
+スタイルシート 画像 JavaScript
 ------------------------------
 
 | これはウェブデザインに関するものではないので、すでに Jobeet に使用するすべての必要なアセットを準備しました。
-| :download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロード、解凍し、
-| src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
-| :download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロード、解凍し、
-| src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
+| :download:`download the image files </resources/jobeet-images.zip>` アーカイブをダウンロード、解凍し、 src/Ibw/JobeetBundle/Resources/public/images/ ディレクトリに入れてください。
+| :download:`download the stylesheet </resources/jobeet-css.zip>` アーカイブをダウンロード、解凍し、 src/Ibw/JobeetBundle/Resources/public/css/ ディレクトリに入れてください。
 | そして、以下のコマンドを実行します。
 
 .. code-block:: bash
@@ -224,8 +221,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-| コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、
-| Doctrine のエンティティマネージャーを取得します。
+| コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得します。
 | それらはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
 | そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
 | これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
@@ -315,7 +311,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
    {% endblock %}
 
 それでは利用可能なのカラムのセットのみを表示するように整理してみましょう。
-以下の ``twig`` のブロックの内容を置き換えます。：
+以下の ``twig`` のブロックの内容を置き換えます。
 
 .. code-block:: html+jinja
 

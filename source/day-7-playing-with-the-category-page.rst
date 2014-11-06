@@ -3,9 +3,10 @@
 
 .. include:: common/original.rst.inc
 
-今日は、 2 日目の要件に記載されているカテゴリページを作成します
+今日は、 2 日目の要件に記載されているカテゴリページを作成します。
 
 .. note::
+
    日付順に並べられたカテゴリのすべてのジョブを見ることが出来き、ページごとに20件のジョブでページ分割されています。
 
 カテゴリールート
@@ -195,7 +196,8 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
 | カテゴリテーブルに slug カラムを追加する必要があります。そして、このカラムに値を設定するために、
 | ライフサイクルコールバックを追加する必要があります。
-We need to add a slug column for the category table and lifecycle callbacks for setting this column value:
+
+.. We need to add a slug column for the category table and lifecycle callbacks for setting this column value:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
@@ -230,8 +232,8 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
            prePersist: [ setSlugValue ]
            preUpdate: [ setSlugValue ]
 
-| 先ほど作成した getSlug メソッドをカテゴリエンティティ（ src/Ibw/JobeetBundle/Entity/Category.php ）から削除し、
-| カテゴリエンティティクラスを更新するために doctrine コマンドを実行します。
+| 先ほど作成した getSlug メソッドをカテゴリエンティティ（ src/Ibw/JobeetBundle/Entity/Category.php ）から削除し、カテゴリエンティティクラスを更新するために doctrine コマンドを実行します。
+
 .. Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the getSlug method we created earlier and run the doctrine command to update the Category entity class:
 
 .. code-block:: bash
@@ -291,8 +293,8 @@ src/Ibw/JobeetBundle/Entity/Category.php
        }
    }
 
-| ここで、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、
-| フィクスチャーをロードする必要があります。
+ここで、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、フィクスチャーをロードする必要があります。
+
 .. Now we have to drop the database and create it again with the new Category column and load the fixtures:
 
 .. code-block:: bash
@@ -382,8 +384,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 ------------------------------------
 
 | テンプレート index.html.twig からジョブのリストを作成するタグをコピーアンドペーストしていることに注意してください。
-| それはよくない方法です。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成し、
-| 必要な場所に取り込むべきです。
+| それはよくない方法です。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成し、必要な場所に取り込むべきです。
 | list.html.twig ファイルを作成します。
 
 ..
@@ -601,7 +602,8 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
        </div>
    {% endblock %}
 
-結果です。：
+結果です。
+
 .. The result:
 
 .. image:: /images/Day-7-pagination.png

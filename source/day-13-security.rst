@@ -11,7 +11,7 @@
 | システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース
 | （それは特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定します。
 | セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
-| アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。：
+| アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。
 
 ..
    Security is a two-step process whose goal is to prevent a user from accessing a resource that he/she should not have access to.
@@ -81,7 +81,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 | /login_check のコントローラーを実装する必要はなく、ファイアーウォールが自動的にフォームのこの URL への送信をキャッチし、処理します。
 | しかし、後述の login テンプレートの中のフォーム送信 URL を生成することができるように、ルートを作成する必要があります。
-| 次に、ログインフォームを表示するアクションを作成してみましょう。：
+| 次に、ログインフォームを表示するアクションを作成してみましょう。
 
 ..
    We will not need to implement a controller for the /login_check URL as the firewall will automatically catch and process any form submitted to this URL.
@@ -126,7 +126,7 @@ src/Ibw/JobeetBundle/Controller/DefaultController.php
 | 無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。
 | セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証します。
 | そのため、唯一の作業は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
-| 最後に、対応するテンプレートを作成してみましょう：
+| 最後に、対応するテンプレートを作成してみましょう
 
 ..
    When the user submits the form, the security system automatically handles the form submission for you.
@@ -195,7 +195,7 @@ app/config/security.yml
 
 | しかし、一般的にはユーザーはデータベーステーブルに格納されることになるでしょう。
 | これを行うためには Jobeet のデータベースに新しい ``user`` テーブルを追加します。
-| まずは、この新しいテーブルの ORM を作成してみましょう：
+| まずは、この新しいテーブルの ORM を作成してみましょう。
 
 ..
    But you will usually want the users to be stored in a database table.
@@ -221,7 +221,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/User.orm.yml
                type: string
                length: 255
 
-``doctrine:generate:entities`` コマンドを実行し、新しい User エンティティクラスを生成します。：
+``doctrine:generate:entities`` コマンドを実行し、新しい User エンティティクラスを生成します。
 
 .. Now run the doctrine:generate:entities command to create the new User entity class:
 
@@ -351,7 +351,7 @@ src/Ibw/JobeetBundle/Entity/User.php
    }
 
 | 生成されたエンティティに UserInterface クラスで要求されたメソッド（getRoles、getSalt、eraseCredentials と equals）を追加しました。
-| 次に、エンティティユーザプロバイダを設定し、 ``User`` クラスを指すようにます。：
+| 次に、エンティティユーザプロバイダを設定し、 ``User`` クラスを指すようにます。
 
 ..
    To the generated entity we added the methods required by the UserInterface class: getRoles, getSalt, eraseCredentials and equals.
@@ -423,7 +423,7 @@ app/config/security.yml
        }
    }
 
-最初のユーザーの追加を実行します。：
+最初のユーザーの追加を実行します。
 
 .. To add your first user run:
 
@@ -442,7 +442,7 @@ app/config/security.yml
 ----------
 
 | ログアウトはファイアウォールによって自動的に処理されます。
-| 唯一の作業は、ログアウトの config パラメータをアクティブ化することです。：
+| 唯一の作業は、ログアウトの config パラメータをアクティブ化することです。
 
 ..
    Logging out is handled automatically by the firewall.
@@ -463,7 +463,7 @@ app/config/security.yml
        # ...
 
 | ファイアウォールがすべての面倒を見るため、  URL ( /logout )用のコントローラを実装する必要はありません。
-| URL 生成に使用できるよう、ルートを作成してみましょう：
+| URL 生成に使用できるよう、ルートを作成してみましょう。
 
 ..
    You will not need to implement a controller for the /logout URL as the firewall takes care of everything.
@@ -528,7 +528,7 @@ app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
 
 | 残念なことに、 Jobeet ユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。
 | そこで、新しい要件を追加してみましょう：求人の閲覧を容易にするため、ユーザが閲覧した最後の3つのジョブは、後で求人ページに戻れるリンクがメニューに表示されるべきです。
-| ユーザーが求人ページにアクセスすると、表示された ``Job`` オブジェクトは、セッションでのユーザーの履歴に追加・保存される必要があります。：
+| ユーザーが求人ページにアクセスすると、表示された ``Job`` オブジェクトは、セッションでのユーザーの履歴に追加・保存される必要があります。
 
 ..
    Unfortunately, the Jobeet user stories have no requirement that includes storing something in the user session.

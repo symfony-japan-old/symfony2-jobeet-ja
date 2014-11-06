@@ -441,7 +441,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 ~~~~~~~~~~~~~~
 
 | このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
-| いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。：
+| いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。
 
 ..
    In this section, you have all the code needed to test the job and category pages.

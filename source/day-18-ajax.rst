@@ -50,10 +50,8 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 | ライブ検索を実装すると、検索ボックスにユーザーが文字を入力するたびに、サーバーへのコールが行われます。
 | サーバは、ページ全体を更新せずに、ページの一部の領域を更新するための必要な情報を返します。
-| jQuery の背景にある主要な原則は、 HTML 属性に on*() というビヘイビアを追加するのではなく、
-| ページが完全にロードされた後に DOM にビヘイビアを追加することです。
-| この方法では、お使いのブラウザが JavaScript のサポートを無効にした場合、
-| ビヘイビアは全く登録されませんが、フォームは以前と同じように動作します。
+| jQuery の背景にある主要な原則は、 HTML 属性に on*() というビヘイビアを追加するのではなく、ページが完全にロードされた後に DOM にビヘイビアを追加することです。
+| この方法では、お使いのブラウザが JavaScript のサポートを無効にした場合、ビヘイビアは全く登録されませんが、フォームは以前と同じように動作します。
 | 最初のステップは、ユーザが検索ボックスにキーを入力することを常時傍受することです。
 
 ..
@@ -168,8 +166,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
        </div>
    <!-- ... -->
 
-| これで HTML を動作させるために必要なすべての部分を持ちましたので、
-| search.js ファイルを作成し、これまでに説明した JavaScript を含めます。
+| これで HTML を動作させるために必要なすべての部分を持ちましたので、 search.js ファイルを作成し、これまでに説明した JavaScript を含めます。
 
 .. Now that you have all the pieces needed to make the HTML work, create a search.js file that contains the JavaScript we have explained so far:
 
@@ -307,10 +304,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 AJAX のテスト
 -------------
 
-| Symfony のブラウザは JavaScript をシミュレートすることができなため、
-| AJAX の呼び出しをテストする際に、手助けしてあげる必要があります。
-| これは主に、 jQuery と他のすべての主要な JavaScript ライブラリが送信するリクエストに、
-| 手動でヘッダを追加する必要があることを意味します。
+| Symfony のブラウザは JavaScript をシミュレートすることができなため、AJAX の呼び出しをテストする際に、手助けしてあげる必要があります。
+| これは主に、 jQuery と他のすべての主要な JavaScript ライブラリが送信するリクエストに、手動でヘッダを追加する必要があることを意味します。
 
 ..
    As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls.
@@ -340,8 +335,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
 
 | 17 日目では、検索エンジンを実装するために Zend Luceneライブラリを使用しました。
 | 今日、それがより敏感にするために jQuery を使用しました。
-| Symfony フレームワークは、簡単に MVC アプリケーションを構築するためにすべての基本的なツールを提供し、
-| また他のコンポーネントと上手に共存します。
+| Symfony フレームワークは、簡単に MVC アプリケーションを構築するためにすべての基本的なツールを提供し、また他のコンポーネントと上手に共存します。
 | いつものように、作業のためには最適なツールを使用するようにしてください。
 | 明日は、 Jobeet の Web サイトを国際化する方法を説明します。
 

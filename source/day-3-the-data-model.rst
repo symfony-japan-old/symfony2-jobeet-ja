@@ -195,7 +195,7 @@ Doctrine は以下のコマンドを使用してオブジェクトを定義す�
 
 | ``IbwJobeetBundle`` の ``Entity`` ディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。
 | Job.php を開いて、``created_at`` と ``updated_at`` に以下のような値を設定します。
-I
+
 src/Ibw/JobeetBundle/Entity/Job.php
 
 .. code-block:: php
@@ -252,8 +252,7 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
 | データベース内にテーブルは作成されていますがデータはそこにありません。
 | 多くの Web アプリケーションでは、 3 つのデータタイプがあります。
-| 初期データ（これはアプリケーションが稼動するのに必要です。 Jobeet ではいくつかの初期カテゴリと管理者ユーザを持つことになります）、
-| テストデータ（アプリケーションをテストするために必要です。）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
+| 初期データ（これはアプリケーションが稼動するのに必要です。 Jobeet ではいくつかの初期カテゴリと管理者ユーザを持つことになります）、テストデータ（アプリケーションをテストするために必要です。）とユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）です。
 | いくつかの初期データに基づいてデータベースを作成するためには、 `DoctrineFixturesBundle`_ を使用します。
 | このバンドルのセットアップは、次の手順に従っておこないます。
 
@@ -294,8 +293,7 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
           // ...
       }
 
-今ではすべてがセットアップされ、データをロードするために、バンドル内の
-src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。
+今ではすべてがセットアップされ、データをロードするために、バンドル内の src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。
 
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
 

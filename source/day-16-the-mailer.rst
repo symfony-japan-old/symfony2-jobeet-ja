@@ -389,7 +389,7 @@ app/config/config_test.yml
 
    # ...
 
-さて、キャッシュをクリアし、コンソールでテストコマンドを実行し、緑色のバーをお楽しみください。：
+さて、キャッシュをクリアし、コンソールでテストコマンドを実行し、緑色のバーをお楽しみください。
 
 .. Now, clear the cache, run the test command in your console and enjoy the green bar :
 

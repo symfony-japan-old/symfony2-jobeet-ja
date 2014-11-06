@@ -26,7 +26,7 @@
 フィクスチャー
 --------------
 
-それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう。：
+それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう。
 
 .. Let’s create a new fixture file for the affiliates:
 
@@ -75,7 +75,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
        }
    }
 
-ここで、フィクスチャーファイルで定義されたデータを永続化するために、次のコマンドを実行します。：
+ここで、フィクスチャーファイルで定義されたデータを永続化するために、次のコマンドを実行します。
 
 .. Now, to persist the data defined in your fixture file, just run the following command:
 
@@ -108,7 +108,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-それでは、メソッドを変更してみましょう。：
+それでは、メソッドを変更してみましょう。
 
 .. Let’s modify the method now:
 
@@ -137,7 +137,7 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 ジョブのウェブサービス
 ----------------------
 
-いつものように新しいリソースを作成するときに、最初にルートを定義するのは良い習慣です。：
+いつものように新しいリソースを作成するときに、最初にルートを定義するのは良い習慣です。
 
 .. As always, when you create a new resource, it’s a good habbit to define the route first:
 
@@ -161,7 +161,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
    $ php app/console cache:clear --env=prod
 
 | 次のステップは、同じ動作を共有する API のアクションとテンプレートを作成することです。
-| ここで ApiController という新しいコントローラファイルを作成してみましょう。：
+| ここで ApiController という新しいコントローラファイルを作成してみましょう。
 
 ..
    The next step is to create the api action and the templates, that will share the same action.
@@ -611,7 +611,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
        }
    }
 
-ルートの名前とアクションを持ちましたが、まだルートを持っていません。では、作成してみましょう：
+ルートの名前とアクションを持ちましたが、まだルートを持っていません。では、作成してみましょう。
 
 .. We have the name of the route, we have the action, but we do not have the route. so let’s create it:
 
@@ -707,7 +707,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 | これは Doctrine のエンティティ内の特定のフィールド(または複数のフィールド)がユニークであることを検証します。
 | これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。
 | 検証制約を適用した後にキャッシュをクリアすることを忘れないでください！
-| 最後に、フォームのビューも作成してみましょう：
+| 最後に、フォームのビューも作成してみましょう。
 
 ..
    In the validation schema, we used a new validator, called UniqueEntity.
@@ -837,7 +837,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        requirements: { _method: post }
 
 | アフィリエイト登録された後、待ちページにリダイレクトされます。
-| それでは、そのアクションを定義し、ビューも作成してみましょう。：
+| それでは、そのアクションを定義し、ビューも作成してみましょう。
 
 ..
    After the affiliate registers, he is redirected to a waiting page.
@@ -874,7 +874,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/wait.html.twig
        </div>
    {% endblock %}
 
-ここで、ルートを追加します。：
+ここで、ルートを追加します。
 
 .. Now, the route:
 
@@ -1154,7 +1154,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
        // Your code goes here
    }
 
-それでは ``activate`` と ``deactivate`` のバッチアクションを作成しましょう。：
+それでは ``activate`` と ``deactivate`` のバッチアクションを作成しましょう。
 
 .. Let’s create the activate and deactivate batch actions:
 
@@ -1317,7 +1317,7 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
        }
    }
 
-それでは AdminController でアクションを実装してみましょう：
+それでは AdminController でアクションを実装してみましょう。
 
 .. It’s time to implement the actions in the AdminController:
 

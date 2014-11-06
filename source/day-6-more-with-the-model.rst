@@ -32,8 +32,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 | アクティブなジョブとは、 30 日前以内に投稿されたものです。
-| ``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、
-| データベースへのリクエストを行います。
+| ``$entities = $em->getRepository('IbwJobeetBundle')->findAll()`` メソッドは、すべてのジョブを取得するために、データベースへのリクエストを行います。
 | 現在は条件をなにも指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。
 | では、アクティブなジョブのみを選択するよう変更してみましょう。
 
@@ -57,25 +56,20 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 Doctrine が生成した SQL のデバッグ
 ----------------------------------
 
-| デバッグツールバーは、例えば、期待通りに動作しないクエリをデバッグするときに、
-| Doctrine によって生成された SQL を参照する大きな助けとなります。
-| dev 環境では、Symfony は Web デバッグツールバーのおかげで、
-| 必要なすべての情報がブラウザ上で快適に利用できます（ http：//jobeet.local/app_dev.php ）。
+| デバッグツールバーは、例えば、期待通りに動作しないクエリをデバッグするときに、 Doctrine によって生成された SQL を参照する大きな助けとなります。
+| dev 環境では、Symfony は Web デバッグツールバーのおかげで、 必要なすべての情報がブラウザ上で快適に利用できます（ http：//jobeet.local/app_dev.php ）。
 
 .. image:: /images/Day-6-web-debug-toolbar.png
 
 オブジェクトのシリアライズ
 --------------------------
 
-| 上記のコードは動作していても、 2 日目の「ユーザーは戻ってきて再度アクティブにするか、
-| ジョブの期間の検証を 30 日以上に広げることが出来、、、」という要件から考慮すると、完璧にはほど遠いです。
+| 上記のコードは動作していても、 2 日目の「ユーザーは戻ってきて再度アクティブにするか、ジョブの期間の検証を 30 日以上に広げることが出来、、、」という要件から考慮すると、完璧にはほど遠いです。
 | 上記のコードは created_at の値にのみ依存しており、このカラムには作成日を格納しているため、要件を満しません。
 | 3 日目に説明したデータベーススキーマを覚えていれば、 expires_at カラムも定義したことを覚えているでしょう。
 | この値は、フィクスチャーファイルに設定されていない場合、空のままです。
 | しかし、ジョブが作成されるときに、自動的に現在の日付から 30 日後に設定することができます。
-| Doctrine のオブジェクトがデータベースにシリアライズされる前に自動的に何かをする必要があるときは、
-| 先ほど created_at カラムで行ったように、オブジェクトをデータベースにマッピングするファイルに、
-| ライフサイクルコールバックの新しいアクションを追加することで可能です。
+| Doctrine のオブジェクトがデータベースにシリアライズされる前に自動的に何かをする必要があるときは、先ほど created_at カラムで行ったように、オブジェクトをデータベースにマッピングするファイルに、ライフサイクルコールバックの新しいアクションを追加することで可能です。
 
 ..
    Even if the code above works, it is far from perfect as it does not take into account some requirements from Day 2:
@@ -600,8 +594,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 ----------------------
 
 | ジョブが終了したときは、URLを知っていても、もうそれにアクセスすることはできません。
-| 期限切れのジョブ用のURLを、 ``SELECT id, token FROM job WHERE expires_at < NOW()`` で調べて、
-| データベース内の実際の id で URL の ID を置き換えて試してみてください。
+| 期限切れのジョブ用のURLを、 ``SELECT id, token FROM job WHERE expires_at < NOW()`` で調べて、データベース内の実際の id で URL の ID を置き換えて試してみてください。
 | /app_dev.php/job/sensio-labs/paris-france/ID/web-developer-expired
 | ジョブを表示する代わりに、404ページにユーザーを転送する必要があります。
 | このために JobRepository クラスに新しい関数を作成します。

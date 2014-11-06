@@ -134,7 +134,7 @@ src/Ibw/Resources/config/routing.yml
        pattern:  /
        defaults: { _controller: "IbwJobeetBundle:Job:index" }
 
-コントローラ内のこれら二つのルートの動作を追加および変更してみましょう。：
+コントローラ内のこれら二つのルートの動作を追加および変更してみましょう。
 
 .. Let’s add and modify the behaviour of these two routes in the controller:
 
@@ -560,7 +560,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
        pattern: /change_language
        defaults: { _controller: "IbwJobeetBundle:Default:changeLanguage" }
 
-ここで、アクションを変更します。：
+ここで、アクションを変更します。
 
 .. Now, the action:
 

@@ -29,7 +29,7 @@
 
 | 現実には、これは命名規則以外の何ものでもありませんし、テンプレートは実際には異なって、そのフォーマットに基づいて描画されません。
 | 多くのケースでは、単一のコントローラが ``request format`` に基づいて複数の異なるフォーマットをレンダリング可能にすることをお勧めします。
-| そのため、一般的なパターンは、次のように行います。：
+| そのため、一般的なパターンは、次のように行います。
 
 ..
    In reality, this is nothing more than a naming convention and the template isn’t actually rendered differently based on its format.
@@ -47,7 +47,7 @@
 
 | Request オブジェクトの getRequestFormat メソッドはデフォルトでは html を返しますが、ユーザーから要求されたフォーマットに基づいて他の形式を返すこともできます。
 | リクエストフォーマットはほとんどの場合、ルーティングによって管理されます。 /contact はリクエストフォーマットに html にセットし、一方、 /contact.xml はフォーマットに xml を設定します。
-| format パラメータを含むリンクを作成するには、パラメータハッシュ内の _format キーを含みます。：
+| format パラメータを含むリンクを作成するには、パラメータハッシュ内の _format キーを含みます。
 
 ..
    The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user.
@@ -267,7 +267,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
 
 | Jobeet の目標の 1 つは、人々が目的の仕事をより多く見つけることを手助けをすることです。
 | そこで、各カテゴリのフィードを提供する必要があります。
-| まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう。：
+| まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう。
 
 ..
    One of the goals of Jobeet is to help people find more targeted jobs.
