@@ -211,6 +211,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    $this->assertEquals('n-a', Jobeet::slugify(' - '));
 
 テストに合格しないことを確認した後、Jobeetのクラスを編集して、空の文字列チェックをメソッドの最後に移動します。
+
 .. After checking that the test does not pass, edit the Jobeet class and move the empty string check to the end of the method:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
@@ -329,6 +330,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    $ phpunit --coverage-html=web/cov/ -c app/
 
 ブラウザで生成されたページ（ http://jobeet.local/cov/index.html ）を開いて確認してください。
+
 .. Check the code coverage by opening the generated http://jobeet.local/cov/index.html page in a browser.
 
 .. note::
@@ -347,6 +349,7 @@ Your cov/index.html should look like this:
 
 | インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、
 | それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
+
 .. Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 
 Doctrine の単体テスト
