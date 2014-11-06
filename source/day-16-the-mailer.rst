@@ -137,8 +137,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/email.txt.twig
    or http://jobeet.local/app_dev.php/api/{{affiliate}}/jobs.json
    or http://jobeet.local/app_dev.php/api/{{affiliate}}/jobs.yaml
 
-| ここで、複数のアフィリエイトアカウントを選択しアクティブ化した場合でも、アクティベーションメールが届くように、
-| batchActionActivate にメール機能を追加してみましょう。
+ここで、複数のアフィリエイトアカウントを選択しアクティブ化した場合でも、アクティベーションメールが届くように、batchActionActivate にメール機能を追加してみましょう。
 
 ..
    Now, let’s add the mailing functionality to the batchActionActivate too,

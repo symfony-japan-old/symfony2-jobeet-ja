@@ -8,8 +8,7 @@
 
 | セキュリティは、二段階のプロセスでユーザーがアクセス権を持たないリソースにアクセスすることを防止します。
 | 最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。
-| システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース
-| （それは特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定します。
+| システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース（それは特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定します。
 | セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。
 | アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。
 
@@ -126,7 +125,7 @@ src/Ibw/JobeetBundle/Controller/DefaultController.php
 | 無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。
 | セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証します。
 | そのため、唯一の作業は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。
-| 最後に、対応するテンプレートを作成してみましょう
+| 最後に、対応するテンプレートを作成してみましょう。
 
 ..
    When the user submits the form, the security system automatically handles the form submission for you.
@@ -499,8 +498,7 @@ app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
 
    {% block user_block %}<a href="{{ path('logout') }}">Logout</a>{% endblock%}
 
-| (初めにキャッシュをクリアしてから)管理セクションに入ろうとした場合、ユーザー名とパスワードの入力を要求され、
-| その後、ログアウトリンクが右上隅に表示されます。
+| (初めにキャッシュをクリアしてから)管理セクションに入ろうとした場合、ユーザー名とパスワードの入力を要求され、その後、ログアウトリンクが右上隅に表示されます。
 
 .. Now, if you try to enter the admin section (clear the cache first), you will be asked for an username and password and then, the logout link will be shown in the top-right corner.
 

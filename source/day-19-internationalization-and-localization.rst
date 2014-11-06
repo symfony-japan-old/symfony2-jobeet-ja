@@ -159,8 +159,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-| ユーザがカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、
-| デフォルトのカルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
+ユーザがカルチャーを指定せずにJobeetのプラットフォームにアクセスする場合は（http：//jobeet.local/app_dev.php）、デフォルトのカルチャーを持つホームページにリダイレクトされます(http://jobeet.local/app_dev.php/en/)。
 
 ..
    If the user will access the Jobeet platform without specifying his preffered culture (http://jobeet.local/app_dev.php),
