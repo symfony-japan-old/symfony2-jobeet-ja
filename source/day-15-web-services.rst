@@ -8,27 +8,31 @@
 | もし小さな多くのウェブサイトが連合した場合、よりよい人を見つける機会が増えるでしょう。
 | つまり、ロングテールの力です。
 | 今日開発する Web サービスによって、アフィリエイトは自分のサイトに最新の投稿された求人を公開することができるようになります。
-With the addition of feeds on Jobeet, job seekers can now be informed of new jobs in real-time.
-On the other side of the fence, when you post a job, you will want to have the greatest exposure possible.
-If your job is syndicated on a lot of small websites, you will have a better chance to find the right person.
-That’s the power of the long tail.
-Affiliates will be able to publish the latest posted jobs on their websites thanks to the web services we will develop today.
+
+..
+   With the addition of feeds on Jobeet, job seekers can now be informed of new jobs in real-time.
+   On the other side of the fence, when you post a job, you will want to have the greatest exposure possible.
+   If your job is syndicated on a lot of small websites, you will have a better chance to find the right person.
+   That’s the power of the long tail.
+   Affiliates will be able to publish the latest posted jobs on their websites thanks to the web services we will develop today.
 
 アフィリエイト
 --------------
 
 すでにこのチュートリアルの 2 日目で述べたように、アフィリエイトは、現在のアクティブなジョブのリストを取得します。
-As we already said in day 2 of this tutorial, an affiliate retrieves the current active job list.
+
+.. As we already said in day 2 of this tutorial, an affiliate retrieves the current active job list.
 
 フィクスチャー
 --------------
 
 それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう。：
-Let’s create a new fixture file for the affiliates:
+
+.. Let’s create a new fixture file for the affiliates:
+
+src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
 
 .. code-block:: php
-
-   src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
 
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 
@@ -72,7 +76,8 @@ Let’s create a new fixture file for the affiliates:
    }
 
 ここで、フィクスチャーファイルで定義されたデータを永続化するために、次のコマンドを実行します。：
-Now, to persist the data defined in your fixture file, just run the following command:
+
+.. Now, to persist the data defined in your fixture file, just run the following command:
 
 .. code-block:: bash
 
@@ -81,11 +86,13 @@ Now, to persist the data defined in your fixture file, just run the following co
 | フィクスチャーファイルでは、トークンは、テストを簡略化するためにハードコードされていますが、実際のユーザーがアカウントに適用されたときには、トークンを生成する必要があります
 | アフィリエイトクラスでトークンを生成する関数を作成してみましょう、。
 | お使いの ORM ファイル内、 lifecycleCallbacks セクションに setTokenValue メソッドを追加することで始めます。
-In the fixture file, the tokens are hardcoded to simplify the testing, but when an actual user applies for an account,
-the token will need to be generated Let’s create a function to do that in our Affiliate class.
-Start by adding the setTokenValue method to lifecycleCallbacks section, inside your ORM file:
 
-src//Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
+..
+   In the fixture file, the tokens are hardcoded to simplify the testing, but when an actual user applies for an account,
+   the token will need to be generated Let’s create a function to do that in our Affiliate class.
+   Start by adding the setTokenValue method to lifecycleCallbacks section, inside your ORM file:
+
+src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 
 .. code-block:: yaml
 
@@ -101,7 +108,8 @@ Now, the setTokenValue method will be generated inside the entity file when you 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
 それでは、メソッドを変更してみましょう。：
-Let’s modify the method now:
+
+.. Let’s modify the method now:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
 
@@ -118,7 +126,8 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
    }
 
 データをリロードします。
-Reload the data:
+
+.. Reload the data:
 
 .. code-block:: bash
 
@@ -128,7 +137,8 @@ Reload the data:
 ----------------------
 
 いつものように新しいリソースを作成するときに、最初にルートを定義するのは良い習慣です。：
-As always, when you create a new resource, it’s a good habbit to define the route first:
+
+.. As always, when you create a new resource, it’s a good habbit to define the route first:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -141,7 +151,8 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
            _format: xml|json|yaml
 
 いつものように、ルーティングファイルを変更した後はキャッシュをクリアする必要があります。
-As usually, after you modify a routing file, you need to clear the cache:
+
+.. As usually, after you modify a routing file, you need to clear the cache:
 
 .. code-block:: bash
 
@@ -150,8 +161,10 @@ As usually, after you modify a routing file, you need to clear the cache:
 
 | 次のステップは、同じ動作を共有する API のアクションとテンプレートを作成することです。
 | ここで ApiController という新しいコントローラファイルを作成してみましょう。：
-The next step is to create the api action and the templates, that will share the same action.
-Let us now create a new controller file, called ApiController:
+
+..
+   The next step is to create the api action and the templates, that will share the same action.
+   Let us now create a new controller file, called ApiController:
 
 src/Ibw/JobeetBundle/Controller/ApiController.php
 
@@ -206,10 +219,12 @@ src/Ibw/JobeetBundle/Controller/ApiController.php
 | このメソッドはまたアフィリエイトアカウントがアクティブ化されているかを検証しますので、再度チェックする必要はありません。
 | 今までまだ AffiliateRepository を使用していないので存在していません。
 | それを作成するには、次のように ORM ファイルを変更し、エンティティを生成する際に使用したコマンドを実行します。
-To retrieve the affiliate using his token, we will create the getForToken() method.
-This method also verifies if the affiliate account is activated, so there is no need for us to check this one more time.
-Until now, we haven’t used the AffiliateRepository yet, so it doesn’t exist.
-To create it, modify the ORM file as following, then run the command you used before to generate the entities.
+
+..
+   To retrieve the affiliate using his token, we will create the getForToken() method.
+   This method also verifies if the affiliate account is activated, so there is no need for us to check this one more time.
+   Until now, we haven’t used the AffiliateRepository yet, so it doesn’t exist.
+   To create it, modify the ORM file as following, then run the command you used before to generate the entities.
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 
@@ -221,7 +236,8 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
        # ...
 
 一度作成されたら、使用する準備はできています。
-Once created, it is ready to be used:
+
+.. Once created, it is ready to be used:
 
 src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
 
@@ -262,9 +278,11 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
 | トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属するジョブを与えるため、 getActiveJobs() メソッドを使用します。
 | 現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。
 | そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
-After identifying the affiliate by his token, we will use the getActiveJobs() method to give the affiliate the jobs he required, belonging to the selected categories.
-If you open your JobRepository file now, you will see that the getActiveJobs() method doesn’t share any connection with the affiliates.
-Because we want to reuse that method, we need to make some modifications inside of it:
+
+..
+   After identifying the affiliate by his token, we will use the getActiveJobs() method to give the affiliate the jobs he required, belonging to the selected categories.
+   If you open your JobRepository file now, you will see that the getActiveJobs() method doesn’t share any connection with the affiliates.
+   Because we want to reuse that method, we need to make some modifications inside of it:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -310,7 +328,8 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
    // ...
 
 ご覧のように、asArray() という関数を使用して、ジョブを配列に移植します。それを定義してみましょう。：
-As you can see, we populate the jobs array using a function called asArray(). Let’s define it:
+
+.. As you can see, we populate the jobs array using a function called asArray(). Let’s define it:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -336,7 +355,8 @@ XML フォーマット
 ----------------
 
 xml 形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。
-Supporting the xml format is as simple as creating a template:
+
+.. Supporting the xml format is as simple as creating a template:
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig
 
@@ -357,7 +377,8 @@ json フォーマット
 -----------------
 
 JSON フォーマットをサポートすることも同様です。
-Support the JSON format is similar:
+
+.. Support the JSON format is similar:
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.json.twig
 
@@ -393,10 +414,12 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig
 | または
 | http：//jobeet.local/app_dev.php/api/symfony/jobs.xml
 | お好みの形式に応じて、URLの拡張子を変更してください。
-If you try to call the web service with a non-valid token, you will receive a 404 page as a response, for all the formats.
-To see what you accomplished until now, access the following links:
-http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml or http://jobeet.local/app_dev.php/api/symfony/jobs.xml.
-Change the extension in the URL, depending on which format you prefer.
+
+..
+   If you try to call the web service with a non-valid token, you will receive a 404 page as a response, for all the formats.
+   To see what you accomplished until now, access the following links:
+   http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml or http://jobeet.local/app_dev.php/api/symfony/jobs.xml.
+   Change the extension in the URL, depending on which format you prefer.
 
 Web サービスのテスト
 --------------------
@@ -512,7 +535,8 @@ src/Ibw/JobeetBundle/Tests/Controller/ApiControllerTest.php
    }
 
 ApiControllerTest ファイル内では、リクエストフォーマットが正しく受信され、要求されたページが正しく返されることをテストします。
-Inside the ApiControllerTest file, we test that the request formats are correctly received and the pages requested are correctly returned.
+
+.. Inside the ApiControllerTest file, we test that the request formats are correctly received and the pages requested are correctly returned.
 
 アフィリエイト申込フォーム
 --------------------------
@@ -520,10 +544,12 @@ Inside the ApiControllerTest file, we test that the request formats are correctl
 | ここで、 Web サービスが使用できる状態になりましたので、アフィリエイト用のアカウント作成フォームを作成してみましょう。
 | そのためには、 HTML フォームを書き、各フィールドの検証ルールを実装し、データベースに値を保存する処理をし、エラー·メッセージを表示し、エラーの場合はフィールドを再設定します。
 | まず、 AffiliateController という名前の新しいコントローラのファイルを作成します。
-Now that the web service is ready to be used, let’s create the account creation form for affiliates.
-For that, you need to write the HTML form, implement validation rules for each field,
-process the values to store them in a database, display error messages and repopulate fields in case of errors.
-First, create a new controller file, named AffiliateController:
+
+..
+   Now that the web service is ready to be used, let’s create the account creation form for affiliates.
+   For that, you need to write the HTML form, implement validation rules for each field,
+   process the values to store them in a database, display error messages and repopulate fields in case of errors.
+   First, create a new controller file, named AffiliateController:
 
 src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
@@ -543,7 +569,8 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
    }
 
 その後、レイアウト内のアフィリエイトリンクを変更します。
-Then, change the Affiliates link in the layout:
+
+.. Then, change the Affiliates link in the layout:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -554,7 +581,8 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
    <!-- ... -->
 
 ここで、上記で修正したリンクのルートと一致するアクションを作成する必要があります。
-Now, we need to create an action to match the route from the link you just modified it earlier:
+
+.. Now, we need to create an action to match the route from the link you just modified it earlier:
 
 src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
@@ -583,7 +611,8 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
    }
 
 ルートの名前とアクションを持ちましたが、まだルートを持っていません。では、作成してみましょう：
-We have the name of the route, we have the action, but we do not have the route. so let’s create it:
+
+.. We have the name of the route, we have the action, but we do not have the route. so let’s create it:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
 
@@ -594,7 +623,8 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
        defaults: { _controller: "IbwJobeetBundle:Affiliate:new" }
 
 さらに、ルーティングファイルにこれを追加します。
-Also, add this to your routing file:
+
+.. Also, add this to your routing file:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -608,8 +638,10 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 | フォームファイルも作成する必要があります。
 | しかし、たとえアフィリエイトが多くのフィールドを持っていても、エンドユーザーが編集可能ではならないものもあるため、すべては表示はしません。
-The form file also needs to be created.
-But, even if the Affiliate has more fields, we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
+
+..
+   The form file also needs to be created.
+   But, even if the Affiliate has more fields, we won’t display them all, because some of them must not be editable by the end user. Create your Affiliate form:
 
 src/Ibw/JobeetBundle/Form/AffiliateType.php
 
@@ -649,8 +681,10 @@ src/Ibw/JobeetBundle/Form/AffiliateType.php
 
 | ここで、フォームに送信されたデータが設定された後、アフィリエイトオブジェクトが有効であるかどうかを判断する必要があります。
 | これを行うには、バリデーションファイルに次のコードを追加します。
-Now, we need to decide whether or not the Affiliate object is valid after the form has applied the submitted data to it.
-To do this, add the following code to your validation file:
+
+..
+   Now, we need to decide whether or not the Affiliate object is valid after the form has applied the submitted data to it.
+   To do this, add the following code to your validation file:
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -673,11 +707,13 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 | これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。
 | 検証制約を適用した後にキャッシュをクリアすることを忘れないでください！
 | 最後に、フォームのビューも作成してみましょう：
-In the validation schema, we used a new validator, called UniqueEntity.
-It validates that a particular field (or fields) in a Doctrine entity is (are) unique.
-This is commonly used, for example, to prevent a new user to register using an email address that already exists in the system.
-Don’t forget to clear your cache after applying the validation constraints!
-Finally, let’s create the view for the form too:
+
+..
+   In the validation schema, we used a new validator, called UniqueEntity.
+   It validates that a particular field (or fields) in a Doctrine entity is (are) unique.
+   This is commonly used, for example, to prevent a new user to register using an email address that already exists in the system.
+   Don’t forget to clear your cache after applying the validation constraints!
+   Finally, let’s create the view for the form too:
 
 src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
@@ -744,8 +780,10 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
 | ユーザーがフォームを送信した際に、有効な場合は、フォームデータをデータベースに永続化しなくてはなりません。
 | ``AffiliateController`` に新しい ``create`` アクションを追加します。
-When the user submits a form, the form data must be persisted into database, if valid.
-Add the new create action to your Affiliate controller:
+
+..
+   When the user submits a form, the form data must be persisted into database, if valid.
+   Add the new create action to your Affiliate controller:
 
 .. code-block:: php
 
@@ -783,7 +821,8 @@ Add the new create action to your Affiliate controller:
    }
 
 create アクションを先に作ったので、次にルートを定義します。
-When submitting, the create action is performed, so we need to define the route:
+
+.. When submitting, the create action is performed, so we need to define the route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
 
@@ -798,10 +837,12 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
 
 | アフィリエイト登録された後、待ちページにリダイレクトされます。
 | それでは、そのアクションを定義し、ビューも作成してみましょう。：
-After the affiliate registers, he is redirected to a waiting page.
-Let’s define that action and create the view too:
 
-   src/Ibw/JobeetBundle/Controller/AffiliateController.php
+..
+   After the affiliate registers, he is redirected to a waiting page.
+   Let’s define that action and create the view too:
+
+src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
 .. code-block:: php
 
@@ -833,7 +874,8 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/wait.html.twig
    {% endblock %}
 
 ここで、ルートを追加します。：
-Now, the route:
+
+.. Now, the route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
 
@@ -847,14 +889,17 @@ src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml
 
 | ルートを定義したら、キャッシュをクリアする必要があります。
 | これで、ホームページでアフィリエイトリンクをクリックした場合、アフィリエイトフォームのページに転送されます。
-After defining to routes, in order to work, you need to clear the cache.
-Now, if you click on the Affiliates link on the homepage, you will be directed to the affiliate form page.
+
+..
+   After defining to routes, in order to work, you need to clear the cache.
+   Now, if you click on the Affiliates link on the homepage, you will be directed to the affiliate form page.
 
 テスト
 ------
 
 最後のステップは新しい機能のために、いくつかの機能テストを書くことです。
-The last step is to write some functional tests for the new feature.
+
+.. The last step is to write some functional tests for the new feature.
 
 src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 
@@ -996,10 +1041,12 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 | 以前にも言ったように、アフィリエイトの登録の後、管理者がアカウントをアクティブにするのを待つ必要があります。
 | だから、管理者がアフィリエイトのページにアクセスしますと、作業の補助のため、未アクティブなアカウントを表示します。
 | まず第一に、 新しいアフィリエイトサービスを services.yml ファイル内に宣言する必要があります。
-For the backend, we will work with SonataAdminBundle.
-As we said before, after an affiliate registers, he needs to wait for the admin to activate his account.
-So, when the admin will access the affiliates page, he will see only the inactivated accounts, to help him be more productive.
-First of all, you need to declare the new affiliate service inside your services.yml file:
+
+..
+   For the backend, we will work with SonataAdminBundle.
+   As we said before, after an affiliate registers, he needs to wait for the admin to activate his account.
+   So, when the admin will access the affiliates page, he will see only the inactivated accounts, to help him be more productive.
+   First of all, you need to declare the new affiliate service inside your services.yml file:
 
 src/Ibw/JobeetBundle/Resources/config/services.yml
 
@@ -1016,7 +1063,8 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
          - 'IbwJobeetBundle:AffiliateAdmin'
 
 その後、 Admin ファイルを作成します。
-After that, create the Admin file:
+
+.. After that, create the Admin file:
 
 .. code-block:: php
 
@@ -1068,8 +1116,10 @@ After that, create the Admin file:
 
 | 管理者を助けるために、未アクティブなアカウントのみ表示したいです。
 | これは ``is_active`` フィルタを false に 設定することで行うことができます。
-To help the administrator, we want to display only the inactivated accounts.
-This can be made by setting the ‘is_active’ filter to false:
+
+..
+   To help the administrator, we want to display only the inactivated accounts.
+   This can be made by setting the ‘is_active’ filter to false:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
@@ -1085,7 +1135,8 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
    // ...
 
 ここで、 AffiliateAdmin コントローラファイルを作成します。
-Now, create the AffiliateAdmin controller file:
+
+.. Now, create the AffiliateAdmin controller file:
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
@@ -1103,7 +1154,8 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
    }
 
 それでは ``activate`` と ``deactivate`` のバッチアクションを作成しましょう。：
-Let’s create the activate and deactivate batch actions:
+
+.. Let’s create the activate and deactivate batch actions:
 
 src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
@@ -1173,7 +1225,8 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
    }
 
 新しいバッチアクションを機能させるには、 Admin クラスの getBatchActions にそれらを追加する必要があります。
-For the new batch actions to be functional, we have to add them in the getBatchActions from the Admin class:
+
+.. For the new batch actions to be functional, we have to add them in the getBatchActions from the Admin class:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
@@ -1204,7 +1257,8 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
    }
 
 これが機能するために、エンティティファイルに ``activate`` と ``deactivate`` の 2 つのメソッドを追加する必要があります。
-For this to work, you need to add the two methods, activate and deactivate, in the entity file:
+
+.. For this to work, you need to add the two methods, activate and deactivate, in the entity file:
 
 src/Ibw/JobeetBundle/Entity/Affiliate.php
 
@@ -1233,9 +1287,11 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 | それでは、``activate`` と ``deactivate`` の項目ごと二つの個別のアクションを作成してみましょう。
 | 第一に、ルートを作成します。
 | これが、Admin クラスで、 configureRoutes メソッドを継承した理由です。
-Let’s now create two individual actions, activate and deactivate, for each item.
-Firstly, we will create routes for them.
-That’s why, in your Admin class, you will extend the configureRoutes function:
+
+..
+   Let’s now create two individual actions, activate and deactivate, for each item.
+   Firstly, we will create routes for them.
+   That’s why, in your Admin class, you will extend the configureRoutes function:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
@@ -1261,9 +1317,10 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
    }
 
 それでは AdminController でアクションを実装してみましょう：
-It’s time to implement the actions in the AdminController:
 
-src/Ibbw/JobeetBundle/Controller/AffiliateAdminController.php
+.. It’s time to implement the actions in the AdminController:
+
+src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
 .. code-block:: php
 
@@ -1316,7 +1373,8 @@ src/Ibbw/JobeetBundle/Controller/AffiliateAdminController.php
    }
 
 ここで、新たにアクションボタンを追加するためのテンプレートを作成します。
-Now, create the templates for the new added action buttons:
+
+.. Now, create the templates for the new added action buttons:
 
 src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_activate.html.twig
 
@@ -1341,7 +1399,8 @@ src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_deactivate.html
    {% endif %}
 
 各アカウントが個別にページに表示されるように、 Admin ファイルの中で、 configureListFields メソッドに新しいアクションとボタンを追加します。
-Inside your Admin file, add the new actions and buttons to the configureListFields function, so that they would appear on the page, to each account individually:
+
+.. Inside your Admin file, add the new actions and buttons to the configureListFields function, so that they would appear on the page, to each account individually:
 
 src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
@@ -1368,7 +1427,9 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
 | ここで、キャッシュをクリアし、試してみてください！
 | 今日はこれですべてです！明日は、アカウントがアクティブになったときにアフィリエイトが受け取る電子メールの設定をします。
-Now, clear your cache and try it on!
-That’s all for today! Tomorrow, we will take care of the emails the affiliates will receive when their accounts have been activated.
+
+..
+   Now, clear your cache and try it on!
+   That’s all for today! Tomorrow, we will take care of the emails the affiliates will receive when their accounts have been activated.
 
 .. include:: common/license.rst.inc

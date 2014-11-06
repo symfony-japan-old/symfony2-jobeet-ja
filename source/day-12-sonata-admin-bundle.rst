@@ -6,22 +6,26 @@
 | Jobeetの上で 11 日目に行った追加により、アプリケーションは求職者とジョブの投稿者の両方とも使用可能になります。
 | それでは、アプリケーションの管理領域について少し話をする時間です。
 | 今日では、``SonataAdminBundle`` のおかげで、1 時間未満で Jobeet のための完全な管理画面を開発します。
-With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters.
-It’s time to talk a bit about the admin section of our application.
-Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
+
+..
+   With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters.
+   It’s time to talk a bit about the admin section of our application.
+   Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
 
 Sonata Admin バンドルのインストール
 -----------------------------------
 
 ``vendor`` のディレクトリに ``SonataAdminBundle`` とその依存するものをダウンロードを開始します。
-Start by downloading SonataAdminBundle and its dependencies to the vendor directory:
+
+.. Start by downloading SonataAdminBundle and its dependencies to the vendor directory:
 
 .. code-block:: bash
 
    $ php composer.phar require sonata-project/admin-bundle
 
 ``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、入力として * を与えます。
-To install the latest version of the SonataAdminBundle and its dependencies, give * as input.
+
+.. To install the latest version of the SonataAdminBundle and its dependencies, give * as input.
 
 .. code-block:: bash
 
@@ -29,14 +33,16 @@ To install the latest version of the SonataAdminBundle and its dependencies, giv
    Please provide a version constraint for the sonata-project/admin-bundle requirement: *
 
 また SonataDoctrineORMADminBundle をインストールする必要があります：
-We will also need to install the SonataDoctrineORMADminBundle:
+
+.. We will also need to install the SonataDoctrineORMADminBundle:
 
 .. code-block:: bash
 
    $ php composer.phar require sonata-project/doctrine-orm-admin-bundle
 
 ここで、新しいバンドルとその依存関係を宣言するため、 AppKernel.php ファイルを開いて、次のコードを追加します。
-Now, we need to declare these new bundles and dependencies, so go to your AppKernel.php file and add the following code:
+
+.. Now, we need to declare these new bundles and dependencies, so go to your AppKernel.php file and add the following code:
 
 app/AppKernel.php
 
@@ -58,7 +64,8 @@ app/AppKernel.php
    // ...
 
 設定ファイルを変更します。最後に以下を追加します。
-You will need to alter your config file as well. Add the following at the end:
+
+.. You will need to alter your config file as well. Add the following at the end:
 
 app/config/config.yml
 
@@ -79,7 +86,8 @@ app/config/config.yml
            sonata.block.service.rss:
 
 また、``translator`` キーを探して、コメント化されてる場合はコメント解除します。
-Also, look for the translator key and uncomment if it is commented:
+
+.. Also, look for the translator key and uncomment if it is commented:
 
 app/config/config.yml
 
@@ -93,7 +101,8 @@ app/config/config.yml
    #...
 
 アプリケーションを動作させるためには、アプリケーションのルーティング·ファイルに ``admin`` ルートをインポートします。
-For your application to work, you need to import the admin routes into the application’s routing file:
+
+.. For your application to work, you need to import the admin routes into the application’s routing file:
 
 app/config/routing.yml
 
@@ -111,14 +120,16 @@ app/config/routing.yml
    # ...
 
 さて、バンドルからアセットをインストールします。
-Now, install the assets from the bundles:
+
+.. Now, install the assets from the bundles:
 
 .. code-block:: bash
 
    $ php app/console assets:install web --symlink
 
 キャッシュを削除することを忘れないでください。
-Do not forget to delete your cache:
+
+.. Do not forget to delete your cache:
 
 .. code-block:: bash
 
@@ -128,7 +139,7 @@ Do not forget to delete your cache:
 これで、次のURLを使用して admin のダッシュボードにアクセスできるはずです。
 http：//jobeet.local/app_dev.php/admin/dashboard
 
-You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
+.. You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
 
 CRUD コントローラー
 -------------------
@@ -139,12 +150,14 @@ CRUD コントローラー
 | コントローラは、さまざまなアクションを構築するために、 Admin クラスを使用します。
 | コントローラの内部では、 Admin オブジェクトは、構成プロパティを介してアクセスできます。
 | それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。：
-The CRUD controller contains the basic CRUD actions.
-It is related to one Admin class by mapping the controller name to the correct Admin instance.
-Any or all actions can be overwritten to suit the project’s requirements.
-The controller uses the Admin class to construct the different actions.
-Inside the controller, the Admin object is accessible through the configuration property.
-Now let’s create a controller for each entity. First, for the Category entity:
+
+..
+   The CRUD controller contains the basic CRUD actions.
+   It is related to one Admin class by mapping the controller name to the correct Admin instance.
+   Any or all actions can be overwritten to suit the project’s requirements.
+   The controller uses the Admin class to construct the different actions.
+   Inside the controller, the Admin object is accessible through the configuration property.
+   Now let’s create a controller for each entity. First, for the Category entity:
 
 src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
 
@@ -160,7 +173,8 @@ src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
    }
 
 そして、次にジョブ。：
-And now for the Job:
+
+.. And now for the Job:
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -182,10 +196,12 @@ Admin クラスの作成
 | お使いのモデルのための Admin クラスを作成する最も簡単な方法は、 ``Sonata\AdminBundle\Admin\Admin`` クラスを拡張することです。
 | バンドルの Admin フォルダに ``Admin`` クラスを作成します。
 | Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。：
-The Admin class represents the mapping of your model and administration sections (forms, list, show).
-The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class.
-We will create the Admin classes in the Admin folder of our bundle.
-Start by creating the Admin directory and then, the Admin class for categories:
+
+..
+   The Admin class represents the mapping of your model and administration sections (forms, list, show).
+   The easiest way to create an admin class for your model is to extend the Sonata\AdminBundle\Admin\Admin class.
+   We will create the Admin classes in the Admin folder of our bundle.
+   Start by creating the Admin directory and then, the Admin class for categories:
 
 src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
@@ -205,7 +221,8 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
    }
 
 そして、ジョブのために同様に作成します。：
-And for jobs:
+
+.. And for jobs:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
@@ -227,7 +244,8 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
    }
 
 各 admin クラスを設定ファイルである services.yml·に追加する必要があります。
-Now we need to add each admin class in the services.yml configuration file:
+
+.. Now we need to add each admin class in the services.yml configuration file:
 
 src/Ibw/JobeetBundle/Resources/config/services.yml
 
@@ -254,8 +272,10 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
 
 | この時点で、ダッシュボードに Jobeet のグループを見ることができ、その中に、
 | ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
-At this point, we can see in the dashboard the Jobeet group and, inside it,
-the Job and Category modules, with their respective add and list links.
+
+..
+   At this point, we can see in the dashboard the Jobeet group and, inside it,
+   the Job and Category modules, with their respective add and list links.
 
 .. image:: /images/Day-12-sonata_interface.jpg
 
@@ -265,9 +285,11 @@ Admin クラスの構成
 | 現在どのリンクをたどっても、何も起こりません。
 | リストやフォームに属しているフィールドを設定していない為です。
 | まずはカテゴリに対して、基本的な設定を行いましょう。：
-If you follow any link right now, nothing will happen.
-That’s because we haven’t configure the fields that belong to the list and the form.
-Let’s do a basic configuration, first for the categories:
+
+..
+   If you follow any link right now, nothing will happen.
+   That’s because we haven’t configure the fields that belong to the list and the form.
+   Let’s do a basic configuration, first for the categories:
 
 src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
@@ -314,7 +336,8 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
    }
 
 そしてジョブの設定をします。：
-And now for jobs:
+
+.. And now for jobs:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
@@ -413,7 +436,8 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
    }
 
 show アクションのために、会社のロゴを表示するようにカスタムテンプレートを使用しました。
-For the show action we used a custom template to show the logo of the company:
+
+.. For the show action we used a custom template to show the logo of the company:
 
 src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
 
@@ -426,8 +450,10 @@ src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
 
 | これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。
 | これを使用して見つける機能は、次のとおりです。
-With this, we created a basic administration module with operations for our jobs and categories.
-Some of the features you will find when using it are:
+
+..
+   With this, we created a basic administration module with operations for our jobs and categories.
+   Some of the features you will find when using it are:
 
 * オブジェクトのリストはページ分割されています。
 * リストはソート可能です。
@@ -436,13 +462,15 @@ Some of the features you will find when using it are:
 * 選択されたオブジェクトは、バッチで削除することができます。
 * フォームの検証が有効になっています。
 * フラッシュ·メッセージは、ユーザーへ即時にフィードバックを与えます。
-* The list of objects is paginated
-* The list is sortable
-* The list can be filtered
-* Objects can be created, edited, and deleted
-* Selected objects can be deleted in a batch
-* The form validation is enabled
-* Flash messages give immediate feedback to the user
+
+..
+   * The list of objects is paginated
+   * The list is sortable
+   * The list can be filtered
+   * Objects can be created, edited, and deleted
+   * Selected objects can be deleted in a batch
+   * The form validation is enabled
+   * Flash messages give immediate feedback to the user
 
 バッチアクション
 ----------------
@@ -452,11 +480,13 @@ Some of the features you will find when using it are:
 | デフォルトでは、``delete`` アクションを使用すると、一度に複数のエントリを削除することができます。
 | 新しいバッチアクションを追加するには、 Admin クラスから getBatchActions をオーバーライドする必要があります。
 | では、ここで新しい ``extend`` アクションを定義しましょう。
-Batch actions are actions triggered on a set of selected models (all of them or only a specific subset).
-You can easily add some custom batch action in the list view.
-By default, the delete action allows you to remove several entries at once.
-To add a new batch action we have to override the getBatchActions from the Admin class.
-We will define here a new extend action:
+
+..
+   Batch actions are actions triggered on a set of selected models (all of them or only a specific subset).
+   You can easily add some custom batch action in the list view.
+   By default, the delete action allows you to remove several entries at once.
+   To add a new batch action we have to override the getBatchActions from the Admin class.
+   We will define here a new extend action:
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
@@ -486,10 +516,12 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
 | 選択したモデルは、引数に渡されたクエリーから取得します。
 | （より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、
 | 渡されるクエリは null になります。
-The method batchActionExtend form the JobAdminController will be executed to achieve the core logic.
-The selected models are passed to the method through a query argument retrieving them.
-If for some reason it makes sense to perform your batch action without the default selection method
-(for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
+
+..
+   The method batchActionExtend form the JobAdminController will be executed to achieve the core logic.
+   The selected models are passed to the method through a query argument retrieving them.
+   If for some reason it makes sense to perform your batch action without the default selection method
+   (for example you defined another way, at template level, to select model at a lower granularity), the passed query is null.
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -532,8 +564,10 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
 | それでは 60 日以上投稿者によってアクティブ化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。
 | 条件が一致するレコードを検索して削除しますので、このアクションのために、リストから任意のジョブを選択する必要はありません。
-Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days.
-For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
+
+..
+   Let’s add a new batch action that will delete all jobs that have not been activated by the poster for more than 60 days.
+   For this action we don’t need to select any jobs from the list because the logic of the action will search for the matching records and delete them.
 
 src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
@@ -566,10 +600,12 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
 | JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
 | ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。
 | （このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)
-In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController,
-batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation,
-to make sure there is actually something to confirm (in our case it will always return true
-because the selection of the jobs to be deleted is handled by the logic found in the JobRepository::cleanup() method.
+
+..
+   In addition to create the batchActionDeleteNeverActivated action, we will create a new method in our JobAdminController,
+   batchActionDeleteNeverActivatedIsRelevant, that gets executed before any confirmation,
+   to make sure there is actually something to confirm (in our case it will always return true
+   because the selection of the jobs to be deleted is handled by the logic found in the JobRepository::cleanup() method.
 
 src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
@@ -602,7 +638,9 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
 | 今日はここまでです。明日は、ユーザー名とパスワードで管理領域を保護する方法を説明します。
 | これは Symfony2 のセキュリティについて話をする機会になります。
-That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password.
-This will be the occasion to talk about the symfony2 security.
+
+..
+   That’s all for today! Tomorrow, we will see how to secure the admin section with a username and a password.
+   This will be the occasion to talk about the symfony2 security.
 
 .. include:: common/license.rst.inc
