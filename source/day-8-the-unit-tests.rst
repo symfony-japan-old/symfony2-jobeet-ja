@@ -84,6 +84,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    }
 
 このテストのみを実行するには、次のコマンドで行います。
+
 .. To run only this test, you can use the following command:
 
 .. code-block:: bash
@@ -103,6 +104,7 @@ As everything should work fine, you should get the following result::
    OK (1 test, 6 assertions)
 
 アサーションの完全なリストは、 PHPUnit のドキュメントで確認してください。
+
 .. For a full list of assertions, you can check the PHPUnit documentation.
 
 新機能のテストを追加
@@ -134,7 +136,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 現状では、テストを再実行すると、failure が発生します。
 
 ..
-   Now, if we run the test again, we will have a failure::
+   Now, if we run the test again, we will have a failure
 
 ::
    PHPUnit 3.7.22 by Sebastian Bergmann.
@@ -162,6 +164,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
 
 ここで、Jobeet::slugify メソッドを編集し、先頭に次の条件を追加します。
+
 .. Now, edit the Jobeet::slugify method and add the following condition at the beginning:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
@@ -180,6 +183,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        }
 
 このテストは期待どおり通過し、緑のバーを得るでしょう。
+
 .. The test must now pass as expected, and you can enjoy the green bar.
 
 バグによるテスト追加
