@@ -12,12 +12,14 @@ Symfony のテスト
 | 明日は機能テストに専念し、今日は単体テストを説明します。
 | Symfony2 は独立したライブラリであり、豊富なテスト·フレームワークを提供する PHPUnit と統合されています。
 | テストを実行するには、 PHPUnit の 3.5.11 以降をインストールする必要があります。
-There are two different kinds of automated tests in Symfony: unit tests and functional tests.
-Unit tests verify that each method and function is working properly.Each test must be as independent as possible from the others.
-On the other hand, functional tests verify that the resulting application behaves correctly as a whole.
-Unit tests will be covered in this post, whereas the next post will be dedicated to funcional tests.
-Symfony2 integrates with an independent library, the PHPUnit, to give you a rich testing framework.
-To run tests, you will have to install PHPUnit 3.5.11 or later.
+
+..
+   There are two different kinds of automated tests in Symfony: unit tests and functional tests.
+   Unit tests verify that each method and function is working properly.Each test must be as independent as possible from the others.
+   On the other hand, functional tests verify that the resulting application behaves correctly as a whole.
+   Unit tests will be covered in this post, whereas the next post will be dedicated to funcional tests.
+   Symfony2 integrates with an independent library, the PHPUnit, to give you a rich testing framework.
+   To run tests, you will have to install PHPUnit 3.5.11 or later.
 
 .. note::
 
@@ -39,8 +41,10 @@ To run tests, you will have to install PHPUnit 3.5.11 or later.
 
 | 各テスト（単体テストおよび機能テスト） はバンドルのサブディレクトリ Tests/ におかれる PHP のクラスです。
 | この設置場所のルールに沿っている場合は、次のコマンドを使用して、すべてのアプリケーションのテストを実行することができます。
-Each test – whether it’s a unit test or a functional test – is a PHP class that should live in the Tests/ subdirectory of your bundles.
-If you follow this rule, then you can run all of your application’s tests with the following command:
+
+..
+   Each test – whether it’s a unit test or a functional test – is a PHP class that should live in the Tests/ subdirectory of your bundles.
+   If you follow this rule, then you can run all of your application’s tests with the following command:
 
 .. code-block:: bash
 
@@ -52,9 +56,11 @@ If you follow this rule, then you can run all of your application’s tests with
 | src/Ibw/JobeetBundle/Tests/Utils フォルダに新しいファイル、 JobeetTest.php を作成します。
 | 慣例により、 Tests/ のサブディレクトリは、バンドルのディレクトリ構成を複製する必要があります。
 | バンドルのディレクトリ Utils/ のクラスをテストするときは、ディレクトリ Tests/Utils/ にテストを置おきます。
-The -c option tells PHPUnit to look in the app/ directory for a configuration file. If you’re curious about the PHPUnit options, check out the app/phpunit.xml.dist file.
-A unit test is usually a test against a specific PHP class. Let’s start by writing tests for the Jobeet:slugify() method.
-Create a new file, JobeetTest.php, in the src/Ibw/JobeetBundle/Tests/Utils folder. By convention, the Tests/ subdirectory should replicate the directory of your bundle. So, when we are testing a class in our bundle’s Utils/ directory, we put the test in the Tests/Utils/ directory:
+
+..
+   The -c option tells PHPUnit to look in the app/ directory for a configuration file. If you’re curious about the PHPUnit options, check out the app/phpunit.xml.dist file.
+   A unit test is usually a test against a specific PHP class. Let’s start by writing tests for the Jobeet:slugify() method.
+   Create a new file, JobeetTest.php, in the src/Ibw/JobeetBundle/Tests/Utils folder. By convention, the Tests/ subdirectory should replicate the directory of your bundle. So, when we are testing a class in our bundle’s Utils/ directory, we put the test in the Tests/Utils/ directory:
 
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
@@ -78,7 +84,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    }
 
 このテストのみを実行するには、次のコマンドで行います。
-To run only this test, you can use the following command:
+.. To run only this test, you can use the following command:
 
 .. code-block:: bash
 
@@ -97,7 +103,7 @@ As everything should work fine, you should get the following result::
    OK (1 test, 6 assertions)
 
 アサーションの完全なリストは、 PHPUnit のドキュメントで確認してください。
-For a full list of assertions, you can check the PHPUnit documentation.
+.. For a full list of assertions, you can check the PHPUnit documentation.
 
 新機能のテストを追加
 ----------------
@@ -107,11 +113,13 @@ For a full list of assertions, you can check the PHPUnit documentation.
 | 空の文字列の場合は「n-a」の文字列を返すように slugify() メソッドを変更してみましょう。
 | 先にテストを書いてからメソッドを更新することができ、順番を逆にしてもできます。
 | それは本当に好みの問題ですが、先にテストを書くことは、コードが計画したものを実際に実装しているという自信を与えてくれます。
-The slug for an empty string is an empty string. You can test it, it will work.
-But an empty string in a URL is not that a great idea.
-Let’s change the slugify() method so that it returns the “n-a” string in case of an empty string.
-You can write the test first, then update the method, or the other way around.
-It is really a matter of taste, but writing the test first gives you the confidence that your code actually implements what you planned:
+
+..
+   The slug for an empty string is an empty string. You can test it, it will work.
+   But an empty string in a URL is not that a great idea.
+   Let’s change the slugify() method so that it returns the “n-a” string in case of an empty string.
+   You can write the test first, then update the method, or the other way around.
+   It is really a matter of taste, but writing the test first gives you the confidence that your code actually implements what you planned:
 
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
@@ -123,9 +131,12 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
    // ...
 
-現状では、テストを再実行すると、failure が発生します。::
-Now, if we run the test again, we will have a failure::
+現状では、テストを再実行すると、failure が発生します。
 
+..
+   Now, if we run the test again, we will have a failure::
+
+::
    PHPUnit 3.7.22 by Sebastian Bergmann.
 
    Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -151,7 +162,7 @@ Now, if we run the test again, we will have a failure::
 
 
 ここで、Jobeet::slugify メソッドを編集し、先頭に次の条件を追加します。
-Now, edit the Jobeet::slugify method and add the following condition at the beginning:
+.. Now, edit the Jobeet::slugify method and add the following condition at the beginning:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -169,7 +180,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
        }
 
 このテストは期待どおり通過し、緑のバーを得るでしょう。
-The test must now pass as expected, and you can enjoy the green bar.
+.. The test must now pass as expected, and you can enjoy the green bar.
 
 バグによるテスト追加
 --------------------
@@ -182,14 +193,16 @@ The test must now pass as expected, and you can enjoy the green bar.
 | 文字列が非 ASCII 文字のみで構成されている場合、slugify() メソッドは空の文字列に変換します。
 | 原因を発見したのに満足して、 Jobeet のクラスを編集してすぐに問題を解決しようとするのは、よい考えではありません。
 | 最初に、テストを追加してみましょう：
-Let’s say that time has passed and one of your users reports a weird bug: some job links point to a 404 error page.
-After some investigation, you find that for some reason, these jobs have an empty company, position, or location slug.
-How is it possible?
-You look through the records in the database and the columns are definitely not empty.
-You think about it for a while, and bingo, you find the cause.
-When a string only contains non-ASCII characters, the slugify() method converts it to an empty string.
-So happy to have found the cause, you open the Jobeet class and fix the problem right away.
-That’s a bad idea. First, let’s add a test:
+
+..
+   Let’s say that time has passed and one of your users reports a weird bug: some job links point to a 404 error page.
+   After some investigation, you find that for some reason, these jobs have an empty company, position, or location slug.
+   How is it possible?
+   You look through the records in the database and the columns are definitely not empty.
+   You think about it for a while, and bingo, you find the cause.
+   When a string only contains non-ASCII characters, the slugify() method converts it to an empty string.
+   So happy to have found the cause, you open the Jobeet class and fix the problem right away.
+   That’s a bad idea. First, let’s add a test:
 
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
@@ -198,7 +211,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
    $this->assertEquals('n-a', Jobeet::slugify(' - '));
 
 テストに合格しないことを確認した後、Jobeetのクラスを編集して、空の文字列チェックをメソッドの最後に移動します。
-After checking that the test does not pass, edit the Jobeet class and move the empty string check to the end of the method:
+.. After checking that the test does not pass, edit the Jobeet class and move the empty string check to the end of the method:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -220,18 +233,22 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 | テストを書くときには、すべてのエッジケースを考えることはできません。それは大丈夫です。
 | しかし、 1 つを発見したときに、コードを修正する前にテストを書く必要があります。
 | それはコードが時間をかけて良くなることも意味します。それは常に良いことです。
-The new test now passes, as do all the other ones. The slugify() had a bug despite our 100% coverage.
-You cannot think about all edge cases when writing tests, and that’s fine.
-But when you discover one, you need to write a test for it before fixing your code.
-It also means that your code will get better over time, which is always a good thing.
+
+..
+   The new test now passes, as do all the other ones. The slugify() had a bug despite our 100% coverage.
+   You cannot think about all edge cases when writing tests, and that’s fine.
+   But when you discover one, you need to write a test for it before fixing your code.
+   It also means that your code will get better over time, which is always a good thing.
 
 よりよい slugify メソッドに向けて
 ---------------------------------
 
 | おそらく、 Symfony がフランス人によって作られていることを知っているでしょう。
 | そこで、「アクセント」が含まれているフランス語の単語でテストを追加してみましょう：
-You probably know that symfony has been created by French people,
-so let’s add a test with a French word that contains an “accent”:
+
+..
+   You probably know that symfony has been created by French people,
+   so let’s add a test with a French word that contains an “accent”:
 
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
@@ -243,9 +260,11 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 | 音訳と呼ばれる厳しい問題です。
 | iconv ライブラリがインストールされている場合は、うまくいけば動くでしょう。
 | 以下で slugify メソッドのコードを置き換えます。
-The test must fail. Instead of replacing é by e, the slugify() method has replaced it by a dash (-).
-That’s a tough problem, called transliteration. Hopefully, if you have iconv Library installed, it will do the job for us.
-Replace the code of the slugify method with the following:
+
+..
+   The test must fail. Instead of replacing é by e, the slugify() method has replaced it by a dash (-).
+   That’s a tough problem, called transliteration. Hopefully, if you have iconv Library installed, it will do the job for us.
+   Replace the code of the slugify method with the following:
 
 src/Ibw/JobeetBundle/Utils/Jobeet.php
 
@@ -282,8 +301,10 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 Symfony のデフォルトのエンコーディングである UTF-8 エンコーディングですべての PHP ファイルを保存することを忘れないでください。
 また、 UTF-8 は iconv によって翻訳に使用されます。
 また、 iconv が利用可能である場合にのみ、テストファイルを変更します。
-Remember to save all your PHP files with the UTF-8 encoding, as this is the default Symfony encoding, and the one used by iconv to do the transliteration.
-Also change the test file to run the test only if iconv is available:
+
+..
+   Remember to save all your PHP files with the UTF-8 encoding, as this is the default Symfony encoding, and the one used by iconv to do the transliteration.
+   Also change the test file to run the test only if iconv is available:
 
 src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
@@ -298,15 +319,17 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
 | テストを書くときに、コードの一部を忘れがちです。
 | 新しい機能を追加したり、コード網羅率の統計を確認したい場合に必要があるのは --coverage-HTML オプションを使用してコード網羅率をチェックすることです。
-When you write tests, it is easy to forget a portion of the code.
-If you add a new feature or you just want to verify your code coverage statistics, all you need to do is to check the code coverage by using the --coverage-html option:
+
+..
+   When you write tests, it is easy to forget a portion of the code.
+   If you add a new feature or you just want to verify your code coverage statistics, all you need to do is to check the code coverage by using the --coverage-html option:
 
 .. code-block:: bash
 
    $ phpunit --coverage-html=web/cov/ -c app/
 
 ブラウザで生成されたページ（ http://jobeet.local/cov/index.html ）を開いて確認してください。
-Check the code coverage by opening the generated http://jobeet.local/cov/index.html page in a browser.
+.. Check the code coverage by opening the generated http://jobeet.local/cov/index.html page in a browser.
 
 .. note::
 
@@ -324,7 +347,7 @@ Your cov/index.html should look like this:
 
 | インジケーターのテストユニットがすべて実施されているということは、すべての行が実施されたという意味で、
 | それだけで、すべてのエッジケースがテストされているわけではないことに注意してください。
-Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
+.. Keep in mind that when this indicates that your code is fully unit tested, it just means that each line has been executed, not that all the edge cases have been tested.
 
 Doctrine の単体テスト
 ---------------------
@@ -336,12 +359,14 @@ Doctrine の単体テスト
 | app/config ディレクトリに移動し、 parameters.yml ファイルをコピーして parameters_test.yml を作成します。
 | parameters_test.yml を編集し、 jobeet_test にデータベースの名前を変更します。
 | これをインポートするために、 config_test.yml ファイルに追加する必要があります。
-Unit testing a Doctrine model class is a bit more complex as it requires a database connection.
-You already have the one you use for your development, but it is a good habit to create a dedicated database for tests.
-At the beginning of this tutorial, we introduced the environments as a way to vary an application’s settings. By default, all symfony tests are run in the test environment, so let’s configure a different database for the test environment:
-Go to your app/config directory and create a copy of parameters.yml file, called parameters_test.yml.
-Open parameters_test.yml and change the name of your database to jobeet_test.
-For this to be imported, we have to add it in the config_test.yml file :
+
+..
+   Unit testing a Doctrine model class is a bit more complex as it requires a database connection.
+   You already have the one you use for your development, but it is a good habit to create a dedicated database for tests.
+   At the beginning of this tutorial, we introduced the environments as a way to vary an application’s settings. By default, all symfony tests are run in the test environment, so let’s configure a different database for the test environment:
+   Go to your app/config directory and create a copy of parameters.yml file, called parameters_test.yml.
+   Open parameters_test.yml and change the name of your database to jobeet_test.
+   For this to be imported, we have to add it in the config_test.yml file :
 
 app/config/config_test.yml
 
@@ -359,11 +384,13 @@ Job エンティティのテスト
 | ``setUp`` 関数は、テストを実行するたびにデータベースを操作します。
 | 最初に、現在のデータベースをドロップし、再作成し、フィクスチャーからデータをロードします。
 | これは、テストを実行する前に、テスト環境用に作成したデータベースに同じ初期データを持つようにするのに役に立つでしょう。
-First, we need to create the JobTest.php file in the Tests/Entity folder.
-The setUp function will manipulate your database each time you will run the test.
-At first, it will drop your current database,
-then it will re-create it and load data from fixtures in it.
-This will help you have the same initial data in the database you created for the test environment before running the tests.
+
+..
+   First, we need to create the JobTest.php file in the Tests/Entity folder.
+   The setUp function will manipulate your database each time you will run the test.
+   At first, it will drop your current database,
+   then it will re-create it and load data from fixtures in it.
+   This will help you have the same initial data in the database you created for the test environment before running the tests.
 
 src/Ibw/JobeetBundle/Tests/Entity/JobTest.php
 
@@ -483,7 +510,7 @@ src/Ibw/JobeetBundle/Tests/Entity/JobTest.php
 ------------------------
 
 さて、前の日に作成した関数が正しい値を返すかどうかを確認するために、 JobRepository クラスのいくつかのテストを書いてみましょう。
-Now, let’s write some tests for the JobRepository class, to see if the functions we created in the previous days are returning the right values:
+.. Now, let’s write some tests for the JobRepository class, to see if the functions we created in the previous days are returning the right values:
 
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
 
@@ -726,10 +753,12 @@ Now, if you go to http://jobeet.local/cov/Repository.html you will see that the 
 | 今のところ、データベースにはアクティブなジョブを持たない二つのカテゴリと、一つだけアクティブなジョブを持つ一つのカテゴリを持ちます。
 | それは、 $max と $offset パラメータをテストする際に、最低でも 3 つのアクティブなジョブを持つカテゴリにおいて、下記のテストを実行するためです。
 | そのために、 testGetActiveJobs() にて、 foreach 文の内部にこれを追加します。
-Let’s add some tests for the JobRepository to achieve 100% code coverage.
-At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job.
-That why, when we will test the $max and $offset parameters, we will run the following tests just on the categories with at least 3 active jobs.
-In order to do that, add this inside your foreach statement, from your testGetActiveJobs() function:
+
+..
+   Let’s add some tests for the JobRepository to achieve 100% code coverage.
+   At the moment, in our database, we have two job categories having 0 active jobs and one job category having just one active job.
+   That why, when we will test the $max and $offset parameters, we will run the following tests just on the categories with at least 3 active jobs.
+   In order to do that, add this inside your foreach statement, from your testGetActiveJobs() function:
 
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
 

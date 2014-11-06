@@ -97,8 +97,10 @@ src/Ibw/JobeetBunlde/Entity/Category.php
 
 | more_jobs プロパティは、カテゴリのアクティブなジョブの数からホームページに記載されているジョブの数を引いたものを保持します。
 | さて、 JobController では、各カテゴリの more_jobs の値を設定する必要があります。
-The more_jobs property will hold the number of active jobs for the category minus the number of jobs listed on the homepage.
-Now, in JobController, we need to set the more_jobs value for each category:
+
+..
+   The more_jobs property will hold the number of active jobs for the category minus the number of jobs listed on the homepage.
+   Now, in JobController, we need to set the more_jobs value for each category:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -158,8 +160,10 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
 | ここで、カテゴリコントローラを作成してみましょう。
 | お使いのコントローラのディレクトリに新しい  CategoryController.php ファイルを作成します。
-It’s now time to create the Category controller.
-Create a new CategoryController.php file in your Controller directory:
+
+..
+   It’s now time to create the Category controller.
+   Create a new CategoryController.php file in your Controller directory:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
 
@@ -181,8 +185,10 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
 | ジョブコントローラのためにしたのと同様に、``doctrine:generate:crud`` コマンドを使うことができます。
 | しかし、生成されたコードの 90% は必要としないので、手で一から新しいコントローラを作成しました。
-We could use the doctrine:generate:crud command like we did for the job controller, but we won’t need 90% of the generated code,
-so we can just create a new controller from scratch.
+
+..
+   We could use the doctrine:generate:crud command like we did for the job controller, but we won’t need 90% of the generated code,
+   so we can just create a new controller from scratch.
 
 データベースを更新
 ------------------
@@ -226,7 +232,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
 | 先ほど作成した getSlug メソッドをカテゴリエンティティ（ src/Ibw/JobeetBundle/Entity/Category.php ）から削除し、
 | カテゴリエンティティクラスを更新するために doctrine コマンドを実行します。
-Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the getSlug method we created earlier and run the doctrine command to update the Category entity class:
+.. Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the getSlug method we created earlier and run the doctrine command to update the Category entity class:
 
 .. code-block:: bash
 
@@ -287,7 +293,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
 
 | ここで、データベースを削除して、新しいカテゴリカラムと合わせて再度作成し、
 | フィクスチャーをロードする必要があります。
-Now we have to drop the database and create it again with the new Category column and load the fixtures:
+.. Now we have to drop the database and create it again with the new Category column and load the fixtures:
 
 .. code-block:: bash
 
@@ -301,8 +307,10 @@ Now we have to drop the database and create it again with the new Category colum
 
 | showAction() メソッドを作成するための場所ですべてを持っています。
 | CategoryController.php ファイルに次のコードを追加します。
-We have now everything in place to create the showAction() method.
-Add the following code to the CategoryController.php file:
+
+..
+   We have now everything in place to create the showAction() method.
+   Add the following code to the CategoryController.php file:
 
 src/Ibw/JobeetBundle/Controller/CategoryController.php
 
@@ -377,9 +385,11 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 | それはよくない方法です。テンプレートの一部を再利用する必要があるときは、そのコードを使用して新しい twig テンプレートを作成し、
 | 必要な場所に取り込むべきです。
 | list.html.twig ファイルを作成します。
-Notice that we have copied and pasted the tag that create a list of jobs from the job index.html.twig template.
-That’s bad. When you need to reuse some portion of a template, you need to create a new twig template with that code and include it where you need.
-Create the list.html.twig file:
+
+..
+   Notice that we have copied and pasted the tag that create a list of jobs from the job index.html.twig template.
+   That’s bad. When you need to reuse some portion of a template, you need to create a new twig template with that code and include it where you need.
+   Create the list.html.twig file:
 
 src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
 
@@ -401,7 +411,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
 
 | ``include`` 関数を使用してテンプレートを取り込むことができます。
 | 両方のテンプレートから ``include`` 関数をよびだして、 HTML <table> のコードを置き換えます。
-You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
+.. You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
 
 src/Ibw/JobeetBundle/Resources/view/Job/index.html.twig
 
@@ -421,8 +431,10 @@ src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
 | これを書いている時点では、 Symfony2 は、この問題を解決するための便利なページネーション·ツールを提供していない為、古典的な方法を使用します。
 | まずは、 IbwJobeetBundle_category ルートに ``page`` パラメータを追加してみましょう。
 | ``page`` パラメータは、デフォルト値が 1 となり、必須ではありません。
-At the moment of writing this, Symfony2 doesn’t provide any good pagination tools out of the box so to solve this problem we will use the old classic method.
-First, let’s add a page parameter to the IbwJobeetBundle_category route. The page parameter will have a default value of 1, so it will not be required:
+
+..
+   At the moment of writing this, Symfony2 doesn’t provide any good pagination tools out of the box so to solve this problem we will use the old classic method.
+   First, let’s add a page parameter to the IbwJobeetBundle_category route. The page parameter will have a default value of 1, so it will not be required:
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -590,7 +602,7 @@ src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
    {% endblock %}
 
 結果です。：
-The result:
+.. The result:
 
 .. image:: /images/Day-7-pagination.png
 

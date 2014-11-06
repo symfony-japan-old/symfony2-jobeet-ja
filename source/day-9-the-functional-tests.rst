@@ -14,34 +14,40 @@
 | 各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。
 | 単体テストのように、コードに自信を与えてくれます。
 | 機能テストは、非常に明確なワークフローがあります。
-Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server.
-They test all the layers of an application: the routing, the model, the actions and the templates.
-They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page.
-In other words, you run a scenario corresponding to the use case you have just implemented.
-As the process is manual, it is tedious and error prone.
-Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something.
-That’s insane. Functional tests in symfony provide a way to easily describe scenarios.
-Each scenario can then be played automatically over and over again by simulating the experience a user has in a browser.
-Like unit tests, they give you the confidence to code in peace.
-Functional tests have a very specific workflow:
+
+..
+   Functional tests are a great tool to test your application from end to end: from the request made by a browser to the response sent by the server.
+   They test all the layers of an application: the routing, the model, the actions and the templates.
+   They are very similar to what you probably already do manually: each time you add or modify an action, you need to go to the browser and check that everything works as expected by clicking on links and checking elements on the rendered page.
+   In other words, you run a scenario corresponding to the use case you have just implemented.
+   As the process is manual, it is tedious and error prone.
+   Each time you change something in your code, you must step through all the scenarios to ensure that you did not break something.
+   That’s insane. Functional tests in symfony provide a way to easily describe scenarios.
+   Each scenario can then be played automatically over and over again by simulating the experience a user has in a browser.
+   Like unit tests, they give you the confidence to code in peace.
+   Functional tests have a very specific workflow:
 
 * リクエストを作成します。
 * リンクをクリックするか、フォームを送信します。
 * レスポンスをテストします。
 * すすぎ、繰り返す。
-* Make a request;
-* Test the response;
-* Click on a link or submit a form;
-* Test the response;
-* Rinse and repeat;
+
+..
+   * Make a request;
+   * Test the response;
+   * Click on a link or submit a form;
+   * Test the response;
+   * Rinse and repeat;
 
 最初の機能テスト
 ----------------
 
 | 一般的に機能テストはバンドルのディレクトリ Tests/Controller にあるシンプルな PHP ファイルです。
 | CategoryController クラスによって処理するページをテストする場合は、特別な WebTestCase クラスを拡張して新しい CategoryControllerTest クラスを作成することで始めます。
-Functional tests are simple PHP files that typically live in the Tests/Controller directory of your bundle.
-If you want to test the pages handled by your CategoryController class, start by creating a new CategoryControllerTest class that extends a special WebTestCase class:
+
+..
+   Functional tests are simple PHP files that typically live in the Tests/Controller directory of your bundle.
+   If you want to test the pages handled by your CategoryController class, start by creating a new CategoryControllerTest class that extends a special WebTestCase class:
 
 src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
@@ -125,21 +131,22 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
    }
 
 クローラーの詳細については、 Symfony ドキュメントをお読みください。
-To learn more about crawler, read the Symfony documentation here.
+.. To learn more about crawler, read the Symfony documentation here.
 
 機能テストの実行
 ----------------
 
 単体テスト（ユニットテスト）と同様に、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
-As for unit tests, launching functional tests can be done by executing the phpunit command:
+.. As for unit tests, launching functional tests can be done by executing the phpunit command:
 
 .. code-block:: bash
 
    phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
 
-このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します::
-This test will fail because the tested url, /category/index, is not a valid url in Jobeet::
+このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します。
+.. This test will fail because the tested url, /category/index, is not a valid url in Jobeet
 
+::
    PHPUnit 3.7.22 by Sebastian Bergmann.
 
    Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -159,8 +166,10 @@ This test will fail because the tested url, /category/index, is not a valid url 
 | 機能テストを書くことはブラウザでシナリオを演じることに似ています。
 | すでに 2 日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。
 | まずは、 JobControllerTest クラスを編集して Jobeet のホームページをテストしてみましょう。 次のコードで置き換えます。
-Writing functional tests is like playing a scenario in a browser. We already have written all the scenarios we need to test as part of the day 2 stories.
-First, let’s test the Jobeet homepage by editing the JobControllerTest class. Replace the code with the following one:
+
+..
+   Writing functional tests is like playing a scenario in a browser. We already have written all the scenarios we need to test as part of the day 2 stories.
+   First, let’s test the Jobeet homepage by editing the JobControllerTest class. Replace the code with the following one:
 
 期限切れのジョブが一覧表示されないこと
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -249,17 +258,21 @@ First, let’s test the Jobeet homepage by editing the JobControllerTest class. 
 | ホームページから期限切れのジョブの除外を検証するために、 CSS セレクタ ``.jobs td.position:contains("Expired")`` が、
 | レスポンスの中の HTML コンテンツ内のどれとも一致しないことを確認します。
 | （フィクスチャーの中で唯一、有効期限が切れたジョブは、役職に「 Expired 」が含まれていたことを思い出してください）。
-To verify the exclusion of expired jobs from the homepage,
-we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content
-(remember that in the fixtures, the only expired job we have contains “Expired” in the position).
+
+..
+   To verify the exclusion of expired jobs from the homepage,
+   we check that the CSS selector .jobs td.position:contains("Expired") does not match anywhere in the response HTML content
+   (remember that in the fixtures, the only expired job we have contains “Expired” in the position).
 
 N個のジョブだけが、カテゴリの一覧表示されること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | testIndex() 関数の最後に次のコードを追加します。
 | 機能テストで app/config/config.yml で定義されたカスタムパラメータを取得するには、カーネルを使用します。
-Add the following code at the end of  your testIndex() function.
-To get the custom parameter defined in app/config/config.yml in our functional test, we will use the kernel:
+
+..
+   Add the following code at the end of  your testIndex() function.
+   To get the custom parameter defined in app/config/config.yml in our functional test, we will use the kernel:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -276,8 +289,10 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 | このテストを動作させるために Job/index.html.twig の中で、カテゴリ毎に対応する CSS クラスを追加する必要があります。
 | （それによって、各カテゴリを選択し、リストされたジョブを数えることができます）。
-For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file
- (so we can select each category and count the jobs listed) :
+
+..
+   For this test to work we will need to add the corresponding CSS class to each category in the Job/index.html.twig file
+    (so we can select each category and count the jobs listed) :
 
 src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
@@ -306,8 +321,10 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 | これらのテストでは、デザインカテゴリに「 more jobs 」リンクがないこと(``.category_design .more_jobs`` がないこと)を確認し、
 | プログラミングカテゴリには「 more jobs 」リンクがあること(``.category_programming .more_jobs`` があること)をチェックします。
-In these tests, we check that there is no “more jobs” link for the design category (.category_design .more_jobs does not exist),
- and that there is a “more jobs” link for the programming category (.category_programming .more_jobs does exist).
+
+..
+   In these tests, we check that there is no “more jobs” link for the design category (.category_design .more_jobs does not exist),
+    and that there is a “more jobs” link for the programming category (.category_programming .more_jobs does exist).
 
 ジョブが日付でソートされること
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -316,9 +333,11 @@ In these tests, we check that there is no “more jobs” link for the design ca
 | ホームページに記載された最初のジョブが、期待したものであることを確認する必要があります。
 | URL に期待する主キーが含まれていることを確認することで行います。
 | 主キーは実行の間に変わる可能性があるため、最初にデータベースから Doctrine のオブジェクトを取得する必要があります。
-To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect.
-This can be done by checking that the URL contains the expected primary key.
-As the primary key can change between runs, we need to get the Doctrine object from the database first.
+
+..
+   To test if jobs are actually sorted by date, we need to check that the first job listed on the homepage is the one we expect.
+   This can be done by checking that the URL contains the expected primary key.
+   As the primary key can change between runs, we need to get the Doctrine object from the database first.
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -342,9 +361,11 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 | コードを少しリファクタリングする必要があります。
 | コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。
 | 代わりに、テストクラス内の getMostRecentProgrammingJob() メソッドにコードを移動します。
-Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests.
-We won’t move the code to the Model layer as the code is test specific.
-Instead, we will move the code to the getMostRecentProgrammingJob function in our test class:
+
+..
+   Even if the test works in this very moment, we need to refactor the code a bit, as getting the first job of the programming category can be reused elsewhere in our tests.
+   We won’t move the code to the Model layer as the code is test specific.
+   Instead, we will move the code to the getMostRecentProgrammingJob function in our test class:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -369,7 +390,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    // ...
 
 前のテストコードを次のもので置き換えることができます。
-You can now replace the previous test code by the following one:
+.. You can now replace the previous test code by the following one:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -387,9 +408,11 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 | ホームページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。
 | それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。
 | 各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。
-To test the job link on the homepage, we simulate a click on the “Web Developer” text.
-As there are many of them on the page, we have explicitly to ask the browser to click on the first one.
-Each request parameter is then tested to ensure that the routing has done its job correctly.
+
+..
+   To test the job link on the homepage, we simulate a click on the “Web Developer” text.
+   As there are many of them on the page, we have explicitly to ask the browser to click on the first one.
+   Each request parameter is then tested to ensure that the routing has done its job correctly.
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -416,8 +439,10 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 | このセクションでは、ジョブとカテゴリページをテストするために必要なすべてのコードがあります。
 | いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。：
-In this section, you have all the code needed to test the job and category pages.
-Read the code carefully as you may learn some new neat tricks:
+
+..
+   In this section, you have all the code needed to test the job and category pages.
+   Read the code carefully as you may learn some new neat tricks:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
@@ -692,6 +717,6 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
    }
 
 これで、今日はすべてです！明日は、フォームについて、知っておくべきことを学びます。
-That’s all for today! Tomorrow, we will learn all there is to know about forms.
+.. That’s all for today! Tomorrow, we will learn all there is to know about forms.
 
 .. include:: common/license.rst.inc

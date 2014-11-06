@@ -10,12 +10,14 @@
 | このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドで
 | ジョブエンティティのための単純な CRUD コントローラを生成しました。
 | また、ジョブフォームを /src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
-Any website has forms, from the simple contact form to the complex ones with lots of fields.
-Writing forms is also one of the most complex and tedious task for a web developer:
-you need to write the HTML form, implement validation rules for each field, process the values to store them in a database,
-display error messages, repopulate fields in case of errors and much more …
-In Day 3 of this tutorial we used the doctrine:generate:crud command to generate a simple CRUD controller for our Job entity.
-This also generated a Job form that you can find in /src/Ibw/JobeetBundle/Form/JobType.php file.
+
+..
+   Any website has forms, from the simple contact form to the complex ones with lots of fields.
+   Writing forms is also one of the most complex and tedious task for a web developer:
+   you need to write the HTML form, implement validation rules for each field, process the values to store them in a database,
+   display error messages, repopulate fields in case of errors and much more …
+   In Day 3 of this tutorial we used the doctrine:generate:crud command to generate a simple CRUD controller for our Job entity.
+   This also generated a Job form that you can find in /src/Ibw/JobeetBundle/Form/JobType.php file.
 
 求人フォームをカスタマイズする
 ------------------------------
@@ -23,9 +25,11 @@ This also generated a Job form that you can find in /src/Ibw/JobeetBundle/Form/J
 | 求人フォームは、フォームのカスタマイズを学ぶための完璧な例です。
 | それでは、それをカスタマイズする方法をステップバイステップで見てみましょう。
 | まず、お使いのブラウザで直接変更をチェックすることができるように、レイアウト内の ``Post a Job`` リンクを変更します。
-The Job form is a perfect example to learn form customization.
-Let’s see how to customize it, step by step.
-First, change the Post a Job link in the layout to be able to check changes directly in your browser:
+
+..
+   The Job form is a perfect example to learn form customization.
+   Let’s see how to customize it, step by step.
+   First, change the Post a Job link in the layout to be able to check changes directly in your browser:
 
 src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
@@ -73,9 +77,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | デフォルトでは、Doctrine が生成したフォームは、すべてのテーブルのカラムのフィールドを表示します。
 | しかし、求人フォームはエンドユーザーが編集可能ではいけません。
 | 以下のように求人フォームを編集してください。
-By default, the Doctrine generated form displays fields for all the table columns.
-But for the Job form, some of them must not be editable by the end user.
-Edit the Job form as you see below:
+
+..
+   By default, the Doctrine generated form displays fields for all the table columns.
+   But for the Job form, some of them must not be editable by the end user.
+   Edit the Job form as you see below:
 
 src/Ibw/JobeetBundle/Form/JobType.php
 
@@ -125,11 +131,13 @@ src/Ibw/JobeetBundle/Form/JobType.php
 | Symfony2 では、バリデーション(検証)は、基礎となるオブジェクト（例えば Job ）に適用されます。
 | つまり、問題は、フォームが有効かではなく、送信されたデータをフォームに適用した後にジョブオブジェクトが有効であるかどうかです。
 | これを行うには、バンドルの Resources/config ディレクトリに新しい validation.yml ファイルを作成します。
-The form configuration must sometimes be more precise than what can be introspected from the database schema.
-For example, the email column is a varchar in the schema, but we need this column to be validated as an email.
-In Symfony2, validation is applied to the underlying object (e.g. Job).
-In other words, the question isn’t whether the form is valid, but whether or not the Job object is valid after the form has applied the submitted data to it.
-To do this, create a new validation.yml file in the Resources/config directory of our bundle:
+
+..
+   The form configuration must sometimes be more precise than what can be introspected from the database schema.
+   For example, the email column is a varchar in the schema, but we need this column to be validated as an email.
+   In Symfony2, validation is applied to the underlying object (e.g. Job).
+   In other words, the question isn’t whether the form is valid, but whether or not the Job object is valid after the form has applied the submitted data to it.
+   To do this, create a new validation.yml file in the Resources/config directory of our bundle:
 
 .. code-block:: yaml
 
@@ -186,7 +194,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
 | getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、
 | getTypeValues()​ メソッドはバリデーション(検証)の中でタイプフィールドの有効な値を取得するために使用されます。
-The getTypes() method is used in the form to get the possible types for a Job and getTypeValues() will be used in the validation to get the valid values for the type field.
+.. The getTypes() method is used in the form to get the possible types for a Job and getTypeValues() will be used in the validation to get the valid values for the type field.
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -203,7 +211,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 
 | 各フィールドに対して、Symfony は自動的にラベル（表示されるタグで使用されます）を生成します。
 | これは label オプションで変更できます。
-For each field, symfony automatically generates a label (which will be used in the rendered tag). This can be changed with the label option:
+.. For each field, symfony automatically generates a label (which will be used in the rendered tag). This can be changed with the label option:
 
 src/Ibw/JobeetBundle/Form/JobType.php
 
@@ -254,16 +262,18 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 
 | URL フィールドに適用される制約は URL 形式( http：//www.sitename.domain または https：//www.sitename.domain のような)を適用します。
 | validation.yml を変更したら、キャッシュをクリアする必要があります。
-The constraint applied to url field enforces the URL format to be like this: http://www.sitename.domain or https://www.sitename.domain.
-After modifying validation.yml, you need to clear the cache.
+..
+   The constraint applied to url field enforces the URL format to be like this: http://www.sitename.domain or https://www.sitename.domain.
+   After modifying validation.yml, you need to clear the cache.
 
 Symfony2 の中でファイルアップロードの処理
 -----------------------------------------
 
 | フォームで実際のファイルをアップロードするため、仮想の ``file`` フィールドを使用します。
 | このために、ジョブエンティティに新しいファイルプロパティを追加します。
-To handle the actual file upload in the form, we will use a virtual file field.
-For this, we will add a new file property to the Job entity:
+..
+   To handle the actual file upload in the form, we will use a virtual file field.
+   For this, we will add a new file property to the Job entity:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -276,7 +286,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
    // ...
 
 今、ロゴをファイルウィジェットに交換し、ファイル入力タグに変更する必要があります。
-Now we need to replace the logo with the file widget and change it to a file input tag:
+.. Now we need to replace the logo with the file widget and change it to a file input tag:
 
 src/Ibw/JobeetBundle/Form/JobType.php
 
@@ -294,7 +304,7 @@ src/Ibw/JobeetBundle/Form/JobType.php
    // ...
 
 アップロードされたファイルが有効な画像であることを確認するために、検証制約の ``Image`` を使用します。
-To make sure the uploaded file is a valid image, we will use the Image validation constraint:
+.. To make sure the uploaded file is a valid image, we will use the Image validation constraint:
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -309,9 +319,10 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 | フォームが送信されると、ファイルのフィールドは ``UploadedFile`` クラスのインスタンスになります。
 | このフィールドは、ファイルを恒久的な場所に移動することができます。
 | この後、ジョブのロゴプロパティに、アップロードされたファイルの名前を設定します。
-When the form is submitted, the file field will be an instance of UploadedFile.
-It can be used to move the file to a permanent location.
-After this, we will set the job logo property to the uploaded file name.
+..
+   When the form is submitted, the file field will be an instance of UploadedFile.
+   It can be used to move the file to a permanent location.
+   After this, we will set the job logo property to the uploaded file name.
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -347,9 +358,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | ロゴディレクトリ（ web/uploads/jobs/ ）を作成し、それを Webサーバーから書き込み可能であることを確認する必要があります。
 | この実装は機能していますが、より良い方法は Doctrine のジョブエンティティを使用してファイルのアップロードを処理することです。
 | まず、ジョブエンティティに次の行を追加します。
-You need to create the logo directory (web/uploads/jobs/) and check that it is writable by the web server.
-Even if this implementation works, a better way is to handle the file upload using the Doctrine Job entity.
-First, add the following to the Job entity:
+..
+   You need to create the logo directory (web/uploads/jobs/) and check that it is writable by the web server.
+   Even if this implementation works, a better way is to handle the file upload using the Doctrine Job entity.
+   First, add the following to the Job entity:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -387,14 +399,15 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | これを行うには、 Doctrine がデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
 | これは、ジョブ·エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
 | Jobeet のチュートリアルの 3 日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックを追加します。
-The logo property stores the relative path to the file and is persisted to the database.
-The getAbsolutePath() is a convenience method that returns the absolute path to the file
- while the getWebPath() is a convenience method that returns the web path, which can be used in a template to link to the uploaded file.
-We will make the implementation so that the database operation and the moving of the file are atomic:
-if there is a problem persisting the entity or if the file cannot be saved, then nothing will happen.
-To do this, we need to move the file right as Doctrine persists the entity to the database.
-This can be accomplished by hooking into the Job entity lifecycle callback.
-Like we did in day 3 of the Jobeet tutorial, we will edit the Job.orm.yml file and add the preUpload, upload and removeUpload callbacks in it:
+..
+   The logo property stores the relative path to the file and is persisted to the database.
+   The getAbsolutePath() is a convenience method that returns the absolute path to the file
+    while the getWebPath() is a convenience method that returns the web path, which can be used in a template to link to the uploaded file.
+   We will make the implementation so that the database operation and the moving of the file are atomic:
+   if there is a problem persisting the entity or if the file cannot be saved, then nothing will happen.
+   To do this, we need to move the file right as Doctrine persists the entity to the database.
+   This can be accomplished by hooking into the Job entity lifecycle callback.
+   Like we did in day 3 of the Jobeet tutorial, we will edit the Job.orm.yml file and add the preUpload, upload and removeUpload callbacks in it:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
@@ -471,9 +484,10 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | エンティティが削除された場合にファイルを削除します。
 | ファイルの移動は、エンティティによって一体として処理されるようになりましたので、
 | 以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
-The class now does everything we need:
-it generates a unique filename before persisting, moves the file after persisting, and removes the file if the entity is ever deleted.
-Now that the moving of the file is handled atomically by the entity, we should remove the code we added earlier in the controller to handle the upload:
+..
+   The class now does everything we need:
+   it generates a unique filename before persisting, moves the file after persisting, and removes the file if the entity is ever deleted.
+   Now that the moving of the file is handled atomically by the entity, we should remove the code we added earlier in the controller to handle the upload:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -514,8 +528,9 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | これでフォームクラスがカスタマイズされたので、表示する必要があります。
 | new.html.twig テンプレートを開いて、編集します。
-Now that the form class has been customized, we need to display it.
-Open the new.html.twig template and edit it:
+..
+   Now that the form class has been customized, we need to display it.
+   Open the new.html.twig template and edit it:
 
 src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
 
@@ -646,7 +661,7 @@ src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
 
 | 次のコードを使用してフォーム全体を表示することもできますが、より多くのカスタマイズを必要とするため、
 | 手で各フォームフィールドをレンダリングすることをにします。
-We could render the form by just using the following line of code, but as we need more customization, we choose to render each form field by hand.
+.. We could render the form by just using the following line of code, but as we need more customization, we choose to render each form field by hand.
 
 .. code-block:: html+jinja
 
@@ -658,12 +673,14 @@ We could render the form by just using the following line of code, but as we nee
 | フォームテーマという名前の技術を使い、フォームエラーの表示をカスタマイズしました。
 | Symfony2 の公式ドキュメントにこれについての詳細を読むことができます。
 | edit.html.twig テンプレートを使用して同じことを行います。
-By printing form(form), each field in the form is rendered, along with a label and error message (if there is one).
-As easy as this is, it’s not very flexible (yet).
-Usually, you’ll want to render each form field individually so you can control how the form looks.
-We also used a technique named form theming to customize how the form errors will be rendered.
-You can read more about this in the official Symfony2 documentation.
-Do the same thing with the edit.html.twig template:
+
+..
+   By printing form(form), each field in the form is rendered, along with a label and error message (if there is one).
+   As easy as this is, it’s not very flexible (yet).
+   Usually, you’ll want to render each form field individually so you can control how the form looks.
+   We also used a technique named form theming to customize how the form errors will be rendered.
+   You can read more about this in the official Symfony2 documentation.
+   Do the same thing with the edit.html.twig template:
 
 src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
@@ -798,19 +815,22 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 | 現在フォームクラスと、それをレンダリングするテンプレートを持っています。
 | さて、それでは実際にいくつかのアクションを動作させましょう。
 | 求人フォームは JobController クラスの 4 つのメソッドで管理されています。
-We now have a form class and a template that renders it.
-Now, it’s time to actually make it work with some actions.
-The job form is managed by four methods in the JobController:
+
+..
+   We now have a form class and a template that renders it.
+   Now, it’s time to actually make it work with some actions.
+   The job form is managed by four methods in the JobController:
 
 * newAction： 新しいジョブを作成する空白のフォームを表示します。
 * createAction： フォーム（バリデーション、フォームの再設定）を処理し、ユーザーが投稿した値を使用して新しいジョブを作成します。
 * editAction： 既存のジョブを編集するフォームを表示します。
 * updateAction： フォーム（バリデーション、フォームの再設定）を処理し、ユーザーが投稿した値で既存のジョブを更新します。
 
-* newAction: Displays a blank form to create a new job
-* createAction: Processes the form (validation, form repopulation) and creates a new job with the user submitted values
-* editAction: Displays a form to edit an existing job
-* updateAction: Processes the form (validation, form repopulation) and updates an existing job with the user submitted values
+..
+   * newAction: Displays a blank form to create a new job
+   * createAction: Processes the form (validation, form repopulation) and creates a new job with the user submitted values
+   * editAction: Displays a form to edit an existing job
+   * updateAction: Processes the form (validation, form repopulation) and updates an existing job with the user submitted values
 
 | /job/new ページを参照すると、新しいジョブオブジェクトのフォームインスタンスが、 createForm() メソッドを呼び出すことで作成され、テンプレート（newAction）に渡されます。
 | ユーザーがフォーム（createAction）を送信すると、フォームはユーザーが送信した値で（ ``bind($request)`` メソッドで）バインドされ、検証がトリガーされます。
@@ -820,17 +840,19 @@ The job form is managed by four methods in the JobController:
 | 既存のジョブの変更は新規作成と非常に似ています。 new と edit アクションの唯一の違いは、変更するジョブオブジェクトが CreateForm のメソッドの2番目の引数として渡されるということです。
 | このオブジェクトは、テンプレートのデフォルトのウィジェットの値に使用されます。 また、作成フォームのデフォルト値を定義することができます。
 | このために CreateForm() メソッドに事前に変更された Job オブジェクトを渡し、 type のデフォルト値を ``full-time`` に設定します。
-When you browse to the /job/new page, a form instance for a new job object is created by calling the createForm() method and passed to the template (newAction).
-When the user submits the form (createAction), the form is bound (bind($request) method) with the user submitted values and the validation is triggered.
-Once the form is bound, it is possible to check its validity using the isValid() method:
-if the form is valid (returns true), the job is saved to the database ($em->persist($entity)),
-and the user is redirected to the job preview page;
-if not, the new.html.twig template is displayed again with the user submitted values and the associated error messages.
-The modification of an existing job is quite similar.
-The only difference between the new and the edit action is that the job object to be modified is passed as the second argument of the createForm method.
-This object will be used for default widget values in the template.
-You can also define default values for the creation form.
-For this we will pass a pre-modified Job object to the createForm() method to set the type default value to full-time:
+
+..
+   When you browse to the /job/new page, a form instance for a new job object is created by calling the createForm() method and passed to the template (newAction).
+   When the user submits the form (createAction), the form is bound (bind($request) method) with the user submitted values and the validation is triggered.
+   Once the form is bound, it is possible to check its validity using the isValid() method:
+   if the form is valid (returns true), the job is saved to the database ($em->persist($entity)),
+   and the user is redirected to the job preview page;
+   if not, the new.html.twig template is displayed again with the user submitted values and the associated error messages.
+   The modification of an existing job is quite similar.
+   The only difference between the new and the edit action is that the job object to be modified is passed as the second argument of the createForm method.
+   This object will be used for default widget values in the template.
+   You can also define default values for the creation form.
+   For this we will pass a pre-modified Job object to the createForm() method to set the type default value to full-time:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -859,10 +881,12 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | 現在はジョブのトークンをユーザーが入力する必要があります。
 | ユニークなトークンの取得をユーザーに依存することはできないため、新しいジョブが作成されたときにジョブトークンを自動的に生成する必要があります。
 | ジョブ·エンティティの prePersist lifecycleCallbacks に setTokenValue メソッドを追加します。
-Everything must work fine by now.
-As of now, the user must enter the token for the job.
-But the job token must be generated automatically when a new job is created, as we don’t want to rely on the user to provide a unique token.
-Add the setTokenValue method to the prePersist lifecycleCallbacks for the Job entity:
+
+..
+   Everything must work fine by now.
+   As of now, the user must enter the token for the job.
+   But the job token must be generated automatically when a new job is created, as we don’t want to rely on the user to provide a unique token.
+   Add the setTokenValue method to the prePersist lifecycleCallbacks for the Job entity:
 
 src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
@@ -881,7 +905,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
 新しくジョブが保存される前にトークンを生成するロジックを、ジョブエンティティの setTokenValue() メソッドに追加します。
-Edit the setTokenValue() method of the Job entity to add the logic that generates the token before a new job is saved:
+.. Edit the setTokenValue() method of the Job entity to add the logic that generates the token before a new job is saved:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -971,10 +995,12 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 | 今のところ、URLを推測して、編集したり、任意のジョブを削除することはとても簡単です。
 | 編集 URL が /job/ID/edit のようなもので、ID はジョブの主キーだからです。
 | シークレットトークンでのみジョブの編集と削除ができるようにルートを変更してみましょう。
-If you remember the user stories from day 2, a job can be edited only if the user knows the associated token.
-Right now, it is pretty easy to edit or delete any job, just by guessing the URL.
-That’s because the edit URL is like /job/ID/edit, where ID is the primary key of the job.
-Let’s change the routes so you can edit or delete a job only if you now the secret token:
+
+..
+   If you remember the user stories from day 2, a job can be edited only if the user knows the associated token.
+   Right now, it is pretty easy to edit or delete any job, just by guessing the URL.
+   That’s because the edit URL is like /job/ID/edit, where ID is the primary key of the job.
+   Let’s change the routes so you can edit or delete a job only if you now the secret token:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -1093,7 +1119,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 ジョブショーテンプレート show.html.twig の中で、 ibw_job_edit のルート·パラメータを変更します。
-In the job show template show.html.twig, change the ibw_job_edit route parameter:
+.. In the job show template show.html.twig, change the ibw_job_edit route parameter:
 
 src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
@@ -1102,7 +1128,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
    <a href="{{ path('ibw_job_edit', {'token': entity.token}) }}">
 
 edit.html.twig 求人テンプレート内の ibw_job_update ルートに対しても同じ操作を行います：
-Do the same for ibw_job_update route in edit.html.twig job template:
+.. Do the same for ibw_job_update route in edit.html.twig job template:
 
 src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
@@ -1112,8 +1138,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
 | job_show_user を除いたジョブに関連するすべてのルートにトークンを埋め込みます。
 | たとえば、ジョブを編集するルートは次のようなパターンになります。
-Now, all routes related to the jobs, except the job_show_user one, embed the token.
-For instance, the route to edit a job is now of the following pattern:
+
+..
+   Now, all routes related to the jobs, except the job_show_user one, embed the token.
+   For instance, the route to edit a job is now of the following pattern:
 
 http://jobeet.local/job/TOKEN/edit
 
@@ -1122,8 +1150,10 @@ http://jobeet.local/job/TOKEN/edit
 
 | プレビューページはジョブページの表示と同じです。
 | 唯一の違いは、ジョブプレビューページは、ジョブ ID の代わりに、ジョブのトークンを使用してアクセスされることです。
-The preview page is the same as the job page display.
-The only difference is that the job preview page will be accessed using the job token instead of the job id:
+
+..
+   The preview page is the same as the job page display.
+   The only difference is that the job preview page will be accessed using the job token instead of the job id:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -1146,7 +1176,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
    # ...
 
 プレビューアクション（ここでの show アクションとの違いは、ジョブを id の代わりにトークンを使用してデータベースから取得されるということです。）：
-The preview action (here the difference from the show action is that the job is retrieved from the database using the provided token instead of the id):
+.. The preview action (here the difference from the show action is that the job is retrieved from the database using the provided token instead of the id):
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -1176,8 +1206,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 | ユーザーがトークン化された URL でアクセスした場合は、上部の管理バーを追加します。
 | show.html.twig テンプレートの上部に、管理バーをもち、下部にある編集リンクを削除します。
-If the user comes in with the tokenized URL, we will add an admin bar at the top.
-At the beginning of the show.html.twig template, include a template to host the admin bar and remove the edit link at the bottom:
+
+..
+   If the user comes in with the tokenized URL, we will add an admin bar at the top.
+   At the beginning of the show.html.twig template, include a template to host the admin bar and remove the edit link at the bottom:
 
 src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
@@ -1235,8 +1267,10 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
 
 | 多くのコードがありますが、ほとんどのコードは理解するのは簡単です。
 | より読みやすいテンプレートを作成するために、ジョブエンティティクラス内のショートカットメソッドをまとめて追加しました。
-There is a lot of code, but most of the code is simple to understand.
-To make the template more readable, we have added a bunch of shortcut methods in the Job entity class:
+
+..
+   There is a lot of code, but most of the code is simple to understand.
+   To make the template more readable, we have added a bunch of shortcut methods in the Job entity class:
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -1262,13 +1296,13 @@ src/Ibw/JobeetBundle/Entity/Job.php
    // ...
 
 管理バーは、ジョブのステータスに応じて異なるアクションが表示されます。
-The admin bar displays the different actions depending on the job status:
+.. The admin bar displays the different actions depending on the job status:
 
 .. image:: /images/Day-10-admin-bar.png
 .. image:: /images/Day-10-admin-badr-2.png
 
 ここで、 JobController クラスの createAction() および updateAction() メソッドから新しいプレビューページへリダイレクトする処理を設定します。
-We will now redirect the create and update actions of the JobController to the new preview page:
+.. We will now redirect the create and update actions of the JobController to the new preview page:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -1308,9 +1342,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | 以前にも述べたように、ジョブのトークンを知っている場合、その一つのジョブのみ編集ができ、サイトの管理者とされます。
 | この時点でジョブページにアクセスすると、[編集]リンクが表示されてしまいます。
 | それでは show.html.twig ファイルから以下の記載を削除してみましょう：
-As we said before, you can edit a job only if you know the job token and you’re the admin of the site.
-At the moment, when you access a job page, you will see the Edit link and that’s bad.
-Let’s remove it from the show.html.twig file:
+
+..
+   As we said before, you can edit a job only if you know the job token and you’re the admin of the site.
+   At the moment, when you access a job page, you will see the Edit link and that’s bad.
+   Let’s remove it from the show.html.twig file:
 
 .. code-block:: html+jinja
 
@@ -1326,9 +1362,11 @@ Let’s remove it from the show.html.twig file:
 | 前のセクションでは、ジョブを公開するリンクがありました。
 | リンクを、新しい ``publish`` アクションを指すように変更する必要があります。
 | このために新しいルートを作成します。
-In the previous section, there is a link to publish the job.
-The link needs to be changed to point to a new publish action.
-For this we will create new route:
+
+..
+   In the previous section, there is a link to publish the job.
+   The link needs to be changed to point to a new publish action.
+   For this we will create new route:
 
 src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
@@ -1342,7 +1380,7 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
        requirements: { _method: post }
 
 現在、公開リンクのリンクを変更することができます（ジョブを削除するとき同様フォームを使用しますので、POSTリクエストになります）。
-We can now change the link of the Publish link (we will use a form here, like when deleting a job, so we will have a POST request):
+.. We can now change the link of the Publish link (we will use a form here, like when deleting a job, so we will have a POST request):
 
 src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
 
@@ -1363,7 +1401,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
    <!-- ... -->
 
 最後のステップは、``publishAction`` と ``publish`` フォームを作成し、``previewAction`` を編集しテンプレートにフォームを送ることです。
-The last step is to create the publish action, the publish form and to edit the preview action to send the publish form to the template:
+.. The last step is to create the publish action, the publish form and to edit the preview action to send the publish form to the template:
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -1443,10 +1481,12 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | アクティブ化されていないジョブは、アクセス可能ではいけません。
 | それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。
 | この要件を追加するために JobRepository クラスのメソッドを編集する必要があります。
-You can now test the new publish feature in your browser.
-But we still have something to fix.
-The non-activated jobs must not be accessible, which means that they must not show up on the Jobeet homepage, and must not be accessible by their URL.
-We need to edit the JobRepository methods to add this requirement:
+
+..
+   You can now test the new publish feature in your browser.
+   But we still have something to fix.
+   The non-activated jobs must not be accessible, which means that they must not show up on the Jobeet homepage, and must not be accessible by their URL.
+   We need to edit the JobRepository methods to add this requirement:
 
 src/Ibw/JobeetBundle/Repository/JobRepository.php
 
@@ -1550,9 +1590,11 @@ src/Ibw/JobeetBundle/Repository/CategoryRepository.php
 | 以上になります。お使いのブラウザで今それをテストすることができます。
 | すべての非アクティブ化ジョブはホームページから消えてしまいました。それらのURLを知っていても、もはやアクセスできません。
 | しかし、ジョブのトークン付き URL を知っていればアクセス可能です。この場合、求人のプレビューは管理バーと一緒に表示されます。
-That’s all. You can test it now in your browser.
-All non-activated jobs have disappeared from the homepage; even if you know their URLs, they are not accessible anymore.
-They are, however, accessible if one knows the job’s token URL.
-In that case, the job preview will show up with the admin bar.
+
+..
+   That’s all. You can test it now in your browser.
+   All non-activated jobs have disappeared from the homepage; even if you know their URLs, they are not accessible anymore.
+   They are, however, accessible if one knows the job’s token URL.
+   In that case, the job preview will show up with the admin bar.
 
 .. include:: common/license.rst.inc
