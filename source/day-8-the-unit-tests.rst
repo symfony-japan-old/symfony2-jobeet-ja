@@ -133,12 +133,11 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
    // ...
 
-現状では、テストを再実行すると、failure が発生します。
-
 ..
    Now, if we run the test again, we will have a failure
 
-::
+現状では、テストを再実行すると、failure が発生します。::
+
    PHPUnit 3.7.22 by Sebastian Bergmann.
 
    Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -347,7 +346,8 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
       $ sudo apt-get install php5-xdebug
 
 cov/index.html は次のようになります。
-Your cov/index.html should look like this:
+
+.. Your cov/index.html should look like this:
 
 .. image:: /images/day-8-code-coverage1.jpg
 
@@ -517,6 +517,7 @@ src/Ibw/JobeetBundle/Tests/Entity/JobTest.php
 ------------------------
 
 さて、前の日に作成した関数が正しい値を返すかどうかを確認するために、 JobRepository クラスのいくつかのテストを書いてみましょう。
+
 .. Now, let’s write some tests for the JobRepository class, to see if the functions we created in the previous days are returning the right values:
 
 src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
@@ -752,7 +753,8 @@ src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.php
    $ phpunit --coverage-html=web/cov/ -c app src/Ibw/JobeetBundle/Tests/Repository/
 
 ブラウザでページ( http://jobeet.local/cov/Repository.html )を開くと、リポジトリのテストのコードカバレッジが100% 完了になっていないことがわかります。
-Now, if you go to http://jobeet.local/cov/Repository.html you will see that the code coverage for Repository Tests is not 100% complete.
+
+.. Now, if you go to http://jobeet.local/cov/Repository.html you will see that the code coverage for Repository Tests is not 100% complete.
 
 .. image:: /images/Day-8-coverage-not-complete.jpg
 

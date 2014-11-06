@@ -131,22 +131,24 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
    }
 
 クローラーの詳細については、 Symfony ドキュメントをお読みください。
+
 .. To learn more about crawler, read the Symfony documentation here.
 
 機能テストの実行
 ----------------
 
 単体テスト（ユニットテスト）と同様に、 PHPUnit のコマンドを実行することで機能テストを実行することができます。
+
 .. As for unit tests, launching functional tests can be done by executing the phpunit command:
 
 .. code-block:: bash
 
    phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
 
-このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します。
 .. This test will fail because the tested url, /category/index, is not a valid url in Jobeet
 
-::
+このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します。::
+
    PHPUnit 3.7.22 by Sebastian Bergmann.
 
    Configuration read from /var/www/jobeet/app/phpunit.xml.dist
@@ -390,6 +392,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    // ...
 
 前のテストコードを次のもので置き換えることができます。
+
 .. You can now replace the previous test code by the following one:
 
 src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
@@ -717,6 +720,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
    }
 
 これで、今日はすべてです！明日は、フォームについて、知っておくべきことを学びます。
+
 .. That’s all for today! Tomorrow, we will learn all there is to know about forms.
 
 .. include:: common/license.rst.inc
