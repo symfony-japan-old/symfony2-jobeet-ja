@@ -14,7 +14,7 @@
 ------------
 
 | 今日は、 Jobeet に検索エンジンを追加いたします。有名な Java Lucene プロジェクトから移植された、 Zend Framework 提供の Zend Lucene と呼ばれるすばらしいライブラリを使用します。
-| Jobeet のためのさらにもう1つの検索エンジンを作成するのは非常に複雑なタスクなため、代わりに、 Zend Lucene を使用します。
+| Jobeet のためのさらにもうひとつの検索エンジンを作成するのは非常に複雑なタスクなため、代わりに、 Zend Lucene を使用します。
 | 今日は、 Zend Lucene ライブラリのチュートリアルではなく、 それを Jobeet の Web サイトに統合する方法のチュートリアルです。
 | より一般的には、サードパーティ製のライブラリをどのように symfony プロジェクトに統合するかのチュートリアルです。
 | この技術についての詳細情報が必要な場合は、Zend Lucene のドキュメントを参照してください。
@@ -186,10 +186,10 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
 | Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合は、はじめに削除します。
 | ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。
-| メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに格納はされません。
+| メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに保存はされません。
 | また、削除されたジョブエントリをインデックスから削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。
 | 更新と同様の処理を削除でも行います。
-| ORM ファイルの postremove セクションに deleteLuceneIndex() メソッドを追加します。
+| ORM ファイルの postRemove セクションに deleteLuceneIndex() メソッドを追加します。
 
 ..
    As Zend Lucene is not able to update an existing entry, it is removed first if the job already exists in the index.
@@ -234,7 +234,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
        }
    }
 
-インデックスはコマンドラインからもWebからも更新されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。
+インデックスはコマンドラインからも Web からも更新されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。
 
 .. As the index is modified from the command line and also from the web, you must change the index directory permissions accordingly depending on your configuration:
 

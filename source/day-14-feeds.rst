@@ -14,7 +14,7 @@
 --------------------------
 
 | テンプレートは、任意の形式でコンテンツをレンダリングする一般的な方法です。
-| ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしが、テンプレートには、同じように簡単に　JavaScript、CSS、XML や他のフォーマットを生成することができます。
+| ほとんどのケースでは、HTMLコンテンツをレンダリングするためのテンプレートを使用しますしが、テンプレートには、同じように簡単に JavaScript、CSS、XML や他のフォーマットを生成することができます。
 | 例えば、同じ「リソース」は、しばしばいくつかの異なる形式で表示されます。
 | XMLでの記事のインデックスページをレンダリングするには、単純に、テンプレート名にフォーマットを含めるだけです。
 
@@ -24,8 +24,12 @@
    For example, the same “resource” is often rendered in several different formats.
    To render an article index page in XML, simply include the format in the template name:
 
-* XML template name: AcmeArticleBundle:Article:index.xml.twig
-* XML template filename: index.xml.twig
+* XML テンプレート名: AcmeArticleBundle:Article:index.xml.twig
+* XML テンプレートファイル名: index.xml.twig
+
+..
+   * XML template name: AcmeArticleBundle:Article:index.xml.twig
+   * XML template filename: index.xml.twig
 
 | 現実には、これは命名規則以外の何ものでもありませんし、テンプレートは実際には異なって、そのフォーマットに基づいて描画されません。
 | 多くのケースでは、単一のコントローラが ``request format`` に基づいて複数の異なるフォーマットをレンダリング可能にすることをお勧めします。
@@ -46,8 +50,8 @@
    }
 
 | Request オブジェクトの getRequestFormat メソッドはデフォルトでは html を返しますが、ユーザーから要求されたフォーマットに基づいて他の形式を返すこともできます。
-| リクエストフォーマットはほとんどの場合、ルーティングによって管理されます。 /contact はリクエストフォーマットに html にセットし、一方、 /contact.xml はフォーマットに xml を設定します。
-| format パラメータを含むリンクを作成するには、パラメータハッシュ内の _format キーを含みます。
+| リクエストフォーマットはほとんどの場合、ルーティングによって管理されます。 /contact はリクエストフォーマットに html をセットし、一方、 /contact.xml はフォーマットに xml を設定します。
+| format パラメータを含むリンクを作成するには、パラメータの連想配列に _format キーを指定します。
 
 ..
    The getRequestFormat on the Request object defaults to html, but can return any other format based on the format requested by the user.
@@ -126,7 +130,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
-JobController で _format に従ってテンプレートをレンダリングする indexAction を変更します。
+JobController で _format に従ってテンプレートをレンダリングするように indexAction を変更します。
 
 .. In the JobController change the indexAction to render the template according to the _format:
 

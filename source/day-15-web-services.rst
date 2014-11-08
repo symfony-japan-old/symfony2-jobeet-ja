@@ -7,7 +7,7 @@
 | 反対に、ジョブを投稿するときは、最大限可能な限り露出したいと思うでしょう。
 | もし小さな多くのウェブサイトが連合した場合、よりよい人を見つける機会が増えるでしょう。
 | つまり、ロングテールの力です。
-| 今日開発する Web サービスによって、アフィリエイトは自分のサイトに最新の投稿された求人を公開することができるようになります。
+| 今日開発する Web サービスによって、アフィリエイトは自分のサイトに最新の投稿されたジョブを公開することができるようになります。
 
 ..
    With the addition of feeds on Jobeet, job seekers can now be informed of new jobs in real-time.
@@ -276,7 +276,7 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
        }
    }
 
-| トークンによってアフィリエイトユーザーを識別した後、アフィリエイトユーザーが選択したカテゴリに属するジョブを与えるため、 getActiveJobs() メソッドを使用します。
+| トークンによってアフィリエイトを識別した後、アフィリエイトが選択したカテゴリに属するジョブを与えるため、 getActiveJobs() メソッドを使用します。
 | 現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。
 | そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。
 
@@ -352,8 +352,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
        );
    }
 
-XML フォーマット
-----------------
+XML 形式
+--------
 
 xml 形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。
 
@@ -374,10 +374,10 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig
    {% endfor %}
    </jobs>
 
-json フォーマット
------------------
+json 形式
+---------
 
-JSON フォーマットをサポートすることも同様です。
+JSON 形式をサポートすることも同様です。
 
 .. Support the JSON format is similar:
 
@@ -395,8 +395,8 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.json.twig
    {% endfor %}]
    {% endfor %}
 
-yaml フォーマット
------------------
+yaml 形式
+---------
 
 src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig
 
@@ -703,7 +703,7 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
                - NotBlank: ~
                - Email: ~
 
-| バリデーション設定では、 UniqueEntity という新しいバリデータを使用しました。
+| 検証の設定では、 UniqueEntity という新しい検証制約を使用しました。
 | これは Doctrine のエンティティ内の特定のフィールド(または複数のフィールド)がユニークであることを検証します。
 | これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。
 | 検証制約を適用した後にキャッシュをクリアすることを忘れないでください！
@@ -1039,8 +1039,8 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 ----------------------
 
 | 管理画面を、 SonataAdminBundle を使用して動作させます。
-| 以前にも言ったように、アフィリエイトの登録の後、管理者がアカウントをアクティブにするのを待つ必要があります。
-| だから、管理者がアフィリエイトのページにアクセスしますと、作業の補助のため、未アクティブなアカウントを表示します。
+| 以前にも言ったように、アフィリエイトの登録の後、管理者がアカウントをアクティブ化するのを待つ必要があります。
+| そのため、管理者がアフィリエイトのページにアクセスしますと、作業の補助のため、未アクティブなアカウントを表示します。
 | まず第一に、 新しいアフィリエイトサービスを services.yml ファイル内に宣言する必要があります。
 
 ..
@@ -1427,7 +1427,7 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
    }
 
 | ここで、キャッシュをクリアし、試してみてください！
-| 今日はこれですべてです！明日は、アカウントがアクティブになったときにアフィリエイトが受け取る電子メールの設定をします。
+| 今日はこれですべてです！明日は、アカウントがアクティブ化されたときにアフィリエイトが受け取るメールの設定をします。
 
 ..
    Now, clear your cache and try it on!

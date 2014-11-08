@@ -23,7 +23,7 @@ Sonata Admin バンドルのインストール
 
    $ php composer.phar require sonata-project/admin-bundle
 
-``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、入力として * を与えます。
+``SonataAdminBundle`` とその依存関係の最新バージョンをインストールするには、 * を入力します。
 
 .. To install the latest version of the SonataAdminBundle and its dependencies, give * as input.
 
@@ -244,7 +244,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        // Your code will be here
    }
 
-各 admin クラスを設定ファイルである services.yml·に追加する必要があります。
+各 admin クラスを設定ファイルである services.yml·に以下のように追加する必要があります。
 
 .. Now we need to add each admin class in the services.yml configuration file:
 
@@ -449,7 +449,7 @@ src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig
    </tr>
 
 | これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。
-| これを使用して見つける機能は、次のとおりです。
+| 次のような多くの機能をもちます。
 
 ..
    With this, we created a basic administration module with operations for our jobs and categories.
@@ -514,8 +514,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
 | JobAdminController の batchActionExtend メソッドは、コアロジックを実現するために実行されます。
 | クエリーの引数から、選択したモデルを取得します。
 | 選択したモデルは、引数に渡されたクエリーから取得します。
-| （より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、
-| 渡されるクエリは null になります。
+| （より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、渡されるクエリは null になります。
 
 ..
    The method batchActionExtend form the JobAdminController will be executed to achieve the core logic.
@@ -596,8 +595,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
        return $actions;
    }
 
-| batchActionDeleteNeverActivated アクションを作成するのに加えて、
-| JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
+| batchActionDeleteNeverActivated アクションを作成するのに加えて、 JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。
 | ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。
 | （このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)
 
