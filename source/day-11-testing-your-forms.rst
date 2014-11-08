@@ -4,7 +4,7 @@
 .. include:: common/original.rst.inc
 
 | 10 日目では、 Symfony 2.3 での最初のフォームを作成しました。
-| 現在、ユーザーが Jobeet に新しいジョブを投稿することができますが、それに対してテストを追加する前に時間切れになってしまいました。
+| 現在は Jobeet にユーザーが新しいジョブを投稿することができますが、それに対してテストを追加する前に時間切れになってしまいました。
 | つまり、これらの線に沿って行っていきます。
 
 ..
@@ -15,7 +15,7 @@
 フォームの送信
 --------------
 
-| それではジョブの作成と検証プロセスのための機能テストを追加するため、 JobControllerTest ファイルを開いてみましょう。
+| それではジョブの作成と検証(バリデーション)の過程の機能テストを追加するために、 JobControllerTest ファイルを開いてみましょう。
 | ジョブ 作成ページを取得するために、ファイルの終わりに次のコードを追加します。
 
 ..
@@ -49,9 +49,11 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. note::
 
-   The above example selects an input of type submit using its value attribute “Submit Form".
+   上記の例では、インプットタイプが ``submit`` で value属性に 「Submit Form」をもつものを選択します。
 
-そしてまた、 form() メソッドを呼び出す際、デフォルトのものをオーバーライドする、フィールド値の配列を渡すことができます。
+   .. The above example selects an input of type submit using its value attribute “Submit Form".
+
+そしてまた、 form() メソッドを呼び出す際、デフォルトのものをオーバーライドし、フィールドの値を配列で指定することができます。
 
 .. When calling the form() method, you can also pass an array of field values that overrides the default ones:
 
@@ -123,7 +125,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 データベースレコードのテスト
 ----------------------------
 
-最終的に、ジョブがデータベースに作成された上、ユーザーがそれをまだ公表しないように is_activated カラムが false に設定されていることを確認したいと思います。
+最終的に確認したいことは、ジョブがデータベースに作成されたこと、そして、ユーザーがまだジョブを公開していないため is_activated カラムが false に設定されていることです。
 
 .. Eventually, we want to test that the job has been created in the database and check that the is_activated column is set to false as the user has not published it yet.
 
@@ -146,7 +148,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 エラーのテスト
 --------------
 
-| ジョブフォームでの作成は有効な値を送信したときに期待どおりに動作します。
+| ジョブフォームでのジョブの作成は有効な値を送信した場合は期待どおりに動作しています。
 | それでは、有効ではないデータを送信した場合のテストを追加してみましょう。
 
 ..
@@ -180,10 +182,10 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
        $this->assertTrue($crawler->filter('#job_email')->siblings()->first()->filter('.error_list')->count() == 1);
    }
 
-| 今、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
+| ここで、ジョブのプレビューページで見つかる admin バーをテストする必要があります。
 | ジョブがまだアクティブ化されていないときは、ジョブの、編集・削除・公開をすることができます。
-| これらの 3 つのアクションをテストするには、最初にひとつのジョブを作成する必要があります。
-| しかし、ジョブ作成のコードはすでにコピー＆ペーストによって増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。
+| これらの 3 つのアクションをテストするには、はじめにひとつのジョブを作成しておく必要があります。
+| しかし、ジョブ作成のコードがすでにコピー＆ペーストで増えてしまっています。そこで、 JobControllerTest クラスにジョブ作成メソッドを追加してみましょう。
 
 ..
    Now, we need to test the admin bar found on the job preview page.
@@ -219,7 +221,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    }
 
 | createJob() メソッドは、ジョブを作成し、リダイレクトをたどり、ブラウザを返します。
-| createJob() メソッドの引数に渡す配列は、デフォルト値にマージされ ``form`` メソッドの引数となります。
+| 引数に配列を渡すことが出来、デフォルト値にマージされます。
 | パブリッシュアクションのテストは今より簡単です。
 
 ..
@@ -276,9 +278,9 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 SafeGuard のテスト
 ------------------
 
-| 求人が公開されている場合、もう編集することはできません。
-| この要件のために、「編集」リンクがプレビューページに表示されていない場合でも、いくつかのテストを追加しましょう​​。
-| まず、ジョブの自動発行を可能にするため、 createJob() メソッドに別の引数を追加し、役職の値で選択して一つのジョブを返す getJobByPosition() メソッドを作成します。
+| ジョブが公開されている場合、もう編集することはできません。
+| 「編集」リンクがプレビューページに表示されていない場合でも、この要件のためにいくつかのテストを追加してみましょう​​。
+| まず、createJob() メソッドに別の引数を追加してジョブの自動発行を可能にします。また、役職の値でジョブをひとつ選択して返す getJobByPosition() メソッドを作成します。
 
 ..
    When a job is published, you cannot edit it anymore.
@@ -350,7 +352,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 | テストを実行すると、期待される結果を取得できないでしょう。昨日、このセキュリティ対策を実装するのを忘れたためです。
 | テストを書くことは、すべてのエッジケースを考える必要があるので、バグを発見するための素晴らしい方法です。
-| バグの修正はとてもシンプルで、ジョブが活性化されていれば 404 ページに転送するだけです。
+| バグの修正はとてもシンプルで、ジョブがアクティブ化されていれば 404 ページに転送するだけです。
 
 ..
    But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday.
@@ -380,13 +382,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
      // ...
    }
 
-未来に戻ってのテスト
---------------------
+テストで未来に戻る
+------------------
 
 | ジョブが 5 日以内に期限が切れる、または、すでに期限切れした場合、ユーザーは現在から 30 日間、ジョブの検証を延長することができます。
 | ブラウザでこの要件をテストすることは簡単ではありません。有効期限がジョブ作成の 30 日後に自動的に設定されてしまうためです。
-| また、求人ページを取得するときに、ジョブを延長するためのリンクが存在しません。
-| 確かに、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することでできます。しかし、それは退屈で間違いやすいです。
+| また、ジョブページを取得するときに、ジョブを延長するためのリンクが存在しません。
+| 確かに、データベース内の有効期限をハックするか、常にリンクを表示するようテンプレートを微調整することは出来ます。しかし、それは退屈で間違いやすいです。
 | すでに推測してきたように、いくつかのテストを書くことは、時間の節約になります。
 | はじめに、いつものように ``extend`` メソッドに新しいルートを追加する必要があります。
 

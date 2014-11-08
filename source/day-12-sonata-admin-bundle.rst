@@ -3,9 +3,9 @@
 
 .. include:: common/original.rst.inc
 
-| Jobeetの上で 11 日目に行った追加により、アプリケーションは求職者とジョブの投稿者の両方とも使用可能になります。
+| Jobeet の 11 日目に行った追加により、アプリケーションは求職者とジョブの投稿者の両方とも使用可能になります。
 | それでは、アプリケーションの管理領域について少し話をする時間です。
-| 今日では、``SonataAdminBundle`` のおかげで、1 時間未満で Jobeet のための完全な管理画面を開発します。
+| 今日では、 ``SonataAdminBundle`` のおかげで、1 時間未満で Jobeet のための完全な管理画面を開発します。
 
 ..
    With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters.
@@ -149,7 +149,7 @@ CRUD コントローラー
 | 一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。
 | コントローラは、さまざまなアクションを構築するために、 Admin クラスを使用します。
 | コントローラの内部では、 Admin オブジェクトは、構成プロパティを介してアクセスできます。
-| それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリエンティティから。
+| それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリ・エンティティから。
 
 ..
    The CRUD controller contains the basic CRUD actions.
@@ -158,6 +158,7 @@ CRUD コントローラー
    The controller uses the Admin class to construct the different actions.
    Inside the controller, the Admin object is accessible through the configuration property.
    Now let’s create a controller for each entity. First, for the Category entity:
+
 
 src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
 
@@ -270,8 +271,7 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
                - Ibw\JobeetBundle\Entity\Job
                - 'IbwJobeetBundle:JobAdmin'
 
-| この時点で、ダッシュボードに Jobeet のグループを見ることができ、その中に、
-| ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
+この時点で、ダッシュボードに Jobeet のグループを見ることができ、その中に、ジョブとカテゴリモジュールそれぞれに ``add`` と ``list`` のリンクをもちます。
 
 ..
    At this point, we can see in the dashboard the Jobeet group and, inside it,

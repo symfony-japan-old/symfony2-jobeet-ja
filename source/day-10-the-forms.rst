@@ -6,7 +6,7 @@
 | ウェブサイトのフォームには、簡単な連絡先フォームから、多くのフィールドが付いている複雑なもまであります。
 | フォームを書くことは、 Web 開発者にとって最も複雑で退屈な作業の一つです。
 | HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、エラー·メッセージを表示し、エラー時にフィールドに再投入しと...
-| このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドでジョブエンティティのための単純な CRUD コントローラを生成しました。
+| このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドでジョブ・エンティティのための単純な CRUD コントローラを生成しました。
 | また、ジョブフォームを /src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
 
 ..
@@ -17,10 +17,10 @@
    In Day 3 of this tutorial we used the doctrine:generate:crud command to generate a simple CRUD controller for our Job entity.
    This also generated a Job form that you can find in /src/Ibw/JobeetBundle/Form/JobType.php file.
 
-求人フォームをカスタマイズする
+ジョブフォームをカスタマイズする
 ------------------------------
 
-| 求人フォームは、フォームのカスタマイズを学ぶための完璧な例です。
+| ジョブフォームは、フォームのカスタマイズを学ぶための完璧な例です。
 | それでは、それをカスタマイズする方法をステップバイステップで見てみましょう。
 | まず、お使いのブラウザで直接変更をチェックすることができるように、レイアウト内の ``Post a Job`` リンクを変更します。
 
@@ -35,7 +35,7 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <a href="{{ path('ibw_job_new') }}">Post a Job</a>
 
-そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、チュートリアルの5日目で作成した新しいルートを、一致させるように変更します。
+そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、チュートリアルの 5 日目で作成した新しいルートを、一致させるように変更します。
 
 src/Ibw/JobeetBundle/Controller/JobController.php
 
@@ -72,8 +72,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 | デフォルトでは、Doctrine が生成したフォームは、すべてのテーブルのカラムのフィールドを表示します。
-| しかし、求人フォームはエンドユーザーが編集可能ではいけません。
-| 以下のように求人フォームを編集してください。
+| しかし、ジョブフォームはエンドユーザーが編集可能ではいけません。
+| 以下のようにジョブフォームを編集してください。
 
 ..
    By default, the Doctrine generated form displays fields for all the table columns.
@@ -124,8 +124,8 @@ src/Ibw/JobeetBundle/Form/JobType.php
    }
 
 | フォームの設定は、データベーススキーマから自動生成することができるものよりも、より正確でなければなりません。
-| たとえば、``email`` のカラムは、スキーマ内の varchar 型ですが、電子メールとして検証される必要があります。
-| Symfony2 では、バリデーション(検証)は、基礎となるオブジェクト（例えば Job ）に適用されます。
+| たとえば、``email`` のカラムは、スキーマ内の varchar 型ですが、電子メールとして検証（バリデーション）される必要があります。
+| Symfony2 では、検証は、基礎となるオブジェクト（例えば Job ）に適用されます。
 | つまり、問題は、フォームが有効かではなく、送信されたデータをフォームに適用した後にジョブオブジェクトが有効であるかどうかです。
 | これを行うには、バンドルの Resources/config ディレクトリに新しい validation.yml ファイルを作成します。
 
@@ -170,7 +170,7 @@ src/Ibw/JobeetBundle/Form/JobType.php
 
    }
 
-これを動かすために、ジョブのエンティティ内に以下のメソッドを追加します。
+これを動かすために、ジョブ・エンティティ内に以下のメソッドを追加します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -190,7 +190,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
    // ...
 
-getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、getTypeValues()​ メソッドはバリデーション(検証)の中でタイプフィールドの有効な値を取得するために使用されます。
+getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、getTypeValues()​ メソッドは検証（バリデーション）の中でタイプフィールドの有効な値を取得するために使用されます。
 
 .. The getTypes() method is used in the form to get the possible types for a Job and getTypeValues() will be used in the validation to get the valid values for the type field.
 
@@ -270,7 +270,7 @@ Symfony2 の中でファイルアップロードの処理
 -----------------------------------------
 
 | フォームで実際のファイルをアップロードするため、仮想の ``file`` フィールドを使用します。
-| このために、ジョブエンティティに新しいファイルプロパティを追加します。
+| このために、ジョブ・エンティティに新しいファイルプロパティを追加します。
 
 ..
    To handle the actual file upload in the form, we will use a virtual file field.
@@ -360,8 +360,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    // ...
 
 | ロゴディレクトリ（ web/uploads/jobs/ ）を作成し、それを Webサーバーから書き込み可能であることを確認する必要があります。
-| この実装は機能していますが、より良い方法は Doctrine のジョブエンティティを使用してファイルのアップロードを処理することです。
-| まず、ジョブエンティティに次の行を追加します。
+| この実装は機能していますが、より良い方法は Doctrine のジョブ・エンティティを使用してファイルのアップロードを処理することです。
+| まず、ジョブ・エンティティに次の行を追加します。
 
 ..
    You need to create the logo directory (web/uploads/jobs/) and check that it is writable by the web server.
@@ -402,7 +402,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 | データベース操作とファイルの移動が不可分になるように、実装を行います。
 | エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。
 | これを行うには、 Doctrine がデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。
-| これは、ジョブ·エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
+| これは、ジョブ・エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。
 | Jobeet のチュートリアルの 3 日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックを追加します。
 
 ..
@@ -429,13 +429,13 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
            postUpdate: [ upload ]
            postRemove: [ removeUpload ]
 
-ここで、ジョブエンティティへこれらの新しいメソッドを追加するため、 Doctrine のコマンド ``generate:entities`` を実行します。
+ここで、ジョブ・エンティティへこれらの新しいメソッドを追加するため、 Doctrine のコマンド ``generate:entities`` を実行します。
 
 .. code-block:: bash
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-ジョブエンティティに追加されたメソッドを次のように変更します。
+ジョブ・エンティティに追加されたメソッドを次のように変更します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -820,7 +820,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 
 | 現在フォームクラスと、それをレンダリングするテンプレートを持っています。
 | さて、それでは実際にいくつかのアクションを動作させましょう。
-| 求人フォームは JobController クラスの 4 つのメソッドで管理されています。
+| ジョブフォームは JobController クラスの 4 つのメソッドで管理されています。
 
 ..
    We now have a form class and a template that renders it.
@@ -841,7 +841,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
 | /job/new ページを参照すると、新しいジョブオブジェクトのフォームインスタンスが、 createForm() メソッドを呼び出すことで作成され、テンプレート（newAction）に渡されます。
 | ユーザーがフォーム（createAction）を送信すると、フォームはユーザーが送信した値で（ ``bind($request)`` メソッドで）バインドされ、検証がトリガーされます。
 | フォームがバインドされると、 isValid() メソッドを使用して、その有効性をチェックすることができます。
-| フォームが有効である場合（trueを返します）、ジョブはデータベースに保存（``$em->persist($entity)``）され、ユーザーは求人のプレビューページにリダイレクトされます。
+| フォームが有効である場合（trueを返します）、ジョブはデータベースに保存（``$em->persist($entity)``）され、ユーザーはジョブのプレビューページにリダイレクトされます。
 | リダイレクトされていない場合、ユーザーが投稿した値と関連するエラーメッセージを添えて new.html.twig テンプレートを再表示します。
 | 既存のジョブの変更は新規作成と非常に似ています。 new と edit アクションの唯一の違いは、変更するジョブオブジェクトが CreateForm のメソッドの2番目の引数として渡されるということです。
 | このオブジェクトは、テンプレートのデフォルトのウィジェットの値に使用されます。 また、作成フォームのデフォルト値を定義することができます。
@@ -880,13 +880,13 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
     // ...
 
-トークンで求人フォームを保護する
+トークンでジョブフォームを保護する
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | これですべてが正常に動作しなければなりません。
 | 現在はジョブのトークンをユーザーが入力する必要があります。
 | ユニークなトークンの取得をユーザーに依存することはできないため、新しいジョブが作成されたときにジョブトークンを自動的に生成する必要があります。
-| ジョブ·エンティティの prePersist lifecycleCallbacks に setTokenValue メソッドを追加します。
+| ジョブ・エンティティの prePersist lifecycleCallbacks に setTokenValue メソッドを追加します。
 
 ..
    Everything must work fine by now.
@@ -910,7 +910,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-新しくジョブが保存される前にトークンを生成するロジックを、ジョブエンティティの setTokenValue() メソッドに追加します。
+新しくジョブが保存される前にトークンを生成するロジックを、ジョブ・エンティティの setTokenValue() メソッドに追加します。
 
 .. Edit the setTokenValue() method of the Job entity to add the logic that generates the token before a new job is saved:
 
@@ -1135,7 +1135,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
    <a href="{{ path('ibw_job_edit', {'token': entity.token}) }}">
 
-edit.html.twig 求人テンプレート内の ibw_job_update ルートに対しても同じ操作を行います。
+edit.html.twig ジョブテンプレート内の ibw_job_update ルートに対しても同じ操作を行います。
 
 .. Do the same for ibw_job_update route in edit.html.twig job template:
 
@@ -1276,7 +1276,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig
    </div>
 
 | 多くのコードがありますが、ほとんどのコードは理解するのは簡単です。
-| より読みやすいテンプレートを作成するために、ジョブエンティティクラス内のショートカットメソッドをまとめて追加しました。
+| より読みやすいテンプレートを作成するために、ジョブ・エンティティクラス内のショートカットメソッドをまとめて追加しました。
 
 ..
    There is a lot of code, but most of the code is simple to understand.
@@ -1602,8 +1602,8 @@ src/Ibw/JobeetBundle/Repository/CategoryRepository.php
    }
 
 | 以上になります。お使いのブラウザで今それをテストすることができます。
-| すべての非アクティブ化ジョブはホームページから消えてしまいました。それらのURLを知っていても、もはやアクセスできません。
-| しかし、ジョブのトークン付き URL を知っていればアクセス可能です。この場合、求人のプレビューは管理バーと一緒に表示されます。
+| すべてのアクティブ化されていないジョブはホームページから消えてしまいました。それらの URL を知っていても、もはやアクセスできません。
+| しかし、ジョブのトークン付き URL を知っていればアクセス可能です。この場合、ジョブのプレビューは管理バーと一緒に表示されます。
 
 ..
    That’s all. You can test it now in your browser.

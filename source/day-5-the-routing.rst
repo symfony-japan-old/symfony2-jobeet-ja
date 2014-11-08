@@ -17,7 +17,7 @@ URL
 
    {{ path('ibw_job_show', { 'id': entity.id }) }}
 
-| これはid 1を持つジョブの URL を生成するために、 ``path`` テンプレートヘルパー関数を使用しています。
+| これはid 1を持つジョブの URL を生成するために、テンプレートヘルパー関数の ``path()`` を使用しています。
 | ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
 
 ルーティング設定
@@ -36,7 +36,7 @@ app/config/routing.yml
        prefix:   /
 
 | さて、 JobeetBundle の routing.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
-| そのファイルは、ジョブ·コントローラのためのものです。
+| そのファイルは、\ ``JobController `` のためのものです。
 | また、URLパターン ( /hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -97,7 +97,7 @@ Dev 環境のルーティング設定
 --------------------------
 
 | dev の環境は Web デバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
-| （すでに /app/config/routing_dev.php から AcmeDemoBundle のルートに削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
+| （すでに /app/config/routing_dev.php から AcmeDemoBundle のルートを削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
 | このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
 
 ルートのカスタマイズ
