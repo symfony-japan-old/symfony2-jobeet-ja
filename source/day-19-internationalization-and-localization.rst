@@ -13,8 +13,8 @@
 .. note::
 
    Wikipedia から:
-      * 国際化( internationalization、internationalisation、i18n )は、ソフトウェアに技術的な変更を加えることなく多様な言語や地域に適合できるようにする、ソフトウェア設計の工程である。
-      * 地域化（localization、localisation、L10N）は、地域固有の構成部品や翻訳テキストを追加することによって、ソフトウェアを特定の地域や言語に適合させる工程である。
+      * 国際化( アメリカ英語: internationalization イギリス英語: internationalisation、i18n )は、ソフトウェアに技術的な変更を加えることなく多様な言語や地域に適合できるようにする、ソフトウェア設計の工程である。
+      * 地域化（アメリカ英語: localization イギリス英語: localisation、L10N）は、地域固有の構成部品や翻訳テキストを追加することによって、ソフトウェアを特定の地域や言語に適合させる工程である。
 
       ..
          * Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes.
