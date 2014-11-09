@@ -111,7 +111,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 | 言語の数だけホームページでサポートする必要があるので（/en/, /fr/, …）、デフォルトのホームページ（ / ）は、ユーザーの culture に従って、適切なローカライズされたものにリダイレクトする必要があります。
 | 初めての訪問で、まだユーザーがカルチャーを持っていない場合、優先カルチャーが選択されます。（以前にそれを宣言したように、en になります）。
-| では、実際に新しいルートを追加し、ホームページのルートは変更します。
+| では、実際に新しいルートの追加、および、ホームページのルートの変更をしてみましょう。
 
 ..
    As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture.
