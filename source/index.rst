@@ -4,6 +4,7 @@ Symfony2 Jobeet's documentation
 Contents:
 
 .. toctree::
+   :numbered:
    :maxdepth: 1
 
    day-1-starting-up-the-project
