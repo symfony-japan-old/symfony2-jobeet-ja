@@ -1,0 +1,12 @@
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = ['_static/my-styles.css'] %}
+
+{# Add some extra stuff before and use existing with 'super()' call. #}
+{% block footer %}
+  <!-- cc  -->
+  <p><a href="http://creativecommons.org/licenses/by-sa/3.0/" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://creativecommons.org']);" rel="license"><img style="border-width: 0;" alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />
+  {{ super() }}
+{% endblock %}
