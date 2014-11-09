@@ -3,6 +3,6 @@ footer {
   background-color: #999999;
 }
 
-.highlight {
-  background: #202020;
+.highlight pre {
+  background: #000000;
 }
