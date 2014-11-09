@@ -1,10 +1,10 @@
-19日目: 国際化とローカライゼーション
-====================================
+19日目: 国際化と地域化
+======================
 
 .. include:: common/original.rst.inc
 
 | 昨日は、検索エンジンの機能に、 AJAX の便利さを追加して、より楽しくしました。
-| 今日は、 Jobeet の国際化（または i18n ）とローカライゼーション（または l10n ）についてお話します。
+| 今日は、 Jobeet の国際化（または i18n ）と地域化（または l10n ）についてお話します。
 
 ..
    Yesterday, we finished the search engine feature by making it more fun with the addition of some AJAX goodness.
@@ -12,9 +12,9 @@
 
 .. note::
 
-   From Wikipedia:
-      * 国際化( Internationalization )とは、ソフトウェアアプリケーションの設計プロセスで、技術的な変更をせずにさまざまな言語および地域に適合させることができるようにすることです。
-      * ローカライゼーション( Localization )とは、ソフトウェアをロケール固有のコンポーネントと翻訳テキストを追加することで特定の地域や言語に適応させるプロセスです。
+   Wikipedia から:
+      * 国際化( internationalization、internationalisation、i18n )は、ソフトウェアに技術的な変更を加えることなく多様な言語や地域に適合できるようにする、ソフトウェア設計の工程である。
+      * 地域化（localization、localisation、L10N）は、地域固有の構成部品や翻訳テキストを追加することによって、ソフトウェアを特定の地域や言語に適合させる工程である。
 
       ..
          * Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes.
@@ -25,7 +25,7 @@
 
 | ユーザー無しには国際化は不可能です。
 | ウェブサイトが複数の言語で、または、世界のさまざまな地域のために使用可能になると、ユーザーは自分に最も適したものを選択する責任があります。
-| Symfony の国際化とローカライゼーションの機能はユーザーの culture に基づいています。 culture はユーザーの言語と国の組み合わせです。
+| Symfony の国際化と地域化の機能はユーザーの culture に基づいています。 culture はユーザーの言語と国の組み合わせです。
 | たとえば、フランス語を話すユーザーカルチャーは FR で、フランスからのユーザーのためのカルチャーはは fr_FR です。
 | 翻訳は、Translator サービスによって処理され、ユーザーのロケールを使用して検索し、翻訳されたメッセージを返し ます。
 | それを使用する前に、設定ファイルの ``translator`` を有効にします。
