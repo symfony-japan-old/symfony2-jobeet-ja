@@ -314,7 +314,7 @@ Symfony のバンドルジェネレーターを開始するには、次のコマ
 | 現在、新しい Jobeet のバンドル は、プロジェクトの src ディレクトリにあります（ ``src/Ibw/JobeetBundle`` ）。
 | バンドルジェネレータは DefaultController を index アクションとあわせて作りました。
 | これにはお使いのブラウザで次のようにアクセスすることができます。
-| http：//jobeet.local/hello/jobeet または http：//jobeet.local/app_dev.php/hello/jobeet
+| http://jobeet.local/hello/jobeet または http://jobeet.local/app_dev.php/hello/jobeet
 
 AcmeDemoBundle の削除の仕方
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

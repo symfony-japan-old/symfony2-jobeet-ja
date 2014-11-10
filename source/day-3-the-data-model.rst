@@ -21,7 +21,7 @@
 データベース
 ------------
 
-| データベース内の求人、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
+| データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。
 | データベース接続パラメータを定義するには、（このチュートリアルでは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。
 
 app/config/parameters.yml
@@ -280,7 +280,7 @@ src/Ibw/JobeetBundle/Entity/Affiliate.php
 
 3. app/AppKernel.php にバンドル ``DoctrineFixturesBundle`` を登録します。
 
-      app/AppKernel.php
+   app/AppKernel.php
 
    .. code-block:: php
 
@@ -413,7 +413,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 ----------------
 
 | 以下のコマンドを実行し、新しいコントローラー、 src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。
-| それは、求人のリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。
+| それは、ジョブのリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。
 
 .. code-block:: bash
 
@@ -431,7 +431,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
            prefix:   /job
    # ...
 
-また、求人編集フォームからドロップダウンでカテゴリを編集するため、 ``Category`` クラスに ``_toString()`` メソッドを追加する必要があります。
+また、ジョブ編集フォームからドロップダウンでカテゴリを編集するため、 ``Category`` クラスに ``_toString()`` メソッドを追加する必要があります。
 
 src/Ibw/JobeetBundle/Entity/Category.php
 
@@ -453,12 +453,12 @@ src/Ibw/JobeetBundle/Entity/Category.php
     $ php app/console cache:clear --env=dev
     $ php app/console cache:clear --env=prod
 
-これで、``JobController`` をブラウザで``http://jobeet.local/job/`` （開発環境では ``http://jobeet.local/app_dev.php/job/`` ）にアクセスしてテストすることができます。
+これで、``JobController`` をブラウザで http://jobeet.local/job/ （開発環境では http://jobeet.local/app_dev.php/job/ ）にアクセスしてテストすることができます。
 
 .. image:: /images/Day-3-index_page.png
 
 | これでジョブの作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。
-| そう、 Symfony はデータベーススキーマの中を調べることで基本的な検証制約を作成しました。
+| そう、 Symfony はデータベーススキーマの中を調べることで基本的な検証制約(バリデーション)を作成しました。
 | 以上です。今日は少ししか PHP のコードを書いていませんが、微調整とカスタマイズの準備ができました。 ``job`` モデルのための Web モジュールを持ちました。
 | 明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
 
