@@ -224,7 +224,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 | コードを詳しく見てみましょう。 ``indexAction()`` メソッドは、すべての ``job`` を取得するために、 Doctrine のエンティティマネージャーを取得しています。
 | エンティティマネージャーはデータベースからオブジェクトを取得し永続化する処理に責任を持ちます。
 | そして、エンティティマネージャーからクエリーを作成するレポジトリを取得します。
-| これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返すします。
+| これは、テンプレート（ビュー）に渡される Job オブジェクトの Doctrine のクラス、 ``ArrayCollection`` を返します。
 
 ジョブのホームページのテンプレート
 --------------------------------
@@ -242,7 +242,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
        <link rel="stylesheet" href="{{ asset('bundles/ibwjobeet/css/jobs.css') }}" type="text/css" media="all" />
    {% endblock %}
 
-   {% block content %}
+   {% block body -%}
        <h1>Job list</h1>
 
        <table class="records_list">

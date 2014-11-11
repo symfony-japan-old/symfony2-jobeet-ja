@@ -81,7 +81,7 @@ Doctrine が生成した SQL のデバッグ
    When you need to do something automatically before a Doctrine object is serialized to the database,
    you can add a new action to the lifecycle callbacks in the file that maps objects to the database, like we did earlier for the created_at column:
 
-src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orml.yml
+src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
 .. code-block:: yaml
 
@@ -97,7 +97,7 @@ Doctrine に新しい関数が追加されるので、エンティティクラ�
 
    $ php app/console doctrine:generate:entities IbwJobeetBundle
 
-src/Ibw/JobeetBundle/Entity/Job.php ファイルを開き、新たなメソッドを追加します。
+src/Ibw/JobeetBundle/Entity/Job.php ファイルを開き、メソッドを編集します。
 
 src/Ibw/JobeetBundle/Entity/Job.php
 
@@ -109,6 +109,9 @@ src/Ibw/JobeetBundle/Entity/Job.php
    {
        // ...
 
+       /**
+        * @ORM\PrePersist
+        */
        public function setExpiresAtValue()
        {
            if(!$this->getExpiresAt()) {
@@ -152,7 +155,15 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
 .. code-block:: php
 
-   // ...
+   <?php
+   namespace Ibw\JobeetBundle\DataFixtures\ORM;
+
+   use Doctrine\Common\Persistence\ObjectManager;
+   use Doctrine\Common\DataFixtures\AbstractFixture;
+   use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+   use Ibw\JobeetBundle\Entity\Job;
+
+   class LoadJobData extends AbstractFixture implements OrderedFixtureInterface {
 
        public function load(ObjectManager $em)
        {
@@ -176,9 +187,16 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
            $em->persist($job_expired);
            // ...
+
+           $em->flush();
        }
 
-   // ...
+       public function getOrder()
+       {
+           return 2; // the order in which fixtures will be loaded
+       }
+
+   }
 
 フィクスチャーをリロードし、古いジョブが表示されないことを確認するためにブラウザをリフレッシュします。
 
@@ -193,8 +211,8 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 | Doctrine のクエリコードはアクション（コントローラ層）に属さず、 Model レイヤーに所属します。
 | MVC モデルでは、モデルはすべてのビジネスロジックを定義し、 Controller はデータを読み取るモデルのみを呼び出します。
 | コードは、ジョブのコレクションを返すように、そのコードをモデルに移動しましょう​​。
-|  そのためには、ジョブのエンティティのカスタムリポジトリクラスを作成し、そのクラスにクエリを追加する必要があります。
-| /src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml を開いて、そこに次の行を追加します。
+| そのためには、ジョブのエンティティのカスタムリポジトリクラスを作成し、そのクラスにクエリを追加する必要があります。
+| src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml を開いて、そこに次の行を追加します。
 
 ..
    Although the code we have written works fine, it’s not quite right yet. Can you spot the problem?
@@ -281,10 +299,10 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 このリファクタリングは、前のコードに比べていくつかの利点があります。
 
-* 有効なジョブを取得するロジックが、モデルに属します。
-* コントローラーのコードは、より薄く、より読みやすくします。
-* getActiveJobs() メソッドは、再利用可能（たとえば別のアクションで）。
-* 現在、モデルコードは単体テスト（ユニットテスト）が可能です。
+* 有効なジョブを取得するロジックが、モデルに属すること。
+* コントローラーのコードは、より薄く、より読みやすいこと。
+* getActiveJobs() メソッドは、再利用可能（たとえば別のアクションで）なこと。
+* 現在、モデルコードは単体テスト（ユニットテスト）が可能なこと。
 
 ..
    * This refactoring has several benefits over the previous code:
@@ -497,7 +515,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 ------------
 
 | JobController の indexAction メソッドでは、カテゴリごとの最大ジョブ数は、ハードコーディングされていました。
-| その10個の制限は、設定可能にする方がよいです。
+| その10個の制限は、設定変更が出来るようにする方がよいです。
 | Symfony の  app/config/config.yml ファイルの ``parameters`` キーの下に（ ``parameters`` が存在しない場合は作成して）
 | アプリケーション用のカスタムパラメータを定義できます。
 

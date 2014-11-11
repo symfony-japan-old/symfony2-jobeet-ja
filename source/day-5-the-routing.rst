@@ -11,7 +11,11 @@ URL
 | Symfony はどのようにそれを動作させるのでしょうか？ この URL に基づいてどのようにアクションを決定するのでしょうか？
 | なぜジョブの id は、アクションの $id パラメータを使用して取得されたのでしょうか？
 | ここでは、これらすべての質問にお答えします。
-| 既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートに次のコードを見てきました。
+| 既に src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig テンプレートの中で以下のコードを見てきました。
+
+..
+   If you click on a job on the Jobeet homepage, the URL looks like this: /job/1/show. If you have already developed PHP websites, you are probably more accustomed to URLs like /job.php?id=1. How does Symfony make it work? How does Symfony determine the action to call based on this URL? Why is the id of the job retrieved with the $id parameter in the action? Here, we will answer all these questions.
+   You have already seen the following code in the src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig template:
 
 .. code-block:: html+jinja
 
@@ -19,6 +23,8 @@ URL
 
 | これはid 1を持つジョブの URL を生成するために、テンプレートヘルパー関数の ``path()`` を使用しています。
 | ibw_job_show は使用されるルートの名前です。後述の設定で定義されています。
+
+.. This uses the path template helper function to generate the url for the job which has the id 1. The ibw_job_show is the name of the route used, defined in the configuration as you will see below.
 
 ルーティング設定
 ----------------
@@ -36,8 +42,8 @@ app/config/routing.yml
        prefix:   /
 
 | さて、 JobeetBundle の routing.yml を見れば別のルーティングファイルをインポートしているのが分かるでしょう。
-| そのファイルは、\ ``JobController `` のためのものです。
-| また、URLパターン ( /hello/{name} )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
+| そのファイルは、\ ``JobController`` のためのものです。
+| また、URLパターン ( ``/hello/{name}`` )を持つ ibw_jobeet_homepage という名前のルートも定義しています。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
 
@@ -89,14 +95,14 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 | それでは ibw_job_show ルートを詳しく見てみましょう。
 | ibw_job_show ルートによって定義されたパターンは、id という名前にワイルドカードの条件が与えられ、 /*/show のような役割を果たします。
 | URL /1/show の場合は、コントローラーで利用可能な id の値は、 1 です。
-| _controllerパラメータは特殊なキーで、 URLがこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
+| _controller パラメータは特殊なキーで、 URL がこのルートと一致した場合に、どのコントローラ/アクションが実行されるべきかを Symfony に伝えます。
 | このケースでは、 IbwJobeetBundle の JobController の showAction を実行する必要があります。
 | 各コントローラのメソッドの引数として使用可能になる為、ルートパラメーター（たとえば、 {id} ）が特に重要です。
 
 Dev 環境のルーティング設定
 --------------------------
 
-| dev の環境は Web デバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルをロードします。
+| dev の環境は Web デバッグツールバーで使用されるルートが含まれ、 app/config/routing_dev.yml ファイルを読み込みます。
 | （すでに /app/config/routing_dev.php から AcmeDemoBundle のルートを削除しました。1日目の AcmeDemoBundle の削除の仕方 を参照のこと）。
 | このファイルは最後にメインの設定ファイル routing.yml を読み込みます。
 
@@ -106,7 +112,7 @@ Dev 環境のルーティング設定
 | ブラウザで URL / のリクエストを投げたときに、今は、404 Not Foundエラーが表示されます。
 | この URL が、定義されたどのルートとも一致しないためです。
 | ibw_jobeet_homepage ルートは URL が  /hello/jobeet と一致したとき、 DefaultController クラスの indexAction() メソッドに送ります。
-| これを URL / と一致するように変更して、 JobController クラスの indexAction() メソッドを呼び出すようにしてみましょう。
+| このルートを URL / と一致するように変更して、 JobController クラスの indexAction() メソッドを呼び出すようにしてみましょう。
 | 変更を行うには、次のように行います。
 
 src/Ibw/JobeetBundle/Resources/config/routing.yml
@@ -133,12 +139,12 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 もう少し複雑にするため、ジョブページの URL を以下のように、より意味のあるものに変更してみましょう。
 
-    /job/sensio-labs/paris-france/1/web-developer
+/job/sensio-labs/paris-france/1/web-developer
 
 | Jobeet のことを何も知らなくても、ページを見なくても、 Sensio Labs が Web 開発者をフランスのパリで探していることを、 URL から理解することができます。
 | 以下のパターンは、上記の URL と一致します。
 
-    /job/{company}/{location}/{id}/{position}
+/job/{company}/{location}/{id}/{position}
 
 job.yml ファイルの ibw_job_show ルートを編集します。
 
@@ -166,7 +172,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 生成された URL を見てみると、それらをまだ使えるものではありません。
 
-   http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
+http://jobeet.local/app_dev.php/job/Sensio Labs/Paris,France/1/Web Developer
 
 | すべての非 ASCII 文字を "-" で置き換えることによって、列の値を "スラグ化"(可読性のある URL に変換) する必要があります。
 | Job.php ファイルを開き、クラスに次のメソッドを追加します。
@@ -205,6 +211,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Utils;
 
    class Jobeet
@@ -225,7 +232,7 @@ src/Ibw/JobeetBundle/Utils/Jobeet.php
 | それらは、対応するカラムの値に slugify() メソッドを適用した後で値を返します。
 | ここで、テンプレート内の実際のカラム名をこれらの仮想のものに置き換えます。
 
-src/Ibw/JobeetBundle/views/Job/index.html.twig
+src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 .. code-block:: html+jinja
 
