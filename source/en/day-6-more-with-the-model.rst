@@ -131,18 +131,12 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
 .. code-block:: php
 
-   <?php
-   namespace Ibw\JobeetBundle\DataFixtures\ORM;
-
-   use Doctrine\Common\Persistence\ObjectManager;
-   use Doctrine\Common\DataFixtures\AbstractFixture;
-   use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-   use Ibw\JobeetBundle\Entity\Job;
-
-   class LoadJobData extends AbstractFixture implements OrderedFixtureInterface {
+   // ...
 
        public function load(ObjectManager $em)
        {
+           // ...
+
            $job_expired = new Job();
            $job_expired->setCategory($em->merge($this->getReference('category-programming')));
            $job_expired->setType('full-time');
@@ -166,13 +160,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
            $em->flush();
        }
-
-       public function getOrder()
-       {
-           return 2; // the order in which fixtures will be loaded
-       }
-
-   }
+   // ...
 
 Reload the fixtures and refresh your browser to ensure that the old job does not show up:
 

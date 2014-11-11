@@ -348,6 +348,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
 .. code-block:: php
+
    <?php
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 
