@@ -173,6 +173,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
        manyToMany:
            categories:
                targetEntity: Category
+               inversedBy: affiliates
                joinTable:
                    name: category_affiliate
                    joinColumns:
