@@ -7,6 +7,7 @@
 
 .. note::
 
+   `ストーリー F2：ユーザーが特定のカテゴリ内のすべてのジョブを問い合わせることができます`_
    日付順に並べられたカテゴリのすべてのジョブを見ることが出来き、ページごとに20件のジョブでページ分割されています。
 
 カテゴリールート
@@ -30,7 +31,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
 
 .. code-block:: php
 
-   use Ibw\JobeetBundle\Utils\Jobeet as Jobeet;
+   use Ibw\JobeetBundle\Utils\Jobeet;
 
    class Category
    {
@@ -73,7 +74,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 | 上記のテンプレートでは、カテゴリを使用していました。
 | ``more jobs`` を定義してみましょう：
 
-src/Ibw/JobeetBunlde/Entity/Category.php
+src/Ibw/JobeetBundle/Entity/Category.php
 
 .. code-block:: php
 
@@ -170,6 +171,7 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -238,7 +240,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml
 
 .. code-block:: bash
 
-   $ php app/console doctrine:generate:entities
+   $ php app/console doctrine:generate:entities IbwJobeetBundle
 
 これで Category.php に以下のコードが追加されているでしょう。
 
@@ -414,13 +416,13 @@ src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
 | 両方のテンプレートから ``include`` 関数をよびだして、 HTML <table> のコードを置き換えます。
 .. You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
 
-src/Ibw/JobeetBundle/Resources/view/Job/index.html.twig
+src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 .. code-block:: html+jinja
 
    {{ include ('IbwJobeetBundle:Job:list.html.twig', {'jobs': category.activejobs}) }}
 
-src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
+src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 
 .. code-block:: html+jinja
 

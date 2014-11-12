@@ -1,5 +1,5 @@
 6日目: モデルの続き
-================
+===================
 
 .. include:: common/original.rst.inc
 
@@ -598,7 +598,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 .. image:: /images/Day-6-limited-no-of-jobs.png
 
 ジョブページを安全にする
-----------------------
+------------------------
 
 | ジョブが終了したときは、URLを知っていても、もうそれにアクセスすることはできません。
 | 期限切れのジョブ用のURLを、 ``SELECT id, token FROM job WHERE expires_at < NOW()`` で調べて、データベース内の実際の id で URL の ID を置き換えて試してみてください。

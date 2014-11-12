@@ -41,6 +41,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Utils;
 
    use Ibw\JobeetBundle\Utils\Jobeet;
@@ -278,6 +279,7 @@ src/Ibw/JobeetBundle/Tests/Entity/JobTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Entity;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -397,6 +399,7 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Repository;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -533,6 +536,7 @@ src/Ibw/JobeetBundle/Tests/Repository/CategoryRepositoryTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Repository;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

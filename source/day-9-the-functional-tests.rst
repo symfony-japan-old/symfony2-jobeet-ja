@@ -53,6 +53,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -143,7 +144,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: bash
 
-   phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
+   $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
 
 .. This test will fail because the tested url, /category/index, is not a valid url in Jobeet
 
@@ -176,10 +177,11 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 期限切れのジョブが一覧表示されないこと
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
-
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -451,6 +453,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -592,6 +595,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
