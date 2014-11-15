@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>13. 13日目: セキュリティ &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="14. 14日目: フィード" href="day-14-feeds.html" />
+    <link rel="prev" title="12. 12日目: Sonata Admin Bundle" href="day-12-sonata-admin-bundle.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">13. 13日目: セキュリティ</a><ul>
+<li><a class="reference internal" href="#id2">13.1. 安全なアプリケーション</a></li>
+<li><a class="reference internal" href="#id3">13.2. ユーザープロバイダー</a></li>
+<li><a class="reference internal" href="#id4">13.3. ログアウト</a></li>
+<li><a class="reference internal" href="#id5">13.4. ユーザーセッション</a></li>
+<li><a class="reference internal" href="#id6">13.5. フラッシュメッセージ</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-12-sonata-admin-bundle.html" title="Previous Chapter: 12. 12日目: Sonata Admin Bundle"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 12. 12日目: Sonata...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-14-feeds.html" title="Next Chapter: 14. 14日目: フィード"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">14. 14日目: フィード &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-13-security.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>13. 13日目: セキュリティ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="section" id="id2">
+<h2>13.1. 安全なアプリケーション<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">セキュリティは、二段階のプロセスでユーザーがアクセス権を持たないリソースにアクセスすることを防止します。</div>
+<div class="line">最初のステップである「認証」は、ユーザにいくつかの ID の送信を要求することによって、誰であるかを識別します。</div>
+<div class="line">システムが一度ユーザーが誰であるか知ったら、次の「認可」とよばれるステップは、与えられたリソース（それは特定のアクションを実行する権限を持っているかどうかをチェックします）へのアクセスを認めるか決定します。</div>
+<div class="line">セキュリティコンポーネントは、 アプリケーションの設定である app/config フォルダの security.yml ファイルを使用して設定することができます。</div>
+<div class="line">アプリケーションを安全にするには、次のように、 security.yml ファイルを変更します。</div>
+</div>
+<p>app/config/security.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">security</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">role_hierarchy</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">ROLE_ADMIN</span><span class="p-Indicator">:</span>       <span class="l-Scalar-Plain">ROLE_USER</span>
+        <span class="l-Scalar-Plain">ROLE_SUPER_ADMIN</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">ROLE_USER</span><span class="p-Indicator">,</span> <span class="nv">ROLE_ADMIN</span><span class="p-Indicator">,</span> <span class="nv">ROLE_ALLOWED_TO_SWITCH</span><span class="p-Indicator">]</span>
+
+    <span class="l-Scalar-Plain">firewalls</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">dev</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">^/(_(profiler|wdt)|css|images|js)/</span>
+            <span class="l-Scalar-Plain">security</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+
+        <span class="l-Scalar-Plain">secured_area</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>    <span class="l-Scalar-Plain">^/</span>
+            <span class="l-Scalar-Plain">anonymous</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="l-Scalar-Plain">form_login</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">login_path</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/login</span>
+                <span class="l-Scalar-Plain">check_path</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/login_check</span>
+                <span class="l-Scalar-Plain">default_target_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ibw_jobeet_homepage</span>
+
+    <span class="l-Scalar-Plain">access_control</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/admin</span><span class="p-Indicator">,</span> <span class="nv">roles</span><span class="p-Indicator">:</span> <span class="nv">ROLE_ADMIN</span> <span class="p-Indicator">}</span>
+
+    <span class="l-Scalar-Plain">providers</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">in_memory</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">memory</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">users</span><span class="p-Indicator">:</span>
+                    <span class="l-Scalar-Plain">admin</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">password</span><span class="p-Indicator">:</span> <span class="nv">adminpass</span><span class="p-Indicator">,</span> <span class="nv">roles</span><span class="p-Indicator">:</span> <span class="s">&#39;ROLE_ADMIN&#39;</span> <span class="p-Indicator">}</span>
+
+    <span class="l-Scalar-Plain">encoders</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">Symfony\Component\Security\Core\User\User</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">plaintext</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">この設定は、 /admin セクション( /admin で始まるすべての URL )を安全にし、 ROLE_ADMIN をもつユーザーのみアクセスを許可します。( <tt class="docutils literal"><span class="pre">access_control</span></tt> の項目を参照ください）。</div>
+<div class="line">この例では、<tt class="docutils literal"><span class="pre">admin</span></tt> ユーザが設定ファイルで（ <tt class="docutils literal"><span class="pre">providers</span></tt> の箇所）に定義されていますが、パスワードがエンコーダで符号化されていません。</div>
+<div class="line">ユーザーを認証するためには伝統的にログインフォームを使用しますが、それを有効にする必要があります。</div>
+<div class="line">まず、ログインフォームの表示(すなわち /login )とログインフォームの送信の処理(すなわち /login_check )の二つのルートを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">login</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/login</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span>  <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Default</span><span class="p-Indicator">:</span><span class="nv">login</span> <span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">login_check</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/login_check</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">/login_check のコントローラーを実装する必要はなく、ファイアーウォールが自動的にフォームのこの URL への送信をキャッチし、処理します。</div>
+<div class="line">しかし、後述の login テンプレートの中のフォーム送信 URL を生成することができるように、ルートを作成する必要があります。</div>
+<div class="line">次に、ログインフォームを表示するアクションを作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/DefaultController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Security\Core\SecurityContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DefaultController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">loginAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+
+        <span class="c1">// get the login error if there is one</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nx">SecurityContext</span><span class="o">::</span><span class="na">AUTHENTICATION_ERROR</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$error</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">SecurityContext</span><span class="o">::</span><span class="na">AUTHENTICATION_ERROR</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$error</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">SecurityContext</span><span class="o">::</span><span class="na">AUTHENTICATION_ERROR</span><span class="p">);</span>
+            <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nx">SecurityContext</span><span class="o">::</span><span class="na">AUTHENTICATION_ERROR</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Default:login.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="c1">// last username entered by the user</span>
+            <span class="s1">&#39;last_username&#39;</span> <span class="o">=&gt;</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">SecurityContext</span><span class="o">::</span><span class="na">LAST_USERNAME</span><span class="p">),</span>
+            <span class="s1">&#39;error&#39;</span>         <span class="o">=&gt;</span> <span class="nv">$error</span><span class="p">,</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ユーザーがフォームを送信すると、セキュリティシステムは自動的にフォームの送信を処理します。</div>
+<div class="line">無効なユーザー名またはパスワードを送信した場合は、このアクションで、ユーザーに表示するためフォーム送信エラーをセキュリティシステムから読み込みます。</div>
+<div class="line">セキュリティシステム自体が送信されたユーザー名とパスワードをチェックしユーザを認証します。</div>
+<div class="line">そのため、唯一の作業は、ログインフォームを表示し、発生した可能性のあるログインエラーを表示することです。</div>
+<div class="line">最後に、対応するテンプレートを作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">error</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div&gt;</span><span class="cp">{{</span> <span class="nv">error.message</span> <span class="cp">}}</span><span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;login_check&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;username&quot;</span><span class="nt">&gt;</span>Username:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;username&quot;</span> <span class="na">name=</span><span class="s">&quot;_username&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">last_username</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;password&quot;</span><span class="nt">&gt;</span>Password:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">id=</span><span class="s">&quot;password&quot;</span> <span class="na">name=</span><span class="s">&quot;_password&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>login<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ここで、 URL <a class="reference external" href="http://jobeet.local/app_dev.php/admin/dashboard">http://jobeet.local/app_dev.php/admin/dashboard</a> にアクセスするとログインフォームが表示されます。</div>
+<div class="line">Jobeetの管理領域に行くには security.yml で定義されたユーザ名とパスワード（ admin/adminpass ）を入力する必要があります。</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>13.2. ユーザープロバイダー<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">認証時に、ユーザーは資格情報のセット（通常はユーザ名とパスワード）を送信します。</div>
+<div class="line">認証システムの仕事は、資格情報をユーザーリストに対して照らし合わせることです。では、ここでのユーザーリストはどこから来るのでしょうか？</div>
+<div class="line">Symfony2 では、ユーザーをどこからでも取得することができます。設定ファイル、データベーステーブル、 Web サービス、または、考えうるなんでも。</div>
+<div class="line">認証システムにひとつ以上のユーザーを提供するものは、「ユーザープロバイダー」として知られています。</div>
+<div class="line">Symfony2 は最も一般的なユーザープロバイダーとして、設定ファイル、および、データベースのテーブルからのユーザーの読み込みを標準装備しています。</div>
+<div class="line">上記では、設定ファイル内のユーザーを指定する、最初のケースを使用していました。</div>
+</div>
+<p>app/config/security.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">providers</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">in_memory</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">memory</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">users</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">admin</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">password</span><span class="p-Indicator">:</span> <span class="nv">adminpass</span><span class="p-Indicator">,</span> <span class="nv">roles</span><span class="p-Indicator">:</span> <span class="s">&#39;ROLE_ADMIN&#39;</span> <span class="p-Indicator">}</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">しかし、一般的にはユーザーはデータベーステーブルに格納されることになるでしょう。</div>
+<div class="line">これを行うためには Jobeet のデータベースに新しい <tt class="docutils literal"><span class="pre">user</span></tt> テーブルを追加します。</div>
+<div class="line">まずは、この新しいテーブルの ORM を作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/User.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\User</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">table</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">user</span>
+    <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+            <span class="l-Scalar-Plain">generator</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">strategy</span><span class="p-Indicator">:</span> <span class="nv">AUTO</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">username</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">doctrine:generate:entities</span></tt> コマンドを実行し、新しい User エンティティクラスを生成します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>そして、データベースを更新します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:schema:update --force
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">新しい <tt class="docutils literal"><span class="pre">user</span></tt> クラスの唯一の要件は、 UserInterface インターフェイスを実装していることです。</div>
+<div class="line">これは、このインタフェースを実装する限り <tt class="docutils literal"><span class="pre">user</span></tt> はどのようなものでも良いことを意味します。</div>
+<div class="line">User.php ファイルを開き、以下のように編集します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/User.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\Security\Core\User\UserInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * User</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="k">implements</span> <span class="nx">UserInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$username</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$password</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get id</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Set username</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $username</span>
+<span class="sd">     * @return User</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUsername</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span> <span class="o">=</span> <span class="nv">$username</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get username</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUsername</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Set password</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $password</span>
+<span class="sd">     * @return User</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setPassword</span><span class="p">(</span><span class="nv">$password</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span> <span class="o">=</span> <span class="nv">$password</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get password</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPassword</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRoles</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;ROLE_ADMIN&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSalt</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">eraseCredentials</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUsername</span><span class="p">()</span> <span class="o">==</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUsername</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">生成されたエンティティに UserInterface クラスで要求されたメソッド（getRoles、getSalt、eraseCredentials と equals）を追加しました。</div>
+<div class="line">次に、エンティティユーザプロバイダを設定し、 <tt class="docutils literal"><span class="pre">User</span></tt> クラスを指すようにます。</div>
+</div>
+<p>app/config/security.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">providers</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">main</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">entity</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">class</span><span class="p-Indicator">:</span> <span class="nv">Ibw\JobeetBundle\Entity\User</span><span class="p-Indicator">,</span> <span class="nv">property</span><span class="p-Indicator">:</span> <span class="nv">username</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">encoders</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\User</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sha512</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">また、新しい User クラス用のエンコーダをパスワードの暗号化のため SHA512 アルゴリズムを使用するように変更しました。</div>
+<div class="line">これですべてセットアップされましたので、最初のユーザーを作成する必要があります。</div>
+<div class="line">これを行うためには、新しい symfony コマンドを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputArgument</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputOption</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\OutputInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\User</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobeetUsersCommand</span> <span class="k">extends</span> <span class="nx">ContainerAwareCommand</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configure</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span>
+            <span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;ibw:jobeet:users&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Add Jobeet users&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addArgument</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="nx">InputArgument</span><span class="o">::</span><span class="na">REQUIRED</span><span class="p">,</span> <span class="s1">&#39;The username&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addArgument</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="nx">InputArgument</span><span class="o">::</span><span class="na">REQUIRED</span><span class="p">,</span> <span class="s1">&#39;The password&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nx">InputInterface</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">OutputInterface</span> <span class="nv">$output</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$username</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setUsername</span><span class="p">(</span><span class="nv">$username</span><span class="p">);</span>
+        <span class="c1">// encode the password</span>
+        <span class="nv">$factory</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;security.encoder_factory&#39;</span><span class="p">);</span>
+        <span class="nv">$encoder</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">getEncoder</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+        <span class="nv">$encodedPassword</span> <span class="o">=</span> <span class="nv">$encoder</span><span class="o">-&gt;</span><span class="na">encodePassword</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getSalt</span><span class="p">());</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setPassword</span><span class="p">(</span><span class="nv">$encodedPassword</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;Added %s user with password %s&#39;</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>最初のユーザーの追加を実行します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console ibw:jobeet:users admin admin
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これはパスワード <tt class="docutils literal"><span class="pre">admin</span></tt> を持つ <tt class="docutils literal"><span class="pre">admin</span></tt> ユーザーを作成します。</div>
+<div class="line">これを管理セクションへのログインに使用することができます。</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>13.3. ログアウト<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ログアウトはファイアウォールによって自動的に処理されます。</div>
+<div class="line">唯一の作業は、ログアウトの config パラメータを有効にすることです。</div>
+</div>
+<p>app/config/security.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">security</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">firewalls</span><span class="p-Indicator">:</span>
+        <span class="c1"># ...</span>
+        <span class="l-Scalar-Plain">secured_area</span><span class="p-Indicator">:</span>
+            <span class="c1"># ...</span>
+            <span class="l-Scalar-Plain">logout</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/logout</span>
+                <span class="l-Scalar-Plain">target</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ファイアウォールがすべての面倒を見るため、  URL ( /logout )用のコントローラを実装する必要はありません。</div>
+<div class="line">URL 生成に使用できるよう、ルートを作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">logout</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/logout</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これが設定されたら、/logout （上記で設定したパス）にユーザーを送信することで、現在のユーザの認証の解除をします。</div>
+<div class="line">次いで、ユーザは、ホームページ（target パラメータによって定義された値）に送られます。</div>
+<div class="line">あと残った作業は、ログアウトのリンクを管理セクションに追加することです。</div>
+<div class="line">これを行うために SonataAdminBundle の user_block.html.twig をオーバーライドします。</div>
+<div class="line">app/Resources/SonataAdminBundle/views/Core フォルダに user_block.html.twig ファイルを作成します。</div>
+</div>
+<p>app/Resources/SonataAdminBundle/views/Core/user_block.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">block</span> <span class="nv">user_block</span> <span class="cp">%}</span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;logout&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Logout<span class="nt">&lt;/a&gt;</span><span class="cp">{%</span> <span class="k">endblock</span><span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">(初めにキャッシュをクリアしてから)管理セクションに入ろうとした場合、ユーザー名とパスワードの入力を要求され、その後、ログアウトリンクが右上隅に表示されます。</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>13.4. ユーザーセッション<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Symfony2 はリクエストの間、ユーザー情報を保存するすばらしいセッションオブジェクトを提供します。</div>
+<div class="line">デフォルトでは、 Symfony2 のは、ネイティブの PHP のセッションを使用することにより、クッキーの属性を格納します。</div>
+<div class="line">コントローラから簡単にセッションの情報を保存・取得することができます。</div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$session</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+
+<span class="c1">// store an attribute for reuse during a later user request</span>
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+
+<span class="c1">// in another controller for another request</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">残念なことに、 Jobeet ユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。</div>
+<div class="line">そこで、新しい要件を追加してみましょう。</div>
+</div>
+<ul class="simple">
+<li>ジョブの閲覧を容易にするため、ユーザが閲覧した最後の三つのジョブは、後からジョブページに戻れるようにメニューにリンクを表示する。</li>
+<li>ユーザーがジョブページにアクセスすると、表示された <tt class="docutils literal"><span class="pre">Job</span></tt> オブジェクトは、セッションのユーザーの履歴に追加・保存される。</li>
+</ul>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJob</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+
+    <span class="c1">// fetch jobs already stored in the job history</span>
+    <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;job_history&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">());</span>
+
+    <span class="c1">// store the job as an array so we can put it in the session and avoid entity serialize errors</span>
+    <span class="nv">$job</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPosition</span><span class="p">(),</span> <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompany</span><span class="p">(),</span> <span class="s1">&#39;companyslug&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="s1">&#39;locationslug&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="s1">&#39;positionslug&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$job</span><span class="p">,</span> <span class="nv">$jobs</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// add the current job at the beginning of the array</span>
+        <span class="nb">array_unshift</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">,</span> <span class="nv">$job</span><span class="p">);</span>
+
+        <span class="c1">// store the new job history back into the session</span>
+        <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;job_history&#39;</span><span class="p">,</span> <span class="nb">array_slice</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:show.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">layout.html.twig</span></tt> では、 <tt class="docutils literal"><span class="pre">#content</span> <span class="pre">div</span></tt> の前に、次のコードを追加します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job_history&quot;</span><span class="nt">&gt;</span>
+    Recent viewed jobs:
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">job</span> <span class="k">in</span> <span class="nv">app.session.get</span><span class="o">(</span><span class="s1">&#39;job_history&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">job.id</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">job.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">job.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">job.positionslug</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">job.position</span> <span class="cp">}}</span> - <span class="cp">{{</span> <span class="nv">job.company</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>13.5. フラッシュメッセージ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">フラッシュメッセージはユーザのセッションに保存することがでる小さなメッセージで、一回だけのリクエストのためのものです。</div>
+<div class="line">リダイレクトして、次のリクエストで特別なメッセージを表示する、などのフォームの処理をするのに便利です。</div>
+<div class="line">ジョブを公開するときにすでにプロジェクトでフラッシュメッセージを使用していました。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">publishAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;notice&#39;</span><span class="p">,</span> <span class="s1">&#39;Your job is now online for 30 days.&#39;</span><span class="p">);</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">getFlashBag()-&gt;add() 関数の最初の引数は、フラッシュの識別子で、二つ目は表示するためのメッセージです。</div>
+<div class="line">自由にフラッシュの名前を定義できますが、 notice と error の二つがより一般的です。</div>
+<div class="line">フラッシュ·メッセージを表示するためそれらをテンプレートに含める必要があります。</div>
+<div class="line">layout.html.twig テンプレートで行いました。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">flashMessage</span> <span class="k">in</span> <span class="nv">app.session.flashbag.get</span><span class="o">(</span><span class="s1">&#39;notice&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">flassMessage</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

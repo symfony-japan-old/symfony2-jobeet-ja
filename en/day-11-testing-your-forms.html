@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>30. Day 11: Testing your Forms &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="31. Day 12: Sonata Admin Bundle" href="day-12-sonata-admin-bundle.html" />
+    <link rel="prev" title="29. Day 10: The Forms" href="day-10-the-forms.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">30. Day 11: Testing your Forms</a><ul>
+<li><a class="reference internal" href="#submitting-a-form">30.1. Submitting a Form</a></li>
+<li><a class="reference internal" href="#testing-the-form">30.2. Testing the Form</a></li>
+<li><a class="reference internal" href="#testing-the-database-record">30.3. Testing the Database Record</a></li>
+<li><a class="reference internal" href="#testing-for-errors">30.4. Testing for Errors</a></li>
+<li><a class="reference internal" href="#tests-as-a-safeguard">30.5. Tests as a SafeGuard</a></li>
+<li><a class="reference internal" href="#back-to-the-future-in-a-test">30.6. Back to the Future in a Test</a></li>
+<li><a class="reference internal" href="#maintenance-tasks">30.7. Maintenance Tasks</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-10-the-forms.html" title="Previous Chapter: 29. Day 10: The Forms"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 29. Day 10: The ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-12-sonata-admin-bundle.html" title="Next Chapter: 31. Day 12: Sonata Admin Bundle"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">31. Day 12: Sona... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/en/day-11-testing-your-forms.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="day-11-testing-your-forms">
+<h1>30. Day 11: Testing your Forms<a class="headerlink" href="#day-11-testing-your-forms" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This article is part of the original <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a>, created by Fabien Potencier, for Symfony 1.4.</li>
+</ul>
+<p>In day 10, we created our first form with Symfony 2.3. People are now able to post a new job on Jobeet but we ran out of time before we could add some tests. That’s what we will do along these lines.</p>
+<div class="section" id="submitting-a-form">
+<h2>30.1. Submitting a Form<a class="headerlink" href="#submitting-a-form" title="Permalink to this headline">¶</a></h2>
+<p>Let’s open the JobControllerTest file to add functional tests for the job creation and validation process. At the end of the file, add the following code to get the job creation page:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/new&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::newAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To select forms we will use the selectButton() method. This method can select button tags and submit input tags. Once you have a Crawler representing a button, call the form() method to get a Form instance for the form wrapping the button node:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit Form&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above example selects an input of type submit using its value attribute “Submit Form&#8221;.</p>
+</div>
+<p>When calling the form() method, you can also pass an array of field values that overrides the default ones:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Fabien&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;my_form[subject]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Symfony Rocks!&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>It is now time to actually select and pass valid values to the form:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/new&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::newAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[url]&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;http://www.sensio.com/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[file]&#39;</span>         <span class="o">=&gt;</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../../../../../web/bundles/ibwjobeet/images/sensio-labs.gif&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[description]&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;You will work with symfony to develop websites for our customers.&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[how_to_apply]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Send me an email&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;for.a.job@example.com&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[is_public]&#39;</span>    <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">));</span>
+
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::createAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The browser also simulates file uploads if you pass the absolute path to the file to upload.
+After submitting the form, we checked that the executed action is create.</p>
+</div>
+<div class="section" id="testing-the-form">
+<h2>30.2. Testing the Form<a class="headerlink" href="#testing-the-form" title="Permalink to this headline">¶</a></h2>
+<p>If the form is valid, the job should have been created and the user redirected to the preview page:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::previewAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-the-database-record">
+<h2>30.3. Testing the Database Record<a class="headerlink" href="#testing-the-database-record" title="Permalink to this headline">¶</a></h2>
+<p>Eventually, we want to test that the job has been created in the database and check that the is_activated column is set to false as the user has not published it yet.</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT count(j.id) from IbwJobeetBundle:Job j WHERE j.location = :location AND j.is_activated IS NULL AND j.is_public = 0&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-for-errors">
+<h2>30.4. Testing for Errors<a class="headerlink" href="#testing-for-errors" title="Permalink to this headline">¶</a></h2>
+<p>The job form creation works as expected when we submit valid values. Let’s add a test to check the behavior when we submit non-valid data:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/new&#39;</span><span class="p">);</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;not.an.email&#39;</span><span class="p">,</span>
+    <span class="p">));</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+    <span class="c1">// check if we have 3 errors</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="c1">// check if we have error on job_description field</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_description&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">// check if we have error on job_how_to_apply field</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_how_to_apply&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">// check if we have error on job_email field</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_email&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we need to test the admin bar found on the job preview page. When a job has not been activated yet, you can edit, delete, or publish the job. To test those three actions, we will need to first create a job. But that’s a lot of copy and paste, so let’s add a job creator method in the JobControllerTest class:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">createJob</span><span class="p">(</span><span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/new&#39;</span><span class="p">);</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="nb">array_merge</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[url]&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;http://www.sensio.com/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[description]&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;You will work with symfony to develop websites for our customers.&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[how_to_apply]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Send me an email&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;for.a.job@example.com&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[is_public]&#39;</span>    <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+  <span class="p">),</span> <span class="nv">$values</span><span class="p">));</span>
+
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The createJob() method creates a job, follows the redirect and returns the browser. You can also pass an array of values that will be merged with some default values.
+Testing the Publish action is now more simple:</p>
+<p>src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testPublishJob</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO1&#39;</span><span class="p">));</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Publish&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT count(j.id) from IbwJobeetBundle:Job j WHERE j.position = :position AND j.is_activated = 1&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="s1">&#39;FOO1&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Testing the Delete action is quite similar:
+src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">testDeleteJob</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO2&#39;</span><span class="p">));</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Delete&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT count(j.id) from IbwJobeetBundle:Job j WHERE j.position = :position&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="s1">&#39;FOO2&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests-as-a-safeguard">
+<h2>30.5. Tests as a SafeGuard<a class="headerlink" href="#tests-as-a-safeguard" title="Permalink to this headline">¶</a></h2>
+<p>When a job is published, you cannot edit it anymore. Even if the “Edit” link is not displayed anymore on the preview page, let’s add some tests for this requirement.
+First, add another argument to the createJob() method to allow automatic publication of the job, and create  a getJobByPosition() method that returns a job given its position value:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">createJob</span><span class="p">(</span><span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(),</span> <span class="nv">$publish</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/new&#39;</span><span class="p">);</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="nb">array_merge</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[url]&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;http://www.sensio.com/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[description]&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;You will work with symfony to develop websites for our customers.&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[how_to_apply]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Send me an email&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;for.a.job@example.com&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;job[is_public]&#39;</span>    <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+  <span class="p">),</span> <span class="nv">$values</span><span class="p">));</span>
+
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$publish</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+      <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Publish&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+      <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+      <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+    <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getJobByPosition</span><span class="p">(</span><span class="nv">$position</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT j from IbwJobeetBundle:Job j WHERE j.position = :position&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="nv">$position</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If a job is published, the edit page must return a 404 status code:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">testEditJob</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO3&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/job/%s/edit&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJobByPosition</span><span class="p">(</span><span class="s1">&#39;FOO3&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>But if you run the tests, you won’t have the expected result as we forgot to implement this security measure yesterday. Writing tests is also a great way to discover bugs, as you need to think about all edge cases.
+Fixing the bug is quite simple as we just need to forward to a 404 page if the job is activated:</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">editAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getIsActivated</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Job is activated and cannot be edited.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="back-to-the-future-in-a-test">
+<h2>30.6. Back to the Future in a Test<a class="headerlink" href="#back-to-the-future-in-a-test" title="Permalink to this headline">¶</a></h2>
+<p>When a job is expiring in less than five days, or if it is already expired, the user can extend the job validation for another 30 days from the current date.
+Testing this requirement in a browser is not easy as the expiration date is automatically set when the job is created to 30 days in the future. So, when getting the job page, the link to extend the job is not present. Sure, you can hack the expiration date in the database, or tweak the template to always display the link, but that’s tedious and error prone. As you have already guessed, writing some tests will help us one more time.
+As always, we need to add a new route for the extend method first:</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_extend</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{token}/extend</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:extend&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Then, replace the Extend link code in the admin.html.twig partial with the extend form:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.expiresSoon</span> <span class="cp">%}</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_extend&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">extend_form</span><span class="o">)</span> <span class="cp">}}</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>Extend<span class="nt">&lt;/button&gt;</span> for another 30 days
+    <span class="nt">&lt;/form&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>Then, create the extend action and the extend form:</p>
+<p>src.Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">extendAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createExtendForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+    <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+
+    <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nv">$em</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">){</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">extend</span><span class="p">()){</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNodFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to extend the Job&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;notice&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;Your job validity has been extended until %s&#39;</span><span class="p">,</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getExpiresAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;m/d/Y&#39;</span><span class="p">)));</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+        <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+        <span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span>
+        <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+    <span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">function</span> <span class="nf">createExtendForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createFormBuilder</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">))</span>
+        <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">getForm</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Also, add the extend form to the preview action:</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.phpPHP</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">previewAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+    <span class="nv">$publishForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createPublishForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">());</span>
+    <span class="nv">$extendForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createExtendForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">());</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:show.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="s1">&#39;publish_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$publishForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="s1">&#39;extend_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$extendForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As expected by the action, the extend() method of Job returns true if the job has been extended or false otherwise:</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">extend</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expiresSoon</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expires_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Eventually, add a test scenario:</p>
+<p>src.Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">testExtendJob</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// A job validity cannot be extended before the job expires soon</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO4&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;input[type=submit]:contains(&quot;Extend&quot;)&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// A job validity can be extended when the job expires soon</span>
+
+    <span class="c1">// Create a new FOO5 job</span>
+    <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO5&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+
+    <span class="c1">// Get the job and change the expire date to today</span>
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+    <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByPosition</span><span class="p">(</span><span class="s1">&#39;FOO5&#39;</span><span class="p">);</span>
+    <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setExpiresAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+    <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+    <span class="c1">// Go to the preview page and extend the job</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/job/%s/%s/%s/%s&#39;</span><span class="p">,</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()));</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Extend&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+    <span class="c1">// Reload the job from db</span>
+    <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJobByPosition</span><span class="p">(</span><span class="s1">&#39;FOO5&#39;</span><span class="p">);</span>
+
+    <span class="c1">// Check the expiration date</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getExpiresAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;y/m/d&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;y/m/d&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="maintenance-tasks">
+<h2>30.7. Maintenance Tasks<a class="headerlink" href="#maintenance-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Even if symfony is a web framework, it comes with a command line tool. You have already used it to create the default directory structure of the application bundle and to generate various files for the model. Adding a new command is quite easy.
+When a user creates a job, he must activate it to put it online. But if not, the database will grow with stale jobs. Let’s create a command that remove stale jobs from the database. This command will have to be run regularly in a cron job.</p>
+<p>src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputArgument</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputOption</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\OutputInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobeetCleanupCommand</span> <span class="k">extends</span> <span class="nx">ContainerAwareCommand</span> <span class="p">{</span>
+
+  <span class="k">protected</span> <span class="k">function</span> <span class="nf">configure</span><span class="p">()</span>
+  <span class="p">{</span>
+      <span class="nv">$this</span>
+          <span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;ibw:jobeet:cleanup&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Cleanup Jobeet database&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">addArgument</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="nx">InputArgument</span><span class="o">::</span><span class="na">OPTIONAL</span><span class="p">,</span> <span class="s1">&#39;The email&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">protected</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nx">InputInterface</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">OutputInterface</span> <span class="nv">$output</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="nv">$days</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">);</span>
+
+      <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+      <span class="nv">$nb</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">cleanup</span><span class="p">(</span><span class="nv">$days</span><span class="p">);</span>
+
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;Removed %d stale jobs&#39;</span><span class="p">,</span> <span class="nv">$nb</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You will have to add the cleanup method to the JobRepository class:</p>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">cleanup</span><span class="p">(</span><span class="nv">$days</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span>
+        <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.is_activated IS NULL&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.created_at &lt; :created_at&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span>  <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">86400</span> <span class="o">*</span> <span class="nv">$days</span><span class="p">))</span>
+        <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To run the command execute the following from the project folder:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console ibw:jobeet:cleanup
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console ibw:jobeet:cleanup 10
+</pre></div>
+</div>
+<p>to delete stale jobs older than 10 days.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+original <cite>symfony2 jobeet</cite> article is here <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

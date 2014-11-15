@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. 6日目: モデルの続き &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="7. 7日目: カテゴリーページ" href="day-7-playing-with-the-category-page.html" />
+    <link rel="prev" title="5. 5日目: ルーティング" href="day-5-the-routing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">6. 6日目: モデルの続き</a><ul>
+<li><a class="reference internal" href="#doctrine">6.1. Doctrine クエリーオブジェクト</a></li>
+<li><a class="reference internal" href="#doctrine-sql">6.2. Doctrine が生成した SQL のデバッグ</a></li>
+<li><a class="reference internal" href="#id2">6.3. オブジェクトのシリアライズ</a></li>
+<li><a class="reference internal" href="#id3">6.4. フィクスチャーに追加</a></li>
+<li><a class="reference internal" href="#id4">6.5. リファクタリング</a></li>
+<li><a class="reference internal" href="#id5">6.6. ホームページのカテゴリー</a></li>
+<li><a class="reference internal" href="#id6">6.7. 結果を制限</a></li>
+<li><a class="reference internal" href="#id7">6.8. カスタム設定</a></li>
+<li><a class="reference internal" href="#id8">6.9. 動的なフィクスチャー</a></li>
+<li><a class="reference internal" href="#id9">6.10. ジョブページを安全にする</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-5-the-routing.html" title="Previous Chapter: 5. 5日目: ルーティング"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 5. 5日目: ルーティング</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-7-playing-with-the-category-page.html" title="Next Chapter: 7. 7日目: カテゴリーページ"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">7. 7日目: カテゴリーページ &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-6-more-with-the-model.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>6. 6日目: モデルの続き<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="section" id="doctrine">
+<h2>6.1. Doctrine クエリーオブジェクト<a class="headerlink" href="#doctrine" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">2 日目の要件として、「ホームページでは、ユーザーは最新の有効なジョブを閲覧します」としました。</div>
+<div class="line">しかし、現在はすべてのジョブが、アクティブであるかに関わらず表示されています。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">JobController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entities</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entities&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entities</span>
+        <span class="p">));</span>
+
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">アクティブなジョブとは、 30 日前以内に投稿されたものです。</div>
+<div class="line"><tt class="docutils literal"><span class="pre">$entities</span> <span class="pre">=</span> <span class="pre">$em-&gt;getRepository('IbwJobeetBundle')-&gt;findAll()</span></tt> メソッドは、すべてのジョブを取得するために、データベースへのリクエストを行います。</div>
+<div class="line">現在は条件をなにも指定していません。そのため、すべてのレコードがデータベースから取り出されてしまいます。</div>
+<div class="line">では、アクティブなジョブのみを選択するよう変更してみましょう。</div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span>
+        <span class="s1">&#39;SELECT j FROM IbwJobeetBundle:Job j WHERE j.created_at &gt; :date&#39;</span>
+    <span class="p">)</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">));</span>
+    <span class="nv">$entities</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entities&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entities</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doctrine-sql">
+<h2>6.2. Doctrine が生成した SQL のデバッグ<a class="headerlink" href="#doctrine-sql" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">デバッグツールバーは、例えば、期待通りに動作しないクエリをデバッグするときに、 Doctrine によって生成された SQL を参照する大きな助けとなります。</div>
+<div class="line">dev 環境では、Symfony は Web デバッグツールバーのおかげで、 必要なすべての情報がブラウザ上で快適に利用できます（ http：//jobeet.local/app_dev.php ）。</div>
+</div>
+<img alt="_images/Day-6-web-debug-toolbar.png" src="_images/Day-6-web-debug-toolbar.png" />
+</div>
+<div class="section" id="id2">
+<h2>6.3. オブジェクトのシリアライズ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">上記のコードは動作していても、 2 日目の「ユーザーは戻ってきて再度アクティブにするか、ジョブの期間の検証を 30 日以上に広げることが出来、、、」という要件から考慮すると、完璧にはほど遠いです。</div>
+<div class="line">上記のコードは created_at の値にのみ依存しており、このカラムには作成日を格納しているため、要件を満しません。</div>
+<div class="line">3 日目に説明したデータベーススキーマを覚えていれば、 expires_at カラムも定義したことを覚えているでしょう。</div>
+<div class="line">この値は、フィクスチャーファイルに設定されていない場合、空のままです。</div>
+<div class="line">しかし、ジョブが作成されるときに、自動的に現在の日付から 30 日後に設定することができます。</div>
+<div class="line">Doctrine のオブジェクトがデータベースにシリアライズされる前に自動的に何かをする必要があるときは、先ほど created_at カラムで行ったように、オブジェクトをデータベースにマッピングするファイルに、ライフサイクルコールバックの新しいアクションを追加することで可能です。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setCreatedAtValue</span><span class="p-Indicator">,</span> <span class="nv">setExpiresAtValue</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">preUpdate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setUpdatedAtValue</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>Doctrine に新しい関数が追加されるので、エンティティクラスを再生成する必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php ファイルを開き、メソッドを編集します。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PrePersist</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setExpiresAtValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getExpiresAt</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$now</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCreatedAt</span><span class="p">()</span> <span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCreatedAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">)</span> <span class="o">:</span> <span class="nb">time</span><span class="p">();</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expires_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nv">$now</span> <span class="o">+</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>では、有効なジョブを選択するためには created_at の代わりに expires_at カラムを使用するようにアクションを変更してみましょう。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span>
+            <span class="s1">&#39;SELECT j FROM IbwJobeetBundle:Job j WHERE j.expires_at &gt; :date&#39;</span>
+    <span class="p">)</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+        <span class="nv">$entities</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entities&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entities</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>6.4. フィクスチャーに追加<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">データベース内のジョブが数日前に投稿されたばかりのため、ブラウザで Jobeet のホームページをリフレッシュしても何も変わりません。</div>
+<div class="line">それでは、期限切れのジョブ情報をフィクスチャーに追加しましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+
+        <span class="nv">$job_expired</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">)));</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;full-time&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Sensio Labs&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setLogo</span><span class="p">(</span><span class="s1">&#39;sensio-labs.gif&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://www.sensiolabs.com/&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;Web Developer Expired&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris, France&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send your resume to lorem.ipsum [at] dolor.sit&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setIsPublic</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;job_expired&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;job@example.com&#39;</span><span class="p">);</span>
+        <span class="nv">$job_expired</span><span class="o">-&gt;</span><span class="na">setCreatedAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;2005-12-01&#39;</span><span class="p">));</span>
+
+        <span class="c1">// ...</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job_expired</span><span class="p">);</span>
+        <span class="c1">// ...</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>フィクスチャーをリロードし、古いジョブが表示されないことを確認するためにブラウザをリフレッシュします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:fixtures:load
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>6.5. リファクタリング<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">書いたコードは動作しますが、まだ正しくありません。問題を発見することはできますでしょうか？</div>
+<div class="line">Doctrine のクエリコードはアクション（コントローラ層）に属さず、 Model レイヤーに所属します。</div>
+<div class="line">MVC モデルでは、モデルはすべてのビジネスロジックを定義し、 Controller はデータを読み取るモデルのみを呼び出します。</div>
+<div class="line">コードは、ジョブのコレクションを返すように、そのコードをモデルに移動しましょう​​。</div>
+<div class="line">そのためには、ジョブのエンティティのカスタムリポジトリクラスを作成し、そのクラスにクエリを追加する必要があります。</div>
+<div class="line">src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml を開いて、そこに次の行を追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">repositoryClass</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Repository\JobRepository</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Doctrine は、以前に使用した <tt class="docutils literal"><span class="pre">generate:entities</span></tt> コマンドを​実行することで、リポジトリクラスを生成することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">次に、新規に生成されたリポジトリクラスに新しいメソッド - getActiveJobs() - を追加します。</div>
+<div class="line">このメソッドは、 expires_at のカラムでソートし、有効なすべてのジョブのエンティティを照会します。</div>
+<div class="line">さらに、$category_id パラメータを受信した場合、カテゴリでフィルタリングしたエンティティを照会します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * JobRepository</span>
+<span class="sd"> *</span>
+<span class="sd"> * This class was generated by the Doctrine ORM. Add your own custom</span>
+<span class="sd"> * repository methods below.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">JobRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJobs</span><span class="p">(</span><span class="nv">$category_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;j.expires_at&#39;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$category_id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.category = :category_id&#39;</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="nv">$category_id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ここで、アクションのなかで、アクティブなジョブを取得するために上記の新しいメソッドを使用します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entities</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJobs</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entities&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entities</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>このリファクタリングは、前のコードに比べていくつかの利点があります。</p>
+<ul class="simple">
+<li>有効なジョブを取得するロジックが、モデルに属すること。</li>
+<li>コントローラーのコードは、より薄く、より読みやすいこと。</li>
+<li>getActiveJobs() メソッドは、再利用可能（たとえば別のアクションで）なこと。</li>
+<li>現在、モデルコードは単体テスト（ユニットテスト）が可能なこと。</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>6.6. ホームページのカテゴリー<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">二日目の要件によると、カテゴリでソートされたジョブを持っていなくてはいけません。</div>
+<div class="line">今まで、ジョブのカテゴリーを考慮していませんでした。要件からはホームページでカテゴリに基づいて表示しなければなりません。</div>
+<div class="line">まず、少なくとも 1 つの有効なジョブからすべてのカテゴリを取得する必要があります。</div>
+<div class="line">ジョブクラスに行ったように、カテゴリエンティティのリポジトリクラスを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Category</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">repositoryClass</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Repository\CategoryRepository</span>
+    <span class="c1">#...</span>
+</pre></div>
+</div>
+<p>リポジトリクラスを生成します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>CategoryRepository クラスを開き、 getWithJobs() メソッドを追加します。</p>
+<p>src/Ibw/JobeetBundle/Repository/CategoryRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * CategoryRepository</span>
+<span class="sd"> *</span>
+<span class="sd"> * This class was generated by the Doctrine ORM. Add your own custom</span>
+<span class="sd"> * repository methods below.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">CategoryRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getWithJobs</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getEntityManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span>
+            <span class="s1">&#39;SELECT c FROM IbwJobeetBundle:Category c LEFT JOIN c.jobs j WHERE j.expires_at &gt; :date&#39;</span>
+        <span class="p">)</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>それに応じて index アクションを変更します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$categories</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Category&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getWithJobs</span><span class="p">();</span>
+
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">setActiveJobs</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJobs</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;categories&#39;</span> <span class="o">=&gt;</span> <span class="nv">$categories</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>これが機能するためには、 Category クラスに新しいプロパティ active_jobs を追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Entity/Category.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Category</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">private</span> <span class="nv">$active_jobs</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setActiveJobs</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">active_jobs</span> <span class="o">=</span> <span class="nv">$jobs</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJobs</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">active_jobs</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>テンプレートでは、すべてのカテゴリを反復処理し、有効なジョブを表示する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;jobs&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">category</span> <span class="k">in</span> <span class="nv">categories</span> <span class="cp">%}</span>
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;category&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;feed&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Feed<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">category.name</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;jobs&quot;</span><span class="nt">&gt;</span>
+                    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">entity</span> <span class="k">in</span> <span class="nv">category.activejobs</span> <span class="cp">%}</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">cycle</span><span class="o">([</span><span class="s1">&#39;even&#39;</span><span class="o">,</span> <span class="s1">&#39;odd&#39;</span><span class="o">],</span> <span class="nb">loop</span><span class="nv">.index</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;location&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.location</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;position&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">entity.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">entity.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">entity.positionslug</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                                    <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+                                <span class="nt">&lt;/a&gt;</span>
+                            <span class="nt">&lt;/td&gt;</span>
+                             <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;company&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+                <span class="nt">&lt;/table&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>6.7. 結果を制限<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ホームページのジョブリストのために実装すべき要件がまだひとつあります。</div>
+<div class="line">それは、ジョブリストの数を 10 個に制限することです。</div>
+<div class="line">JobRepository:: getActiveJobs() メソッドに $max のパラメータを追加するだけで十分です。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJobs</span><span class="p">(</span><span class="nv">$category_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$max</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+        <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;j.expires_at&#39;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$max</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="nv">$max</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$category_id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.category = :category_id&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="nv">$category_id</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>getActiveJobs() メソッドの呼び出しのパラメータに $max が含まれるように変更します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$categories</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Category&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getWithJobs</span><span class="p">();</span>
+
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">setActiveJobs</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJobs</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="mi">10</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;categories&#39;</span> <span class="o">=&gt;</span> <span class="nv">$categories</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>6.8. カスタム設定<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">JobController の indexAction メソッドでは、カテゴリごとの最大ジョブ数は、ハードコーディングされていました。</div>
+<div class="line">その10個の制限は、設定変更が出来るようにする方がよいです。</div>
+<div class="line">Symfony の  app/config/config.yml ファイルの <tt class="docutils literal"><span class="pre">parameters</span></tt> キーの下に（ <tt class="docutils literal"><span class="pre">parameters</span></tt> が存在しない場合は作成して）</div>
+<div class="line">アプリケーション用のカスタムパラメータを定義できます。</div>
+</div>
+<p>app/config/config.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">parameters</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">max_jobs_on_homepage</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">10</span>
+</pre></div>
+</div>
+<p>これでコントローラからパラメーターにアクセスできます。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$categories</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Category&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getWithJobs</span><span class="p">();</span>
+
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">setActiveJobs</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJobs</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">)));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;categories&#39;</span> <span class="o">=&gt;</span> <span class="nv">$categories</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>6.9. 動的なフィクスチャー<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">まだ、データベースにあるジョブが非常に少ないため、何の違いも表示されません。</div>
+<div class="line">フィクスチャーにまとまったジョブを追加する必要があります。</div>
+<div class="line">そのために手動で既存のジョブの 10 または 20 倍をコピーアンドペーストする...というよりももっと良い方法があります。</div>
+<div class="line">フィクスチャーファイルにおいても重複することは悪いことです。</div>
+</div>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">130</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">)));</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;full-time&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Company &#39;</span><span class="o">.</span><span class="nv">$i</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;Web Developer&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris, France&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send your resume to lorem.ipsum [at] dolor.sit&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setIsPublic</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;job_&#39;</span><span class="o">.</span><span class="nv">$i</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;job@example.com&#39;</span><span class="p">);</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+    <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">doctrine:fixtures:load</span></tt> タスクでフィクスチャーを再読み込みできます。</div>
+<div class="line">ホームページのプログラミングカテゴリに 10 個のジョブだけが表示されます。</div>
+</div>
+<img alt="_images/Day-6-limited-no-of-jobs.png" src="_images/Day-6-limited-no-of-jobs.png" />
+</div>
+<div class="section" id="id9">
+<h2>6.10. ジョブページを安全にする<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ジョブが終了したときは、URLを知っていても、もうそれにアクセスすることはできません。</div>
+<div class="line">期限切れのジョブ用のURLを、 <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">token</span> <span class="pre">FROM</span> <span class="pre">job</span> <span class="pre">WHERE</span> <span class="pre">expires_at</span> <span class="pre">&lt;</span> <span class="pre">NOW()</span></tt> で調べて、データベース内の実際の id で URL の ID を置き換えて試してみてください。</div>
+<div class="line">/app_dev.php/job/sensio-labs/paris-france/ID/web-developer-expired</div>
+<div class="line">ジョブを表示する代わりに、404ページにユーザーを転送する必要があります。</div>
+<div class="line">このために JobRepository クラスに新しい関数を作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJob</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.id = :id&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Doctrine\Orm\NoResultException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$job</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$job</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">getSingleResult() メソッドは、結果が返されない場合には <tt class="docutils literal"><span class="pre">Doctrine\ORM\NoResultException</span></tt> 例外がスローされます。</div>
+<div class="line">また、複数の結果が返された場合は、 <tt class="docutils literal"><span class="pre">Doctrine\ORM\NonUniqueResultException</span></tt> 例外がスローされます。</div>
+<div class="line">この方法を使用する場合は、try-catch ブロックで囲んで、結果がひとつだけ返されることを保証する必要があるかもしれません。</div>
+<div class="line">今すぐ新しいリポジトリメソッドを使用するように JobController クラスの showAction() メソッドを変更します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getActiveJob</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>期限切れのジョブを取得しようとした場合、404ページに転送されます。</p>
+<img alt="_images/Day-6-no-job-found.png" src="_images/Day-6-no-job-found.png" />
+<p>これで今日のすべてです！明日またお会いしましょう。カテゴリページを作っていきます。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>24. Day 5: The Routing &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="25. Day 6: More with the Model" href="day-6-more-with-the-model.html" />
+    <link rel="prev" title="23. Day 4: The Controller and the View" href="day-4-the-controller-and-the-view.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">24. Day 5: The Routing</a><ul>
+<li><a class="reference internal" href="#urls">24.1. URLs</a></li>
+<li><a class="reference internal" href="#routing-configuration">24.2. Routing Configuration</a></li>
+<li><a class="reference internal" href="#routing-configuration-in-dev-environment">24.3. Routing Configuration in Dev Environment</a></li>
+<li><a class="reference internal" href="#route-customizations">24.4. Route Customizations</a></li>
+<li><a class="reference internal" href="#route-requirements">24.5. Route Requirements</a></li>
+<li><a class="reference internal" href="#route-debugging">24.6. Route Debugging</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-4-the-controller-and-the-view.html" title="Previous Chapter: 23. Day 4: The Controller and the View"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 23. Day 4: The C...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-6-more-with-the-model.html" title="Next Chapter: 25. Day 6: More with the Model"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">25. Day 6: More ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/en/day-5-the-routing.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="day-5-the-routing">
+<h1>24. Day 5: The Routing<a class="headerlink" href="#day-5-the-routing" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This article is part of the original <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a>, created by Fabien Potencier, for Symfony 1.4.</li>
+</ul>
+<div class="section" id="urls">
+<h2>24.1. URLs<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h2>
+<p>If you click on a job on the Jobeet homepage, the URL looks like this: /job/1/show. If you have already developed PHP websites, you are probably more accustomed to URLs like /job.php?id=1. How does Symfony make it work? How does Symfony determine the action to call based on this URL? Why is the id of the job retrieved with the $id parameter in the action? Here, we will answer all these questions.
+You have already seen the following code in the src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>This uses the path template helper function to generate the url for the job which has the id 1. The ibw_job_show is the name of the route used, defined in the configuration as you will see below.</p>
+</div>
+<div class="section" id="routing-configuration">
+<h2>24.2. Routing Configuration<a class="headerlink" href="#routing-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In Symfony2, routing configuration is usually done in the app/config/routing.yml. This imports specific bundle routing configuration. In our case, the src/Ibw/JobeetBundle/Resources/config/routing.yml file is imported:
+app/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">ibw_jobeet</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing.yml&quot;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/</span>
+</pre></div>
+</div>
+<p>Now, if you look in the JobeetBundle routing.yml you will see that it imports another routing file, the one for the Job controller and defines a route called ibw_jobeet_homepage for the /hello/{name} URL pattern:
+src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">IbwJobeetBundle_job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing/job.yml&quot;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/job</span>
+
+<span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/hello/{name}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Default</span><span class="p-Indicator">:</span><span class="nv">index</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">ibw_job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:index&quot;</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_show</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{id}/show</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:show&quot;</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_new</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/new</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:new&quot;</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_create</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/create</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:create&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_edit</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{id}/edit</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:edit&quot;</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_update</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{id}/update</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:update&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post|put</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_delete</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{id}/delete</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:delete&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post|delete</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Let’s have a closer look to the ibw_job_show route. The pattern defined by the ibw_job_show route acts like /<a href="#id1"><span class="problematic" id="id2">*</span></a>/show where the wildcard is given the name id.
+For the URL /1/show, the id variable gets a value of 1, which is available for you to use in your controller.
+The _controller parameter is a special key that tells Symfony which controller/action should be executed when a URL matches this route,
+in our case it should execute the showAction from the JobController in the IbwJobeetBundle.
+The route parameters (e.g. {id}) are especially important because each is made available as an argument to the controller method.</p>
+</div>
+<div class="section" id="routing-configuration-in-dev-environment">
+<h2>24.3. Routing Configuration in Dev Environment<a class="headerlink" href="#routing-configuration-in-dev-environment" title="Permalink to this headline">¶</a></h2>
+<p>The dev environment loads the app/config/routing_dev.yml file that contains the routes used by the Web Debug Toolbar (you already deleted the routes for the AcmeDemoBundle from /app/config/routing_dev.php – see Day 1, How to remove the AcmeDemoBundle). This file loads, at the end, the main routing.yml configuration file.</p>
+</div>
+<div class="section" id="route-customizations">
+<h2>24.4. Route Customizations<a class="headerlink" href="#route-customizations" title="Permalink to this headline">¶</a></h2>
+<p>For now, when you request the / URL in a browser, you will get a 404 Not Found error. That’s because this URL does not match any routes defined. We have a  ibw_jobeet_homepage route that matches the /hello/jobeet URL and sends us to the DefaultController, index action. Let’s change it to match the / URL and to call the index action from the JobController. To make the change, modify it to the following:</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+<span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Job</span><span class="p-Indicator">:</span><span class="nv">index</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Now, if you clear the cache and go to <a class="reference external" href="http://jobeet.local">http://jobeet.local</a> from your browser, you will see the Job homepage. We can now change the link of the Jobeet logo in the layout to use the ibw_jobeet_homepage route:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+    <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_jobeet_homepage&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">&quot;Jobeet Job Board&quot;</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/logo.jpg&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>For something a bit more involved, let’s change the job page URL to something more meaningful:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">/</span><span class="nx">job</span><span class="o">/</span><span class="nx">sensio</span><span class="o">-</span><span class="nx">labs</span><span class="o">/</span><span class="nx">paris</span><span class="o">-</span><span class="nx">france</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="nx">web</span><span class="o">-</span><span class="nx">developer</span>
+</pre></div>
+</div>
+<p>Without knowing anything about Jobeet, and without looking at the page, you can understand from the URL that Sensio Labs is looking for a Web developer to work in Paris, France.
+The following pattern matches such a URL:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">/</span><span class="nx">job</span><span class="o">/</span><span class="p">{</span><span class="nx">company</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="nx">location</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="nx">position</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Edit the ibw_job_show route from the job.yml file:</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_show</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{company}/{location}/{id}/{position}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:show&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Now, we need to pass all the parameters for the changed route for it to work:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">entity.company</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">entity.location</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">entity.position</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>If you have a look at generated URLs, they are not quite yet as we want them to be:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">http</span><span class="o">://</span><span class="nx">jobeet</span><span class="o">.</span><span class="nx">local</span><span class="o">/</span><span class="nx">app_dev</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">job</span><span class="o">/</span><span class="nx">Sensio</span> <span class="nx">Labs</span><span class="o">/</span><span class="nx">Paris</span><span class="p">,</span><span class="nx">France</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="nx">Web</span> <span class="nx">Developer</span>
+</pre></div>
+</div>
+<p>We need to “slugify” the column values by replacing all non ASCII characters by a -. Open the Job.php file and add the following methods to the class:</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Utils\Jobeet</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCompanySlug</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Jobeet</span><span class="o">::</span><span class="na">slugify</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCompany</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPositionSlug</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Jobeet</span><span class="o">::</span><span class="na">slugify</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPosition</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLocationSlug</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Jobeet</span><span class="o">::</span><span class="na">slugify</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLocation</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You must also add the use statement before the Job class definition.
+After that, create the src/Ibw/JobeetBundle/Utils/Jobeet.php file and add the slugify method in it:</p>
+<p>src/Ibw/JobeetBundle/Utils/Jobeet.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Utils</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Jobeet</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">slugify</span><span class="p">(</span><span class="nv">$text</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// replace all non letters or digits by -</span>
+        <span class="nv">$text</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/\W+/&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+
+        <span class="c1">// trim and lowercase</span>
+        <span class="nv">$text</span> <span class="o">=</span> <span class="nx">strtolower</span><span class="p">(</span><span class="nx">trim</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$text</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We have defined three new “virtual” accessors: getCompanySlug(), getPositionSlug(), and getLocationSlug(). They return their corresponding column value after applying it the slugify() method. Now, you can replace the real column names by these virtual ones in the template:</p>
+<p>src/Ibw/JobeetBundle/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">entity.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">entity.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">entity.positionslug</span><span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+   <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-requirements">
+<h2>24.5. Route Requirements<a class="headerlink" href="#route-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The routing system has a built-in validation feature. Each pattern variable can be validated by a regular expression defined using the requirements entry of a route definition:
+src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+<span class="l-Scalar-Plain">ibw_job_show</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{company}/{location}/{id}/{position}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:show&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">\d+</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>The above requirements entry forces the id to be a numeric value. If not, the route won’t match.</p>
+</div>
+<div class="section" id="route-debugging">
+<h2>24.6. Route Debugging<a class="headerlink" href="#route-debugging" title="Permalink to this headline">¶</a></h2>
+<p>While adding and customizing routes, it’s helpful to be able to visualize and get detailed information about your routes. A great way to see every route in your application is via the router:debug console command. Execute the command by running the following from the root of your project:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console router:debug
+</pre></div>
+</div>
+<p>The command will print a helpful list of all the configured routes in your application. You can also get very specific information on a single route by including the route name after the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console router:debug ibw_job_show
+</pre></div>
+</div>
+<p>Final Thoughts</p>
+<p>That’s all for today! To learn more about the Symfony2 routing system read the Routing chapter form the book.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+original <cite>symfony2 jobeet</cite> article is here <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. 3日目: データモデル &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="4. 4日目: コントローラーとビュー" href="day-4-the-controller-and-the-view.html" />
+    <link rel="prev" title="2. 2日目: このプロジェクトについて" href="day-2-the-project.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3. 3日目: データモデル</a><ul>
+<li><a class="reference internal" href="#id2">3.1. リレーションモデル</a></li>
+<li><a class="reference internal" href="#id3">3.2. データベース</a></li>
+<li><a class="reference internal" href="#id4">3.3. スキーマ</a></li>
+<li><a class="reference internal" href="#the-orm">3.4. The ORM</a></li>
+<li><a class="reference internal" href="#id5">3.5. ブラウザーで見る</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-2-the-project.html" title="Previous Chapter: 2. 2日目: このプロジェクトについて"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 2. 2日目: このプロジェクト...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-4-the-controller-and-the-view.html" title="Next Chapter: 4. 4日目: コントローラーとビュー"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">4. 4日目: コントローラーと... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-3-the-data-model.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>3. 3日目: データモデル<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">今日はいくつかの開発に入ります。テキストエディタを開いて、PHP ファイルを書きたくうずうずしている場合は、うれしいでしょう。</div>
+<div class="line">アプリケーションの最初のモジュールを構築するために、 ORM を使用してデータベースと対話し Jobeet のデータモデルを定義します。</div>
+<div class="line">しかし、 Symfony は、多くの仕事と同様、 PHP コードをあまり書くことなく、完全に機能するウェブモジュールを持つことができます。</div>
+</div>
+<div class="section" id="id2">
+<h2>3.1. リレーションモデル<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">前日のユーザーストーリーでは、プロジェクトのメインオブジェクト（ジョブ、アフィリエイト、およびカテゴリ）について説明しました。</div>
+<div class="line">ここで、対応する ER 図は次のとおりです。</div>
+</div>
+<img alt="_images/Day3-entity_diagram.png" src="_images/Day3-entity_diagram.png" />
+<div class="line-block">
+<div class="line">ストーリーで説明したカラムに加え、 created_at と updated_at のカラムを追加しました。</div>
+<div class="line">オブジェクトが保存または更新されたときに自動的に値を設定するために Symfony を設定します。</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>3.2. データベース<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">データベース内のジョブ、アフィリエイトとカテゴリを格納するために、Symfony 2.3.2 は Doctrine ORM を使用しています。</div>
+<div class="line">データベース接続パラメータを定義するには、（このチュートリアルでは、MySQLを使用します） app/config/parameters.yml ファイルを編集する必要があります。</div>
+</div>
+<p>app/config/parameters.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">parameters</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">database_driver</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pdo_mysql</span>
+    <span class="l-Scalar-Plain">database_host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">localhost</span>
+    <span class="l-Scalar-Plain">database_port</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+    <span class="l-Scalar-Plain">database_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">jobeet</span>
+    <span class="l-Scalar-Plain">database_user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+    <span class="l-Scalar-Plain">database_password</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">password</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>これで Doctrine はデータベースについて知りました。次のコマンドをターミナルで入力して、データベースを作成することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:database:create
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>3.3. スキーマ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Doctrine にオブジェクトを教えるために、「メタデータ」ファイルを作成します。それは、オブジェクトをデータベースに格納する方法を説明します。</div>
+<div class="line">今すぐエディタに移動し、 <tt class="docutils literal"><span class="pre">src/Ibw/JobeetBundle/Resources/config</span></tt> ディレクトリの中に <tt class="docutils literal"><span class="pre">doctrine</span></tt> という名前のディレクトリを作成してください。</div>
+<div class="line"><tt class="docutils literal"><span class="pre">doctrine</span></tt> には 3 つのファイル（ Category.orm.yml 、 Job.orm.yml と Affiliate.orm.yml ）が入っています。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Category.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Category</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">table</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">category</span>
+    <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+            <span class="l-Scalar-Plain">generator</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">strategy</span><span class="p-Indicator">:</span> <span class="nv">AUTO</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+    <span class="l-Scalar-Plain">oneToMany</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">jobs</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">targetEntity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Job</span>
+            <span class="l-Scalar-Plain">mappedBy</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">category</span>
+    <span class="l-Scalar-Plain">manyToMany</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">affiliates</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">targetEntity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Affiliate</span>
+            <span class="l-Scalar-Plain">mappedBy</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">categories</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">table</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">job</span>
+    <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+            <span class="l-Scalar-Plain">generator</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">strategy</span><span class="p-Indicator">:</span> <span class="nv">AUTO</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">company</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">logo</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">position</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">text</span>
+        <span class="l-Scalar-Plain">how_to_apply</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">text</span>
+        <span class="l-Scalar-Plain">token</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">is_public</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">is_activated</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">expires_at</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">datetime</span>
+        <span class="l-Scalar-Plain">created_at</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">datetime</span>
+        <span class="l-Scalar-Plain">updated_at</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">datetime</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+    <span class="l-Scalar-Plain">manyToOne</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">targetEntity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Category</span>
+            <span class="l-Scalar-Plain">inversedBy</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">jobs</span>
+            <span class="l-Scalar-Plain">joinColumn</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">category_id</span>
+                <span class="l-Scalar-Plain">referencedColumnName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">id</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setCreatedAtValue</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">preUpdate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setUpdatedAtValue</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">table</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">affiliate</span>
+    <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+            <span class="l-Scalar-Plain">generator</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">strategy</span><span class="p-Indicator">:</span> <span class="nv">AUTO</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+            <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">token</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">length</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">255</span>
+        <span class="l-Scalar-Plain">is_active</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+            <span class="l-Scalar-Plain">nullable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">created_at</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">datetime</span>
+    <span class="l-Scalar-Plain">manyToMany</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">categories</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">targetEntity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Category</span>
+            <span class="l-Scalar-Plain">inversedBy</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">affiliates</span>
+            <span class="l-Scalar-Plain">joinTable</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">category_affiliate</span>
+                <span class="l-Scalar-Plain">joinColumns</span><span class="p-Indicator">:</span>
+                    <span class="l-Scalar-Plain">affiliate_id</span><span class="p-Indicator">:</span>
+                        <span class="l-Scalar-Plain">referencedColumnName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">id</span>
+                <span class="l-Scalar-Plain">inverseJoinColumns</span><span class="p-Indicator">:</span>
+                    <span class="l-Scalar-Plain">category_id</span><span class="p-Indicator">:</span>
+                        <span class="l-Scalar-Plain">referencedColumnName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">id</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setCreatedAtValue</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-orm">
+<h2>3.4. The ORM<a class="headerlink" href="#the-orm" title="Permalink to this headline">¶</a></h2>
+<p>Doctrine は以下のコマンドを使用してオブジェクトを定義するクラスを生成します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">IbwJobeetBundle</span></tt> の <tt class="docutils literal"><span class="pre">Entity</span></tt> ディレクトリを見ると、そこに新しく生成されたクラス（ Category.php 、Job.php と Affiliate.php）があるでしょう。</div>
+<div class="line">Job.php を開いて、<tt class="docutils literal"><span class="pre">created_at</span></tt> と <tt class="docutils literal"><span class="pre">updated_at</span></tt> に以下のような値を設定します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PrePersist</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreatedAtValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCreatedAt</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PreUpdate</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdatedAtValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updated_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Affiliate クラスの <tt class="docutils literal"><span class="pre">created_at</span></tt> の値でも同じようにします。</p>
+<p>src/Ibw/JobeetBundle/Entity/Affiliate.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PrePersist</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreatedAtValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これによって、オブジェクトの保存または更新をするときに、 Doctrine が created_at を設定し updated_at を更新するようになります。</div>
+<div class="line">この動作は、上記の Affiliate.orm.yml と Job.orm.yml ファイルで定義されていました。</div>
+<div class="line">また、データベースのテーブルを作成するために以下のコマンドを使用して Doctrine に問い合わせます。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:schema:update --force
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">このタスクは、開発時に使用されるべきです。体系的に本番データベースを更新する、よりしっかりした方法については、 Doctrine のマイグレーションについて読んでください。</p>
+</div>
+<div class="line-block">
+<div class="line">データベース内にテーブルは作成されていますがデータはそこにありません。</div>
+<div class="line">多くの Web アプリケーションでは、 3 つのデータタイプがあります。</div>
+</div>
+<ul class="simple">
+<li>初期データ（これはアプリケーションが稼動するのに必要です。 Jobeet ではいくつかの初期カテゴリと管理者ユーザを持つことになります）</li>
+<li>テストデータ（アプリケーションをテストするために必要です）</li>
+<li>ユーザーデータ（ユーザーがアプリケーションの通常の寿命の間に作成したもの）</li>
+</ul>
+<div class="line-block">
+<div class="line">いくつかの初期データに基づいてデータベースを作成するためには、 <a class="reference external" href="http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html">DoctrineFixturesBundle</a> を使用します。</div>
+<div class="line">このバンドルのセットアップは、次の手順に従っておこないます。</div>
+</div>
+<ol class="arabic">
+<li><p class="first">composer.json ファイルの <tt class="docutils literal"><span class="pre">require</span></tt> セクションに以下を追加します。</p>
+<div class="highlight-json"><div class="highlight"><pre>// ...
+    &quot;require&quot;: {
+        // ...
+        &quot;doctrine/doctrine-fixtures-bundle&quot;: &quot;dev-master&quot;,
+        &quot;doctrine/data-fixtures&quot;: &quot;dev-master&quot;
+    },
+
+// ...
+</pre></div>
+</div>
+</li>
+<li><p class="first">ベンダライブラリを更新します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php composer.phar update
+</pre></div>
+</div>
+</li>
+<li><p class="first">app/AppKernel.php にバンドル <tt class="docutils literal"><span class="pre">DoctrineFixturesBundle</span></tt> を登録します。</p>
+<p>app/AppKernel.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">registerBundles</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$bundles</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="c1">// ...</span>
+        <span class="k">new</span> <span class="nx">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</span><span class="p">()</span>
+    <span class="p">);</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>今ではすべてがセットアップされ、データをロードするために、バンドル内の src/Ibw/JobeetBundle/DataFixtures/ORM という名前の新しいフォルダに、いくつかの新しいクラスを作成します。</p>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\DataFixtures\ORM</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\Common\Persistence\ObjectManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\AbstractFixture</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\OrderedFixtureInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Category</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoadCategoryData</span> <span class="k">extends</span> <span class="nx">AbstractFixture</span> <span class="k">implements</span> <span class="nx">OrderedFixtureInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$design</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Category</span><span class="p">();</span>
+        <span class="nv">$design</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Design&#39;</span><span class="p">);</span>
+
+        <span class="nv">$programming</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Category</span><span class="p">();</span>
+        <span class="nv">$programming</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Programming&#39;</span><span class="p">);</span>
+
+        <span class="nv">$manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Category</span><span class="p">();</span>
+        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$administrator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Category</span><span class="p">();</span>
+        <span class="nv">$administrator</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Administrator&#39;</span><span class="p">);</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$design</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$programming</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$manager</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$administrator</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addReference</span><span class="p">(</span><span class="s1">&#39;category-design&#39;</span><span class="p">,</span> <span class="nv">$design</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">,</span> <span class="nv">$programming</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addReference</span><span class="p">(</span><span class="s1">&#39;category-manager&#39;</span><span class="p">,</span> <span class="nv">$manager</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addReference</span><span class="p">(</span><span class="s1">&#39;category-administrator&#39;</span><span class="p">,</span> <span class="nv">$administrator</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// the order in which fixtures will be loaded</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\DataFixtures\ORM</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\Common\Persistence\ObjectManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\AbstractFixture</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\OrderedFixtureInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoadJobData</span> <span class="k">extends</span> <span class="nx">AbstractFixture</span> <span class="k">implements</span> <span class="nx">OrderedFixtureInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+    <span class="p">{</span>
+         <span class="nv">$job_sensio_labs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">)));</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;full-time&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Sensio Labs&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setLogo</span><span class="p">(</span><span class="s1">&#39;sensio-labs.gif&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://www.sensiolabs.com/&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;Web Developer&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris, France&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;You\&#39;ve already developed websites with symfony and you want to work with Open-Source technologies. You have a minimum of 3 years experience in web development with PHP or Java and you wish to participate to development of Web 2.0 sites using the best frameworks available.&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send your resume to fabien.potencier [at] sensio.com&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setIsPublic</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;job_sensio_labs&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;job@example.com&#39;</span><span class="p">);</span>
+         <span class="nv">$job_sensio_labs</span><span class="o">-&gt;</span><span class="na">setExpiresAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;+30 days&#39;</span><span class="p">));</span>
+         <span class="nv">$job_extreme_sensio</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-design&#39;</span><span class="p">)));</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;part-time&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Extreme Sensio&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setLogo</span><span class="p">(</span><span class="s1">&#39;extreme-sensio.gif&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://www.extreme-sensio.com/&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;Web Designer&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris, France&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send your resume to fabien.potencier [at] sensio.com&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setIsPublic</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;job_extreme_sensio&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;job@example.com&#39;</span><span class="p">);</span>
+         <span class="nv">$job_extreme_sensio</span><span class="o">-&gt;</span><span class="na">setExpiresAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;+30 days&#39;</span><span class="p">));</span>
+
+         <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job_sensio_labs</span><span class="p">);</span>
+         <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job_extreme_sensio</span><span class="p">);</span>
+         <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// the order in which fixtures will be loaded</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">fixtures</span></tt> が一度書き込まれたら、コマンドラインの <tt class="docutils literal"><span class="pre">doctrine:fixtures:load</span></tt> コマンドを使用して、それらをロードすることができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:fixtures:load
+</pre></div>
+</div>
+<p>使用しているデータベースをチェックすると、テーブルにロードされたデータが表示されるはずです。</p>
+</div>
+<div class="section" id="id5">
+<h2>3.5. ブラウザーで見る<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">以下のコマンドを実行し、新しいコントローラー、 src/Ibw/JobeetBundle/Controllers/JobController.php を作成します。</div>
+<div class="line">それは、ジョブのリスト表示、作成、編集、および削除のアクション（およびそれに対応するテンプレート、フォームとルート）を持ちます。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:crud --entity<span class="o">=</span>IbwJobeetBundle:Job --route-prefix<span class="o">=</span>ibw_job --with-write --format<span class="o">=</span>yml
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">このコマンドを実行した後は、いくつかの設定をプロンプトの要求に応じて行う必要があります。デフォルトの答えをただ選択します。</div>
+<div class="line">ブラウザでこれを表示するには、作成した新しいルート src/Ibw/JobeetBundle/Resources/config/routing/job.yml をメインルーティングファイルにインポートする必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">IbwJobeetBundle_job</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing/job.yml&quot;</span>
+        <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/job</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>また、ジョブ編集フォームからドロップダウンでカテゴリを編集するため、 <tt class="docutils literal"><span class="pre">Category</span></tt> クラスに <tt class="docutils literal"><span class="pre">_toString()</span></tt> メソッドを追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Entity/Category.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>キャッシュをクリアします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>dev
+<span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>prod
+</pre></div>
+</div>
+<p>これで、<tt class="docutils literal"><span class="pre">JobController</span></tt> をブラウザで <a class="reference external" href="http://jobeet.local/job/">http://jobeet.local/job/</a> （開発環境では <a class="reference external" href="http://jobeet.local/app_dev.php/job/">http://jobeet.local/app_dev.php/job/</a> ）にアクセスしてテストすることができます。</p>
+<img alt="_images/Day-3-index_page.png" src="_images/Day-3-index_page.png" />
+<div class="line-block">
+<div class="line">これでジョブの作成、および、編集ができるようになりました。必須フィールドを空白のまま、または、無効なデータを入力しようとしてみてください。</div>
+<div class="line">そう、 Symfony はデータベーススキーマの中を調べることで基本的な検証制約(バリデーション)を作成しました。</div>
+<div class="line">以上です。今日は少ししか PHP のコードを書いていませんが、微調整とカスタマイズの準備ができました。 <tt class="docutils literal"><span class="pre">job</span></tt> モデルのための Web モジュールを持ちました。</div>
+<div class="line">明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

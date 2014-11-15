@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. 9日目: 機能テスト(ファンクショナルテスト) &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="10. 10日目: フォーム" href="day-10-the-forms.html" />
+    <link rel="prev" title="8. 8日目: 単体テスト(ユニットテスト)" href="day-8-the-unit-tests.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">9. 9日目: 機能テスト(ファンクショナルテスト)</a><ul>
+<li><a class="reference internal" href="#id2">9.1. 最初の機能テスト</a></li>
+<li><a class="reference internal" href="#id3">9.2. 機能テストの実行</a></li>
+<li><a class="reference internal" href="#id4">9.3. 機能テストを書く</a><ul>
+<li><a class="reference internal" href="#id5">9.3.1. 期限切れのジョブが一覧表示されないこと</a></li>
+<li><a class="reference internal" href="#n">9.3.2. N個のジョブだけが、カテゴリの一覧表示されること</a></li>
+<li><a class="reference internal" href="#id6">9.3.3. カテゴリにジョブが多すぎる場合カテゴリページへのリンクのみを持つこと</a></li>
+<li><a class="reference internal" href="#id7">9.3.4. ジョブが日付でソートされること</a></li>
+<li><a class="reference internal" href="#id8">9.3.5. ホームページの各ジョブはクリックできること</a></li>
+<li><a class="reference internal" href="#id9">9.3.6. お手本から学ぶ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-8-the-unit-tests.html" title="Previous Chapter: 8. 8日目: 単体テスト(ユニットテスト)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 8. 8日目: 単体テスト(ユニ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-10-the-forms.html" title="Next Chapter: 10. 10日目: フォーム"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">10. 10日目: フォーム &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-9-the-functional-tests.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>9. 9日目: 機能テスト(ファンクショナルテスト)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">機能テスト(ファンクショナルテスト)は、端から端まで（ブラウザのリクエストからサーバーのレスポンスまで）アプリケーションをテストするための素晴らしいツールです。</div>
+<div class="line">それらはアプリケーションのすべての層（ルーティング、モデル、アクションとテンプレート）をテストします。</div>
+<div class="line">おそらく既に手動でやっていることと非常に似ています。</div>
+<div class="line">アクションを追加または変更するたびに、ブラウザでページを開き、リンクをクリックし表示されたページの要素をチェックして、すべてが期待どおりに動作することを確認する必要があります。</div>
+<div class="line">言い換えると、実装したばかりのユースケースに対応するシナリオを実行します。</div>
+<div class="line">これは手作業なので、退屈で間違いをしやすいです。</div>
+<div class="line">コードのどこかを変更するたびに、何かを壊していないことを保証するため、すべてのシナリオを行わなければなりません。</div>
+<div class="line">それは非常識です。 Symfonyでは機能テストはシナリオを簡単に書く方法を提供します。</div>
+<div class="line">各シナリオは、ユーザーがブラウザで体験することをシミュレートすることを再度自動的に何度も再生することができます。</div>
+<div class="line">単体テストのように、コードに自信を与えてくれます。</div>
+<div class="line">機能テストは、非常に明確なワークフローがあります。</div>
+</div>
+<ul class="simple">
+<li>リクエストを作成します。</li>
+<li>リンクをクリックするか、フォームを送信します。</li>
+<li>レスポンスをテストします。</li>
+<li>すすぎ、繰り返す。</li>
+</ul>
+<div class="section" id="id2">
+<h2>9.1. 最初の機能テスト<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">一般的に機能テストはバンドルのディレクトリ Tests/Controller にあるシンプルな PHP ファイルです。</div>
+<div class="line">CategoryController クラスによって処理するページをテストする場合は、特別な WebTestCase クラスを拡張して新しい CategoryControllerTest クラスを作成することで始めます。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testShow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/category/index&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">200</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>クローラーの詳細については、 Symfony ドキュメントをお読みください。</p>
+</div>
+<div class="section" id="id3">
+<h2>9.2. 機能テストの実行<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>単体テスト（ユニットテスト）と同様に、 PHPUnit のコマンドを実行することで機能テストを実行することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
+</pre></div>
+</div>
+<p>このテストは、テスト URL ( /category/index ) が Jobeet の内の有効な URL ではないため失敗します。:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">PHPUnit</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">22</span> <span class="nx">by</span> <span class="nx">Sebastian</span> <span class="nx">Bergmann</span><span class="o">.</span>
+
+<span class="nx">Configuration</span> <span class="nx">read</span> <span class="nx">from</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">jobeet</span><span class="o">/</span><span class="nx">app</span><span class="o">/</span><span class="nx">phpunit</span><span class="o">.</span><span class="nx">xml</span><span class="o">.</span><span class="nx">dist</span>
+
+<span class="nx">F</span>
+
+<span class="nx">Time</span><span class="o">:</span> <span class="mi">2</span> <span class="nx">seconds</span><span class="p">,</span> <span class="nx">Memory</span><span class="o">:</span> <span class="mf">25.25</span><span class="nx">Mb</span>
+
+<span class="nx">There</span> <span class="nx">was</span> <span class="mi">1</span> <span class="nx">failure</span><span class="o">:</span>
+
+<span class="mi">1</span><span class="p">)</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller\CategoryControllerTest</span><span class="o">::</span><span class="na">testShow</span>
+<span class="nx">Failed</span> <span class="nx">asserting</span> <span class="nx">that</span> <span class="k">false</span> <span class="nx">is</span> <span class="k">true</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>9.3. 機能テストを書く<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">機能テストを書くことはブラウザでシナリオを演じることに似ています。</div>
+<div class="line">すでに 2 日目のストーリーとしてテストする必要のあるすべてのシナリオは書かかれています。</div>
+<div class="line">まずは、 JobControllerTest クラスを編集して Jobeet のホームページをテストしてみましょう。 次のコードで置き換えます。</div>
+</div>
+<div class="section" id="id5">
+<h3>9.3.1. 期限切れのジョブが一覧表示されないこと<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::indexAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs td.position:contains(&quot;Expired&quot;)&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ホームページから期限切れのジョブの除外を検証するために、 CSS セレクタ <tt class="docutils literal"><span class="pre">.jobs</span> <span class="pre">td.position:contains(&quot;Expired&quot;)</span></tt> が、</div>
+<div class="line">レスポンスの中の HTML コンテンツ内のどれとも一致しないことを確認します。</div>
+<div class="line">（フィクスチャーの中で唯一、有効期限が切れたジョブは、役職に「 Expired 」が含まれていたことを思い出してください）。</div>
+</div>
+</div>
+<div class="section" id="n">
+<h3>9.3.2. N個のジョブだけが、カテゴリの一覧表示されること<a class="headerlink" href="#n" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">testIndex() 関数の最後に次のコードを追加します。</div>
+<div class="line">機能テストで app/config/config.yml で定義されたカスタムパラメータを取得するには、カーネルを使用します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+    <span class="nv">$max_jobs_on_homepage</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_homepage</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">このテストを動作させるために Job/index.html.twig の中で、カテゴリ毎に対応する CSS クラスを追加する必要があります。</div>
+<div class="line">（それによって、各カテゴリを選択し、リストされたジョブを数えることができます）。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">category</span> <span class="k">in</span> <span class="nv">categories</span> <span class="cp">%}</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;category_</span><span class="cp">{{</span> <span class="nv">category.slug</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;category&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>9.3.3. カテゴリにジョブが多すぎる場合カテゴリページへのリンクのみを持つこと<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_design .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これらのテストでは、デザインカテゴリに「 more jobs 」リンクがないこと(<tt class="docutils literal"><span class="pre">.category_design</span> <span class="pre">.more_jobs</span></tt> がないこと)を確認し、</div>
+<div class="line">プログラミングカテゴリには「 more jobs 」リンクがあること(<tt class="docutils literal"><span class="pre">.category_programming</span> <span class="pre">.more_jobs</span></tt> があること)をチェックします。</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>9.3.4. ジョブが日付でソートされること<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">ジョブが実際に日付でソートされているかどうかをテストするために、</div>
+<div class="line">ホームページに記載された最初のジョブが、期待したものであることを確認する必要があります。</div>
+<div class="line">URL に期待する主キーが含まれていることを確認することで行います。</div>
+<div class="line">主キーは実行の間に変わる可能性があるため、最初にデータベースから Doctrine のオブジェクトを取得する必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT j from IbwJobeetBundle:Job j LEFT JOIN j.category c WHERE c.slug = :slug AND j.expires_at &gt; :date ORDER BY j.created_at DESC&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="s1">&#39;programming&#39;</span><span class="p">);</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;a[href*=&quot;/%d/&quot;]&#39;</span><span class="p">,</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()))</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">テストがこの瞬間には動作したとしても、最初のプログラミングカテゴリのジョブを取得する処理をどのテストでも再利用できるよう、</div>
+<div class="line">コードを少しリファクタリングする必要があります。</div>
+<div class="line">コードはテスト固有のもののため、モデル·レイヤーにコードを移動しません。</div>
+<div class="line">代わりに、テストクラス内の getMostRecentProgrammingJob() メソッドにコードを移動します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMostRecentProgrammingJob</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT j from IbwJobeetBundle:Job j LEFT JOIN j.category c WHERE c.slug = :slug AND j.expires_at &gt; :date ORDER BY j.created_at DESC&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="s1">&#39;programming&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>前のテストコードを次のもので置き換えることができます。</p>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;a[href*=&quot;/%d/&quot;]&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()))</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">//...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>9.3.5. ホームページの各ジョブはクリックできること<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">ホームページの求人リンクをテストするには、「Web Developer」テキストをクリックすることをシミュレートします。</div>
+<div class="line">それらの多くがページに存在するので、明示的に最初のものをクリックするようにブラウザに依頼します。</div>
+<div class="line">各リクエストパラメータは、ルーティングが正しく動いていることを確認するためにテストされます。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">();</span>
+    <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="s1">&#39;Web Developer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>9.3.6. お手本から学ぶ<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">このセクションには、ジョブとカテゴリのページをテストするために必要なすべてのコードがあります。</div>
+<div class="line">いくつかの新しいトリックをきちんと学ぶように、慎重にコードを読んでください。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMostRecentProgrammingJob</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT j from IbwJobeetBundle:Job j LEFT JOIN j.category c WHERE c.slug = :slug AND j.expires_at &gt; :date ORDER BY j.created_at DESC&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="s1">&#39;programming&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getExpiredJob</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT j from IbwJobeetBundle:Job j WHERE j.expires_at &lt; :date&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// get the custom parameters from app config.yml</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$max_jobs_on_homepage</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">);</span>
+
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::indexAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="c1">// expired jobs are not listed</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs td.position:contains(&quot;Expired&quot;)&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="c1">// only $max_jobs_on_homepage jobs are listed for a category</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span><span class="o">&lt;=</span> <span class="nv">$max_jobs_on_homepage</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_design .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">// jobs are sorted by date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;a[href*=&quot;/%d/&quot;]&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()))</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">// each job on the homepage is clickable and give detailed information</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">();</span>
+        <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="s1">&#39;Web Developer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">));</span>
+
+        <span class="c1">// a non-existent job forwards the user to a 404</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/job/foo-inc/milano-italy/0/painter&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="c1">// an expired job page forwards the user to a 404</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/job/sensio-labs/paris-france/%d/web-developer&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getExpiredJob</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testShow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="c1">// get the custom parameters from app/config.yml</span>
+        <span class="nv">$max_jobs_on_category</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_category&#39;</span><span class="p">);</span>
+        <span class="nv">$max_jobs_on_homepage</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">);</span>
+
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$categories</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Category&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getWithJobs</span><span class="p">();</span>
+
+        <span class="c1">// categories on homepage are clickable</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+
+            <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+            <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">));</span>
+
+            <span class="nv">$jobs_no</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">countActiveJobs</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+
+            <span class="c1">// categories with more than $max_jobs_on_homepage jobs also have a &quot;more&quot; link</span>
+            <span class="k">if</span><span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">&gt;</span> <span class="nv">$max_jobs_on_homepage</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+                <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s2">&quot;.category_&quot;</span> <span class="o">.</span> <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; .more_jobs a&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+                <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="nv">$pages</span> <span class="o">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$jobs_no</span><span class="o">/</span><span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+
+            <span class="c1">// only $max_jobs_on_category jobs are listed</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nv">$pages</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/page 1\/&quot;</span> <span class="o">.</span> <span class="nv">$pages</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="nv">$pages</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="nv">$i</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+                    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">));</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+                    <span class="p">}</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/page &quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;\/&quot;</span> <span class="o">.</span> <span class="nv">$pages</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>これで、今日はすべてです！明日は、フォームについて、知っておくべきことを学びます。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

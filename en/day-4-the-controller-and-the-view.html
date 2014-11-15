@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>23. Day 4: The Controller and the View &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="24. Day 5: The Routing" href="day-5-the-routing.html" />
+    <link rel="prev" title="22. Day 3: The Data Model" href="day-3-the-data-model.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">23. Day 4: The Controller and the View</a><ul>
+<li><a class="reference internal" href="#the-mvc-arhitecture">23.1. The MVC Arhitecture</a></li>
+<li><a class="reference internal" href="#the-layout">23.2. The Layout</a></li>
+<li><a class="reference internal" href="#twig-blocks">23.3. Twig Blocks</a></li>
+<li><a class="reference internal" href="#the-stylesheets-images-and-javascripts">23.4. The Stylesheets, Images and JavaScripts</a></li>
+<li><a class="reference internal" href="#the-job-homepage-action">23.5. The Job Homepage Action</a></li>
+<li><a class="reference internal" href="#the-job-homepage-template">23.6. The Job Homepage Template</a></li>
+<li><a class="reference internal" href="#the-job-page-template">23.7. The Job Page Template</a></li>
+<li><a class="reference internal" href="#the-job-page-action">23.8. The Job Page Action</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-3-the-data-model.html" title="Previous Chapter: 22. Day 3: The Data Model"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 22. Day 3: The D...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-5-the-routing.html" title="Next Chapter: 24. Day 5: The Routing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">24. Day 5: The R... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/en/day-4-the-controller-and-the-view.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="day-4-the-controller-and-the-view">
+<h1>23. Day 4: The Controller and the View<a class="headerlink" href="#day-4-the-controller-and-the-view" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This article is part of the original <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a>, created by Fabien Potencier, for Symfony 1.4.</li>
+</ul>
+<p>Today, we are going to customize the basic <tt class="docutils literal"><span class="pre">job</span> <span class="pre">controller</span></tt> we created yesterday. It already has most of the code we need for Jobeet:</p>
+<ul class="simple">
+<li>A page to <tt class="docutils literal"><span class="pre">list</span></tt> all jobs</li>
+<li>A page to <tt class="docutils literal"><span class="pre">create</span></tt> a new job</li>
+<li>A page to <tt class="docutils literal"><span class="pre">update</span></tt> an existing job</li>
+<li>A page to <tt class="docutils literal"><span class="pre">delete</span></tt> a job</li>
+</ul>
+<p>Although the code is ready to be used as is, we will refactor the templates to match closer to the <a class="reference external" href="http://symfony.com/legacy/doc/jobeet/1_4/en/02?orm=Doctrine#chapter_02_the_project_user_stories">Jobeet mockups</a>.</p>
+<div class="section" id="the-mvc-arhitecture">
+<h2>23.1. The MVC Arhitecture<a class="headerlink" href="#the-mvc-arhitecture" title="Permalink to this headline">¶</a></h2>
+<p>For web development, the most common solution for organizing your code nowadays is the <a class="reference external" href="http://en.wikipedia.org/wiki/Model-view-controller">MVC design pattern</a>. In short, the MVC design pattern defines a way to organize your code according to its nature. This pattern separates the code into <tt class="docutils literal"><span class="pre">three</span> <span class="pre">layers</span></tt>:</p>
+<ul class="simple">
+<li>The Model layer defines the business logic (the database belongs to this layer). You already know that Symfony stores all the classes and files related to the Model in the Entity/ directory of your bundles.</li>
+<li>The View is what the user interacts with (a template engine is part of this layer). In Symfony 2.3.2, the View layer is mainly made of Twig templates. They are stored in various Resources/views/ directories as we will see later in these lines.</li>
+<li>The Controller is a piece of code that calls the Model to get some data that it passes to the View for rendering to the client. When we installed Symfony at the beginning of this tutorial, we saw that all requests are managed by front controllers (app.php and app_dev.php). These front controllers delegate the real work to actions.</li>
+</ul>
+</div>
+<div class="section" id="the-layout">
+<h2>23.2. The Layout<a class="headerlink" href="#the-layout" title="Permalink to this headline">¶</a></h2>
+<p>If you have a closer look at the <a class="reference external" href="http://symfony.com/legacy/doc/jobeet/1_4/en/02?orm=Doctrine#chapter_02_the_project_user_stories">mockups</a>, you will notice that much of each page looks the same. You already know that code duplication is bad, whether we are talking about HTML or PHP code, so we need to find a way to prevent these common view elements from resulting in code duplication.
+One way to solve the problem is to define a header and a footer and include them in each template. A better way is to use another design pattern to solve this problem: the <a class="reference external" href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator design pattern</a>. The decorator design pattern resolves the problem the other way around: the template is decorated after the content is rendered by a global template, called a layout.
+Symfony2 does not came with a default layout, so we will create one and use it to decorate our application pages.
+Create a new file layout.html.twig in the src/Ibw/JobeetBundle/Resources/views/ directory and put in the following code:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>
+            {% block title %}
+                Jobeet - Your best job board
+            {% endblock %}
+        <span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+        {% block stylesheets %}
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ asset(&#39;bundles/ibwjobeet/css/main.css&#39;) }}&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;shortcut icon&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ asset(&#39;bundles/ibwjobeet/images/favicon.ico&#39;) }}&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ path(&#39;ibw_job&#39;) }}&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ asset(&#39;bundles/ibwjobeet/images/logo.jpg&#39;) }}&quot;</span> <span class="na">alt=</span><span class="s">&quot;Jobeet Job Board&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/a&gt;&lt;/h1&gt;</span>
+
+                    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;sub_header&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;h2&gt;</span>Ask for people<span class="nt">&lt;/h2&gt;</span>
+                            <span class="nt">&lt;div&gt;</span>
+                                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ path(&#39;ibw_job&#39;) }}&quot;</span><span class="nt">&gt;</span>Post a Job<span class="nt">&lt;/a&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;h2&gt;</span>Ask for a job<span class="nt">&lt;/h2&gt;</span>
+                            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">id=</span><span class="s">&quot;search_keywords&quot;</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;search&quot;</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
+                                    Enter some keywords (city, country, position, ...)
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/form&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+
+           <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+               {% for flashMessage in app.session.flashbag.get(&#39;notice&#39;) %}
+                   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;flash_notice&quot;</span><span class="nt">&gt;</span>
+                       {{ flashMessage }}
+                   <span class="nt">&lt;/div&gt;</span>
+               {% endfor %}
+
+               {% for flashMessage in app.session.flashbag.get(&#39;error&#39;) %}
+                   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;flash_error&quot;</span><span class="nt">&gt;</span>
+                       {{ flashMessage }}
+                   <span class="nt">&lt;/div&gt;</span>
+               {% endfor %}
+
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                   {% block content %}
+                   {% endblock %}
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+
+           <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;symfony&quot;</span><span class="nt">&gt;</span>
+                       <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ asset(&#39;bundles/ibwjobeet/images/jobeet-mini.png&#39;) }}&quot;</span> <span class="nt">/&gt;</span>
+                           powered by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.symfony.com/&quot;</span><span class="nt">&gt;</span>
+                           <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;{{ asset(&#39;bundles/ibwjobeet/images/symfony.gif&#39;) }}&quot;</span> <span class="na">alt=</span><span class="s">&quot;symfony framework&quot;</span> <span class="nt">/&gt;</span>
+                       <span class="nt">&lt;/a&gt;</span>
+                   <span class="nt">&lt;/span&gt;</span>
+                   <span class="nt">&lt;ul&gt;</span>
+                       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>About Jobeet<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;feed&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Full feed<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Jobeet API<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;last&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Affiliates<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                   <span class="nt">&lt;/ul&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="twig-blocks">
+<h2>23.3. Twig Blocks<a class="headerlink" href="#twig-blocks" title="Permalink to this headline">¶</a></h2>
+<p>In Twig, the default Symfony template engine, you can define blocks as we did above. A twig block can have a default content (look at the title block, for example) that can be replaced or extended in the child template as you will see in a moment.
+Now, to make use of the layout we created, we will need to edit all the job templates (index, edit, new and show from src/Ibw/JobeetBundle/Resources/views/Job/) to extend the parent template (the layout) and to overwrite the content block we defined with the body block content from the original template</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;!-- original body block code goes here --&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-stylesheets-images-and-javascripts">
+<h2>23.4. The Stylesheets, Images and JavaScripts<a class="headerlink" href="#the-stylesheets-images-and-javascripts" title="Permalink to this headline">¶</a></h2>
+<p>As this is not about web design, we have already prepared all the needed assets we will use for Jobeet: <a class="reference download internal" href="../_downloads/jobeet-images.zip"><tt class="xref download docutils literal"><span class="pre">download</span> <span class="pre">the</span> <span class="pre">image</span> <span class="pre">files</span></tt></a> archive and put them into the src/Ibw/JobeetBundle/Resources/public/images/ directory; <a class="reference download internal" href="../_downloads/jobeet-css.zip"><tt class="xref download docutils literal"><span class="pre">download</span> <span class="pre">the</span> <span class="pre">stylesheet</span></tt></a>  files archive and put them into the src/Ibw/JobeetBundle/Resources/public/css/ directory.
+Now run</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console assets:install web --symlink
+</pre></div>
+</div>
+<p>to tell Symfony to make them available to the public.
+If you look in the css folder, you will notice that we have four css files: admin.css, job.css,jobs.css and main.css. The main.css is needed in all Jobeet pages, so we included it in the layout in the stylesheet twig block. The rest are more specialized css files and we need them only in specific pages.
+To add a new css file in a template, we will overwrite the stylesheet block, but call the parent before adding the new css file (so we would have the main.css and the additional css files we need).</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    &lt;link rel=&quot;stylesheet&quot; href=&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/jobs.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">&lt;!-- rest of the code --&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    &lt;link rel=&quot;stylesheet&quot; href=&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">&lt;!-- rest of the code --&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-job-homepage-action">
+<h2>23.5. The Job Homepage Action<a class="headerlink" href="#the-job-homepage-action" title="Permalink to this headline">¶</a></h2>
+<p>Each action is represented by a method of a class. For the job homepage, the class is JobController and the method is indexAction(). It retrieves all the jobs from the database.</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$entities</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:index.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entities&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entities</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>Let’s have a closer look at the code: the indexAction() method gets the Doctrine entity manager object, which is responsible for handling the process of persisting and fetching objects to and from database, and then the repository, that will create a query to retrieve all the jobs. It returns a Doctrine ArrayCollection of Job objects that are passed to the template (the View).</p>
+</div>
+<div class="section" id="the-job-homepage-template">
+<h2>23.6. The Job Homepage Template<a class="headerlink" href="#the-job-homepage-template" title="Permalink to this headline">¶</a></h2>
+<p>The index.html.twig template generates an HTML table for all the jobs. Here is the current template code:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/jobs.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Job list<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;records_list&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Id<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Type<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Company<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Logo<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Url<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Position<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Location<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Description<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>How_to_apply<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Token<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Is_public<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Is_activated<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Email<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Expires_at<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Created_at<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Updated_at<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Actions<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+        <span class="cp">{%</span> <span class="k">for</span> <span class="nv">entity</span> <span class="k">in</span> <span class="nv">entities</span> <span class="cp">%}</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.id</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.type</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.logo</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.url</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.location</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.description</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.howtoapply</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.token</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.ispublic</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.isactivated</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">entity.email</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">entity.expiresat</span> <span class="cp">%}{{</span> <span class="nv">entity.expiresat</span><span class="o">|</span><span class="nf">date</span><span class="o">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="o">)</span> <span class="cp">}}{%</span> <span class="k">endif</span><span class="cp">%}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">entity.createdat</span> <span class="cp">%}{{</span> <span class="nv">entity.createdat</span><span class="o">|</span><span class="nf">date</span><span class="o">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="o">)</span> <span class="cp">}}{%</span> <span class="k">endif</span><span class="cp">%}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">entity.updatedat</span> <span class="cp">%}{{</span> <span class="nv">entity.updatedat</span><span class="o">|</span><span class="nf">date</span><span class="o">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="o">)</span> <span class="cp">}}{%</span> <span class="k">endif</span><span class="cp">%}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span>
+                    <span class="nt">&lt;ul&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>show<span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>edit <span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+        <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_new&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                Create a new entry
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Let’s clean this up a bit to only display a sub-set of the available columns. Replace the twig block content with the one below:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;jobs&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;jobs&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">entity</span> <span class="k">in</span> <span class="nv">entities</span> <span class="cp">%}</span>
+                <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">cycle</span><span class="o">([</span><span class="s1">&#39;even&#39;</span><span class="o">,</span> <span class="s1">&#39;odd&#39;</span><span class="o">],</span> <span class="nb">loop</span><span class="nv">.index</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;location&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.location</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;position&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                            <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;company&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<img alt="../_images/Day-4-2-jobs.png" src="../_images/Day-4-2-jobs.png" />
+</div>
+<div class="section" id="the-job-page-template">
+<h2>23.7. The Job Page Template<a class="headerlink" href="#the-job-page-template" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s customize the template of the job page. Open the show.html.twig file and replace its content with the following code:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span> is looking for a <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;h2&gt;</span><span class="cp">{{</span> <span class="nv">entity.location</span> <span class="cp">}}</span><span class="nt">&lt;/h2&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>
+            <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+            <span class="nt">&lt;small&gt;</span> - <span class="cp">{{</span> <span class="nv">entity.type</span> <span class="cp">}}</span><span class="nt">&lt;/small&gt;</span>
+        <span class="nt">&lt;/h3&gt;</span>
+
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">entity.logo</span> <span class="cp">%}</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">entity.url</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/uploads/jobs/</span><span class="cp">{{</span> <span class="nv">entity.logo</span> <span class="cp">}}</span><span class="s">&quot;</span>
+                        <span class="na">alt=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="s"> logo&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;description&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{{</span> <span class="nv">entity.description</span><span class="o">|</span><span class="nf">nl2br</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;h4&gt;</span>How to apply?<span class="nt">&lt;/h4&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;how_to_apply&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.howtoapply</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;small&gt;</span>posted on <span class="cp">{{</span> <span class="nv">entity.createdat</span><span class="o">|</span><span class="nf">date</span><span class="o">(</span><span class="s1">&#39;m/d/Y&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/small&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;padding: 20px 0&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                Edit
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<img alt="../_images/Day-4-individual-job.png" src="../_images/Day-4-individual-job.png" />
+</div>
+<div class="section" id="the-job-page-action">
+<h2>23.8. The Job Page Action<a class="headerlink" href="#the-job-page-action" title="Permalink to this headline">¶</a></h2>
+<p>The job page is generated by the show action, defined in the showAction() method of the JobController:</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+    <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:show.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As in the index action, the IbwJobeetBundle repository class is used to retrieve a job, this time using the find() method. The parameter of this method is the unique identifier of a job, its primary key. The next section will explain why the $id parameter of the actionShow() function contains the job primary key.
+If the job does not exist in the database, we want to forward the user to a 404 page, which is exactly what the throw $this-&gt;createNotFoundException() does.
+As for exceptions, the page displayed to the user is different in the prod environment and in the dev ennvironment.</p>
+<img alt="../_images/Day-4-error1.png" src="../_images/Day-4-error1.png" />
+<img alt="../_images/Day-4-error2.png" src="../_images/Day-4-error2.png" />
+<p>That’s all for today! Tomorrow we will get you familiar with the routing features.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+original <cite>symfony2 jobeet</cite> article is here <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

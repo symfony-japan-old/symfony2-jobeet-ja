@@ -1,0 +1,1423 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>15. 15日目: ウェブサービス &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="16. 16日目: メール送信" href="day-16-the-mailer.html" />
+    <link rel="prev" title="14. 14日目: フィード" href="day-14-feeds.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">15. 15日目: ウェブサービス</a><ul>
+<li><a class="reference internal" href="#id2">15.1. アフィリエイト</a></li>
+<li><a class="reference internal" href="#id3">15.2. フィクスチャー</a></li>
+<li><a class="reference internal" href="#id4">15.3. ジョブのウェブサービス</a></li>
+<li><a class="reference internal" href="#xml">15.4. XML 形式</a></li>
+<li><a class="reference internal" href="#json">15.5. json 形式</a></li>
+<li><a class="reference internal" href="#yaml">15.6. yaml 形式</a></li>
+<li><a class="reference internal" href="#web">15.7. Web サービスのテスト</a></li>
+<li><a class="reference internal" href="#id5">15.8. アフィリエイト申込フォーム</a></li>
+<li><a class="reference internal" href="#id6">15.9. テスト</a></li>
+<li><a class="reference internal" href="#id7">15.10. アフィリエイト管理画面</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-14-feeds.html" title="Previous Chapter: 14. 14日目: フィード"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 14. 14日目: フィード</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-16-the-mailer.html" title="Next Chapter: 16. 16日目: メール送信"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">16. 16日目: メール送信 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-15-web-services.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>15. 15日目: ウェブサービス<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">Jobeet の上のフィードを追加することで、求職者はリアルタイムで新しい求人を知ることができます。</div>
+<div class="line">反対に、ジョブを投稿するときは、最大限可能な限り露出したいと思うでしょう。</div>
+<div class="line">もし小さな多くのウェブサイトが連合した場合、よりよい人を見つける機会が増えるでしょう。</div>
+<div class="line">つまり、ロングテールの力です。</div>
+<div class="line">今日開発する Web サービスによって、アフィリエイトは自分のサイトに最新の投稿されたジョブを公開することができるようになります。</div>
+</div>
+<div class="section" id="id2">
+<h2>15.1. アフィリエイト<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>すでにこのチュートリアルの 2 日目で述べたように、アフィリエイトは、現在のアクティブなジョブのリストを取得します。</p>
+</div>
+<div class="section" id="id3">
+<h2>15.2. フィクスチャー<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>それではアフィリエイト用に新しいフィクスチャファイルを作成してみましょう。</p>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\DataFixtures\ORM</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\Common\Persistence\ObjectManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\AbstractFixture</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\OrderedFixtureInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoadAffiliateData</span> <span class="k">extends</span> <span class="nx">AbstractFixture</span> <span class="k">implements</span> <span class="nx">OrderedFixtureInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Affiliate</span><span class="p">();</span>
+
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://sensio-labs.com/&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;address1@example.com&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;sensio-labs&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">addCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">)));</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$affiliate</span><span class="p">);</span>
+
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Affiliate</span><span class="p">();</span>
+
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;address2@example.org&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setToken</span><span class="p">(</span><span class="s1">&#39;symfony&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+        <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">addCategory</span><span class="p">(</span><span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-programming&#39;</span><span class="p">)),</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getReference</span><span class="p">(</span><span class="s1">&#39;category-design&#39;</span><span class="p">)));</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$affiliate</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addReference</span><span class="p">(</span><span class="s1">&#39;affiliate&#39;</span><span class="p">,</span> <span class="nv">$affiliate</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// This represents the order in which fixtures will be loaded</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ここで、フィクスチャーファイルで定義されたデータを永続化するために、次のコマンドを実行します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:fixtures:load
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">フィクスチャーファイルでは、トークンは、テストを簡略化するためにハードコードされていますが、実際のユーザーがアカウントに適用されたときには、トークンを生成する必要があります。</div>
+<div class="line">アフィリエイトクラスでトークンを生成する関数を作成してみましょう。</div>
+<div class="line">お使いの ORM ファイル内、 lifecycleCallbacks セクションに setTokenValue メソッドを追加することで始めます。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setCreatedAtValue</span><span class="p-Indicator">,</span> <span class="nv">setTokenValue</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>ここで、次のコマンドを実行することで、 setTokenValue メソッドはエンティティファイルの中に生成されます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>それでは、メソッドを変更してみましょう。</p>
+<p>src/Ibw/JobeetBundle/Entity/Affiliate.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">setTokenValue</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nv">$token</span> <span class="o">=</span> <span class="nb">sha1</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getEmail</span><span class="p">()</span><span class="o">.</span><span class="nx">rand</span><span class="p">(</span><span class="mi">11111</span><span class="p">,</span> <span class="mi">99999</span><span class="p">));</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span> <span class="o">=</span> <span class="nv">$token</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>データをリロードします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:fixtures:load
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>15.3. ジョブのウェブサービス<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>いつものように新しいリソースを作成するときに、最初にルートを定義するのは良い習慣です。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">IbwJobeetBundle_api</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/api/{token}/jobs.{_format}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Api:list&quot;</span><span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">xml|json|yaml</span>
+</pre></div>
+</div>
+<p>いつものように、ルーティングファイルを変更した後はキャッシュをクリアする必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>dev
+<span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>prod
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">次のステップは、同じ動作を共有する API のアクションとテンプレートを作成することです。</div>
+<div class="line">ここで ApiController という新しいコントローラファイルを作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/ApiController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Repository\AffiliateRepository</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ApiController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">listAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+        <span class="nv">$rep</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate&#39;</span><span class="p">);</span>
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="nv">$rep</span><span class="o">-&gt;</span><span class="na">getForToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$affiliate</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;This affiliate account does not exist!&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$rep</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">);</span>
+        <span class="nv">$active_jobs</span> <span class="o">=</span> <span class="nv">$rep</span><span class="o">-&gt;</span><span class="na">getActiveJobs</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$active_jobs</span> <span class="k">as</span> <span class="nv">$job</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$jobs</span><span class="p">[</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">generate</span><span class="p">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()),</span> <span class="k">true</span><span class="p">)]</span> <span class="o">=</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">asArray</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHost</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="nv">$format</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getRequestFormat</span><span class="p">();</span>
+        <span class="nv">$jsonData</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$format</span> <span class="o">==</span> <span class="s2">&quot;json&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">);</span>
+            <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nv">$jsonData</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Api:jobs.&#39;</span> <span class="o">.</span> <span class="nv">$format</span> <span class="o">.</span> <span class="s1">&#39;.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;jobs&#39;</span> <span class="o">=&gt;</span> <span class="nv">$jobs</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">トークンを使用してアフィリエイトユーザーを取得するには、 getForToken() メソッドを作成します。</div>
+<div class="line">このメソッドはまたアフィリエイトアカウントがアクティブ化されているかを検証しますので、再度チェックする必要はありません。</div>
+<div class="line">今までまだ AffiliateRepository を使用していないので存在していません。</div>
+<div class="line">それを作成するには、次のように ORM ファイルを変更し、エンティティを生成する際に使用したコマンドを実行します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">entity</span>
+    <span class="l-Scalar-Plain">repositoryClass</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Repository\AffiliateRepository</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>一度作成されたら、使用する準備はできています。</p>
+<p>src/Ibw/JobeetBundle/Repository/AffiliateRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * AffiliateRepository</span>
+<span class="sd"> *</span>
+<span class="sd"> * This class was generated by the Doctrine ORM. Add your own custom</span>
+<span class="sd"> * repository methods below.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">AffiliateRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getForToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;a.is_active = :active&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;a.token = :token&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">;</span>
+
+        <span class="k">try</span><span class="p">{</span>
+            <span class="nv">$affiliate</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Doctrine\Orm\NoResultException</span> <span class="nv">$e</span><span class="p">){</span>
+            <span class="nv">$affiliate</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$affiliate</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">トークンによってアフィリエイトを識別した後、アフィリエイトが選択したカテゴリに属するジョブを与えるため、 getActiveJobs() メソッドを使用します。</div>
+<div class="line">現在、 JobRepository ファイルを開くと、getActiveJobs() メソッドは、アフィリエイトとのどのような接続も共有していないことがわかります。</div>
+<div class="line">そのメソッドを再利用したいので、その中のいくつかの変更を行う必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJobs</span><span class="p">(</span><span class="nv">$category_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$max</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$offset</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$affiliate_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+      <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+      <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+      <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.is_activated = :activated&#39;</span><span class="p">)</span>
+      <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;j.expires_at&#39;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nv">$max</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="nv">$max</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nv">$offset</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">setFirstResult</span><span class="p">(</span><span class="nv">$offset</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nv">$category_id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.category = :category_id&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="nv">$category_id</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// j.category c, c.affiliate a</span>
+  <span class="k">if</span><span class="p">(</span><span class="nv">$affiliate_id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">leftJoin</span><span class="p">(</span><span class="s1">&#39;j.category&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+         <span class="o">-&gt;</span><span class="na">leftJoin</span><span class="p">(</span><span class="s1">&#39;c.affiliates&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+         <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;a.id = :affiliate_id&#39;</span><span class="p">)</span>
+         <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;affiliate_id&#39;</span><span class="p">,</span> <span class="nv">$affiliate_id</span><span class="p">)</span>
+      <span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>ご覧のように、asArray() という関数を使用して、ジョブを配列に移植します。それを定義してみましょう。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">asArray</span><span class="p">(</span><span class="nv">$host</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;category&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCategory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span>
+        <span class="s1">&#39;type&#39;</span>         <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">(),</span>
+        <span class="s1">&#39;company&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCompany</span><span class="p">(),</span>
+        <span class="s1">&#39;logo&#39;</span>         <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLogo</span><span class="p">()</span> <span class="o">?</span> <span class="s1">&#39;http://&#39;</span> <span class="o">.</span> <span class="nv">$host</span> <span class="o">.</span> <span class="s1">&#39;/uploads/jobs/&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLogo</span><span class="p">()</span> <span class="o">:</span> <span class="k">null</span><span class="p">,</span>
+        <span class="s1">&#39;url&#39;</span>          <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">(),</span>
+        <span class="s1">&#39;position&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPosition</span><span class="p">(),</span>
+        <span class="s1">&#39;location&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLocation</span><span class="p">(),</span>
+        <span class="s1">&#39;description&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDescription</span><span class="p">(),</span>
+        <span class="s1">&#39;how_to_apply&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getHowToApply</span><span class="p">(),</span>
+        <span class="s1">&#39;expires_at&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCreatedAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">),</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xml">
+<h2>15.4. XML 形式<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h2>
+<p>xml 形式をサポートすることは、テンプレートを作成するのと同じくらい簡単です。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Api/jobs.xml.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="x">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="x">&lt;jobs&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">url</span><span class="o">,</span> <span class="nv">job</span> <span class="k">in</span> <span class="nv">jobs</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;job url=&quot;</span><span class="cp">{{</span> <span class="nv">url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span><span class="nv">value</span> <span class="k">in</span> <span class="nv">job</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;</span><span class="cp">{{</span> <span class="nv">key</span> <span class="cp">}}</span><span class="x">&gt;</span><span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span><span class="x">&lt;/</span><span class="cp">{{</span> <span class="nv">key</span> <span class="cp">}}</span><span class="x">&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/job&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/jobs&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json">
+<h2>15.5. json 形式<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p>JSON 形式をサポートすることも同様です。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Api/jobs.json.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">url</span><span class="o">,</span> <span class="nv">job</span> <span class="k">in</span> <span class="nv">jobs</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">i</span> <span class="o">=</span> <span class="m">0</span><span class="o">,</span> <span class="nv">count</span><span class="o">(</span><span class="nv">jobs</span><span class="o">),</span> <span class="o">++</span><span class="nv">i</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">[</span>
+<span class="x">    &quot;url&quot;:&quot;</span><span class="cp">{{</span> <span class="nv">url</span> <span class="cp">}}</span><span class="x">&quot;,</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span> <span class="nv">value</span> <span class="k">in</span> <span class="nv">job</span> <span class="cp">%}</span><span class="x"> </span><span class="cp">{%</span> <span class="k">j</span> <span class="o">=</span> <span class="m">0</span><span class="o">,</span> <span class="nv">count</span><span class="o">(</span><span class="nv">key</span><span class="o">),</span> <span class="o">++</span><span class="nv">j</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &quot;</span><span class="cp">{{</span> <span class="nv">key</span> <span class="cp">}}</span><span class="x">&quot;:&quot;</span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">j</span> <span class="o">==</span> <span class="nv">count</span><span class="o">(</span><span class="nv">key</span><span class="o">)</span><span class="cp">%}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">json_encode</span><span class="o">(</span><span class="nv">value</span><span class="o">)</span> <span class="cp">}}</span><span class="x">, </span><span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">json_encode</span><span class="o">(</span><span class="nv">value</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">                 </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x">&quot;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x">]</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yaml">
+<h2>15.6. yaml 形式<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h2>
+<p>src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">url</span><span class="o">,</span><span class="nv">job</span> <span class="k">in</span> <span class="nv">jobs</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Url: </span><span class="cp">{{</span> <span class="nv">url</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span> <span class="nv">value</span> <span class="k">in</span> <span class="nv">job</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">key</span> <span class="cp">}}</span><span class="x">: </span><span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">有効でないトークンを使用して Web サービスを呼び出そうとした場合は、すべての形式の応答として 404 ページを受け取ります。</div>
+<div class="line">今までの達成したものを見るため、以下のリンクを参照ください。</div>
+<div class="line"><a class="reference external" href="http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml">http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml</a></div>
+<div class="line">または</div>
+<div class="line"><a class="reference external" href="http://jobeet.local/app_dev.php/api/symfony/jobs.xml">http://jobeet.local/app_dev.php/api/symfony/jobs.xml</a></div>
+<div class="line">お好みの形式に応じて、URLの拡張子を変更してください。</div>
+</div>
+</div>
+<div class="section" id="web">
+<h2>15.7. Web サービスのテスト<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<p>src/Ibw/JobeetBundle/Tests/Controller/ApiControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\DomCrawler\Crawler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\HttpExceptionInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ApiControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testList</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs/jobs.xml&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\ApiController::listAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">32</span><span class="p">);</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs87/jobs.xml&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/symfony/jobs.xml&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs/jobs.json&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\ApiController::listAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s1">&#39;/&quot;category&quot;\:&quot;Programming&quot;/&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs87/jobs.json&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs/jobs.yaml&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s1">&#39;/category\: Programming/&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">());</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\ApiController::listAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/api/sensio-labs87/jobs.yaml&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ApiControllerTest ファイル内では、リクエストフォーマットが正しく受信され、要求されたページが正しく返されることをテストします。</p>
+</div>
+<div class="section" id="id5">
+<h2>15.8. アフィリエイト申込フォーム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ここで、 Web サービスが使用できる状態になりましたので、アフィリエイト用のアカウント作成フォームを作成してみましょう。</div>
+<div class="line">そのためには、 HTML フォームを書き、各フィールドの検証ルールを実装し、データベースに値を保存する処理をし、エラー·メッセージを表示し、エラーの場合はフィールドを再設定します。</div>
+<div class="line">まず、 AffiliateController という名前の新しいコントローラのファイルを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Form\AffiliateType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Category</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Your code goes here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>その後、レイアウト内のアフィリエイトリンクを変更します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;last&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_affiliate_new&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Become an affiliate<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>ここで、上記で修正したリンクのルートと一致するアクションを作成する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Form\AffiliateType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Category</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">newAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Affiliate</span><span class="p">();</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">AffiliateType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate:affiliate_new.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+            <span class="s1">&#39;form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ルートの名前とアクションを設定しましたが、まだルーティング設定をしていません。では、作成してみましょう。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">ibw_affiliate_new</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/new</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Affiliate:new&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>さらに、ルーティングファイルにこれを追加します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_ibw_affiliate</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing/affiliate.yml&quot;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/affiliate</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">フォームファイルも作成する必要があります。</div>
+<div class="line">しかし、たとえアフィリエイトが多くのフィールドを持っていても、エンドユーザーが編集可能ではならないものもあるため、すべては表示はしません。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Form/AffiliateType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Form</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\Form\AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Form\FormBuilderInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\OptionsResolver\OptionsResolverInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Category</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$builder</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;categories&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;expanded&#39;</span><span class="o">=&gt;</span><span class="k">true</span><span class="p">))</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultOptions</span><span class="p">(</span><span class="nx">OptionsResolverInterface</span> <span class="nv">$resolver</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$resolver</span><span class="o">-&gt;</span><span class="na">setDefaults</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Ibw\JobeetBundle\Entity\Affiliate&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;affiliate&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ここで、フォームに送信されたデータが設定された後、アフィリエイトオブジェクトが有効であるかどうかを判断する必要があります。</div>
+<div class="line">これを行うには、バリデーションファイルに次のコードを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">constraints</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">email</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Email</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">検証の設定では、 UniqueEntity という新しい検証制約を使用しました。</div>
+<div class="line">これは Doctrine のエンティティ内の特定のフィールド(または複数のフィールド)がユニークであることを検証します。</div>
+<div class="line">これは、例えば、新しいユーザーを登録する際に既にシステム上存在するメールアドレスを使用することを防止するために使われます。</div>
+<div class="line">検証制約を適用した後にキャッシュをクリアすることを忘れないでください！</div>
+<div class="line">最後に、フォームのビューも作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">form_theme</span> <span class="nv">form</span> <span class="p">_</span><span class="nv">self</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">errors</span><span class="o">|</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="cp">%}</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;error_list&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">error</span> <span class="k">in</span> <span class="nv">errors</span> <span class="cp">%}</span>
+                <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">error.messageTemplate</span><span class="o">|</span><span class="nf">trans</span><span class="o">(</span><span class="nv">error.messageParameters</span><span class="o">,</span> <span class="s1">&#39;validators&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Become an affiliate<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_affiliate_create&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="cp">{{</span> <span class="nv">form_enctype</span><span class="o">(</span><span class="nv">form</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;job_form&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;tfoot&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/tfoot&gt;</span>
+                <span class="nt">&lt;tbody&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>
+                            <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                            <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>
+                            <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                            <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.categories</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>
+                            <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.categories</span><span class="o">)</span> <span class="cp">}}</span>
+                            <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.categories</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;/tbody&gt;</span>
+            <span class="nt">&lt;/table&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form_end</span><span class="o">(</span><span class="nv">form</span><span class="o">)</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ユーザーがフォームを送信した際に、有効な場合は、フォームデータをデータベースに永続化しなくてはなりません。</div>
+<div class="line"><tt class="docutils literal"><span class="pre">AffiliateController</span></tt> に新しい <tt class="docutils literal"><span class="pre">create</span></tt> アクションを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AffiliateController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Affiliate</span><span class="p">();</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">AffiliateType</span><span class="p">(),</span> <span class="nv">$affiliate</span><span class="p">);</span>
+        <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+
+            <span class="nv">$formData</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;affiliate&#39;</span><span class="p">);</span>
+            <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="nv">$formData</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]);</span>
+            <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="nv">$formData</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]);</span>
+            <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$affiliate</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_affiliate_wait&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate:affiliate_new.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$affiliate</span><span class="p">,</span>
+            <span class="s1">&#39;form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>create アクションを先に作ったので、次にルートを定義します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_affiliate_create</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/create</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Affiliate:create&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">アフィリエイト登録された後、待ちページにリダイレクトされます。</div>
+<div class="line">それでは、そのアクションを定義し、ビューも作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AffiliateController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">waitAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate:wait.html.twig&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Affiliate/wait.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;IbwJobeetBundle::layout.html.twig&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Your affiliate account has been created<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;padding: 20px&quot;</span><span class="nt">&gt;</span>
+            Thank you!
+            You will receive an email with your affiliate token
+            as soon as your account will be activated.
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>ここで、ルートを追加します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/affiliate.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_affiliate_wait</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/wait</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Affiliate:wait&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ルートを定義したら、キャッシュをクリアする必要があります。</div>
+<div class="line">これで、ホームページでアフィリエイトリンクをクリックした場合、アフィリエイトフォームのページに転送されます。</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>15.9. テスト<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>最後のステップは新しい機能のために、いくつかの機能テストを書くことです。</p>
+<p>src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\DomCrawler\Crawler</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAffiliateForm</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/affiliate/new&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::newAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[url]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://sensio-labs.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;jobeet@example.com&#39;</span>
+        <span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::createAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT count(a.email) FROM IbwJobeetBundle:Affiliate a WHERE a.email = :email&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;jobeet@example.com&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/affiliate/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;not.an.email&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+        <span class="c1">// check if we have 1 errors</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// check if we have error on affiliate_email field</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#affiliate_email&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/affiliate/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[url]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://sensio-labs.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;address@example.com&#39;</span>
+        <span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::waitAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testWait</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/affiliate/wait&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::waitAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>15.10. アフィリエイト管理画面<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">管理画面を、 SonataAdminBundle を使用して動作させます。</div>
+<div class="line">以前にも言ったように、アフィリエイトの登録の後、管理者がアカウントをアクティブ化するのを待つ必要があります。</div>
+<div class="line">そのため、管理者がアフィリエイトのページにアクセスしますと、作業の補助のため、未アクティブなアカウントを表示します。</div>
+<div class="line">まず第一に、 新しいアフィリエイトサービスを services.yml ファイル内に宣言する必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/services.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+<span class="l-Scalar-Plain">ibw.jobeet.admin.affiliate</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Admin\AffiliateAdmin</span>
+  <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nv">jobeet</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">Affiliates</span> <span class="p-Indicator">}</span>
+  <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Affiliate</span>
+      <span class="p-Indicator">-</span> <span class="s">&#39;IbwJobeetBundle:AffiliateAdmin&#39;</span>
+</pre></div>
+</div>
+<p>その後、 Admin ファイルを作成します。</p>
+<p>src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Admin</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Validator\ErrorElement</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Show\ShowMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Affiliate</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$datagridValues</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;_sort_order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ASC&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_sort_by&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;is_active&#39;</span>
+    <span class="p">);</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureFormFields</span><span class="p">(</span><span class="nx">FormMapper</span> <span class="nv">$formMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$formMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureDatagridFilters</span><span class="p">(</span><span class="nx">DatagridMapper</span> <span class="nv">$datagridMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$datagridMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_active&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureListFields</span><span class="p">(</span><span class="nx">ListMapper</span> <span class="nv">$listMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$listMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_active&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addIdentifier</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">管理者を助けるために、未アクティブなアカウントのみ表示したいです。</div>
+<div class="line">これは <tt class="docutils literal"><span class="pre">is_active</span></tt> フィルタを false に 設定することで行うことができます。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">protected</span> <span class="nv">$datagridValues</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">&#39;_sort_order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ASC&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;_sort_by&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;is_active&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;is_active&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// The value 2 represents that the displayed affiliate accounts are not activated yet</span>
+<span class="p">);</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>ここで、 AffiliateAdmin コントローラファイルを作成します。</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Controller\CRUDController</span> <span class="k">as</span> <span class="nx">Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery</span> <span class="k">as</span> <span class="nx">ProxyQueryInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Your code goes here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>それでは <tt class="docutils literal"><span class="pre">activate</span></tt> と <tt class="docutils literal"><span class="pre">deactivate</span></tt> のバッチアクションを作成しましょう。</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Controller\CRUDController</span> <span class="k">as</span> <span class="nx">Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery</span> <span class="k">as</span> <span class="nx">ProxyQueryInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionActivate</span><span class="p">(</span><span class="nx">ProxyQueryInterface</span> <span class="nv">$selectedModelQuery</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+        <span class="nv">$modelManager</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getModelManager</span><span class="p">();</span>
+
+        <span class="nv">$selectedModels</span> <span class="o">=</span> <span class="nv">$selectedModelQuery</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="nv">$selectedModels</span> <span class="k">as</span> <span class="nv">$selectedModel</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">activate</span><span class="p">();</span>
+                <span class="nv">$modelManager</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$selectedModel</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_success&#39;</span><span class="p">,</span>  <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;The selected accounts have been activated&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionDeactivate</span><span class="p">(</span><span class="nx">ProxyQueryInterface</span> <span class="nv">$selectedModelQuery</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+        <span class="nv">$modelManager</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getModelManager</span><span class="p">();</span>
+
+        <span class="nv">$selectedModels</span> <span class="o">=</span> <span class="nv">$selectedModelQuery</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="nv">$selectedModels</span> <span class="k">as</span> <span class="nv">$selectedModel</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">deactivate</span><span class="p">();</span>
+                <span class="nv">$modelManager</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$selectedModel</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_success&#39;</span><span class="p">,</span>  <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;The selected accounts have been deactivated&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>新しいバッチアクションを機能させるには、 Admin クラスの getBatchActions にそれらを追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AffiliateAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getBatchActions</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$actions</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">getBatchActions</span><span class="p">();</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$actions</span><span class="p">[</span><span class="s1">&#39;activate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;label&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;Activate&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ask_confirmation&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+            <span class="p">);</span>
+
+            <span class="nv">$actions</span><span class="p">[</span><span class="s1">&#39;deactivate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;label&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;Deactivate&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ask_confirmation&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$actions</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>これが機能するために、エンティティファイルに <tt class="docutils literal"><span class="pre">activate</span></tt> と <tt class="docutils literal"><span class="pre">deactivate</span></tt> の 2 つのメソッドを追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Entity/Affiliate.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">activate</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getIsActive</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">is_active</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">deactivate</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getIsActive</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">is_active</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">それでは、<tt class="docutils literal"><span class="pre">activate</span></tt> と <tt class="docutils literal"><span class="pre">deactivate</span></tt> の項目ごと二つの個別のアクションを作成してみましょう。</div>
+<div class="line">第一に、ルートを作成します。</div>
+<div class="line">これが、Admin クラスで、 configureRoutes メソッドを継承した理由です。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Sonata\AdminBundle\Route\RouteCollection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureRoutes</span><span class="p">(</span><span class="nx">RouteCollection</span> <span class="nv">$collection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">configureRoutes</span><span class="p">(</span><span class="nv">$collection</span><span class="p">);</span>
+
+        <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;activate&#39;</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRouterIdParameter</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;/activate&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+
+        <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;deactivate&#39;</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRouterIdParameter</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;/deactivate&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>それでは AdminController でアクションを実装してみましょう。</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AffiliateAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">activateAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deactivateAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$affiliate</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ここで、新たにアクションボタンを追加するためのテンプレートを作成します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_activate.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">admin.isGranted</span><span class="o">(</span><span class="s1">&#39;EDIT&#39;</span><span class="o">,</span> <span class="nv">object</span><span class="o">)</span> <span class="k">and</span> <span class="nv">admin.hasRoute</span><span class="o">(</span><span class="s1">&#39;activate&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">admin.generateObjectUrl</span><span class="o">(</span><span class="s1">&#39;activate&#39;</span><span class="o">,</span> <span class="nv">object</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">class=</span><span class="s">&quot;btn edit_link&quot;</span> <span class="na">title=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="s1">&#39;action_activate&#39;</span><span class="o">|</span><span class="nf">trans</span><span class="o">({},</span> <span class="s1">&#39;SonataAdminBundle&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon-edit&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+        <span class="cp">{{</span> <span class="s1">&#39;activate&#39;</span><span class="o">|</span><span class="nf">trans</span><span class="o">({},</span> <span class="s1">&#39;SonataAdminBundle&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/a&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/AffiliateAdmin/list__action_deactivate.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">admin.isGranted</span><span class="o">(</span><span class="s1">&#39;EDIT&#39;</span><span class="o">,</span> <span class="nv">object</span><span class="o">)</span> <span class="k">and</span> <span class="nv">admin.hasRoute</span><span class="o">(</span><span class="s1">&#39;deactivate&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">admin.generateObjectUrl</span><span class="o">(</span><span class="s1">&#39;deactivate&#39;</span><span class="o">,</span> <span class="nv">object</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">class=</span><span class="s">&quot;btn edit_link&quot;</span> <span class="na">title=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="s1">&#39;action_deactivate&#39;</span><span class="o">|</span><span class="nf">trans</span><span class="o">({},</span> <span class="s1">&#39;SonataAdminBundle&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon-edit&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+        <span class="cp">{{</span> <span class="s1">&#39;deactivate&#39;</span><span class="o">|</span><span class="nf">trans</span><span class="o">({},</span> <span class="s1">&#39;SonataAdminBundle&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/a&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>各アカウントが個別にページに表示されるように、 Admin ファイルの中で、 configureListFields メソッドに新しいアクションとボタンを追加します。</p>
+<p>src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AffiliateAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureListFields</span><span class="p">(</span><span class="nx">ListMapper</span> <span class="nv">$listMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$listMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_active&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addIdentifier</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;_action&#39;</span><span class="p">,</span> <span class="s1">&#39;actions&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="s1">&#39;actions&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;activate&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;IbwJobeetBundle:AffiliateAdmin:list__action_activate.html.twig&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;deactivate&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;IbwJobeetBundle:AffiliateAdmin:list__action_deactivate.html.twig&#39;</span><span class="p">))))</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">/// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ここで、キャッシュをクリアし、試してみてください！</div>
+<div class="line">今日はこれですべてです！明日は、アカウントがアクティブ化されたときにアフィリエイトが受け取るメールの設定をします。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

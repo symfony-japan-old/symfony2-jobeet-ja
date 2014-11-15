@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>35. Day 16: The Mailer &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="36. Day 17: Search" href="day-17-search.html" />
+    <link rel="prev" title="34. Day 15: Web Services" href="day-15-web-services.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">35. Day 16: The Mailer</a><ul>
+<li><a class="reference internal" href="#the-tests">35.1. The Tests</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-15-web-services.html" title="Previous Chapter: 34. Day 15: Web Services"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 34. Day 15: Web ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-17-search.html" title="Next Chapter: 36. Day 17: Search"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">36. Day 17: Sear... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/en/day-16-the-mailer.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="day-16-the-mailer">
+<h1>35. Day 16: The Mailer<a class="headerlink" href="#day-16-the-mailer" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This article is part of the original <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a>, created by Fabien Potencier, for Symfony 1.4.</li>
+</ul>
+<p>Yesterday, we added a read-only web service to Jobeet. Affiliates can now create an account but it needs to be activated by the administrator before it can be used. In order for the affiliate to get its token, we still need to implement the email notification. That’s what we will start doing in the coming lines.
+The symfony framework comes bundled with one of the best PHP emailing solution: Swift Mailer. Of course, the library is fully integrated with symfony, with some cool features added on top of its default features. Let’s start by sending a simple email to notify the affiliate when his account has been activated and to give him the affiliate token. But first, you need to configure your environment:</p>
+<p>app/config/parameters.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">mailer_transport</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">gmail</span>
+    <span class="l-Scalar-Plain">mailer_host</span><span class="p-Indicator">:</span>       <span class="l-Scalar-Plain">~</span>
+    <span class="l-Scalar-Plain">mailer_user</span><span class="p-Indicator">:</span>       <span class="l-Scalar-Plain">address@example.com</span>
+    <span class="l-Scalar-Plain">mailer_password</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">your_password</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For the code to work properly, you should change the <a class="reference external" href="mailto:address&#37;&#52;&#48;example&#46;com">address<span>&#64;</span>example<span>&#46;</span>com</a> email address to a real one, along with your real password.</p>
+</div>
+<p>Do the same thing in your app/config/parameters_test.yml file.
+After modifying the two files, clear the cache for both test and development environment:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>dev
+<span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>prod
+</pre></div>
+</div>
+<p>Because we set the mailer transport to gmail, when you will replace the email address from “mailer_user”, you will put a google email address.
+You can think of creating a Message as being similar to the steps you perform when you click the compose button in your mail client. You give it a subject, specify some recipients and write your message.</p>
+<p>To create the message, you will:
+* call the newInstance() methond of Swift_message (refer to the Swift Mailer official documentation to learn more about this object).
+* set your sender address (From:) with setFrom() method.
+* set a subject line with setSubject() method.
+* set recipients with one of these methods: setTo(), setCc() or setBcc().
+* set a body with setBody().</p>
+<p>Replace the activate action with the following code:</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">activateAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+  <span class="nv">$affiliate</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+      <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">setIsActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+      <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+      <span class="nv">$message</span> <span class="o">=</span> <span class="nx">\Swift_Message</span><span class="o">::</span><span class="na">newInstance</span><span class="p">()</span>
+          <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Jobeet affiliate token&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">setFrom</span><span class="p">(</span><span class="s1">&#39;address@example.com&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">setTo</span><span class="p">(</span><span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">getEmail</span><span class="p">())</span>
+          <span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span>
+              <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">renderView</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate:email.txt.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;affiliate&#39;</span> <span class="o">=&gt;</span> <span class="nv">$affiliate</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">())))</span>
+      <span class="p">;</span>
+
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setFlash</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>Sending the message is then as simple as calling the send() method on the mailer instance and passing the message as an argument.
+For the message body, we created a new file, called email.txt.twig, that contains exactly what we want to inform the affiliate about.</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Affiliate/email.txt.twig</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="x">Your affiliate account has been activated.</span>
+<span class="x">Your secret token is </span><span class="cp">{{</span><span class="nv">affiliate</span><span class="cp">}}</span><span class="x">.</span>
+<span class="x">You can see the jobs list at the following addresses:</span>
+<span class="x">http://jobeet.local/app_dev.php/api/</span><span class="cp">{{</span><span class="nv">affiliate</span><span class="cp">}}</span><span class="x">/jobs.xml</span>
+<span class="x">or http://jobeet.local/app_dev.php/api/</span><span class="cp">{{</span><span class="nv">affiliate</span><span class="cp">}}</span><span class="x">/jobs.json</span>
+<span class="x">or http://jobeet.local/app_dev.php/api/</span><span class="cp">{{</span><span class="nv">affiliate</span><span class="cp">}}</span><span class="x">/jobs.yaml</span>
+</pre></div>
+</div>
+<p>Now, let’s add the mailing functionality to the batchActionActivate too, so that even if we select multiple affiliate accounts to activate, they will receive their account activation email :</p>
+<p>src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionActivate</span><span class="p">(</span><span class="nx">ProxyQueryInterface</span> <span class="nv">$selectedModelQuery</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// ...</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+      <span class="k">foreach</span><span class="p">(</span><span class="nv">$selectedModels</span> <span class="k">as</span> <span class="nv">$selectedModel</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">activate</span><span class="p">();</span>
+          <span class="nv">$modelManager</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$selectedModel</span><span class="p">);</span>
+
+          <span class="nv">$message</span> <span class="o">=</span> <span class="nx">\Swift_Message</span><span class="o">::</span><span class="na">newInstance</span><span class="p">()</span>
+              <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Jobeet affiliate token&#39;</span><span class="p">)</span>
+              <span class="o">-&gt;</span><span class="na">setFrom</span><span class="p">(</span><span class="s1">&#39;address@example.com&#39;</span><span class="p">)</span>
+              <span class="o">-&gt;</span><span class="na">setTo</span><span class="p">(</span><span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">getEmail</span><span class="p">())</span>
+              <span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span>
+                  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">renderView</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Affiliate:email.txt.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;affiliate&#39;</span> <span class="o">=&gt;</span> <span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">())))</span>
+          <span class="p">;</span>
+
+          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setFlash</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="section" id="the-tests">
+<h2>35.1. The Tests<a class="headerlink" href="#the-tests" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
+To test this new functionality, we need to be logged in. To log in, we will need an username and a password. That’s why we will start by creating a new fixture file, where we add the user admin:</p>
+<p>src/Ibw/JobeetBundle/DataFixtures/ORM/LoadUserData.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\DataFixtures\ORM</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\Common\Persistence\ObjectManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\AbstractFixture</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\FixtureInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\DataFixtures\OrderedFixtureInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\DependencyInjection\ContainerAwareInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\DependencyInjection\ContainerInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\User</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoadUserData</span> <span class="k">implements</span> <span class="nx">FixtureInterface</span><span class="p">,</span> <span class="nx">OrderedFixtureInterface</span><span class="p">,</span> <span class="nx">ContainerAwareInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var ContainerInterface</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$container</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * {@inheritDoc}</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setContainer</span><span class="p">(</span><span class="nx">ContainerInterface</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param \Doctrine\Common\Persistence\ObjectManager $em</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">ObjectManager</span> <span class="nv">$em</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setUsername</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">);</span>
+        <span class="nv">$encoder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;security.encoder_factory&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getEncoder</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span>
+        <span class="p">;</span>
+
+        <span class="nv">$encodedPassword</span> <span class="o">=</span> <span class="nv">$encoder</span><span class="o">-&gt;</span><span class="na">encodePassword</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getSalt</span><span class="p">());</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setPassword</span><span class="p">(</span><span class="nv">$encodedPassword</span><span class="p">);</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// the order in which fixtures will be loaded</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the tests, we will use the swiftmailer collector on the profiler to get information about the messages send on the previous requests. Now, let’s add some tests to check if the email is sent properly:</p>
+<p>src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AffiliateAdminControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$em</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$application</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="p">);</span>
+
+        <span class="c1">// drop the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DropDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:drop&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--force&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// we have to close the connection after dropping the database so we don&#39;t get &quot;No database selected&quot; error</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">getKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isConnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// create the database</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateDatabaseDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:database:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// create schema</span>
+        <span class="nv">$command</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CreateSchemaDoctrineCommand</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+        <span class="nv">$input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayInput</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;command&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;doctrine:schema:create&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NullOutput</span><span class="p">());</span>
+
+        <span class="c1">// get the Entity Manager</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// load fixtures</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">());</span>
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">loadFromDirectory</span><span class="p">(</span><span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">locateResource</span><span class="p">(</span><span class="s1">&#39;@IbwJobeetBundle/DataFixtures/ORM&#39;</span><span class="p">));</span>
+        <span class="nv">$purger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Purger\ORMPurger</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">);</span>
+        <span class="nv">$executor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="p">,</span> <span class="nv">$purger</span><span class="p">);</span>
+        <span class="nv">$executor</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getFixtures</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testActivate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="c1">// Enable the profiler for the next request (it does nothing if the profiler is not available)</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">enableProfiler</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;_username&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;_password&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span>
+        <span class="p">));</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">200</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/admin/ibw/jobeet/affiliate/list&#39;</span><span class="p">);</span>
+
+        <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.btn.edit_link&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+        <span class="nv">$mailCollector</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getProfile</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getCollector</span><span class="p">(</span><span class="s1">&#39;swiftmailer&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Check that an e-mail was sent</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$mailCollector</span><span class="o">-&gt;</span><span class="na">getMessageCount</span><span class="p">());</span>
+
+        <span class="nv">$collectedMessages</span> <span class="o">=</span> <span class="nv">$mailCollector</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$collectedMessages</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+        <span class="c1">// Asserting e-mail data</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertInstanceOf</span><span class="p">(</span><span class="s1">&#39;Swift_Message&#39;</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Jobeet affiliate token&#39;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getSubject</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span>
+            <span class="s1">&#39;/Your secret token is symfony/&#39;</span><span class="p">,</span>
+            <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you run the test now, you’ll get and error. To prevent this for happening, go to your config_test.yml file and make sure that the profiler is enabled in the test environment. If it’s set to false, change it to true:</p>
+<p>app/config/config_test.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">framework</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+    <span class="l-Scalar-Plain">session</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">storage_id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">session.storage.mock_file</span>
+    <span class="l-Scalar-Plain">profiler</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">collect</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Now, clear the cache, run the test command in your console and enjoy the green bar :</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>phpunit -c app src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+original <cite>symfony2 jobeet</cite> article is here <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>17. 17日目: 検索 &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="18. 18日目: AJAX" href="day-18-ajax.html" />
+    <link rel="prev" title="16. 16日目: メール送信" href="day-16-the-mailer.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">17. 17日目: 検索</a><ul>
+<li><a class="reference internal" href="#id2">17.1. テクノロジー</a></li>
+<li><a class="reference internal" href="#zend-framework">17.2. インストールと Zend Framework の設定</a></li>
+<li><a class="reference internal" href="#id3">17.3. インデックス化</a></li>
+<li><a class="reference internal" href="#id4">17.4. 検索</a></li>
+<li><a class="reference internal" href="#id5">17.5. 単体テスト</a></li>
+<li><a class="reference internal" href="#id6">17.6. タスク</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-16-the-mailer.html" title="Previous Chapter: 16. 16日目: メール送信"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 16. 16日目: メール送信</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-18-ajax.html" title="Next Chapter: 18. 18日目: AJAX"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">18. 18日目: AJAX &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-17-search.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>17. 17日目: 検索<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">14 日目では、最新の投稿で Jobeet ユーザーのジョブの更新を維持するため、いくつかのフィードを追加しました。</div>
+<div class="line">今日は検索エンジンという最新の機能を実装してユーザーエクスペリエンスを向上させます。</div>
+</div>
+<div class="section" id="id2">
+<h2>17.1. テクノロジー<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">今日は、 Jobeet に検索エンジンを追加いたします。有名な Java Lucene プロジェクトから移植された、 Zend Framework 提供の Zend Lucene と呼ばれるすばらしいライブラリを使用します。</div>
+<div class="line">Jobeet のためのさらにもうひとつの検索エンジンを作成するのは非常に複雑なタスクなため、代わりに、 Zend Lucene を使用します。</div>
+<div class="line">今日は、 Zend Lucene ライブラリのチュートリアルではなく、 それを Jobeet の Web サイトに統合する方法のチュートリアルです。</div>
+<div class="line">より一般的には、サードパーティ製のライブラリをどのように symfony プロジェクトに統合するかのチュートリアルです。</div>
+<div class="line">この技術についての詳細情報が必要な場合は、Zend Lucene のドキュメントを参照してください。</div>
+</div>
+</div>
+<div class="section" id="zend-framework">
+<h2>17.2. インストールと Zend Framework の設定<a class="headerlink" href="#zend-framework" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Zend Lucene ライブラリは、 Zend Framework の一部です。</div>
+<div class="line">vendor/ ディレクトリに、 Symfony フレームワーク自身と一緒に、 Zend Framework をインストールするだけです。</div>
+<div class="line">まず、Zend Framework をダウンロードし、 vendor/Zend/ ディレクトリを持つように、ファイルを解凍します。</div>
+<div class="line">Zend Framework 2.* バージョンは Lucene ライブラリが統合されていないため、このチュートリアルでは、それらのいずれかもダウンロードしないことに注意してください。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">以下の説明は、Zend Framework を1.12.3バージョンでテストされています。</p>
+</div>
+<img alt="_images/Day-17-zend.jpg" src="_images/Day-17-zend.jpg" />
+<p>次のファイルとディレクトリ以外のすべてを削除することで、ディレクトリをクリーンアップすることができます。</p>
+<ul class="simple">
+<li>Exception.php</li>
+<li>Loader/</li>
+<li>Loader.php</li>
+<li>Search/</li>
+</ul>
+<p>その後、簡単に Zend autoloader を登録するため autoload.php ファイルに次のコードを追加します。</p>
+<p>app/autoload.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="nb">set_include_path</span><span class="p">(</span><span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor&#39;</span><span class="o">.</span><span class="nx">PATH_SEPARATOR</span><span class="o">.</span><span class="nb">get_include_path</span><span class="p">());</span>
+<span class="k">require_once</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor/Zend/Loader/Autoloader.php&#39;</span><span class="p">;</span>
+<span class="nx">Zend_Loader_Autoloader</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+
+<span class="k">return</span> <span class="nv">$loader</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>17.3. インデックス化<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Jobeet の検索エンジンは、ユーザーが入力したキーワードにマッチするすべての求人情報を返すことができるべきです。</div>
+<div class="line">何でも検索できるようになるには、ジョブに対して、Jobeet に対してインデックスが構築される必要があり、作成する新しいディレクトリ ( /web/data/ )に保存されます。</div>
+<div class="line">Zend Lucene はインデックスがすでに存在するかどうかに応じて取得するために 2 つのメソッドを提供します。</div>
+<div class="line">既存のインデックスを返すか、もしくは、新しいインデックスを作成する、ジョブエンティティクラスのヘルパーメソッドを作成してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">static</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getLuceneIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$index</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getLuceneIndexFile</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">\Zend_Search_Lucene</span><span class="o">::</span><span class="na">open</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">\Zend_Search_Lucene</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getLuceneIndexFile</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../../../../web/data/job.index&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ジョブが作成または更新されるたびに、インデックスを更新する必要があります。</div>
+<div class="line">ジョブがデータベースにシリアライズされるたびにインデックスを更新するように ORM ファイルを編集します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="c1"># ...</span>
+        <span class="l-Scalar-Plain">postPersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">upload</span><span class="p-Indicator">,</span> <span class="nv">updateLuceneIndex</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">postUpdate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">upload</span><span class="p-Indicator">,</span> <span class="nv">updateLuceneIndex</span> <span class="p-Indicator">]</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>ここで、 <tt class="docutils literal"><span class="pre">generate:entities</span></tt> コマンド実行し、 Doctrineによって updateLuceneIndex() メソッドがジョブ·クラスの内部に生成されるようにします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>次に、実際の作業を行う updateLuceneIndex() メソッドを編集します。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateLuceneIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getLuceneIndex</span><span class="p">();</span>
+
+        <span class="c1">// remove existing entries</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$index</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;pk:&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">())</span> <span class="k">as</span> <span class="nv">$hit</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$hit</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// don&#39;t index expired and non-activated jobs</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isExpired</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getIsActivated</span><span class="p">())</span>
+        <span class="p">{</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$doc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Zend_Search_Lucene_Document</span><span class="p">();</span>
+
+        <span class="c1">// store job primary key to identify it in the search results</span>
+        <span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">addField</span><span class="p">(</span><span class="nx">\Zend_Search_Lucene_Field</span><span class="o">::</span><span class="na">Keyword</span><span class="p">(</span><span class="s1">&#39;pk&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()));</span>
+
+        <span class="c1">// index job fields</span>
+        <span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">addField</span><span class="p">(</span><span class="nx">\Zend_Search_Lucene_Field</span><span class="o">::</span><span class="na">UnStored</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPosition</span><span class="p">(),</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">));</span>
+        <span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">addField</span><span class="p">(</span><span class="nx">\Zend_Search_Lucene_Field</span><span class="o">::</span><span class="na">UnStored</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCompany</span><span class="p">(),</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">));</span>
+        <span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">addField</span><span class="p">(</span><span class="nx">\Zend_Search_Lucene_Field</span><span class="o">::</span><span class="na">UnStored</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLocation</span><span class="p">(),</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">));</span>
+        <span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">addField</span><span class="p">(</span><span class="nx">\Zend_Search_Lucene_Field</span><span class="o">::</span><span class="na">UnStored</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDescription</span><span class="p">(),</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">));</span>
+
+        <span class="c1">// add job to the index</span>
+        <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">addDocument</span><span class="p">(</span><span class="nv">$doc</span><span class="p">);</span>
+        <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Zend Lucene は既存エントリを更新することができないため、インデックス内にジョブがすでに存在する場合は、はじめに削除します。</div>
+<div class="line">ジョブ自体のインデックス作成は簡単です。主キーはジョブ検索するときに将来の参照用に保存されます。</div>
+<div class="line">メインカラム（位置、会社、場所、および説明）はインデックス化されますが、表示する際に本物のオブジェクトを使うのでインデックスに保存はされません。</div>
+<div class="line">また、削除されたジョブエントリをインデックスから削除するため、 deleteLuceneIndex() メソッドを作成する必要があります。</div>
+<div class="line">更新と同様の処理を削除でも行います。</div>
+<div class="line">ORM ファイルの postRemove セクションに deleteLuceneIndex() メソッドを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="c1"># ...</span>
+        <span class="l-Scalar-Plain">postRemove</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">removeUpload</span><span class="p-Indicator">,</span> <span class="nv">deleteLuceneIndex</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">再度、エンティティを生成するコマンドを実行します。</div>
+<div class="line">ここで、エンティティファイルに移動し、 deleteLuceneIndex() メソッドを実装します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteLuceneIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getLuceneIndex</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$index</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;pk:&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">())</span> <span class="k">as</span> <span class="nv">$hit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$hit</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>インデックスはコマンドラインからも Web からも更新されるので、構成に応じてインデックディレクトリのパーミッションを変更する必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod -R 777 web/data
+</pre></div>
+</div>
+<p>これで、すべてそろいましたので、インデックス対象のフィクスチャーデータをリロードします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:fixtures:load
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>17.4. 検索<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>検索を実装することは、とても簡単です。まず、ルートを作成します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_search</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/search</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:search&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>そして、対応するアクション。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Form\JobType</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">searchAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getForLuceneQuery</span><span class="p">(</span><span class="nv">$query</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:search.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;jobs&#39;</span> <span class="o">=&gt;</span> <span class="nv">$jobs</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">searchAction() の内部では、ユーザーは、クエリリクエストが存在しないか空の場合は、 JobController の index アクションに転送されます。</div>
+<div class="line">テンプレートには、非常に簡単です。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/search.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/jobs.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;jobs&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;IbwJobeetBundle:Job:list.html.twig&#39;</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;jobs&#39;</span><span class="o">:</span> <span class="nv">jobs</span><span class="o">}</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>検索自体は getForLuceneQuery() メソッドに委譲されています。</p>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getForLuceneQuery</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$hits</span> <span class="o">=</span> <span class="nx">Job</span><span class="o">::</span><span class="na">getLuceneIndex</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$query</span><span class="p">);</span>
+
+        <span class="nv">$pks</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$hits</span> <span class="k">as</span> <span class="nv">$hit</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="nv">$pks</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$hit</span><span class="o">-&gt;</span><span class="na">pk</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$pks</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="k">array</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$q</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.id IN (:pks)&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;pks&#39;</span><span class="p">,</span> <span class="nv">$pks</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.is_activated = :active&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$q</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Lucene インデックスからすべての結果を取得した後、非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。</div>
+<div class="line">動作させるためにレイアウトを更新します。</div>
+</div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>Ask for a job<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_search&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;query&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;query&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">id=</span><span class="s">&quot;search_keywords&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;search&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
+                    Enter some keywords (city, country, position, ...)
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>17.5. 単体テスト<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">検索エンジンをテストするためにどのような単体テストを作成すべきでしょうか？</div>
+<div class="line">明らかに Zend Lucene ライブラリそのもののテストではなく、ジョブ·クラスとの統合をテストすることです。</div>
+<div class="line">JobRepositoryTest.php ファイルの最後に次のテストを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobRepositoryTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetForLuceneQuery</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$job</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;part-time&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Sensio&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;FOO6&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;WebDevelopment&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send resumee&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;jobeet@example.com&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://sensio-labs.com&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getForLuceneQuery</span><span class="p">(</span><span class="s1">&#39;FOO6&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="nv">$job</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;part-time&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setCompany</span><span class="p">(</span><span class="s1">&#39;Sensio&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setPosition</span><span class="p">(</span><span class="s1">&#39;FOO7&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setLocation</span><span class="p">(</span><span class="s1">&#39;Paris&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="s1">&#39;WebDevelopment&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setHowToApply</span><span class="p">(</span><span class="s1">&#39;Send resumee&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s1">&#39;jobeet@example.com&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">&#39;http://sensio-labs.com&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$job</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getForLuceneQuery</span><span class="p">(</span><span class="s1">&#39;position:FOO7&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$jobs</span> <span class="k">as</span> <span class="nv">$job_rep</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job_rep</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nv">$job</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getForLuceneQuery</span><span class="p">(</span><span class="s1">&#39;position:FOO7&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$jobs</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">非アクティブなジョブ、または、削除されたジョブは、検索結果に表示されないことをテストします。</div>
+<div class="line">与えられた条件に一致するジョブが結果に表示されることも確認してください。</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>17.6. タスク<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>最終的には、 JobeetCleanup タスクを更新して、古いエントリ（たとえばジョブが期限切れになったときに）のインデックスをクリーンアップし、随時インデックスを最適化する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">use</span>  <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobeetCleanupCommand</span> <span class="k">extends</span> <span class="nx">ContainerAwareCommand</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nx">InputInterface</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">OutputInterface</span> <span class="nv">$output</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$days</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s1">&#39;days&#39;</span><span class="p">);</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// cleanup Lucene index</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="nx">Job</span><span class="o">::</span><span class="na">getLuceneIndex</span><span class="p">();</span>
+
+        <span class="nv">$q</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &lt; :date&#39;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d&#39;</span><span class="p">))</span>
+          <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="nv">$jobs</span> <span class="o">=</span> <span class="nv">$q</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$jobs</span> <span class="k">as</span> <span class="nv">$job</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nv">$hit</span> <span class="o">=</span> <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;pk:&#39;</span><span class="o">.</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()))</span>
+          <span class="p">{</span>
+            <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$hit</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nv">$index</span><span class="o">-&gt;</span><span class="na">optimize</span><span class="p">();</span>
+
+        <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="s1">&#39;Cleaned up and optimized the job index&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Remove stale jobs</span>
+        <span class="nv">$nb</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">cleanup</span><span class="p">(</span><span class="nv">$days</span><span class="p">);</span>
+
+        <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">writeln</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;Removed %d stale jobs&#39;</span><span class="p">,</span> <span class="nv">$nb</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Lucene の組み込みの optimize() メソッドによって最適化します。</div>
+<div class="line">今日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。</div>
+<div class="line">プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。</div>
+<div class="line">明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましく JavaScript を使います。</div>
+<div class="line">もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

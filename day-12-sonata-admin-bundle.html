@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>12. 12日目: Sonata Admin Bundle &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="13. 13日目: セキュリティ" href="day-13-security.html" />
+    <link rel="prev" title="11. 11日目: フォームのテスト" href="day-11-testing-your-forms.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">12. 12日目: Sonata Admin Bundle</a><ul>
+<li><a class="reference internal" href="#sonata-core">12.1. Sonata Core バンドルのインストール</a></li>
+<li><a class="reference internal" href="#sonata-admin">12.2. Sonata Admin バンドルのインストール</a></li>
+<li><a class="reference internal" href="#crud">12.3. CRUD コントローラー</a></li>
+<li><a class="reference internal" href="#admin">12.4. Admin クラスの作成</a></li>
+<li><a class="reference internal" href="#id1">12.5. Admin クラスの構成</a></li>
+<li><a class="reference internal" href="#id2">12.6. バッチアクション</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-11-testing-your-forms.html" title="Previous Chapter: 11. 11日目: フォームのテスト"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 11. 11日目: フォームのテ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-13-security.html" title="Next Chapter: 13. 13日目: セキュリティ"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">13. 13日目: セキュリティ &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-12-sonata-admin-bundle.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="sonata-admin-bundle">
+<h1>12. 12日目: Sonata Admin Bundle<a class="headerlink" href="#sonata-admin-bundle" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">Jobeet の 11 日目に行った追加により、アプリケーションは求職者とジョブの投稿者の両方とも使用可能になります。</div>
+<div class="line">それでは、アプリケーションの管理領域について少し話をする時間です。</div>
+<div class="line">今日では、 <tt class="docutils literal"><span class="pre">SonataAdminBundle</span></tt> のおかげで、1 時間未満で Jobeet のための完全な管理画面を開発します。</div>
+</div>
+<div class="section" id="sonata-core">
+<h2>12.1. Sonata Core バンドルのインストール<a class="headerlink" href="#sonata-core" title="Permalink to this headline">¶</a></h2>
+<p>はじめに、 Core バンドルをインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php composer.phar require sonata-project/core-bundle:~2.2
+</pre></div>
+</div>
+<p>AppKernel.php に登録します。</p>
+<p>app/AppKernel.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerBundles</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$bundles</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="c1">// ...</span>
+            <span class="k">new</span> <span class="nx">Sonata\CoreBundle\SonataCoreBundle</span><span class="p">(),</span>
+            <span class="c1">// ...</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>設定ファイルを作成します。</p>
+<p>app/config/sonata_core.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">sonata_core</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<p>config.ymlの <tt class="docutils literal"><span class="pre">imports</span></tt> に sonata_core.yml を追加いたします。</p>
+<p>app/config/config.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">imports</span><span class="p-Indicator">:</span>
+    <span class="c1">#...</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">resource</span><span class="p-Indicator">:</span> <span class="nv">sonata_core.yml</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sonata-admin">
+<h2>12.2. Sonata Admin バンドルのインストール<a class="headerlink" href="#sonata-admin" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">vendor</span></tt> のディレクトリに <tt class="docutils literal"><span class="pre">SonataAdminBundle</span></tt> とその依存するものをダウンロードを開始します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php composer.phar require sonata-project/admin-bundle
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">SonataAdminBundle</span></tt> とその依存関係の最新バージョンをインストールするには、 * を入力します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>ibw@ubuntu:/var/www/jobeet<span class="nv">$ </span>php composer.phar require sonata-project/admin-bundle
+Please provide a version constraint <span class="k">for </span>the sonata-project/admin-bundle requirement: *
+</pre></div>
+</div>
+<p>また SonataDoctrineORMADminBundle をインストールする必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php composer.phar require sonata-project/doctrine-orm-admin-bundle
+</pre></div>
+</div>
+<p>ここで、新しいバンドルとその依存関係を宣言するため、 AppKernel.php ファイルを開いて、次のコードを追加します。</p>
+<p>app/AppKernel.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerBundles</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$bundles</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="c1">// ...</span>
+            <span class="k">new</span> <span class="nx">Sonata\AdminBundle\SonataAdminBundle</span><span class="p">(),</span>
+            <span class="k">new</span> <span class="nx">Sonata\BlockBundle\SonataBlockBundle</span><span class="p">(),</span>
+            <span class="k">new</span> <span class="nx">Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle</span><span class="p">(),</span>
+            <span class="k">new</span> <span class="nx">Knp\Bundle\MenuBundle\KnpMenuBundle</span><span class="p">(),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>設定ファイルを変更します。最後に以下を追加します。</p>
+<p>app/config/config.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+<span class="l-Scalar-Plain">sonata_admin</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Jobeet Admin</span>
+
+<span class="l-Scalar-Plain">sonata_block</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">default_contexts</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">cms</span><span class="p-Indicator">]</span>
+    <span class="l-Scalar-Plain">blocks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">sonata.admin.block.admin_list</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">contexts</span><span class="p-Indicator">:</span>   <span class="p-Indicator">[</span><span class="nv">admin</span><span class="p-Indicator">]</span>
+
+        <span class="l-Scalar-Plain">sonata.block.service.text</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">sonata.block.service.action</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">sonata.block.service.rss</span><span class="p-Indicator">:</span>
+</pre></div>
+</div>
+<p>また、<tt class="docutils literal"><span class="pre">translator</span></tt> キーを探して、コメント化されてる場合はコメント解除します。</p>
+<p>app/config/config.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre># ...
+framework:
+    # ...
+    translator: { fallback: %locale%}
+    # ...
+#...
+</pre></div>
+</div>
+<p>アプリケーションを動作させるためには、アプリケーションのルーティング·ファイルに <tt class="docutils literal"><span class="pre">admin</span></tt> ルートをインポートします。</p>
+<p>app/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">admin</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&#39;@SonataAdminBundle/Resources/config/routing/sonata_admin.xml&#39;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin</span>
+
+<span class="l-Scalar-Plain">_sonata_admin</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">.</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sonata_admin</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/admin</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>さて、バンドルからアセットをインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console assets:install web --symlink
+</pre></div>
+</div>
+<p>キャッシュを削除することを忘れないでください。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>dev
+<span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>prod
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、次のURLを使用して admin のダッシュボードにアクセスできるはずです。</div>
+<div class="line"><a class="reference external" href="http://jobeet.local/app_dev.php/admin/dashboard">http://jobeet.local/app_dev.php/admin/dashboard</a></div>
+</div>
+<img alt="_images/Day-12-sonata_installed.png" src="_images/Day-12-sonata_installed.png" />
+</div>
+<div class="section" id="crud">
+<h2>12.3. CRUD コントローラー<a class="headerlink" href="#crud" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">CRUD コントローラは、基本的な CRUD アクションが含まれています。</div>
+<div class="line">コントローラー名を正しい Admin インスタンスにマッピングすることで、 Admin クラスに関連付けます。</div>
+<div class="line">一部またはすべてのアクションは、プロジェクトの要件に合わせて上書きすることができます。</div>
+<div class="line">コントローラは、さまざまなアクションを構築するために、 Admin クラスを使用します。</div>
+<div class="line">コントローラの内部では、 Admin オブジェクトは、構成プロパティを介してアクセスできます。</div>
+<div class="line">それでは、各エンティティのためのコントローラを作成してみましょう。まず、カテゴリ・エンティティから。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/CategoryAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Controller\CRUDController</span> <span class="k">as</span> <span class="nx">Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Your code will be here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>そして、次にジョブ。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Controller\CRUDController</span> <span class="k">as</span> <span class="nx">Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Your code will be here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="admin">
+<h2>12.4. Admin クラスの作成<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Admin クラスは、モデルと管理領域（forms, list, show）のマッピングを表します。</div>
+<div class="line">お使いのモデルのための Admin クラスを作成する最も簡単な方法は、 <tt class="docutils literal"><span class="pre">Sonata\AdminBundle\Admin\Admin</span></tt> クラスを拡張することです。</div>
+<div class="line">バンドルの Admin フォルダに <tt class="docutils literal"><span class="pre">Admin</span></tt> クラスを作成します。</div>
+<div class="line">Admin ディレクトリを作成し、カテゴリのための Admin クラスを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/CategoryAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Admin</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Validator\ErrorElement</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// Your code will be here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>そして、ジョブにも同様に Admin クラスを作成します。</p>
+<p>src/Ibw/JobeetBundle/Admin/JobAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Admin</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Validator\ErrorElement</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Show\ShowMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// Your code will be here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>各 admin クラスを設定ファイルである services.yml·に以下のように追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/services.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">services</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">ibw.jobeet.admin.category</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Admin\CategoryAdmin</span>
+        <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nv">jobeet</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">Categories</span> <span class="p-Indicator">}</span>
+        <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Category</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;IbwJobeetBundle:CategoryAdmin&#39;</span>
+
+    <span class="l-Scalar-Plain">ibw.jobeet.admin.job</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Admin\JobAdmin</span>
+        <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">sonata.admin</span><span class="p-Indicator">,</span> <span class="nv">manager_type</span><span class="p-Indicator">:</span> <span class="nv">orm</span><span class="p-Indicator">,</span> <span class="nv">group</span><span class="p-Indicator">:</span> <span class="nv">jobeet</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">Jobs</span> <span class="p-Indicator">}</span>
+        <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;IbwJobeetBundle:JobAdmin&#39;</span>
+</pre></div>
+</div>
+<p>この時点で、ダッシュボードに Jobeet のグループを見ることができ、その中に、ジョブとカテゴリモジュールそれぞれに <tt class="docutils literal"><span class="pre">add</span></tt> と <tt class="docutils literal"><span class="pre">list</span></tt> のリンクをもちます。</p>
+<img alt="_images/Day-12-sonata_interface.jpg" src="_images/Day-12-sonata_interface.jpg" />
+</div>
+<div class="section" id="id1">
+<h2>12.5. Admin クラスの構成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">現在どのリンクをたどっても、何も起こりません。</div>
+<div class="line">リストやフォームに属しているフィールドを設定していない為です。</div>
+<div class="line">まずはカテゴリに対して、基本的な設定を行いましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/CategoryAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Admin</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Validator\ErrorElement</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// setup the default sort column and order</span>
+    <span class="k">protected</span> <span class="nv">$datagridValues</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;_sort_order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ASC&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_sort_by&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;name&#39;</span>
+    <span class="p">);</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureFormFields</span><span class="p">(</span><span class="nx">FormMapper</span> <span class="nv">$formMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$formMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureDatagridFilters</span><span class="p">(</span><span class="nx">DatagridMapper</span> <span class="nv">$datagridMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$datagridMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureListFields</span><span class="p">(</span><span class="nx">ListMapper</span> <span class="nv">$listMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$listMapper</span>
+            <span class="o">-&gt;</span><span class="na">addIdentifier</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>そしてジョブの設定をします。</p>
+<p>src/Ibw/JobeetBundle/Admin/JobAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Admin</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Admin\Admin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\ListMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Datagrid\DatagridMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Validator\ErrorElement</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Form\FormMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Show\ShowMapper</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobAdmin</span> <span class="k">extends</span> <span class="nx">Admin</span>
+<span class="p">{</span>
+    <span class="c1">// setup the defaut sort column and order</span>
+    <span class="k">protected</span> <span class="nv">$datagridValues</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;_sort_order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;DESC&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_sort_by&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;created_at&#39;</span>
+    <span class="p">);</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureFormFields</span><span class="p">(</span><span class="nx">FormMapper</span> <span class="nv">$formMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$formMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;choices&#39;</span> <span class="o">=&gt;</span> <span class="nx">Job</span><span class="o">::</span><span class="na">getTypes</span><span class="p">(),</span> <span class="s1">&#39;expanded&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Company logo&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;how_to_apply&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_activated&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureDatagridFilters</span><span class="p">(</span><span class="nx">DatagridMapper</span> <span class="nv">$datagridMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$datagridMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;expires_at&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureListFields</span><span class="p">(</span><span class="nx">ListMapper</span> <span class="nv">$listMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$listMapper</span>
+            <span class="o">-&gt;</span><span class="na">addIdentifier</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;expires_at&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;_action&#39;</span><span class="p">,</span> <span class="s1">&#39;actions&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;actions&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;view&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(),</span>
+                    <span class="s1">&#39;edit&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(),</span>
+                    <span class="s1">&#39;delete&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(),</span>
+                <span class="p">)</span>
+            <span class="p">))</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configureShowField</span><span class="p">(</span><span class="nx">ShowMapper</span> <span class="nv">$showMapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$showMapper</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;webPath&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;IbwJobeetBundle:JobAdmin:list_image.html.twig&#39;</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;how_to_apply&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;expires_at&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>show アクションのために、会社のロゴを表示するようにカスタムテンプレートを使用しました。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/JobAdmin/list_image.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Logo<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="nv">object.webPath</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これにより、ジョブとカテゴリの操作の基本的な管理モジュールを作成しました。</div>
+<div class="line">次のような多くの機能をもちます。</div>
+</div>
+<ul class="simple">
+<li>オブジェクトのリストはページ分割されています。</li>
+<li>リストはソート可能です。</li>
+<li>リストは、フィルタリングすることができます。</li>
+<li>オブジェクトは、作成、編集、および削除することができます。</li>
+<li>選択されたオブジェクトは、バッチで削除することができます。</li>
+<li>フォームの検証が有効になっています。</li>
+<li>フラッシュ·メッセージは、ユーザーへ即時にフィードバックを与えます。</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>12.6. バッチアクション<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">バッチアクションは（すべての、または、特定のサブセットの）選択したモデルに対して実行されるアクションです。</div>
+<div class="line">リストビューで簡単にいくつかのカスタムバッチアクションを追加することができます。</div>
+<div class="line">デフォルトでは、<tt class="docutils literal"><span class="pre">delete</span></tt> アクションを使用すると、一度に複数のエントリを削除することができます。</div>
+<div class="line">新しいバッチアクションを追加するには、 Admin クラスから getBatchActions をオーバーライドする必要があります。</div>
+<div class="line">では、ここで新しい <tt class="docutils literal"><span class="pre">extend</span></tt> アクションを定義しましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/JobAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getBatchActions</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// retrieve the default (currently only the delete action) actions</span>
+    <span class="nv">$actions</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">getBatchActions</span><span class="p">();</span>
+
+    <span class="c1">// check user permissions</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$actions</span><span class="p">[</span><span class="s1">&#39;extend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;label&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;Extend&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ask_confirmation&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span> <span class="c1">// If true, a confirmation will be asked before performing the action</span>
+        <span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$actions</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">JobAdminController の batchActionExtend メソッドは、コアロジックを実現するために実行されます。</div>
+<div class="line">クエリーの引数から、選択したモデルを取得します。</div>
+<div class="line">選択したモデルは、引数に渡されたクエリーから取得します。</div>
+<div class="line">（より低い粒度でモデルを選択するためテンプレートレベルで別の方法を定義したなど）何らかの理由でデフォルトの選択方法なしにバッチアクションを実行することが有用である場合は、渡されるクエリは null になります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Sonata\AdminBundle\Controller\CRUDController</span> <span class="k">as</span> <span class="nx">Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery</span> <span class="k">as</span> <span class="nx">ProxyQueryInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobAdminController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionExtend</span><span class="p">(</span><span class="nx">ProxyQueryInterface</span> <span class="nv">$selectedModelQuery</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$modelManager</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getModelManager</span><span class="p">();</span>
+
+        <span class="nv">$selectedModels</span> <span class="o">=</span> <span class="nv">$selectedModelQuery</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$selectedModels</span> <span class="k">as</span> <span class="nv">$selectedModel</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$selectedModel</span><span class="o">-&gt;</span><span class="na">extend</span><span class="p">();</span>
+                <span class="nv">$modelManager</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$selectedModel</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_error&#39;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_success&#39;</span><span class="p">,</span>  <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;The selected jobs validity has been extended until %s.&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;m/d/Y&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)));</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">それでは 60 日以上投稿者によってアクティブ化されなかったすべてのジョブを削除する新しいバッチアクションを追加してみましょう。</div>
+<div class="line">条件が一致するレコードを検索して削除しますので、このアクションのために、リストから任意のジョブを選択する必要はありません。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Admin/JobAdmin.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getBatchActions</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// retrieve the default (currently only the delete action) actions</span>
+    <span class="nv">$actions</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">getBatchActions</span><span class="p">();</span>
+
+    <span class="c1">// check user permissions</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasRoute</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">)){</span>
+        <span class="nv">$actions</span><span class="p">[</span><span class="s1">&#39;extend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;label&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;Extend&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ask_confirmation&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span> <span class="c1">// If true, a confirmation will be asked before performing the action</span>
+        <span class="p">);</span>
+
+        <span class="nv">$actions</span><span class="p">[</span><span class="s1">&#39;deleteNeverActivated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;label&#39;</span>            <span class="o">=&gt;</span> <span class="s1">&#39;Delete never activated jobs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ask_confirmation&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span> <span class="c1">// If true, a confirmation will be asked before performing the action</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$actions</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">batchActionDeleteNeverActivated アクションを作成するのに加えて、 JobAdminController にさらに新しいメソッド batchActionDeleteNeverActivatedIsRelevant を作成します。</div>
+<div class="line">ほかの確認の前に実行され、実際に存在するかどうかを確認するためのものです。</div>
+<div class="line">（このケースでは、削除されるべきジョブの選択は JobRepository::cleanup() メソッドによって処理されますので常にtrueを返します。)</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobAdminController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionDeleteNeverActivatedIsRelevant</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">batchActionDeleteNeverActivated</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">isGranted</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">AccessDeniedException</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+    <span class="nv">$nb</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">cleanup</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$nb</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_success&#39;</span><span class="p">,</span>  <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;%d never activated jobs have been deleted successfully.&#39;</span><span class="p">,</span> <span class="nv">$nb</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;sonata_flash_info&#39;</span><span class="p">,</span>  <span class="s1">&#39;No job to delete.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">admin</span><span class="o">-&gt;</span><span class="na">getFilterParameters</span><span class="p">()));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">今日はここまでです。明日は、ユーザー名とパスワードで管理領域を保護する方法を説明します。</div>
+<div class="line">これは Symfony2 のセキュリティについて話をする機会になります。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

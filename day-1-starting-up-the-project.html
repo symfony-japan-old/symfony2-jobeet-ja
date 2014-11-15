@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. 1日目: プロジェクトを始める &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="2. 2日目: このプロジェクトについて" href="day-2-the-project.html" />
+    <link rel="prev" title="Symfony2 Jobeet’s documentation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">1. 1日目: プロジェクトを始める</a><ul>
+<li><a class="reference internal" href="#jobeet">1.1. Jobeet とは</a></li>
+<li><a class="reference internal" href="#id2">1.2. 開発環境のセットアップ</a></li>
+<li><a class="reference internal" href="#symfony-2-3-2">1.3. Symfony 2.3.2 のダウンロードとインストール</a><ul>
+<li><a class="reference internal" href="#vendors">1.3.1. Vendors の更新</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web">1.4. Web サーバーの設定</a></li>
+<li><a class="reference internal" href="#symfony2">1.5. Symfony2 のコンソール</a></li>
+<li><a class="reference internal" href="#application-bundle">1.6. Application Bundle の作成</a><ul>
+<li><a class="reference internal" href="#bundle">1.6.1. bundleとは正確には何か</a></li>
+<li><a class="reference internal" href="#id3">1.6.2. 基本的 bundle スケルトンの作成</a></li>
+<li><a class="reference internal" href="#acmedemobundle">1.6.3. AcmeDemoBundle の削除の仕方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">1.7. 環境</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Symfony2 Jobeet’s documentation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Symfony2 Jobeet’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-2-the-project.html" title="Next Chapter: 2. 2日目: このプロジェクトについて"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">2. 2日目: このプロジェクト... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-1-starting-up-the-project.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>1. 1日目: プロジェクトを始める<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="section" id="jobeet">
+<h2>1.1. Jobeet とは<a class="headerlink" href="#jobeet" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><cite>Jobeet</cite> はオープンソースのジョブボードのソフトウェアです。一日づつチュートリアルをこなし、最新の Web テクノロジーである Symfony 2.3.21 を学ぶことを手助けします。</div>
+<div class="line">(まだ知らない人のために、SymfonyはPHPのためのフレームワークです。)</div>
+<div class="line">それぞれのチャプター/日は、約 1 時間ででき、開始から終了まで、本物のウェブサイトをコーディングすることによって Symfony を学ぶことが出来ます。</div>
+<div class="line">毎日、新しい機能がアプリケーションに追加され、新しい Symfony の機能性だけでなく、 Symfony の Web 開発におけるグッドプラクティスを紹介し、この開発の利点を学びます。</div>
+<div class="line">今日は初日となり、コードは書きません。その代わり開発環境のセットアップを行います。</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>1.2. 開発環境のセットアップ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">初めに、コンピューターがweb開発環境として適しているか確認する必要があります。</div>
+<div class="line">VMware Player の仮想マシンにインストールされている Ubuntu 12.04 LTS Server を使用します。最低でも、 Web サーバ（例えば Apache ）、データベースエンジン（ MySQL ）と PHP 5.3.3 以降が必要です。</div>
+</div>
+<ol class="arabic">
+<li><p class="first">Webサーバー Apache をインストールします。:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install apache2
+</pre></div>
+</div>
+<p>次に、 Apache mod-rewrite を有効にします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo a2enmod rewrite
+</pre></div>
+</div>
+</li>
+<li><p class="first">MySQLサーバをインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install mysql-server mysql-client
+</pre></div>
+</div>
+</li>
+<li><p class="first">サーバースクリプト言語、 PHP をインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install php5 libapache2-mod-php5 php5-mysql
+</pre></div>
+</div>
+</li>
+<li><p class="first">国際化拡張機能をインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install php5-intl
+</pre></div>
+</div>
+</li>
+<li><p class="first">ここで、Apache サービスを再起動する必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo service apache2 restart
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="symfony-2-3-2">
+<h2>1.3. Symfony 2.3.2 のダウンロードとインストール<a class="headerlink" href="#symfony-2-3-2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">まず最初にすることは、新しいプロジェクトをインストールする場所を Web サーバ上のディレクトリを準備することです。</div>
+<div class="line">それを Jobeet ( /var/www/jobeet ) と呼びましょう。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir /var/www/jobeet
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ディレクトリを用意しましたが、それに何を入れましょう？</div>
+<div class="line"><a class="reference external" href="http://symfony.com/download">http://symfony.com/download</a> に進み、ベンダーのない Symfony Standard 2.3.2 を選択し、それをダウンロードします。</div>
+<div class="line">準備ディレクトリ Jobeet に symfony のディレクトリ内のファイルを解凍します。</div>
+</div>
+<div class="section" id="vendors">
+<h3>1.3.1. Vendors の更新<a class="headerlink" href="#vendors" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">この時点で、独自アプリケーション開発をはじめる、フル機能の Symfony のプロジェクトをダウンロードしました。</div>
+<div class="line">Symfony のプロジェクトは、多くの外部ライブラリに依存します。</div>
+<div class="line">それらは、 Composer と呼ばれるライブラリを経由して、プロジェクトの <tt class="docutils literal"><span class="pre">vendor/</span></tt> ディレクトリにダウンロードされます。</div>
+<div class="line">Composer は PHP の依存管理ライブラリで、 Symfony 2.3.2 スタンダード版をダウンロードするために使用することができます。</div>
+<div class="line">Jobeet のディレクトリ上に Composer をダウンロードすることではじめます。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -s https://getcomposer.org/installer | php
+</pre></div>
+</div>
+<p>curl 拡張をインストールしていない場合は、このコマンドを使用してインストールすることができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install curl
+</pre></div>
+</div>
+<p>次に、必要なすべてのベンダー·ライブラリのダウンロードを開始するには、次のコマンドを入力します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php composer.phar install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="web">
+<h2>1.4. Web サーバーの設定<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">良い Web の作法は、 Web ルートディレクトリの下にスタイルシート、 JavaScript と画像のように、Web ブラウザがアクセスする必要のあるファイルだけを置くことです。</div>
+<div class="line">デフォルトでは、 Symfony プロジェクトの web/ サブディレクトリの下にこれらのファイルを保存することをお勧めします。</div>
+<div class="line">新しいプロジェクトのために Apache を設定するには、バーチャルホストを作成します。</div>
+<div class="line">そのためには、使用しているターミナルで次のコマンドをタイプします。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo nano /etc/apache2/sites-available/jobeet.local
+</pre></div>
+</div>
+<p>これで、 jobeet.local という名前のファイルが作成されます。以下をそのファイルの中に追記し、<cite>Control – O</cite> を選択し、それを保存します。その後、 <cite>Control – X</cite> でエディタを終了します。</p>
+<p>/etc/apache2/sites-available/jobeet.local</p>
+<div class="highlight-apache"><div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> jobeet.local
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/jobeet/web</span>
+    <span class="nb">DirectoryIndex</span> app.php
+    <span class="nb">ErrorLog</span> <span class="sx">/var/log/apache2/jobeet-error.log</span>
+    <span class="nb">CustomLog</span> <span class="sx">/var/log/apache2/jobeet-access.log</span> combined
+    <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/www/jobeet/web&quot;</span><span class="nt">&gt;</span>
+        <span class="nb">AllowOverride</span> <span class="k">All</span>
+        <span class="nb">Allow</span> from <span class="k">All</span>
+     <span class="nt">&lt;/Directory&gt;</span>
+ <span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Apache の設定で使用されるドメイン名 jobeet.local は、ローカルで宣言する必要があります。</div>
+<div class="line">Linux システムで実行する場合、<tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> ファイルで行う必要があります。</div>
+<div class="line">Windowsで実行している場合、このファイルは <tt class="docutils literal"><span class="pre">C:\Windows\System32\drivers\etc\</span></tt> ディレクトリにあります。次の行を追加します。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>127.0.0.1 jobeet.local
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">リモート·サーバーで作業している場合には、127.0.0.1をWebサーバー·マシンのIPで置き換えてください。</p>
+</div>
+<div class="line-block">
+<div class="line">この仮想ホストを動かしたい場合は、新しく作成された仮想ホストを有効にして Apache を再起動する必要があります。</div>
+<div class="line">そのため、ターミナルに移って次のようにタイプします。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo a2ensite jobeet.local
+<span class="nv">$ </span>sudo service apache2 restart
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Web サーバーと PHP が Symfony を使用できるよう正常に設定されているかどうか確認する視覚的なサーバー設定テスターが Symfony に付属しています。</div>
+<div class="line">設定を確認するには、次のURLを使用します。::</div>
+</div>
+<blockquote>
+<div><a class="reference external" href="http://jobeet.local/config.php">http://jobeet.local/config.php</a></div></blockquote>
+<img alt="_images/sf2-config-1.png" src="_images/sf2-config-1.png" />
+<p>ローカルホストからこれを実行しない場合、web/config.php ファイルを開いてローカルホストの外部からのアクセスを制限する行をコメントにします。</p>
+<p>web/config.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">]))</span> <span class="p">{</span>
+   <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;This script cannot be run from the CLI. Run it from a browser.&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">if (!in_array(@$_SERVER[&#39;REMOTE_ADDR&#39;], array(</span>
+<span class="cm">   &#39;127.0.0.1&#39;,</span>
+<span class="cm">   &#39;::1&#39;,</span>
+<span class="cm">))) {</span>
+<span class="cm">   header(&#39;HTTP/1.0 403 Forbidden&#39;);</span>
+<span class="cm">   exit(&#39;This script is only accessible from localhost.&#39;);</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>web/app_dev.php に対しても同じことを行います。</p>
+<p>web/app_dev.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Debug\Debug</span><span class="p">;</span>
+
+<span class="c1">// If you don&#39;t want to setup permissions the proper way, just uncomment the following PHP line</span>
+<span class="c1">// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information</span>
+<span class="c1">//umask(0000);</span>
+
+<span class="c1">// This check prevents access to debug front controllers that are deployed by accident to production servers.</span>
+<span class="c1">// Feel free to remove this, extend it, or make something more sophisticated.</span>
+<span class="cm">/*</span>
+<span class="cm">if (isset($_SERVER[&#39;HTTP_CLIENT_IP&#39;])</span>
+<span class="cm">    || isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])</span>
+<span class="cm">    || !in_array(@$_SERVER[&#39;REMOTE_ADDR&#39;], array(&#39;127.0.0.1&#39;, &#39;fe80::1&#39;, &#39;::1&#39;))</span>
+<span class="cm">) {</span>
+<span class="cm">    header(&#39;HTTP/1.0 403 Forbidden&#39;);</span>
+<span class="cm">    exit(&#39;You are not allowed to access this file. Check &#39;.basename(__FILE__).&#39; for more information.&#39;);</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">require_once</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../app/bootstrap.php.cache&#39;</span><span class="p">;</span>
+<span class="nx">Debug</span><span class="o">::</span><span class="na">enable</span><span class="p">();</span>
+
+<span class="k">require_once</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../app/AppKernel.php&#39;</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての``warnings`` が出ないようにする作業リストです。</p>
+<ol class="arabic">
+<li><p class="first">app/cache と、app/logs のパーミッションを変更します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo chmod -R 777 app/cache
+sudo chmod -R 777 app/logs
+sudo setfacl -dR -m u::rwX app/cache app/logs
+</pre></div>
+</div>
+<p>まだ ACL を持っていない場合はインストールします。</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install acl
+</pre></div>
+</div>
+</li>
+<li><p class="first">php.iniで date.timezone を設定します</p>
+<p>/etc/php5/apache2/php.ini</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="na">date.timezone</span> <span class="o">=</span> <span class="s">Europe/Bucharest</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>sudo nano /etc/php5/apache2/php.ini
+</pre></div>
+</div>
+<p>[date] セクションの date.timezone を見つけて、タイムゾーンを設定します。その後、&#8221;;&#8221; を削除し、行の先頭に配置します。</p>
+</li>
+<li><p class="first">同じ php.ini ファイルで short_open_tag をオフに設定します。</p>
+<p>/etc/php5/apache2/php.ini</p>
+</li>
+<li><p class="first">PHP アクセラレータ（APC推奨）をインストールし有効にします。</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install php-apc
+sudo service apache2 restart
+</pre></div>
+</div>
+<p>Apache を再起動した後、 ブラウザを開き <a class="reference external" href="http://jobeet.local/app_dev.php">http://jobeet.local/app_dev.php</a> とタイプします。次のページが表示されます。</p>
+<img alt="_images/Day-1-SF_welcome.jpg" src="_images/Day-1-SF_welcome.jpg" />
+</li>
+</ol>
+</div>
+<div class="section" id="symfony2">
+<h2>1.5. Symfony2 のコンソール<a class="headerlink" href="#symfony2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Symfony2 には、さまざまなタスクに使用するコンソールコンポーネントのツールが付属しています。</div>
+<div class="line">コマンドプロンプトで入力できることをリスト表示するには以下のように入力します。</div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console list
+</pre></div>
+</div>
+</div>
+<div class="section" id="application-bundle">
+<h2>1.6. Application Bundle の作成<a class="headerlink" href="#application-bundle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bundle">
+<h3>1.6.1. bundleとは正確には何か<a class="headerlink" href="#bundle" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">他のソフトウェアのプラグインと似ていますが、それよりも良いです。</div>
+<div class="line">主な違いは、すべてが Symfony 2.3.2 のバンドルということです。コアフレームワークの機能とアプリケーションのために書かれたコードの両方を含みます。</div>
+<div class="line">バンドルは、単一の機能を実装した構造化されたディレクトリ内のファイルのセットです。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">バンドルはオートロード（ app/autoload.php ）される限りどこにでも設置できます。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">ここに詳細を読むことができます。
+バンドルシステム <a class="reference external" href="http://symfony.com/doc/current/book/page_creation.html#the-bundle-system">http://symfony.com/doc/current/book/page_creation.html#the-bundle-system</a></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>1.6.2. 基本的 bundle スケルトンの作成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Symfony のバンドルジェネレーターを開始するには、次のコマンドを実行します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console generate:bundle --namespace<span class="o">=</span>Ibw/JobeetBundle
+</pre></div>
+</div>
+<p>ジェネレーターは、バンドルを生成する前にいくつか質問をします。ここでの質問と回答（ 1 つを除くすべてがデフォルトの答え）は次のとおりです。</p>
+<div class="highlight-bash"><div class="highlight"><pre>Bundle name <span class="o">[</span>IbwJobeetBundle<span class="o">]</span>: IbwJobeetBundle
+Target directory <span class="o">[</span>/var/www/jobeet/src<span class="o">]</span>: /var/www/jobeet/src
+Configuration format <span class="o">(</span>yml, xml, php, or annotation<span class="o">)</span> <span class="o">[</span>yml<span class="o">]</span>: yml
+Do you want to generate the whole directory structure <span class="o">[</span>no<span class="o">]</span>? yes
+Do you confirm generation <span class="o">[</span>yes<span class="o">]</span>? yes
+Confirm automatic update of your Kernel <span class="o">[</span>yes<span class="o">]</span>? yes
+Confirm automatic update of the Routing <span class="o">[</span>yes<span class="o">]</span>? yes
+</pre></div>
+</div>
+<p>新しいバンドルを生成した後にキャッシュをクリアします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>prod
+<span class="nv">$ </span>php app/console cache:clear --env<span class="o">=</span>dev
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">現在、新しい Jobeet のバンドル は、プロジェクトの src ディレクトリにあります（ <tt class="docutils literal"><span class="pre">src/Ibw/JobeetBundle</span></tt> ）。</div>
+<div class="line">バンドルジェネレータは DefaultController を index アクションとあわせて作りました。</div>
+<div class="line">これにはお使いのブラウザで次のようにアクセスすることができます。</div>
+<div class="line"><a class="reference external" href="http://jobeet.local/hello/jobeet">http://jobeet.local/hello/jobeet</a> または <a class="reference external" href="http://jobeet.local/app_dev.php/hello/jobeet">http://jobeet.local/app_dev.php/hello/jobeet</a></div>
+</div>
+</div>
+<div class="section" id="acmedemobundle">
+<h3>1.6.3. AcmeDemoBundle の削除の仕方<a class="headerlink" href="#acmedemobundle" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Symfony 2.3.2 Standard Editionでは完全なデモが AcmeDemoBundle バンドルの中に付属しています。</div>
+<div class="line">これは、プロジェクトの開始時に参照するためのすばらしい文例集ですが、おそらく、最終的にそれを削除したいと思うでしょう。</div>
+</div>
+<ol class="arabic">
+<li><p class="first"><tt class="docutils literal"><span class="pre">Acme</span></tt> ディレクトリを削除するコマンドを入力します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm -rf /var/www/jobeet/src/Acme
+</pre></div>
+</div>
+</li>
+<li><p class="first">/var/www/jobeet/app/AppKernel.php を開いて行の削除をします。</p>
+<p>app/AppKernel.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="nv">$bundles</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Acme\DemoBundle\AcmeDemoBundle</span><span class="p">();</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>そして app/config/routing_dev.yml から削除します。</p>
+<p>app/config/routing_dev.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="c1"># AcmeDemoBundle routes (to be removed)</span>
+<span class="l-Scalar-Plain">_acme_demo</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@AcmeDemoBundle/Resources/config/routing.yml&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">最後に、キャッシュをクリアします。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>1.7. 環境<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Symfony 2.3.2 は、いくつかの環境を持っています。プロジェクトのwebディレクトリを見ると、app.phpとapp_dev.phpという2つの PHP ファイルを見るでしょう。</div>
+<div class="line">これらのファイルは、フロントコントローラーと呼ばれます。アプリケーションへのすべてのリクエストは、それらを介して行われます。</div>
+<div class="line">app.php ファイルは本番環境用であり、 app_dev.php はウェブ開発者によって使用される開発環境です。</div>
+<div class="line">開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。</div>
+<div class="line">これで今日はすべてです。明日は Jobeet の Web サイトが正確にどんなものかお話します。このチュートリアルでお会いしましょう！</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>38. Day 19: Internationalization and Localization &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="../index.html" />
+    <link rel="prev" title="37. Day 18: AJAX" href="day-18-ajax.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-10-the-forms.html">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">38. Day 19: Internationalization and Localization</a><ul>
+<li><a class="reference internal" href="#user">38.1. User</a></li>
+<li><a class="reference internal" href="#culture-in-the-url">38.2. Culture in the URL</a></li>
+<li><a class="reference internal" href="#culture-testing">38.3. Culture Testing</a></li>
+<li><a class="reference internal" href="#language-switching">38.4. Language Switching</a></li>
+<li><a class="reference internal" href="#templates">38.5. Templates</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-18-ajax.html" title="Previous Chapter: 37. Day 18: AJAX"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 37. Day 18: AJAX</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/en/day-19-internationalization-and-localization.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="day-19-internationalization-and-localization">
+<h1>38. Day 19: Internationalization and Localization<a class="headerlink" href="#day-19-internationalization-and-localization" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>This article is part of the original <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a>, created by Fabien Potencier, for Symfony 1.4.</li>
+</ul>
+<p>Yesterday, we finished the search engine feature by making it more fun with the addition of some AJAX goodness. Now, we will talk about Jobeet internationalization (or i18n) and localization (or l10n).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<dl class="last docutils">
+<dt>From Wikipedia:</dt>
+<dd><ul class="first last simple">
+<li>Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes.</li>
+<li>Localization is the process of adapting software for a specific region or language by adding locale-specific components and translating text.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="user">
+<h2>38.1. User<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>No internationalization is possible without a user. When your website is available in several languages or for different regions of the world, the user is responsible for choosing the one that fits him best.
+The i18n and l10n features of symfony are based on the user culture. The culture is the combination of the language and the country of the user. For instance, the culture for a user that speaks French is fr and the culture for a user from France is fr_FR.
+Translations are handled by a Translator service that uses the user’s locale to lookup and return translated messages. Before using it, enable the Translator in your configuration:</p>
+<p>app/config/config.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">framework</span><span class="p-Indicator">:</span>
+    <span class="c1">#esi:             ~</span>
+    <span class="l-Scalar-Plain">translator</span><span class="p-Indicator">:</span>      <span class="p-Indicator">{</span> <span class="nv">fallback</span><span class="p-Indicator">:</span> <span class="nv">en</span> <span class="p-Indicator">}</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">default_locale</span><span class="p-Indicator">:</span>  <span class="s">&quot;en&quot;</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="culture-in-the-url">
+<h2>38.2. Culture in the URL<a class="headerlink" href="#culture-in-the-url" title="Permalink to this headline">¶</a></h2>
+<p>The Jobeet website will be available in English and French. As an URL can only represent a single resource, the culture must be embedded in the URL. In order to do that, open the routing.yml file, and add the special locale variable for all routes but the api. For simple routes, add /{_locale} to the front of the url:</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">login</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/login</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Default</span><span class="p-Indicator">:</span><span class="nv">login</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">login_check</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/login_check</span>
+
+<span class="l-Scalar-Plain">logout</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/logout</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_category</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{_locale}/category/{slug}/{page}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Category</span><span class="p-Indicator">:</span><span class="nv">show</span><span class="p-Indicator">,</span> <span class="nv">page</span><span class="p-Indicator">:</span> <span class="nv">1</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_locale</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">en|fr</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing/job.yml&quot;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/{_locale}/job</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_locale</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">en|fr</span>
+
+<span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Job</span><span class="p-Indicator">:</span><span class="nv">index</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_api</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/api/{token}/jobs.{_format}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Api:list&quot;</span><span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">xml|json|yaml</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_ibw_affiliate</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@IbwJobeetBundle/Resources/config/routing/affiliate.yml&quot;</span>
+    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/{_locale}/affiliate</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_locale</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">en|fr</span>
+</pre></div>
+</div>
+<p>As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). So go ahead and add a new route to do that for you and modify your homepage route also :</p>
+<p>src/Ibw/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+<span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{_locale}/</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="nv">IbwJobeetBundle</span><span class="p-Indicator">:</span><span class="nv">Job</span><span class="p-Indicator">:</span><span class="nv">index</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">_locale</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">en|fr</span>
+<span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_nonlocalized</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:index&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Let’s add and modify the behaviour of these two routes in the controller:</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_route&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;IbwJobeetBundle_nonlocalized&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_jobeet_homepage&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>If the user will access the Jobeet platform without specifying his preffered culture (<a class="reference external" href="http://jobeet.local/app_dev.php">http://jobeet.local/app_dev.php</a>), he will be redirected to the homepage having the culture selected by default for him (<a class="reference external" href="http://jobeet.local/app_dev.php/en/">http://jobeet.local/app_dev.php/en/</a>).</p>
+</div>
+<div class="section" id="culture-testing">
+<h2>38.3. Culture Testing<a class="headerlink" href="#culture-testing" title="Permalink to this headline">¶</a></h2>
+<p>It is time to test our implementation. But before adding more tests, we need to fix the existing ones. As all URLs have changed, edit all functional test files and add /en in front of all URLs.</p>
+<p>src/ibw/JobeetBundle/Tests/Controller/JobControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Tests\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Console\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\NullOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\ArrayInput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\DomCrawler\Crawler</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobControllerTest</span> <span class="k">extends</span> <span class="nx">WebTestCase</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testIndex</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// get the custom parameters from app config.yml</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$max_jobs_on_homepage</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">);</span>
+
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/fr/&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::indexAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="c1">// If the selected culture is italian, the page requested will not be found</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/it/&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::indexAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="c1">// expired jobs are not listed</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs td.position:contains(&quot;Expired&quot;)&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="c1">// only $max_jobs_on_homepage jobs are listed for a category</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span><span class="o">&lt;=</span> <span class="nv">$max_jobs_on_homepage</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_design .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming .more_jobs&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">// jobs are sorted by date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.category_programming tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;a[href*=&quot;/%d/&quot;]&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()))</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="c1">// each job on the homepage is clickable and give detailed information</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMostRecentProgrammingJob</span><span class="p">();</span>
+        <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="s1">&#39;Web Developer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">));</span>
+
+        <span class="c1">// a non-existent job forwards the user to a 404</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/foo-inc/milano-italy/0/painter&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="c1">// an expired job page forwards the user to a 404</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/en/job/sensio-labs/paris-france/%d/web-developer&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getExpiredJob</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testJobForm</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/new&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::newAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[url]&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;http://www.sensio.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[file]&#39;</span>         <span class="o">=&gt;</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../../../../../web/bundles/ibwjobeet/images/sensio-labs.gif&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[how_to_apply]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Send me an email&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[description]&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;You will work with symfony to develop websites for our customers&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;for.a.job@example.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[is_public]&#39;</span>    <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::createAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::previewAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT count(j.id) from IbwJobeetBundle:Job j WHERE j.location = :location AND j.is_activated IS NULL AND j.is_public = 0&#39;</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">());</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;not.an.email&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+        <span class="c1">// check if we have 3 errors</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="c1">// check if we have error on job_description field</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_description&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// check if we have error on job_how_to_apply field</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_how_to_apply&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// check if we have error on job_email field</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#job_email&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createJob</span><span class="p">(</span><span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(),</span> <span class="nv">$publish</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Preview your job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="nb">array_merge</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;job[company]&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Sensio Labs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[url]&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;http://www.sensio.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[position]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Developer&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[location]&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Atlanta, USA&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[description]&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;You will work with symfony to develop websites for our customers.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[how_to_apply]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Send me an email&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;for.a.job@example.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;job[is_public]&#39;</span>    <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">),</span> <span class="nv">$values</span><span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$publish</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+            <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Publish&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+            <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+            <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testEditJob</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO3&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/en/job/%s/edit&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJobByPosition</span><span class="p">(</span><span class="s1">&#39;FOO3&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span> <span class="mi">404</span> <span class="o">===</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testExtendJob</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// A job validity cannot be extended before the job expires soon</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO4&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;input[type=submit]:contains(&quot;Extend&quot;)&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="c1">// A job validity can be extended hen the job expires soon</span>
+        <span class="c1">// Create a new FOO5 job</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createJob</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;job[position]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOO5&#39;</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+        <span class="c1">// Get the job and change the expire date to today</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByPosition</span><span class="p">(</span><span class="s1">&#39;FOO5&#39;</span><span class="p">);</span>
+        <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">setExpiresAt</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="c1">// Go to preview page and extend the job</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;/en/job/%s/%s/%s/%s&#39;</span><span class="p">,</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()));</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCrawler</span><span class="p">();</span>
+
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Extend&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">();</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::previewAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="c1">// Reload the job from database</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJobByPosition</span><span class="p">(</span><span class="s1">&#39;FOO5&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Check the expiration date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getExpiresAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;y/m/d&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;y/m/d&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSearch</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/search&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\JobController::searchAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/job/search?query=sens*&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;X-Requested-With&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;XMLHttpRequest&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span><span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAffiliateForm</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/affiliate/new&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::newAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[url]&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;http://sensio-labs.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fabien.potencier@example.com&#39;</span>
+        <span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::createAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine.orm.entity_manager&#39;</span><span class="p">);</span>
+
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/affiliate/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;not.an.email&#39;</span><span class="p">,</span>
+        <span class="p">));</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+
+        <span class="c1">// check if we have 1 errors</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// check if we have error on affiliate_email field</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;#affiliate_email&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">siblings</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.error_list&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/affiliate/new&#39;</span><span class="p">);</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectButton</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;affiliate[url]&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;http://sensio-labs.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;affiliate[email]&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;address@example.com&#39;</span>
+        <span class="p">));</span>
+
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="nv">$form</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">followRedirect</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::waitAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testWait</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+        <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/affiliate/wait&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\AffiliateController::waitAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testShow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$kernel</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createKernel</span><span class="p">();</span>
+        <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+
+        <span class="c1">// get the custom parameters from app/config.yml</span>
+        <span class="nv">$max_jobs_on_category</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_category&#39;</span><span class="p">);</span>
+        <span class="nv">$max_jobs_on_homepage</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;max_jobs_on_homepage&#39;</span><span class="p">);</span>
+
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="na">createClient</span><span class="p">();</span>
+
+        <span class="nv">$categories</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Category&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getWithJobs</span><span class="p">();</span>
+
+        <span class="c1">// categories on homepage are clickable</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/&#39;</span><span class="p">);</span>
+
+            <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+            <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">));</span>
+
+            <span class="nv">$jobs_no</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">countActiveJobs</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+
+            <span class="c1">// categories with more than $max_jobs_on_homepage jobs also have a &quot;more&quot; link</span>
+            <span class="k">if</span><span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">&gt;</span> <span class="nv">$max_jobs_on_homepage</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/en/&#39;</span><span class="p">);</span>
+                <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s2">&quot;.category_&quot;</span> <span class="o">.</span> <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; .more_jobs a&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+                <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$category</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">(),</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;slug&#39;</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="nv">$pages</span> <span class="o">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$jobs_no</span><span class="o">/</span><span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+
+            <span class="c1">// only $max_jobs_on_category jobs are listed</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nv">$pages</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/page 1\/&quot;</span> <span class="o">.</span> <span class="nv">$pages</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="nv">$pages</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$link</span> <span class="o">=</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">selectLink</span><span class="p">(</span><span class="nv">$i</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">();</span>
+                    <span class="nv">$crawler</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">click</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="s1">&#39;Ibw\JobeetBundle\Controller\CategoryController::showAction&#39;</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;_controller&#39;</span><span class="p">));</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">));</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+                    <span class="p">}</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/page &quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;\/&quot;</span> <span class="o">.</span> <span class="nv">$pages</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="language-switching">
+<h2>38.4. Language Switching<a class="headerlink" href="#language-switching" title="Permalink to this headline">¶</a></h2>
+<p>For the user to change the culture, a language form must be added in the layout. Let’s create it:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- ... --&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;IbwJobeetBundle_changeLanguage&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label&gt;</span>Language<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;language&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;en&quot;</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;_locale&#39;</span><span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="cp">%}</span><span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>English<span class="nt">&lt;/option&gt;</span>
+                    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;fr&quot;</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;_locale&#39;</span><span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;fr&#39;</span> <span class="cp">%}</span><span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>French<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Ok&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>Add a new route to match the action in which we will change the language:</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">IbwJobeetBundle_changeLanguage</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/change_language</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Default:changeLanguage&quot;</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Now, the action:</p>
+<p>src/Ibw/JobetBundle/Controller/DefaultController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Security\Core\SecurityContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DefaultController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changeLanguageAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$language</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_jobeet_homepage&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;_locale&#39;</span> <span class="o">=&gt;</span> <span class="nv">$language</span><span class="p">)));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Don’ forget to clear the cache!</p>
+</div>
+<div class="section" id="templates">
+<h2>38.5. Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>An internationalized website means that the user interface is translated into several language. For us, it will be english, by default, and french. In order to translate the templates, we will use the Twig tag {% trans %}. When symfony renders a template, each time the {% trans %} tag is found, symfony looks for a translation for the current user’s culture. If the translation is found, it is used, if not, the string supposed to be translated is returned as a fallback value.
+All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory. For this, we will use the XLIFF format, which is a standard and the most flexible one.
+Let’s start translating by adding the {% trans %} tag inside the templates:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.php</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>
+            <span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>
+                <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Jobeet - Your best job board<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+            <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+        <span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/main.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type=</span><span class="s">&quot;application/atom+xml&quot;</span> <span class="na">title=</span><span class="s">&quot;Latest Jobs&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;ibw_job&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;_format&#39;</span><span class="o">:</span> <span class="s1">&#39;atom&#39;</span><span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+        <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">block</span> <span class="nv">javascripts</span> <span class="cp">%}</span>
+            <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/js/jquery-2.0.3.min.js&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+            <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/js/search.js&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;shortcut icon&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/favicon.ico&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_jobeet_homepage&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">&quot;Jobeet Job Board&quot;</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/logo.jpg&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/a&gt;&lt;/h1&gt;</span>
+
+                    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;sub_header&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;h2&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Ask for people<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h2&gt;</span>
+                            <span class="nt">&lt;div&gt;</span>
+                                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_new&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Post a Job<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;h2&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Ask for a job<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h2&gt;</span>
+                            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_search&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;query&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;query&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">id=</span><span class="s">&quot;search_keywords&quot;</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;search&quot;</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">&quot;loader&quot;</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/loader.gif&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">style=</span><span class="s">&quot;vertical-align: middle; display: none&quot;</span> <span class="nt">/&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
+                                    <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Enter some keywords (city, country, position, ...)<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/form&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job_history&quot;</span><span class="nt">&gt;</span>
+                <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Recent viewed jobs:<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">job</span> <span class="k">in</span> <span class="nv">app.session.get</span><span class="o">(</span><span class="s1">&#39;job_history&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">job.id</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">job.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">job.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">job.positionslug</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">job.position</span> <span class="cp">}}</span> - <span class="cp">{{</span> <span class="nv">job.company</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+               <span class="cp">{%</span> <span class="k">for</span> <span class="nv">flashMessage</span> <span class="k">in</span> <span class="nv">app.session.flashbag.get</span><span class="o">(</span><span class="s1">&#39;notice&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+                   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;flash_notice&quot;</span><span class="nt">&gt;</span>
+                       <span class="cp">{{</span> <span class="nv">flashMessage</span> <span class="cp">}}</span>
+                   <span class="nt">&lt;/div&gt;</span>
+               <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+               <span class="cp">{%</span> <span class="k">for</span> <span class="nv">flashMessage</span> <span class="k">in</span> <span class="nv">app.session.flashbag.get</span><span class="o">(</span><span class="s1">&#39;error&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+                   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;flash_error&quot;</span><span class="nt">&gt;</span>
+                       <span class="cp">{{</span> <span class="nv">flashMessage</span> <span class="cp">}}</span>
+                   <span class="nt">&lt;/div&gt;</span>
+               <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                   <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+                   <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+
+           <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;symfony&quot;</span><span class="nt">&gt;</span>
+                       <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/jobeet-mini.png&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+                           powered by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.symfony.com/&quot;</span><span class="nt">&gt;</span>
+                           <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/images/symfony.gif&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">alt=</span><span class="s">&quot;symfony framework&quot;</span> <span class="nt">/&gt;</span>
+                       <span class="nt">&lt;/a&gt;</span>
+                   <span class="nt">&lt;/span&gt;</span>
+                   <span class="nt">&lt;ul&gt;</span>
+                       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>About Jobeet<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;feed&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;_format&#39;</span><span class="o">:</span> <span class="s1">&#39;atom&#39;</span><span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Full feed<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Jobeet API<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;last&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_affiliate_new&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Become an affiliate<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                   <span class="nt">&lt;/ul&gt;</span>
+                   <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;IbwJobeetBundle_changeLanguage&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+                       <span class="nt">&lt;label&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Language<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/label&gt;</span>
+                       <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">&quot;language&quot;</span><span class="nt">&gt;</span>
+                           <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;en&quot;</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;_locale&#39;</span><span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="cp">%}</span><span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>English<span class="nt">&lt;/option&gt;</span>
+                                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;fr&quot;</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;_locale&#39;</span><span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;fr&#39;</span> <span class="cp">%}</span><span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>French<span class="nt">&lt;/option&gt;</span>
+                       <span class="nt">&lt;/select&gt;</span>
+                       <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Ok&quot;</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;/form&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">trans</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;%company%&#39;</span><span class="o">:</span> <span class="nv">entity.company</span><span class="o">,</span> <span class="s1">&#39;%position%&#39;</span><span class="o">:</span> <span class="nv">entity.position</span><span class="o">}</span> <span class="cp">%}</span>%company% is looking for a %position%<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;token&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;IbwJobeetBundle:Job:admin.html.twig&#39;</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;job&#39;</span><span class="o">:</span> <span class="nv">entity</span><span class="o">}</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;h2&gt;</span><span class="cp">{{</span> <span class="nv">entity.location</span> <span class="cp">}}</span><span class="nt">&lt;/h2&gt;</span>
+        <span class="nt">&lt;h3&gt;</span>
+            <span class="cp">{{</span> <span class="nv">entity.position</span> <span class="cp">}}</span>
+            <span class="nt">&lt;small&gt;</span> - <span class="cp">{{</span> <span class="nv">entity.type</span> <span class="cp">}}</span><span class="nt">&lt;/small&gt;</span>
+        <span class="nt">&lt;/h3&gt;</span>
+
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">entity.logo</span> <span class="cp">%}</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">entity.url</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/uploads/jobs/</span><span class="cp">{{</span> <span class="nv">entity.logo</span> <span class="cp">}}</span><span class="s">&quot;</span>
+                        <span class="na">alt=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">entity.company</span> <span class="cp">}}</span><span class="s"> logo&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;description&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{{</span> <span class="nv">entity.description</span><span class="o">|</span><span class="nf">nl2br</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;h4&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>How to apply?<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h4&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;how_to_apply&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">entity.howtoapply</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;small&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;%date%&#39;</span><span class="o">:</span> <span class="nv">entity.createdat</span><span class="o">|</span><span class="nf">date</span><span class="o">(</span><span class="s1">&#39;m/d/Y&#39;</span><span class="o">)}</span> <span class="cp">%}</span>posted on %date%<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/small&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Job creation<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h1&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+        <span class="nt">&lt;br</span> <span class="nt">/&gt;</span> <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Whether the job can also be published on affiliate websites or not.<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">category.morejobs</span> <span class="cp">%}</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;more_jobs&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">trans</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;%count%&#39;</span><span class="o">:</span> <span class="s1">&#39;&lt;a href=&quot;&#39;</span> <span class="o">~</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;IbwJobeetBundle_category&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;slug&#39;</span><span class="o">:</span> <span class="nv">category.slug</span> <span class="o">})</span> <span class="o">~</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">~</span>  <span class="nv">category.morejobs</span> <span class="o">~</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="o">}</span> <span class="cp">%}</span>and %count% more...<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Job edit<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h1&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+        <span class="nt">&lt;br</span> <span class="nt">/&gt;</span> <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Whether the job can also be published on affiliate websites or not.<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job_actions&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Admin<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">job.isActivated</span> <span class="cp">%}</span>
+            <span class="nt">&lt;ul&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Edit<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>
+                    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_publish&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">publish_form</span><span class="o">)</span> <span class="cp">}}</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Publish<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;/form&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_delete&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">delete_form</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">onclick=</span><span class="s">&quot;if(!confirm(&#39;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span><span class="s">Are you sure?</span><span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="s">&#39;)) { return false; }&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Delete<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.isActivated</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.expiresSoon</span> <span class="cp">%}</span> <span class="na">class=</span><span class="s">&quot;expires_soon&quot;</span> <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>
+                <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.isExpired</span> <span class="cp">%}</span>
+                    <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Expired<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+                <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+                    <span class="cp">{%</span> <span class="k">trans</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;%count%&#39;:&#39;&lt;strong&gt;&#39;</span> <span class="o">~</span> <span class="nv">job.getDaysBeforeExpires</span> <span class="o">~</span> <span class="s1">&#39;&lt;/strong&gt;&#39;</span> <span class="o">}</span> <span class="cp">%}</span>Expires in %count% days<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+                <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+                <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.expiresSoon</span> <span class="cp">%}</span>
+                    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_extend&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">extend_form</span><span class="o">)</span> <span class="cp">}}</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Extend&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Extend<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/button&gt;</span> <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>for another 30 days<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+                    <span class="nt">&lt;/form&gt;</span>
+                <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span>
+                [<span class="cp">{%</span> <span class="k">trans</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;%url%&#39;</span><span class="o">:</span> <span class="s1">&#39;&lt;a href=&quot;&#39;</span> <span class="o">~</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">job.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">job.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">job.positionslug</span> <span class="o">})</span> <span class="o">~</span> <span class="s1">&#39;&quot;&gt;URL&lt;/a&gt;&#39;</span><span class="o">}</span> <span class="cp">%}</span>Bookmark this %url% to manage this job in the future<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>.]
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">title</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="nx">trans</span> <span class="nx">with</span> <span class="p">{</span><span class="s1">&#39;%category%&#39;</span><span class="o">:</span> <span class="nx">category</span><span class="o">.</span><span class="nx">name</span><span class="p">}</span> <span class="o">%</span><span class="p">}</span><span class="nx">Jobs</span> <span class="nx">in</span> <span class="nx">the</span> <span class="o">%</span><span class="nx">category</span><span class="o">%</span> <span class="nx">category</span><span class="p">{</span><span class="o">%</span> <span class="nx">endtrans</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">stylesheets</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{{</span> <span class="k">parent</span><span class="p">()</span> <span class="p">}}</span>
+    <span class="o">&lt;</span><span class="nb">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ asset(&#39;bundles/ibwjobeet/css/jobs.css&#39;) }}&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span> <span class="nx">media</span><span class="o">=</span><span class="s2">&quot;all&quot;</span> <span class="o">/&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">content</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;feed&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;_format&#39;: &#39;atom&#39; }) }}&quot;</span><span class="o">&gt;</span><span class="nx">Feed</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="nx">category</span><span class="o">.</span><span class="nx">name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+
+    <span class="p">{</span><span class="o">%</span> <span class="k">include</span> <span class="s1">&#39;IbwJobeetBundle:Job:list.html.twig&#39;</span> <span class="nx">with</span> <span class="p">{</span><span class="s1">&#39;jobs&#39;</span><span class="o">:</span> <span class="nx">category</span><span class="o">.</span><span class="nx">activejobs</span><span class="p">}</span> <span class="o">%</span><span class="p">}</span>
+
+    <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">last_page</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">%</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;pagination&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;page&#39;: 1 }) }}&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;{{ asset(&#39;bundles/ibwjobeet/images/first.png&#39;) }}&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;First page&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;First page&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;page&#39;: previous_page }) }}&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;{{ asset(&#39;bundles/ibwjobeet/images/previous.png&#39;) }}&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Previous page&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;Previous page&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+
+            <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">page</span> <span class="nx">in</span> <span class="mf">1.</span><span class="o">.</span><span class="nx">last_page</span> <span class="o">%</span><span class="p">}</span>
+                <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">page</span> <span class="o">==</span> <span class="nx">current_page</span> <span class="o">%</span><span class="p">}</span>
+                    <span class="p">{{</span> <span class="nx">page</span> <span class="p">}}</span>
+                <span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+                    <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;page&#39;: page }) }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="nx">page</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="o">%</span> <span class="k">endif</span> <span class="o">%</span><span class="p">}</span>
+            <span class="p">{</span><span class="o">%</span> <span class="k">endfor</span> <span class="o">%</span><span class="p">}</span>
+
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;page&#39;: next_page }) }}&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;{{ asset(&#39;bundles/ibwjobeet/images/next.png&#39;) }}&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Next page&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;Next page&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;{{ path(&#39;IbwJobeetBundle_category&#39;, { &#39;slug&#39;: category.slug, &#39;page&#39;: last_page }) }}&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;{{ asset(&#39;bundles/ibwjobeet/images/last.png&#39;) }}&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Last page&quot;</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;Last page&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="k">endif</span> <span class="o">%</span><span class="p">}</span>
+
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;pagination_desc&quot;</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="o">%</span> <span class="nx">transchoice</span> <span class="nx">total_jobs</span> <span class="nx">with</span> <span class="p">{</span><span class="s1">&#39;%count%&#39;</span><span class="o">:</span> <span class="s1">&#39;&lt;strong&gt;&#39;</span> <span class="o">~</span> <span class="nx">total_jobs</span> <span class="o">~</span> <span class="s1">&#39;&lt;/strong&gt;&#39;</span><span class="p">}</span> <span class="o">%</span><span class="p">}</span>
+            <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="nx">No</span> <span class="nx">job</span> <span class="nx">in</span> <span class="k">this</span> <span class="nx">category</span><span class="o">|</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span> <span class="nx">One</span> <span class="nx">job</span> <span class="nx">in</span> <span class="k">this</span> <span class="nx">category</span><span class="o">|</span><span class="p">]</span><span class="mi">1</span><span class="p">,</span><span class="nx">Inf</span><span class="p">]</span> <span class="o">%</span><span class="nb">count</span><span class="o">%</span> <span class="nx">jobs</span> <span class="nx">in</span> <span class="k">this</span> <span class="nx">category</span>
+        <span class="p">{</span><span class="o">%</span> <span class="nx">endtranschoice</span> <span class="o">%</span><span class="p">}</span>
+        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">last_page</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">%</span><span class="p">}</span>
+            <span class="o">-</span> <span class="nx">page</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="p">{{</span> <span class="nx">current_page</span> <span class="p">}}</span><span class="o">/</span><span class="p">{{</span> <span class="nx">last_page</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="o">%</span> <span class="k">endif</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Affiliate/wait.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;IbwJobeetBundle::layout.html.twig&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Your affiliate account has been created<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;padding: 20px&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Thank you!
+            You will receive an email with your affiliate token
+            as soon as your account will be activated.<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+    <span class="nt">&lt;h1&gt;</span><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span>Become an affiliate<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="nt">&lt;/h1&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>Each translation is managed by a trans-unit tag which has a unique id attribute. You can now edit this file and add translations for the French language:</p>
+<p>src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="x">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="x">&lt;xliff version=&quot;1.2&quot; xmlns=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</span>
+<span class="x">    &lt;file source-language=&quot;en&quot; datatype=&quot;plaintext&quot; original=&quot;file.ext&quot;&gt;</span>
+<span class="x">        &lt;body&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;1&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Jobeet - Your best job board&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Jobeet - Les meilleurs offres d&#39;emplois&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;2&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Enter some keywords (city, country, position, ...)&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Entre des mots cle (ville, pays, position, ...)&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;3&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Recent viewed jobs:&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Dernier emplois vus:&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;4&quot;&gt;</span>
+<span class="x">                &lt;source&gt;About Jobeet&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Apropos de Jobeet&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;5&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Become an affiliate&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Devenir un affilie&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;6&quot;&gt;</span>
+<span class="x">                &lt;source&gt;and %count% more...&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;et %count%</span>
+<span class="x">                        autres...&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;7&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Language&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Langue&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;8&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Publish&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Publier&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;9&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Edit&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Editer&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;10&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Are you sure?&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Etes-vous sur?&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;11&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Delete&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Supprimer&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;12&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Extend&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Prolonger&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;13&quot;&gt;</span>
+<span class="x">                &lt;source&gt;for another 30 days&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;pour 30 jours supplementaires&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;14&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Bookmark this %url% to manage this job in the future&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Marquer cette %url% pour gerer ce travail a l&#39;avenir&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;15&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Whether the job can also be published on affiliate websites or not.&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Si le travail peut egalement etre publie sur les sites affilies ou non.&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;16&quot;&gt;</span>
+<span class="x">                &lt;source&gt;%company% is looking for a %position%&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;%company% est a la recherche d&#39;un %position%&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;17&quot;&gt;</span>
+<span class="x">                &lt;source&gt;How to apply?&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;comment appliquer?&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;18&quot;&gt;</span>
+<span class="x">                &lt;source&gt;posted on %date%&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;poste en %date%&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;19&quot;&gt;</span>
+<span class="x">                &lt;source&gt;{0} No job in this category|{1} One job in this category|]1,Inf] %count% jobs in this category&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;{0}Aucune annonce dans cette categorie|{1}Une annonce dans cette categorie|]1,+Inf] %count% annonces dans cette categorie&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;20&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Jobs in the %category% category&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Travails dans le %category% categorie&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;21&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Your affiliate account has been created&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Votre compte d&#39;affiliation a ete cree&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;22&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Thank you!</span>
+<span class="x">            You will receive an email with your affiliate token</span>
+<span class="x">            as soon as your account will be activated.&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;On te remercie! Vous recevrez un email avec votre jeton d&#39;affiliation des que votre compte sera active.&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;23&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Expires in %count% days&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Expire en %count% jours&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;24&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Ask for people&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Recherche des gens&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;25&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Ask for a job&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Recherche d&#39;un emploi&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;26&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Jobeet API&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;API Jobeet&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;27&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Job creation&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Creation d&#39;emploi&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;28&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Job edit&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Edit l&#39;emploi&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;29&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Expired&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Expiré&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;30&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Full feed&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Fil RSS&lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">            &lt;trans-unit id=&quot;31&quot;&gt;</span>
+<span class="x">                &lt;source&gt;Post a Job&lt;/source&gt;</span>
+<span class="x">                &lt;target&gt;Poste un emploi &lt;/target&gt;</span>
+<span class="x">            &lt;/trans-unit&gt;</span>
+<span class="x">        &lt;/body&gt;</span>
+<span class="x">    &lt;/file&gt;</span>
+<span class="x">&lt;/xliff&gt;</span>
+</pre></div>
+</div>
+<p>Each time you add a new translation, you will need to clear the cache after.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+original <cite>symfony2 jobeet</cite> article is here <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

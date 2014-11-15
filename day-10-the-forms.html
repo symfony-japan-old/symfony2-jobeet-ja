@@ -1,0 +1,1565 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>10. 10日目: フォーム &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.2.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/my-styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="11. 11日目: フォームのテスト" href="day-11-testing-your-forms.html" />
+    <link rel="prev" title="9. 9日目: 機能テスト(ファンクショナルテスト)" href="day-9-the-functional-tests.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Symfony2 Jobeet</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="day-1-starting-up-the-project.html">1. 1日目: プロジェクトを始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-2-the-project.html">2. 2日目: このプロジェクトについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-3-the-data-model.html">3. 3日目: データモデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-4-the-controller-and-the-view.html">4. 4日目: コントローラーとビュー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-5-the-routing.html">5. 5日目: ルーティング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-6-more-with-the-model.html">6. 6日目: モデルの続き</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-7-playing-with-the-category-page.html">7. 7日目: カテゴリーページ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-8-the-unit-tests.html">8. 8日目: 単体テスト(ユニットテスト)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-9-the-functional-tests.html">9. 9日目: 機能テスト(ファンクショナルテスト)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">10. 10日目: フォーム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-11-testing-your-forms.html">11. 11日目: フォームのテスト</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-12-sonata-admin-bundle.html">12. 12日目: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-13-security.html">13. 13日目: セキュリティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-14-feeds.html">14. 14日目: フィード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-15-web-services.html">15. 15日目: ウェブサービス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-16-the-mailer.html">16. 16日目: メール送信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-17-search.html">17. 17日目: 検索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-18-ajax.html">18. 18日目: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="day-19-internationalization-and-localization.html">19. 19日目: 国際化と地域化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-1-starting-up-the-project.html">20. Day 1: Starting up the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-2-the-project.html">21. Day 2: The Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-3-the-data-model.html">22. Day 3: The Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-4-the-controller-and-the-view.html">23. Day 4: The Controller and the View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-5-the-routing.html">24. Day 5: The Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-6-more-with-the-model.html">25. Day 6: More with the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-7-playing-with-the-category-page.html">26. Day 7: Playing with the Category page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-8-the-unit-tests.html">27. Day 8: The Unit Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-9-the-functional-tests.html">28. Day 9: The functional Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-10-the-forms.html">29. Day 10: The Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-11-testing-your-forms.html">30. Day 11: Testing your Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-12-sonata-admin-bundle.html">31. Day 12: Sonata Admin Bundle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-13-security.html">32. Day 13: Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-14-feeds.html">33. Day 14: Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-15-web-services.html">34. Day 15: Web Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-16-the-mailer.html">35. Day 16: The Mailer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-17-search.html">36. Day 17: Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-18-ajax.html">37. Day 18: AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/day-19-internationalization-and-localization.html">38. Day 19: Internationalization and Localization</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">10. 10日目: フォーム</a><ul>
+<li><a class="reference internal" href="#id2">10.1. ジョブフォームをカスタマイズする</a></li>
+<li><a class="reference internal" href="#symfony2">10.2. Symfony2 の中でファイルアップロードの処理</a></li>
+<li><a class="reference internal" href="#id3">10.3. フォームテンプレート</a></li>
+<li><a class="reference internal" href="#id4">10.4. フォームアクション</a><ul>
+<li><a class="reference internal" href="#id5">10.4.1. トークンでジョブフォームを保護する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">10.5. プレビューページ</a></li>
+<li><a class="reference internal" href="#id7">10.6. ジョブのアクティブ化と公開</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="day-9-the-functional-tests.html" title="Previous Chapter: 9. 9日目: 機能テスト(ファンクショナルテスト)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; 9. 9日目: 機能テスト(ファ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="day-11-testing-your-forms.html" title="Next Chapter: 11. 11日目: フォームのテスト"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">11. 11日目: フォームのテ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/day-10-the-forms.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="id1">
+<h1>10. 10日目: フォーム<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>この記事は Symfony 1.4 向けのオリジナルの <a class="reference external" href="http://symfony.com/legacy/doc/jobeet?orm=Doctrine">Jobeet Tutorial</a> の一部分です。</li>
+</ul>
+<div class="line-block">
+<div class="line">ウェブサイトのフォームには、簡単な連絡フォームから、多くのフィールドが付いている複雑なもまであります。</div>
+<div class="line">フォームを書くことは、 Web 開発者にとって最も複雑で退屈な作業の一つです。</div>
+<div class="line">HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、エラー·メッセージを表示し、エラー時にフィールドに再投入しと...</div>
+<div class="line">このチュートリアルの 3 日目で Doctrine の <tt class="docutils literal"><span class="pre">doctrine:generate:crud</span></tt> コマンドでジョブ・エンティティのための単純な CRUD コントローラを生成しました。</div>
+<div class="line">また、ジョブフォームを src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。</div>
+</div>
+<div class="section" id="id2">
+<h2>10.1. ジョブフォームをカスタマイズする<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">ジョブフォームは、フォームのカスタマイズを学ぶための完璧な例です。</div>
+<div class="line">それでは、フォームをカスタマイズする方法をステップバイステップで見てみましょう。</div>
+<div class="line">まず、お使いのブラウザで直接変更をチェックすることができるように、レイアウト内の <tt class="docutils literal"><span class="pre">Post</span> <span class="pre">a</span> <span class="pre">Job</span></tt> リンクを変更します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_new&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Post a Job<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>そこで、JobController クラスの createAction() メソッドの中で、 ibw_job_show ルートのパラメータと、チュートリアルの 5 日目で作成した新しいルートを、一致させるように変更します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">createAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$entity</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">JobType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+    <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+            <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
+            <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+        <span class="p">)));</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:new.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">デフォルトでは、Doctrine が生成したフォームは、すべてのテーブルのカラムのフィールドを表示します。</div>
+<div class="line">しかし、ジョブフォームはエンドユーザーが編集可能ではいけません。</div>
+<div class="line">以下のようにジョブフォームを編集してください。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Form/JobType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Form</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\Form\AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\Form\FormBuilderInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\OptionsResolver\OptionsResolverInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$builder</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;logo&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;how_to_apply&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultOptions</span><span class="p">(</span><span class="nx">OptionsResolverInterface</span> <span class="nv">$resolver</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$resolver</span><span class="o">-&gt;</span><span class="na">setDefaults</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Ibw\JobeetBundle\Entity\Job&#39;</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;job&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">フォームの設定は、データベーススキーマから自動生成することができるものよりも、より正確でなければなりません。</div>
+<div class="line">たとえば、<tt class="docutils literal"><span class="pre">email</span></tt> のカラムは、スキーマ内の varchar 型ですが、電子メールとして検証（バリデーション）される必要があります。</div>
+<div class="line">Symfony2 では、検証は、基礎となるオブジェクト（例えば Job ）に適用されます。</div>
+<div class="line">つまり、問題は、フォームが有効かではなく、送信されたデータをフォームに適用した後にジョブオブジェクトが有効であるかどうかです。</div>
+<div class="line">これを行うには、バンドルの Resources/config ディレクトリに新しい validation.yml ファイルを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Email</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<p>スキーマ内の <tt class="docutils literal"><span class="pre">type</span></tt> カラムは varchar 型であっても、値を選択肢リストの値(<tt class="docutils literal"><span class="pre">full</span> <span class="pre">time</span></tt>, <tt class="docutils literal"><span class="pre">part</span> <span class="pre">time</span></tt>, <tt class="docutils literal"><span class="pre">freelance</span></tt>)に制限したいです。</p>
+<p>src/Ibw/JobeetBundle/Form/JobType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">use</span> <span class="nx">Ibw\JobeetBundle\Entity\Job</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$builder</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;choices&#39;</span> <span class="o">=&gt;</span> <span class="nx">Job</span><span class="o">::</span><span class="na">getTypes</span><span class="p">(),</span> <span class="s1">&#39;expanded&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+            <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>これを動かすために、ジョブ・エンティティ内に以下のメソッドを追加します。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getTypes</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;full-time&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Full time&#39;</span><span class="p">,</span> <span class="s1">&#39;part-time&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Part time&#39;</span><span class="p">,</span> <span class="s1">&#39;freelance&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Freelance&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getTypeValues</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="nb">array_keys</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">getTypes</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>getTypes() メソッドはジョブに設定可能なタイプを取得する為に使用され、getTypeValues()​ メソッドは検証（バリデーション）の中でタイプフィールドの有効な値を取得するために使用されます。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Choice</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">callback</span><span class="p-Indicator">:</span> <span class="nv">getTypeValues</span> <span class="p-Indicator">}</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Email</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">各フィールドに対して、Symfony は自動的にラベル（表示されるタグで使用されます）を生成します。</div>
+<div class="line">これは label オプションで変更できます。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Form/JobType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$builder</span>
+        <span class="c1">// ...</span>
+        <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;logo&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Company logo&#39;</span><span class="p">))</span>
+        <span class="c1">// ...</span>
+        <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;how_to_apply&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;How to apply?&#39;</span><span class="p">))</span>
+        <span class="c1">// ...</span>
+        <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Public?&#39;</span><span class="p">))</span>
+        <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>また、残りのフィールドに検証制約を追加する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Choice</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">callback</span><span class="p-Indicator">:</span> <span class="nv">getTypeValues</span><span class="p-Indicator">}</span>
+        <span class="l-Scalar-Plain">company</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">position</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">how_to_apply</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">token</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Email</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">URL フィールドに適用される制約は URL 形式( http：//www.sitename.domain または https：//www.sitename.domain のような)を適用します。</div>
+<div class="line">validation.yml を変更したら、キャッシュをクリアする必要があります。</div>
+</div>
+</div>
+<div class="section" id="symfony2">
+<h2>10.2. Symfony2 の中でファイルアップロードの処理<a class="headerlink" href="#symfony2" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">フォームで実際のファイルをアップロードするため、仮想の <tt class="docutils literal"><span class="pre">file</span></tt> タイプフィールドを使用します。</div>
+<div class="line">このために、ジョブ・エンティティに新しい <tt class="docutils literal"><span class="pre">file</span></tt> プロパティを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="nv">$file</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>ここで、 <tt class="docutils literal"><span class="pre">logo</span></tt> を <tt class="docutils literal"><span class="pre">file</span></tt> に交換し、フォームタイプを <tt class="docutils literal"><span class="pre">file</span></tt> に変更する必要があります。</p>
+<p>src/Ibw/JobeetBundle/Form/JobType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$builder</span>
+            <span class="c1">// ...</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Company logo&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">))</span>
+            <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>アップロードされたファイルが有効な画像であることを確認するために、検証制約の <tt class="docutils literal"><span class="pre">Image</span></tt> を使用します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+        <span class="c1"># ...</span>
+        <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Image</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">フォームが送信されると、ファイルのフィールドは <tt class="docutils literal"><span class="pre">UploadedFile</span></tt> クラスのインスタンスになります。</div>
+<div class="line">このフィールドは、ファイルを恒久的な場所に移動することができます。</div>
+<div class="line">この後、ジョブのロゴプロパティに、アップロードされたファイルの名前を設定します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+            <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">move</span><span class="p">(</span><span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../../../../web/uploads/jobs&#39;</span><span class="p">,</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">getClientOriginalName</span><span class="p">());</span>
+            <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setLogo</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">getClientOriginalName</span><span class="p">());</span>
+
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+                <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
+                <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+            <span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ロゴディレクトリ（ web/uploads/jobs/ ）を作成し、それを Webサーバーから書き込み可能であることを確認する必要があります。</div>
+<div class="line">この実装は機能していますが、より良い方法は Doctrine のジョブ・エンティティを使用してファイルのアップロードを処理することです。</div>
+<div class="line">まず、ジョブ・エンティティに次の行を追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getUploadDir</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;uploads/jobs&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getUploadRootDir</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../../../../web/&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUploadDir</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getWebPath</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span> <span class="o">?</span> <span class="k">null</span> <span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUploadDir</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAbsolutePath</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span> <span class="o">?</span> <span class="k">null</span> <span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUploadRootDir</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ロゴプロパティは、ファイルへの相対パスを格納し、データベースに永続化されます。</div>
+<div class="line">getAbsolutePath() はファイルの絶対パスを返す便利なメソッドです。</div>
+<div class="line">一方、 getWebPath() はアップロードされたファイルにリンクする Web パスを返す、テンプレートにて使用可能な便利なメソッドです。</div>
+<div class="line">データベース操作とファイルの移動が不可分になるように、実装を行います。</div>
+<div class="line">エンティティが永続化できない場合や、ファイルが保存できない場合は、何も起こりません。</div>
+<div class="line">これを行うには、 Doctrine がデータベースへのエンティティを永続化するように、ファイルを移動する必要があります。</div>
+<div class="line">これは、ジョブ・エンティティのライフサイクルコールバックにフックを追加することによって実装することができます。</div>
+<div class="line">Jobeet のチュートリアルの 3 日目でやったように、 Job.orm.yml ファイルを編集し、その中に preUpload 、upload と removeUpload コールバックを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">Ibw\JobeetBundle\Entity\Job</span><span class="p-Indicator">:</span>
+    <span class="c1"># ...</span>
+
+    <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">preUpload</span><span class="p-Indicator">,</span> <span class="nv">setCreatedAtValue</span><span class="p-Indicator">,</span> <span class="nv">setExpiresAtValue</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">preUpdate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">preUpload</span><span class="p-Indicator">,</span> <span class="nv">setUpdatedAtValue</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">postPersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">upload</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">postUpdate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">upload</span> <span class="p-Indicator">]</span>
+        <span class="l-Scalar-Plain">postRemove</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">removeUpload</span> <span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>ここで、ジョブ・エンティティへこれらの新しいメソッドを追加するため、 Doctrine のコマンド <tt class="docutils literal"><span class="pre">generate:entities</span></tt> を実行します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>ジョブ・エンティティに追加されたメソッドを次のように変更します。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Job</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PrePersist</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">preUpload</span><span class="p">()</span>
+    <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="k">null</span> <span class="o">!==</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">)</span> <span class="p">{</span>
+             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">guessExtension</span><span class="p">();</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PostPersist</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">upload</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">null</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// If there is an error when moving the file, an exception will</span>
+        <span class="c1">// be automatically thrown by move(). This will properly prevent</span>
+        <span class="c1">// the entity from being persisted to the database on error</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">move</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getUploadRootDir</span><span class="p">(),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logo</span><span class="p">);</span>
+
+        <span class="nb">unset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @ORM\PostRemove</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">removeUpload</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAbsolutePath</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$file</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nb">unlink</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">今では、ジョブ・エンティティクラスは必要とされるすべての処理を行います。</div>
+<div class="line">クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、エンティティが削除された場合にファイルを削除します。</div>
+<div class="line">ファイルの移動は、エンティティによって一体として処理されるようになりましたので、以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$entity</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">JobType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+                <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
+                <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+            <span class="p">)));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:new.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+            <span class="s1">&#39;form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>10.3. フォームテンプレート<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">これでフォームクラスがカスタマイズされたので、表示する必要があります。</div>
+<div class="line">new.html.twig テンプレートを開いて、編集します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">form_theme</span> <span class="nv">form</span> <span class="p">_</span><span class="nv">self</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">errors</span><span class="o">|</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="cp">%}</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;error_list&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">error</span> <span class="k">in</span> <span class="nv">errors</span> <span class="cp">%}</span>
+                <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">error.messageTemplate</span><span class="o">|</span><span class="nf">trans</span><span class="o">(</span><span class="nv">error.messageParameters</span><span class="o">,</span> <span class="s1">&#39;validators&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Job creation<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_create&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="cp">{{</span> <span class="nv">form_enctype</span><span class="o">(</span><span class="nv">form</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;job_form&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;tfoot&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Preview your job&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/tfoot&gt;</span>
+            <span class="nt">&lt;tbody&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.category</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.category</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.category</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.type</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.type</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.type</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.company</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.company</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.company</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.file</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.file</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.file</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.position</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.position</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.position</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.location</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.location</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.location</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.description</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.description</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.description</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.is_public</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.is_public</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.is_public</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;br</span> <span class="nt">/&gt;</span> Whether the job can also be published on affiliate websites or not.
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;</span>
+    <span class="cp">{{</span> <span class="nv">form_end</span><span class="o">(</span><span class="nv">form</span><span class="o">)</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">次のコードを使用してフォーム全体を表示することもできますが、より多くのカスタマイズを必要とするため、手で各フォームフィールドをレンダリングすることをにします。</div>
+</div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">form</span><span class="o">(</span><span class="nv">form</span><span class="o">)</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">form(form)</span></tt> を表示することで、フォームの各フィールドのラベルとエラーメッセージ（存在する場合）も一緒に表示されます。</div>
+<div class="line">これは簡単ですが、まだ非常に柔軟性がありません。</div>
+<div class="line">通常は、フォームの外観を制御することができる為、個別に各フォームフィールドをレンダリングしたいと思います。</div>
+<div class="line">フォームテーマという名前の技術を使い、フォームエラーの表示をカスタマイズしました。</div>
+<div class="line">Symfony2 の公式ドキュメントにこれについての詳細を読むことができます。</div>
+<div class="line">edit.html.twig テンプレートを使用して同じことを行います。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;IbwJobeetBundle::layout.html.twig&#39;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">form_theme</span> <span class="nv">edit_form</span> <span class="p">_</span><span class="nv">self</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">spaceless</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">errors</span><span class="o">|</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="cp">%}</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;error_list&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">for</span> <span class="nv">error</span> <span class="k">in</span> <span class="nv">errors</span> <span class="cp">%}</span>
+                <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">error.messageTemplate</span><span class="o">|</span><span class="nf">trans</span><span class="o">(</span><span class="nv">error.messageParameters</span><span class="o">,</span> <span class="s1">&#39;validators&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+            <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endspaceless</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">form_errors</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stylesheets</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="nv">parent</span><span class="o">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">asset</span><span class="o">(</span><span class="s1">&#39;bundles/ibwjobeet/css/job.css&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Job edit<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_update&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="nv">entity.id</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="cp">{{</span> <span class="nv">form_enctype</span><span class="o">(</span><span class="nv">edit_form</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;job_form&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;tfoot&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Preview your job&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/tfoot&gt;</span>
+            <span class="nt">&lt;tbody&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.category</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.category</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.category</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.type</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.type</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.type</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.company</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.company</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.company</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.file</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.file</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form</span><span class="o">(</span><span class="nv">edit_form.file</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.url</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.url</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.position</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.position</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.position</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.location</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.location</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.location</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.description</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.description</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.description</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.how_to_apply</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.is_public</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.is_public</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.is_public</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;br</span> <span class="nt">/&gt;</span> Whether the job can also be published on affiliate websites or not.
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.email</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>
+                        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">edit_form.email</span><span class="o">)</span> <span class="cp">}}</span>
+                    <span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;</span>
+    <span class="cp">{{</span> <span class="nv">form_end</span><span class="o">(</span><span class="nv">edit_form</span><span class="o">)</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>10.4. フォームアクション<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">現在フォームクラスと、それをレンダリングするテンプレートを持っています。</div>
+<div class="line">さて、それでは実際にいくつかのアクションを動作させましょう。</div>
+<div class="line">ジョブフォームは JobController クラスの 4 つのメソッドで管理されています。</div>
+</div>
+<ul class="simple">
+<li>newAction： 新しいジョブを作成する空白のフォームを表示します。</li>
+<li>createAction： フォーム（バリデーション、フォームの再設定）を処理し、ユーザーが投稿した値を使用して新しいジョブを作成します。</li>
+<li>editAction： 既存のジョブを編集するフォームを表示します。</li>
+<li>updateAction： フォーム（バリデーション、フォームの再設定）を処理し、ユーザーが投稿した値で既存のジョブを更新します。</li>
+</ul>
+<div class="line-block">
+<div class="line">/job/new ページを参照すると、新しいジョブオブジェクトのフォームインスタンスが、 createForm() メソッドを呼び出すことで作成され、テンプレート（newAction）に渡されます。</div>
+<div class="line">ユーザーがフォーム（createAction）を送信すると、フォームはユーザーが送信した値で（ <tt class="docutils literal"><span class="pre">handleRequest($request)</span></tt> メソッドで）バインドされ、検証がトリガーされます。</div>
+<div class="line">フォームがバインドされると、 isValid() メソッドを使用して、その有効性をチェックすることができます。</div>
+<div class="line">フォームが有効である場合（trueを返します）、ジョブはデータベースに保存（<tt class="docutils literal"><span class="pre">$em-&gt;persist($entity)</span></tt>）され、ユーザーはジョブのプレビューページにリダイレクトされます。</div>
+<div class="line">リダイレクトされていない場合、ユーザーが投稿した値と関連するエラーメッセージを添えて new.html.twig テンプレートを再表示します。</div>
+<div class="line">既存のジョブの変更は新規作成と非常に似ています。 new と edit アクションの唯一の違いは、変更するジョブオブジェクトが CreateForm のメソッドの2番目の引数として渡されるということです。</div>
+<div class="line">このオブジェクトは、テンプレートのデフォルトのウィジェットの値に使用されます。 また、作成フォームのデフォルト値を定義することができます。</div>
+<div class="line">このために CreateForm() メソッドに事前に変更された Job オブジェクトを渡し、 type のデフォルト値を <tt class="docutils literal"><span class="pre">full-time</span></tt> に設定します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">newAction</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">();</span>
+    <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;full-time&#39;</span><span class="p">);</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">JobType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:new.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">()</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h3>10.4.1. トークンでジョブフォームを保護する<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">これですべてが正常に動作しなければなりません。</div>
+<div class="line">現在はジョブのトークンをユーザーが入力する必要があります。</div>
+<div class="line">ユニークなトークンの取得をユーザーに依存することはできないため、新しいジョブが作成されたときにジョブトークンを自動的に生成する必要があります。</div>
+<div class="line">ジョブ・エンティティの prePersist lifecycleCallbacks に setTokenValue メソッドを追加します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+  <span class="l-Scalar-Plain">lifecycleCallbacks</span><span class="p-Indicator">:</span>
+     <span class="l-Scalar-Plain">prePersist</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">setTokenValue</span><span class="p-Indicator">,</span> <span class="nv">preUpload</span><span class="p-Indicator">,</span> <span class="nv">setCreatedAtValue</span><span class="p-Indicator">,</span> <span class="nv">setExpiresAtValue</span> <span class="p-Indicator">]</span>
+     <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>この変更を適用するために doctrine エンティティを再生成します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/console doctrine:generate:entities IbwJobeetBundle
+</pre></div>
+</div>
+<p>新しくジョブが保存される前にトークンを生成するロジックを、ジョブ・エンティティの setTokenValue() メソッドに追加します。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">setTokenValue</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span> <span class="o">=</span> <span class="nb">sha1</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getEmail</span><span class="p">()</span><span class="o">.</span><span class="nx">rand</span><span class="p">(</span><span class="mi">11111</span><span class="p">,</span> <span class="mi">99999</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>これでフォームから token フィールドを取り除くことができます。</p>
+<p>src/Ibw/JobeetBundle/Form/JobType.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilderInterface</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$builder</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;choices&#39;</span> <span class="o">=&gt;</span> <span class="nx">Job</span><span class="o">::</span><span class="na">getTypes</span><span class="p">(),</span> <span class="s1">&#39;expanded&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Company logo&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;how_to_apply&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;How to apply?&#39;</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;is_public&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Public?&#39;</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>また new.html.twig と edit.html.twig テンプレートからもそれを削除します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span>
+        <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">form.token</span><span class="o">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span><span class="cp">{{</span> <span class="nv">form_label</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form_errors</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span>
+        <span class="cp">{{</span> <span class="nv">form</span><span class="o">(</span><span class="nv">edit_form.token</span><span class="o">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>そして validation.yml ファイルからも削除します。</p>
+<p>src/Ibw/JobeetBundle/Resources/config/validation.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="l-Scalar-Plain">token</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">2 日目のユーザーストーリーを覚えていますか。</div>
+<div class="line">「ユーザーが関連トークンを知っている場合にのみ、ジョブは編集することができる」というものです。</div>
+<div class="line">今のところ、URLを推測して、編集したり、任意のジョブを削除することはとても簡単です。</div>
+<div class="line">編集 URL が /job/ID/edit のようなもので、ID はジョブの主キーだからです。</div>
+<div class="line">シークレットトークンでのみジョブの編集と削除ができるようにルートを変更してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_edit</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{token}/edit</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:edit&quot;</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_update</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{token}/update</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:update&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post|put</span> <span class="p-Indicator">}</span>
+
+<span class="l-Scalar-Plain">ibw_job_delete</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{token}/delete</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:delete&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post|delete</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>ここで、 id の代わりにトークンを使用するよう JobController を編集します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">class</span> <span class="nc">JobController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">editAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$editForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">JobType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:edit.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+            <span class="s1">&#39;edit_form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$editForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+            <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">setUpdatedAtValue</span><span class="p">();</span>
+        <span class="nv">$editForm</span>   <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">JobType</span><span class="p">(),</span> <span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="nv">$editForm</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$editForm</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">)));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:edit.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+            <span class="s1">&#39;edit_form&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$editForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+            <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+        <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+            <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+            <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Creates a form to delete a Job entity by id.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param mixed $id The entity id</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return Symfony\Component\Form\Form The form</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">createDeleteForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createFormBuilder</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getForm</span><span class="p">()</span>
+        <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ジョブショーテンプレート show.html.twig の中で、 ibw_job_edit のルート·パラメータを変更します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">entity.token</span><span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p>edit.html.twig ジョブテンプレート内の ibw_job_update ルートに対しても同じ操作を行います。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_update&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">entity.token</span><span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="cp">{{</span> <span class="nv">form_enctype</span><span class="o">(</span><span class="nv">edit_form</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">job_show_user を除いたジョブに関連するすべてのルートにトークンを埋め込みます。</div>
+<div class="line">たとえば、ジョブを編集するルートは次のようなパターンになります。</div>
+</div>
+<p><a class="reference external" href="http://jobeet.local/job/TOKEN/edit">http://jobeet.local/job/TOKEN/edit</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>10.5. プレビューページ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">プレビューページはジョブページの表示と同じです。</div>
+<div class="line">唯一の違いは、ジョブプレビューページは、ジョブ ID の代わりに、ジョブのトークンを使用してアクセスされることです。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_show</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{company}/{location}/{id}/{position}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:show&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">\d+</span>
+
+<span class="l-Scalar-Plain">ibw_job_preview</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{company}/{location}/{token}/{position}</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:preview&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">token</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">\w+</span>
+
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>プレビューアクション（ここでの show アクションとの違いは、ジョブを id の代わりにトークンを使用してデータベースから取得されるということです）。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">previewAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:show.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+            <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">ユーザーがトークン化された URL でアクセスした場合は、上部の管理バーを追加します。</div>
+<div class="line">show.html.twig テンプレートの上部に、管理バーをもち、下部にある編集リンクを削除します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">app.request.get</span><span class="o">(</span><span class="s1">&#39;token&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s1">&#39;IbwJobeetBundle:Job:admin.html.twig&#39;</span> <span class="k">with</span> <span class="o">{</span><span class="s1">&#39;job&#39;</span><span class="o">:</span> <span class="nv">entity</span><span class="o">}</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+ <span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>その後、 admin.html.twig テンプレートを作成します。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;job_actions&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Admin<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">job.isActivated</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Publish<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_delete&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+                <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">delete_form</span><span class="o">)</span> <span class="cp">}}</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">onclick=</span><span class="s">&quot;if(!confirm(&#39;Are you sure?&#39;)) { return false; }&quot;</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.isActivated</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li</span> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.expiresSoon</span> <span class="cp">%}</span> <span class="na">class=</span><span class="s">&quot;expires_soon&quot;</span> <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&gt;</span>
+                <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.isExpired</span> <span class="cp">%}</span>
+                    Expired
+                <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+                    Expires in <span class="nt">&lt;strong&gt;</span><span class="cp">{{</span> <span class="nv">job.getDaysBeforeExpires</span> <span class="cp">}}</span><span class="nt">&lt;/strong&gt;</span> days
+                <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+                <span class="cp">{%</span> <span class="k">if</span> <span class="nv">job.expiresSoon</span> <span class="cp">%}</span>
+                    - <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Extend<span class="nt">&lt;/a&gt;</span> for another 30 days
+                <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span>
+                [Bookmark this <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span><span class="o">,</span> <span class="s1">&#39;company&#39;</span><span class="o">:</span> <span class="nv">job.companyslug</span><span class="o">,</span> <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="nv">job.locationslug</span><span class="o">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="nv">job.positionslug</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>URL<span class="nt">&lt;/a&gt;</span> to manage this job in the future.]
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">多くのコードがありますが、ほとんどのコードは理解するのは簡単です。</div>
+<div class="line">より読みやすいテンプレートを作成するために、ジョブ・エンティティクラス内のショートカットメソッドをまとめて追加しました。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">isExpired</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDaysBeforeExpires</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">expiresSoon</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDaysBeforeExpires</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getDaysBeforeExpires</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="nb">ceil</span><span class="p">((</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getExpiresAt</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">time</span><span class="p">())</span> <span class="o">/</span> <span class="mi">86400</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>管理バーは、ジョブのステータスに応じて異なるアクションが表示されます。</p>
+<img alt="_images/Day-10-admin-bar.png" src="_images/Day-10-admin-bar.png" />
+<img alt="_images/Day-10-admin-badr-2.png" src="_images/Day-10-admin-badr-2.png" />
+<p>ここで、 JobController クラスの createAction() および updateAction() メソッドから新しいプレビューページへリダイレクトする処理を設定します。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">createAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+            <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+            <span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span>
+            <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+        <span class="p">)));</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">updateAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$editForm</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+            <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+            <span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span>
+            <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+        <span class="p">)));</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">以前にも述べたように、ジョブのトークンを知っている場合、その一つのジョブのみ編集ができ、サイトの管理者とされます。</div>
+<div class="line">この時点でジョブページにアクセスすると、 <tt class="docutils literal"><span class="pre">Edit</span></tt> リンクが表示されてしまいます。</div>
+<div class="line">それでは show.html.twig ファイルから以下の記載を削除してみましょう。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;padding: 20px 0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">entity.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+        Edit
+    <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>10.6. ジョブのアクティブ化と公開<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">前のセクションでは、ジョブを公開するリンクがありました。</div>
+<div class="line">リンクを、新しい <tt class="docutils literal"><span class="pre">publish</span></tt> アクションを指すように変更する必要があります。</div>
+<div class="line">このために新しいルートを作成します。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Resources/config/routing/job.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
+
+<span class="l-Scalar-Plain">ibw_job_publish</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{token}/publish</span>
+    <span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_controller</span><span class="p-Indicator">:</span> <span class="s">&quot;IbwJobeetBundle:Job:publish&quot;</span> <span class="p-Indicator">}</span>
+    <span class="l-Scalar-Plain">requirements</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">_method</span><span class="p-Indicator">:</span> <span class="nv">post</span> <span class="p-Indicator">}</span>
+</pre></div>
+</div>
+<p>現在、公開リンクのリンクを変更することができます（ジョブを削除するとき同様フォームを使用しますので、POSTリクエストになります）。</p>
+<p>src/Ibw/JobeetBundle/Resources/views/Job/admin.html.twig</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">job.isActivated</span> <span class="cp">%}</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_edit&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;ibw_job_publish&#39;</span><span class="o">,</span> <span class="o">{</span> <span class="s1">&#39;token&#39;</span><span class="o">:</span> <span class="nv">job.token</span> <span class="o">})</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{{</span> <span class="nv">form_widget</span><span class="o">(</span><span class="nv">publish_form</span><span class="o">)</span> <span class="cp">}}</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>Publish<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="c">&lt;!-- ... --&gt;</span>
+</pre></div>
+</div>
+<p>最後のステップは、<tt class="docutils literal"><span class="pre">publishAction</span></tt> と <tt class="docutils literal"><span class="pre">publish</span></tt> フォームを作成し、<tt class="docutils literal"><span class="pre">previewAction</span></tt> を編集しテンプレートにフォームを送ることです。</p>
+<p>src/Ibw/JobeetBundle/Controller/JobController.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">previewAction</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="nv">$deleteForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDeleteForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">());</span>
+    <span class="nv">$publishForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createPublishForm</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">());</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job:show.html.twig&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;entity&#39;</span>      <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+        <span class="s1">&#39;delete_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$deleteForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+        <span class="s1">&#39;publish_form&#39;</span> <span class="o">=&gt;</span> <span class="nv">$publishForm</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(),</span>
+    <span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">publishAction</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$form</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createPublishForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+    <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">handleRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;IbwJobeetBundle:Job&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOneByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Job entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">();</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+        <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getFlashBag</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;notice&#39;</span><span class="p">,</span> <span class="s1">&#39;Your job is now online for 30 days.&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">generateUrl</span><span class="p">(</span><span class="s1">&#39;ibw_job_preview&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;company&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getCompanySlug</span><span class="p">(),</span>
+        <span class="s1">&#39;location&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getLocationSlug</span><span class="p">(),</span>
+        <span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">(),</span>
+        <span class="s1">&#39;position&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPositionSlug</span><span class="p">()</span>
+    <span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">function</span> <span class="nf">createPublishForm</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createFormBuilder</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">))</span>
+        <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">getForm</span><span class="p">()</span>
+    <span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>publishAction() メソッドで、次のように定義された新しい publish() メソッドを使用しています。</p>
+<p>src/Ibw/JobeetBundle/Entity/Job.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">publish</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setIsActivated</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">これで、お使いのブラウザで新しいパブリッシュ機能をテストすることができます。</div>
+<div class="line">しかし、まだ修正箇所があります。</div>
+<div class="line">アクティブ化されていないジョブは、アクセス可能ではいけません。</div>
+<div class="line">それは、Jobeet ホームページ上に表示してはならず、 URL からアクセス可能であってはならないことを意味します。</div>
+<div class="line">この要件を追加するために JobRepository クラスのメソッドを編集する必要があります。</div>
+</div>
+<p>src/Ibw/JobeetBundle/Repository/JobRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JobRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJobs</span><span class="p">(</span><span class="nv">$category_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$max</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$offset</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.is_activated = :activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;j.expires_at&#39;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$max</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="nv">$max</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$offset</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">setFirstResult</span><span class="p">(</span><span class="nv">$offset</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$category_id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.category = :category_id&#39;</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="nv">$category_id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">countActiveJobs</span><span class="p">(</span><span class="nv">$category_id</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;count(j.id)&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.is_activated = :activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$category_id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.category = :category_id&#39;</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="nv">$category_id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleScalarResult</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveJob</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;j.id = :id&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.expires_at &gt; :date&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;j.is_activated = :activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getSingleResult</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Doctrine\Orm\NoResultException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$job</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+          <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$job</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>CategoryRepository の getWithJobs() メソッドも同様にします。</p>
+<p>src/Ibw/JobeetBundle/Repository/CategoryRepository.php</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Repository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\ORM\EntityRepository</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CategoryRepository</span> <span class="k">extends</span> <span class="nx">EntityRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getWithJobs</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getEntityManager</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="s1">&#39;SELECT c FROM IbwJobeetBundle:Category c LEFT JOIN c.jobs j WHERE j.expires_at &gt; :date AND j.is_activated = :activated&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()))</span>
+            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;activated&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">以上になります。お使いのブラウザで今それをテストすることができます。</div>
+<div class="line">すべてのアクティブ化されていないジョブはホームページから消えてしまいました。それらの URL を知っていても、もはやアクセスできません。</div>
+<div class="line">しかし、ジョブのトークン付き URL を知っていればアクセス可能です。この場合、ジョブのプレビューは管理バーと一緒に表示されます。</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+<p class="last">このチュートリアルは、クリエイティブ・コモンズ・ライセンス 表示 - 継承 3.0 非移植 (CC BY-SA 3.0) のもとでライセンスされています。
+翻訳の元にしたオリジナルはこちらです。 <cite>Symfony2 Jobeet</cite>  <a class="reference external" href="http://www.intelligentbee.com/blog/tag/symfony2-jobeet/">http://www.intelligentbee.com/blog/tag/symfony2-jobeet/</a>.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, yositani2002.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
