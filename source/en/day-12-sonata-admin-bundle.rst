@@ -16,6 +16,8 @@ At first, you install SonataCoreBundle:
 
 Add SonataCoreBundle to your application kernel:
 
+app/AppKernel.php
+
 .. code-block:: php
 
    // ...

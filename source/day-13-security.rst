@@ -152,7 +152,7 @@ src/Ibw/JobeetBundle/Resources/views/Default/login.html.twig
        <button type="submit">login</button>
    </form>
 
-| ここで、 URL http：//jobeet.local/app_dev.php/admin/dashboard にアクセスするとログインフォームが表示されます。
+| ここで、 URL http://jobeet.local/app_dev.php/admin/dashboard にアクセスするとログインフォームが表示されます。
 | Jobeetの管理領域に行くには security.yml で定義されたユーザ名とパスワード（ admin/adminpass ）を入力する必要があります。
 
 ..
@@ -376,10 +376,11 @@ app/config/security.yml
    Now everything is set up but we need to create our first user.
    To do this we will create a new symfony command:
 
+src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php
-
+   <?php
    namespace Ibw\JobeetBundle\Command;
 
    use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -527,8 +528,8 @@ app/Resources/SonataAdminBundle/views/Core/user_block.html.twig
 | 残念なことに、 Jobeet ユーザーのストーリーにはユーザーセッションに何かを保存する要件は含まれていません。
 | そこで、新しい要件を追加してみましょう。
 
-* 求人の閲覧を容易にするため、ユーザが閲覧した最後の三つのジョブは、後でジョブページに戻れるリンクがメニューに表示される必要があります。
-* ユーザーがジョブページにアクセスすると、表示された ``Job`` オブジェクトは、セッションのユーザーの履歴に追加・保存される必要があります。
+* ジョブの閲覧を容易にするため、ユーザが閲覧した最後の三つのジョブは、後からジョブページに戻れるようにメニューにリンクを表示する。
+* ユーザーがジョブページにアクセスすると、表示された ``Job`` オブジェクトは、セッションのユーザーの履歴に追加・保存される。
 
 ..
    Unfortunately, the Jobeet user stories have no requirement that includes storing something in the user session.

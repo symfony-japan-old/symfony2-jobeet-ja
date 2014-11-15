@@ -18,6 +18,7 @@ Let’s create a new fixture file for the affiliates:
 
 .. code-block:: php
 
+   <?php
    src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
 
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
@@ -37,7 +38,7 @@ Let’s create a new fixture file for the affiliates:
            $affiliate->setEmail('address1@example.com');
            $affiliate->setToken('sensio-labs');
            $affiliate->setIsActive(true);
-           $affiliate->addCategorie($em->merge($this->getReference('category-programming')));
+           $affiliate->addCategory($em->merge($this->getReference('category-programming')));
 
            $em->persist($affiliate);
 
@@ -47,7 +48,7 @@ Let’s create a new fixture file for the affiliates:
            $affiliate->setEmail('address2@example.org');
            $affiliate->setToken('symfony');
            $affiliate->setIsActive(false);
-           $affiliate->addCategorie($em->merge($this->getReference('category-programming')), $em->merge($this->getReference('category-design')));
+           $affiliate->addCategory($em->merge($this->getReference('category-programming')), $em->merge($this->getReference('category-design')));
 
            $em->persist($affiliate);
            $em->flush();
@@ -133,6 +134,7 @@ src/Ibw/JobeetBundle/Controller/ApiController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -356,6 +358,7 @@ src/Ibw/JobeetBundle/Tests/Controller/ApiControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -474,6 +477,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -553,6 +557,7 @@ src/Ibw/JobeetBundle/Form/AffiliateType.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Form;
 
    use Symfony\Component\Form\AbstractType;
@@ -613,7 +618,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
    {% extends 'IbwJobeetBundle::layout.html.twig' %}
 
-   {% set form_themes = _self %}
+   {% form_theme form _self %}
 
    {% block form_errors %}
    {% spaceless %}
@@ -672,9 +677,9 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
 When the user submits a form, the form data must be persisted into database, if valid. Add the new create action to your Affiliate controller:
 
-.. code-block:: php
+src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
-   src/Ibw/JobeetBundle/Controller/AffiliateController.php
+.. code-block:: php
 
    class AffiliateController extends Controller
    {
@@ -777,6 +782,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -927,9 +933,9 @@ src/Ibw/JobeetBundle/Resources/config/services.ymlYAML
 
 After that, create the Admin file:
 
-.. code-block:: php
+src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
 
-   src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
+.. code-block:: php
 
    namespace Ibw\JobeetBundle\Admin;
 
@@ -996,6 +1002,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;

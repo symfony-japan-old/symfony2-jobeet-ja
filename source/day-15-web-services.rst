@@ -34,6 +34,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 
    use Doctrine\Common\Persistence\ObjectManager;
@@ -51,7 +52,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
            $affiliate->setEmail('address1@example.com');
            $affiliate->setToken('sensio-labs');
            $affiliate->setIsActive(true);
-           $affiliate->addCategorie($em->merge($this->getReference('category-programming')));
+           $affiliate->addCategory($em->merge($this->getReference('category-programming')));
 
            $em->persist($affiliate);
 
@@ -61,7 +62,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadAffiliateData.php
            $affiliate->setEmail('address2@example.org');
            $affiliate->setToken('symfony');
            $affiliate->setIsActive(false);
-           $affiliate->addCategorie($em->merge($this->getReference('category-programming')), $em->merge($this->getReference('category-design')));
+           $affiliate->addCategory($em->merge($this->getReference('category-programming')), $em->merge($this->getReference('category-design')));
 
            $em->persist($affiliate);
            $em->flush();
@@ -171,6 +172,7 @@ src/Ibw/JobeetBundle/Controller/ApiController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -244,6 +246,7 @@ src/Ibw/JobeetBundle/Repository/AffiliateRepository.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Repository;
 
    use Doctrine\ORM\EntityRepository;
@@ -411,9 +414,9 @@ src/Ibw/JobeetBundle/Resources/views/Api/jobs.yaml.twig
 
 | 有効でないトークンを使用して Web サービスを呼び出そうとした場合は、すべての形式の応答として 404 ページを受け取ります。
 | 今までの達成したものを見るため、以下のリンクを参照ください。
-| http：//jobeet.local/app_dev.php/api/sensio-labs/jobs.xml
+| http://jobeet.local/app_dev.php/api/sensio-labs/jobs.xml
 | または
-| http：//jobeet.local/app_dev.php/api/symfony/jobs.xml
+| http://jobeet.local/app_dev.php/api/symfony/jobs.xml
 | お好みの形式に応じて、URLの拡張子を変更してください。
 
 ..
@@ -429,6 +432,7 @@ src/Ibw/JobeetBundle/Tests/Controller/ApiControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -556,6 +560,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -589,6 +594,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -611,7 +617,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateController.php
        }
    }
 
-ルートの名前とアクションを持ちましたが、まだルートを持っていません。では、作成してみましょう。
+ルートの名前とアクションを設定しましたが、まだルーティング設定をしていません。では、作成してみましょう。
 
 .. We have the name of the route, we have the action, but we do not have the route. so let’s create it:
 
@@ -648,6 +654,7 @@ src/Ibw/JobeetBundle/Form/AffiliateType.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Form;
 
    use Symfony\Component\Form\AbstractType;
@@ -722,7 +729,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
    {% extends 'IbwJobeetBundle::layout.html.twig' %}
 
-   {% set form_themes = _self %}
+   {% form_theme form _self %}
 
    {% block form_errors %}
    {% spaceless %}
@@ -786,9 +793,9 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
    When the user submits a form, the form data must be persisted into database, if valid.
    Add the new create action to your Affiliate controller:
 
-.. code-block:: php
+src/Ibw/JobeetBundle/Controller/AffiliateController.php
 
-   src/Ibw/JobeetBundle/Controller/AffiliateController.php
+.. code-block:: php
 
    class AffiliateController extends Controller
    {
@@ -906,6 +913,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -1067,10 +1075,11 @@ src/Ibw/JobeetBundle/Resources/config/services.yml
 
 .. After that, create the Admin file:
 
+src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
-
+   <?php
    namespace Ibw\JobeetBundle\Admin;
 
    use Sonata\AdminBundle\Admin\Admin;
@@ -1143,6 +1152,7 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;

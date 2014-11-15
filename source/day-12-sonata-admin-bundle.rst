@@ -23,6 +23,8 @@ Sonata Core バンドルのインストール
 
 AppKernel.php に登録します。
 
+app/AppKernel.php
+
 .. code-block:: php
 
    // ...

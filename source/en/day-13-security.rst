@@ -295,10 +295,11 @@ app/config/security.yml
 We also changed the encoder for our new User class to use the sha512 algorithm to encrypt passwords.
 Now everything is set up but we need to create our first user. To do this we will create a new symfony command:
 
+src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Command/JobeetUsersCommand.php
-
+   <?php
    namespace Ibw\JobeetBundle\Command;
 
    use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
