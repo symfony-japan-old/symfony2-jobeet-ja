@@ -21,9 +21,9 @@
    Let’s start by sending a simple email to notify the affiliate when his account has been activated and to give him the affiliate token.
    But first, you need to configure your environment:
 
-.. code-block:: yaml
+app/config/parameters.yml
 
-   app/config/parameters.yml
+.. code-block:: yaml
 
    # ...
        # ...
@@ -191,10 +191,11 @@ src/Ibw/JobeetBundle/Controller/AffiliateAdminController.php
    To test this new functionality, we need to be logged in. To log in, we will need an username and a password.
    That’s why we will start by creating a new fixture file, where we add the user admin:
 
+src/Ibw/JobeetBundle/DataFixtures/ORM/LoadUserData.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/DataFixtures/ORM/LoadUserData.php
-
+   <?php
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 
    use Doctrine\Common\Persistence\ObjectManager;
@@ -256,6 +257,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -385,6 +387,7 @@ app/config/config_test.yml
            storage_id: session.storage.mock_file
        profiler:
            enabled: true
+           collect: true
 
    # ...
 
