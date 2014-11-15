@@ -5,6 +5,51 @@ Day 12: Sonata Admin Bundle
 
 With the addition we made in Day 11 on Jobeet, the application is now fully usable by job seekers and job posters. It’s time to talk a bit about the admin section of our application. Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
 
+Installation of the Sonata Core Bundle
+---------------------------------------
+
+At first, you install SonataCoreBundle:
+
+.. code-block:: bash
+
+   $ php composer.phar require sonata-project/core-bundle:~2.2
+
+Add SonataCoreBundle to your application kernel:
+
+app/AppKernel.php
+
+.. code-block:: php
+
+   // ...
+       public function registerBundles()
+       {
+           $bundles = array(
+               // ...
+               new Sonata\CoreBundle\SonataCoreBundle(),
+               // ...
+           );
+       }
+   // ...
+
+Create a configuration file sonata_core.yml with this content:
+
+app/config/sonata_core.yml
+
+.. code-block:: yaml
+
+   sonata_core: ~
+
+Update the config.yml with the new resource to import:
+
+app/config/config.yml
+
+.. code-block:: yaml
+
+   imports:
+       #...
+       - { resource: sonata_core.yml }
+
+
 Installation of the Sonata Admin Bundle
 ---------------------------------------
 
@@ -40,7 +85,6 @@ app/AppKernel.php
                // ...
                new Sonata\AdminBundle\SonataAdminBundle(),
                new Sonata\BlockBundle\SonataBlockBundle(),
-               new Sonata\jQueryBundle\SonatajQueryBundle(),
                new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
                new Knp\Bundle\MenuBundle\KnpMenuBundle(),
            );
@@ -112,6 +156,8 @@ Do not forget to delete your cache:
 
 You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
 
+.. image:: /images/Day-12-sonata_installed.png
+
 The CRUD Controller
 -------------------
 
@@ -122,6 +168,7 @@ src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;
@@ -137,6 +184,7 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;
@@ -155,6 +203,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Admin;
 
    use Sonata\AdminBundle\Admin\Admin;
@@ -172,7 +221,8 @@ And for jobs:
 
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Admin/JobAdmin.phpPHP
+   <?php
+   src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
    namespace Ibw\JobeetBundle\Admin;
 

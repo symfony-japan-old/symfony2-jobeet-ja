@@ -63,7 +63,7 @@ But as the above code only relies on the created_at value, and because this colu
 If you remember the database schema we have described during Day 3, we also have defined an expires_at column. Currently, if this value is not set in fixture file, it remains always empty. But when a job is created, it can be automatically set to 30 days after the current date.
 When you need to do something automatically before a Doctrine object is serialized to the database, you can add a new action to the lifecycle callbacks in the file that maps objects to the database, like we did earlier for the created_at column:
 
-src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orml.yml
+src/Ibw/JobeetBundle/Resources/config/doctrine/Job.orm.yml
 
 .. code-block:: yaml
 
@@ -135,6 +135,8 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
        public function load(ObjectManager $em)
        {
+           // ...
+
            $job_expired = new Job();
            $job_expired->setCategory($em->merge($this->getReference('category-programming')));
            $job_expired->setType('full-time');
@@ -155,8 +157,9 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
            $em->persist($job_expired);
            // ...
-       }
 
+           $em->flush();
+       }
    // ...
 
 Reload the fixtures and refresh your browser to ensure that the old job does not show up:
@@ -245,7 +248,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
    // ...
 
-* This refactoring has several benefits over the previous code:
+This refactoring has several benefits over the previous code:
+
 * The logic to get the active jobs is now in the Model, where it belongs
 * The code in the controller is thinner and much more readable
 * The getActiveJobs() method is re-usable (for instance in another action)

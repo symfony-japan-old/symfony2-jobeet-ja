@@ -499,6 +499,7 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Command;
 
    use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

@@ -6,9 +6,9 @@ Day 16: The Mailer
 Yesterday, we added a read-only web service to Jobeet. Affiliates can now create an account but it needs to be activated by the administrator before it can be used. In order for the affiliate to get its token, we still need to implement the email notification. That’s what we will start doing in the coming lines.
 The symfony framework comes bundled with one of the best PHP emailing solution: Swift Mailer. Of course, the library is fully integrated with symfony, with some cool features added on top of its default features. Let’s start by sending a simple email to notify the affiliate when his account has been activated and to give him the affiliate token. But first, you need to configure your environment:
 
-.. code-block:: yaml
+app/config/parameters.yml
 
-   app/config/parameters.yml
+.. code-block:: yaml
 
    # ...
        # ...
@@ -137,10 +137,11 @@ The Tests
 Now that we have seen how to send an email with the symfony mailer, let’s write some functional tests to ensure we did the right thing.
 To test this new functionality, we need to be logged in. To log in, we will need an username and a password. That’s why we will start by creating a new fixture file, where we add the user admin:
 
+src/Ibw/JobeetBundle/DataFixtures/ORM/LoadUserData.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/DataFixtures/ORM/LoadUserData.php
-
+   <?php
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 
    use Doctrine\Common\Persistence\ObjectManager;
@@ -197,6 +198,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -319,6 +321,7 @@ app/config/config_test.yml
            storage_id: session.storage.mock_file
        profiler:
            enabled: true
+           collect: true
 
    # ...
 

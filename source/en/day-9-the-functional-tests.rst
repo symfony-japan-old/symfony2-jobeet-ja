@@ -22,6 +22,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -108,7 +109,7 @@ As for unit tests, launching functional tests can be done by executing the phpun
 
 .. code-block:: bash
 
-   phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
+   $ phpunit -c app/ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest
 
 This test will fail because the tested url, /category/index, is not a valid url in Jobeet::
 
@@ -134,10 +135,11 @@ First, let’s test the Jobeet homepage by editing the JobControllerTest class. 
 EXPIRED JOBS ARE NOT LISTED
 ---------------------------
 
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
+
 .. code-block:: php
 
-   src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
-
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -357,6 +359,7 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -498,6 +501,7 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Tests\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

@@ -156,7 +156,8 @@ src/Ibw/JobeetBundle/Entity/Job.php
 .. code-block:: php
 
    // ...
-   use Ibw\JobeetBundle\Utils\Jobeet as Jobeet;
+   <?php
+   use Ibw\JobeetBundle\Utils\Jobeet;
 
    class Job
    {

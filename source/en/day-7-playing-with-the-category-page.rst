@@ -27,7 +27,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
 
 .. code-block:: php
 
-   use Ibw\JobeetBundle\Utils\Jobeet as Jobeet;
+   use Ibw\JobeetBundle\Utils\Jobeet;
 
    class Category
    {
@@ -69,7 +69,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 In the template above we used category.morejobs, so let’s define it:
 
-src/Ibw/JobeetBunlde/Entity/Category.php
+src/Ibw/JobeetBundle/Entity/Category.php
 
 .. code-block:: php
 
@@ -156,6 +156,7 @@ src/Ibw/JobeetBundle/Controller/CategoryController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -214,7 +215,7 @@ Remove from the Category entity (src/Ibw/JobeetBundle/Entity/Category.php) the g
 
 .. code-block:: bash
 
-   $ php app/console doctrine:generate:entities
+   $ php app/console doctrine:generate:entities IbwJobeetBundle
 
 Now you should have the following added to Category.php:
 
@@ -372,13 +373,13 @@ src/Ibw/JobeetBundle/Resources/views/Job/list.html.twig
 
 You can include a template by using the  include function. Replace the HTML  <table> code from both templates with the mentioned function:
 
-src/Ibw/JobeetBundle/Resources/view/Job/index.html.twig
+src/Ibw/JobeetBundle/Resources/views/Job/index.html.twig
 
 .. code-block:: html+jinja
 
    {{ include ('IbwJobeetBundle:Job:list.html.twig', {'jobs': category.activejobs}) }}
 
-src/Ibw/JobeetBundle/Resources/view/Category/show.html.twig
+src/Ibw/JobeetBundle/Resources/views/Category/show.html.twig
 
 .. code-block:: html+jinja
 

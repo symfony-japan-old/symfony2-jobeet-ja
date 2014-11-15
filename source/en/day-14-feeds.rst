@@ -93,9 +93,9 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 In the JobController change the indexAction to render the template according to the _format:
 
-.. code-block:: php
+src/Ibw/JobeetBundle/Controller/JobController.php
 
-   src/Ibw/JobeetBundle/Controller/JobController.php
+.. code-block:: php
 
    // ...
 

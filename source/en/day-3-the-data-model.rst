@@ -166,6 +166,7 @@ src/Ibw/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
        manyToMany:
            categories:
                targetEntity: Category
+               inversedBy: affiliates
                joinTable:
                    name: category_affiliate
                    joinColumns:
@@ -332,6 +333,7 @@ src/Ibw/JobeetBundle/DataFixtures/ORM/LoadCategoryData.php
 src/Ibw/JobeetBundle/DataFixtures/ORM/LoadJobData.php
 
 .. code-block:: php
+
    <?php
    namespace Ibw\JobeetBundle\DataFixtures\ORM;
 

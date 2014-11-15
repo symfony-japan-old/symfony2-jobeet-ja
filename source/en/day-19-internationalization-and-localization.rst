@@ -531,7 +531,7 @@ Templates
 ---------
 
 An internationalized website means that the user interface is translated into several language. For us, it will be english, by default, and french. In order to translate the templates, we will use the Twig tag {% trans %}. When symfony renders a template, each time the {% trans %} tag is found, symfony looks for a translation for the current user’s culture. If the translation is found, it is used, if not, the string supposed to be translated is returned as a fallback value.
-All the translations are stored in a catalogue, that is located in thesrc/Ibw/JobeetBundle/Resources/translations/ directory. For this, we will use the XLIFF format, which is a standard and the most flexible one.
+All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory. For this, we will use the XLIFF format, which is a standard and the most flexible one.
 Let’s start translating by adding the {% trans %} tag inside the templates:
 
 src/Ibw/JobeetBundle/Resources/views/layout.php
