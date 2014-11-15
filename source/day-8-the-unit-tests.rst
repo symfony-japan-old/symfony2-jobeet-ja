@@ -109,7 +109,7 @@ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest.php
 .. For a full list of assertions, you can check the PHPUnit documentation.
 
 新機能のテストを追加
-----------------
+--------------------
 
 | 空の文字列のためのスラグは空の文字列です。それをテストすることはできますし、動作もしますが、URL に空の文字列をいれることは、よい考えではありません。
 | 空の文字列の場合は「n-a」の文字列を返すように slugify() メソッドを変更してみましょう。
