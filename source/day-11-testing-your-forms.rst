@@ -4,7 +4,7 @@
 .. include:: common/original.rst.inc
 
 | 10 日目では、 Symfony 2.3 での最初のフォームを作成しました。
-| 現在は Jobeet にユーザーが新しいジョブを投稿することができますが、それに対してテストを追加する前に時間切れになってしまいました。
+| 現在は Jobeet にユーザーが新しいジョブを投稿することができますが、それに対するテストを追加する前に時間切れになってしまいました。
 | つまり、これらの線に沿って行っていきます。
 
 ..
@@ -279,8 +279,8 @@ SafeGuard のテスト
 ------------------
 
 | ジョブが公開されている場合、もう編集することはできません。
-| 「編集」リンクがプレビューページに表示されていない場合でも、この要件のためにいくつかのテストを追加してみましょう​​。
-| まず、createJob() メソッドに別の引数を追加してジョブの自動発行を可能にします。また、役職の値でジョブをひとつ選択して返す getJobByPosition() メソッドを作成します。
+| ``Edit`` リンクがプレビューページに表示されていない場合でも、この要件のためにいくつかのテストを追加してみましょう​​。
+| まず、 createJob() メソッドに別の引数を追加してジョブの自動発行を可能にします。また、役職の値でジョブをひとつ選択して返す getJobByPosition() メソッドを作成します。
 
 ..
    When a job is published, you cannot edit it anymore.
@@ -601,6 +601,7 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Command;
 
    use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

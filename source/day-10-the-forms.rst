@@ -3,11 +3,11 @@
 
 .. include:: common/original.rst.inc
 
-| ウェブサイトのフォームには、簡単な連絡先フォームから、多くのフィールドが付いている複雑なもまであります。
+| ウェブサイトのフォームには、簡単な連絡フォームから、多くのフィールドが付いている複雑なもまであります。
 | フォームを書くことは、 Web 開発者にとって最も複雑で退屈な作業の一つです。
 | HTMLフォームを書き、それぞれのフィールドのバリデーションルールを実装し、データベースに格納する処理を実装し、エラー·メッセージを表示し、エラー時にフィールドに再投入しと...
 | このチュートリアルの 3 日目で Doctrine の ``doctrine:generate:crud`` コマンドでジョブ・エンティティのための単純な CRUD コントローラを生成しました。
-| また、ジョブフォームを /src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
+| また、ジョブフォームを src/Ibw/JobeetBundle/Form/JobType.php ファイルに生成しました。
 
 ..
    Any website has forms, from the simple contact form to the complex ones with lots of fields.
@@ -21,7 +21,7 @@
 ------------------------------
 
 | ジョブフォームは、フォームのカスタマイズを学ぶための完璧な例です。
-| それでは、それをカスタマイズする方法をステップバイステップで見てみましょう。
+| それでは、フォームをカスタマイズする方法をステップバイステップで見てみましょう。
 | まず、お使いのブラウザで直接変更をチェックすることができるように、レイアウト内の ``Post a Job`` リンクを変更します。
 
 ..
@@ -47,7 +47,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    {
        $entity  = new Job();
        $form = $this->createForm(new JobType(), $entity);
-       $form->bind($request);
+       $form->handleRequest($request);
 
        if ($form->isValid()) {
            $em = $this->getDoctrine()->getManager();
@@ -136,9 +136,9 @@ src/Ibw/JobeetBundle/Form/JobType.php
    In other words, the question isn’t whether the form is valid, but whether or not the Job object is valid after the form has applied the submitted data to it.
    To do this, create a new validation.yml file in the Resources/config directory of our bundle:
 
-.. code-block:: yaml
+src/Ibw/JobeetBundle/Resources/config/validation.yml
 
-   src/Ibw/JobeetBundle/Resources/config/validation.yml
+.. code-block:: yaml
 
    Ibw\JobeetBundle\Entity\Job:
        properties:
@@ -269,8 +269,8 @@ src/Ibw/JobeetBundle/Resources/config/validation.yml
 Symfony2 の中でファイルアップロードの処理
 -----------------------------------------
 
-| フォームで実際のファイルをアップロードするため、仮想の ``file`` フィールドを使用します。
-| このために、ジョブ・エンティティに新しいファイルプロパティを追加します。
+| フォームで実際のファイルをアップロードするため、仮想の ``file`` タイプフィールドを使用します。
+| このために、ジョブ・エンティティに新しい ``file`` プロパティを追加します。
 
 ..
    To handle the actual file upload in the form, we will use a virtual file field.
@@ -286,7 +286,7 @@ src/Ibw/JobeetBundle/Entity/Job.php
 
    // ...
 
-今、ロゴをファイルウィジェットに交換し、ファイル入力タグに変更する必要があります。
+ここで、 ``logo`` を ``file`` に交換し、フォームタイプを ``file`` に変更する必要があります。
 
 .. Now we need to replace the logo with the file widget and change it to a file input tag:
 
@@ -477,15 +477,14 @@ src/Ibw/JobeetBundle/Entity/Job.php
         */
        public function removeUpload()
        {
+           $file = $this->getAbsolutePath();
            if(file_exists($file)) {
-               if ($file = $this->getAbsolutePath()) {
-                   unlink($file);
-               }
+               unlink($file);
            }
        }
    }
 
-| エンティティクラスは今必要なすべてを行います。
+| 今では、ジョブ・エンティティクラスは必要とされるすべての処理を行います。
 | クラスはエンティティを永続化する前に一意のファイル名を生成し、永続化後にファイルを移動し、エンティティが削除された場合にファイルを削除します。
 | ファイルの移動は、エンティティによって一体として処理されるようになりましたので、以前コントローラに追加したアップロードを処理するためのコードを削除する必要があります。
 
@@ -504,7 +503,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        {
            $entity  = new Job();
            $form = $this->createForm(new JobType(), $entity);
-           $form->bind($request);
+           $form->handleRequest($request);
 
            if ($form->isValid()) {
                $em = $this->getDoctrine()->getManager();
@@ -538,7 +537,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    Now that the form class has been customized, we need to display it.
    Open the new.html.twig template and edit it:
 
-src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
+src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig
 
 .. code-block:: html+jinja
 
@@ -839,7 +838,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
    * updateAction: Processes the form (validation, form repopulation) and updates an existing job with the user submitted values
 
 | /job/new ページを参照すると、新しいジョブオブジェクトのフォームインスタンスが、 createForm() メソッドを呼び出すことで作成され、テンプレート（newAction）に渡されます。
-| ユーザーがフォーム（createAction）を送信すると、フォームはユーザーが送信した値で（ ``bind($request)`` メソッドで）バインドされ、検証がトリガーされます。
+| ユーザーがフォーム（createAction）を送信すると、フォームはユーザーが送信した値で（ ``handleRequest($request)`` メソッドで）バインドされ、検証がトリガーされます。
 | フォームがバインドされると、 isValid() メソッドを使用して、その有効性をチェックすることができます。
 | フォームが有効である場合（trueを返します）、ジョブはデータベースに保存（``$em->persist($entity)``）され、ユーザーはジョブのプレビューページにリダイレクトされます。
 | リダイレクトされていない場合、ユーザーが投稿した値と関連するエラーメッセージを添えて new.html.twig テンプレートを再表示します。
@@ -986,7 +985,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/edit.html.twig
    </tr>
    <!-- ... -->
 
-そして validation.yml ファイルを編集します。
+そして validation.yml ファイルからも削除します。
 
 src/Ibw/JobeetBundle/Resources/config/validation.yml
 
@@ -1070,10 +1069,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
                throw $this->createNotFoundException('Unable to find Job entity.');
            }
 
+           $entity->setUpdatedAtValue();
            $editForm   = $this->createForm(new JobType(), $entity);
            $deleteForm = $this->createDeleteForm($token);
 
-           $editForm->bind($request);
+           $editForm->handleRequest($request);
 
            if ($editForm->isValid()) {
                $em->persist($entity);
@@ -1092,7 +1092,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        public function deleteAction(Request $request, $token)
        {
            $form = $this->createDeleteForm($token);
-           $form->bind($request);
+           $form->handleRequest($request);
 
            if ($form->isValid()) {
                $em = $this->getDoctrine()->getManager();
@@ -1352,13 +1352,15 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    }
 
 | 以前にも述べたように、ジョブのトークンを知っている場合、その一つのジョブのみ編集ができ、サイトの管理者とされます。
-| この時点でジョブページにアクセスすると、[編集]リンクが表示されてしまいます。
+| この時点でジョブページにアクセスすると、 ``Edit`` リンクが表示されてしまいます。
 | それでは show.html.twig ファイルから以下の記載を削除してみましょう。
 
 ..
    As we said before, you can edit a job only if you know the job token and you’re the admin of the site.
    At the moment, when you access a job page, you will see the Edit link and that’s bad.
    Let’s remove it from the show.html.twig file:
+
+src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
 
 .. code-block:: html+jinja
 
@@ -1440,7 +1442,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    public function publishAction(Request $request, $token)
    {
        $form = $this->createPublishForm($token);
-       $form->bind($request);
+       $form->handleRequest($request);
 
        if ($form->isValid()) {
            $em = $this->getDoctrine()->getManager();

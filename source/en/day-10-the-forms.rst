@@ -30,7 +30,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    {
        $entity  = new Job();
        $form = $this->createForm(new JobType(), $entity);
-       $form->bind($request);
+       $form->handleRequest($request);
 
        if ($form->isValid()) {
            $em = $this->getDoctrine()->getManager();
@@ -101,9 +101,9 @@ src/Ibw/JobeetBundle/Form/JobType.php
 
 The form configuration must sometimes be more precise than what can be introspected from the database schema. For example, the email column is a varchar in the schema, but we need this column to be validated as an email. In Symfony2, validation is applied to the underlying object (e.g. Job). In other words, the question isn’t whether the form is valid, but whether or not the Job object is valid after the form has applied the submitted data to it. To do this, create a new validation.yml file in the Resources/config directory of our bundle:
 
-.. code-block:: yaml
+src/Ibw/JobeetBundle/Resources/config/validation.yml
 
-   src/Ibw/JobeetBundle/Resources/config/validation.yml
+.. code-block:: yaml
 
    Ibw\JobeetBundle\Entity\Job:
        properties:
@@ -413,7 +413,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        {
            $entity  = new Job();
            $form = $this->createForm(new JobType(), $entity);
-           $form->bind($request);
+           $form->handleRequest($request);
 
            if ($form->isValid()) {
                $em = $this->getDoctrine()->getManager();
@@ -442,7 +442,7 @@ The Form Template
 
 Now that the form class has been customized, we need to display it. Open the new.html.twig template and edit it:
 
-src/Ibe/JobeetBundle/Resources/views/Job/new.html.twig
+src/Ibw/JobeetBundle/Resources/views/Job/new.html.twig
 
 .. code-block:: html+jinja
 
@@ -912,10 +912,11 @@ src/Ibw/JobeetBundle/Controller/JobController.php
                throw $this->createNotFoundException('Unable to find Job entity.');
            }
 
+           $entity->setUpdatedAtValue();
            $editForm   = $this->createForm(new JobType(), $entity);
            $deleteForm = $this->createDeleteForm($token);
 
-           $editForm->bind($request);
+           $editForm->handleRequest($request);
 
            if ($editForm->isValid()) {
                $em->persist($entity);
@@ -934,7 +935,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
        public function deleteAction(Request $request, $token)
        {
            $form = $this->createDeleteForm($token);
-           $form->bind($request);
+           $form->handleRequest($request);
 
            if ($form->isValid()) {
                $em = $this->getDoctrine()->getManager();
@@ -1164,6 +1165,8 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 }
 As we said before, you can edit a job only if you know the job token and you’re the admin of the site. At the moment, when you access a job page, you will see the Edit link and that’s bad. Let’s remove it from the show.html.twig file:
 
+src/Ibw/JobeetBundle/Resources/views/Job/show.html.twig
+
 .. code-block:: html+jinja
 
    <div style="padding: 20px 0">
@@ -1232,7 +1235,7 @@ src/Ibw/JobeetBundle/Controller/JobController.php
    public function publishAction(Request $request, $token)
    {
        $form = $this->createPublishForm($token);
-       $form->bind($request);
+       $form->handleRequest($request);
 
        if ($form->isValid()) {
            $em = $this->getDoctrine()->getManager();

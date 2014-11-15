@@ -12,6 +12,48 @@
    It’s time to talk a bit about the admin section of our application.
    Today, thanks to the Sonata Admin Bundle, we will develop a complete admin interface for Jobeet in less than an hour.
 
+Sonata Core バンドルのインストール
+----------------------------------
+
+はじめに、 Core バンドルをインストールします。
+
+.. code-block:: bash
+
+   $ php composer.phar require sonata-project/core-bundle:~2.2
+
+AppKernel.php に登録します。
+
+.. code-block:: php
+
+   // ...
+       public function registerBundles()
+       {
+           $bundles = array(
+               // ...
+               new Sonata\CoreBundle\SonataCoreBundle(),
+               // ...
+           );
+       }
+   // ...
+
+設定ファイルを作成します。
+
+app/config/sonata_core.yml
+
+.. code-block:: yaml
+
+   sonata_core: ~
+
+config.ymlの ``imports`` に sonata_core.yml を追加いたします。
+
+app/config/config.yml
+
+.. code-block:: yaml
+
+   imports:
+       #...
+       - { resource: sonata_core.yml }
+
 Sonata Admin バンドルのインストール
 -----------------------------------
 
@@ -55,7 +97,6 @@ app/AppKernel.php
                // ...
                new Sonata\AdminBundle\SonataAdminBundle(),
                new Sonata\BlockBundle\SonataBlockBundle(),
-               new Sonata\jQueryBundle\SonatajQueryBundle(),
                new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
                new Knp\Bundle\MenuBundle\KnpMenuBundle(),
            );
@@ -136,10 +177,12 @@ app/config/routing.yml
    $ php app/console cache:clear --env=dev
    $ php app/console cache:clear --env=prod
 
-これで、次のURLを使用して admin のダッシュボードにアクセスできるはずです。
-http：//jobeet.local/app_dev.php/admin/dashboard
+| これで、次のURLを使用して admin のダッシュボードにアクセスできるはずです。
+| http://jobeet.local/app_dev.php/admin/dashboard
 
 .. You should now be able to access the admin dashboard using the following url: http://jobeet.local/app_dev.php/admin/dashboard
+
+.. image:: /images/Day-12-sonata_installed.png
 
 CRUD コントローラー
 -------------------
@@ -164,6 +207,7 @@ src/Ibw/JobeetBundle/Controller/CategoryAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;
@@ -181,6 +225,7 @@ src/Ibw/JobeetBundle/Controller/JobAdminController.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Controller;
 
    use Sonata\AdminBundle\Controller\CRUDController as Controller;
@@ -208,6 +253,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Admin;
 
    use Sonata\AdminBundle\Admin\Admin;
@@ -221,7 +267,7 @@ src/Ibw/JobeetBundle/Admin/CategoryAdmin.php
        // Your code will be here
    }
 
-そして、ジョブのために同様に作成します。
+そして、ジョブにも同様に Admin クラスを作成します。
 
 .. And for jobs:
 
@@ -229,6 +275,7 @@ src/Ibw/JobeetBundle/Admin/JobAdmin.php
 
 .. code-block:: php
 
+   <?php
    namespace Ibw\JobeetBundle\Admin;
 
    use Sonata\AdminBundle\Admin\Admin;
