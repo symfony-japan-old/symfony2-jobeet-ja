@@ -44,7 +44,7 @@
 
 .. note::
 
-   以下の説明は、Zend Framework を1.12.3バージョンでテストされています。
+   以下の説明は、Zend Framework を1.12.9バージョンでテストされています。
 
    .. The following explanations have been tested with the 1.12.3 version of the Zend Framework.
 
@@ -58,6 +58,7 @@
 * Loader/
 * Loader.php
 * Search/
+* Xml/
 
 その後、簡単に Zend autoloader を登録するため autoload.php ファイルに次のコードを追加します。
 
@@ -366,11 +367,13 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
    }
 
 | Lucene インデックスからすべての結果を取得した後、非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。
-| 動作させるためにレイアウトを更新します。
+| 動作させるために ``layout.html.twig`` を更新します。
 
 ..
    After we get all results from the Lucene index, we filter out the inactive jobs, and limit the number of results to 20.
    To make it work, update the layout:
+
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 .. code-block:: html+jinja
 
@@ -526,7 +529,7 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
 | このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Lucene の組み込みの optimize() メソッドによって最適化します。
 | 今日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。
 | プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。
-| 明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましく JavaScript を使います。
+| 明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために控えめな( unobtrusive ) JavaScript を使います。
 | もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。
 
 ..
