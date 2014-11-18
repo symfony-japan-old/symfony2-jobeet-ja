@@ -145,9 +145,9 @@ Web サーバーの設定
     $ sudo service apache2 restart
 
 | Web サーバーと PHP が Symfony を使用できるよう正常に設定されているかどうか確認する視覚的なサーバー設定テスターが Symfony に付属しています。
-| 設定を確認するには、次のURLを使用します。::
+| 設定を確認するには、次のURLを使用します。
 
-   http://jobeet.local/config.php
+http://jobeet.local/config.php
 
 .. image:: /images/sf2-config-1.png
 
@@ -203,7 +203,7 @@ web/app_dev.php
 
    // ...
 
-おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての``warnings`` が出ないようにする作業リストです。
+おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての ``warnings`` が出ないようにする作業リストです。
 
 1. app/cache と、app/logs のパーミッションを変更します。
 

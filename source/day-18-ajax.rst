@@ -311,7 +311,7 @@ AJAX のテスト
    As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls.
    It mainly means that you need to manually add the header that jQuery and all other major JavaScript libraries send with the request:
 
-src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
