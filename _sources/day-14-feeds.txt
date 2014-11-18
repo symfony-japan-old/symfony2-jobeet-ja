@@ -271,7 +271,7 @@ src/Ibw/JobeetBundle/Resources/views/Job/index.atom.twig
 
 | Jobeet の目標の 1 つは、人々が目的の仕事をより多く見つけることを手助けをすることです。
 | そこで、各カテゴリのフィードを提供する必要があります。
-| まず、カテゴリがテンプレートでフィードをのリンクを更新しましょう。
+| まず、カテゴリがテンプレートでフィードのリンクを更新しましょう。
 
 ..
    One of the goals of Jobeet is to help people find more targeted jobs.

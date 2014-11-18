@@ -667,5 +667,13 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
 10 日以上経過した古いジョブを削除します。
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `コンポーネント »DomCrawlerコンポーネント  <http://docs.symfony.gr.jp/symfony2/components/dom_crawler.html>`_
+    * `コンポーネント »Console »Console コンポーネント  <http://docs.symfony.gr.jp/symfony2/components/console/introduction.html>`_
+
 
 .. include:: common/license.rst.inc

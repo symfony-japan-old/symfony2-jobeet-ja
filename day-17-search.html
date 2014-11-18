@@ -206,7 +206,7 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">以下の説明は、Zend Framework を1.12.3バージョンでテストされています。</p>
+<p class="last">以下の説明は、Zend Framework を1.12.9バージョンでテストされています。</p>
 </div>
 <img alt="_images/Day-17-zend.jpg" src="_images/Day-17-zend.jpg" />
 <p>次のファイルとディレクトリ以外のすべてを削除することで、ディレクトリをクリーンアップすることができます。</p>
@@ -215,6 +215,7 @@
 <li>Loader/</li>
 <li>Loader.php</li>
 <li>Search/</li>
+<li>Xml/</li>
 </ul>
 <p>その後、簡単に Zend autoloader を登録するため autoload.php ファイルに次のコードを追加します。</p>
 <p>app/autoload.php</p>
@@ -462,8 +463,9 @@
 </div>
 <div class="line-block">
 <div class="line">Lucene インデックスからすべての結果を取得した後、非アクティブなジョブをフィルタリングし、結果の数を 20 に制限します。</div>
-<div class="line">動作させるためにレイアウトを更新します。</div>
+<div class="line">動作させるために <tt class="docutils literal"><span class="pre">layout.html.twig</span></tt> を更新します。</div>
 </div>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
 <div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
     <span class="c">&lt;!-- ... --&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>
@@ -604,7 +606,7 @@
 <div class="line">このタスクはインデックスからすべての期限切れのジョブを削除し、Zend Lucene の組み込みの optimize() メソッドによって最適化します。</div>
 <div class="line">今日は、 1 時間も経たないうちに、多くの機能を備えた完全な検索エンジンを実装しました。</div>
 <div class="line">プロジェクトに新しい機能を追加したいときはいつも、まだどこかに解決されていないものがあるか確認してください。</div>
-<div class="line">明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために慎ましく JavaScript を使います。</div>
+<div class="line">明日は、検索ボックスにユーザーの種類などのリアルタイムで結果を更新することで、検索エンジンのレスポンスを強化するために控えめな( unobtrusive ) JavaScript を使います。</div>
 <div class="line">もちろん、これは Symfony で AJAX を使用する方法について話をすることになります。</div>
 </div>
 <div class="admonition note">

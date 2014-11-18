@@ -29,6 +29,7 @@ You can clean up the directory by removing everything but the following files an
 * Loader/
 * Loader.php
 * Search/
+* Xml/
 
 Then, add the following code to the autoload.php file to provide a simple way to register the Zend autoloader.
 
@@ -296,6 +297,8 @@ src/Ibw/JobeetBundle/Repository/JobRepository.php
 
 After we get all results from the Lucene index, we filter out the inactive jobs, and limit the number of results to 20.
 To make it work, update the layout:
+
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 .. code-block:: html+jinja
 

@@ -272,7 +272,7 @@
 <div class="line">初めての訪問で、まだユーザーがカルチャーを持っていない場合、優先カルチャーが選択されます。（以前にそれを宣言したように、en になります）。</div>
 <div class="line">では、実際に新しいルートの追加、および、ホームページのルートの変更をしてみましょう。</div>
 </div>
-<p>src/Ibw/Resources/config/routing.yml</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
 <span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{_locale}/</span>
@@ -581,7 +581,7 @@
     <span class="c1">// ...</span>
 </pre></div>
 </div>
-<p>src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php</p>
+<p>src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">testShow</span><span class="p">()</span>
@@ -623,6 +623,13 @@
 
             <span class="c1">// only $max_jobs_on_category jobs are listed</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/One job in this category/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+            <span class="p">}</span>
+
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
 
             <span class="k">if</span><span class="p">(</span><span class="nv">$pages</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -682,7 +689,7 @@
 </pre></div>
 </div>
 <p>ここで、アクションを変更します。</p>
-<p>src/Ibw/JobetBundle/Controller/DefaultController.php</p>
+<p>src/Ibw/JobeetBundle/Controller/DefaultController.php</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
@@ -708,13 +715,13 @@
 <div class="line">国際化されたウェブサイトは、ユーザーインターフェイスが複数の言語に翻訳されることを意味します。</div>
 <div class="line">それは、ここでは、デフォルトの英語とフランス語になります。</div>
 <div class="line">テンプレートを翻訳するためには、Twig タグ <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">trans</span> <span class="pre">%}</span></tt> を使用します。</div>
-<div class="line">Symfony がテンプレートをレンダリングする際に <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">trans</span> <span class="pre">%}</span></tt> タグが発見するたびに、現在のユーザーの culture 用の翻訳を探します。</div>
+<div class="line">Symfony がテンプレートをレンダリングする際に <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">trans</span> <span class="pre">%}</span></tt> タグを発見するたびに、現在のユーザーの culture 用の翻訳を探します。</div>
 <div class="line">翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用します。</div>
-<div class="line">すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。</div>
+<div class="line">すべての翻訳は、 src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。</div>
 <div class="line">このために、標準で最も柔軟なものである XLIFF 形式を使用します。</div>
 <div class="line">では、テンプレートに <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">trans</span> <span class="pre">%}</span></tt> タグを追加することから翻訳をはじめましょう。</div>
 </div>
-<p>src/Ibw/JobeetBundle/Resources/views/layout.php</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
 <div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -1031,7 +1038,7 @@
 <div class="line">各翻訳は、一意の id 属性を持つ <tt class="docutils literal"><span class="pre">trans-unit</span></tt> タグによって管理されます。</div>
 <div class="line">これで、このファイルを編集してフランス語の翻訳を追加できます。</div>
 </div>
-<p>src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf</p>
+<p>src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf</p>
 <div class="highlight-jinja"><div class="highlight"><pre><span class="x">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="x">&lt;xliff version=&quot;1.2&quot; xmlns=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</span>
 <span class="x">    &lt;file source-language=&quot;en&quot; datatype=&quot;plaintext&quot; original=&quot;file.ext&quot;&gt;</span>
@@ -1169,6 +1176,14 @@
 </pre></div>
 </div>
 <p>新しい翻訳を追加するたびに、後にキャッシュをクリアする必要があります。</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p><em>Symfony2日本語ドキュメント</em></p>
+<p>豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://docs.symfony.gr.jp/symfony2/book/translation.html">ガイドブック »翻訳</a></li>
+</ul>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <a class="reference external image-reference" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ja"><img alt="Creative Commons License" class="align-left" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>

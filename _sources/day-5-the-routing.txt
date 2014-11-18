@@ -284,4 +284,11 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
 
 これで今日のすべてです！ Symfony2 のルーティングシステムの詳細については、``book`` のルーティング章を読んでください。
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »ルーティング  <http://docs.symfony.gr.jp/symfony2/book/routing.html>`_
+
 .. include:: common/license.rst.inc

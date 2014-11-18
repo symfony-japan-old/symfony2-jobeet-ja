@@ -203,6 +203,7 @@ First, download the Zend Framework and unzip the files so that you have a vendor
 <li>Loader/</li>
 <li>Loader.php</li>
 <li>Search/</li>
+<li>Xml/</li>
 </ul>
 <p>Then, add the following code to the autoload.php file to provide a simple way to register the Zend autoloader.</p>
 <p>app/autoload.php</p>
@@ -434,6 +435,7 @@ The template is also quite straightforward:</p>
 </div>
 <p>After we get all results from the Lucene index, we filter out the inactive jobs, and limit the number of results to 20.
 To make it work, update the layout:</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
 <div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
     <span class="c">&lt;!-- ... --&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search&quot;</span><span class="nt">&gt;</span>

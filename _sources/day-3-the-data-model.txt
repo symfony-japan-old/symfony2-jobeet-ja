@@ -464,6 +464,14 @@ src/Ibw/JobeetBundle/Entity/Category.php
 | 以上です。今日は少ししか PHP のコードを書いていませんが、微調整とカスタマイズの準備ができました。 ``job`` モデルのための Web モジュールを持ちました。
 | 明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
 
+.. seealso::
+    Symfony2日本語ドキュメント
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »データベースと Doctrine (“The Model”) <http://docs.symfony.gr.jp/symfony2/book/doctrine.html>`_
+
+
 .. include:: common/license.rst.inc
 
 .. _`DoctrineFixturesBundle`: http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html

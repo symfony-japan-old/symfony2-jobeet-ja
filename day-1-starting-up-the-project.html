@@ -323,10 +323,9 @@
 </div>
 <div class="line-block">
 <div class="line">Web サーバーと PHP が Symfony を使用できるよう正常に設定されているかどうか確認する視覚的なサーバー設定テスターが Symfony に付属しています。</div>
-<div class="line">設定を確認するには、次のURLを使用します。::</div>
+<div class="line">設定を確認するには、次のURLを使用します。</div>
 </div>
-<blockquote>
-<div><a class="reference external" href="http://jobeet.local/config.php">http://jobeet.local/config.php</a></div></blockquote>
+<p><a class="reference external" href="http://jobeet.local/config.php">http://jobeet.local/config.php</a></p>
 <img alt="_images/sf2-config-1.png" src="_images/sf2-config-1.png" />
 <p>ローカルホストからこれを実行しない場合、web/config.php ファイルを開いてローカルホストの外部からのアクセスを制限する行をコメントにします。</p>
 <p>web/config.php</p>
@@ -374,7 +373,7 @@
 <span class="c1">// ...</span>
 </pre></div>
 </div>
-<p>おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての``warnings`` が出ないようにする作業リストです。</p>
+<p>おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての <tt class="docutils literal"><span class="pre">warnings</span></tt> が出ないようにする作業リストです。</p>
 <ol class="arabic">
 <li><p class="first">app/cache と、app/logs のパーミッションを変更します。</p>
 <div class="highlight-bash"><div class="highlight"><pre>sudo chmod -R 777 app/cache

@@ -82,7 +82,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). So go ahead and add a new route to do that for you and modify your homepage route also :
 
-src/Ibw/Resources/config/routing.yml
+src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 .. code-block:: yaml
 
@@ -398,7 +398,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 
        // ...
 
-src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
+src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
@@ -443,7 +443,12 @@ src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
 
                // only $max_jobs_on_category jobs are listed
                $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
-               $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
+               if ($jobs_no == 1)
+               {
+                   $this->assertRegExp("/One job in this category/", $crawler->filter('.pagination_desc')->text());
+               }else{
+                   $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
+               }
 
                if($pages > 1) {
                    $this->assertRegExp("/page 1\/" . $pages . "/", $crawler->filter('.pagination_desc')->text());
@@ -505,7 +510,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 Now, the action:
 
-src/Ibw/JobetBundle/Controller/DefaultController.php
+src/Ibw/JobeetBundle/Controller/DefaultController.php
 
 .. code-block:: php
 
@@ -534,7 +539,7 @@ An internationalized website means that the user interface is translated into se
 All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory. For this, we will use the XLIFF format, which is a standard and the most flexible one.
 Let’s start translating by adding the {% trans %} tag inside the templates:
 
-src/Ibw/JobeetBundle/Resources/views/layout.php
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 .. code-block:: html+jinja
 
@@ -867,7 +872,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
 
 Each translation is managed by a trans-unit tag which has a unique id attribute. You can now edit this file and add translations for the French language:
 
-src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf
+src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf
 
 .. code-block:: jinja
 

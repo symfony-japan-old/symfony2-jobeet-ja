@@ -250,7 +250,7 @@ Translations are handled by a Translator service that uses the user’s locale t
 </pre></div>
 </div>
 <p>As we need as many homepages as languages we support (/en/, /fr/, …), the default homepage (/) must redirect to the appropriate localized one, according to the user culture. But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en). So go ahead and add a new route to do that for you and modify your homepage route also :</p>
-<p>src/Ibw/Resources/config/routing.yml</p>
+<p>src/Ibw/JobeetBundle/Resources/config/routing.yml</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># ...</span>
 <span class="l-Scalar-Plain">ibw_jobeet_homepage</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">/{_locale}/</span>
@@ -555,7 +555,7 @@ Translations are handled by a Translator service that uses the user’s locale t
     <span class="c1">// ...</span>
 </pre></div>
 </div>
-<p>src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php</p>
+<p>src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">testShow</span><span class="p">()</span>
@@ -597,7 +597,12 @@ Translations are handled by a Translator service that uses the user’s locale t
 
             <span class="c1">// only $max_jobs_on_category jobs are listed</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.jobs tr&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nv">$max_jobs_on_category</span><span class="p">);</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$jobs_no</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/One job in this category/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$jobs_no</span> <span class="o">.</span> <span class="s2">&quot; jobs/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
+            <span class="p">}</span>
 
             <span class="k">if</span><span class="p">(</span><span class="nv">$pages</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertRegExp</span><span class="p">(</span><span class="s2">&quot;/page 1\/&quot;</span> <span class="o">.</span> <span class="nv">$pages</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nv">$crawler</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;.pagination_desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">());</span>
@@ -653,7 +658,7 @@ Translations are handled by a Translator service that uses the user’s locale t
 </pre></div>
 </div>
 <p>Now, the action:</p>
-<p>src/Ibw/JobetBundle/Controller/DefaultController.php</p>
+<p>src/Ibw/JobeetBundle/Controller/DefaultController.php</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">Ibw\JobeetBundle\Controller</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
@@ -678,7 +683,7 @@ Translations are handled by a Translator service that uses the user’s locale t
 <p>An internationalized website means that the user interface is translated into several language. For us, it will be english, by default, and french. In order to translate the templates, we will use the Twig tag {% trans %}. When symfony renders a template, each time the {% trans %} tag is found, symfony looks for a translation for the current user’s culture. If the translation is found, it is used, if not, the string supposed to be translated is returned as a fallback value.
 All the translations are stored in a catalogue, that is located in the src/Ibw/JobeetBundle/Resources/translations/ directory. For this, we will use the XLIFF format, which is a standard and the most flexible one.
 Let’s start translating by adding the {% trans %} tag inside the templates:</p>
-<p>src/Ibw/JobeetBundle/Resources/views/layout.php</p>
+<p>src/Ibw/JobeetBundle/Resources/views/layout.html.twig</p>
 <div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -992,7 +997,7 @@ Let’s start translating by adding the {% trans %} tag inside the templates:</p
 </pre></div>
 </div>
 <p>Each translation is managed by a trans-unit tag which has a unique id attribute. You can now edit this file and add translations for the French language:</p>
-<p>src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf</p>
+<p>src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf</p>
 <div class="highlight-jinja"><div class="highlight"><pre><span class="x">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="x">&lt;xliff version=&quot;1.2&quot; xmlns=&quot;urn:oasis:names:tc:xliff:document:1.2&quot;&gt;</span>
 <span class="x">    &lt;file source-language=&quot;en&quot; datatype=&quot;plaintext&quot; original=&quot;file.ext&quot;&gt;</span>
