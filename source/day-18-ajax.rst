@@ -346,4 +346,12 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
    As always, try to use the best tool for the job.
    Tomorrow, we will explain how to internationalize the Jobeet website.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »Assetic »Asset の管理にどうやって Assetic を使うか?  <http://docs.symfony.gr.jp/symfony2/cookbook/assetic/asset_management.html>`_
+
+
 .. include:: common/license.rst.inc

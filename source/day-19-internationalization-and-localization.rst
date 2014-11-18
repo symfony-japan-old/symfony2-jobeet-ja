@@ -1097,4 +1097,12 @@ src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf
 
 .. Each time you add a new translation, you will need to clear the cache after.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »翻訳  <http://docs.symfony.gr.jp/symfony2/book/translation.html>`_
+
+
 .. include:: common/license.rst.inc

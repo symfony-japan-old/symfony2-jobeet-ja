@@ -1613,4 +1613,13 @@ src/Ibw/JobeetBundle/Repository/CategoryRepository.php
    They are, however, accessible if one knows the job’s token URL.
    In that case, the job preview will show up with the admin bar.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »フォーム »フォームのレンダリングのカスタマイズ方法  <http://docs.symfony.gr.jp/symfony2/cookbook/form/form_customization.html>`_
+    * `リファレンスドキュメント »Form Type リファレンス  <http://docs.symfony.gr.jp/symfony2/reference/forms/types.html>`_
+    * `リファレンスドキュメント »バリデータリファレンス  <http://docs.symfony.gr.jp/symfony2/reference/constraints.html>`_
+
 .. include:: common/license.rst.inc

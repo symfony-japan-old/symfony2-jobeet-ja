@@ -810,4 +810,11 @@ src/Ibw/JobeetBundle/Tests/Repository/JobRepositoryTest.php
 
 これで今日はすべてです！明日は、機能テストについてお話します。
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »テスト  <http://docs.symfony.gr.jp/symfony2/book/testing.html>`_
+
 .. include:: common/license.rst.inc
