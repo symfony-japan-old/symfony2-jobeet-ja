@@ -465,7 +465,7 @@ src/Ibw/JobeetBundle/Entity/Category.php
 | 明日は、コントローラとビューに親しんでいきます。次回お会いしましょう！
 
 .. seealso::
-    Symfony2日本語ドキュメント
+    *Symfony2日本語ドキュメント*
 
     豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
 
