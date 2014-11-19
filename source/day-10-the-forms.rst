@@ -1618,6 +1618,8 @@ src/Ibw/JobeetBundle/Repository/CategoryRepository.php
 
     豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
 
+    * `ガイドブック »フォーム  <http://docs.symfony.gr.jp/symfony2/book/forms.html>`_
+    * `ガイドブック »バリデーション  <http://docs.symfony.gr.jp/symfony2/book/validation.html>`_
     * `クックブック »フォーム »フォームのレンダリングのカスタマイズ方法  <http://docs.symfony.gr.jp/symfony2/cookbook/form/form_customization.html>`_
     * `リファレンスドキュメント »Form Type リファレンス  <http://docs.symfony.gr.jp/symfony2/reference/forms/types.html>`_
     * `リファレンスドキュメント »バリデータリファレンス  <http://docs.symfony.gr.jp/symfony2/reference/constraints.html>`_

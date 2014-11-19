@@ -290,5 +290,6 @@ src/Ibw/JobeetBundle/Resources/config/routing/job.yml
     豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
 
     * `ガイドブック »ルーティング  <http://docs.symfony.gr.jp/symfony2/book/routing.html>`_
+    * `ガイドブック »Symfony2 でのページ作成ガイドブック  <http://docs.symfony.gr.jp/symfony2/book/page_creation.html>`_
 
 .. include:: common/license.rst.inc

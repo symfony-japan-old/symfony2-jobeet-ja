@@ -1443,4 +1443,12 @@ src/Ibw/JobeetBundle/Admin/AffiliateAdmin.php
    Now, clear your cache and try it on!
    That’s all for today! Tomorrow, we will take care of the emails the affiliates will receive when their accounts have been activated.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »Web サービス »Symfony2 コントローラで SOAP ウェブサービスを作成する方法  <http://docs.symfony.gr.jp/symfony2/cookbook/web_services/php_soap_extension.html>`_
+
+
 .. include:: common/license.rst.inc

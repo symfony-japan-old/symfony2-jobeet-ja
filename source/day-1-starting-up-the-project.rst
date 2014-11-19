@@ -364,4 +364,12 @@ AcmeDemoBundle の削除の仕方
 | 開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。
 | これで今日はすべてです。明日は Jobeet の Web サイトが正確にどんなものかお話します。このチュートリアルでお会いしましょう！
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »Symfony のインストールと設定 <http://docs.symfony.gr.jp/symfony2/book/installation.html>`_
+
+
 .. include:: common/license.rst.inc
