@@ -539,4 +539,12 @@ src/Ibw/JobeetBundle/Command/JobeetCleanupCommand.php
    Tomorrow we will use some unobtrusive JavaScripts to enhance the responsiveness of the search engine by updating the results in real-time as the user types in the search box.
    Of course, this will be the occasion to talk about how to use AJAX with symfony.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »クラスのオートローディングの方法  <http://docs.symfony.gr.jp/symfony2/cookbook/tools/autoloader.html>`_
+
+
 .. include:: common/license.rst.inc

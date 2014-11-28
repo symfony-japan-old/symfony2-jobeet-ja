@@ -8,6 +8,7 @@
  * :license: BSD, see LICENSE for details.
  *
  */
+ @import url('http://fonts.googleapis.com/css?family=Fjalla+One&subset=latin,latin-ext');
 
 /* -- main layout ----------------------------------------------------------- */
 
@@ -535,3 +536,129 @@ span.eqno {
         display: none;
     }
 }
+
+
+/*----------------------
+20141128追記：kinoshita
+----------------------*/
+/*@import url(http://fonts.googleapis.com/css?family=Fjalla+One&subset=latin,latin-ext);*/
+
+a.navbar-brand {
+font-family: 'Fjalla One', sans-serif;
+font-size:24px;
+}
+
+a.navbar-brand:link,
+a.navbar-brand:visited {
+	color:#000000;
+}
+
+.navbar-text {
+font-family: 'Fjalla One', sans-serif;
+padding-top:4px;
+padding-right:30px;
+}
+
+.navbar-text b {
+color:#000000;
+}
+
+
+
+.navbar-header {
+	border-right:1px solid #e5e5e5;
+}
+
+.hidden-sm
+{}
+
+.navbar-nav li a span.hidden-sm,
+.pull-right {
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eaeaea', endColorstr = '#ffffff');
+/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+/*Element must have a height (not auto)*/
+/*All filters must be placed together*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eaeaea', endColorstr = '#ffffff')";
+/*Element must have a height (not auto)*/
+/*All filters must be placed together*/
+background-image: -moz-linear-gradient(top, #eaeaea, #ffffff);
+background-image: -ms-linear-gradient(top, #eaeaea, #ffffff);
+background-image: -o-linear-gradient(top, #eaeaea, #ffffff);
+background-image: -webkit-gradient(linear, center top, center bottom, from(#eaeaea), to(#ffffff));
+background-image: -webkit-linear-gradient(top, #eaeaea, #ffffff);
+background-image: linear-gradient(top, #eaeaea, #ffffff);
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+/*Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+/*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+border:1px solid #e5e5e5;
+padding:8px 12px;
+font-size:12px;
+}
+
+.navbar-nav li.dropdown {
+border-right:1px solid #e5e5e5;
+border-left:1px solid #fff;
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #e9e9e9 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e9e9e9)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#e9e9e9 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#e9e9e9 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#e9e9e9 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#e9e9e9 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e9e9e9',GradientType=0 ); /* IE6-9 */
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+border-radius: 0px;
+}
+
+.navbar-nav li.divider-vertical {
+	border:none;
+}
+
+.dropdown-menu li {
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+border-radius: 0px;
+background:none;
+border:none;
+}
+
+.navbar-nav li.hidden-sm {
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+border-radius: 0px;
+border:none;
+background:url(./tag.jpg) no-repeat 0px 20px;
+padding-left:12px;
+}
+
+#navbar {
+	line-height:1.0em;
+}
+
+
+
+.section {
+	padding:10px 0;
+}
+
+#disqus_thread {
+	padding:50px 15px 0 15px;
+	margin:0 auto;
+}
+
+@media (min-width:768px){
+	#disqus_thread{width:750px}
+	}
+@media (min-width:992px){
+	#disqus_thread{width:970px}
+	}
+@media (min-width:1200px){
+	#disqus_thread{width:1170px}
+	}

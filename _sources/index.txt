@@ -47,3 +47,7 @@ Contents:
    en/day-17-search
    en/day-18-ajax
    en/day-19-internationalization-and-localization
+
+.. _epub-download-label:
+
+:download:`EPUBデータダウンロード </resources/Symfony2Jobeet.epub>`

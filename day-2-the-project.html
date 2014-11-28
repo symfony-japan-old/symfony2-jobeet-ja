@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. 2日目: このプロジェクトについて &mdash; Symfony2 Jobeet 0.0.1 documentation</title>
+    <title>2. 2日目: このプロジェクトについて &mdash; Symfony2 Jobeet 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.1',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Symfony2 Jobeet 0.0.1 documentation" href="index.html" />
+    <link rel="top" title="Symfony2 Jobeet 1.0.0 documentation" href="index.html" />
     <link rel="next" title="3. 3日目: データモデル" href="day-3-the-data-model.html" />
     <link rel="prev" title="1. 1日目: プロジェクトを始める" href="day-1-starting-up-the-project.html" />
 <meta charset='utf-8'>
@@ -53,7 +53,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Symfony2 Jobeet</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -210,7 +210,7 @@
 <div class="line">一つだけのアプリケーションを持ち、その中に管理者のために隔離されセキュリティで保護されたセクションを持つでしょう。</div>
 </div>
 <div class="section" id="f1">
-<h3>2.1.1. ストーリー F1： ホームページでは、ユーザーは最新の有効なジョブを閲覧します<a class="headerlink" href="#f1" title="Permalink to this headline">¶</a></h3>
+<span id="story-f1-label"></span><h3>2.1.1. ストーリー F1： ホームページでは、ユーザーは最新の有効なジョブを閲覧します<a class="headerlink" href="#f1" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">ユーザーが Jobeet のウェブサイトに来るとき、彼はアクティブなジョブのリストを見ています。ジョブは、カテゴリ別に並べられ、且つ、新しいジョブを最初にして公開日順に並べられています。</div>
 <div class="line">それぞれのジョブは場所、可能な役職、および、会社名のみが表示されます。</div>
@@ -219,22 +219,22 @@
 </div>
 </div>
 <div class="section" id="f2">
-<h3>2.1.2. ストーリー F2：ユーザーが特定のカテゴリ内のすべてのジョブを問い合わせることができます<a class="headerlink" href="#f2" title="Permalink to this headline">¶</a></h3>
+<span id="story-f2-label"></span><h3>2.1.2. ストーリー F2：ユーザーが特定のカテゴリ内のすべてのジョブを問い合わせることができます<a class="headerlink" href="#f2" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">ユーザーはカテゴリ名やホームページの「more jobs」リンクをクリックすると、日付順に並べられたこのカテゴリのすべてのジョブを見ることが出来ます。</div>
 <div class="line">リストはページごとに20件のジョブでページ分割されています。</div>
 </div>
 </div>
 <div class="section" id="f3">
-<h3>2.1.3. ストーリー F3：ユーザーは複数のキーワードでリストを絞込みます<a class="headerlink" href="#f3" title="Permalink to this headline">¶</a></h3>
+<span id="story-f3-label"></span><h3>2.1.3. ストーリー F3：ユーザーは複数のキーワードでリストを絞込みます<a class="headerlink" href="#f3" title="Permalink to this headline">¶</a></h3>
 <p>ユーザはいくつかのキーワードで絞込み検索できます。場所、役職、カテゴリ、会社名欄にある単語をキーワードとすることが出来ます。</p>
 </div>
 <div class="section" id="f4">
-<h3>2.1.4. ストーリー F4：ユーザーはより詳細な情報を表示する為、ジョブをクリックします<a class="headerlink" href="#f4" title="Permalink to this headline">¶</a></h3>
+<span id="story-f4-label"></span><h3>2.1.4. ストーリー F4：ユーザーはより詳細な情報を表示する為、ジョブをクリックします<a class="headerlink" href="#f4" title="Permalink to this headline">¶</a></h3>
 <p>ユーザは、より詳細な情報を表示する為に、リストからジョブを選択することができます。</p>
 </div>
 <div class="section" id="f5">
-<h3>2.1.5. ストーリー F5：ユーザーは、ジョブを投稿します<a class="headerlink" href="#f5" title="Permalink to this headline">¶</a></h3>
+<span id="story-f5-label"></span><h3>2.1.5. ストーリー F5：ユーザーは、ジョブを投稿します<a class="headerlink" href="#f5" title="Permalink to this headline">¶</a></h3>
 <p>ユーザーは、ジョブを投稿することができます。ジョブは、複数の情報から構成されます。</p>
 <ul class="simple">
 <li>会社</li>
@@ -258,7 +258,7 @@
 </div>
 </div>
 <div class="section" id="f6">
-<h3>2.1.6. ストーリーF6：ユーザーがアフィリエイトになるために実施すること<a class="headerlink" href="#f6" title="Permalink to this headline">¶</a></h3>
+<span id="story-f6-label"></span><h3>2.1.6. ストーリーF6：ユーザーがアフィリエイトになるために実施すること<a class="headerlink" href="#f6" title="Permalink to this headline">¶</a></h3>
 <p>ユーザーがアフィリエイトになり、且つ、 Jobeet API を使用することを承認されるために、次のような情報を提供する必要があります。</p>
 <ul class="simple">
 <li>名前</li>
@@ -271,22 +271,22 @@
 <p>アフィリエイトのアカウントは管理者（ストーリー B3 ）によってアクティブ化されなければなりません。アクティブ化した後は、アフィリエイトは API で利用するトークンを電子メールで受け取ります。</p>
 </div>
 <div class="section" id="f7">
-<h3>2.1.7. ストーリー F7：アフィリエイトは現在有効なジョブのリストを取得します<a class="headerlink" href="#f7" title="Permalink to this headline">¶</a></h3>
+<span id="story-f7-label"></span><h3>2.1.7. ストーリー F7：アフィリエイトは現在有効なジョブのリストを取得します<a class="headerlink" href="#f7" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">アフィリエイトは、自分のアフィリエイトトークンを使用して API を呼び出して、現在のジョブリストを取得できます。リストは、 XML 、 JSON や YAML 形式で返すことができます。</div>
 <div class="line">アフィリエイトは、返されるジョブ数を制限することが出来、また、カテゴリを指定することでクエリを絞り込むことができます。</div>
 </div>
 </div>
 <div class="section" id="b1">
-<h3>2.1.8. ストーリー B1：管理者はウェブサイトを設定します<a class="headerlink" href="#b1" title="Permalink to this headline">¶</a></h3>
+<span id="story-b1-label"></span><h3>2.1.8. ストーリー B1：管理者はウェブサイトを設定します<a class="headerlink" href="#b1" title="Permalink to this headline">¶</a></h3>
 <p>管理者はカテゴリを編集し、ウェブサイト上で有効にできます。</p>
 </div>
 <div class="section" id="b2">
-<h3>2.1.9. ストーリー B2：管理者はジョブを管理します<a class="headerlink" href="#b2" title="Permalink to this headline">¶</a></h3>
+<span id="story-b2-label"></span><h3>2.1.9. ストーリー B2：管理者はジョブを管理します<a class="headerlink" href="#b2" title="Permalink to this headline">¶</a></h3>
 <p>管理者は投稿されたジョブを編集、削除することができます。</p>
 </div>
 <div class="section" id="b3">
-<h3>2.1.10. ストーリー B3：管理者は、アフィリエイトを管理します<a class="headerlink" href="#b3" title="Permalink to this headline">¶</a></h3>
+<span id="story-b3-label"></span><h3>2.1.10. ストーリー B3：管理者は、アフィリエイトを管理します<a class="headerlink" href="#b3" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">管理者は、アフィリエイトの作成または編集ができます。管理者は、アフィリエイトをアクティブ化する責任があり、また、それを無効にすることができます。</div>
 <div class="line">管理者は新しいアフィリエイトをアクティブ化すると、システムは、アフィリエイトが使用する一意のトークンを作成します。</div>
