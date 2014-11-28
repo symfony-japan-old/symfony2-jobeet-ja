@@ -9,3 +9,13 @@
   color:#AFAFAF;
 }
 
+.toctree-wrapper{
+	float: left;
+}
+
+#epub-download-label {
+	float: right;
+	padding: 10px;
+	background: #dddddd;
+	font-size: x-large;
+}
