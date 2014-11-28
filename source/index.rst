@@ -50,4 +50,4 @@ Contents:
 
 .. _epub-download-label:
 
-See :download:`EPUB形式でのダウンロードはこちら </resources/Symfony2Jobeet.epub>`.
+:download:`EPUBデータダウンロード </resources/Symfony2Jobeet.epub>`
