@@ -1,8 +1,21 @@
 @CHARSET "UTF-8";
-footer {
-  background-color: #999999;
+.footer {
+	margin-top:30px;
+	background:#d5d5d5;
 }
 
 .highlight pre {
   background: #000000;
+  color:#AFAFAF;
+}
+
+.toctree-wrapper{
+	float: left;
+}
+
+#epub-download-label {
+	float: right;
+	padding: 10px;
+	background: #dddddd;
+	font-size: x-large;
 }

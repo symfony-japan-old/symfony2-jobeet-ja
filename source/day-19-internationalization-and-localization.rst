@@ -118,7 +118,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
    But if the user has no culture yet, because he comes to Jobeet for the first time, the preferred culture will be chosen for him (as we declare it previously, it will be en).
    So go ahead and add a new route to do that for you and modify your homepage route also :
 
-src/Ibw/Resources/config/routing.yml
+src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 .. code-block:: yaml
 
@@ -447,7 +447,7 @@ src/Ibw/JobeetBundle/Tests/Controller/AffiliateControllerTest.php
 
        // ...
 
-src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
+src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. code-block:: php
 
@@ -492,6 +492,13 @@ src/Ibw/JobeetBundle/Tests/Cotnroller/Category/CategoryControllerTest.php
 
                // only $max_jobs_on_category jobs are listed
                $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
+               if ($jobs_no == 1)
+               {
+                   $this->assertRegExp("/One job in this category/", $crawler->filter('.pagination_desc')->text());
+               }else{
+                   $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
+               }
+
                $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
 
                if($pages > 1) {
@@ -563,7 +570,7 @@ src/Ibw/JobeetBundle/Resources/config/routing.yml
 
 .. Now, the action:
 
-src/Ibw/JobetBundle/Controller/DefaultController.php
+src/Ibw/JobeetBundle/Controller/DefaultController.php
 
 .. code-block:: php
 
@@ -593,9 +600,9 @@ src/Ibw/JobetBundle/Controller/DefaultController.php
 | 国際化されたウェブサイトは、ユーザーインターフェイスが複数の言語に翻訳されることを意味します。
 | それは、ここでは、デフォルトの英語とフランス語になります。
 | テンプレートを翻訳するためには、Twig タグ ``{% trans %}`` を使用します。
-| Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグが発見するたびに、現在のユーザーの culture 用の翻訳を探します。
+| Symfony がテンプレートをレンダリングする際に ``{% trans %}`` タグを発見するたびに、現在のユーザーの culture 用の翻訳を探します。
 | 翻訳が見つかった場合はそれが使用され、見つからなかった場合は、翻訳されるはずの文字列をフォールバックの値として使用します。
-| すべての翻訳は、そのは src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。
+| すべての翻訳は、 src/Ibw/JobeetBundle/Resources/translations/ ディレクトリに配置され、カタログに格納されています。
 | このために、標準で最も柔軟なものである XLIFF 形式を使用します。
 | では、テンプレートに ``{% trans %}`` タグを追加することから翻訳をはじめましょう。
 
@@ -609,7 +616,7 @@ src/Ibw/JobetBundle/Controller/DefaultController.php
    For this, we will use the XLIFF format, which is a standard and the most flexible one.
    Let’s start translating by adding the {% trans %} tag inside the templates:
 
-src/Ibw/JobeetBundle/Resources/views/layout.php
+src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
 .. code-block:: html+jinja
 
@@ -947,7 +954,7 @@ src/Ibw/JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig
    Each translation is managed by a trans-unit tag which has a unique id attribute.
    You can now edit this file and add translations for the French language:
 
-src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf
+src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf
 
 .. code-block:: jinja
 
@@ -1089,5 +1096,13 @@ src/Ibw/JobeetBundle/Resources/translations/message.fr.xlf
 新しい翻訳を追加するたびに、後にキャッシュをクリアする必要があります。
 
 .. Each time you add a new translation, you will need to clear the cache after.
+
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »翻訳  <http://docs.symfony.gr.jp/symfony2/book/translation.html>`_
+
 
 .. include:: common/license.rst.inc

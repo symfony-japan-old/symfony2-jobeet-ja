@@ -311,7 +311,7 @@ AJAX のテスト
    As the symfony browser cannot simulate JavaScript, you need to help it when testing AJAX calls.
    It mainly means that you need to manually add the header that jQuery and all other major JavaScript libraries send with the request:
 
-src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
+src/Ibw/JobeetBundle/Tests/Controller/JobControllerTest.php
 
 .. code-block:: php
 
@@ -345,5 +345,13 @@ src/Ibw/JobeetBundle/Tests/Controller/JobControllerTst.php
    The symfony framework provides all the fundamental tools to build MVC applications with ease, and also plays well with other components.
    As always, try to use the best tool for the job.
    Tomorrow, we will explain how to internationalize the Jobeet website.
+
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »Assetic »Asset の管理にどうやって Assetic を使うか?  <http://docs.symfony.gr.jp/symfony2/cookbook/assetic/asset_management.html>`_
+
 
 .. include:: common/license.rst.inc

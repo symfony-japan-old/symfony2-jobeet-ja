@@ -145,9 +145,9 @@ Web サーバーの設定
     $ sudo service apache2 restart
 
 | Web サーバーと PHP が Symfony を使用できるよう正常に設定されているかどうか確認する視覚的なサーバー設定テスターが Symfony に付属しています。
-| 設定を確認するには、次のURLを使用します。::
+| 設定を確認するには、次のURLを使用します。
 
-   http://jobeet.local/config.php
+http://jobeet.local/config.php
 
 .. image:: /images/sf2-config-1.png
 
@@ -203,7 +203,7 @@ web/app_dev.php
 
    // ...
 
-おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての``warnings`` が出ないようにする作業リストです。
+おそらく、config.php を開くことですべての種類の必要条件を取得できるでしょう。以下は、それらすべての ``warnings`` が出ないようにする作業リストです。
 
 1. app/cache と、app/logs のパーミッションを変更します。
 
@@ -363,5 +363,13 @@ AcmeDemoBundle の削除の仕方
 | app.php ファイルは本番環境用であり、 app_dev.php はウェブ開発者によって使用される開発環境です。
 | 開発環境は、すべてのエラーと警告とWebデバッグツールバーが表示されますので非常に便利だと分かるでしょう。開発者の親友です。
 | これで今日はすべてです。明日は Jobeet の Web サイトが正確にどんなものかお話します。このチュートリアルでお会いしましょう！
+
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »Symfony のインストールと設定 <http://docs.symfony.gr.jp/symfony2/book/installation.html>`_
+
 
 .. include:: common/license.rst.inc

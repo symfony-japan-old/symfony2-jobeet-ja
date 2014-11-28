@@ -727,4 +727,15 @@ src/Ibw/JobeetBundle/Tests/Controller/CategoryControllerTest.php
 
 .. That’s all for today! Tomorrow, we will learn all there is to know about forms.
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »テスト »Doctrine のリポジトリクラスをテストする方法  <http://docs.symfony.gr.jp/symfony2/cookbook/testing/doctrine.html>`_
+    * `クックブック »テスト »データベース接続を伴うコードのテストについて  <http://docs.symfony.gr.jp/symfony2/cookbook/testing/database.html>`_
+
+
+
+
 .. include:: common/license.rst.inc

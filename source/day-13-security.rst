@@ -654,4 +654,13 @@ src/Ibw/JobeetBundle/Resources/views/layout.html.twig
 
    <!-- ... -->
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »セキュリティ  <http://docs.symfony.gr.jp/symfony2/book/security.html>`_
+    * `リファレンスドキュメント »SecurityBundle 設定 (“security”)  <http://docs.symfony.gr.jp/symfony2/reference/configuration/security.html>`_
+
+
 .. include:: common/license.rst.inc

@@ -433,6 +433,18 @@ src/Ibw/JobeetBundle/Controller/JobController.php
 
 今日はこれですべてです！明日は、ルーティング機能に詳しくなりましょう。
 
+
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `ガイドブック »コントローラー  <http://docs.symfony.gr.jp/symfony2/book/controller.html>`_
+    * `ガイドブック »ビュー  <http://docs.symfony.gr.jp/symfony2/book/templating.html>`_
+    * `リファレンス »Twig関数リファレンス <http://docs.symfony.gr.jp/symfony2/reference/forms/twig_reference.html>`_
+    * `リファレンス »Symfony2 Twig エクステンション <http://docs.symfony.gr.jp/symfony2/reference/twig_reference.html>`_
+
+
 .. include:: common/license.rst.inc
 
 .. _`Jobeet mockups`: http://symfony.com/legacy/doc/jobeet/1_4/en/02?orm=Doctrine#chapter_02_the_project_user_stories

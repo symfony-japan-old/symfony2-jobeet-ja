@@ -399,4 +399,12 @@ app/config/config_test.yml
 
    $ phpunit -c app src/Ibw/JobeetBundle/Tests/Controller/AffiliateAdminControllerTest
 
+.. seealso::
+    *Symfony2日本語ドキュメント*
+
+    豊富な日本語ドキュメントがありますので合わせて読み進めてみましょう。
+
+    * `クックブック »メール »メールの送信方法  <http://docs.symfony.gr.jp/symfony2/cookbook/email/email.html>`_
+
+
 .. include:: common/license.rst.inc
