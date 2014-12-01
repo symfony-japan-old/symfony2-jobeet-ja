@@ -7,6 +7,6 @@ Symfony2.3.21で動作確認しました。
 
 GitHub Pages の以下の URL にSphinx でビルドしたファイルを置いてあります。
 
-http://yositani2002.github.io/symfony2-jobeet-ja/
+http://jobeet.symfony.gr.jp/
 
 

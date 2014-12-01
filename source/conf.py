@@ -59,7 +59,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Symfony2 Jobeet'
-copyright = u'2014, yositani2002'
+copyright = u'2014, Symfony Japan'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
